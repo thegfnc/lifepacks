@@ -1,21 +1,19 @@
-import { HamburgerIcon, CloseIcon, AddIcon } from '@chakra-ui/icons'
+import { AddIcon } from '@chakra-ui/icons'
 import {
   Avatar,
   Box,
   Button,
   Flex,
   HStack,
-  IconButton,
   Menu,
   MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
-  Stack,
   useColorModeValue,
-  useDisclosure,
 } from '@chakra-ui/react'
 
+import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 
 type AppLayoutProps = {
@@ -27,7 +25,7 @@ const NavLink = ({ route, label }: { route: string; label: string }) => (
 )
 
 const AppLayout = ({ children }: AppLayoutProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isAuthenticated, currentUser, logOut } = useAuth()
 
   const Links = [
     { route: routes.contact(), label: 'Contact' },
@@ -39,13 +37,6 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <IconButton
-            size={'md'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={'Open Menu'}
-            display={{ md: 'none' }}
-            onClick={isOpen ? onClose : onOpen}
-          />
           <HStack spacing={8} alignItems={'center'}>
             <Link to={routes.home()}>Logo</Link>
             <HStack
@@ -63,15 +54,22 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            <Button
-              variant={'solid'}
-              colorScheme={'teal'}
-              size={'sm'}
-              mr={4}
-              leftIcon={<AddIcon />}
-            >
-              Action
-            </Button>
+            {isAuthenticated ? (
+              <>
+                <span>Logged in as {currentUser.email}</span>{' '}
+                <Button
+                  variant={'solid'}
+                  colorScheme={'teal'}
+                  size={'sm'}
+                  mr={4}
+                  onClick={logOut}
+                >
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Link to={routes.login()}>Login</Link>
+            )}
             <Menu>
               <MenuButton
                 as={Button}
@@ -96,16 +94,6 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             </Menu>
           </Flex>
         </Flex>
-
-        {isOpen ? (
-          <Box pb={4} display={{ md: 'none' }}>
-            <Stack as={'nav'} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </Stack>
-          </Box>
-        ) : null}
       </Box>
       {children}
     </>
