@@ -7,6 +7,7 @@ export const QUERY = gql`
     user(id: $id) {
       id
       email
+      createdAt
     }
   }
 `
