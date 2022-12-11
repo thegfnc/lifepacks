@@ -22,8 +22,8 @@ const Routes = () => {
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
         <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
         <Private unauthenticated="home">
-          <Route path="/dashboard" page={DashboardPage} name="dashboard" />
-          <Route path="/dashboard/account" page={AccountPage} name="account" />
+          <Route path="/dashboard" page={DashboardDashboardPage} name="dashboard" />
+          <Route path="/dashboard/account" page={DashboardAccountPage} name="account" />
         </Private>
       </Set>
       <Route notfound page={NotFoundPage} />
