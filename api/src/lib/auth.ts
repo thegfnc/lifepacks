@@ -40,6 +40,14 @@ export const isAuthenticated = (): boolean => {
   return !!context.currentUser
 }
 
+export const isOwner = (id) => {
+  if (context.currentUser.id !== id) {
+    throw new AuthenticationError(
+      'You are unauthorized to access that content.'
+    )
+  }
+}
+
 /**
  * When checking role membership, roles can be a single value, a list, or none.
  * You can use Prisma enums too (if you're using them for roles), just import your enum type from `@prisma/client`

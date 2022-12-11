@@ -55,7 +55,9 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           <Flex alignItems={'center'}>
             {isAuthenticated ? (
               <>
-                <span>Logged in as {currentUser.username}</span>{' '}
+                <Link to={routes.account()}>
+                  Logged in as {currentUser.username}
+                </Link>{' '}
                 <Button
                   variant={'solid'}
                   colorScheme={'teal'}
