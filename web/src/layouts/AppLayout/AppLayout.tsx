@@ -1,4 +1,3 @@
-import { AddIcon } from '@chakra-ui/icons'
 import {
   Avatar,
   Box,
@@ -56,7 +55,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           <Flex alignItems={'center'}>
             {isAuthenticated ? (
               <>
-                <span>Logged in as {currentUser.email}</span>{' '}
+                <span>Logged in as {currentUser.username}</span>{' '}
                 <Button
                   variant={'solid'}
                   colorScheme={'teal'}
