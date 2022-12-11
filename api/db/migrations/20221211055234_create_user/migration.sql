@@ -7,6 +7,7 @@ CREATE TABLE "User" (
     "salt" TEXT NOT NULL,
     "resetToken" TEXT,
     "resetTokenExpiresAt" TIMESTAMP(3),
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
