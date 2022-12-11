@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useEffect } from 'react'
 
 import { useAuth } from '@redwoodjs/auth'
@@ -15,19 +14,13 @@ import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
 
 const SignupPage = () => {
-  const { isAuthenticated, signUp } = useAuth()
+  const { isAuthenticated, signUp, loading } = useAuth()
 
   useEffect(() => {
     if (isAuthenticated) {
       navigate(routes.home())
     }
   }, [isAuthenticated])
-
-  // focus on email box on page load
-  const usernameRef = useRef<HTMLInputElement>(null)
-  useEffect(() => {
-    usernameRef.current?.focus()
-  }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
     const response = await signUp({ ...data })
@@ -58,6 +51,31 @@ const SignupPage = () => {
               <div className="rw-form-wrapper">
                 <Form onSubmit={onSubmit} className="rw-form-wrapper">
                   <Label
+                    name="email"
+                    className="rw-label"
+                    errorClassName="rw-label rw-label-error"
+                  >
+                    E-mail
+                  </Label>
+                  <TextField
+                    name="email"
+                    className="rw-input"
+                    errorClassName="rw-input rw-input-error"
+                    autoComplete="email"
+                    validation={{
+                      required: {
+                        value: true,
+                        message: 'E-mail is required',
+                      },
+                      pattern: {
+                        value: /^[^@]+@[^.]+\..+$/,
+                        message: 'Please enter a valid email address',
+                      },
+                    }}
+                  />
+                  <FieldError name="email" className="rw-field-error" />
+
+                  <Label
                     name="username"
                     className="rw-label"
                     errorClassName="rw-label rw-label-error"
@@ -68,7 +86,7 @@ const SignupPage = () => {
                     name="username"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
-                    ref={usernameRef}
+                    autoComplete="username"
                     validation={{
                       required: {
                         value: true,
@@ -89,7 +107,7 @@ const SignupPage = () => {
                     name="password"
                     className="rw-input"
                     errorClassName="rw-input rw-input-error"
-                    autoComplete="current-password"
+                    autoComplete="new-password"
                     validation={{
                       required: {
                         value: true,
@@ -100,7 +118,10 @@ const SignupPage = () => {
                   <FieldError name="password" className="rw-field-error" />
 
                   <div className="rw-button-group">
-                    <Submit className="rw-button rw-button-blue">
+                    <Submit
+                      className="rw-button rw-button-blue"
+                      disabled={loading}
+                    >
                       Sign Up
                     </Submit>
                   </div>

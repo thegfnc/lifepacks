@@ -1,6 +1,8 @@
+import { Prisma } from '@prisma/client'
 import type { APIGatewayProxyEvent, Context } from 'aws-lambda'
 
-import { DbAuthHandler } from '@redwoodjs/api'
+import { DbAuthHandler, PasswordValidationError } from '@redwoodjs/api'
+import { validate } from '@redwoodjs/api'
 import type { DbAuthHandlerOptions } from '@redwoodjs/api'
 
 import { db } from 'src/lib/db'
@@ -9,7 +11,6 @@ export const handler = async (
   event: APIGatewayProxyEvent,
   context: Context
 ) => {
-
   const forgotPasswordOptions: DbAuthHandlerOptions['forgotPassword'] = {
     // handler() is invoked after verifying that a user was found with the given
     // username. This is where you can send the user an email with a link to
@@ -110,27 +111,82 @@ export const handler = async (
     // If this returns anything else, it will be returned by the
     // `signUp()` function in the form of: `{ message: 'String here' }`.
     handler: ({ username, hashedPassword, salt, userAttributes }) => {
-      return db.user.create({
-        data: {
-          email: username,
-          hashedPassword: hashedPassword,
-          salt: salt,
-          // name: userAttributes.name
-        },
-      })
+      validate(userAttributes.email, 'email', { email: true })
+
+      return db.user
+        .create({
+          data: {
+            username: username,
+            hashedPassword: hashedPassword,
+            salt: salt,
+            email: userAttributes.email,
+          },
+        })
+        .catch((e) => {
+          if (e instanceof Prisma.PrismaClientKnownRequestError) {
+            // The .code property can be accessed in a type-safe manner
+            if (e.code === 'P2002') {
+              if (e.meta.target.includes('email')) {
+                throw new Error(
+                  `E-mail \`${userAttributes.email}\` already in use.`
+                )
+              }
+            }
+          }
+        })
     },
 
     // Include any format checks for password here. Return `true` if the
     // password is valid, otherwise throw a `PasswordValidationError`.
     // Import the error along with `DbAuthHandler` from `@redwoodjs/api` above.
-    passwordValidation: (_password) => {
+    passwordValidation: (password) => {
+      const errors = []
+
+      if (password.length < 8) {
+        errors.push('be at least 8 characters')
+      }
+
+      if (!password.match(/[a-z]/)) {
+        errors.push('contain at least one lowercase letter')
+      }
+
+      if (!password.match(/[A-Z]/)) {
+        errors.push('contain at least one uppercase letter')
+      }
+
+      if (!password.match(/[0-9]/)) {
+        errors.push('contain at least one digit')
+      }
+
+      if (!password.match(/[^A-Za-z0-9]/)) {
+        errors.push('contain at least one special character')
+      }
+
+      if (errors.length) {
+        let error = 'Password must '
+
+        for (let i = 0; i < errors.length; i++) {
+          error += errors[i]
+          if (errors.length > 2 && i !== errors.length - 1) {
+            error += ', '
+          }
+          if (errors.length > 1 && i === errors.length - 2) {
+            error += ' and '
+          }
+        }
+
+        error += '.'
+
+        throw new PasswordValidationError(error)
+      }
+
       return true
     },
 
     errors: {
       // `field` will be either "username" or "password"
       fieldMissing: '${field} is required',
-      usernameTaken: 'Username `${username}` already in use',
+      usernameTaken: 'Username `${username}` already in use.',
     },
   }
 
@@ -147,7 +203,7 @@ export const handler = async (
     // something like `id` or `userId` or even `email`)
     authFields: {
       id: 'id',
-      username: 'email',
+      username: 'username',
       hashedPassword: 'hashedPassword',
       salt: 'salt',
       resetToken: 'resetToken',
