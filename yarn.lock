@@ -14111,14 +14111,12 @@ __metadata:
   linkType: hard
 
 "framer-motion@npm:^7":
-  version: 7.6.19
-  resolution: "framer-motion@npm:7.6.19"
+  version: 7.7.2
+  resolution: "framer-motion@npm:7.7.2"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": 10.13.1
-    framesync: 6.1.2
     hey-listen: ^1.0.8
-    style-value-types: 5.1.2
     tslib: 2.4.0
   peerDependencies:
     react: ^18.0.0
@@ -14126,7 +14124,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 256aa4f7917f5b8f4f8de3369a39201c151ea6ffea722eef1f0cecebb1425c67267789bbddd4c7233fe782a89a61e2a61516108bd8a6b6a6b775a4abda625948
+  checksum: 3328ba325c9367760a891d1c45504ab06c8c6f5f0445c4c6ede28e5c0bf2e754fa001e23a39436be75569903578e4facac22d07ad87593dcd610cedbc8ced08f
   languageName: node
   linkType: hard
 
@@ -14136,15 +14134,6 @@ __metadata:
   dependencies:
     tslib: ^2.1.0
   checksum: c11771528171354b508c3b367b76deb2be542d4214946f2db46fc4db92eceb89eb9aa97c9386c3062536d7068e4d63689d58a35f8e5b0c456a6e86c23a2f35bc
-  languageName: node
-  linkType: hard
-
-"framesync@npm:6.1.2":
-  version: 6.1.2
-  resolution: "framesync@npm:6.1.2"
-  dependencies:
-    tslib: 2.4.0
-  checksum: 9e7d240ddf0bbe062bc9b71ffffd889b9923ee5d9c638ed84f2fe31aaa42e25e624eaf0b28ccca1d08f5ae170b8d083a6dabe5983f5dabea6bbbe6d4a9f8d27a
   languageName: node
   linkType: hard
 
@@ -23143,16 +23132,6 @@ __metadata:
   dependencies:
     inline-style-parser: 0.1.1
   checksum: afe9b96ba077a9068baf8887091870f50298157c0ebf5378151792cf2a2ce084fec9b34fc544da0d9f8e6c22ca0c9e23aa6f075bb8eb051aa1d64363e9987600
-  languageName: node
-  linkType: hard
-
-"style-value-types@npm:5.1.2":
-  version: 5.1.2
-  resolution: "style-value-types@npm:5.1.2"
-  dependencies:
-    hey-listen: ^1.0.8
-    tslib: 2.4.0
-  checksum: c9d82c21ead726196cdf056bfd00591800eb695c6282ef2107c27b9b917e94c91797a1810c6fbda8ac0e4a4dda1453790a91f0cbfd56ef7107c66785c6f90889
   languageName: node
   linkType: hard
 
