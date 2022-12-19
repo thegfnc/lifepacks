@@ -2048,15 +2048,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/icons@npm:^2.0.13":
-  version: 2.0.13
-  resolution: "@chakra-ui/icons@npm:2.0.13"
+"@chakra-ui/icons@npm:^2.0.14":
+  version: 2.0.14
+  resolution: "@chakra-ui/icons@npm:2.0.14"
   dependencies:
     "@chakra-ui/icon": 3.0.13
   peerDependencies:
     "@chakra-ui/system": ">=2.0.0"
     react: ">=18"
-  checksum: 8fff31fdb0b5153e001e20f671a361caccbc8b68a3d100aeb0050dccf735c04fd525d472d82dc8f25dddc1e19c652ee213d48adeade0d0e507240a67ee866073
+  checksum: e7edc9b37378783bf0a46dff8dc2dc3bb4c92409c589709e802f0c137629ae60e0860af36833c6704e6f2acf0a1e91db111ec53d4f89d4fa3703b9915025d2f3
   languageName: node
   linkType: hard
 
@@ -24941,7 +24941,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
-    "@chakra-ui/icons": ^2.0.13
+    "@chakra-ui/icons": ^2.0.14
     "@chakra-ui/react": ^2
     "@emotion/react": ^11
     "@emotion/styled": ^11
