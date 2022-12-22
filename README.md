@@ -14,11 +14,11 @@ Here is a list of the standard set of dev commands to run while developing.
 ## Local Dev URLs
 Here is a list of the standard set of URLs to use while developing locally.
 
-App: http://localhost:8910/
-GraphQL Playground: http://localhost:8911/graphql
-Prisma Studio: http://localhost:5555/
-Supabase Studio: http://localhost:54323/
-Storybook: http://localhost:7910/
+* App: http://localhost:8910/
+* GraphQL Playground: http://localhost:8911/graphql
+* Prisma Studio: http://localhost:5555/
+* Supabase Studio: http://localhost:54323/
+* Storybook: http://localhost:7910/
 
 ## Services Used
 * [Lifepacks Production](https://www.lifepacks.co/)
@@ -33,9 +33,7 @@ Storybook: http://localhost:7910/
 * [Supabase](https://supabase.com/)
 
 
-> **Prerequisites**
->
-> - Redwood requires [Node.js](https://nodejs.org/en/) (>=14.19.x <=16.x) and [Yarn](https://yarnpkg.com/) (>=1.15)
+## RedwoodJS Default Readme Below
 
 Start by installing dependencies:
 
