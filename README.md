@@ -1,11 +1,41 @@
 # README
 
-Welcome to [RedwoodJS](https://redwoodjs.com)!
+Welcome to [Lifepacks](https://www.lifepacks.co)!
+
+## Local Dev Commands
+Here is a list of the standard set of dev commands to run while developing.
+
+1. `yarn rw dev`
+1. `supabase start`
+1. `yarn rw prisma studio`
+1. `yarn rw storybook`
+1. `yarn rw test`
+
+## Local Dev URLs
+Here is a list of the standard set of URLs to use while developing locally.
+
+App: http://localhost:8910/
+GraphQL Playground: http://localhost:8911/graphql
+Prisma Studio: http://localhost:5555/
+Supabase Studio: http://localhost:54323/
+Storybook: http://localhost:7910/
+
+## Services Used
+* [Lifepacks Production](https://www.lifepacks.co/)
+* [Github Repo](https://github.com/jmdesiderio/lifepacks)
+* [Supbase Dashboard](https://app.supabase.com/projects)
+* [Vercel Dashboard](https://vercel.com/jmdesiderio/lifepacks)
+
+
+## Technologies Used
+* [RedwoodJS](https://redwoodjs.com/)
+* [Prisma](https://www.prisma.io/)
+* [Supabase](https://supabase.com/)
+
 
 > **Prerequisites**
 >
 > - Redwood requires [Node.js](https://nodejs.org/en/) (>=14.19.x <=16.x) and [Yarn](https://yarnpkg.com/) (>=1.15)
-> - Are you on Windows? For best results, follow our [Windows development setup](https://redwoodjs.com/docs/how-to/windows-development-setup) guide
 
 Start by installing dependencies:
 
@@ -13,14 +43,7 @@ Start by installing dependencies:
 yarn install
 ```
 
-Then change into that directory and start the development server:
-
-```
-cd my-redwood-project
-yarn redwood dev
-```
-
-Your browser should automatically open to http://localhost:8910 where you'll see the Welcome Page, which links out to a ton of great resources.
+Supabase local - https://supabase.com/docs/guides/resources/supabase-cli/local-development
 
 > **The Redwood CLI**
 >
