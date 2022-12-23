@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
-import { Link, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 
 type AppLayoutProps = {
   children?: React.ReactNode
@@ -31,6 +31,11 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     { route: routes.home(), label: 'Dashboard' },
     { route: routes.home(), label: 'Team' },
   ]
+
+  const onClickLogout = async () => {
+    await logOut()
+    navigate(routes.home())
+  }
 
   return (
     <>
@@ -53,24 +58,29 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
-            {isAuthenticated ? (
-              <>
-                <Link to={routes.home()}>
-                  Logged in as {currentUser.username}
-                </Link>{' '}
-                <Button
-                  variant={'solid'}
-                  colorScheme={'teal'}
-                  size={'sm'}
-                  mr={4}
-                  onClick={logOut}
-                >
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <Link to={routes.home()}>Login</Link>
-            )}
+            <HStack mr="4" dir="horizontal">
+              {isAuthenticated ? (
+                <>
+                  <Link to={routes.home()}>
+                    Logged in as {currentUser.email}
+                  </Link>{' '}
+                  <Button
+                    variant={'solid'}
+                    colorScheme={'teal'}
+                    size={'sm'}
+                    mr={4}
+                    onClick={onClickLogout}
+                  >
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link to={routes.signUp()}>Sign Up</Link>
+                  <Link to={routes.logIn()}>Log In</Link>
+                </>
+              )}
+            </HStack>
             <Menu>
               <MenuButton
                 as={Button}
