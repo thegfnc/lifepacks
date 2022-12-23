@@ -18,6 +18,7 @@ Here is a list of the standard set of URLs to use while developing locally.
 * GraphQL Playground: http://localhost:8911/graphql
 * Prisma Studio: http://localhost:5555/
 * Supabase Studio: http://localhost:54323/
+* Inbucket: http://localhost:54324/
 * Storybook: http://localhost:7910/
 
 ## Services Used
