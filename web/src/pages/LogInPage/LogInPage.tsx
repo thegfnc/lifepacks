@@ -20,7 +20,7 @@ import {
 } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 
-export default function SimpleCard() {
+export default function LogInPage() {
   const { isAuthenticated, logIn } = useAuth()
   const [error, setError] = useState(null)
 
@@ -101,7 +101,7 @@ export default function SimpleCard() {
 
               <Stack spacing={10}>
                 <Box textAlign={'right'}>
-                  <Link to={routes.home()}>Forgot password?</Link>
+                  <Link to={routes.forgotPassword()}>Forgot password?</Link>
                 </Box>
                 <Submit>Log in</Submit>
               </Stack>

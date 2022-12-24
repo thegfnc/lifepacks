@@ -14,10 +14,12 @@ import AppLayout from 'src/layouts/AppLayout/AppLayout'
 const Routes = () => {
   return (
     <Router>
-      <Route path="/sign-up" page={SignUpPage} name="signUp" />
-      <Route path="/log-in" page={LogInPage} name="logIn" />
       <Set wrap={AppLayout}>
         <Route path="/" page={HomePage} name="home" />
+        <Route path="/log-in" page={LogInPage} name="logIn" />
+        <Route path="/sign-up" page={SignUpPage} name="signUp" />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
       </Set>
       <Route notfound page={NotFoundPage} />
     </Router>

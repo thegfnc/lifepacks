@@ -11,18 +11,11 @@ import {
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
-import {
-  FieldError,
-  Form,
-  Label,
-  PasswordField,
-  Submit,
-  TextField,
-} from '@redwoodjs/forms'
+import { FieldError, Form, Label, Submit, TextField } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
 
-const SignUpPage = () => {
-  const { isAuthenticated, signUp } = useAuth()
+const ForgotPasswordPage = () => {
+  const { isAuthenticated, client } = useAuth()
   const [isSuccess, setIsSuccess] = useState(false)
   const [error, setError] = useState(null)
 
@@ -37,13 +30,12 @@ const SignUpPage = () => {
   //   emailRef.current?.focus()
   // }, [])
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: { email: string }) => {
     setError(null)
 
     try {
-      const response = await signUp({
-        email: data.email,
-        password: data.password,
+      const response = await client.auth.api.resetPasswordForEmail(data.email, {
+        redirectTo: `${window.location.origin}/reset-password`,
       })
 
       if (response.error) {
@@ -65,9 +57,9 @@ const SignUpPage = () => {
     >
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Sign up for an account</Heading>
+          <Heading fontSize={'4xl'}>Forgot your password?</Heading>
           <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool features ✌️
+            You&apos;ll get an email with a reset link
           </Text>
         </Stack>
         <Box
@@ -80,11 +72,11 @@ const SignUpPage = () => {
             <Box textAlign="center" py={10} px={6}>
               <CheckCircleIcon boxSize={'35px'} color={'green.500'} />
               <Heading as="h2" size="md" mt={6} mb={2}>
-                Account Sign Up
+                Password Reset Requested
               </Heading>
               <Text color={'gray.500'}>
-                Your account sign up request has succeeded. Check your email
-                inbox for a link to confirm your account.
+                Your password reset request has succeeded. Check your email
+                inbox for next steps on how to set a new password.
               </Text>
             </Box>
           ) : (
@@ -104,21 +96,8 @@ const SignUpPage = () => {
                 />
                 <FieldError name="email" />
 
-                <Label name="password">Password</Label>
-                <PasswordField
-                  name="password"
-                  autoComplete="new-password"
-                  validation={{
-                    required: {
-                      value: true,
-                      message: 'Password is required',
-                    },
-                  }}
-                />
-                <FieldError name="password" />
-
                 <Stack spacing={10}>
-                  <Submit>Sign up</Submit>
+                  <Submit>Request Reset</Submit>
                 </Stack>
               </Stack>
             </Form>
@@ -126,12 +105,12 @@ const SignUpPage = () => {
         </Box>
         <Stack align={'center'}>
           <Text fontSize={'lg'} color={'gray.600'}>
-            <span>Already have an account?</span>{' '}
-            <Link to={routes.logIn()}>Log In</Link>
+            <span>Don&apos;t have an account?</span>{' '}
+            <Link to={routes.signUp()}>Sign Up</Link>
           </Text>
         </Stack>
       </Stack>
     </Flex>
   )
 }
-export default SignUpPage
+export default ForgotPasswordPage
