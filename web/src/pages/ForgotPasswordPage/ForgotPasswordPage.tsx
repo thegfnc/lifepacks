@@ -75,8 +75,8 @@ const ForgotPasswordPage = () => {
                 Password Reset Requested
               </Heading>
               <Text color={'gray.500'}>
-                Your password reset request has succeeded. Check your email
-                inbox for next steps on how to set a new password.
+                Your password reset request has succeeded. Check your inbox for
+                next steps on how to set a new password.
               </Text>
             </Box>
           ) : (

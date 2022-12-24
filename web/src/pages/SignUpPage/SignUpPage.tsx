@@ -83,8 +83,8 @@ const SignUpPage = () => {
                 Account Sign Up
               </Heading>
               <Text color={'gray.500'}>
-                Your account sign up request has succeeded. Check your email
-                inbox for a link to confirm your account.
+                Your account sign up request has succeeded. You should receive
+                an email soon with a link to confirm your account.
               </Text>
             </Box>
           ) : (
