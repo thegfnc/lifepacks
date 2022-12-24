@@ -13,7 +13,7 @@ import { MetaTags } from '@redwoodjs/web'
 const HomePage = () => {
   return (
     <>
-      <MetaTags title="Home" description="Home page" />
+      <MetaTags title="Home" description="Welcome to Lifepacks." />
 
       <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
         <Flex p={8} flex={1} align={'center'} justify={'center'}>

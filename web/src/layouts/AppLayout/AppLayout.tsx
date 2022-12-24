@@ -9,11 +9,11 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
-  useColorModeValue,
+  Spinner,
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
-import { Link, navigate, routes } from '@redwoodjs/router'
+import { Link, routes } from '@redwoodjs/router'
 
 type AppLayoutProps = {
   children?: React.ReactNode
@@ -24,22 +24,26 @@ const NavLink = ({ route, label }: { route: string; label: string }) => (
 )
 
 const AppLayout = ({ children }: AppLayoutProps) => {
-  const { isAuthenticated, currentUser, logOut } = useAuth()
+  const {
+    isAuthenticated,
+    loading: isAuthLoading,
+    currentUser,
+    logOut,
+  } = useAuth()
 
   const Links = [
+    { route: routes.home(), label: 'Categories' },
+    { route: routes.home(), label: 'About' },
     { route: routes.home(), label: 'Contact' },
-    { route: routes.home(), label: 'Dashboard' },
-    { route: routes.home(), label: 'Team' },
   ]
 
   const onClickLogout = async () => {
     await logOut()
-    navigate(routes.home())
   }
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={'gray.100'} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <HStack spacing={8} alignItems={'center'}>
             <Link to={routes.home()}>Logo</Link>
@@ -59,7 +63,9 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           </HStack>
           <Flex alignItems={'center'}>
             <HStack mr="4" dir="horizontal">
-              {isAuthenticated ? (
+              {isAuthLoading ? (
+                <Spinner />
+              ) : isAuthenticated ? (
                 <>
                   <Link to={routes.home()}>
                     Logged in as {currentUser.email}

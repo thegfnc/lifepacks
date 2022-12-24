@@ -7,16 +7,27 @@ import {
   Stack,
   Heading,
   Text,
-  useColorModeValue,
+  Button,
+  Alert,
+  AlertIcon,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
-import { FieldError, Form, Label, Submit, TextField } from '@redwoodjs/forms'
+import { Form, useForm } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
+import { MetaTags } from '@redwoodjs/web'
 
 const ForgotPasswordPage = () => {
   const { isAuthenticated, client } = useAuth()
+  const formMethods = useForm()
+  const { register, formState } = formMethods
+
   const [isSuccess, setIsSuccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -31,86 +42,103 @@ const ForgotPasswordPage = () => {
   // }, [])
 
   const onSubmit = async (data: { email: string }) => {
-    setError(null)
+    let errorMessage = null
+
+    setError(errorMessage)
+    setIsLoading(true)
 
     try {
-      const response = await client.auth.api.resetPasswordForEmail(data.email, {
-        redirectTo: `${window.location.origin}/reset-password`,
-      })
+      const { error } = await client.auth.api.resetPasswordForEmail(
+        data.email,
+        {
+          redirectTo: `${window.location.origin}/reset-password`,
+        }
+      )
 
-      if (response.error) {
-        setError(response.error.message)
-      } else {
-        setIsSuccess(true)
+      if (error) {
+        errorMessage = error.message
       }
     } catch (error) {
-      setError(error.message)
+      errorMessage = error.message
+    }
+
+    setIsLoading(false)
+    if (errorMessage) {
+      setError(errorMessage)
+    } else {
+      setIsSuccess(true)
     }
   }
 
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}
-    >
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-        <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Forgot your password?</Heading>
-          <Text fontSize={'lg'} color={'gray.600'}>
-            You&apos;ll get an email with a reset link
-          </Text>
-        </Stack>
-        <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}
-        >
-          {isSuccess ? (
-            <Box textAlign="center" py={10} px={6}>
-              <CheckCircleIcon boxSize={'35px'} color={'green.500'} />
-              <Heading as="h2" size="md" mt={6} mb={2}>
-                Password Reset Requested
-              </Heading>
-              <Text color={'gray.500'}>
-                Your password reset request has succeeded. Check your inbox for
-                next steps on how to set a new password.
-              </Text>
-            </Box>
-          ) : (
-            <Form onSubmit={onSubmit}>
-              <Stack spacing={4}>
-                {error && <p>{error}</p>}
-                <Label name="email">Email address</Label>
-                <TextField
-                  name="email"
-                  // ref={emailRef}
-                  validation={{
-                    required: {
-                      value: true,
-                      message: 'E-mail address is required',
-                    },
-                  }}
-                />
-                <FieldError name="email" />
+    <>
+      <MetaTags
+        title="Forgot Password"
+        description="Enter your e-mail to recieve a link to reset your password."
+      />
 
-                <Stack spacing={10}>
-                  <Submit>Request Reset</Submit>
+      <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
+        <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
+          <Stack align={'center'}>
+            <Heading fontSize={'4xl'}>Forgot your password?</Heading>
+            <Text fontSize={'lg'} color={'gray.600'}>
+              You&apos;ll get an email with a reset link
+            </Text>
+          </Stack>
+          <Box rounded={'lg'} bg={'white'} boxShadow={'lg'} p={8}>
+            {isSuccess ? (
+              <Box textAlign="center" py={10}>
+                <CheckCircleIcon boxSize={'35px'} color={'green.500'} />
+                <Heading as="h2" size="md" mt={6} mb={2}>
+                  Password Reset Requested
+                </Heading>
+                <Text color={'gray.500'}>
+                  Your password reset request has succeeded. Check your inbox
+                  for next steps on how to set a new password.
+                </Text>
+              </Box>
+            ) : (
+              <Form formMethods={formMethods} onSubmit={onSubmit}>
+                <Stack spacing={6}>
+                  {error && (
+                    <Alert status="error">
+                      <AlertIcon />
+                      {error}
+                    </Alert>
+                  )}
+
+                  <FormControl isInvalid={Boolean(formState.errors.email)}>
+                    <FormLabel>E-mail address</FormLabel>
+                    <Input
+                      autoComplete="email"
+                      {...register('email', {
+                        required: {
+                          value: true,
+                          message: 'E-mail address is required',
+                        },
+                      })}
+                    />
+                    <FormErrorMessage>
+                      {formState.errors.email?.message}
+                    </FormErrorMessage>
+                  </FormControl>
+
+                  <Button type="submit" isLoading={isLoading}>
+                    Request Password Reset
+                  </Button>
                 </Stack>
-              </Stack>
-            </Form>
-          )}
-        </Box>
-        <Stack align={'center'}>
-          <Text fontSize={'lg'} color={'gray.600'}>
-            <span>Don&apos;t have an account?</span>{' '}
-            <Link to={routes.signUp()}>Sign Up</Link>
-          </Text>
+              </Form>
+            )}
+          </Box>
+          <Stack align={'center'}>
+            <Text fontSize={'lg'} color={'gray.600'}>
+              <span>Don&apos;t have an account?</span>{' '}
+              <Link to={routes.signUp()}>Sign Up</Link>
+            </Text>
+          </Stack>
         </Stack>
-      </Stack>
-    </Flex>
+      </Flex>
+    </>
   )
 }
 export default ForgotPasswordPage
