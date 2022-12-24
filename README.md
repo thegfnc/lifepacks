@@ -1,5 +1,4 @@
 # README
-
 Welcome to [Lifepacks](https://www.lifepacks.co)!
 
 ## Local Dev Commands
@@ -14,24 +13,29 @@ Here is a list of the standard set of dev commands to run while developing.
 ## Local Dev URLs
 Here is a list of the standard set of URLs to use while developing locally.
 
+### Redwood
 * App: http://localhost:8910/
 * GraphQL Playground: http://localhost:8911/graphql
 * Prisma Studio: http://localhost:5555/
-* Supabase Studio: http://localhost:54323/
-* Inbucket: http://localhost:54324/
 * Storybook: http://localhost:7910/
+### Supabase
+* API URL: http://localhost:54321
+* DB URL: postgresql://postgres:postgres@localhost:54322/postgres
+* Studio URL: http://localhost:54323
+* Inbucket URL: http://localhost:54324
 
 ## Services Used
 * [Lifepacks Production](https://www.lifepacks.co/)
+* [Google Domains](https://domains.google.com/)
 * [Github Repo](https://github.com/jmdesiderio/lifepacks)
 * [Supbase Dashboard](https://app.supabase.com/projects)
 * [Vercel Dashboard](https://vercel.com/jmdesiderio/lifepacks)
-
 
 ## Technologies Used
 * [RedwoodJS](https://redwoodjs.com/)
 * [Prisma](https://www.prisma.io/)
 * [Supabase](https://supabase.com/)
+* [Chakra UI](https://chakra-ui.com/)
 
 
 ## RedwoodJS Default Readme Below
