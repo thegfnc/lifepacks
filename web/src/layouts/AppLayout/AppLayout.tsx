@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Flex,
+  Heading,
   HStack,
   Menu,
   MenuButton,
@@ -38,7 +39,9 @@ const AppLayout = ({ children }: AppLayoutProps) => {
       <Box bg={'gray.100'} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <HStack spacing={8} alignItems={'center'}>
-            <Link to={routes.home()}>Logo</Link>
+            <Heading as={Link} to={routes.home()} size="lg" color={'gray.800'}>
+              Lifepacks
+            </Heading>
             <HStack
               as={'nav'}
               spacing={4}
