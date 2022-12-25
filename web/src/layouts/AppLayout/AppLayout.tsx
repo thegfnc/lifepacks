@@ -19,10 +19,6 @@ type AppLayoutProps = {
   children?: React.ReactNode
 }
 
-const NavLink = ({ route, label }: { route: string; label: string }) => (
-  <Link to={route}>{label}</Link>
-)
-
 const AppLayout = ({ children }: AppLayoutProps) => {
   const {
     isAuthenticated,
@@ -37,10 +33,6 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     { route: routes.home(), label: 'Contact' },
   ]
 
-  const onClickLogout = async () => {
-    await logOut()
-  }
-
   return (
     <>
       <Box bg={'gray.100'} px={4}>
@@ -52,12 +44,10 @@ const AppLayout = ({ children }: AppLayoutProps) => {
               spacing={4}
               display={{ base: 'none', md: 'flex' }}
             >
-              {Links.map((link) => (
-                <NavLink
-                  key={link.label}
-                  route={link.route}
-                  label={link.label}
-                />
+              {Links.map(({ route, label }) => (
+                <Link key={label} to={route}>
+                  {label}
+                </Link>
               ))}
             </HStack>
           </HStack>
@@ -76,7 +66,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
                       colorScheme={'teal'}
                       size={'sm'}
                       mr={4}
-                      onClick={onClickLogout}
+                      onClick={logOut}
                     >
                       Logout
                     </Button>
