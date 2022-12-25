@@ -41,11 +41,6 @@ const SignUpPage = () => {
     }
   }, [isAuthenticated])
 
-  // const emailRef = useRef<HTMLInputElement>(null)
-  // useEffect(() => {
-  //   emailRef.current?.focus()
-  // }, [])
-
   const onSubmit = async (data) => {
     let errorMessage = null
 

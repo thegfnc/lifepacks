@@ -36,11 +36,6 @@ const ForgotPasswordPage = () => {
     }
   }, [isAuthenticated])
 
-  // const emailRef = useRef<HTMLInputElement>(null)
-  // useEffect(() => {
-  //   emailRef.current?.focus()
-  // }, [])
-
   const onSubmit = async (data: { email: string }) => {
     let errorMessage = null
 
