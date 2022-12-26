@@ -19,6 +19,7 @@ import {
   AlertIcon,
   FormHelperText,
   useBoolean,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
@@ -81,7 +82,9 @@ const LogInPage = () => {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
         <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Log into your account</Heading>
+            <Heading fontSize={{ base: '3xl', md: '4xl' }}>
+              Log into your account
+            </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
               to enjoy all of our cool features ✌️
             </Text>
@@ -145,7 +148,9 @@ const LogInPage = () => {
                     {formState.errors.password?.message}
                   </FormErrorMessage>
                   <FormHelperText textAlign={'right'}>
-                    <Link to={routes.forgotPassword()}>Forgot password?</Link>
+                    <ChakraLink as={Link} to={routes.forgotPassword()}>
+                      Forgot password?
+                    </ChakraLink>
                   </FormHelperText>
                 </FormControl>
 
@@ -158,7 +163,9 @@ const LogInPage = () => {
           <Stack align={'center'}>
             <Text fontSize={'lg'} color={'gray.600'}>
               <span>Don&apos;t have an account?</span>{' '}
-              <Link to={routes.signUp()}>Sign Up</Link>
+              <ChakraLink as={Link} to={routes.signUp()}>
+                Sign Up
+              </ChakraLink>
             </Text>
           </Stack>
         </Stack>

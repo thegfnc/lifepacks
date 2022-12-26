@@ -78,7 +78,9 @@ const ForgotPasswordPage = () => {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
         <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Reset Password</Heading>
+            <Heading fontSize={{ base: '3xl', md: '4xl' }}>
+              Reset Password
+            </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
               Enter your new password
             </Text>

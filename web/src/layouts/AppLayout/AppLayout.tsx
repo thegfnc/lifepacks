@@ -1,3 +1,4 @@
+import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import {
   Avatar,
   Box,
@@ -5,12 +6,16 @@ import {
   Flex,
   Heading,
   HStack,
+  IconButton,
   Menu,
   MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
   Spinner,
+  Stack,
+  useDisclosure,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
@@ -27,6 +32,11 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     currentUser,
     logOut,
   } = useAuth()
+  const {
+    isOpen: isOpenMobileMenu,
+    onOpen: onOpenMobileMenu,
+    onClose: onCloseMobileMenu,
+  } = useDisclosure()
 
   const Links = [
     { route: routes.home(), label: 'Categories' },
@@ -37,8 +47,19 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <>
       <Box bg={'gray.100'} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <HStack spacing={8} alignItems={'center'}>
+        <Flex h={16} alignItems={'center'}>
+          <IconButton
+            size={'md'}
+            icon={isOpenMobileMenu ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ md: 'none' }}
+            onClick={isOpenMobileMenu ? onCloseMobileMenu : onOpenMobileMenu}
+          />
+          <HStack
+            spacing={{ base: 2, md: 8 }}
+            ml={{ base: 2, md: 0 }}
+            alignItems={'center'}
+          >
             <Heading as={Link} to={routes.home()} size="lg" color={'gray.800'}>
               Lifepacks
             </Heading>
@@ -48,22 +69,26 @@ const AppLayout = ({ children }: AppLayoutProps) => {
               display={{ base: 'none', md: 'flex' }}
             >
               {Links.map(({ route, label }) => (
-                <Link key={label} to={route}>
+                <ChakraLink as={Link} key={label} to={route}>
                   {label}
-                </Link>
+                </ChakraLink>
               ))}
             </HStack>
           </HStack>
-          <Flex alignItems={'center'}>
+          <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
             {isAuthLoading ? (
               <Spinner />
             ) : (
               <HStack spacing={3} dir="horizontal">
                 {isAuthenticated ? (
                   <>
-                    <Link to={routes.home()}>
+                    <ChakraLink
+                      as={Link}
+                      to={routes.home()}
+                      display={{ base: 'none', md: 'initial' }}
+                    >
                       Logged in as {currentUser.email}
-                    </Link>{' '}
+                    </ChakraLink>{' '}
                     <Button
                       variant={'solid'}
                       colorScheme={'teal'}
@@ -98,7 +123,9 @@ const AppLayout = ({ children }: AppLayoutProps) => {
                   </>
                 ) : (
                   <>
-                    <Link to={routes.logIn()}>Log In</Link>
+                    <ChakraLink as={Link} to={routes.logIn()}>
+                      Log In
+                    </ChakraLink>
                     <Button
                       as={Link}
                       to={routes.signUp()}
@@ -115,6 +142,26 @@ const AppLayout = ({ children }: AppLayoutProps) => {
           </Flex>
         </Flex>
       </Box>
+      {isOpenMobileMenu ? (
+        <Box
+          pb={6}
+          pt={2}
+          px={6}
+          display={{ md: 'none' }}
+          pos="absolute"
+          bg={'gray.100'}
+          w="100%"
+          zIndex={1}
+        >
+          <Stack as={'nav'} spacing={4}>
+            {Links.map(({ label, route }) => (
+              <ChakraLink as={Link} key={label} to={route}>
+                {label}
+              </ChakraLink>
+            ))}
+          </Stack>
+        </Box>
+      ) : null}
       {children}
     </>
   )

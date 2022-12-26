@@ -18,6 +18,7 @@ import {
   FormLabel,
   FormErrorMessage,
   useBoolean,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
@@ -78,7 +79,9 @@ const SignUpPage = () => {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
         <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Sign up for an account</Heading>
+            <Heading fontSize={{ base: '3xl', md: '4xl' }}>
+              Sign up for an account
+            </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
               to enjoy all of our cool features ✌️
             </Text>
@@ -166,7 +169,9 @@ const SignUpPage = () => {
           <Stack align={'center'}>
             <Text fontSize={'lg'} color={'gray.600'}>
               <span>Already have an account?</span>{' '}
-              <Link to={routes.logIn()}>Log In</Link>
+              <ChakraLink as={Link} to={routes.logIn()}>
+                Log In
+              </ChakraLink>
             </Text>
           </Stack>
         </Stack>

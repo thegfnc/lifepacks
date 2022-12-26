@@ -14,6 +14,7 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 
 import { useAuth } from '@redwoodjs/auth'
@@ -75,7 +76,9 @@ const ForgotPasswordPage = () => {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
         <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Forgot your password?</Heading>
+            <Heading fontSize={{ base: '3xl', md: '4xl' }}>
+              Forgot your password?
+            </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
               You&apos;ll get an email with a reset link
             </Text>
@@ -128,7 +131,9 @@ const ForgotPasswordPage = () => {
           <Stack align={'center'}>
             <Text fontSize={'lg'} color={'gray.600'}>
               <span>Don&apos;t have an account?</span>{' '}
-              <Link to={routes.signUp()}>Sign Up</Link>
+              <ChakraLink as={Link} to={routes.signUp()}>
+                Sign Up
+              </ChakraLink>
             </Text>
           </Stack>
         </Stack>
