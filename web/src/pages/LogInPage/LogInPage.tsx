@@ -102,6 +102,7 @@ const LogInPage = () => {
                 <FormControl isInvalid={Boolean(formState.errors.email)}>
                   <FormLabel>E-mail address</FormLabel>
                   <Input
+                    type="email"
                     autoComplete="email"
                     ref={emailRef}
                     {...register('email', {
