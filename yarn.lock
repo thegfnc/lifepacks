@@ -2094,27 +2094,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/icon@npm:3.0.13":
-  version: 3.0.13
-  resolution: "@chakra-ui/icon@npm:3.0.13"
+"@chakra-ui/icon@npm:3.0.14":
+  version: 3.0.14
+  resolution: "@chakra-ui/icon@npm:3.0.14"
   dependencies:
-    "@chakra-ui/shared-utils": 2.0.3
+    "@chakra-ui/shared-utils": 2.0.4
   peerDependencies:
     "@chakra-ui/system": ">=2.0.0"
     react: ">=18"
-  checksum: b78dc1f451207565cee1cfdc61c20d0b9aa78eee1513af62009afffef6777b6271406b706e3a6bbbc0ac9c5508cd5953e686363b4f1bb640af38b2a9f42eb52f
+  checksum: 84421c9623ea66932b5a3e657f0417b6009370e51b8ee383162a96fc1777c6eeac5b395cb20f36ec2c231154e7c98392d8c19c363429b7600894bca8e0506d24
   languageName: node
   linkType: hard
 
-"@chakra-ui/icons@npm:^2.0.14":
-  version: 2.0.14
-  resolution: "@chakra-ui/icons@npm:2.0.14"
+"@chakra-ui/icons@npm:^2.0.15":
+  version: 2.0.15
+  resolution: "@chakra-ui/icons@npm:2.0.15"
   dependencies:
-    "@chakra-ui/icon": 3.0.13
+    "@chakra-ui/icon": 3.0.14
   peerDependencies:
     "@chakra-ui/system": ">=2.0.0"
     react: ">=18"
-  checksum: e7edc9b37378783bf0a46dff8dc2dc3bb4c92409c589709e802f0c137629ae60e0860af36833c6704e6f2acf0a1e91db111ec53d4f89d4fa3703b9915025d2f3
+  checksum: 66390da9d29daa51419f05d3f2fbf4843488796b478f03dcac37888290b70767ee25d356f0515eb956f607d9e6569e57c5fcff87b38ffebf5a436bf3c8aced6f
   languageName: node
   linkType: hard
 
@@ -2444,10 +2444,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/shared-utils@npm:2.0.3":
-  version: 2.0.3
-  resolution: "@chakra-ui/shared-utils@npm:2.0.3"
-  checksum: 89b843871a0c1128903590132d105e46153d158182391619b975de805b66dcf2dabc76fab6c4bcb506d941bf78fcc601302a5217baa74845fad265ae64c566dd
+"@chakra-ui/shared-utils@npm:2.0.4":
+  version: 2.0.4
+  resolution: "@chakra-ui/shared-utils@npm:2.0.4"
+  checksum: 05eee356ac023068d1113beb2259b5e02a95d08546e692edae60e225b2b6034eaa5a517f013c51c8f069467963bb185bb36b85f0ca00498ef33c5bb56b32f87d
   languageName: node
   linkType: hard
 
@@ -24935,7 +24935,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:web"
   dependencies:
-    "@chakra-ui/icons": ^2.0.14
+    "@chakra-ui/icons": ^2.0.15
     "@chakra-ui/react": ^1
     "@emotion/react": ^11
     "@emotion/styled": ^11
