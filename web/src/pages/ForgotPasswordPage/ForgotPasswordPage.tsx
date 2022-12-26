@@ -108,6 +108,7 @@ const ForgotPasswordPage = () => {
                   <FormControl isInvalid={Boolean(formState.errors.email)}>
                     <FormLabel>E-mail address</FormLabel>
                     <Input
+                      type="email"
                       autoComplete="email"
                       {...register('email', {
                         required: {
