@@ -37,6 +37,11 @@ Here is a list of the standard set of URLs to use while developing locally.
 * [Supabase](https://supabase.com/)
 * [Chakra UI](https://chakra-ui.com/)
 
+## How-To's
+### Set roles on a user
+1. `yarn rw console`
+1. `await db.users.update({data: { raw_user_meta_data: { roles: ["admin"] }}, where: { email: "jmdesiderio@gmail.com" }})`
+
 
 ## RedwoodJS Default Readme Below
 
