@@ -7,7 +7,7 @@ import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
  */
 type RedwoodUser = Record<string, unknown> & { roles?: string[] }
 
-type Roles = 'admin' | 'moderator'
+type Roles = 'admin' | null
 
 interface DecodedWithUserMetaData extends Decoded {
   user_metadata: {
