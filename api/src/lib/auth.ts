@@ -1,4 +1,4 @@
-import { parseJWT, Decoded } from '@redwoodjs/api'
+import { Decoded } from '@redwoodjs/api'
 import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
 
 /**
@@ -6,6 +6,14 @@ import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
  * Authentication provider's JWT together with an optional list of roles.
  */
 type RedwoodUser = Record<string, unknown> & { roles?: string[] }
+
+type Roles = 'admin' | 'moderator'
+
+interface DecodedWithUserMetaData extends Decoded {
+  user_metadata: {
+    roles: Roles[]
+  }
+}
 
 /**
  * getCurrentUser returns the user information together with
@@ -29,14 +37,15 @@ type RedwoodUser = Record<string, unknown> & { roles?: string[] }
  *   context information about the invocation such as IP Address
  * @returns RedwoodUser
  */
+
 export const getCurrentUser = async (
-  decoded: Decoded
+  decoded: DecodedWithUserMetaData
 ): Promise<RedwoodUser | null> => {
   if (!decoded) {
     return null
   }
 
-  const { roles } = parseJWT({ decoded })
+  const { roles } = decoded.user_metadata
 
   if (roles) {
     return { ...decoded, roles }
