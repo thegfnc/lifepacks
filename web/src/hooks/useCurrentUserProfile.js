@@ -1,3 +1,5 @@
+import { useAuth } from '@redwoodjs/auth'
+import { navigate, routes, useLocation } from '@redwoodjs/router'
 import { useQuery } from '@redwoodjs/web'
 
 export const CURRENT_USER_PROFILE_QUERY = gql`
@@ -12,5 +14,21 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
 `
 
 export default function useCurrentUserProfile() {
-  return useQuery(CURRENT_USER_PROFILE_QUERY)
+  const { currentUser } = useAuth()
+  const { pathname } = useLocation()
+  const { data, loading } = useQuery(CURRENT_USER_PROFILE_QUERY)
+
+  // If a user hasn't created a user profile yet, redirect them to finish sign up
+  if (
+    pathname !== routes.completeSignUp() &&
+    currentUser &&
+    !loading &&
+    !data.currentUserProfile
+  ) {
+    navigate(routes.completeSignUp())
+    return {}
+  }
+  // End if
+
+  return { data, loading }
 }

@@ -1,7 +1,8 @@
 import { useAuth } from '@redwoodjs/auth'
 
 import Header from 'src/components/Header/Header'
-import useCompleteSignUpCheck from 'src/hooks/useCompleteSignUpCheck'
+import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
+// import useCompleteSignUpCheck from 'src/hooks/useCompleteSignUpCheck'
 
 type AppLayoutProps = {
   children?: React.ReactNode
@@ -14,8 +15,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     currentUser,
     logOut,
   } = useAuth()
-
-  useCompleteSignUpCheck()
+  const { data } = useCurrentUserProfile()
 
   return (
     <>
@@ -26,6 +26,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
         logOut={logOut}
       />
       {children}
+      <pre>{JSON.stringify(data)}</pre>
     </>
   )
 }
