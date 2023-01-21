@@ -12,6 +12,10 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react'
+import {
+  CreateCurrentUserProfileMutation,
+  CreateCurrentUserProfileMutationVariables,
+} from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
@@ -31,7 +35,7 @@ const CREATE_CURRENT_USER_PROFILE_MUTATION = gql`
 
 const CompleteSignUpPage = () => {
   const formMethods = useForm()
-  const currentUserProfile = useCurrentUserProfile()
+  const { data } = useCurrentUserProfile()
   const [create, { loading, error }] = useMutation<
     CreateCurrentUserProfileMutation,
     CreateCurrentUserProfileMutationVariables
@@ -39,7 +43,7 @@ const CompleteSignUpPage = () => {
     refetchQueries: [{ query: CURRENT_USER_PROFILE_QUERY }],
   })
 
-  if (currentUserProfile.data.currentUserProfile) {
+  if (data?.currentUserProfile) {
     navigate(routes.home())
   }
 
