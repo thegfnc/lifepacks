@@ -5,14 +5,11 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-  schemas  = ["auth", "public"]
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  schemas           = ["auth", "public"]
 }
-
-//////////////////////////////////////
-// Supabase auth schema below
-//////////////////////////////////////
 
 model audit_log_entries {
   instance_id String?   @db.Uuid
@@ -33,10 +30,12 @@ model identities {
   last_sign_in_at DateTime? @db.Timestamptz(6)
   created_at      DateTime? @db.Timestamptz(6)
   updated_at      DateTime? @db.Timestamptz(6)
+  email           String?   @default(dbgenerated("lower((identity_data ->> 'email'::text))"))
   users           users     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@id([provider, id])
   @@index([user_id])
+  @@index([email])
   @@schema("auth")
 }
 
@@ -90,20 +89,17 @@ model mfa_factors {
 }
 
 model refresh_tokens {
-  instance_id          String?          @db.Uuid
-  id                   BigInt           @id @default(autoincrement())
-  token                String?          @unique(map: "refresh_tokens_token_unique") @db.VarChar(255)
-  user_id              String?          @db.VarChar(255)
-  revoked              Boolean?
-  created_at           DateTime?        @db.Timestamptz(6)
-  updated_at           DateTime?        @db.Timestamptz(6)
-  parent               String?          @db.VarChar(255)
-  session_id           String?          @db.Uuid
-  refresh_tokens       refresh_tokens?  @relation("refresh_tokensTorefresh_tokens", fields: [parent], references: [token], onDelete: NoAction, onUpdate: NoAction)
-  other_refresh_tokens refresh_tokens[] @relation("refresh_tokensTorefresh_tokens")
-  sessions             sessions?        @relation(fields: [session_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  instance_id String?   @db.Uuid
+  id          BigInt    @id @default(autoincrement())
+  token       String?   @unique(map: "refresh_tokens_token_unique") @db.VarChar(255)
+  user_id     String?   @db.VarChar(255)
+  revoked     Boolean?
+  created_at  DateTime? @db.Timestamptz(6)
+  updated_at  DateTime? @db.Timestamptz(6)
+  parent      String?   @db.VarChar(255)
+  session_id  String?   @db.Uuid
+  sessions    sessions? @relation(fields: [session_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
-  @@index([session_id], map: "refresh_token_session_id")
   @@index([instance_id])
   @@index([instance_id, user_id])
   @@index([parent])
@@ -156,10 +152,10 @@ model sessions {
   updated_at     DateTime?        @db.Timestamptz(6)
   factor_id      String?          @db.Uuid
   aal            aal_level?
+  not_after      DateTime?        @db.Timestamptz(6)
   mfa_amr_claims mfa_amr_claims[]
   refresh_tokens refresh_tokens[]
   users          users            @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  sso_sessions   sso_sessions[]
 
   @@index([user_id])
   @@index([user_id, created_at], map: "user_id_created_at_idx")
@@ -186,25 +182,7 @@ model sso_providers {
   saml_providers    saml_providers[]
   saml_relay_states saml_relay_states[]
   sso_domains       sso_domains[]
-  sso_sessions      sso_sessions[]
 
-  @@schema("auth")
-}
-
-model sso_sessions {
-  id              String         @id @db.Uuid
-  session_id      String         @db.Uuid
-  sso_provider_id String?        @db.Uuid
-  not_before      DateTime?      @db.Timestamptz(6)
-  not_after       DateTime?      @db.Timestamptz(6)
-  idp_initiated   Boolean?       @default(false)
-  created_at      DateTime?      @db.Timestamptz(6)
-  updated_at      DateTime?      @db.Timestamptz(6)
-  sessions        sessions       @relation(fields: [session_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  sso_providers   sso_providers? @relation(fields: [sso_provider_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@index([session_id])
-  @@index([sso_provider_id])
   @@schema("auth")
 }
 
@@ -213,7 +191,7 @@ model users {
   id                          String        @id @db.Uuid
   aud                         String?       @db.VarChar(255)
   role                        String?       @db.VarChar(255)
-  email                       String?       @unique @db.VarChar(255)
+  email                       String?       @db.VarChar(255)
   encrypted_password          String?       @db.VarChar(255)
   email_confirmed_at          DateTime?     @db.Timestamptz(6)
   invited_at                  DateTime?     @db.Timestamptz(6)
@@ -241,6 +219,7 @@ model users {
   banned_until                DateTime?     @db.Timestamptz(6)
   reauthentication_token      String?       @default("") @db.VarChar(255)
   reauthentication_sent_at    DateTime?     @db.Timestamptz(6)
+  is_sso_user                 Boolean       @default(false)
   identities                  identities[]
   mfa_factors                 mfa_factors[]
   sessions                    sessions[]

@@ -42,6 +42,11 @@ Here is a list of the standard set of URLs to use while developing locally.
 1. `yarn rw console`
 1. `await db.users.update({data: { raw_user_meta_data: { roles: ["admin"] }}, where: { email: "jmdesiderio@gmail.com" }})`
 
+### Set up new database
+1. `psql postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT-REF].supabase.co:5432/
+1. `postgres=> CREATE DATABASE postgres_shadow;`
+1. `postgres=> exit`
+
 
 ## RedwoodJS Default Readme Below
 
