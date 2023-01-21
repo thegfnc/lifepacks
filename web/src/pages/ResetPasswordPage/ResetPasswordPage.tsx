@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
@@ -27,19 +27,13 @@ import { MetaTags } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 const ForgotPasswordPage = () => {
-  const { isAuthenticated, client, loading } = useAuth()
+  const { client } = useAuth()
   const formMethods = useForm()
   const { register, formState } = formMethods
 
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [isShowingPassword, setIsShowingPassword] = useBoolean()
-
-  useEffect(() => {
-    if (!loading && !isAuthenticated) {
-      navigate(routes.home())
-    }
-  }, [loading, isAuthenticated])
 
   const onSubmit = async (data: Record<string, string>) => {
     let errorMessage = null
