@@ -43,7 +43,7 @@ describe('userProfiles', () => {
       expect(result.userId).toEqual('d046694b-5f9b-4825-87e0-3419cab94a17')
       expect(result.username).toEqual('drivenmebefore')
       expect(result.givenName).toEqual('Brandon')
-      expect(result.familyName).toEqual('Boyd')
+      expect(result.familyName).toEqual('wow')
     }
   )
 
