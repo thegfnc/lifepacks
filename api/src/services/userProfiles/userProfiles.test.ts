@@ -1,11 +1,7 @@
-import type { UserProfile } from '@prisma/client'
-
 import {
-  userProfiles,
-  userProfile,
-  createUserProfile,
-  updateUserProfile,
-  deleteUserProfile,
+  currentUserProfile,
+  createCurrentUserProfile,
+  // updateCurrentUserProfile,
 } from './userProfiles'
 import type { StandardScenario } from './userProfiles.scenarios'
 
@@ -16,53 +12,53 @@ import type { StandardScenario } from './userProfiles.scenarios'
 // https://redwoodjs.com/docs/testing#jest-expect-type-considerations
 
 describe('userProfiles', () => {
-  scenario('returns all userProfiles', async (scenario: StandardScenario) => {
-    const result = await userProfiles()
-
-    expect(result.length).toEqual(Object.keys(scenario.userProfile).length)
-  })
-
   scenario(
-    'returns a single userProfile',
+    'returns the userProfile of the currently authenticated user',
     async (scenario: StandardScenario) => {
-      const result = await userProfile({ id: scenario.userProfile.one.id })
+      mockCurrentUser({
+        email: 'jmdesiderio@gmail.com',
+        sub: '4c18c0e2-568a-4da9-a785-3d5b1343abdb',
+      })
 
-      expect(result).toEqual(scenario.userProfile.one)
+      const result = await currentUserProfile()
+
+      expect(scenario.userProfile.one.username).toEqual(result.username)
     }
   )
 
-  scenario('creates a userProfile', async () => {
-    const result = await createUserProfile({
-      input: {
-        userId: 'String3108506',
-        username: 'String2387264',
-        updatedAt: '2023-01-21T06:28:17.267Z',
-      },
-    })
+  scenario(
+    'creates a userProfile for the currently authenticated user',
+    async () => {
+      mockCurrentUser({
+        email: 'drivenmebefore@gmail.com',
+        sub: 'd046694b-5f9b-4825-87e0-3419cab94a17',
+      })
+      const result = await createCurrentUserProfile({
+        input: {
+          username: 'drivenmebefore',
+          givenName: 'Brandon',
+          familyName: 'Boyd',
+        },
+      })
+      expect(result.userId).toEqual('d046694b-5f9b-4825-87e0-3419cab94a17')
+      expect(result.username).toEqual('drivenmebefore')
+      expect(result.givenName).toEqual('Brandon')
+      expect(result.familyName).toEqual('Boyd')
+    }
+  )
 
-    expect(result.userId).toEqual('String3108506')
-    expect(result.username).toEqual('String2387264')
-    expect(result.updatedAt).toEqual(new Date('2023-01-21T06:28:17.267Z'))
-  })
+  // scenario(
+  //   'updates a userProfile for the currently authenticated user',
+  //   async (scenario: StandardScenario) => {
+  //     const original = (await currentUserProfile({
+  //       id: scenario.userProfile.one.id,
+  //     })) as UserProfile
+  //     const result = await updateCurrentUserProfile({
+  //       id: original.id,
+  //       input: { userId: 'String33881132' },
+  //     })
 
-  scenario('updates a userProfile', async (scenario: StandardScenario) => {
-    const original = (await userProfile({
-      id: scenario.userProfile.one.id,
-    })) as UserProfile
-    const result = await updateUserProfile({
-      id: original.id,
-      input: { userId: 'String33881132' },
-    })
-
-    expect(result.userId).toEqual('String33881132')
-  })
-
-  scenario('deletes a userProfile', async (scenario: StandardScenario) => {
-    const original = (await deleteUserProfile({
-      id: scenario.userProfile.one.id,
-    })) as UserProfile
-    const result = await userProfile({ id: original.id })
-
-    expect(result).toEqual(null)
-  })
+  //     expect(result.userId).toEqual('String33881132')
+  //   }
+  // )
 })

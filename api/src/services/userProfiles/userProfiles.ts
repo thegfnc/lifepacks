@@ -25,6 +25,7 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
     })
   }
 
+// THIS ONE DOESN'T WORK YET
 export const updateCurrentUserProfile: MutationResolvers['updateCurrentUserProfile'] =
   ({ input }) => {
     const currentUser: RedwoodUser = context.currentUser

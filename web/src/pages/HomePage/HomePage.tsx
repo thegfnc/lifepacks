@@ -1,12 +1,4 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Image,
-  Stack,
-  Text,
-  useBreakpointValue,
-} from '@chakra-ui/react'
+import { Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
@@ -25,7 +17,7 @@ const HomePage = () => {
                 _after={{
                   content: "''",
                   width: 'full',
-                  height: useBreakpointValue({ base: '20%', md: '30%' }),
+                  height: '30%',
                   position: 'absolute',
                   bottom: 1,
                   left: 0,
