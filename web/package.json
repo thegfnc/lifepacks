@@ -20,7 +20,7 @@
     "@redwoodjs/auth": "3.8.0",
     "@redwoodjs/forms": "^3.8.0",
     "@redwoodjs/router": "^3.8.0",
-    "@redwoodjs/web": "^3.8.0",
+    "@redwoodjs/web": "^4.0.0",
     "@supabase/supabase-js": "1.35.7",
     "framer-motion": "8.5.5",
     "prop-types": "15.8.1",
