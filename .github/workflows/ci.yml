@@ -44,6 +44,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+        env:
+          SUPABASE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zbXlxZWtsc2tpcmx0Ymptbm1qIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA0ODAxNzQsImV4cCI6MTk4NjA1NjE3NH0.lU5KR_VPV9RQRQ_d4LCmH66GDnu_di8vDJHnQMIxf_c
+          SUPABASE_URL: https://msmyqeklskirltbjmnmj.supabase.co
       # install all the dependencies
       - run: yarn install
       # build the redwood app
