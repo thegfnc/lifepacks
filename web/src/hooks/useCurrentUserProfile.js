@@ -1,6 +1,7 @@
-import { useAuth } from '@redwoodjs/auth'
 import { navigate, routes, useLocation } from '@redwoodjs/router'
 import { useQuery } from '@redwoodjs/web'
+
+import { useAuth } from 'src/auth'
 
 export const CURRENT_USER_PROFILE_QUERY = gql`
   query CurrentUserProfile {

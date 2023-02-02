@@ -1,5 +1,4 @@
-import { useAuth } from '@redwoodjs/auth'
-
+import { useAuth } from 'src/auth'
 import Header from 'src/components/Header/Header'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 // import useCompleteSignUpCheck from 'src/hooks/useCompleteSignUpCheck'

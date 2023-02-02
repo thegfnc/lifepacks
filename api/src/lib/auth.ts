@@ -26,6 +26,11 @@ interface DecodedWithUserMetaData extends Decoded {
  * an optional collection of roles used by requireAuth() to check
  * if the user is authenticated or has role-based access
  *
+ * @param decoded - The decoded access token containing user info and JWT claims like `sub`. Note could be null.
+ * @param { token, SupportedAuthTypes type } - The access token itself as well as the auth provider type
+ * @param { APIGatewayEvent event, Context context } - An object which contains information from the invoker
+ * such as headers and cookies, and the context information about the invocation such as IP Address
+ *
  * !! BEWARE !! Anything returned from this function will be available to the
  * client--it becomes the content of `currentUser` on the web side (as well as
  * `context.currentUser` on the api side). You should carefully add additional
@@ -34,19 +39,15 @@ interface DecodedWithUserMetaData extends Decoded {
  *
  * @see https://github.com/redwoodjs/redwood/tree/main/packages/auth for examples
  *
- * @param decoded - The decoded access token containing user info and JWT
- *   claims like `sub`. Note, this could be null.
- * @param { token, SupportedAuthTypes type } - The access token itself as well
- *   as the auth provider type
- * @param { APIGatewayEvent event, Context context } - An optional object which
- *   contains information from the invoker such as headers and cookies, and the
- *   context information about the invocation such as IP Address
  * @returns RedwoodUser
  */
-
 export const getCurrentUser = async (
-  decoded: DecodedWithUserMetaData
-): Promise<RedwoodUser | null> => {
+  decoded: DecodedWithUserMetaData,
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+  { token, type },
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+  { event, context }
+): Promise<RedwoodUser> => {
   if (!decoded) {
     return null
   }

@@ -4,8 +4,9 @@ Welcome to [Lifepacks](https://www.lifepacks.co)!
 ## Local Dev Commands
 Here is a list of the standard set of dev commands to run while developing.
 
-1. `yarn rw dev`
 1. `supabase start`
+1. `yarn rw prisma migrate dev`
+1. `yarn rw dev`
 1. `yarn rw prisma studio`
 1. `yarn rw storybook`
 1. `yarn rw test`
