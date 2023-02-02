@@ -21,10 +21,11 @@ import {
   Link as ChakraLink,
 } from '@chakra-ui/react'
 
-import { useAuth } from '@redwoodjs/auth'
 import { Form, useForm } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+
+import { useAuth } from 'src/auth'
 
 const SignUpPage = () => {
   const { isAuthenticated, signUp } = useAuth()
