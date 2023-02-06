@@ -23,7 +23,7 @@
     "@redwoodjs/router": "^4.0.1",
     "@redwoodjs/web": "^4.0.1",
     "@supabase/supabase-js": "^1",
-    "framer-motion": "8.5.5",
+    "framer-motion": "9.0.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
