@@ -14792,9 +14792,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:8.5.5":
-  version: 8.5.5
-  resolution: "framer-motion@npm:8.5.5"
+"framer-motion@npm:9.0.1":
+  version: 9.0.1
+  resolution: "framer-motion@npm:9.0.1"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     "@motionone/dom": ^10.15.3
@@ -14806,7 +14806,7 @@ __metadata:
   dependenciesMeta:
     "@emotion/is-prop-valid":
       optional: true
-  checksum: 56f5c8c6d7158248f380bf8cbf43015c853d6179ce4da0998074d24e877c154ec0da973149636c01e6f863ba5515220accbb9ccb0facdeeff1a1bfaf48fe0c81
+  checksum: 8910f875a78e3ede525f750dc75ce1ec4393a88d601243f11b0bfcf8eb6dc71dfa46954b07e531380a751c7057fd3339fa1136bb83133bcce3e96125b36ffd88
   languageName: node
   linkType: hard
 
@@ -25504,7 +25504,7 @@ __metadata:
     "@redwoodjs/router": ^4.0.1
     "@redwoodjs/web": ^4.0.1
     "@supabase/supabase-js": ^1
-    framer-motion: 8.5.5
+    framer-motion: 9.0.1
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
