@@ -15,31 +15,30 @@ import {
   Text,
   Link as ChakraLink,
 } from '@chakra-ui/react'
-import { CurrentUserProfile } from 'types/graphql'
 
-import { CurrentUser } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 
-type HeaderProps = {
-  isAuthenticated: boolean
-  isAuthLoading: boolean
-  currentUser: CurrentUser
-  currentUserProfileData: CurrentUserProfile
-  logOut: () => void
-}
+import { useAuth } from 'src/auth'
+import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
-const Header = ({
-  isAuthenticated,
-  isAuthLoading,
-  currentUser,
-  currentUserProfileData,
-  logOut,
-}: HeaderProps) => {
+const Header = () => {
+  const {
+    currentUser,
+    isAuthenticated,
+    loading: isAuthLoading,
+    logOut,
+  } = useAuth()
+  const { data: currentUserProfileData } = useCurrentUserProfile()
   const { currentUserProfile } = currentUserProfileData || {}
 
   return (
     <>
-      <Box bg={'gray.100'} px={4}>
+      <Box
+        bg={'white'}
+        px={4}
+        borderBottomColor={'gray.300'}
+        borderBottomWidth={'1px'}
+      >
         <Flex h={16} alignItems={'center'}>
           <HStack
             spacing={{ base: 2, md: 8 }}
@@ -66,7 +65,7 @@ const Header = ({
                       as={Link}
                       to={routes.pack({ slug: 'new' })}
                     >
-                      Add New Pack
+                      New Pack
                     </Button>
                     <Menu>
                       <MenuButton
