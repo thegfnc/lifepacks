@@ -1,3 +1,5 @@
+import { CurrentUserProfile } from 'types/graphql'
+
 import { navigate, routes, useLocation } from '@redwoodjs/router'
 import { useQuery } from '@redwoodjs/web'
 
@@ -14,7 +16,12 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
   }
 `
 
-export default function useCurrentUserProfile() {
+export type UseCurrentUserProfile = {
+  data?: CurrentUserProfile
+  loading: boolean
+}
+
+export default function useCurrentUserProfile(): UseCurrentUserProfile {
   const { currentUser } = useAuth()
   const { pathname } = useLocation()
   const { data, loading } = useQuery(CURRENT_USER_PROFILE_QUERY)
@@ -27,7 +34,7 @@ export default function useCurrentUserProfile() {
     !data.currentUserProfile
   ) {
     navigate(routes.completeSignUp())
-    return {}
+    return { loading: true }
   }
   // End if
 

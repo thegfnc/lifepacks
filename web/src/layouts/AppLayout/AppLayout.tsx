@@ -9,9 +9,9 @@ type AppLayoutProps = {
 
 const AppLayout = ({ children }: AppLayoutProps) => {
   const {
+    currentUser,
     isAuthenticated,
     loading: isAuthLoading,
-    currentUser,
     logOut,
   } = useAuth()
   const { data } = useCurrentUserProfile()
@@ -22,10 +22,10 @@ const AppLayout = ({ children }: AppLayoutProps) => {
         isAuthenticated={isAuthenticated}
         isAuthLoading={isAuthLoading}
         currentUser={currentUser}
+        currentUserProfileData={data}
         logOut={logOut}
       />
       {children}
-      <pre>{JSON.stringify(data)}</pre>
     </>
   )
 }

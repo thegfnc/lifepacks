@@ -18,9 +18,14 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <Set wrap={AppLayout}>
         <Route path="/" page={HomePage} name="home" />
+
+        <Route path="/user/{username}" page={UserPage} name="user" />
+        <Route path="/pack/{slug}" page={PackPage} name="pack" />
+
         <Route path="/log-in" page={LogInPage} name="logIn" />
         <Route path="/sign-up" page={SignUpPage} name="signUp" />
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+
         <Set private unauthenticated="home">
           <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
           <Route path="/complete-sign-up" page={CompleteSignUpPage} name="completeSignUp" />

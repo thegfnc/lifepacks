@@ -1,4 +1,4 @@
-import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
+import { AddIcon } from '@chakra-ui/icons'
 import {
   Avatar,
   Box,
@@ -6,17 +6,16 @@ import {
   Flex,
   Heading,
   HStack,
-  IconButton,
   Menu,
   MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
   Spinner,
-  Stack,
-  useDisclosure,
+  Text,
   Link as ChakraLink,
 } from '@chakra-ui/react'
+import { CurrentUserProfile } from 'types/graphql'
 
 import { CurrentUser } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
@@ -25,6 +24,7 @@ type HeaderProps = {
   isAuthenticated: boolean
   isAuthLoading: boolean
   currentUser: CurrentUser
+  currentUserProfileData: CurrentUserProfile
   logOut: () => void
 }
 
@@ -32,31 +32,15 @@ const Header = ({
   isAuthenticated,
   isAuthLoading,
   currentUser,
+  currentUserProfileData,
   logOut,
 }: HeaderProps) => {
-  const {
-    isOpen: isOpenMobileMenu,
-    onOpen: onOpenMobileMenu,
-    onClose: onCloseMobileMenu,
-  } = useDisclosure()
-
-  const Links = [
-    { route: routes.home(), label: 'Categories' },
-    { route: routes.home(), label: 'About' },
-    { route: routes.home(), label: 'Contact' },
-  ]
+  const { currentUserProfile } = currentUserProfileData || {}
 
   return (
     <>
       <Box bg={'gray.100'} px={4}>
         <Flex h={16} alignItems={'center'}>
-          <IconButton
-            size={'md'}
-            icon={isOpenMobileMenu ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={'Open Menu'}
-            display={{ md: 'none' }}
-            onClick={isOpenMobileMenu ? onCloseMobileMenu : onOpenMobileMenu}
-          />
           <HStack
             spacing={{ base: 2, md: 8 }}
             ml={{ base: 2, md: 0 }}
@@ -65,40 +49,24 @@ const Header = ({
             <Heading as={Link} to={routes.home()} size="lg" color={'gray.800'}>
               Lifepacks
             </Heading>
-            <HStack
-              as={'nav'}
-              spacing={4}
-              display={{ base: 'none', md: 'flex' }}
-            >
-              {Links.map(({ route, label }) => (
-                <ChakraLink as={Link} key={label} to={route}>
-                  {label}
-                </ChakraLink>
-              ))}
-            </HStack>
           </HStack>
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
-            {isAuthLoading ? (
+            {isAuthLoading || !currentUserProfile ? (
               <Spinner />
             ) : (
               <HStack spacing={3} dir="horizontal">
                 {isAuthenticated ? (
                   <>
-                    <ChakraLink
-                      as={Link}
-                      to={routes.home()}
-                      display={{ base: 'none', md: 'initial' }}
-                    >
-                      Logged in as {currentUser.email}
-                    </ChakraLink>{' '}
                     <Button
                       variant={'solid'}
                       colorScheme={'teal'}
                       size={'sm'}
                       mr={4}
-                      onClick={logOut}
+                      leftIcon={<AddIcon />}
+                      as={Link}
+                      to={routes.pack({ slug: 'new' })}
                     >
-                      Logout
+                      Add New Pack
                     </Button>
                     <Menu>
                       <MenuButton
@@ -116,10 +84,21 @@ const Header = ({
                         />
                       </MenuButton>
                       <MenuList>
-                        <MenuItem>Link 1</MenuItem>
-                        <MenuItem>Link 2</MenuItem>
+                        <Text px={3}>{currentUser.email}</Text>
                         <MenuDivider />
-                        <MenuItem>Link 3</MenuItem>
+                        <MenuItem
+                          as={Link}
+                          to={routes.user({
+                            username: currentUserProfile.username,
+                          })}
+                        >
+                          View Profile
+                        </MenuItem>
+                        <MenuItem as={Link} to={routes.pack({ slug: 'new' })}>
+                          Add New Pack
+                        </MenuItem>
+                        <MenuDivider />
+                        <MenuItem onClick={logOut}>Log Out</MenuItem>
                       </MenuList>
                     </Menu>
                   </>
@@ -144,26 +123,6 @@ const Header = ({
           </Flex>
         </Flex>
       </Box>
-      {isOpenMobileMenu ? (
-        <Box
-          pb={6}
-          pt={2}
-          px={6}
-          display={{ md: 'none' }}
-          pos="absolute"
-          bg={'gray.100'}
-          w="100%"
-          zIndex={1}
-        >
-          <Stack as={'nav'} spacing={4}>
-            {Links.map(({ label, route }) => (
-              <ChakraLink as={Link} key={label} to={route}>
-                {label}
-              </ChakraLink>
-            ))}
-          </Stack>
-        </Box>
-      ) : null}
     </>
   )
 }

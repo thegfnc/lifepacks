@@ -10,13 +10,39 @@ datasource db {
 }
 
 model UserProfile {
-  id          Int       @id @default(autoincrement())
-  userId      String    @unique @db.Uuid
-  username    String    @unique
-  givenName   String?
-  familyName  String?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id              Int       @id @default(autoincrement())
+  userId          String    @unique @db.Uuid
+  username        String    @unique
+  givenName       String?
+  familyName      String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 
   @@index([userId, username])
+}
+
+model Pack {
+  id              Int       @id @default(autoincrement())
+  userId          String    @unique @db.Uuid
+  slug            String    @unique
+  title           String
+  description     String
+  packItems       PackItem[]
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  @@index([userId, slug])
+}
+
+model PackItem {
+  id                Int       @id @default(autoincrement())
+  pack              Pack      @relation(fields: [packId], references: [id])
+  packId            Int
+  title             String
+  linkUrl           String
+  imageUrl          String
+  description       String
+  displaySequence   Int
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 }
