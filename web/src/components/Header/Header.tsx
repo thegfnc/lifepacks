@@ -28,7 +28,8 @@ const Header = () => {
     loading: isAuthLoading,
     logOut,
   } = useAuth()
-  const { data: currentUserProfileData } = useCurrentUserProfile()
+  const { data: currentUserProfileData, loading: isCurrentUserProfileLoading } =
+    useCurrentUserProfile()
   const { currentUserProfile } = currentUserProfileData || {}
 
   return (
@@ -50,7 +51,7 @@ const Header = () => {
             </Heading>
           </HStack>
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
-            {isAuthLoading || !currentUserProfile ? (
+            {isAuthLoading || isCurrentUserProfileLoading ? (
               <Spinner />
             ) : (
               <HStack spacing={3} dir="horizontal">
