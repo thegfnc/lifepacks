@@ -72,8 +72,9 @@ const PackPage = () => {
                   <SimpleGrid columns={2} spacing={0}>
                     <Center p={8}>
                       <Image
-                        maxHeight="296px"
-                        maxWidth="296px"
+                        boxSize="296px"
+                        fit="contain"
+                        alt="REI Co-op Trailbreak 30 Sleeping Bag - Men's"
                         src="https://www.rei.com/media/cc6cd38d-23f6-464d-9107-fc3c9b7dbd2b.jpg?size=784x588"
                       />
                     </Center>
@@ -86,7 +87,7 @@ const PackPage = () => {
                           REI Co-op Trailbreak 30 Sleeping Bag - Men&apos;s
                         </Heading>
                         <Button colorScheme="teal" size="lg" mt={4}>
-                          $25 on Amazon
+                          Buy on Amazon
                         </Button>
                       </Box>
                     </Center>
@@ -120,8 +121,9 @@ const PackPage = () => {
                   <SimpleGrid columns={2} spacing={0}>
                     <Center p={8}>
                       <Image
-                        maxHeight="296px"
-                        maxWidth="296px"
+                        boxSize="296px"
+                        fit="contain"
+                        alt="Coleman Classic Two-Burner Propane Stove"
                         src="https://i5.walmartimages.com/asr/e2eaf2d6-392e-4703-8338-d9b113e0e124.85c6678244824a2e565fa624c03c2301.jpeg"
                       />
                     </Center>
@@ -134,7 +136,7 @@ const PackPage = () => {
                           Coleman Classic Two-Burner Propane Stove
                         </Heading>
                         <Button colorScheme="teal" size="lg" mt={4}>
-                          $25 on Amazon
+                          Buy on Amazon
                         </Button>
                       </Box>
                     </Center>
@@ -167,8 +169,10 @@ const PackPage = () => {
                 'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
               }
             />
-            <Heading>Marcia Espowood</Heading>
-            <Text>
+            <Heading size="sm" pt={4}>
+              Marcia Espowood
+            </Heading>
+            <Text fontSize="md" lineHeight={6} pt={2}>
               Marc is a seasoned outdoorsman who lives for exploring the
               wilderness, experiencing new adventures, and preserving the beauty
               of nature.
