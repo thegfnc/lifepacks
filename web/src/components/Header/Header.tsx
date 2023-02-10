@@ -1,7 +1,6 @@
 import { AddIcon } from '@chakra-ui/icons'
 import {
   Avatar,
-  Box,
   Button,
   Flex,
   Heading,
@@ -34,19 +33,26 @@ const Header = () => {
 
   return (
     <>
-      <Box
+      <Flex
         bg={'white'}
-        px={4}
-        borderBottomColor={'gray.300'}
+        borderBottomColor={'blackAlpha.200'}
         borderBottomWidth={'1px'}
+        alignItems={'center'}
+        justifyContent="center"
+        h={16}
       >
-        <Flex h={16} alignItems={'center'}>
+        <Flex width="100%" maxWidth={'7xl'} px={10}>
           <HStack
             spacing={{ base: 2, md: 8 }}
             ml={{ base: 2, md: 0 }}
             alignItems={'center'}
           >
-            <Heading as={Link} to={routes.home()} size="lg" color={'gray.800'}>
+            <Heading
+              as={Link}
+              to={routes.home()}
+              size="md"
+              color={'blackAlpha.900'}
+            >
               Lifepacks
             </Heading>
           </HStack>
@@ -55,19 +61,8 @@ const Header = () => {
               <Spinner />
             ) : (
               <HStack spacing={3} dir="horizontal">
-                {isAuthenticated ? (
+                {isAuthenticated && currentUserProfile ? (
                   <>
-                    <Button
-                      variant={'solid'}
-                      colorScheme={'teal'}
-                      size={'sm'}
-                      mr={4}
-                      leftIcon={<AddIcon />}
-                      as={Link}
-                      to={routes.pack({ slug: 'new' })}
-                    >
-                      New Pack
-                    </Button>
                     <Menu>
                       <MenuButton
                         as={Button}
@@ -94,13 +89,21 @@ const Header = () => {
                         >
                           View Profile
                         </MenuItem>
-                        <MenuItem as={Link} to={routes.pack({ slug: 'new' })}>
-                          Add New Pack
-                        </MenuItem>
                         <MenuDivider />
                         <MenuItem onClick={logOut}>Log Out</MenuItem>
                       </MenuList>
                     </Menu>
+                    <Button
+                      variant={'solid'}
+                      colorScheme={'teal'}
+                      size={'sm'}
+                      mr={4}
+                      leftIcon={<AddIcon />}
+                      as={Link}
+                      to={routes.pack({ slug: 'new' })}
+                    >
+                      New Pack
+                    </Button>
                   </>
                 ) : (
                   <>
@@ -122,7 +125,7 @@ const Header = () => {
             )}
           </Flex>
         </Flex>
-      </Box>
+      </Flex>
     </>
   )
 }
