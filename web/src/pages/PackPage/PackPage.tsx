@@ -18,6 +18,9 @@ import {
 import { MetaTags } from '@redwoodjs/web'
 
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import SocialAccountButton, {
+  SocialAccountType,
+} from 'src/components/SocialAccountButton/SocialAccountButton'
 
 const PackPage = () => {
   return (
@@ -26,7 +29,7 @@ const PackPage = () => {
 
       <PageContainer>
         <Flex>
-          <Box width="66%" paddingRight={14}>
+          <Box width="70%" paddingRight={20}>
             <HStack spacing={3}>
               <Avatar
                 size={'md'}
@@ -158,7 +161,7 @@ const PackPage = () => {
             </Stack>
           </Box>
           <Box
-            width="34%"
+            width="30%"
             borderLeftWidth={'1px'}
             borderLeftColor={'blackAlpha.200'}
             paddingLeft={14}
@@ -177,6 +180,18 @@ const PackPage = () => {
               wilderness, experiencing new adventures, and preserving the beauty
               of nature.
             </Text>
+            <Stack mt={6}>
+              <SocialAccountButton
+                accountType={SocialAccountType.YouTube}
+                username="@OutdoorsmanChannel"
+                linkUrl="https://www.youtube.com/@outdoorsmanchannel"
+              />
+              <SocialAccountButton
+                accountType={SocialAccountType.Instagram}
+                username="@Outdoorsman"
+                linkUrl="https://www.instagram.com/outdoorsman/"
+              />
+            </Stack>
           </Box>
         </Flex>
       </PageContainer>
