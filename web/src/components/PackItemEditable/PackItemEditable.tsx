@@ -46,6 +46,7 @@ const PackItemEditable = ({
             h="100%"
             w="100%"
             borderRadius="3xl"
+            pointerEvents="none"
           ></Box>
           <HStack position="absolute" top={4} right={4}>
             <IconButton

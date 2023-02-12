@@ -147,7 +147,7 @@ const EditPackPage = () => {
                 <Input />
               </FormControl>
               <FormControl>
-                <FormLabel>Url*</FormLabel>
+                <FormLabel>Purchase Url*</FormLabel>
                 <Input placeholder="amazon.com/xxxx" />
               </FormControl>
               <FormControl>
