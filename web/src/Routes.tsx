@@ -17,20 +17,31 @@ const Routes = () => {
   return (
     <Router useAuth={useAuth}>
       <Set wrap={AppLayout}>
+        {/* Marketing Pages */}
         <Route path="/" page={HomePage} name="home" />
 
-        <Route path="/user/{username}" page={UserPage} name="user" />
-        <Route path="/pack/{slug}" page={PackPage} name="pack" />
+        {/* Public Profile and Pack Pages */}
+        <Route path="/@{username}" page={UserPage} name="user" />
+        <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" />
 
+        {/* Public Auth Pages */}
         <Route path="/log-in" page={LogInPage} name="logIn" />
         <Route path="/sign-up" page={SignUpPage} name="signUp" />
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
 
+        {/* User Admin Pages*/}
         <Set private unauthenticated="home">
-          <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
-          <Route path="/complete-sign-up" page={CompleteSignUpPage} name="completeSignUp" />
+          <Route path="/me/pack/edit/{id:Int}" page={EditPackPage} name="editPack" />
+          <Route path="/me/pack/new" page={EditPackPage} name="newPack" />
+
+          <Route path="/me/profile/edit" page={EditUserProfilePage} name="editUserProfile" />
+
+          <Route path="/me/reset-password" page={ResetPasswordPage} name="resetPassword" />
+          <Route path="/me/complete-sign-up" page={CompleteSignUpPage} name="completeSignUp" />
         </Set>
       </Set>
+
+      {/* System Pages */}
       <Route notfound page={NotFoundPage} />
     </Router>
   )

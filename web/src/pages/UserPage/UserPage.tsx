@@ -1,11 +1,16 @@
+import { EditIcon } from '@chakra-ui/icons'
 import {
+  Button,
   Card,
   CardBody,
   CardHeader,
+  Flex,
   Heading,
   SimpleGrid,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 
+import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
@@ -22,7 +27,17 @@ const UserPage = () => {
       <MetaTags title="User" description="User page" />
 
       <PageContainer>
-        <Heading>User Page</Heading>
+        <Flex alignItems="center" justifyContent="space-between">
+          <Heading>User Page</Heading>
+          <Button
+            as={Link}
+            leftIcon={<EditIcon />}
+            variant="outline"
+            to={routes.editUserProfile()}
+          >
+            Edit Profile
+          </Button>
+        </Flex>
         <SimpleGrid columns={3} spacing={10}>
           <Card>
             <CardHeader>currentUser</CardHeader>
@@ -34,7 +49,17 @@ const UserPage = () => {
           </Card>
           <Card>
             <CardHeader>Packs</CardHeader>
-            <CardBody>{JSON.stringify({})}</CardBody>
+            <CardBody>
+              <ChakraLink
+                as={Link}
+                to={routes.pack({
+                  username: currentUserProfile.username,
+                  slug: 'test',
+                })}
+              >
+                Test Pack
+              </ChakraLink>
+            </CardBody>
           </Card>
         </SimpleGrid>
       </PageContainer>

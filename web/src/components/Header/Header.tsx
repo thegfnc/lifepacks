@@ -1,6 +1,5 @@
 import { AddIcon } from '@chakra-ui/icons'
 import {
-  Avatar,
   Button,
   Flex,
   Heading,
@@ -19,6 +18,8 @@ import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
+
+import Avatar from '../Avatar/Avatar'
 
 const Header = () => {
   const {
@@ -39,7 +40,7 @@ const Header = () => {
         borderBottomWidth={'1px'}
         alignItems={'center'}
         justifyContent="center"
-        h={16}
+        h={'4.5rem'}
       >
         <Flex width="100%" maxWidth={'7xl'} px={10}>
           <HStack
@@ -63,16 +64,26 @@ const Header = () => {
               <HStack spacing={3} dir="horizontal">
                 {isAuthenticated && currentUserProfile ? (
                   <>
+                    <Button
+                      variant={'solid'}
+                      colorScheme={'gray'}
+                      size={'md'}
+                      as={Link}
+                      to={routes.newPack()}
+                    >
+                      Create Pack
+                    </Button>
                     <Menu>
                       <MenuButton
                         as={Button}
                         rounded={'full'}
                         variant={'link'}
                         cursor={'pointer'}
-                        minW={0}
+                        h={10}
+                        w={10}
                       >
                         <Avatar
-                          size={'sm'}
+                          size="full"
                           src={
                             'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
                           }
@@ -93,21 +104,10 @@ const Header = () => {
                         <MenuItem onClick={logOut}>Log Out</MenuItem>
                       </MenuList>
                     </Menu>
-                    <Button
-                      variant={'solid'}
-                      colorScheme={'teal'}
-                      size={'sm'}
-                      mr={4}
-                      leftIcon={<AddIcon />}
-                      as={Link}
-                      to={routes.pack({ slug: 'new' })}
-                    >
-                      New Pack
-                    </Button>
                   </>
                 ) : (
                   <>
-                    <ChakraLink as={Link} to={routes.logIn()}>
+                    <ChakraLink as={Link} to={routes.logIn()} color="gray.500">
                       Log In
                     </ChakraLink>
                     <Button
@@ -115,7 +115,7 @@ const Header = () => {
                       to={routes.signUp()}
                       variant={'solid'}
                       colorScheme={'teal'}
-                      size={'sm'}
+                      size={'md'}
                     >
                       Sign Up
                     </Button>
