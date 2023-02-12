@@ -29,7 +29,7 @@ import { BiImageAdd } from 'react-icons/bi'
 
 import { MetaTags } from '@redwoodjs/web'
 
-import PackItem, { Mode } from 'src/components/PackItem/PackItem'
+import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 
 const EditPackPage = () => {
@@ -98,7 +98,7 @@ const EditPackPage = () => {
             Add Item
           </Button>
           <Stack spacing={6}>
-            <PackItem
+            <PackItemEditable
               imageUrl="https://www.rei.com/media/cc6cd38d-23f6-464d-9107-fc3c9b7dbd2b.jpg?size=784x588"
               title="REI Co-op Trailbreak 30 Sleeping Bag - Men's"
               description="While the above sleeping bag will suffice for three seasons,
@@ -107,13 +107,12 @@ const EditPackPage = () => {
               cooler temperatures), the Mandagies recommend investing in
               this more expensive down-filled option from REI’s in-house
               line."
-              mode={Mode.Edit}
               moveItemUp={movePackItemUp}
               moveItemDown={movePackItemDown}
               editItem={openEditPackItemModal}
               deleteItem={openDeletePackItemAlert}
             />
-            <PackItem
+            <PackItemEditable
               imageUrl="https://i5.walmartimages.com/asr/e2eaf2d6-392e-4703-8338-d9b113e0e124.85c6678244824a2e565fa624c03c2301.jpeg"
               title="Coleman Classic Two-Burner Propane Stove"
               description="Once you have your sleeping arrangements and apparel squared
@@ -121,7 +120,6 @@ const EditPackPage = () => {
                   kitchen. While some campgrounds have grills at each site, a
                   lot do not, so if you’re planning for a few days (or more),
                   you’ll probably want to bring your own portable stove."
-              mode={Mode.Edit}
               moveItemUp={movePackItemUp}
               moveItemDown={movePackItemDown}
               editItem={openEditPackItemModal}
