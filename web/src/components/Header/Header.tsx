@@ -1,4 +1,3 @@
-import { AddIcon } from '@chakra-ui/icons'
 import {
   Button,
   Flex,
@@ -42,21 +41,16 @@ const Header = () => {
         justifyContent="center"
         h={'4.5rem'}
       >
-        <Flex width="100%" maxWidth={'7xl'} px={10}>
-          <HStack
-            spacing={{ base: 2, md: 8 }}
-            ml={{ base: 2, md: 0 }}
-            alignItems={'center'}
+        <Flex width="100%" maxWidth={'7xl'} px={8} alignItems={'center'}>
+          <Heading
+            as={Link}
+            to={routes.home()}
+            size="md"
+            color={'blackAlpha.900'}
           >
-            <Heading
-              as={Link}
-              to={routes.home()}
-              size="md"
-              color={'blackAlpha.900'}
-            >
-              Lifepacks
-            </Heading>
-          </HStack>
+            Lifepacks
+          </Heading>
+
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
             {isAuthLoading || isCurrentUserProfileLoading ? (
               <Spinner />
