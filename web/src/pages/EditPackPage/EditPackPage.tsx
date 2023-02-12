@@ -1,11 +1,74 @@
+import { useState } from 'react'
+
 import { AddIcon } from '@chakra-ui/icons'
-import { Button, Flex, Input, Stack, Textarea } from '@chakra-ui/react'
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  IconButton,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Stack,
+  Textarea,
+  useDisclosure,
+} from '@chakra-ui/react'
+import { BiImageAdd } from 'react-icons/bi'
 
 import { MetaTags } from '@redwoodjs/web'
 
+import PackItem, { Mode } from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 
 const EditPackPage = () => {
+  const movePackItemUp = () => {}
+  const movePackItemDown = () => {}
+
+  // Add + Edit functions
+  const [editModalTitle, setEditModalTitle] = useState('')
+  const {
+    isOpen: isEditModalOpen,
+    onOpen: onEditModalOpen,
+    onClose: onEditModalClose,
+  } = useDisclosure()
+  const openAddPackItemModal = () => {
+    setEditModalTitle('Add Item')
+    onEditModalOpen()
+  }
+  const openEditPackItemModal = () => {
+    setEditModalTitle('Edit Item')
+    onEditModalOpen()
+  }
+  const editPackItem = () => {
+    onEditModalClose()
+  }
+
+  // Delete functions
+  const cancelDeleteRef = React.useRef()
+  const {
+    isOpen: isDeleteAlertOpen,
+    onOpen: onDeleteAlertOpen,
+    onClose: onDeleteAlertClose,
+  } = useDisclosure()
+  const openDeletePackItemAlert = () => {
+    onDeleteAlertOpen()
+  }
+  const deletePackItem = () => {
+    onDeleteAlertClose()
+  }
+
   return (
     <PageContainer>
       <MetaTags title="EditPack" description="EditPack page" />
@@ -22,15 +85,129 @@ const EditPackPage = () => {
             lineHeight={1}
           />
           <Textarea
-            placeholder="What is your lifepack about..."
+            placeholder="What is your pack about..."
             fontSize="xl"
             lineHeight={7}
             color="blackAlpha.800"
             variant="unstyled"
           />
-          <Button leftIcon={<AddIcon boxSize={3} />}>Add Item</Button>
+          <Button
+            leftIcon={<AddIcon boxSize={3} />}
+            onClick={openAddPackItemModal}
+          >
+            Add Item
+          </Button>
+          <Stack spacing={6}>
+            <PackItem
+              imageUrl="https://www.rei.com/media/cc6cd38d-23f6-464d-9107-fc3c9b7dbd2b.jpg?size=784x588"
+              title="REI Co-op Trailbreak 30 Sleeping Bag - Men's"
+              description="While the above sleeping bag will suffice for three seasons,
+            if you’re a beginner camper who is looking for one that will
+            get you through four seasons (or one that can just handle
+              cooler temperatures), the Mandagies recommend investing in
+              this more expensive down-filled option from REI’s in-house
+              line."
+              mode={Mode.Edit}
+              moveItemUp={movePackItemUp}
+              moveItemDown={movePackItemDown}
+              editItem={openEditPackItemModal}
+              deleteItem={openDeletePackItemAlert}
+            />
+            <PackItem
+              imageUrl="https://i5.walmartimages.com/asr/e2eaf2d6-392e-4703-8338-d9b113e0e124.85c6678244824a2e565fa624c03c2301.jpeg"
+              title="Coleman Classic Two-Burner Propane Stove"
+              description="Once you have your sleeping arrangements and apparel squared
+                  away, the experts say you’ll want to think about your camp
+                  kitchen. While some campgrounds have grills at each site, a
+                  lot do not, so if you’re planning for a few days (or more),
+                  you’ll probably want to bring your own portable stove."
+              mode={Mode.Edit}
+              moveItemUp={movePackItemUp}
+              moveItemDown={movePackItemDown}
+              editItem={openEditPackItemModal}
+              deleteItem={openDeletePackItemAlert}
+            />
+          </Stack>
+          <Button
+            leftIcon={<AddIcon boxSize={3} />}
+            onClick={openAddPackItemModal}
+          >
+            Add Item
+          </Button>
         </Stack>
       </Flex>
+
+      <Modal onClose={onEditModalClose} isOpen={isEditModalOpen} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>{editModalTitle}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Stack spacing={4}>
+              <FormControl>
+                <FormLabel>Title*</FormLabel>
+                <Input />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Url*</FormLabel>
+                <Input placeholder="amazon.com/xxxx" />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Image*</FormLabel>
+                <IconButton
+                  aria-label="Upload image"
+                  icon={<BiImageAdd size="1.5rem" />}
+                  borderWidth="1px"
+                  borderColor="gray.200"
+                  h={'7.5rem'}
+                  w="100%"
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Description</FormLabel>
+                <Textarea />
+              </FormControl>
+            </Stack>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button mr={3} onClick={onEditModalClose}>
+              Cancel
+            </Button>
+            <Button colorScheme="teal" onClick={editPackItem}>
+              Save Item
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <AlertDialog
+        isOpen={isDeleteAlertOpen}
+        leastDestructiveRef={cancelDeleteRef}
+        onClose={onDeleteAlertClose}
+        isCentered
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Delete Pack Item
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              {'Are you sure you want to delete this pack item?'}
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button ref={cancelDeleteRef} onClick={onDeleteAlertClose}>
+                Cancel
+              </Button>
+              <Button colorScheme="red" onClick={deletePackItem} ml={3}>
+                Delete Item
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </PageContainer>
   )
 }

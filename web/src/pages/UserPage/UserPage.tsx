@@ -17,7 +17,11 @@ import { useAuth } from 'src/auth'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
-const UserPage = () => {
+type UserPageProps = {
+  username: string
+}
+
+const UserPage = ({ username }: UserPageProps) => {
   const { currentUser } = useAuth()
   const { data: currentUserProfileData } = useCurrentUserProfile()
   const { currentUserProfile } = currentUserProfileData || {}
@@ -53,7 +57,7 @@ const UserPage = () => {
               <ChakraLink
                 as={Link}
                 to={routes.pack({
-                  username: currentUserProfile.username,
+                  username,
                   slug: 'test',
                 })}
               >
