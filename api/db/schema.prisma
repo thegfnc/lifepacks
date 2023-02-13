@@ -37,6 +37,7 @@ model Pack {
 
 model PackItem {
   id                Int       @id @default(autoincrement())
+  userId            String    @unique @db.Uuid
   pack              Pack      @relation(fields: [packId], references: [id])
   packId            Int
   title             String

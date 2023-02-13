@@ -14,6 +14,7 @@ CREATE TABLE "Pack" (
 -- CreateTable
 CREATE TABLE "PackItem" (
     "id" SERIAL NOT NULL,
+    "userId" UUID NOT NULL,
     "packId" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
     "purchaseUrl" TEXT NOT NULL,
@@ -34,6 +35,9 @@ CREATE INDEX "Pack_userId_slug_idx" ON "Pack"("userId", "slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Pack_userId_slug_key" ON "Pack"("userId", "slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "PackItem_userId_key" ON "PackItem"("userId");
 
 -- AddForeignKey
 ALTER TABLE "PackItem" ADD CONSTRAINT "PackItem_packId_fkey" FOREIGN KEY ("packId") REFERENCES "Pack"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
