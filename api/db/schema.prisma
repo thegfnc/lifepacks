@@ -16,6 +16,7 @@ model UserProfile {
   givenName       String?
   familyName      String?
   biography       String?
+  imageUrl        String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 

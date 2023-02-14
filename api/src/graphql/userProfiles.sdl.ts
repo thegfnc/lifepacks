@@ -6,6 +6,7 @@ export const schema = gql`
     givenName: String
     familyName: String
     biography: String
+    imageUrl: String
     createdAt: DateTime!
     updatedAt: DateTime!
   }
@@ -15,6 +16,7 @@ export const schema = gql`
     givenName: String
     familyName: String
     biography: String
+    imageUrl: String
   }
 
   type Query {

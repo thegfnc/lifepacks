@@ -17,6 +17,7 @@ export const QUERY = gql`
       username
       givenName
       familyName
+      imageUrl
     }
   }
 `
@@ -38,12 +39,7 @@ export const Success = ({
 }: CellSuccessProps<FindBylineQuery, FindBylineQueryVariables>) => {
   return mode === Mode.Pack ? (
     <HStack spacing={3}>
-      <Avatar
-        size={'md'}
-        src={
-          'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-        }
-      />
+      <Avatar size={'md'} src={userProfile.imageUrl} />
       <Text fontSize="lg">
         {userProfile.givenName} {userProfile.familyName} ·{' '}
         {format(new Date(date), 'MMM d')}
@@ -51,12 +47,7 @@ export const Success = ({
     </HStack>
   ) : (
     <HStack spacing={3}>
-      <Avatar
-        size={'md'}
-        src={
-          'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-        }
-      />
+      <Avatar size={'md'} src={userProfile.imageUrl} />
       <Stack spacing={0}>
         <Text fontSize="lg" lineHeight={7} fontWeight="bold">
           {userProfile.givenName} {userProfile.familyName}

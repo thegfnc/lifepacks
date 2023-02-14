@@ -12,6 +12,7 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
       username
       givenName
       familyName
+      imageUrl
     }
   }
 `
