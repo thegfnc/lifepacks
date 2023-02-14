@@ -20,36 +20,7 @@ const CURRENT_USER = {
 }
 
 export const loggedOut = () => {
-  return (
-    <Header
-      isAuthenticated={false}
-      isAuthLoading={false}
-      currentUser={{}}
-      logOut={() => {}}
-    />
-  )
-}
-
-export const loggingIn = () => {
-  return (
-    <Header
-      isAuthenticated={false}
-      isAuthLoading={true}
-      currentUser={{}}
-      logOut={() => {}}
-    />
-  )
-}
-
-export const loggedIn = () => {
-  return (
-    <Header
-      isAuthenticated={true}
-      isAuthLoading={false}
-      currentUser={CURRENT_USER}
-      logOut={() => {}}
-    />
-  )
+  return <Header />
 }
 
 export default {

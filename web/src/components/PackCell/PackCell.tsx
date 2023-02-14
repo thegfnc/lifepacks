@@ -79,7 +79,7 @@ export const Success = ({
       <Stack spacing={6} marginTop={10}>
         {pack.packItems.map((packItem) => (
           <PackItem
-            key={pack.id}
+            key={packItem.id}
             imageUrl={packItem.imageUrl}
             purchaseUrl={packItem.purchaseUrl}
             title={packItem.title}

@@ -13,10 +13,26 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import SocialAccountButton from './SocialAccountButton'
+import SocialAccountButton, { SocialAccountType } from './SocialAccountButton'
 
-export const generated = () => {
-  return <SocialAccountButton />
+export const youTube = () => {
+  return (
+    <SocialAccountButton
+      accountType={SocialAccountType.YouTube}
+      username="@jmdesiderio"
+      linkUrl="https://www.youtube.com/"
+    />
+  )
+}
+
+export const instagram = () => {
+  return (
+    <SocialAccountButton
+      accountType={SocialAccountType.Instagram}
+      username="@jmdesiderio"
+      linkUrl="https://www.instagram.com/"
+    />
+  )
 }
 
 export default {

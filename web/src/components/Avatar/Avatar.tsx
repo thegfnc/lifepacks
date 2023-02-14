@@ -3,7 +3,7 @@ import { Avatar as ChakraAvatar } from '@chakra-ui/react'
 type AvatarSize = 'sm' | 'md' | 'xl' | 'full'
 
 type AvatarProps = {
-  size: AvatarSize
+  size?: AvatarSize
   src: string
 }
 

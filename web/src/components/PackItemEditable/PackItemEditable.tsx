@@ -8,8 +8,11 @@ import { Box, Fade, HStack, IconButton, useBoolean } from '@chakra-ui/react'
 
 import PackItem from '../PackItem/PackItem'
 
+const noop = () => {}
+
 type PackItemEditableProps = {
   imageUrl: string
+  purchaseUrl: string
   title: string
   description: string
   moveItemUp?: () => void
@@ -20,12 +23,13 @@ type PackItemEditableProps = {
 
 const PackItemEditable = ({
   imageUrl,
+  purchaseUrl,
   title,
   description,
-  moveItemUp,
-  moveItemDown,
-  editItem,
-  deleteItem,
+  moveItemUp = noop,
+  moveItemDown = noop,
+  editItem = noop,
+  deleteItem = noop,
 }: PackItemEditableProps) => {
   const [isHovering, setIsHovering] = useBoolean()
 
@@ -36,7 +40,12 @@ const PackItemEditable = ({
         onMouseEnter={setIsHovering.on}
         onMouseLeave={setIsHovering.off}
       >
-        <PackItem imageUrl={imageUrl} title={title} description={description} />
+        <PackItem
+          imageUrl={imageUrl}
+          purchaseUrl={purchaseUrl}
+          title={title}
+          description={description}
+        />
         <Fade in={isHovering}>
           <Box
             bg="blackAlpha.50"

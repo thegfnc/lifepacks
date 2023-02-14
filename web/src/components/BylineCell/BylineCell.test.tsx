@@ -1,5 +1,6 @@
 import { render } from '@redwoodjs/testing/web'
-import { Loading, Empty, Failure, Success } from './BylineCell'
+
+import { Loading, Empty, Failure, Success, Mode } from './BylineCell'
 import { standard } from './BylineCell.mock'
 
 // Generated boilerplate tests do not account for all circumstances
@@ -35,7 +36,7 @@ describe('BylineCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success byline={standard().byline} />)
+      render(<Success userProfile={standard().userProfile} mode={Mode.User} />)
     }).not.toThrow()
   })
 })

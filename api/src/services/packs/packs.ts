@@ -69,6 +69,8 @@ export const pack: QueryResolvers['pack'] = async ({ username, slug }) => {
 
 export const Pack: PackRelationResolvers = {
   packItems: (_obj, { root }) => {
-    return db.pack.findUnique({ where: { id: root?.id } }).packItems()
+    return db.pack
+      .findUnique({ where: { id: root?.id } })
+      .packItems({ orderBy: [{ displaySequence: 'asc' }] })
   },
 }

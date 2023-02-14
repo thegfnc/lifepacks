@@ -1,4 +1,5 @@
 import { render } from '@redwoodjs/testing/web'
+
 import { Loading, Empty, Failure, Success } from './UserProfileSidebarCell'
 import { standard } from './UserProfileSidebarCell.mock'
 
@@ -35,7 +36,7 @@ describe('UserProfileSidebarCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success userProfileSidebar={standard().userProfileSidebar} />)
+      render(<Success userProfile={standard().userProfile} />)
     }).not.toThrow()
   })
 })

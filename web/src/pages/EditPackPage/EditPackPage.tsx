@@ -100,6 +100,7 @@ const EditPackPage = () => {
           <Stack spacing={6}>
             <PackItemEditable
               imageUrl="https://www.rei.com/media/cc6cd38d-23f6-464d-9107-fc3c9b7dbd2b.jpg?size=784x588"
+              purchaseUrl="knob.com"
               title="REI Co-op Trailbreak 30 Sleeping Bag - Men's"
               description="While the above sleeping bag will suffice for three seasons,
             if you’re a beginner camper who is looking for one that will
@@ -114,6 +115,7 @@ const EditPackPage = () => {
             />
             <PackItemEditable
               imageUrl="https://i5.walmartimages.com/asr/e2eaf2d6-392e-4703-8338-d9b113e0e124.85c6678244824a2e565fa624c03c2301.jpeg"
+              purchaseUrl="knob.com"
               title="Coleman Classic Two-Burner Propane Stove"
               description="Once you have your sleeping arrangements and apparel squared
                   away, the experts say you’ll want to think about your camp

@@ -1,11 +1,12 @@
 import type { Prisma, PackItem } from '@prisma/client'
+
 import type { ScenarioData } from '@redwoodjs/testing/api'
 
 export const standard = defineScenario<Prisma.PackItemCreateArgs>({
   packItem: {
     one: {
       data: {
-        userId: 'String2032442',
+        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
         title: 'String',
         purchaseUrl: 'String',
         imageUrl: 'String',
@@ -25,7 +26,7 @@ export const standard = defineScenario<Prisma.PackItemCreateArgs>({
     },
     two: {
       data: {
-        userId: 'String1361930',
+        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
         title: 'String',
         purchaseUrl: 'String',
         imageUrl: 'String',
