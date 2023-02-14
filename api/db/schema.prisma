@@ -23,7 +23,7 @@ model UserProfile {
 
 model Pack {
   id              Int       @id @default(autoincrement())
-  userId          String    @unique @db.Uuid
+  userId          String    @db.Uuid
   slug            String
   title           String
   description     String
@@ -37,7 +37,7 @@ model Pack {
 
 model PackItem {
   id                Int       @id @default(autoincrement())
-  userId            String    @unique @db.Uuid
+  userId            String    @db.Uuid
   pack              Pack      @relation(fields: [packId], references: [id])
   packId            Int
   title             String

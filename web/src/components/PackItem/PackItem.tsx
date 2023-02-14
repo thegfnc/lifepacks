@@ -12,11 +12,17 @@ import {
 
 type PackItemProps = {
   imageUrl: string
+  purchaseUrl: string
   title: string
   description: string
 }
 
-const PackItem = ({ imageUrl, title, description }: PackItemProps) => {
+const PackItem = ({
+  imageUrl,
+  purchaseUrl,
+  title,
+  description,
+}: PackItemProps) => {
   return (
     <Card
       borderWidth={'1px'}
@@ -41,7 +47,14 @@ const PackItem = ({ imageUrl, title, description }: PackItemProps) => {
               <Heading size="md" lineHeight={7}>
                 {title}
               </Heading>
-              <Button colorScheme="teal" size="lg" mt={4}>
+              <Button
+                as="a"
+                colorScheme="teal"
+                size="lg"
+                mt={4}
+                href={purchaseUrl}
+                target="_blank"
+              >
                 Buy on Amazon
               </Button>
             </Box>
