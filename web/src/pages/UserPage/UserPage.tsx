@@ -1,20 +1,13 @@
 import { EditIcon } from '@chakra-ui/icons'
-import {
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Flex,
-  Heading,
-  SimpleGrid,
-  Link as ChakraLink,
-} from '@chakra-ui/react'
+import { Box, Button, Flex, Stack } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
-import { useAuth } from 'src/auth'
+import BylineCell, { Mode } from 'src/components/BylineCell/BylineCell'
+import PacksCell from 'src/components/PacksCell/PacksCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import UserProfileSidebarCell from 'src/components/UserProfileSidebarCell/UserProfileSidebarCell'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 type UserPageProps = {
@@ -22,7 +15,6 @@ type UserPageProps = {
 }
 
 const UserPage = ({ username }: UserPageProps) => {
-  const { currentUser } = useAuth()
   const { data: currentUserProfileData } = useCurrentUserProfile()
   const { currentUserProfile } = currentUserProfileData || {}
 
@@ -31,41 +23,32 @@ const UserPage = ({ username }: UserPageProps) => {
       <MetaTags title="User" description="User page" />
 
       <PageContainer>
-        <Flex alignItems="center" justifyContent="space-between">
-          <Heading>User Page</Heading>
-          <Button
-            as={Link}
-            leftIcon={<EditIcon />}
-            variant="outline"
-            to={routes.editUserProfile()}
+        <Flex>
+          <Stack width="70%" spacing={2} paddingRight={20}>
+            <BylineCell username={username} mode={Mode.User} />
+            <PacksCell username={username} />
+          </Stack>
+          <Box
+            width="30%"
+            borderLeftWidth={'1px'}
+            borderLeftColor={'blackAlpha.200'}
+            paddingLeft={14}
           >
-            Edit Profile
-          </Button>
-        </Flex>
-        <SimpleGrid columns={3} spacing={10}>
-          <Card>
-            <CardHeader>currentUser</CardHeader>
-            <CardBody>{JSON.stringify(currentUser)}</CardBody>
-          </Card>
-          <Card>
-            <CardHeader>currentUserProfile</CardHeader>
-            <CardBody>{JSON.stringify(currentUserProfile)}</CardBody>
-          </Card>
-          <Card>
-            <CardHeader>Packs</CardHeader>
-            <CardBody>
-              <ChakraLink
+            <UserProfileSidebarCell username={username} />
+
+            {username === currentUserProfile?.username && (
+              <Button
                 as={Link}
-                to={routes.pack({
-                  username,
-                  slug: 'test',
-                })}
+                leftIcon={<EditIcon />}
+                variant="outline"
+                to={routes.home()}
+                mt={4}
               >
-                Test Pack
-              </ChakraLink>
-            </CardBody>
-          </Card>
-        </SimpleGrid>
+                Edit Profile
+              </Button>
+            )}
+          </Box>
+        </Flex>
       </PageContainer>
     </>
   )

@@ -15,6 +15,7 @@ model UserProfile {
   username        String    @unique
   givenName       String?
   familyName      String?
+  biography       String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 

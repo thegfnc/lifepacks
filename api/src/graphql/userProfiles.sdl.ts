@@ -1,34 +1,44 @@
 export const schema = gql`
-  type UserProfile {
+  type CurrentUserProfile {
     id: Int!
     userId: String!
     username: String!
     givenName: String
     familyName: String
+    biography: String
     createdAt: DateTime!
     updatedAt: DateTime!
   }
 
-  type Query {
-    currentUserProfile: UserProfile @requireAuth
+  type UserProfile {
+    username: String!
+    givenName: String
+    familyName: String
+    biography: String
   }
 
-  input CreateUserProfileInput {
+  type Query {
+    currentUserProfile: CurrentUserProfile @requireAuth
+    userProfile(username: String!): UserProfile @skipAuth
+  }
+
+  input CreateCurrentUserProfileInput {
     username: String!
     givenName: String
     familyName: String
   }
 
-  input UpdateUserProfileInput {
-    username: String
-    givenName: String
-    familyName: String
-  }
+  # input UpdateCurrentUserProfileInput {
+  #   username: String
+  #   givenName: String
+  #   familyName: String
+  # }
 
   type Mutation {
-    createCurrentUserProfile(input: CreateUserProfileInput!): UserProfile!
-      @requireAuth
-    updateCurrentUserProfile(input: UpdateUserProfileInput!): UserProfile!
-      @requireAuth
+    createCurrentUserProfile(
+      input: CreateCurrentUserProfileInput!
+    ): CurrentUserProfile! @requireAuth
+    # updateCurrentUserProfile(input: UpdateCurrentUserProfileInput!): CurrentUserProfile!
+    #   @requireAuth
   }
 `

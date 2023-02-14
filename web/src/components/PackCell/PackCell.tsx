@@ -1,11 +1,11 @@
 import { EditIcon } from '@chakra-ui/icons'
-import { Button, Flex, Heading, HStack, Stack, Text } from '@chakra-ui/react'
+import { Button, Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import type { FindPackQuery, FindPackQueryVariables } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
-import Avatar from 'src/components/Avatar/Avatar'
+import BylineCell, { Mode } from 'src/components/BylineCell/BylineCell'
 import PackItem from 'src/components/PackItem/PackItem'
 
 export const QUERY = gql`
@@ -14,6 +14,7 @@ export const QUERY = gql`
       id
       title
       description
+      createdAt
       packItems {
         id
         imageUrl
@@ -21,6 +22,9 @@ export const QUERY = gql`
         title
         description
       }
+    }
+    currentUserProfile {
+      username
     }
   }
 `
@@ -36,28 +40,29 @@ export const Failure = ({
 )
 
 export const Success = ({
+  username,
   pack,
+  currentUserProfile,
 }: CellSuccessProps<FindPackQuery, FindPackQueryVariables>) => {
   return (
     <>
       <Flex alignItems="center" justifyContent="space-between">
-        <HStack spacing={3}>
-          <Avatar
-            size={'md'}
-            src={
-              'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-            }
-          />
-          <Text fontSize="lg">Marcia Espowood · Jan 8</Text>
-        </HStack>
-        <Button
-          as={Link}
-          leftIcon={<EditIcon />}
-          variant="outline"
-          to={routes.editPack({ id: 1 })}
-        >
-          Edit Pack
-        </Button>
+        <BylineCell
+          username={username}
+          mode={Mode.Pack}
+          date={pack.createdAt}
+        />
+
+        {currentUserProfile?.username === username && (
+          <Button
+            as={Link}
+            leftIcon={<EditIcon />}
+            variant="outline"
+            to={routes.editPack({ id: pack.id })}
+          >
+            Edit Pack
+          </Button>
+        )}
       </Flex>
       <Heading
         as="h1"
@@ -81,15 +86,6 @@ export const Success = ({
             description={packItem.description}
           />
         ))}
-        {/* <PackItem
-          imageUrl="https://i5.walmartimages.com/asr/e2eaf2d6-392e-4703-8338-d9b113e0e124.85c6678244824a2e565fa624c03c2301.jpeg"
-          title="Coleman Classic Two-Burner Propane Stove"
-          description="Once you have your sleeping arrangements and apparel squared
-      away, the experts say you’ll want to think about your camp
-      kitchen. While some campgrounds have grills at each site, a
-      lot do not, so if you’re planning for a few days (or more),
-      you’ll probably want to bring your own portable stove."
-        /> */}
       </Stack>
     </>
   )

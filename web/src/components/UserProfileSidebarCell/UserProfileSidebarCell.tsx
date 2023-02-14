@@ -1,17 +1,44 @@
 import { Stack, Text } from '@chakra-ui/react'
+import type {
+  FindUserProfileSidebarQuery,
+  FindUserProfileSidebarQueryVariables,
+} from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
+import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import Avatar from 'src/components/Avatar/Avatar'
 import SocialAccountButton, {
   SocialAccountType,
 } from 'src/components/SocialAccountButton/SocialAccountButton'
 
-type UserProfileSidebarProps = {
-  username: string
-}
+export const QUERY = gql`
+  query FindUserProfileSidebarQuery($username: String!) {
+    userProfile(username: $username) {
+      username
+      givenName
+      familyName
+      biography
+    }
+  }
+`
 
-const UserProfileSidebar = ({ username }: UserProfileSidebarProps) => {
+export const Loading = () => <div>Loading...</div>
+
+export const Empty = () => <div>Empty</div>
+
+export const Failure = ({
+  error,
+}: CellFailureProps<FindUserProfileSidebarQueryVariables>) => (
+  <div style={{ color: 'red' }}>Error: {error?.message}</div>
+)
+
+export const Success = ({
+  userProfile,
+}: CellSuccessProps<
+  FindUserProfileSidebarQuery,
+  FindUserProfileSidebarQueryVariables
+>) => {
   return (
     <>
       <Avatar
@@ -27,21 +54,19 @@ const UserProfileSidebar = ({ username }: UserProfileSidebarProps) => {
         pt={4}
         color="blackAlpha.900"
       >
-        Marcia Espowood
+        {userProfile.givenName} {userProfile.familyName}
       </Text>
       <Text
         as={Link}
         fontSize="sm"
         lineHeight={5}
         color="blackAlpha.700"
-        to={routes.user({ username })}
+        to={routes.user({ username: userProfile.username })}
       >
-        @{username}
+        @{userProfile.username}
       </Text>
       <Text fontSize="md" lineHeight={6} pt={2}>
-        Marcia is a seasoned outdoorswoman who lives for exploring the
-        wilderness, experiencing new adventures, and preserving the beauty of
-        nature.
+        {userProfile.biography}
       </Text>
       <Stack mt={6}>
         <SocialAccountButton
@@ -58,5 +83,3 @@ const UserProfileSidebar = ({ username }: UserProfileSidebarProps) => {
     </>
   )
 }
-
-export default UserProfileSidebar

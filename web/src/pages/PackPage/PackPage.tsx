@@ -4,7 +4,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import PackCell from 'src/components/PackCell/PackCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
-import UserProfileSidebar from 'src/components/UserProfileSidebar/UserProfileSidebar'
+import UserProfileSidebarCell from 'src/components/UserProfileSidebarCell/UserProfileSidebarCell'
 
 type PackPageProps = {
   username: string
@@ -27,7 +27,7 @@ const PackPage = ({ username, slug }: PackPageProps) => {
             borderLeftColor={'blackAlpha.200'}
             paddingLeft={14}
           >
-            <UserProfileSidebar username={username} />
+            <UserProfileSidebarCell username={username} />
           </Box>
         </Flex>
       </PageContainer>
