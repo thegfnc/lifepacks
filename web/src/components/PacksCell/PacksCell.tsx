@@ -1,6 +1,9 @@
 import {
   Box,
+  Button,
+  Center,
   Flex,
+  Heading,
   Image,
   Link as ChakraLink,
   Square,
@@ -35,7 +38,27 @@ export const QUERY = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <div>Empty</div>
+export const Empty = () => (
+  <Center
+    h="2xl"
+    borderWidth="1px"
+    borderRadius="3xl"
+    borderStyle="dashed"
+    borderColor="gray.400"
+  >
+    <Box textAlign="center">
+      <Heading fontSize="xl" lineHeight={7} fontWeight="bold" color="gray.700">
+        Create your first Lifepack!
+      </Heading>
+      <Text fontSize="md" lineHeight={6} color="gray.500">
+        Make a page endorsing the products you swear by.
+      </Text>
+      <Button colorScheme="teal" mt={4} as={Link} to={routes.newPack()}>
+        Create Pack
+      </Button>
+    </Box>
+  </Center>
+)
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>

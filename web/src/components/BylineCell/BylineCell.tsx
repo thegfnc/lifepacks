@@ -1,10 +1,8 @@
-import { HStack, Stack, Text } from '@chakra-ui/react'
+import { HStack, Stack, Text, Avatar } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import type { FindBylineQuery, FindBylineQueryVariables } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
-
-import Avatar from '../Avatar/Avatar'
 
 export enum Mode {
   User,
@@ -47,7 +45,11 @@ export const Success = ({
     </HStack>
   ) : (
     <HStack spacing={3}>
-      <Avatar size={'md'} src={userProfile.imageUrl} />
+      <Avatar
+        size={'md'}
+        src={userProfile.imageUrl}
+        name={userProfile.givenName}
+      />
       <Stack spacing={0}>
         <Text fontSize="lg" lineHeight={7} fontWeight="bold">
           {userProfile.givenName} {userProfile.familyName}

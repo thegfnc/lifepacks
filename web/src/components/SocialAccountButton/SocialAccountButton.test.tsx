@@ -1,6 +1,8 @@
 import { render } from '@redwoodjs/testing/web'
 
-import SocialAccountButton, { SocialAccountType } from './SocialAccountButton'
+import { SocialAccountType } from '../SocialAccountIcon/SocialAccountIcon'
+
+import SocialAccountButton from './SocialAccountButton'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components

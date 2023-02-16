@@ -137,7 +137,7 @@ const EditPackPage = () => {
         </Stack>
       </Flex>
 
-      <Modal onClose={onEditModalClose} isOpen={isEditModalOpen} isCentered>
+      <Modal onClose={onEditModalClose} isOpen={isEditModalOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{editModalTitle}</ModalHeader>

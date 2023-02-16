@@ -11,14 +11,13 @@ import {
   Spinner,
   Text,
   Link as ChakraLink,
+  Avatar,
 } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
-
-import Avatar from '../Avatar/Avatar'
 
 const Header = () => {
   const {
@@ -77,8 +76,9 @@ const Header = () => {
                         w={10}
                       >
                         <Avatar
-                          size="full"
+                          size="md"
                           src={currentUserProfile?.imageUrl}
+                          name={currentUserProfile?.givenName}
                         />
                       </MenuButton>
                       <MenuList>
