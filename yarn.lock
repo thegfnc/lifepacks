@@ -5657,14 +5657,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redwoodjs/auth-supabase-api@npm:4.1.2":
-  version: 4.1.2
-  resolution: "@redwoodjs/auth-supabase-api@npm:4.1.2"
+"@redwoodjs/auth-supabase-api@npm:4.1.4":
+  version: 4.1.4
+  resolution: "@redwoodjs/auth-supabase-api@npm:4.1.4"
   dependencies:
     "@babel/runtime-corejs3": 7.20.13
     core-js: 3.27.2
     jsonwebtoken: 9.0.0
-  checksum: 29a507eeb55756e2933014fa0bb9e15dd23b443051c8ef8fd4aa94e42b5234386060b67419673b8833100aedfa066c4fdf08a53e5d5255621440db6d35b78e7f
+  checksum: a0024ad2d14ce552e8546d833329cd45024f5c8d0f280c2f41a815d625a446c0a3bee38baddbce6e31f847040b21f209dd59fe43f730a3c282e84b8ea7da5f49
   languageName: node
   linkType: hard
 
@@ -9386,7 +9386,7 @@ __metadata:
   resolution: "api@workspace:api"
   dependencies:
     "@redwoodjs/api": 4.1.2
-    "@redwoodjs/auth-supabase-api": 4.1.2
+    "@redwoodjs/auth-supabase-api": 4.1.4
     "@redwoodjs/graphql-server": 4.1.2
     jsonwebtoken: ^9.0.0
   languageName: unknown
