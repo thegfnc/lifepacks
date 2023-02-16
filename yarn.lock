@@ -5702,6 +5702,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/auth@npm:4.1.4":
+  version: 4.1.4
+  resolution: "@redwoodjs/auth@npm:4.1.4"
+  dependencies:
+    "@babel/runtime-corejs3": 7.20.13
+    core-js: 3.27.2
+    react: 17.0.2
+  checksum: d843a724bd56aec831edaca8d7f868b2d6e628dfc3fce9ba746b3c03a01702f6c01c62ee62f3910c83ece37695232ccfcb24d9cef72e0093bf0204f0f30a5775
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/cli-helpers@npm:4.1.2":
   version: 4.1.2
   resolution: "@redwoodjs/cli-helpers@npm:4.1.2"
@@ -25544,7 +25555,7 @@ __metadata:
     "@chakra-ui/react": 2.4.9
     "@emotion/react": ^11
     "@emotion/styled": ^11
-    "@redwoodjs/auth": 4.1.2
+    "@redwoodjs/auth": 4.1.4
     "@redwoodjs/auth-supabase-web": 4.1.2
     "@redwoodjs/forms": 4.1.2
     "@redwoodjs/router": 4.1.2
