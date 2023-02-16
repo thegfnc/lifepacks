@@ -4,20 +4,20 @@ import type { ScenarioData } from '@redwoodjs/testing/api'
 
 export const standard = defineScenario({
   pack: {
-    one: {
+    camping: {
       data: {
         userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
-        slug: 'slug-1',
-        title: 'String',
+        slug: 'camping',
+        title: 'Camping',
         description: 'String',
         updatedAt: '2023-02-13T15:55:47.365Z',
       },
     },
-    two: {
+    computers: {
       data: {
         userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
-        slug: 'slug-2',
-        title: 'String',
+        slug: 'computers',
+        title: 'Computers!',
         description: 'String',
         updatedAt: '2023-02-13T15:55:47.365Z',
       },

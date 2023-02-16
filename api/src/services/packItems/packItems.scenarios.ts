@@ -16,8 +16,8 @@ export const standard = defineScenario<Prisma.PackItemCreateArgs>({
         pack: {
           create: {
             userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
-            slug: 'slug-1',
-            title: 'String',
+            slug: 'cooking',
+            title: 'Cooking',
             description: 'String',
             updatedAt: '2023-02-13T15:56:29.208Z',
           },
@@ -36,8 +36,8 @@ export const standard = defineScenario<Prisma.PackItemCreateArgs>({
         pack: {
           create: {
             userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
-            slug: 'slug-2',
-            title: 'String',
+            slug: 'music',
+            title: 'Music',
             description: 'String',
             updatedAt: '2023-02-13T15:56:29.208Z',
           },

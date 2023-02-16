@@ -23,9 +23,9 @@ describe('packs', () => {
   })
 
   scenario('returns a single pack', async (scenario: StandardScenario) => {
-    const result = await pack({ username: 'jmdesiderio', slug: 'slug-1' })
+    const result = await pack({ username: 'jmdesiderio', slug: 'camping' })
 
-    expect(result).toEqual(scenario.pack.one)
+    expect(result).toEqual(scenario.pack.camping)
   })
 
   // scenario('creates a pack', async () => {
