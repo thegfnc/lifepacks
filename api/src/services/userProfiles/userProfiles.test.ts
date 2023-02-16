@@ -17,7 +17,7 @@ describe('userProfiles', () => {
     async (scenario: StandardScenario) => {
       mockCurrentUser({
         email: 'jmdesiderio@gmail.com',
-        sub: '4c18c0e2-568a-4da9-a785-3d5b1343abdb',
+        sub: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
       })
 
       const result = await currentUserProfile()

@@ -1,4 +1,4 @@
-import type { Pack } from '@prisma/client'
+// import type { Pack } from '@prisma/client'
 
 import {
   packs,
@@ -17,13 +17,13 @@ import type { StandardScenario } from './packs.scenarios'
 
 describe('packs', () => {
   scenario('returns all packs', async (scenario: StandardScenario) => {
-    const result = await packs()
+    const result = await packs({ username: 'jmdesiderio' })
 
     expect(result.length).toEqual(Object.keys(scenario.pack).length)
   })
 
   scenario('returns a single pack', async (scenario: StandardScenario) => {
-    const result = await pack({ id: scenario.pack.one.id })
+    const result = await pack({ username: 'jmdesiderio', slug: 'slug-1' })
 
     expect(result).toEqual(scenario.pack.one)
   })
