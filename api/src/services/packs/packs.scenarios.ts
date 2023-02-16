@@ -6,7 +6,7 @@ export const standard = defineScenario({
   pack: {
     camping: {
       data: {
-        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
+        userId: '6b555fae-0bf4-448a-b467-db072d608117',
         slug: 'camping',
         title: 'Camping',
         description: 'String',
@@ -15,7 +15,7 @@ export const standard = defineScenario({
     },
     computers: {
       data: {
-        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
+        userId: '6b555fae-0bf4-448a-b467-db072d608117',
         slug: 'computers',
         title: 'Computers!',
         description: 'String',
@@ -26,8 +26,8 @@ export const standard = defineScenario({
   userProfile: {
     one: {
       data: {
-        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
-        username: 'jmdesiderio',
+        userId: '6b555fae-0bf4-448a-b467-db072d608117',
+        username: 'cooldude',
         givenName: 'Jason',
         familyName: 'Desiderio',
         updatedAt: '2023-01-21T06:28:17.296Z',
@@ -35,8 +35,8 @@ export const standard = defineScenario({
     },
     two: {
       data: {
-        userId: '93893d12-bbd4-4784-8f56-6cda6e21b169',
-        username: 'drivenmebfore',
+        userId: '2aa849fb-eaaa-4aeb-84a0-a0492469521f',
+        username: 'wildchild',
         givenName: 'Some',
         familyName: 'Otherguy',
         updatedAt: '2023-01-21T06:28:17.296Z',

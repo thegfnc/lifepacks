@@ -17,13 +17,13 @@ import type { StandardScenario } from './packs.scenarios'
 
 describe('packs', () => {
   scenario('returns all packs', async (scenario: StandardScenario) => {
-    const result = await packs({ username: 'jmdesiderio' })
+    const result = await packs({ username: 'cooldude' })
 
     expect(result.length).toEqual(Object.keys(scenario.pack).length)
   })
 
   scenario('returns a single pack', async (scenario: StandardScenario) => {
-    const result = await pack({ username: 'jmdesiderio', slug: 'camping' })
+    const result = await pack({ username: 'cooldude', slug: 'camping' })
 
     expect(result).toEqual(scenario.pack.camping)
   })
