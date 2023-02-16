@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.16",
-    "@chakra-ui/react": "2.4.9",
+    "@chakra-ui/react": "2.5.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@redwoodjs/auth": "4.1.4",
@@ -24,7 +24,7 @@
     "@redwoodjs/web": "4.1.4",
     "@supabase/supabase-js": "^1",
     "date-fns": "^2.29.3",
-    "framer-motion": "9.0.1",
+    "framer-motion": "9.0.4",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
