@@ -1,10 +1,8 @@
-import type { Prisma, Pack } from '@prisma/client'
+import type { Pack } from '@prisma/client'
 
 import type { ScenarioData } from '@redwoodjs/testing/api'
 
-export const standard = defineScenario<
-  Prisma.PackCreateArgs & Prisma.UserProfileCreateArgs
->({
+export const standard = defineScenario({
   pack: {
     one: {
       data: {
@@ -32,6 +30,15 @@ export const standard = defineScenario<
         username: 'jmdesiderio',
         givenName: 'Jason',
         familyName: 'Desiderio',
+        updatedAt: '2023-01-21T06:28:17.296Z',
+      },
+    },
+    two: {
+      data: {
+        userId: '93893d12-bbd4-4784-8f56-6cda6e21b169',
+        username: 'drivenmebfore',
+        givenName: 'Some',
+        familyName: 'Otherguy',
         updatedAt: '2023-01-21T06:28:17.296Z',
       },
     },

@@ -17,7 +17,7 @@ describe('userProfiles', () => {
     async (scenario: StandardScenario) => {
       mockCurrentUser({
         email: 'jmdesiderio@gmail.com',
-        sub: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
+        sub: scenario.userProfile.one.userId,
       })
 
       const result = await currentUserProfile()
@@ -35,13 +35,13 @@ describe('userProfiles', () => {
       })
       const result = await createCurrentUserProfile({
         input: {
-          username: 'drivenmebefore',
+          username: 'someWildUsername',
           givenName: 'Brandon',
           familyName: 'Boyd',
         },
       })
       expect(result.userId).toEqual('d046694b-5f9b-4825-87e0-3419cab94a17')
-      expect(result.username).toEqual('drivenmebefore')
+      expect(result.username).toEqual('someWildUsername')
       expect(result.givenName).toEqual('Brandon')
       expect(result.familyName).toEqual('Boyd')
     }

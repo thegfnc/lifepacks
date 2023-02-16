@@ -16,7 +16,7 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
     two: {
       data: {
         userId: '93893d12-bbd4-4784-8f56-6cda6e21b169',
-        username: 'String8349404',
+        username: 'drivenmebefore',
         updatedAt: '2023-01-21T06:28:17.296Z',
       },
     },
