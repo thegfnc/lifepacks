@@ -4,8 +4,8 @@
 // ```tsx
 // import type { ComponentStory } from '@storybook/react'
 //
-// export const generated: ComponentStory<typeof Header> = (args) => {
-//   return <Header {...args} />
+// export const generated: ComponentStory<typeof PageContainer> = (args) => {
+//   return <PageContainer {...args} />
 // }
 // ```
 //
@@ -13,17 +13,13 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import Header from './Header'
+import PageContainer from './PageContainer'
 
-const CURRENT_USER = {
-  email: 'lifepacksco@gmail.com',
-}
-
-export const loggedOut = () => {
-  return <Header />
+export const generated = () => {
+  return <PageContainer />
 }
 
 export default {
-  title: 'Components/Header',
-  component: Header,
-} as ComponentMeta<typeof Header>
+  title: 'Components/PageContainer',
+  component: PageContainer,
+} as ComponentMeta<typeof PageContainer>

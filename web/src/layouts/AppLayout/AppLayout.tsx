@@ -1,31 +1,14 @@
-import { useAuth } from 'src/auth'
 import Header from 'src/components/Header/Header'
-import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
-// import useCompleteSignUpCheck from 'src/hooks/useCompleteSignUpCheck'
 
 type AppLayoutProps = {
   children?: React.ReactNode
 }
 
 const AppLayout = ({ children }: AppLayoutProps) => {
-  const {
-    isAuthenticated,
-    loading: isAuthLoading,
-    currentUser,
-    logOut,
-  } = useAuth()
-  const { data } = useCurrentUserProfile()
-
   return (
     <>
-      <Header
-        isAuthenticated={isAuthenticated}
-        isAuthLoading={isAuthLoading}
-        currentUser={currentUser}
-        logOut={logOut}
-      />
+      <Header />
       {children}
-      <pre>{JSON.stringify(data)}</pre>
     </>
   )
 }

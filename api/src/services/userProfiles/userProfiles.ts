@@ -12,6 +12,12 @@ export const currentUserProfile: QueryResolvers['currentUserProfile'] = () => {
   })
 }
 
+export const userProfile: QueryResolvers['userProfile'] = ({ username }) => {
+  return db.userProfile.findUnique({
+    where: { username },
+  })
+}
+
 export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfile'] =
   ({ input }) => {
     const currentUser: RedwoodUser = context.currentUser
@@ -25,14 +31,13 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
     })
   }
 
-// THIS ONE DOESN'T WORK YET
-export const updateCurrentUserProfile: MutationResolvers['updateCurrentUserProfile'] =
-  ({ input }) => {
-    const currentUser: RedwoodUser = context.currentUser
-    const userId = currentUser.sub
+// export const updateCurrentUserProfile: MutationResolvers['updateCurrentUserProfile'] =
+//   ({ input }) => {
+//     const currentUser: RedwoodUser = context.currentUser
+//     const userId = currentUser.sub
 
-    return db.userProfile.update({
-      data: input,
-      where: { userId },
-    })
-  }
+//     return db.userProfile.update({
+//       data: input,
+//       where: { userId },
+//     })
+//   }

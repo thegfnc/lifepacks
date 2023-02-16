@@ -4,8 +4,8 @@
 // ```tsx
 // import type { ComponentStory } from '@storybook/react'
 //
-// export const generated: ComponentStory<typeof Header> = (args) => {
-//   return <Header {...args} />
+// export const generated: ComponentStory<typeof SocialAccountIcon> = (args) => {
+//   return <SocialAccountIcon {...args} />
 // }
 // ```
 //
@@ -13,17 +13,13 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import Header from './Header'
+import SocialAccountIcon from './SocialAccountIcon'
 
-const CURRENT_USER = {
-  email: 'lifepacksco@gmail.com',
-}
-
-export const loggedOut = () => {
-  return <Header />
+export const generated = () => {
+  return <SocialAccountIcon />
 }
 
 export default {
-  title: 'Components/Header',
-  component: Header,
-} as ComponentMeta<typeof Header>
+  title: 'Components/SocialAccountIcon',
+  component: SocialAccountIcon,
+} as ComponentMeta<typeof SocialAccountIcon>

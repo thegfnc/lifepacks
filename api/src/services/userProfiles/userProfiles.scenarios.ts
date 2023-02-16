@@ -6,7 +6,7 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
   userProfile: {
     one: {
       data: {
-        userId: '4c18c0e2-568a-4da9-a785-3d5b1343abdb',
+        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
         username: 'jmdesiderio',
         givenName: 'Jason',
         familyName: 'Desiderio',
@@ -16,7 +16,7 @@ export const standard = defineScenario<Prisma.UserProfileCreateArgs>({
     two: {
       data: {
         userId: '93893d12-bbd4-4784-8f56-6cda6e21b169',
-        username: 'String8349404',
+        username: 'drivenmebefore',
         updatedAt: '2023-01-21T06:28:17.296Z',
       },
     },
