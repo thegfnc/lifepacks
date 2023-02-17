@@ -1,14 +1,14 @@
 export const schema = gql`
   type CurrentUserProfile {
-    id: Int!
-    userId: String!
-    username: String!
+    id: Int
+    userId: String
+    username: String
     givenName: String
     familyName: String
     biography: String
     imageUrl: String
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime
+    updatedAt: DateTime
   }
 
   type UserProfile {
@@ -20,7 +20,7 @@ export const schema = gql`
   }
 
   type Query {
-    currentUserProfile: CurrentUserProfile @requireAuth
+    currentUserProfile: CurrentUserProfile @skipAuth
     userProfile(username: String!): UserProfile @skipAuth
   }
 

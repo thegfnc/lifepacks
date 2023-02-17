@@ -38,8 +38,7 @@ type UserPageProps = {
 }
 
 const UserPage = ({ username }: UserPageProps) => {
-  const { data: currentUserProfileData } = useCurrentUserProfile()
-  const { currentUserProfile } = currentUserProfileData || {}
+  const { data } = useCurrentUserProfile()
 
   const {
     isOpen: isEditModalOpen,
@@ -69,7 +68,7 @@ const UserPage = ({ username }: UserPageProps) => {
           >
             <UserProfileSidebarCell username={username} />
 
-            {username === currentUserProfile?.username && (
+            {username === data?.currentUserProfile?.username && (
               <Button
                 leftIcon={<EditIcon />}
                 variant="outline"

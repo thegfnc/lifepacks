@@ -5,6 +5,11 @@ import { db } from 'src/lib/db'
 
 export const currentUserProfile: QueryResolvers['currentUserProfile'] = () => {
   const currentUser: RedwoodUser = context.currentUser
+
+  if (!currentUser) {
+    return {}
+  }
+
   const userId = currentUser.sub
 
   return db.userProfile.findUnique({

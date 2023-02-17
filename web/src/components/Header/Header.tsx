@@ -26,9 +26,16 @@ const Header = () => {
     loading: isAuthLoading,
     logOut,
   } = useAuth()
-  const { data: currentUserProfileData, loading: isCurrentUserProfileLoading } =
-    useCurrentUserProfile()
-  const { currentUserProfile } = currentUserProfileData || {}
+  const {
+    data,
+    loading: isCurrentUserProfileLoading,
+    refetch,
+  } = useCurrentUserProfile()
+
+  const logOutAndRefetchCurrentUserProfile = () => {
+    logOut()
+    refetch()
+  }
 
   return (
     <>
@@ -55,7 +62,7 @@ const Header = () => {
               <Spinner />
             ) : (
               <HStack spacing={3} dir="horizontal">
-                {isAuthenticated && currentUserProfile ? (
+                {isAuthenticated && data?.currentUserProfile ? (
                   <>
                     <Button
                       variant={'solid'}
@@ -77,8 +84,8 @@ const Header = () => {
                       >
                         <Avatar
                           size="md"
-                          src={currentUserProfile?.imageUrl}
-                          name={currentUserProfile?.givenName}
+                          src={data?.currentUserProfile?.imageUrl}
+                          name={data?.currentUserProfile?.givenName}
                         />
                       </MenuButton>
                       <MenuList>
@@ -87,13 +94,15 @@ const Header = () => {
                         <MenuItem
                           as={Link}
                           to={routes.user({
-                            username: currentUserProfile.username,
+                            username: data?.currentUserProfile?.username,
                           })}
                         >
                           View Profile
                         </MenuItem>
                         <MenuDivider />
-                        <MenuItem onClick={logOut}>Log Out</MenuItem>
+                        <MenuItem onClick={logOutAndRefetchCurrentUserProfile}>
+                          Log Out
+                        </MenuItem>
                       </MenuList>
                     </Menu>
                   </>
