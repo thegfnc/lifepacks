@@ -1,8 +1,8 @@
-import type { Pack } from '@prisma/client'
+import type { Prisma, Pack } from '@prisma/client'
 
 import type { ScenarioData } from '@redwoodjs/testing/api'
 
-export const standard = defineScenario({
+export const standard = defineScenario<Prisma.PackCreateArgs>({
   pack: {
     camping: {
       data: {

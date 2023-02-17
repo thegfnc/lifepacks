@@ -50,6 +50,10 @@ jobs:
       - run: yarn install
       # build the redwood app
       - run: yarn rw build
+      # run the type checker
+      - run: yarn rw type-check
+      # run the linter
+      - run: yarn rw lint
       # run the api tests
       - run: yarn rw test api --no-watch
       # run the web tests

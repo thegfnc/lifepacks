@@ -8,7 +8,7 @@ import UserPage from './UserPage'
 describe('UserPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UserPage />)
+      render(<UserPage username="jmdesiderio" />)
     }).not.toThrow()
   })
 })

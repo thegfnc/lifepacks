@@ -26,7 +26,9 @@ import useCurrentUserProfile, {
 } from 'src/hooks/useCurrentUserProfile'
 
 const CREATE_CURRENT_USER_PROFILE_MUTATION = gql`
-  mutation CreateCurrentUserProfileMutation($input: CreateUserProfileInput!) {
+  mutation CreateCurrentUserProfileMutation(
+    $input: CreateCurrentUserProfileInput!
+  ) {
     createCurrentUserProfile(input: $input) {
       id
     }

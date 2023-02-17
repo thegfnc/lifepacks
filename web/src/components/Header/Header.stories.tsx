@@ -15,10 +15,6 @@ import type { ComponentMeta } from '@storybook/react'
 
 import Header from './Header'
 
-const CURRENT_USER = {
-  email: 'lifepacksco@gmail.com',
-}
-
 export const loggedOut = () => {
   return <Header />
 }

@@ -3,7 +3,7 @@ import type { ComponentMeta } from '@storybook/react'
 import UserPage from './UserPage'
 
 export const generated = () => {
-  return <UserPage />
+  return <UserPage username="jmdesiderio" />
 }
 
 export default {

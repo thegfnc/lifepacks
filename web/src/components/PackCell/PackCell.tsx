@@ -8,6 +8,11 @@ import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import BylineCell, { Mode } from 'src/components/BylineCell/BylineCell'
 import PackItem from 'src/components/PackItem/PackItem'
 
+interface PackCellSuccessProps
+  extends CellSuccessProps<FindPackQuery, FindPackQueryVariables> {
+  username: string
+}
+
 export const QUERY = gql`
   query FindPackQuery($username: String!, $slug: String!) {
     pack(username: $username, slug: $slug) {
@@ -43,7 +48,7 @@ export const Success = ({
   username,
   pack,
   currentUserProfile,
-}: CellSuccessProps<FindPackQuery, FindPackQueryVariables>) => {
+}: PackCellSuccessProps) => {
   return (
     <>
       <Flex alignItems="center" justifyContent="space-between">
