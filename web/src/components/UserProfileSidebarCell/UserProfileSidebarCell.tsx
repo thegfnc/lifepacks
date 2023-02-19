@@ -19,6 +19,9 @@ export const QUERY = gql`
       familyName
       biography
       imageUrl
+      facebookUrl
+      instagramUrl
+      youtubeUrl
     }
   }
 `
@@ -60,7 +63,7 @@ export const Success = ({
         fontSize="sm"
         lineHeight={5}
         color="blackAlpha.700"
-        to={routes.user({ username: userProfile.username })}
+        to={routes.userProfile({ username: userProfile.username })}
       >
         @{userProfile.username}
       </Text>
@@ -68,21 +71,24 @@ export const Success = ({
         {userProfile.biography}
       </Text>
       <Stack mt={6}>
-        <SocialAccountButton
-          accountType={SocialAccountType.Facebook}
-          username="@Outdoorsman"
-          linkUrl="https://www.facebook.com/@outdoorsman"
-        />
-        <SocialAccountButton
-          accountType={SocialAccountType.YouTube}
-          username="@OutdoorsmanChannel"
-          linkUrl="https://www.youtube.com/@outdoorsmanchannel"
-        />
-        <SocialAccountButton
-          accountType={SocialAccountType.Instagram}
-          username="@Outdoorsman"
-          linkUrl="https://www.instagram.com/outdoorsman/"
-        />
+        {userProfile.facebookUrl && (
+          <SocialAccountButton
+            accountType={SocialAccountType.Facebook}
+            linkUrl={userProfile.facebookUrl}
+          />
+        )}
+        {userProfile.instagramUrl && (
+          <SocialAccountButton
+            accountType={SocialAccountType.Instagram}
+            linkUrl={userProfile.instagramUrl}
+          />
+        )}
+        {userProfile.youtubeUrl && (
+          <SocialAccountButton
+            accountType={SocialAccountType.YouTube}
+            linkUrl={userProfile.youtubeUrl}
+          />
+        )}
       </Stack>
     </>
   )

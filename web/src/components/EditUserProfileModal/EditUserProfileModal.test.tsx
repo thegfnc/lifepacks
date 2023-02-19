@@ -1,14 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import UserPage from './UserPage'
+import EditUserProfileModal from './EditUserProfileModal'
 
 //   Improve this test with help from the Redwood Testing Doc:
-//   https://redwoodjs.com/docs/testing#testing-pages-layouts
+//    https://redwoodjs.com/docs/testing#testing-components
 
-describe('UserPage', () => {
+describe('EditUserProfileModal', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UserPage username="jmdesiderio" />)
+      render(<EditUserProfileModal />)
     }).not.toThrow()
   })
 })

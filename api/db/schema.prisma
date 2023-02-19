@@ -17,6 +17,9 @@ model UserProfile {
   familyName      String?
   biography       String?
   imageUrl        String?
+  facebookUrl     String?
+  instagramUrl    String?
+  youtubeUrl      String?
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 

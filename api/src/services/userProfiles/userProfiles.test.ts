@@ -1,7 +1,7 @@
 import {
   currentUserProfile,
   createCurrentUserProfile,
-  // updateCurrentUserProfile,
+  updateCurrentUserProfile,
 } from './userProfiles'
 import type { StandardScenario } from './userProfiles.scenarios'
 
@@ -47,18 +47,19 @@ describe('userProfiles', () => {
     }
   )
 
-  // scenario(
-  //   'updates a userProfile for the currently authenticated user',
-  //   async (scenario: StandardScenario) => {
-  //     const original = (await currentUserProfile({
-  //       id: scenario.userProfile.one.id,
-  //     })) as UserProfile
-  //     const result = await updateCurrentUserProfile({
-  //       id: original.id,
-  //       input: { userId: 'String33881132' },
-  //     })
+  scenario(
+    'updates a userProfile for the currently authenticated user',
+    async (scenario: StandardScenario) => {
+      mockCurrentUser({
+        email: 'jmdesiderio@gmail.com',
+        sub: scenario.userProfile.one.userId,
+      })
 
-  //     expect(result.userId).toEqual('String33881132')
-  //   }
-  // )
+      const result = await updateCurrentUserProfile({
+        input: { givenName: 'Jason_updated' },
+      })
+
+      expect(result.givenName).toEqual('Jason_updated')
+    }
+  )
 })

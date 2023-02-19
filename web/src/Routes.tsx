@@ -21,7 +21,7 @@ const Routes = () => {
         <Route path="/" page={HomePage} name="home" />
 
         {/* Public Profile and Pack Pages */}
-        <Route path="/@{username}" page={UserPage} name="user" />
+        <Route path="/@{username}" page={UserProfilePage} name="userProfile" />
         <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" />
 
         {/* Public Auth Pages */}

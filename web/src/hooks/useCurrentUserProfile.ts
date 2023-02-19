@@ -9,10 +9,17 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
   query GetCurrentUserProfile {
     currentUserProfile {
       id
+      userId
       username
       givenName
       familyName
+      biography
       imageUrl
+      facebookUrl
+      instagramUrl
+      youtubeUrl
+      createdAt
+      updatedAt
     }
   }
 `

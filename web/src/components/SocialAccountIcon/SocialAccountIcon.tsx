@@ -2,9 +2,9 @@ import { Circle, Icon } from '@chakra-ui/react'
 import { SiFacebook, SiInstagram, SiYoutube } from 'react-icons/si'
 
 export enum SocialAccountType {
-  YouTube,
-  Instagram,
-  Facebook,
+  YouTube = 'YouTube',
+  Instagram = 'Instagram',
+  Facebook = 'Facebook',
 }
 
 type SocialAccountIconProps = {

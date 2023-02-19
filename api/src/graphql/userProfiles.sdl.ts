@@ -1,22 +1,28 @@
 export const schema = gql`
-  type CurrentUserProfile {
-    id: Int
-    userId: String
-    username: String
-    givenName: String
-    familyName: String
-    biography: String
-    imageUrl: String
-    createdAt: DateTime
-    updatedAt: DateTime
-  }
-
   type UserProfile {
     username: String!
     givenName: String
     familyName: String
     biography: String
     imageUrl: String
+    facebookUrl: String
+    instagramUrl: String
+    youtubeUrl: String
+  }
+
+  type CurrentUserProfile {
+    id: Int!
+    userId: String!
+    username: String!
+    givenName: String
+    familyName: String
+    biography: String
+    imageUrl: String
+    facebookUrl: String
+    instagramUrl: String
+    youtubeUrl: String
+    createdAt: DateTime!
+    updatedAt: DateTime!
   }
 
   type Query {
@@ -28,19 +34,29 @@ export const schema = gql`
     username: String!
     givenName: String
     familyName: String
+    biography: String
+    imageUrl: String
+    facebookUrl: String
+    instagramUrl: String
+    youtubeUrl: String
   }
 
-  # input UpdateCurrentUserProfileInput {
-  #   username: String
-  #   givenName: String
-  #   familyName: String
-  # }
+  input UpdateCurrentUserProfileInput {
+    givenName: String
+    familyName: String
+    biography: String
+    imageUrl: String
+    facebookUrl: String
+    instagramUrl: String
+    youtubeUrl: String
+  }
 
   type Mutation {
     createCurrentUserProfile(
       input: CreateCurrentUserProfileInput!
     ): CurrentUserProfile! @requireAuth
-    # updateCurrentUserProfile(input: UpdateCurrentUserProfileInput!): CurrentUserProfile!
-    #   @requireAuth
+    updateCurrentUserProfile(
+      input: UpdateCurrentUserProfileInput!
+    ): CurrentUserProfile! @requireAuth
   }
 `

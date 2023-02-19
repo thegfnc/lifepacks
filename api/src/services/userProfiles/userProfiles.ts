@@ -36,13 +36,13 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
     })
   }
 
-// export const updateCurrentUserProfile: MutationResolvers['updateCurrentUserProfile'] =
-//   ({ input }) => {
-//     const currentUser: RedwoodUser = context.currentUser
-//     const userId = currentUser.sub
+export const updateCurrentUserProfile: MutationResolvers['updateCurrentUserProfile'] =
+  ({ input }) => {
+    const currentUser: RedwoodUser = context.currentUser
+    const userId = currentUser.sub
 
-//     return db.userProfile.update({
-//       data: input,
-//       where: { userId },
-//     })
-//   }
+    return db.userProfile.update({
+      data: input,
+      where: { userId },
+    })
+  }

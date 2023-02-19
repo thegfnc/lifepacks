@@ -93,7 +93,7 @@ const Header = () => {
                         <MenuDivider />
                         <MenuItem
                           as={Link}
-                          to={routes.user({
+                          to={routes.userProfile({
                             username: data?.currentUserProfile?.username,
                           })}
                         >

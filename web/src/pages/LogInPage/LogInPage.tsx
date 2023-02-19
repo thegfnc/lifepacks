@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
@@ -42,11 +42,6 @@ const LogInPage = () => {
       navigate(routes.home())
     }
   }, [isAuthenticated])
-
-  const emailRef = useRef(null)
-  useEffect(() => {
-    emailRef.current?.focus()
-  }, [])
 
   const onSubmit = async (data: Record<string, string>) => {
     let errorMessage = null
@@ -105,7 +100,6 @@ const LogInPage = () => {
                   <Input
                     type="email"
                     autoComplete="email"
-                    ref={emailRef}
                     {...register('email', {
                       required: {
                         value: true,
