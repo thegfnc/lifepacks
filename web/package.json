@@ -22,7 +22,7 @@
     "@redwoodjs/forms": "4.1.4",
     "@redwoodjs/router": "4.1.4",
     "@redwoodjs/web": "4.1.4",
-    "@supabase/supabase-js": "^1",
+    "@supabase/supabase-js": "^2",
     "date-fns": "^2.29.3",
     "framer-motion": "9.0.4",
     "prop-types": "15.8.1",
