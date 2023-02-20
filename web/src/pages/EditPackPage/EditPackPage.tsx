@@ -175,7 +175,6 @@ const EditPackPage = ({ id }) => {
         isOpen={isDeleteAlertOpen}
         leastDestructiveRef={cancelDeleteRef}
         onClose={onDeleteAlertClose}
-        isCentered
       >
         <AlertDialogOverlay>
           <AlertDialogContent>

@@ -43,7 +43,11 @@ export const Success = ({
 }: BylineCellSuccessProps) => {
   return mode === Mode.Pack ? (
     <HStack spacing={3}>
-      <Avatar size={'md'} src={userProfile.imageUrl} />
+      <Avatar
+        size={'md'}
+        src={userProfile.imageUrl}
+        name={userProfile?.givenName}
+      />
       <Text fontSize="lg">
         {userProfile.givenName} {userProfile.familyName} ·{' '}
         {format(new Date(date), 'MMM d')}

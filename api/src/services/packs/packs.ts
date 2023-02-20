@@ -64,20 +64,20 @@ export const updatePack: MutationResolvers['updatePack'] = async ({
   })
 }
 
-// export const deletePack: MutationResolvers['deletePack'] = async ({ id }) => {
-//   const currentUser: RedwoodUser = context.currentUser
-//   const userId = currentUser.sub
+export const deletePack: MutationResolvers['deletePack'] = async ({ id }) => {
+  const currentUser: RedwoodUser = context.currentUser
+  const userId = currentUser.sub
 
-//   const packToDelete = await db.pack.findUnique({ where: { id } })
+  const packToDelete = await db.pack.findUnique({ where: { id } })
 
-//   if (packToDelete.userId !== userId) {
-//     throw new Error('You are not authorized to update that pack.')
-//   }
+  if (packToDelete.userId !== userId) {
+    throw new Error('You are not authorized to delete that pack.')
+  }
 
-//   return db.pack.delete({
-//     where: { id },
-//   })
-// }
+  return db.pack.delete({
+    where: { id },
+  })
+}
 
 export const Pack: PackRelationResolvers = {
   packItems: (_obj, { root }) => {

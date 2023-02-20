@@ -29,6 +29,6 @@ export const schema = gql`
   type Mutation {
     #   createPack(input: CreatePackInput!): Pack! @requireAuth
     updatePack(id: Int!, input: UpdatePackInput!): Pack! @requireAuth
-    #   deletePack(id: Int!): Pack! @requireAuth
+    deletePack(id: Int!): Pack! @requireAuth
   }
 `

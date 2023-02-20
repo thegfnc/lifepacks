@@ -70,7 +70,6 @@ const EditUserProfileModal = ({
         isOpen={isDiscardChangesModalOpen}
         leastDestructiveRef={cancelDiscardChangesRef}
         onClose={onDiscardChangesModalClose}
-        isCentered
       >
         <AlertDialogOverlay>
           <AlertDialogContent>
