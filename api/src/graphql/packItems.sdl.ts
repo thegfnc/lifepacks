@@ -18,25 +18,20 @@ export const schema = gql`
   #   packItem(id: Int!): PackItem @requireAuth
   # }
 
-  # input CreatePackItemInput {
-  #   userId: String!
-  #   packId: Int!
-  #   title: String!
-  #   purchaseUrl: String!
-  #   imageUrl: String!
-  #   description: String!
-  #   displaySequence: Int!
-  # }
+  input CreatePackItemInput {
+    title: String!
+    purchaseUrl: String!
+    imageUrl: String!
+    description: String
+  }
 
-  # input UpdatePackItemInput {
-  #   userId: String
-  #   packId: Int
-  #   title: String
-  #   purchaseUrl: String
-  #   imageUrl: String
-  #   description: String
-  #   displaySequence: Int
-  # }
+  input UpdatePackItemInput {
+    id: Int
+    title: String
+    purchaseUrl: String
+    imageUrl: String
+    description: String
+  }
 
   # type Mutation {
   #   createPackItem(input: CreatePackItemInput!): PackItem! @requireAuth

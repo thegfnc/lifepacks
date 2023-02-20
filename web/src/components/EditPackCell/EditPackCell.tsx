@@ -84,7 +84,12 @@ function packItemsReducer(packItems, action) {
 
     case 'ADD_PACK_ITEM': {
       const packItemsCopy = [...packItems]
-      packItemsCopy.splice(action.payload.index, 0, {})
+      packItemsCopy.splice(action.payload.index, 0, {
+        title: '',
+        imageUrl: '',
+        purchaseUrl: '',
+        description: '',
+      })
       return packItemsCopy
     }
 
@@ -123,7 +128,16 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
   const formMethods = useForm()
   const { register, formState } = formMethods
 
-  const [packItems, dispatch] = useReducer(packItemsReducer, pack.packItems)
+  const [packItems, dispatch] = useReducer(
+    packItemsReducer,
+    pack.packItems.map((packItem) => ({
+      id: packItem.id,
+      title: packItem.title,
+      purchaseUrl: packItem.purchaseUrl,
+      imageUrl: packItem.imageUrl,
+      description: packItem.description,
+    }))
+  )
 
   // Move functions
   const createMovePackItemUp = (index) => () =>
@@ -162,7 +176,8 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
   }
 
   // Delete functions
-  const [indexToDelete, setIndexToDelete] = useState(null)
+  const [packItemIdsToDelete, setPackItemIdsToDelete] = useState([])
+  const [indexToConfirmDelete, setIndexToConfirmDelete] = useState(null)
   const cancelDeleteRef = React.useRef()
   const {
     isOpen: isDeleteAlertOpen,
@@ -170,11 +185,20 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
     onClose: onDeleteAlertClose,
   } = useDisclosure()
   const createOpenDeletePackItemAlert = (index) => () => {
-    setIndexToDelete(index)
+    setIndexToConfirmDelete(index)
     onDeleteAlertOpen()
   }
   const deletePackItem = () => {
-    dispatch({ type: 'DELETE_PACK_ITEM', payload: { index: indexToDelete } })
+    dispatch({
+      type: 'DELETE_PACK_ITEM',
+      payload: { index: indexToConfirmDelete },
+    })
+    if (packItems[indexToConfirmDelete].id) {
+      setPackItemIdsToDelete([
+        ...packItemIdsToDelete,
+        packItems[indexToConfirmDelete].id,
+      ])
+    }
     onDeleteAlertClose()
   }
 
@@ -186,11 +210,15 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
     onCompleted: () => navigate(routes.userProfile({ username })),
   })
 
-  const onSubmit = (data) => {
+  const onSubmit = (formData) => {
     mutate({
       variables: {
         id,
-        input: data,
+        input: {
+          ...formData,
+          packItems,
+          packItemIdsToDelete,
+        },
       },
     })
   }
@@ -244,7 +272,7 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
           <Stack spacing={6}>
             {packItems.map((packItem, index) => (
               <PackItemEditable
-                key={packItem.id}
+                key={packItem.id || packItem.title}
                 imageUrl={packItem.imageUrl}
                 purchaseUrl={packItem.purchaseUrl}
                 title={packItem.title}
