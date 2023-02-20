@@ -32,7 +32,7 @@ const Routes = () => {
         {/* User Admin Pages*/}
         <Set private unauthenticated="home">
           <Route path="/me/pack/edit/{id:Int}" page={EditPackPage} name="editPack" />
-          <Route path="/me/pack/new" page={EditPackPage} name="newPack" />
+          <Route path="/me/pack/new" page={NewPackPage} name="newPack" />
 
           <Route path="/me/reset-password" page={ResetPasswordPage} name="resetPassword" />
           <Route path="/me/complete-sign-up" page={CompleteSignUpPage} name="completeSignUp" />

@@ -243,7 +243,12 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
               size="lg"
               lineHeight={1}
               defaultValue={pack.title}
-              {...register('title')}
+              {...register('title', {
+                required: {
+                  value: true,
+                  message: 'Pack title is required',
+                },
+              })}
             />
             <FormErrorMessage>
               {formState.errors.title?.message}

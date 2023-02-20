@@ -18,7 +18,7 @@ const EditPackPage = ({ id }) => {
           {data?.currentUserProfile && (
             <EditPackCell username={data.currentUserProfile.username} id={id} />
           )}
-        </Stack>{' '}
+        </Stack>
       </Flex>
     </PageContainer>
   )
