@@ -7,7 +7,7 @@ export const currentUserProfile: QueryResolvers['currentUserProfile'] = () => {
   const currentUser: RedwoodUser = context.currentUser
 
   if (!currentUser) {
-    return {}
+    return null
   }
 
   const userId = currentUser.sub

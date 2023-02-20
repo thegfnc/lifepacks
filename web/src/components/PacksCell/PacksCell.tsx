@@ -77,9 +77,8 @@ export const Empty = ({ username }) => {
             fontWeight="bold"
             color="gray.700"
           >
-            {data?.currentUserProfile?.givenName ||
-              data?.currentUserProfile?.username}{' '}
-            hasn&apos;t created a pack yet.
+            {data?.currentUserProfile?.givenName || username} hasn&apos;t
+            created a pack yet.
           </Heading>
           <Text fontSize="md" lineHeight={6} color="gray.500">
             Check back soon for products they swear by.

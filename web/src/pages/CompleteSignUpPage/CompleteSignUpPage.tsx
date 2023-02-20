@@ -79,7 +79,7 @@ const CompleteSignUpPage = () => {
                 {error && (
                   <Alert status="error">
                     <AlertIcon />
-                    {error}
+                    {error.message}
                   </Alert>
                 )}
 

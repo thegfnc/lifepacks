@@ -29,10 +29,13 @@ import { BiImageAdd } from 'react-icons/bi'
 
 import { MetaTags } from '@redwoodjs/web'
 
+import EditPackCell from 'src/components/EditPackCell'
 import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
-const EditPackPage = () => {
+const EditPackPage = ({ id }) => {
+  const { data } = useCurrentUserProfile()
   const movePackItemUp = () => {}
   const movePackItemDown = () => {}
 
@@ -75,22 +78,9 @@ const EditPackPage = () => {
 
       <Flex justifyContent="center">
         <Stack w="3xl" spacing={6}>
-          <Input
-            placeholder="Title"
-            fontSize="5xl"
-            fontWeight="extrabold"
-            color="blackAlpha.900"
-            variant="unstyled"
-            size="lg"
-            lineHeight={1}
-          />
-          <Textarea
-            placeholder="What is your pack about..."
-            fontSize="xl"
-            lineHeight={7}
-            color="blackAlpha.800"
-            variant="unstyled"
-          />
+          {data?.currentUserProfile && (
+            <EditPackCell username={data.currentUserProfile.username} id={id} />
+          )}
           <Button
             leftIcon={<AddIcon boxSize={3} />}
             onClick={openAddPackItemModal}

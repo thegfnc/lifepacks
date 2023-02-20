@@ -1,10 +1,10 @@
 import type {
   QueryResolvers,
-  // MutationResolvers,
+  MutationResolvers,
   PackRelationResolvers,
 } from 'types/graphql'
 
-// import { RedwoodUser } from 'src/lib/auth'
+import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
 export const packs: QueryResolvers['packs'] = async ({ username }) => {
@@ -13,12 +13,24 @@ export const packs: QueryResolvers['packs'] = async ({ username }) => {
   return db.pack.findMany({ where: { userId } })
 }
 
-export const pack: QueryResolvers['pack'] = async ({ username, slug }) => {
+export const pack: QueryResolvers['pack'] = async ({ username, slug, id }) => {
+  if (!slug && !id) {
+    throw new Error('You must provide `id` or `slug` to fetch a pack.')
+  }
+
   const { userId } = await db.userProfile.findUnique({ where: { username } })
 
-  return db.pack.findFirst({
-    where: { userId, slug },
-  })
+  if (slug) {
+    return db.pack.findFirst({
+      where: { userId, slug },
+    })
+  }
+
+  if (id) {
+    return db.pack.findFirst({
+      where: { userId, id },
+    })
+  }
 }
 
 // export const createPack: MutationResolvers['createPack'] = ({ input }) => {
@@ -33,24 +45,24 @@ export const pack: QueryResolvers['pack'] = async ({ username, slug }) => {
 //   })
 // }
 
-// export const updatePack: MutationResolvers['updatePack'] = async ({
-//   id,
-//   input,
-// }) => {
-//   const currentUser: RedwoodUser = context.currentUser
-//   const userId = currentUser.sub
+export const updatePack: MutationResolvers['updatePack'] = async ({
+  id,
+  input,
+}) => {
+  const currentUser: RedwoodUser = context.currentUser
+  const userId = currentUser.sub
 
-//   const packToUpdate = await db.pack.findUnique({ where: { id } })
+  const packToUpdate = await db.pack.findUnique({ where: { id } })
 
-//   if (packToUpdate.userId !== userId) {
-//     throw new Error('You are not authorized to update that pack.')
-//   }
+  if (packToUpdate.userId !== userId) {
+    throw new Error('You are not authorized to update that pack.')
+  }
 
-//   return db.pack.update({
-//     data: input,
-//     where: { id },
-//   })
-// }
+  return db.pack.update({
+    data: input,
+    where: { id },
+  })
+}
 
 // export const deletePack: MutationResolvers['deletePack'] = async ({ id }) => {
 //   const currentUser: RedwoodUser = context.currentUser

@@ -79,8 +79,8 @@ const Header = () => {
                         rounded={'full'}
                         variant={'link'}
                         cursor={'pointer'}
-                        h={10}
-                        w={10}
+                        h={12}
+                        w={12}
                       >
                         <Avatar
                           size="md"
