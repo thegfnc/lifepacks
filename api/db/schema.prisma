@@ -31,7 +31,7 @@ model Pack {
   userId          String    @db.Uuid
   slug            String
   title           String
-  description     String
+  description     String?
   packItems       PackItem[]
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
@@ -48,7 +48,7 @@ model PackItem {
   title             String
   purchaseUrl       String
   imageUrl          String
-  description       String
+  description       String?
   displaySequence   Int
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt

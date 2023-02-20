@@ -4,7 +4,7 @@ export const schema = gql`
     userId: String!
     slug: String!
     title: String!
-    description: String!
+    description: String
     packItems: [PackItem]!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -18,7 +18,7 @@ export const schema = gql`
   # input CreatePackInput {
   #   slug: String!
   #   title: String!
-  #   description: String!
+  #   description: String
   # }
 
   input UpdatePackInput {

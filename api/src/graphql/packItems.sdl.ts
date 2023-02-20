@@ -7,7 +7,7 @@ export const schema = gql`
     title: String!
     purchaseUrl: String!
     imageUrl: String!
-    description: String!
+    description: String
     displaySequence: Int!
     createdAt: DateTime!
     updatedAt: DateTime!
