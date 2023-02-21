@@ -42,6 +42,11 @@ type EditPackCellProps = CellSuccessProps<
   username: string
 }
 
+type EditPackFormValues = {
+  title: string
+  description: string
+}
+
 export const QUERY = gql`
   query FindEditPackQuery($username: String!, $id: Int!) {
     pack(username: $username, id: $id) {
@@ -125,7 +130,7 @@ export const Failure = ({
 )
 
 export const Success = ({ id, username, pack }: EditPackCellProps) => {
-  const formMethods = useForm()
+  const formMethods = useForm<EditPackFormValues>()
   const { register, formState } = formMethods
 
   const [packItems, dispatch] = useReducer(

@@ -28,8 +28,28 @@ import { BiImageAdd } from 'react-icons/bi'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
-const EditPackItemModal = ({ isOpen, title, packItem, onClose, onSubmit }) => {
-  const formMethods = useForm()
+type EditPackItemFormValues = {
+  title: string
+  purchaseUrl: string
+  description: string
+}
+
+type EditPackItemModalProps = {
+  isOpen: boolean
+  title: string
+  packItem: EditPackItemFormValues
+  onClose: () => void
+  onSubmit: (packItem: EditPackItemFormValues) => void
+}
+
+const EditPackItemModal = ({
+  isOpen,
+  title,
+  packItem,
+  onClose,
+  onSubmit,
+}: EditPackItemModalProps) => {
+  const formMethods = useForm<EditPackItemFormValues>()
   const { register, formState } = formMethods
 
   useEffect(() => {

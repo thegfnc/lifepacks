@@ -8,7 +8,7 @@ import EditUserProfileModal from './EditUserProfileModal'
 describe('EditUserProfileModal', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<EditUserProfileModal />)
+      render(<EditUserProfileModal isOpen={false} onClose={() => {}} />)
     }).not.toThrow()
   })
 })

@@ -42,6 +42,15 @@ type EditUserProfileCellProps = CellSuccessProps<
   onCompleted?: () => void
 }
 
+type EditUserProfileFormValues = {
+  givenName: string
+  familyName: string
+  biography: string
+  facebookUrl: string
+  instagramUrl: string
+  youtubeUrl: string
+}
+
 export const QUERY = gql`
   query FindEditUserProfileQuery {
     currentUserProfile {
@@ -83,7 +92,7 @@ export const Success = ({
   onCancel = () => {},
   onCompleted = () => {},
 }: EditUserProfileCellProps) => {
-  const formMethods = useForm()
+  const formMethods = useForm<EditUserProfileFormValues>()
   const { register, formState } = formMethods
 
   useEffect(() => {

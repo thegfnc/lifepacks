@@ -26,6 +26,13 @@ import useCurrentUserProfile, {
   CURRENT_USER_PROFILE_QUERY,
 } from 'src/hooks/useCurrentUserProfile'
 
+type CompleteSignUpFormValues = {
+  username: string
+  givenName: string
+  familyName: string
+  biography: string
+}
+
 const MUTATION = gql`
   mutation CreateCurrentUserProfileMutation(
     $input: CreateCurrentUserProfileInput!
@@ -37,7 +44,7 @@ const MUTATION = gql`
 `
 
 const CompleteSignUpPage = () => {
-  const formMethods = useForm()
+  const formMethods = useForm<CompleteSignUpFormValues>()
   const { data } = useCurrentUserProfile()
   const [mutate, { loading, error }] = useMutation<
     CreateCurrentUserProfileMutation,

@@ -15,8 +15,8 @@ type PackItemEditableProps = {
   purchaseUrl: string
   title: string
   description: string
-  hideMoveItemUp: boolean
-  hideMoveItemDown: boolean
+  hideMoveItemUp?: boolean
+  hideMoveItemDown?: boolean
   moveItemUp?: () => void
   moveItemDown?: () => void
   editItem?: () => void
@@ -28,9 +28,9 @@ const PackItemEditable = ({
   purchaseUrl,
   title,
   description,
-  hideMoveItemUp,
+  hideMoveItemUp = false,
   moveItemUp = noop,
-  hideMoveItemDown,
+  hideMoveItemDown = false,
   moveItemDown = noop,
   editItem = noop,
   deleteItem = noop,

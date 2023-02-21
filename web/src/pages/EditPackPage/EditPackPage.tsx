@@ -6,7 +6,11 @@ import EditPackCell from 'src/components/EditPackCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
-const EditPackPage = ({ id }) => {
+type EditPackPageProps = {
+  id: number
+}
+
+const EditPackPage = ({ id }: EditPackPageProps) => {
   const { data } = useCurrentUserProfile()
 
   return (

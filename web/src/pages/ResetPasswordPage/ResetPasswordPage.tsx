@@ -27,9 +27,13 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 
+type ForgotPasswordFormValues = {
+  password: string
+}
+
 const ForgotPasswordPage = () => {
   const { client } = useAuth()
-  const formMethods = useForm()
+  const formMethods = useForm<ForgotPasswordFormValues>()
   const { register, formState } = formMethods
 
   const [isLoading, setIsLoading] = useState(false)

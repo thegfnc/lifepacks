@@ -23,9 +23,13 @@ import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 
+type ForgotPasswordFormValues = {
+  email: string
+}
+
 const ForgotPasswordPage = () => {
   const { isAuthenticated, client } = useAuth()
-  const formMethods = useForm()
+  const formMethods = useForm<ForgotPasswordFormValues>()
   const { register, formState } = formMethods
 
   const [isSuccess, setIsSuccess] = useState(false)

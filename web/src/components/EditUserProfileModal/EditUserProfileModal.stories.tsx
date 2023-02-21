@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import EditUserProfileModal from './EditUserProfileModal'
 
 export const generated = () => {
-  return <EditUserProfileModal />
+  return <EditUserProfileModal isOpen={false} onClose={() => {}} />
 }
 
 export default {

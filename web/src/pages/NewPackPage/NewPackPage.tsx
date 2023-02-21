@@ -33,6 +33,11 @@ import PageContainer from 'src/components/PageContainer/PageContainer'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
+type NewPackFormValues = {
+  title: string
+  description: string
+}
+
 const MUTATION = gql`
   mutation CreatePackMutation($input: CreatePackInput!) {
     createPack(input: $input) {
@@ -91,7 +96,7 @@ function packItemsReducer(packItems, action) {
 
 const NewPackPage = () => {
   const { data } = useCurrentUserProfile()
-  const formMethods = useForm()
+  const formMethods = useForm<NewPackFormValues>()
   const { register, formState } = formMethods
 
   const [packItems, dispatch] = useReducer(packItemsReducer, [])

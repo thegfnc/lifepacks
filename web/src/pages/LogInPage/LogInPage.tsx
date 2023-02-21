@@ -28,9 +28,14 @@ import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 
+type LogInFormValues = {
+  email: string
+  password: string
+}
+
 const LogInPage = () => {
   const { isAuthenticated, logIn } = useAuth()
-  const formMethods = useForm()
+  const formMethods = useForm<LogInFormValues>()
   const { register, formState } = formMethods
 
   const [isLoading, setIsLoading] = useState(false)

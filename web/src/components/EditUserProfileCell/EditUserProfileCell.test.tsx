@@ -39,8 +39,9 @@ describe('EditUserProfileCell', () => {
       render(
         <Success
           currentUserProfile={standard().currentUserProfile}
-          isOpen={true}
-          onClose={() => {}}
+          onFormDirtyStateChange={() => {}}
+          onCancel={() => {}}
+          onCompleted={() => {}}
         />
       )
     }).not.toThrow()
