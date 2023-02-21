@@ -5,6 +5,7 @@ Welcome to [Lifepacks](https://www.lifepacks.co)!
 Here is a list of the standard set of dev commands to run while developing.
 
 1. `supabase start`
+1. `yarn install`
 1. `yarn rw prisma migrate dev`
 1. `yarn rw dev`
 1. `yarn rw prisma studio`

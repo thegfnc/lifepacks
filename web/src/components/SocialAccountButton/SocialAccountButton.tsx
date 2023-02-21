@@ -6,7 +6,6 @@ import SocialAccountIcon, {
 
 type SocialAccountButtonsProps = {
   accountType: SocialAccountType
-  username: string
   linkUrl: string
 }
 

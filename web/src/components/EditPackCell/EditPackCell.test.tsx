@@ -1,4 +1,5 @@
 import { render } from '@redwoodjs/testing/web'
+
 import { Loading, Empty, Failure, Success } from './EditPackCell'
 import { standard } from './EditPackCell.mock'
 
@@ -35,7 +36,7 @@ describe('EditPackCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success editPack={standard().editPack} />)
+      render(<Success id={1} username="jmdesiderio" pack={standard().pack} />)
     }).not.toThrow()
   })
 })
