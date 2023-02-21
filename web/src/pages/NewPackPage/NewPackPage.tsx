@@ -168,7 +168,7 @@ const NewPackPage = () => {
       ),
   })
 
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: NewPackFormValues) => {
     mutate({
       variables: {
         input: {

@@ -27,20 +27,20 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 
-type ForgotPasswordFormValues = {
+type ResetPasswordFormValues = {
   password: string
 }
 
 const ForgotPasswordPage = () => {
   const { client } = useAuth()
-  const formMethods = useForm<ForgotPasswordFormValues>()
+  const formMethods = useForm<ResetPasswordFormValues>()
   const { register, formState } = formMethods
 
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [isShowingPassword, setIsShowingPassword] = useBoolean()
 
-  const onSubmit = async (data: Record<string, string>) => {
+  const onSubmit = async (data: ResetPasswordFormValues) => {
     let errorMessage = null
 
     setError(errorMessage)

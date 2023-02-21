@@ -215,7 +215,7 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
     onCompleted: () => navigate(routes.userProfile({ username })),
   })
 
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: EditPackFormValues) => {
     mutate({
       variables: {
         id,

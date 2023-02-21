@@ -42,7 +42,7 @@ const ForgotPasswordPage = () => {
     }
   }, [isAuthenticated])
 
-  const onSubmit = async (data: { email: string }) => {
+  const onSubmit = async (data: ForgotPasswordFormValues) => {
     let errorMessage = null
 
     setError(errorMessage)

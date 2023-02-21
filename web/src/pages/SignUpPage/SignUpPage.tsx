@@ -48,7 +48,7 @@ const SignUpPage = () => {
     }
   }, [isAuthenticated])
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: SignUpFormvalues) => {
     let errorMessage = null
 
     setError(errorMessage)

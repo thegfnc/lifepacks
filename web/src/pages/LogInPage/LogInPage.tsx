@@ -48,7 +48,7 @@ const LogInPage = () => {
     }
   }, [isAuthenticated])
 
-  const onSubmit = async (data: Record<string, string>) => {
+  const onSubmit = async (data: LogInFormValues) => {
     let errorMessage = null
 
     setError(errorMessage)

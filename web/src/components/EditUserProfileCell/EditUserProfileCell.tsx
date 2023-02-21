@@ -117,7 +117,7 @@ export const Success = ({
     onCompleted,
   })
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: EditUserProfileFormValues) => {
     mutate({ variables: { input: data } })
   }
 

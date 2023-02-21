@@ -59,7 +59,7 @@ const CompleteSignUpPage = () => {
 
   const { register, formState } = formMethods
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: CompleteSignUpFormValues) => {
     mutate({ variables: { input: data } })
   }
 
