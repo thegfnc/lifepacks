@@ -3,7 +3,7 @@ import type { ComponentMeta } from '@storybook/react'
 import PackPage from './PackPage'
 
 export const generated = () => {
-  return <PackPage />
+  return <PackPage username="jmdesiderio" slug="camping" />
 }
 
 export default {

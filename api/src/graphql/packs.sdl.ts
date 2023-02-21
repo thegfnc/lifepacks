@@ -4,7 +4,7 @@ export const schema = gql`
     userId: String!
     slug: String!
     title: String!
-    description: String!
+    description: String
     packItems: [PackItem]!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -12,24 +12,25 @@ export const schema = gql`
 
   type Query {
     packs(username: String!): [Pack!]! @skipAuth
-    pack(username: String!, slug: String!): Pack @skipAuth
+    pack(username: String!, slug: String, id: Int): Pack @skipAuth
   }
 
-  # input CreatePackInput {
-  #   slug: String!
-  #   title: String!
-  #   description: String!
-  # }
+  input CreatePackInput {
+    title: String!
+    description: String
+    packItems: [CreatePackItemInput]
+  }
 
-  # input UpdatePackInput {
-  #   slug: String
-  #   title: String
-  #   description: String
-  # }
+  input UpdatePackInput {
+    title: String
+    description: String
+    packItems: [UpdatePackItemInput]
+    packItemIdsToDelete: [Int]
+  }
 
-  # type Mutation {
-  #   createPack(input: CreatePackInput!): Pack! @requireAuth
-  #   updatePack(id: Int!, input: UpdatePackInput!): Pack! @requireAuth
-  #   deletePack(id: Int!): Pack! @requireAuth
-  # }
+  type Mutation {
+    createPack(input: CreatePackInput!): Pack! @requireAuth
+    updatePack(id: Int!, input: UpdatePackInput!): Pack! @requireAuth
+    deletePack(id: Int!): Pack! @requireAuth
+  }
 `

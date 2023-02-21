@@ -9,13 +9,19 @@ export enum Mode {
   Pack,
 }
 
+interface BylineCellSuccessProps
+  extends CellSuccessProps<FindBylineQuery, FindBylineQueryVariables> {
+  mode: Mode
+  date: string
+}
+
 export const QUERY = gql`
   query FindBylineQuery($username: String!) {
     userProfile(username: $username) {
       username
+      imageUrl
       givenName
       familyName
-      imageUrl
     }
   }
 `
@@ -34,10 +40,14 @@ export const Success = ({
   userProfile,
   mode,
   date,
-}: CellSuccessProps<FindBylineQuery, FindBylineQueryVariables>) => {
+}: BylineCellSuccessProps) => {
   return mode === Mode.Pack ? (
     <HStack spacing={3}>
-      <Avatar size={'md'} src={userProfile.imageUrl} />
+      <Avatar
+        size={'md'}
+        src={userProfile.imageUrl}
+        name={userProfile?.givenName}
+      />
       <Text fontSize="lg">
         {userProfile.givenName} {userProfile.familyName} ·{' '}
         {format(new Date(date), 'MMM d')}

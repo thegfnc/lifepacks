@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import PageContainer from './PageContainer'
 
 export const generated = () => {
-  return <PageContainer />
+  return <PageContainer>Hi :)</PageContainer>
 }
 
 export default {

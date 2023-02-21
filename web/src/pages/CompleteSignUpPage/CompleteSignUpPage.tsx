@@ -11,6 +11,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Textarea,
 } from '@chakra-ui/react'
 import {
   CreateCurrentUserProfileMutation,
@@ -25,8 +26,17 @@ import useCurrentUserProfile, {
   CURRENT_USER_PROFILE_QUERY,
 } from 'src/hooks/useCurrentUserProfile'
 
-const CREATE_CURRENT_USER_PROFILE_MUTATION = gql`
-  mutation CreateCurrentUserProfileMutation($input: CreateUserProfileInput!) {
+type CompleteSignUpFormValues = {
+  username: string
+  givenName: string
+  familyName: string
+  biography: string
+}
+
+const MUTATION = gql`
+  mutation CreateCurrentUserProfileMutation(
+    $input: CreateCurrentUserProfileInput!
+  ) {
     createCurrentUserProfile(input: $input) {
       id
     }
@@ -34,12 +44,12 @@ const CREATE_CURRENT_USER_PROFILE_MUTATION = gql`
 `
 
 const CompleteSignUpPage = () => {
-  const formMethods = useForm()
+  const formMethods = useForm<CompleteSignUpFormValues>()
   const { data } = useCurrentUserProfile()
-  const [create, { loading, error }] = useMutation<
+  const [mutate, { loading, error }] = useMutation<
     CreateCurrentUserProfileMutation,
     CreateCurrentUserProfileMutationVariables
-  >(CREATE_CURRENT_USER_PROFILE_MUTATION, {
+  >(MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_PROFILE_QUERY }],
   })
 
@@ -49,8 +59,8 @@ const CompleteSignUpPage = () => {
 
   const { register, formState } = formMethods
 
-  const onSubmit = (data) => {
-    create({ variables: { input: data } })
+  const onSubmit = (data: CompleteSignUpFormValues) => {
+    mutate({ variables: { input: data } })
   }
 
   return (
@@ -76,14 +86,13 @@ const CompleteSignUpPage = () => {
                 {error && (
                   <Alert status="error">
                     <AlertIcon />
-                    {error}
+                    {error.message}
                   </Alert>
                 )}
 
                 <FormControl isInvalid={Boolean(formState.errors.username)}>
                   <FormLabel>Username</FormLabel>
                   <Input
-                    type="text"
                     autoComplete="username"
                     {...register('username', {
                       required: {
@@ -99,11 +108,7 @@ const CompleteSignUpPage = () => {
 
                 <FormControl isInvalid={Boolean(formState.errors.givenName)}>
                   <FormLabel>First Name</FormLabel>
-                  <Input
-                    type="text"
-                    autoComplete="given-name"
-                    {...register('givenName')}
-                  />
+                  <Input autoComplete="given-name" {...register('givenName')} />
                   <FormErrorMessage>
                     {formState.errors.givenName?.message}
                   </FormErrorMessage>
@@ -112,12 +117,19 @@ const CompleteSignUpPage = () => {
                 <FormControl isInvalid={Boolean(formState.errors.familyName)}>
                   <FormLabel>Last Name</FormLabel>
                   <Input
-                    type="text"
                     autoComplete="family-name"
                     {...register('familyName')}
                   />
                   <FormErrorMessage>
                     {formState.errors.familyName?.message}
+                  </FormErrorMessage>
+                </FormControl>
+
+                <FormControl isInvalid={Boolean(formState.errors.biography)}>
+                  <FormLabel>Biography</FormLabel>
+                  <Textarea {...register('biography')} />
+                  <FormErrorMessage>
+                    {formState.errors.biography?.message}
                   </FormErrorMessage>
                 </FormControl>
 

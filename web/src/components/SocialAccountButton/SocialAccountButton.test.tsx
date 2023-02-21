@@ -13,7 +13,6 @@ describe('SocialAccountButton', () => {
       render(
         <SocialAccountButton
           accountType={SocialAccountType.YouTube}
-          username="@jmdesiderio"
           linkUrl="https://www.youtube.com/"
         />
       )

@@ -12,7 +12,12 @@ describe('requireAuth directive', () => {
     // If you want to set values in context, pass it through e.g.
     // mockRedwoodDirective(requireAuth, { context: { currentUser: { id: 1, name: 'Lebron McGretzky' } }})
     const mockExecution = mockRedwoodDirective(requireAuth, {
-      context: { currentUser: { sub: '4c18c0e2-568a-4da9-a785-3d5b1343abdb' } },
+      context: {
+        currentUser: {
+          email: 'jmdesiderio@gmail,com',
+          sub: '4c18c0e2-568a-4da9-a785-3d5b1343abdb',
+        },
+      },
     })
 
     expect(mockExecution).not.toThrowError()

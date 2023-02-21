@@ -21,7 +21,6 @@ export const facebook = () => {
   return (
     <SocialAccountButton
       accountType={SocialAccountType.Facebook}
-      username="@jmdesiderio"
       linkUrl="https://www.facebook.com/"
     />
   )
@@ -31,7 +30,6 @@ export const youTube = () => {
   return (
     <SocialAccountButton
       accountType={SocialAccountType.YouTube}
-      username="@jmdesiderio"
       linkUrl="https://www.youtube.com/"
     />
   )
@@ -41,7 +39,6 @@ export const instagram = () => {
   return (
     <SocialAccountButton
       accountType={SocialAccountType.Instagram}
-      username="@jmdesiderio"
       linkUrl="https://www.instagram.com/"
     />
   )

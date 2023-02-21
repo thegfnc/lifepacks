@@ -8,7 +8,7 @@ import PageContainer from './PageContainer'
 describe('PageContainer', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PageContainer />)
+      render(<PageContainer>Hi :)</PageContainer>)
     }).not.toThrow()
   })
 })

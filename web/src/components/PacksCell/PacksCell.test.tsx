@@ -18,7 +18,7 @@ describe('PacksCell', () => {
 
   it('renders Empty successfully', async () => {
     expect(() => {
-      render(<Empty />)
+      render(<Empty username="jmdesiderio" />)
     }).not.toThrow()
   })
 

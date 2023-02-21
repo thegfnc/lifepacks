@@ -27,9 +27,14 @@ import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 
+type SignUpFormvalues = {
+  email: string
+  password: string
+}
+
 const SignUpPage = () => {
   const { isAuthenticated, signUp } = useAuth()
-  const formMethods = useForm()
+  const formMethods = useForm<SignUpFormvalues>()
   const { register, formState } = formMethods
 
   const [isSuccess, setIsSuccess] = useState(false)
@@ -43,7 +48,7 @@ const SignUpPage = () => {
     }
   }, [isAuthenticated])
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: SignUpFormvalues) => {
     let errorMessage = null
 
     setError(errorMessage)

@@ -8,7 +8,7 @@ import PackPage from './PackPage'
 describe('PackPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PackPage />)
+      render(<PackPage username="jmdesiderio" slug="camping" />)
     }).not.toThrow()
   })
 })

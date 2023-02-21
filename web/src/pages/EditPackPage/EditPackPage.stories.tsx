@@ -3,7 +3,7 @@ import type { ComponentMeta } from '@storybook/react'
 import EditPackPage from './EditPackPage'
 
 export const generated = () => {
-  return <EditPackPage />
+  return <EditPackPage id={1} />
 }
 
 export default {

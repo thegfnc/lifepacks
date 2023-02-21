@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
@@ -28,9 +28,14 @@ import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 
+type LogInFormValues = {
+  email: string
+  password: string
+}
+
 const LogInPage = () => {
   const { isAuthenticated, logIn } = useAuth()
-  const formMethods = useForm()
+  const formMethods = useForm<LogInFormValues>()
   const { register, formState } = formMethods
 
   const [isLoading, setIsLoading] = useState(false)
@@ -43,12 +48,7 @@ const LogInPage = () => {
     }
   }, [isAuthenticated])
 
-  const emailRef = useRef(null)
-  useEffect(() => {
-    emailRef.current?.focus()
-  }, [])
-
-  const onSubmit = async (data: Record<string, string>) => {
+  const onSubmit = async (data: LogInFormValues) => {
     let errorMessage = null
 
     setError(errorMessage)
@@ -105,7 +105,6 @@ const LogInPage = () => {
                   <Input
                     type="email"
                     autoComplete="email"
-                    ref={emailRef}
                     {...register('email', {
                       required: {
                         value: true,

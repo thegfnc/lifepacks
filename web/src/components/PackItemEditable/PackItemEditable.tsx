@@ -15,6 +15,8 @@ type PackItemEditableProps = {
   purchaseUrl: string
   title: string
   description: string
+  hideMoveItemUp?: boolean
+  hideMoveItemDown?: boolean
   moveItemUp?: () => void
   moveItemDown?: () => void
   editItem?: () => void
@@ -26,7 +28,9 @@ const PackItemEditable = ({
   purchaseUrl,
   title,
   description,
+  hideMoveItemUp = false,
   moveItemUp = noop,
+  hideMoveItemDown = false,
   moveItemDown = noop,
   editItem = noop,
   deleteItem = noop,
@@ -58,30 +62,36 @@ const PackItemEditable = ({
             pointerEvents="none"
           ></Box>
           <HStack position="absolute" top={4} right={4}>
-            <IconButton
-              aria-label="Move Pack Item Up"
-              icon={<ArrowUpIcon />}
-              color="black"
-              bg="white"
-              size="lg"
-              borderRadius="xl"
-              boxShadow="base"
-              borderWidth="1px"
-              borderColor="blackAlpha.300"
-              onClick={moveItemUp}
-            />
-            <IconButton
-              aria-label="Move Pack Item Down"
-              icon={<ArrowDownIcon />}
-              color="black"
-              bg="white"
-              size="lg"
-              borderRadius="xl"
-              boxShadow="base"
-              borderWidth="1px"
-              borderColor="blackAlpha.300"
-              onClick={moveItemDown}
-            />
+            {!hideMoveItemUp && (
+              <IconButton
+                aria-label="Move Pack Item Up"
+                icon={<ArrowUpIcon />}
+                color="black"
+                bg="white"
+                size="lg"
+                borderRadius="xl"
+                boxShadow="base"
+                borderWidth="1px"
+                borderColor="blackAlpha.300"
+                isDisabled={hideMoveItemUp}
+                onClick={moveItemUp}
+              />
+            )}
+            {!hideMoveItemDown && (
+              <IconButton
+                aria-label="Move Pack Item Down"
+                icon={<ArrowDownIcon />}
+                color="black"
+                bg="white"
+                size="lg"
+                borderRadius="xl"
+                boxShadow="base"
+                borderWidth="1px"
+                borderColor="blackAlpha.300"
+                isDisabled={hideMoveItemDown}
+                onClick={moveItemDown}
+              />
+            )}
             <IconButton
               aria-label="Edit Pack Item"
               icon={<EditIcon />}

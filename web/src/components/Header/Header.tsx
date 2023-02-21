@@ -26,9 +26,16 @@ const Header = () => {
     loading: isAuthLoading,
     logOut,
   } = useAuth()
-  const { data: currentUserProfileData, loading: isCurrentUserProfileLoading } =
-    useCurrentUserProfile()
-  const { currentUserProfile } = currentUserProfileData || {}
+  const {
+    data,
+    loading: isCurrentUserProfileLoading,
+    refetch,
+  } = useCurrentUserProfile()
+
+  const logOutAndRefetchCurrentUserProfile = () => {
+    logOut()
+    refetch()
+  }
 
   return (
     <>
@@ -55,7 +62,7 @@ const Header = () => {
               <Spinner />
             ) : (
               <HStack spacing={3} dir="horizontal">
-                {isAuthenticated && currentUserProfile ? (
+                {isAuthenticated && data?.currentUserProfile ? (
                   <>
                     <Button
                       variant={'solid'}
@@ -72,13 +79,13 @@ const Header = () => {
                         rounded={'full'}
                         variant={'link'}
                         cursor={'pointer'}
-                        h={10}
-                        w={10}
+                        h={12}
+                        w={12}
                       >
                         <Avatar
                           size="md"
-                          src={currentUserProfile?.imageUrl}
-                          name={currentUserProfile?.givenName}
+                          src={data?.currentUserProfile?.imageUrl}
+                          name={data?.currentUserProfile?.givenName}
                         />
                       </MenuButton>
                       <MenuList>
@@ -86,14 +93,16 @@ const Header = () => {
                         <MenuDivider />
                         <MenuItem
                           as={Link}
-                          to={routes.user({
-                            username: currentUserProfile.username,
+                          to={routes.userProfile({
+                            username: data?.currentUserProfile?.username,
                           })}
                         >
                           View Profile
                         </MenuItem>
                         <MenuDivider />
-                        <MenuItem onClick={logOut}>Log Out</MenuItem>
+                        <MenuItem onClick={logOutAndRefetchCurrentUserProfile}>
+                          Log Out
+                        </MenuItem>
                       </MenuList>
                     </Menu>
                   </>

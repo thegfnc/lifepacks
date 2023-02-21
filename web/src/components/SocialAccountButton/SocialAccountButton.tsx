@@ -6,13 +6,11 @@ import SocialAccountIcon, {
 
 type SocialAccountButtonsProps = {
   accountType: SocialAccountType
-  username: string
   linkUrl: string
 }
 
 const SocialAccountButton = ({
   accountType,
-  username,
   linkUrl,
 }: SocialAccountButtonsProps) => {
   return (
@@ -29,7 +27,7 @@ const SocialAccountButton = ({
     >
       <SocialAccountIcon accountType={accountType} />
       <Text fontSize="sm" ml={2} color="blackAlpha.900" fontWeight="medium">
-        {username}
+        {accountType}
       </Text>
     </Button>
   )

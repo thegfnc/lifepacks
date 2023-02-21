@@ -13,10 +13,10 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import SocialAccountIcon from './SocialAccountIcon'
+import SocialAccountIcon, { SocialAccountType } from './SocialAccountIcon'
 
 export const generated = () => {
-  return <SocialAccountIcon />
+  return <SocialAccountIcon accountType={SocialAccountType.YouTube} />
 }
 
 export default {

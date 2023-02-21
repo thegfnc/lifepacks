@@ -8,7 +8,7 @@ import EditPackPage from './EditPackPage'
 describe('EditPackPage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<EditPackPage />)
+      render(<EditPackPage id={1} />)
     }).not.toThrow()
   })
 })

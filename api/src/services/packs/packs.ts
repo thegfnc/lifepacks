@@ -1,10 +1,11 @@
+import slugify from 'slugify'
 import type {
   QueryResolvers,
-  // MutationResolvers,
+  MutationResolvers,
   PackRelationResolvers,
 } from 'types/graphql'
 
-// import { RedwoodUser } from 'src/lib/auth'
+import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
 export const packs: QueryResolvers['packs'] = async ({ username }) => {
@@ -13,59 +14,188 @@ export const packs: QueryResolvers['packs'] = async ({ username }) => {
   return db.pack.findMany({ where: { userId } })
 }
 
-export const pack: QueryResolvers['pack'] = async ({ username, slug }) => {
+export const pack: QueryResolvers['pack'] = async ({ username, slug, id }) => {
+  if (!slug && !id) {
+    throw new Error('You must provide `id` or `slug` to fetch a pack.')
+  }
+
   const { userId } = await db.userProfile.findUnique({ where: { username } })
 
+  if (slug) {
+    return db.pack.findFirst({
+      where: { userId, slug },
+    })
+  }
+
+  if (id) {
+    return db.pack.findFirst({
+      where: { userId, id },
+    })
+  }
+}
+
+export const createPack: MutationResolvers['createPack'] = async ({
+  input,
+}) => {
+  const currentUser: RedwoodUser = context.currentUser
+  const userId = currentUser.sub
+
+  // PACK
+  const createdPack = await db.pack.create({
+    data: {
+      userId,
+      slug: slugify(input.title, { lower: true, remove: /[*+~.()'"!:@]/g }),
+      title: input.title,
+      description: input.description,
+    },
+  })
+
+  // PACK ITEMS
+  const inputPackItemsWithDisplaySequence = input.packItems.map(
+    (packItem, index) => ({
+      ...packItem,
+      displaySequence: index,
+    })
+  )
+
+  for (const packItemToCreate of inputPackItemsWithDisplaySequence) {
+    await db.packItem.create({
+      data: {
+        userId,
+        packId: createdPack.id,
+        title: packItemToCreate.title,
+        description: packItemToCreate.description,
+        imageUrl: packItemToCreate.imageUrl,
+        purchaseUrl: packItemToCreate.purchaseUrl,
+        displaySequence: packItemToCreate.displaySequence,
+      },
+    })
+  }
+
   return db.pack.findFirst({
-    where: { userId, slug },
+    where: { userId, id: createdPack.id },
   })
 }
 
-// export const createPack: MutationResolvers['createPack'] = ({ input }) => {
-//   const currentUser: RedwoodUser = context.currentUser
-//   const userId = currentUser.sub
+export const updatePack: MutationResolvers['updatePack'] = async ({
+  id,
+  input,
+}) => {
+  const currentUser: RedwoodUser = context.currentUser
+  const userId = currentUser.sub
 
-//   return db.pack.create({
-//     data: {
-//       userId,
-//       ...input,
-//     },
-//   })
-// }
+  // PACK
+  const packToUpdate = await db.pack.findUnique({ where: { id } })
 
-// export const updatePack: MutationResolvers['updatePack'] = async ({
-//   id,
-//   input,
-// }) => {
-//   const currentUser: RedwoodUser = context.currentUser
-//   const userId = currentUser.sub
+  if (packToUpdate.userId !== userId) {
+    throw new Error('You are not authorized to update that pack.')
+  }
 
-//   const packToUpdate = await db.pack.findUnique({ where: { id } })
+  await db.pack.update({
+    data: { title: input.title, description: input.description },
+    where: { id },
+  })
 
-//   if (packToUpdate.userId !== userId) {
-//     throw new Error('You are not authorized to update that pack.')
-//   }
+  // PACK ITEMS
+  const inputPackItemsWithDisplaySequence = input.packItems.map(
+    (packItem, index) => ({
+      ...packItem,
+      displaySequence: index,
+    })
+  )
 
-//   return db.pack.update({
-//     data: input,
-//     where: { id },
-//   })
-// }
+  // PACK ITEMS DELETE
+  const packItemsToDelete = await db.packItem.findMany({
+    where: {
+      id: {
+        in: input.packItemIdsToDelete,
+      },
+    },
+  })
 
-// export const deletePack: MutationResolvers['deletePack'] = async ({ id }) => {
-//   const currentUser: RedwoodUser = context.currentUser
-//   const userId = currentUser.sub
+  for (const packItemToDelete of packItemsToDelete) {
+    if (packItemToDelete.userId !== userId) {
+      throw new Error('You are not authorized to delete that pack item.')
+    }
 
-//   const packToDelete = await db.pack.findUnique({ where: { id } })
+    await db.packItem.delete({
+      where: { id: packItemToDelete.id },
+    })
+  }
 
-//   if (packToDelete.userId !== userId) {
-//     throw new Error('You are not authorized to update that pack.')
-//   }
+  // PACK ITEMS CREATE
+  const packItemsToCreate = inputPackItemsWithDisplaySequence.filter(
+    (packItem) => !packItem.id
+  )
 
-//   return db.pack.delete({
-//     where: { id },
-//   })
-// }
+  for (const packItemToCreate of packItemsToCreate) {
+    await db.packItem.create({
+      data: {
+        userId,
+        packId: packToUpdate.id,
+        title: packItemToCreate.title,
+        description: packItemToCreate.description,
+        imageUrl: packItemToCreate.imageUrl,
+        purchaseUrl: packItemToCreate.purchaseUrl,
+        displaySequence: packItemToCreate.displaySequence,
+      },
+    })
+  }
+
+  // PACK ITEMS UPDATE
+  const existingPackItemIdsToUpdate = inputPackItemsWithDisplaySequence
+    .filter((packItem) => Boolean(packItem.id))
+    .map((packItem) => packItem.id)
+
+  const packItemsToUpdate = await db.packItem.findMany({
+    where: {
+      id: {
+        in: existingPackItemIdsToUpdate,
+      },
+    },
+  })
+
+  for (const packItemToUpdate of packItemsToUpdate) {
+    if (packItemToUpdate.userId !== userId) {
+      throw new Error('You are not authorized to update that pack item.')
+    }
+
+    const { title, description, imageUrl, purchaseUrl, displaySequence } =
+      inputPackItemsWithDisplaySequence.find(
+        (p) => p.id === packItemToUpdate.id
+      )
+
+    await db.packItem.update({
+      where: { id: packItemToUpdate.id },
+      data: {
+        title,
+        description,
+        imageUrl,
+        purchaseUrl,
+        displaySequence,
+      },
+    })
+  }
+
+  return db.pack.findFirst({
+    where: { userId, id },
+  })
+}
+
+export const deletePack: MutationResolvers['deletePack'] = async ({ id }) => {
+  const currentUser: RedwoodUser = context.currentUser
+  const userId = currentUser.sub
+
+  const packToDelete = await db.pack.findUnique({ where: { id } })
+
+  if (packToDelete.userId !== userId) {
+    throw new Error('You are not authorized to delete that pack.')
+  }
+
+  return db.pack.delete({
+    where: { id },
+  })
+}
 
 export const Pack: PackRelationResolvers = {
   packItems: (_obj, { root }) => {

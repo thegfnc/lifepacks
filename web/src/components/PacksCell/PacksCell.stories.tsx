@@ -8,7 +8,7 @@ export const loading = () => {
 }
 
 export const empty = () => {
-  return Empty ? <Empty /> : <></>
+  return Empty ? <Empty username="jmdesderio" /> : <></>
 }
 
 export const failure: ComponentStory<typeof Failure> = (args) => {
@@ -16,7 +16,11 @@ export const failure: ComponentStory<typeof Failure> = (args) => {
 }
 
 export const success: ComponentStory<typeof Success> = (args) => {
-  return Success ? <Success {...standard()} {...args} /> : <></>
+  return Success ? (
+    <Success username="jmddesiderio" {...standard()} {...args} />
+  ) : (
+    <></>
+  )
 }
 
 export default { title: 'Cells/PacksCell' }
