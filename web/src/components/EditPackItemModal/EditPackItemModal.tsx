@@ -30,6 +30,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 
 type EditPackItemFormValues = {
   title: string
+  imageUrl: string
   purchaseUrl: string
   description: string
 }
@@ -124,6 +125,11 @@ const EditPackItemModal = ({
                   </FormControl>
                   <FormControl>
                     <FormLabel>Image*</FormLabel>
+                    <Input
+                      type="hidden"
+                      value="https://target.scene7.com/is/image/Target/GUEST_58639e78-ad9c-43ca-93fc-d0497a9f2585?wid=1000&hei=1000&qlt=80&fmt=webp"
+                      {...register('imageUrl')}
+                    />
                     <IconButton
                       aria-label="Upload image"
                       icon={<BiImageAdd size="1.5rem" />}

@@ -9512,7 +9512,7 @@ __metadata:
     "@redwoodjs/auth-supabase-api": 4.1.4
     "@redwoodjs/graphql-server": 4.1.4
     jsonwebtoken: ^9.0.0
-    slugify: ^1.6.5
+    slug: ^8.2.2
   languageName: unknown
   linkType: soft
 
@@ -23360,10 +23360,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slugify@npm:^1.6.5":
-  version: 1.6.5
-  resolution: "slugify@npm:1.6.5"
-  checksum: 264059d9ea7aa95e472e66d19a1042ea54c75d3f60096c2cc57af4d66c6fb6ac1d8b4672326f276f52574fac489f59cb08848bfb97e44291c7e45211acb2b185
+"slug@npm:^8.2.2":
+  version: 8.2.2
+  resolution: "slug@npm:8.2.2"
+  bin:
+    slug: cli.js
+  checksum: bf91990a6c8b0a7014a883c6c07c4b2fca0e898846eebbe8778ed89c1df969cd7e95e99b59d7849429f237887295bf487bf4c9e7a40cb97c1fbf84b18df06018
   languageName: node
   linkType: hard
 

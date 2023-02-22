@@ -1,4 +1,4 @@
-import slugify from 'slugify'
+import slug from 'slug'
 import type {
   QueryResolvers,
   MutationResolvers,
@@ -11,7 +11,7 @@ import { db } from 'src/lib/db'
 export const packs: QueryResolvers['packs'] = async ({ username }) => {
   const { userId } = await db.userProfile.findUnique({ where: { username } })
 
-  return db.pack.findMany({ where: { userId } })
+  return db.pack.findMany({ where: { userId }, orderBy: { createdAt: 'desc' } })
 }
 
 export const pack: QueryResolvers['pack'] = async ({ username, slug, id }) => {
@@ -44,7 +44,7 @@ export const createPack: MutationResolvers['createPack'] = async ({
   const createdPack = await db.pack.create({
     data: {
       userId,
-      slug: slugify(input.title, { lower: true, remove: /[*+~.()'"!:@]/g }),
+      slug: slug(input.title),
       title: input.title,
       description: input.description,
     },
@@ -105,22 +105,24 @@ export const updatePack: MutationResolvers['updatePack'] = async ({
   )
 
   // PACK ITEMS DELETE
-  const packItemsToDelete = await db.packItem.findMany({
-    where: {
-      id: {
-        in: input.packItemIdsToDelete,
+  if (input.packItemIdsToDelete) {
+    const packItemsToDelete = await db.packItem.findMany({
+      where: {
+        id: {
+          in: input.packItemIdsToDelete,
+        },
       },
-    },
-  })
-
-  for (const packItemToDelete of packItemsToDelete) {
-    if (packItemToDelete.userId !== userId) {
-      throw new Error('You are not authorized to delete that pack item.')
-    }
-
-    await db.packItem.delete({
-      where: { id: packItemToDelete.id },
     })
+
+    for (const packItemToDelete of packItemsToDelete) {
+      if (packItemToDelete.userId !== userId) {
+        throw new Error('You are not authorized to delete that pack item.')
+      }
+
+      await db.packItem.delete({
+        where: { id: packItemToDelete.id },
+      })
+    }
   }
 
   // PACK ITEMS CREATE
