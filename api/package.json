@@ -7,6 +7,6 @@
     "@redwoodjs/auth-supabase-api": "4.1.4",
     "@redwoodjs/graphql-server": "4.1.4",
     "jsonwebtoken": "^9.0.0",
-    "slugify": "^1.6.5"
+    "slug": "^8.2.2"
   }
 }

@@ -1,4 +1,4 @@
-import slugify from 'slugify'
+import slug from 'slug'
 import type {
   QueryResolvers,
   MutationResolvers,
@@ -44,7 +44,7 @@ export const createPack: MutationResolvers['createPack'] = async ({
   const createdPack = await db.pack.create({
     data: {
       userId,
-      slug: slugify(input.title, { lower: true, remove: /[*+~.()'"!:@]/g }),
+      slug: slug(input.title),
       title: input.title,
       description: input.description,
     },
