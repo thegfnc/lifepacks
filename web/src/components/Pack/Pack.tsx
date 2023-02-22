@@ -6,8 +6,7 @@ import { Pack as PackType, PackItem as PackItemType } from 'types/graphql'
 import BylineCell, { Mode } from 'src/components/BylineCell/BylineCell'
 import PackItem from 'src/components/PackItem/PackItem'
 
-interface PackPartial
-  extends Pick<PackType, 'createdAt' | 'title' | 'description'> {
+type PackPartial = Pick<PackType, 'createdAt' | 'title' | 'description'> & {
   packItems: Pick<
     PackItemType,
     'id' | 'imageUrl' | 'purchaseUrl' | 'title' | 'description'

@@ -16,7 +16,13 @@ import type { ComponentMeta } from '@storybook/react'
 import PackForm from './PackForm'
 
 export const generated = () => {
-  return <PackForm />
+  return (
+    <PackForm
+      onSubmit={() => {}}
+      submitButtonText="Create Pack"
+      isLoading={false}
+    />
+  )
 }
 
 export default {

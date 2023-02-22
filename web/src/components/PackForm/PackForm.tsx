@@ -16,6 +16,7 @@ import {
   Textarea,
   useDisclosure,
 } from '@chakra-ui/react'
+import { Pack, PackItem } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
@@ -24,9 +25,26 @@ import { arrayMoveImmutable } from 'src/helpers/arrayMove'
 import EditPackItemModal from '../EditPackItemModal/EditPackItemModal'
 import PackItemEditable from '../PackItemEditable/PackItemEditable'
 
-type NewPackFormValues = {
+type PackFormProps = {
+  onSubmit: (data: PackFormSubmitData) => void
+  submitButtonText: string
+  isLoading: boolean
+  defaultValues?: Pick<Pack, 'title' | 'description'> & {
+    packItems: Pick<
+      PackItem,
+      'id' | 'title' | 'purchaseUrl' | 'imageUrl' | 'description'
+    >[]
+  }
+}
+
+type PackFormValues = {
   title: string
   description: string
+}
+
+export type PackFormSubmitData = PackFormValues & {
+  packsItems: PackItem[]
+  packItemIdsToDelete?: number[]
 }
 
 function packItemsReducer(packItems, action) {
@@ -77,11 +95,27 @@ function packItemsReducer(packItems, action) {
   }
 }
 
-const PackForm = ({ onSubmit, isLoading }) => {
-  const formMethods = useForm<NewPackFormValues>()
+const PackForm = ({
+  onSubmit,
+  submitButtonText,
+  isLoading,
+  defaultValues,
+}: PackFormProps) => {
+  const formMethods = useForm<PackFormValues>()
   const { register, formState } = formMethods
 
-  const [packItems, dispatch] = useReducer(packItemsReducer, [])
+  const [packItems, dispatch] = useReducer(
+    packItemsReducer,
+    defaultValues
+      ? defaultValues.packItems.map((packItem) => ({
+          id: packItem.id,
+          title: packItem.title,
+          purchaseUrl: packItem.purchaseUrl,
+          imageUrl: packItem.imageUrl,
+          description: packItem.description,
+        }))
+      : []
+  )
 
   // Move functions
   const createMovePackItemUp = (index) => () =>
@@ -120,6 +154,7 @@ const PackForm = ({ onSubmit, isLoading }) => {
   }
 
   // Delete functions
+  const [packItemIdsToDelete, setPackItemIdsToDelete] = useState([])
   const [indexToConfirmDelete, setIndexToConfirmDelete] = useState(null)
   const cancelDeleteRef = React.useRef()
   const {
@@ -136,14 +171,26 @@ const PackForm = ({ onSubmit, isLoading }) => {
       type: 'DELETE_PACK_ITEM',
       payload: { index: indexToConfirmDelete },
     })
+    if (packItems[indexToConfirmDelete].id) {
+      setPackItemIdsToDelete([
+        ...packItemIdsToDelete,
+        packItems[indexToConfirmDelete].id,
+      ])
+    }
     onDeleteAlertClose()
   }
 
   const onFormSubmit = (formData) => {
-    onSubmit({
+    const data = {
       ...formData,
       packItems,
-    })
+    }
+
+    if (packItemIdsToDelete.length) {
+      data.packItemIdsToDelete = packItemIdsToDelete
+    }
+
+    onSubmit(data)
   }
 
   return (
@@ -159,6 +206,7 @@ const PackForm = ({ onSubmit, isLoading }) => {
               variant="unstyled"
               size="lg"
               lineHeight={1}
+              defaultValue={defaultValues?.title}
               {...register('title', {
                 required: {
                   value: true,
@@ -177,6 +225,7 @@ const PackForm = ({ onSubmit, isLoading }) => {
               lineHeight={7}
               color="blackAlpha.800"
               variant="unstyled"
+              defaultValue={defaultValues?.description}
               {...register('description')}
             />
             <FormErrorMessage>
@@ -216,7 +265,7 @@ const PackForm = ({ onSubmit, isLoading }) => {
           )}
           <Flex justifyContent="flex-end">
             <Button type="submit" colorScheme="teal" isLoading={isLoading}>
-              Create Pack
+              {submitButtonText}
             </Button>
           </Flex>
         </Stack>

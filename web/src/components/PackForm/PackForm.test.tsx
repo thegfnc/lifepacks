@@ -8,7 +8,13 @@ import PackForm from './PackForm'
 describe('PackForm', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PackForm />)
+      render(
+        <PackForm
+          onSubmit={() => {}}
+          submitButtonText="Create Pack"
+          isLoading={false}
+        />
+      )
     }).not.toThrow()
   })
 })

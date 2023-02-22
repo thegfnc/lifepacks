@@ -27,8 +27,10 @@ import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
 
 import Pack from '../Pack/Pack'
 
-interface PackCellSuccessProps
-  extends CellSuccessProps<FindPackQuery, FindPackQueryVariables> {
+type PackCellSuccessProps = CellSuccessProps<
+  FindPackQuery,
+  FindPackQueryVariables
+> & {
   username: string
 }
 

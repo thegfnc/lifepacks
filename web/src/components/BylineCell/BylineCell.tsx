@@ -9,8 +9,10 @@ export enum Mode {
   Pack,
 }
 
-interface BylineCellSuccessProps
-  extends CellSuccessProps<FindBylineQuery, FindBylineQueryVariables> {
+type BylineCellSuccessProps = CellSuccessProps<
+  FindBylineQuery,
+  FindBylineQueryVariables
+> & {
   mode: Mode
   date: string
 }

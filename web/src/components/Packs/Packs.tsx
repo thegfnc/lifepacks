@@ -13,8 +13,7 @@ import { Pack, PackItem } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 
-interface PackPartial
-  extends Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> {
+type PackPartial = Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> & {
   packItems: Pick<PackItem, 'imageUrl' | 'title'>[]
 }
 
