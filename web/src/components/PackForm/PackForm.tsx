@@ -65,12 +65,7 @@ function packItemsReducer(packItems, action) {
 
     case 'ADD_PACK_ITEM': {
       const packItemsCopy = [...packItems]
-      packItemsCopy.splice(action.payload.index, 0, {
-        title: '',
-        imageUrl: '',
-        purchaseUrl: '',
-        description: '',
-      })
+      packItemsCopy.splice(action.payload.index, 0, action.payload.packItem)
       return packItemsCopy
     }
 
@@ -124,7 +119,7 @@ const PackForm = ({
     dispatch({ type: 'MOVE_PACK_ITEM_DOWN', payload: { index } })
 
   // Add + Edit functions
-  const [editModalTitle, setEditModalTitle] = useState('')
+  const [editModalStatus, setEditModalStatus] = useState('ADD')
   const [indexToEdit, setIndexToEdit] = useState(0)
   const {
     isOpen: isEditModalOpen,
@@ -132,24 +127,27 @@ const PackForm = ({
     onClose: onEditModalClose,
   } = useDisclosure()
   const createOpenAddPackItemModal = (index) => () => {
-    dispatch({
-      type: 'ADD_PACK_ITEM',
-      payload: { index },
-    })
-    setEditModalTitle('Add Item')
+    setEditModalStatus('ADD')
     setIndexToEdit(index)
     onEditModalOpen()
   }
   const createOpenEditPackItemModal = (index) => () => {
-    setEditModalTitle('Edit Item')
+    setEditModalStatus('EDIT')
     setIndexToEdit(index)
     onEditModalOpen()
   }
   const editPackItem = (packItem) => {
-    dispatch({
-      type: 'UPDATE_PACK_ITEM',
-      payload: { index: indexToEdit, packItem },
-    })
+    if (editModalStatus === 'ADD') {
+      dispatch({
+        type: 'ADD_PACK_ITEM',
+        payload: { index: indexToEdit, packItem },
+      })
+    } else if (editModalStatus === 'EDIT') {
+      dispatch({
+        type: 'UPDATE_PACK_ITEM',
+        payload: { index: indexToEdit, packItem },
+      })
+    }
     onEditModalClose()
   }
 
@@ -272,8 +270,8 @@ const PackForm = ({
       </Form>
       <EditPackItemModal
         isOpen={isEditModalOpen}
-        title={editModalTitle}
-        packItem={packItems[indexToEdit]}
+        title={editModalStatus === 'ADD' ? 'Add Item' : 'Edit Item'}
+        packItem={editModalStatus === 'ADD' ? {} : packItems[indexToEdit]}
         onClose={onEditModalClose}
         onSubmit={editPackItem}
       />
