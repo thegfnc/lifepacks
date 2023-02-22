@@ -17,7 +17,7 @@ interface PackPartial
 type PackProps = {
   username: string
   pack: PackPartial
-  actionButtons: ReactNode
+  actionButtons?: ReactNode
 }
 
 const Pack = ({ username, pack, actionButtons }: PackProps) => {

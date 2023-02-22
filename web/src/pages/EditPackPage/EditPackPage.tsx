@@ -1,4 +1,4 @@
-import { Flex, Stack } from '@chakra-ui/react'
+import { Center, Flex, Spinner, Stack } from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
@@ -10,6 +10,10 @@ type EditPackPageProps = {
   id: number
 }
 
+const Loading = () => {
+  return <Spinner />
+}
+
 const EditPackPage = ({ id }: EditPackPageProps) => {
   const { data } = useCurrentUserProfile()
 
@@ -19,8 +23,10 @@ const EditPackPage = ({ id }: EditPackPageProps) => {
 
       <Flex justifyContent="center">
         <Stack w="3xl" spacing={6}>
-          {data?.currentUserProfile && (
+          {data?.currentUserProfile ? (
             <EditPackCell username={data.currentUserProfile.username} id={id} />
+          ) : (
+            <Loading />
           )}
         </Stack>
       </Flex>
