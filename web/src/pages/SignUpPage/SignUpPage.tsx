@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { CheckCircleIcon, ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
+import { CheckCircleIcon } from '@chakra-ui/icons'
 import {
   Flex,
   Box,
@@ -9,15 +9,11 @@ import {
   Text,
   Button,
   Input,
-  InputGroup,
-  InputRightElement,
-  IconButton,
   Alert,
   AlertIcon,
   FormControl,
   FormLabel,
   FormErrorMessage,
-  useBoolean,
   Link as ChakraLink,
 } from '@chakra-ui/react'
 
@@ -41,7 +37,6 @@ const SignUpPage = () => {
   const [isSuccess, setIsSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
-  const [isShowingPassword, setIsShowingPassword] = useBoolean()
 
   useEffect(() => {
     if (isAuthenticated) {
