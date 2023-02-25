@@ -4,9 +4,8 @@ import type { PacksQuery } from 'types/graphql'
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
+import Packs from 'src/components/Packs/Packs'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
-
-import Packs from '../Packs/Packs'
 
 type PacksCellProps = CellSuccessProps<PacksQuery> & {
   username: string

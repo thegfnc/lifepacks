@@ -4,34 +4,23 @@ import {
   Stack,
   Heading,
   Text,
-  Button,
-  Input,
   Alert,
   AlertIcon,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Textarea,
 } from '@chakra-ui/react'
 import {
   CreateCurrentUserProfileMutation,
   CreateCurrentUserProfileMutationVariables,
 } from 'types/graphql'
 
-import { Form, useForm } from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags, useMutation } from '@redwoodjs/web'
 
+import UserProfileForm, {
+  UserProfileFormSubmitData,
+} from 'src/forms/UserProfileForm/UserProfileForm'
 import useCurrentUserProfile, {
   CURRENT_USER_PROFILE_QUERY,
 } from 'src/hooks/useCurrentUserProfile'
-
-type CompleteSignUpFormValues = {
-  username: string
-  givenName: string
-  familyName: string
-  biography: string
-}
 
 const MUTATION = gql`
   mutation CreateCurrentUserProfileMutation(
@@ -44,7 +33,6 @@ const MUTATION = gql`
 `
 
 const CompleteSignUpPage = () => {
-  const formMethods = useForm<CompleteSignUpFormValues>()
   const { data } = useCurrentUserProfile()
   const [mutate, { loading, error }] = useMutation<
     CreateCurrentUserProfileMutation,
@@ -57,9 +45,7 @@ const CompleteSignUpPage = () => {
     navigate(routes.home())
   }
 
-  const { register, formState } = formMethods
-
-  const onSubmit = (data: CompleteSignUpFormValues) => {
+  const onSubmit = (data: UserProfileFormSubmitData) => {
     mutate({ variables: { input: data } })
   }
 
@@ -81,63 +67,13 @@ const CompleteSignUpPage = () => {
             </Text>
           </Stack>
           <Box rounded={'lg'} bg={'white'} boxShadow={'lg'} p={8}>
-            <Form formMethods={formMethods} onSubmit={onSubmit}>
-              <Stack spacing={6}>
-                {error && (
-                  <Alert status="error">
-                    <AlertIcon />
-                    {error.message}
-                  </Alert>
-                )}
-
-                <FormControl isInvalid={Boolean(formState.errors.username)}>
-                  <FormLabel>Username</FormLabel>
-                  <Input
-                    autoComplete="username"
-                    {...register('username', {
-                      required: {
-                        value: true,
-                        message: 'Username is required',
-                      },
-                    })}
-                  />
-                  <FormErrorMessage>
-                    {formState.errors.username?.message}
-                  </FormErrorMessage>
-                </FormControl>
-
-                <FormControl isInvalid={Boolean(formState.errors.givenName)}>
-                  <FormLabel>First Name</FormLabel>
-                  <Input autoComplete="given-name" {...register('givenName')} />
-                  <FormErrorMessage>
-                    {formState.errors.givenName?.message}
-                  </FormErrorMessage>
-                </FormControl>
-
-                <FormControl isInvalid={Boolean(formState.errors.familyName)}>
-                  <FormLabel>Last Name</FormLabel>
-                  <Input
-                    autoComplete="family-name"
-                    {...register('familyName')}
-                  />
-                  <FormErrorMessage>
-                    {formState.errors.familyName?.message}
-                  </FormErrorMessage>
-                </FormControl>
-
-                <FormControl isInvalid={Boolean(formState.errors.biography)}>
-                  <FormLabel>Biography</FormLabel>
-                  <Textarea {...register('biography')} />
-                  <FormErrorMessage>
-                    {formState.errors.biography?.message}
-                  </FormErrorMessage>
-                </FormControl>
-
-                <Button type="submit" isLoading={loading}>
-                  Create profile
-                </Button>
-              </Stack>
-            </Form>
+            {error && (
+              <Alert status="error">
+                <AlertIcon />
+                {error.message}
+              </Alert>
+            )}
+            <UserProfileForm onSubmit={onSubmit} isLoading={loading} />
           </Box>
         </Stack>
       </Flex>

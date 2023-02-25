@@ -2,9 +2,9 @@ import { Box, Flex } from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
-import PackCell from 'src/components/PackCell/PackCell'
+import PackCell from 'src/cells/PackCell'
+import UserProfileSidebarCell from 'src/cells/UserProfileSidebarCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
-import UserProfileSidebarCell from 'src/components/UserProfileSidebarCell/UserProfileSidebarCell'
 
 type PackPageProps = {
   username: string

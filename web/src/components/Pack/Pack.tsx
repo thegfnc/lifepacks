@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import { Pack as PackType, PackItem as PackItemType } from 'types/graphql'
 
-import BylineCell, { Mode } from 'src/components/BylineCell/BylineCell'
+import BylineCell, { Mode } from 'src/cells/BylineCell'
 import PackItem from 'src/components/PackItem/PackItem'
 
 type PackPartial = Pick<PackType, 'createdAt' | 'title' | 'description'> & {

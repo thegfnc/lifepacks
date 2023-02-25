@@ -17,7 +17,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 
-import EditUserProfileCell from '../EditUserProfileCell/EditUserProfileCell'
+import EditUserProfileCell from 'src/cells/EditUserProfileCell'
 
 type EditUserProileModalProps = {
   isOpen: boolean

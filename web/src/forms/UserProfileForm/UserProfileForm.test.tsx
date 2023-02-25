@@ -1,20 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import PackForm from './PackForm'
+import UserProfileForm from './UserProfileForm'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('PackForm', () => {
+describe('UserProfileForm', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(
-        <PackForm
-          onSubmit={() => {}}
-          submitButtonText="Create Pack"
-          isLoading={false}
-        />
-      )
+      render(<UserProfileForm />)
     }).not.toThrow()
   })
 })

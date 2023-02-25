@@ -25,7 +25,7 @@ import type {
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
 
-import Pack from '../Pack/Pack'
+import Pack from '../../components/Pack/Pack'
 
 type PackCellSuccessProps = CellSuccessProps<
   FindPackQuery,

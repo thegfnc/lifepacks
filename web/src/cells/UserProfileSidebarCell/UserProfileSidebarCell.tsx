@@ -8,8 +8,7 @@ import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccountButton'
-
-import { SocialAccountType } from '../SocialAccountIcon/SocialAccountIcon'
+import { SocialAccountType } from 'src/components/SocialAccountIcon/SocialAccountIcon'
 
 export const QUERY = gql`
   query FindUserProfileSidebarQuery($username: String!) {

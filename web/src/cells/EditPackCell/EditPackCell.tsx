@@ -9,7 +9,7 @@ import type {
 import { routes, navigate } from '@redwoodjs/router'
 import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
 
-import PackForm, { PackFormSubmitData } from '../PackForm/PackForm'
+import PackForm, { PackFormSubmitData } from 'src/forms/PackForm/PackForm'
 
 type EditPackCellProps = CellSuccessProps<
   FindEditPackQuery,
@@ -79,12 +79,7 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
           {error.message}
         </Alert>
       )}
-      <PackForm
-        onSubmit={onSubmit}
-        submitButtonText="Update Pack"
-        isLoading={loading}
-        defaultValues={pack}
-      />
+      <PackForm onSubmit={onSubmit} isLoading={loading} defaultValues={pack} />
     </>
   )
 }

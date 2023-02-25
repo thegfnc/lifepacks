@@ -20,14 +20,12 @@ import { Pack, PackItem } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
+import EditPackItemModal from 'src/components/EditPackItemModal/EditPackItemModal'
+import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
-
-import EditPackItemModal from '../EditPackItemModal/EditPackItemModal'
-import PackItemEditable from '../PackItemEditable/PackItemEditable'
 
 type PackFormProps = {
   onSubmit: (data: PackFormSubmitData) => void
-  submitButtonText: string
   isLoading: boolean
   defaultValues?: Pick<Pack, 'title' | 'description'> & {
     packItems: Pick<
@@ -90,12 +88,7 @@ function packItemsReducer(packItems, action) {
   }
 }
 
-const PackForm = ({
-  onSubmit,
-  submitButtonText,
-  isLoading,
-  defaultValues,
-}: PackFormProps) => {
+const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   const formMethods = useForm<PackFormValues>()
   const { register, formState } = formMethods
 
@@ -263,7 +256,7 @@ const PackForm = ({
           )}
           <Flex justifyContent="flex-end">
             <Button type="submit" colorScheme="teal" isLoading={isLoading}>
-              {submitButtonText}
+              {defaultValues ? 'Update Pack' : 'Create Pack'}
             </Button>
           </Flex>
         </Stack>
