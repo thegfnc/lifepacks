@@ -16,7 +16,14 @@ import type { ComponentMeta } from '@storybook/react'
 import PasswordInput from './PasswordInput'
 
 export const generated = () => {
-  return <PasswordInput />
+  return (
+    <PasswordInput
+      name="password"
+      autoComplete="new-password"
+      onChange={() => new Promise(() => {})}
+      onBlur={() => new Promise(() => {})}
+    />
+  )
 }
 
 export default {

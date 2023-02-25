@@ -139,10 +139,7 @@ const UserProfileForm = ({
           <Stack>
             <InputGroup>
               <InputLeftElement width="3.25rem">
-                <SocialAccountIcon
-                  accountType={SocialAccountType.Facebook}
-                  size="sm"
-                />
+                <SocialAccountIcon accountType={SocialAccountType.Facebook} />
               </InputLeftElement>
               <Input
                 pl="3.25rem"
@@ -153,10 +150,7 @@ const UserProfileForm = ({
             </InputGroup>
             <InputGroup>
               <InputLeftElement width="3.25rem">
-                <SocialAccountIcon
-                  accountType={SocialAccountType.Instagram}
-                  size="sm"
-                />
+                <SocialAccountIcon accountType={SocialAccountType.Instagram} />
               </InputLeftElement>
               <Input
                 pl="3.25rem"
@@ -167,10 +161,7 @@ const UserProfileForm = ({
             </InputGroup>
             <InputGroup>
               <InputLeftElement width="3.25rem">
-                <SocialAccountIcon
-                  accountType={SocialAccountType.YouTube}
-                  size="sm"
-                />
+                <SocialAccountIcon accountType={SocialAccountType.YouTube} />
               </InputLeftElement>
               <Input
                 pl="3.25rem"
@@ -186,7 +177,7 @@ const UserProfileForm = ({
                 Cancel
               </Button>
             )}
-            <Button type="submit" colorScheme="teal" isLoading={isLoading}>
+            <Button type="submit" colorScheme="purple" isLoading={isLoading}>
               {defaultValues ? 'Update Profile' : 'Create Profile'}
             </Button>
           </Flex>

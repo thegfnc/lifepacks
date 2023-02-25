@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import UserProfileForm from './UserProfileForm'
 
 export const generated = () => {
-  return <UserProfileForm />
+  return <UserProfileForm onSubmit={() => {}} isLoading={false} />
 }
 
 export default {

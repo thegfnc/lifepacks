@@ -79,7 +79,7 @@ const LogInPage = () => {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
         <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={{ base: '3xl', md: '4xl' }}>
+            <Heading fontSize={{ base: '2xl', md: '3xl' }}>
               Log into your account
             </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>

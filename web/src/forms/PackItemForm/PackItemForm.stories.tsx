@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import PackItemForm from './PackItemForm'
 
 export const generated = () => {
-  return <PackItemForm />
+  return <PackItemForm onSubmit={() => {}} />
 }
 
 export default {

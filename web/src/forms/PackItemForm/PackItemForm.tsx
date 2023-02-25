@@ -117,7 +117,7 @@ const PackItemForm = ({
             Cancel
           </Button>
         )}
-        <Button colorScheme="teal" type="submit">
+        <Button colorScheme="purple" type="submit">
           Apply
         </Button>
       </ModalFooter>

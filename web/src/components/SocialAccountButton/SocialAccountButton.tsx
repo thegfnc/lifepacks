@@ -1,4 +1,4 @@
-import { Button, Text } from '@chakra-ui/react'
+import { Button, IconButton } from '@chakra-ui/react'
 
 import SocialAccountIcon, {
   SocialAccountType,
@@ -14,22 +14,19 @@ const SocialAccountButton = ({
   linkUrl,
 }: SocialAccountButtonsProps) => {
   return (
-    <Button
-      variant="outline"
-      size="lg"
+    <IconButton
+      bg="blackAlpha.200"
+      _hover={{ bg: 'blackAlpha.300' }}
+      _active={{ bg: 'blackAlpha.400' }}
+      rounded="full"
+      size="md"
+      p={2}
       as="a"
       href={linkUrl}
       target="_blank"
-      justifyContent="start"
-      p={2}
-      h="auto"
-      borderRadius="xl"
-    >
-      <SocialAccountIcon accountType={accountType} />
-      <Text fontSize="sm" ml={2} color="blackAlpha.900" fontWeight="medium">
-        {accountType}
-      </Text>
-    </Button>
+      aria-label={accountType}
+      icon={<SocialAccountIcon accountType={accountType} />}
+    />
   )
 }
 

@@ -8,7 +8,14 @@ import PasswordInput from './PasswordInput'
 describe('PasswordInput', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PasswordInput />)
+      render(
+        <PasswordInput
+          name="password"
+          autoComplete="new-password"
+          onChange={() => new Promise(() => {})}
+          onBlur={() => new Promise(() => {})}
+        />
+      )
     }).not.toThrow()
   })
 })

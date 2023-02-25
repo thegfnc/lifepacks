@@ -10,7 +10,6 @@ import {
   MenuList,
   Spinner,
   Text,
-  Link as ChakraLink,
   Avatar,
 } from '@chakra-ui/react'
 
@@ -40,7 +39,6 @@ const Header = () => {
   return (
     <>
       <Flex
-        bg={'white'}
         borderBottomColor={'blackAlpha.200'}
         borderBottomWidth={'1px'}
         alignItems={'center'}
@@ -52,7 +50,8 @@ const Header = () => {
             as={Link}
             to={routes.home()}
             size="md"
-            color={'blackAlpha.900'}
+            color={'black'}
+            fontWeight="medium"
           >
             Lifepacks
           </Heading>
@@ -61,19 +60,13 @@ const Header = () => {
             {isAuthLoading || isCurrentUserProfileLoading ? (
               <Spinner />
             ) : (
-              <HStack spacing={3} dir="horizontal">
+              <HStack spacing={2} dir="horizontal">
                 {isAuthenticated && data?.currentUserProfile ? (
                   <>
-                    <Button
-                      variant={'solid'}
-                      colorScheme={'gray'}
-                      size={'md'}
-                      as={Link}
-                      to={routes.newPack()}
-                    >
+                    <Button size={'md'} as={Link} to={routes.newPack()}>
                       Create Pack
                     </Button>
-                    <Menu>
+                    <Menu placement="bottom-end">
                       <MenuButton
                         as={Button}
                         rounded={'full'}
@@ -83,7 +76,8 @@ const Header = () => {
                         w={12}
                       >
                         <Avatar
-                          size="md"
+                          h="40px"
+                          w="40px"
                           src={data?.currentUserProfile?.imageUrl}
                           name={data?.currentUserProfile?.givenName}
                         />
@@ -108,15 +102,18 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <ChakraLink as={Link} to={routes.logIn()} color="gray.500">
+                    <Button
+                      as={Link}
+                      to={routes.logIn()}
+                      colorScheme="gray"
+                      variant="outline"
+                    >
                       Log In
-                    </ChakraLink>
+                    </Button>
                     <Button
                       as={Link}
                       to={routes.signUp()}
-                      variant={'solid'}
-                      colorScheme={'teal'}
-                      size={'md'}
+                      colorScheme={'purple'}
                     >
                       Sign Up
                     </Button>

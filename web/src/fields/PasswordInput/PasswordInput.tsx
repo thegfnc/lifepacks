@@ -36,6 +36,8 @@ const PasswordInput = forwardRef<Ref, PasswordInputProps>(
           <IconButton
             h="1.75rem"
             size="sm"
+            rounded="lg"
+            colorScheme="gray"
             aria-label={isShowingPassword ? 'Hide Password' : 'Show Password'}
             icon={isShowingPassword ? <ViewOffIcon /> : <ViewIcon />}
             onClick={setIsShowingPassword.toggle}

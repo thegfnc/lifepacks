@@ -1,4 +1,12 @@
-import { Stack, Text, Avatar } from '@chakra-ui/react'
+import {
+  Text,
+  Avatar,
+  Button,
+  useDisclosure,
+  HStack,
+  Flex,
+} from '@chakra-ui/react'
+import { MdOutlineModeEdit } from 'react-icons/md'
 import type {
   FindUserProfileSidebarQuery,
   FindUserProfileSidebarQueryVariables,
@@ -7,6 +15,7 @@ import type {
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
+import EditUserProfileModal from 'src/components/EditUserProfileModal/EditUserProfileModal'
 import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccountButton'
 import { SocialAccountType } from 'src/components/SocialAccountIcon/SocialAccountIcon'
 
@@ -21,6 +30,9 @@ export const QUERY = gql`
       facebookUrl
       instagramUrl
       youtubeUrl
+    }
+    currentUserProfile {
+      username
     }
   }
 `
@@ -37,17 +49,37 @@ export const Failure = ({
 
 export const Success = ({
   userProfile,
+  currentUserProfile,
 }: CellSuccessProps<
   FindUserProfileSidebarQuery,
   FindUserProfileSidebarQueryVariables
 >) => {
+  const isCurrentUser = userProfile.username === currentUserProfile?.username
+
+  const {
+    isOpen: isEditModalOpen,
+    onOpen: onEditModalOpen,
+    onClose: onEditModalClose,
+  } = useDisclosure()
+
   return (
     <>
-      <Avatar
-        size={'xl'}
-        src={userProfile.imageUrl}
-        name={userProfile.givenName}
-      />
+      <Flex justify="space-between">
+        <Avatar
+          size={'xl'}
+          src={userProfile.imageUrl}
+          name={userProfile.givenName}
+        />
+        {isCurrentUser && (
+          <Button
+            variant="outline"
+            colorScheme="gray"
+            onClick={onEditModalOpen}
+          >
+            Edit Profile
+          </Button>
+        )}
+      </Flex>
       <Text
         as="h2"
         fontSize="lg"
@@ -69,7 +101,7 @@ export const Success = ({
       <Text fontSize="md" lineHeight={6} pt={2}>
         {userProfile.biography}
       </Text>
-      <Stack mt={6}>
+      <HStack mt={6}>
         {userProfile.facebookUrl && (
           <SocialAccountButton
             accountType={SocialAccountType.Facebook}
@@ -88,7 +120,14 @@ export const Success = ({
             linkUrl={userProfile.youtubeUrl}
           />
         )}
-      </Stack>
+      </HStack>
+
+      {isCurrentUser && (
+        <EditUserProfileModal
+          isOpen={isEditModalOpen}
+          onClose={onEditModalClose}
+        />
+      )}
     </>
   )
 }

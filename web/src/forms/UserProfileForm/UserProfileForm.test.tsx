@@ -8,7 +8,7 @@ import UserProfileForm from './UserProfileForm'
 describe('UserProfileForm', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UserProfileForm />)
+      render(<UserProfileForm onSubmit={() => {}} isLoading={false} />)
     }).not.toThrow()
   })
 })

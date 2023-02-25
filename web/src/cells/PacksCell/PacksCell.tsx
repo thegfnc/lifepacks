@@ -39,43 +39,46 @@ export const Empty = ({ username }) => {
       borderRadius="3xl"
       borderStyle="dashed"
       borderColor="gray.400"
+      bg="blackAlpha.50"
     >
-      {isCurrentUser ? (
-        <Box textAlign="center">
-          <Heading
-            fontSize="xl"
-            lineHeight={7}
-            fontWeight="bold"
-            color="gray.700"
-          >
-            Create your first pack!
-          </Heading>
-          <Text fontSize="md" lineHeight={6} color="gray.500">
-            Make a page endorsing the products you swear by.
-          </Text>
-          <Button colorScheme="teal" mt={4} as={Link} to={routes.newPack()}>
-            Create Pack
-          </Button>
-        </Box>
-      ) : (
-        <Box textAlign="center">
-          <Heading
-            fontSize="xl"
-            lineHeight={7}
-            fontWeight="bold"
-            color="gray.700"
-          >
-            {data?.currentUserProfile?.givenName || username} hasn&apos;t
-            created a pack yet.
-          </Heading>
-          <Text fontSize="md" lineHeight={6} color="gray.500">
-            Check back soon for products they swear by.
-          </Text>
-          <Button colorScheme="teal" mt={4} as={Link} to={routes.home()}>
-            Browse Other Packs
-          </Button>
-        </Box>
-      )}
+      <Box textAlign="center">
+        {isCurrentUser ? (
+          <>
+            <Heading
+              fontSize="xl"
+              lineHeight={7}
+              fontWeight="bold"
+              color="gray.700"
+            >
+              Create your first pack!
+            </Heading>
+            <Text fontSize="md" lineHeight={6} color="gray.500">
+              Recommend products you swear by.
+            </Text>
+            <Button colorScheme="purple" mt={4} as={Link} to={routes.newPack()}>
+              Create Pack
+            </Button>
+          </>
+        ) : (
+          <>
+            <Heading
+              fontSize="xl"
+              lineHeight={7}
+              fontWeight="bold"
+              color="gray.700"
+            >
+              {data?.currentUserProfile?.givenName || username} hasn&apos;t
+              created a pack yet.
+            </Heading>
+            <Text fontSize="md" lineHeight={6} color="gray.500">
+              Check back soon for products they swear by.
+            </Text>
+            <Button colorScheme="purple" mt={4} as={Link} to={routes.home()}>
+              Browse Other Packs
+            </Button>
+          </>
+        )}
+      </Box>
     </Center>
   )
 }

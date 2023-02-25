@@ -8,7 +8,7 @@ import PackItemForm from './PackItemForm'
 describe('PackItemForm', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PackItemForm />)
+      render(<PackItemForm onSubmit={() => {}} />)
     }).not.toThrow()
   })
 })

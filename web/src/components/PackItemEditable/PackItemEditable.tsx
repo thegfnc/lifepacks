@@ -1,10 +1,10 @@
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  DeleteIcon,
-  EditIcon,
-} from '@chakra-ui/icons'
 import { Box, Fade, HStack, IconButton, useBoolean } from '@chakra-ui/react'
+import {
+  MdArrowUpward,
+  MdArrowDownward,
+  MdOutlineModeEdit,
+  MdDeleteOutline,
+} from 'react-icons/md'
 
 import PackItem from '../PackItem/PackItem'
 
@@ -65,7 +65,7 @@ const PackItemEditable = ({
             {!hideMoveItemUp && (
               <IconButton
                 aria-label="Move Pack Item Up"
-                icon={<ArrowUpIcon />}
+                icon={<MdArrowUpward />}
                 color="black"
                 bg="white"
                 size="lg"
@@ -80,7 +80,7 @@ const PackItemEditable = ({
             {!hideMoveItemDown && (
               <IconButton
                 aria-label="Move Pack Item Down"
-                icon={<ArrowDownIcon />}
+                icon={<MdArrowDownward />}
                 color="black"
                 bg="white"
                 size="lg"
@@ -94,7 +94,7 @@ const PackItemEditable = ({
             )}
             <IconButton
               aria-label="Edit Pack Item"
-              icon={<EditIcon />}
+              icon={<MdOutlineModeEdit />}
               color="black"
               bg="white"
               size="lg"
@@ -106,7 +106,7 @@ const PackItemEditable = ({
             />
             <IconButton
               aria-label="Delete Pack Item"
-              icon={<DeleteIcon />}
+              icon={<MdDeleteOutline />}
               color="red.500"
               bg="white"
               size="lg"

@@ -43,13 +43,13 @@ const PackItem = ({
             <Image boxSize="296px" fit="contain" alt={title} src={imageUrl} />
           </Center>
           <Center borderLeftWidth="1px" borderLeftColor="blackAlpha.200">
-            <Box p={8}>
+            <Box p={8} w="full">
               <Heading size="md" lineHeight={7}>
                 {title}
               </Heading>
               <Button
                 as="a"
-                colorScheme="teal"
+                colorScheme="yellow"
                 size="lg"
                 mt={4}
                 href={purchaseUrl}

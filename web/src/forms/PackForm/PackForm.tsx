@@ -1,6 +1,5 @@
-import { useReducer, useState } from 'react'
+import { Fragment, useReducer, useState } from 'react'
 
-import { AddIcon } from '@chakra-ui/icons'
 import {
   FormErrorMessage,
   AlertDialog,
@@ -224,38 +223,39 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             </FormErrorMessage>
           </FormControl>
           <Button
-            leftIcon={<AddIcon boxSize={3} />}
+            variant="outline"
+            colorScheme="gray"
             onClick={createOpenAddPackItemModal(0)}
           >
             Add Item
           </Button>
           <Stack spacing={6}>
             {packItems.map((packItem, index) => (
-              <PackItemEditable
-                key={packItem.id || packItem.title}
-                imageUrl={packItem.imageUrl}
-                purchaseUrl={packItem.purchaseUrl}
-                title={packItem.title}
-                description={packItem.description}
-                hideMoveItemUp={Boolean(index === 0)}
-                moveItemUp={createMovePackItemUp(index)}
-                hideMoveItemDown={Boolean(index === packItems.length - 1)}
-                moveItemDown={createMovePackItemDown(index)}
-                editItem={createOpenEditPackItemModal(index)}
-                deleteItem={createOpenDeletePackItemAlert(index)}
-              />
+              <Fragment key={packItem.id || packItem.title}>
+                <PackItemEditable
+                  imageUrl={packItem.imageUrl}
+                  purchaseUrl={packItem.purchaseUrl}
+                  title={packItem.title}
+                  description={packItem.description}
+                  hideMoveItemUp={Boolean(index === 0)}
+                  moveItemUp={createMovePackItemUp(index)}
+                  hideMoveItemDown={Boolean(index === packItems.length - 1)}
+                  moveItemDown={createMovePackItemDown(index)}
+                  editItem={createOpenEditPackItemModal(index)}
+                  deleteItem={createOpenDeletePackItemAlert(index)}
+                />
+                <Button
+                  variant="outline"
+                  colorScheme="gray"
+                  onClick={createOpenAddPackItemModal(index + 1)}
+                >
+                  Add Item
+                </Button>
+              </Fragment>
             ))}
           </Stack>
-          {packItems.length > 0 && (
-            <Button
-              leftIcon={<AddIcon boxSize={3} />}
-              onClick={createOpenAddPackItemModal(packItems.length)}
-            >
-              Add Item
-            </Button>
-          )}
           <Flex justifyContent="flex-end">
-            <Button type="submit" colorScheme="teal" isLoading={isLoading}>
+            <Button type="submit" colorScheme="green" isLoading={isLoading}>
               {defaultValues ? 'Update Pack' : 'Create Pack'}
             </Button>
           </Flex>
