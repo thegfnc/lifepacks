@@ -26,6 +26,7 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
+import PasswordInput from 'src/fields/PasswordInput/PasswordInput'
 
 type SignUpFormvalues = {
   email: string
@@ -133,34 +134,15 @@ const SignUpPage = () => {
 
                   <FormControl isInvalid={Boolean(formState.errors.password)}>
                     <FormLabel>Password</FormLabel>
-                    <InputGroup size="md">
-                      <Input
-                        type={isShowingPassword ? 'text' : 'password'}
-                        autoComplete="current-password"
-                        pr="2.75rem"
-                        {...register('password', {
-                          required: {
-                            value: true,
-                            message: 'Password is required',
-                          },
-                        })}
-                      />
-                      <InputRightElement width="2.75rem">
-                        <IconButton
-                          h="1.75rem"
-                          size="sm"
-                          aria-label={
-                            isShowingPassword
-                              ? 'Hide Password'
-                              : 'Show Password'
-                          }
-                          icon={
-                            isShowingPassword ? <ViewOffIcon /> : <ViewIcon />
-                          }
-                          onClick={setIsShowingPassword.toggle}
-                        />
-                      </InputRightElement>
-                    </InputGroup>
+                    <PasswordInput
+                      autoComplete="new-password"
+                      {...register('password', {
+                        required: {
+                          value: true,
+                          message: 'Password is required',
+                        },
+                      })}
+                    />
                     <FormErrorMessage>
                       {formState.errors.password?.message}
                     </FormErrorMessage>
