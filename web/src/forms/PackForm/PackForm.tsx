@@ -264,7 +264,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
       <EditPackItemModal
         isOpen={isEditModalOpen}
         title={editModalStatus === 'ADD' ? 'Add Item' : 'Edit Item'}
-        packItem={editModalStatus === 'ADD' ? {} : packItems[indexToEdit]}
+        packItem={editModalStatus === 'ADD' ? null : packItems[indexToEdit]}
         onClose={onEditModalClose}
         onSubmit={editPackItem}
       />
