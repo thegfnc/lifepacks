@@ -285,7 +285,12 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelDeleteRef} onClick={onDeleteAlertClose}>
+              <Button
+                variant="outline"
+                colorScheme="gray"
+                ref={cancelDeleteRef}
+                onClick={onDeleteAlertClose}
+              >
                 Cancel
               </Button>
               <Button colorScheme="red" onClick={deletePackItem} ml={3}>

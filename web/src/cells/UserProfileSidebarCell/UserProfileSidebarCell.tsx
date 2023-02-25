@@ -6,7 +6,6 @@ import {
   HStack,
   Flex,
 } from '@chakra-ui/react'
-import { MdOutlineModeEdit } from 'react-icons/md'
 import type {
   FindUserProfileSidebarQuery,
   FindUserProfileSidebarQueryVariables,

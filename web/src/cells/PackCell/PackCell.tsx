@@ -118,6 +118,7 @@ export const Success = ({
                 as={Link}
                 leftIcon={<MdOutlineModeEdit />}
                 variant="outline"
+                colorScheme="gray"
                 to={routes.editPack({ id: pack.id })}
               >
                 Edit Pack
@@ -149,7 +150,12 @@ export const Success = ({
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelDeleteRef} onClick={onDeleteAlertClose}>
+              <Button
+                variant="outline"
+                colorScheme="gray"
+                ref={cancelDeleteRef}
+                onClick={onDeleteAlertClose}
+              >
                 Cancel
               </Button>
               <Button

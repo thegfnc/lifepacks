@@ -89,6 +89,8 @@ const EditPackItemModal = ({
 
             <AlertDialogFooter>
               <Button
+                variant="outline"
+                colorScheme="gray"
                 ref={cancelDiscardChangesRef}
                 onClick={onDiscardChangesModalClose}
               >

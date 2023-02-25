@@ -173,7 +173,12 @@ const UserProfileForm = ({
           </Stack>
           <Flex justifyContent="flex-end" py={4}>
             {onCancel && (
-              <Button mr={3} onClick={onCancel}>
+              <Button
+                variant="outline"
+                colorScheme="gray"
+                mr={3}
+                onClick={onCancel}
+              >
                 Cancel
               </Button>
             )}
