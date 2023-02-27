@@ -5413,6 +5413,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@prisma/client@npm:4.10.1":
+  version: 4.10.1
+  resolution: "@prisma/client@npm:4.10.1"
+  dependencies:
+    "@prisma/engines-version": 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
+  peerDependencies:
+    prisma: "*"
+  peerDependenciesMeta:
+    prisma:
+      optional: true
+  checksum: e21352d7d33f8deaa435408b3d81adb561c045daef8e7791621230a94ec1480429302119b783789ae4ab979843c544165e0cab349d45a62eed73f9984d2f7319
+  languageName: node
+  linkType: hard
+
 "@prisma/client@npm:4.9.0":
   version: 4.9.0
   resolution: "@prisma/client@npm:4.9.0"
@@ -5457,6 +5471,13 @@ __metadata:
     strip-ansi: 6.0.1
     undici: 5.11.0
   checksum: b2e5e3f18149a44cde5ede6e810063a9100a87dbccefa7bdbbd42bab215add412f5a5601d52aedd3c2c19b456f7ccd16f6846e7e6132f492caa071d9a8eab5d1
+  languageName: node
+  linkType: hard
+
+"@prisma/engines-version@npm:4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19":
+  version: 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
+  resolution: "@prisma/engines-version@npm:4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19"
+  checksum: 7a9afa91529d18bd45d5476d1efe23c0a786a13e888bc3d0d5841ddf79874d7a991cdb841c084ab19030f874c621e0fc8884f9f46517a660472a68ac1ad4a2d1
   languageName: node
   linkType: hard
 
@@ -5730,6 +5751,36 @@ __metadata:
     rwfw: dist/bins/rwfw.js
     tsc: dist/bins/tsc.js
   checksum: 0fc4753e1d5f151a0d3e59e70751616639506bc2f7fec0ceb46540cd05fec26160b014bc5e9871df459cc77b0e6f2fc2f8b2146f30ecbf253f9d4bfc13ce2d4a
+  languageName: node
+  linkType: hard
+
+"@redwoodjs/api@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@redwoodjs/api@npm:4.2.0"
+  dependencies:
+    "@babel/runtime-corejs3": 7.20.13
+    "@prisma/client": 4.10.1
+    "@whatwg-node/fetch": 0.8.1
+    core-js: 3.28.0
+    humanize-string: 2.1.0
+    jsonwebtoken: 9.0.0
+    pascalcase: 1.0.0
+    pino: 8.10.0
+    title-case: 3.0.3
+  peerDependencies:
+    memjs: 1.3.0
+    redis: 4.6.4
+  peerDependenciesMeta:
+    memjs:
+      optional: true
+    redis:
+      optional: true
+  bin:
+    redwood: dist/bins/redwood.js
+    rw: dist/bins/redwood.js
+    rwfw: dist/bins/rwfw.js
+    tsc: dist/bins/tsc.js
+  checksum: e39b868f40ae4c1aed20d1626239fd8fd48dc1e8f2ba992b67f2b9d48f978f9de1f257698463ac44a37cf05001a31eaea868ff7023af2bae8d1c3fc9507a3a28
   languageName: node
   linkType: hard
 
@@ -8967,6 +9018,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@whatwg-node/fetch@npm:0.8.1, @whatwg-node/fetch@npm:^0.8.0, @whatwg-node/fetch@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "@whatwg-node/fetch@npm:0.8.1"
+  dependencies:
+    "@peculiar/webcrypto": ^1.4.0
+    "@whatwg-node/node-fetch": ^0.3.0
+    busboy: ^1.6.0
+    urlpattern-polyfill: ^6.0.2
+    web-streams-polyfill: ^3.2.1
+  checksum: daf897c2e651878b5a0a14299875f4cb2d9364ced4d0880cb6fa3f92a8d48d02be563d8442c56c4e8339b8cfdd25a31efed93560182932a49027135df75f62c5
+  languageName: node
+  linkType: hard
+
 "@whatwg-node/fetch@npm:^0.6.0":
   version: 0.6.9
   resolution: "@whatwg-node/fetch@npm:0.6.9"
@@ -8977,19 +9041,6 @@ __metadata:
     urlpattern-polyfill: ^6.0.2
     web-streams-polyfill: ^3.2.1
   checksum: 849f88d81360f85c0e6528fb5bd4ec55d198e463be198d6a69fd51cc7a64acccef16682e0978861e7497ddbe1e1a842a11827931f4a261bfc740a09517ea271d
-  languageName: node
-  linkType: hard
-
-"@whatwg-node/fetch@npm:^0.8.0, @whatwg-node/fetch@npm:^0.8.1":
-  version: 0.8.1
-  resolution: "@whatwg-node/fetch@npm:0.8.1"
-  dependencies:
-    "@peculiar/webcrypto": ^1.4.0
-    "@whatwg-node/node-fetch": ^0.3.0
-    busboy: ^1.6.0
-    urlpattern-polyfill: ^6.0.2
-    web-streams-polyfill: ^3.2.1
-  checksum: daf897c2e651878b5a0a14299875f4cb2d9364ced4d0880cb6fa3f92a8d48d02be563d8442c56c4e8339b8cfdd25a31efed93560182932a49027135df75f62c5
   languageName: node
   linkType: hard
 
@@ -9508,7 +9559,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:api"
   dependencies:
-    "@redwoodjs/api": 4.1.4
+    "@redwoodjs/api": 4.2.0
     "@redwoodjs/auth-supabase-api": 4.1.4
     "@redwoodjs/graphql-server": 4.1.4
     jsonwebtoken: ^9.0.0
@@ -12087,7 +12138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.0.4, core-js@npm:^3.26.0, core-js@npm:^3.6.5, core-js@npm:^3.8.2":
+"core-js@npm:3.28.0, core-js@npm:^3.0.4, core-js@npm:^3.26.0, core-js@npm:^3.6.5, core-js@npm:^3.8.2":
   version: 3.28.0
   resolution: "core-js@npm:3.28.0"
   checksum: beaebefa83520ff2ca1eeeddccb17e373474966a7bd935134a1107cecb793798a0971feaf6a1a9f6bbd5b22b7dc1f81f72533eb24e3f6df079fff40fc26a21b4
@@ -20732,6 +20783,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pino@npm:8.10.0, pino@npm:^8.5.0":
+  version: 8.10.0
+  resolution: "pino@npm:8.10.0"
+  dependencies:
+    atomic-sleep: ^1.0.0
+    fast-redact: ^3.1.1
+    on-exit-leak-free: ^2.1.0
+    pino-abstract-transport: v1.0.0
+    pino-std-serializers: ^6.0.0
+    process-warning: ^2.0.0
+    quick-format-unescaped: ^4.0.3
+    real-require: ^0.2.0
+    safe-stable-stringify: ^2.3.1
+    sonic-boom: ^3.1.0
+    thread-stream: ^2.0.0
+  bin:
+    pino: bin.js
+  checksum: cc7e908a8367756ead1c0078e659c8eb8db150194173c7e7f8a62deb09bd115606c886f1f22fbac7e65b236a72a418572f5a93138ae0dbf4455051e2b467fd34
+  languageName: node
+  linkType: hard
+
 "pino@npm:8.9.0":
   version: 8.9.0
   resolution: "pino@npm:8.9.0"
@@ -20750,27 +20822,6 @@ __metadata:
   bin:
     pino: bin.js
   checksum: 2e239cc57fd387f052f133456f0e52f6006a96d2fb7b39f2c798060e71acc1c3f85bd5aa113fd1b4d2c418bfb2822523205979ede47c141b4e8bd434b710f3fa
-  languageName: node
-  linkType: hard
-
-"pino@npm:^8.5.0":
-  version: 8.10.0
-  resolution: "pino@npm:8.10.0"
-  dependencies:
-    atomic-sleep: ^1.0.0
-    fast-redact: ^3.1.1
-    on-exit-leak-free: ^2.1.0
-    pino-abstract-transport: v1.0.0
-    pino-std-serializers: ^6.0.0
-    process-warning: ^2.0.0
-    quick-format-unescaped: ^4.0.3
-    real-require: ^0.2.0
-    safe-stable-stringify: ^2.3.1
-    sonic-boom: ^3.1.0
-    thread-stream: ^2.0.0
-  bin:
-    pino: bin.js
-  checksum: cc7e908a8367756ead1c0078e659c8eb8db150194173c7e7f8a62deb09bd115606c886f1f22fbac7e65b236a72a418572f5a93138ae0dbf4455051e2b467fd34
   languageName: node
   linkType: hard
 
