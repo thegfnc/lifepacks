@@ -72,12 +72,12 @@ const Header = () => {
                         rounded={'full'}
                         variant={'link'}
                         cursor={'pointer'}
-                        h={12}
-                        w={12}
+                        h={10}
+                        w={10}
                       >
                         <Avatar
-                          h="40px"
-                          w="40px"
+                          h={10}
+                          w={10}
                           src={data?.currentUserProfile?.imageUrl}
                           name={data?.currentUserProfile?.givenName}
                         />

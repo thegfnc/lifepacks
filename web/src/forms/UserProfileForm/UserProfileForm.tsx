@@ -138,33 +138,33 @@ const UserProfileForm = ({
           <FormLabel>Social Links</FormLabel>
           <Stack>
             <InputGroup>
-              <InputLeftElement width="3.25rem">
+              <InputLeftElement width="2.75rem">
                 <SocialAccountIcon accountType={SocialAccountType.Facebook} />
               </InputLeftElement>
               <Input
-                pl="3.25rem"
+                pl="2.75rem"
                 placeholder="https://facebook.com/xxxx"
                 defaultValue={defaultValues?.facebookUrl}
                 {...register('facebookUrl')}
               />
             </InputGroup>
             <InputGroup>
-              <InputLeftElement width="3.25rem">
+              <InputLeftElement width="2.75rem">
                 <SocialAccountIcon accountType={SocialAccountType.Instagram} />
               </InputLeftElement>
               <Input
-                pl="3.25rem"
+                pl="2.75rem"
                 placeholder="https://instagram.com/xxxx"
                 defaultValue={defaultValues?.instagramUrl}
                 {...register('instagramUrl')}
               />
             </InputGroup>
             <InputGroup>
-              <InputLeftElement width="3.25rem">
+              <InputLeftElement width="2.75rem">
                 <SocialAccountIcon accountType={SocialAccountType.YouTube} />
               </InputLeftElement>
               <Input
-                pl="3.25rem"
+                pl="2.75rem"
                 placeholder="https://youtube.com/xxxx"
                 defaultValue={defaultValues?.youtubeUrl}
                 {...register('youtubeUrl')}
