@@ -5755,15 +5755,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redwoodjs/auth-supabase-web@npm:4.1.4":
-  version: 4.1.4
-  resolution: "@redwoodjs/auth-supabase-web@npm:4.1.4"
+"@redwoodjs/auth-supabase-web@npm:4.2.0":
+  version: 4.2.0
+  resolution: "@redwoodjs/auth-supabase-web@npm:4.2.0"
   dependencies:
     "@babel/runtime-corejs3": 7.20.13
-    core-js: 3.27.2
+    core-js: 3.28.0
   peerDependencies:
     "@supabase/supabase-js": 1.35.7
-  checksum: 2fecf117e10b8c36c8bd79d9dbf23916c78a3ed539d1869d8fd06deb5e4cefa42ae7224aed83dbac24e95e503a2f22bb69fecbae812ee068877ab0aafa3432f4
+  checksum: 3a4c9a3c0d47295fb88ad430dcc11766fbe160ac8671fb094b42430e03bb2495def974c62d09bef4208d97d9c7ee51174fec8a13b68bbb58ccf187a14ee18ec4
   languageName: node
   linkType: hard
 
@@ -12087,7 +12087,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.0.4, core-js@npm:^3.26.0, core-js@npm:^3.6.5, core-js@npm:^3.8.2":
+"core-js@npm:3.28.0, core-js@npm:^3.0.4, core-js@npm:^3.26.0, core-js@npm:^3.6.5, core-js@npm:^3.8.2":
   version: 3.28.0
   resolution: "core-js@npm:3.28.0"
   checksum: beaebefa83520ff2ca1eeeddccb17e373474966a7bd935134a1107cecb793798a0971feaf6a1a9f6bbd5b22b7dc1f81f72533eb24e3f6df079fff40fc26a21b4
@@ -25793,7 +25793,7 @@ __metadata:
     "@emotion/react": ^11
     "@emotion/styled": ^11
     "@redwoodjs/auth": 4.1.4
-    "@redwoodjs/auth-supabase-web": 4.1.4
+    "@redwoodjs/auth-supabase-web": 4.2.0
     "@redwoodjs/forms": 4.1.4
     "@redwoodjs/router": 4.1.4
     "@redwoodjs/web": 4.1.4

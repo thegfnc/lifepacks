@@ -18,7 +18,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@redwoodjs/auth": "4.1.4",
-    "@redwoodjs/auth-supabase-web": "4.1.4",
+    "@redwoodjs/auth-supabase-web": "4.2.0",
     "@redwoodjs/forms": "4.1.4",
     "@redwoodjs/router": "4.1.4",
     "@redwoodjs/web": "4.1.4",
