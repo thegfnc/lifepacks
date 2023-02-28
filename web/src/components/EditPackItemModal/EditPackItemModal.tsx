@@ -12,6 +12,9 @@ import {
   ModalContent,
   ModalOverlay,
   useDisclosure,
+  ModalBody,
+  ModalCloseButton,
+  ModalHeader,
 } from '@chakra-ui/react'
 
 import PackItemForm from 'src/forms/PackItemForm/PackItemForm'
@@ -64,12 +67,16 @@ const EditPackItemModal = ({
       <Modal onClose={onCloseWithDirtyCheck} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
-          <PackItemForm
-            onFormDirtyStateChange={setIsFormDirty}
-            onSubmit={onSubmit}
-            onCancel={onCloseWithDirtyCheck}
-            defaultValues={packItem}
-          />
+          <ModalHeader>{packItem ? 'Edit Item' : 'Add Item'}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <PackItemForm
+              onFormDirtyStateChange={setIsFormDirty}
+              onSubmit={onSubmit}
+              onCancel={onCloseWithDirtyCheck}
+              defaultValues={packItem}
+            />
+          </ModalBody>
         </ModalContent>
       </Modal>
       <AlertDialog
