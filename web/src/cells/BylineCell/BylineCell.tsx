@@ -13,8 +13,8 @@ type BylineCellSuccessProps = CellSuccessProps<
   FindBylineQuery,
   FindBylineQueryVariables
 > & {
-  mode: Mode
-  date: string
+  mode?: Mode
+  date?: string
 }
 
 export const QUERY = gql`
@@ -40,7 +40,7 @@ export const Failure = ({
 
 export const Success = ({
   userProfile,
-  mode,
+  mode = Mode.User,
   date,
 }: BylineCellSuccessProps) => {
   return mode === Mode.Pack ? (
@@ -52,7 +52,7 @@ export const Success = ({
       />
       <Text fontSize="lg">
         {userProfile.givenName} {userProfile.familyName} ·{' '}
-        {format(new Date(date), 'MMM d')}
+        {date && format(new Date(date), 'MMM d')}
       </Text>
     </HStack>
   ) : (

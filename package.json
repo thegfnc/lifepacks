@@ -8,8 +8,8 @@
     ]
   },
   "devDependencies": {
-    "@redwoodjs/auth-supabase-setup": "4.1.4",
-    "@redwoodjs/core": "4.1.4"
+    "@redwoodjs/auth-supabase-setup": "4.2.0",
+    "@redwoodjs/core": "4.2.0"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef, useState } from 'react'
 
 import {
   AlertDialog,
@@ -8,25 +8,16 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
-  IconButton,
-  Input,
   Modal,
+  ModalContent,
+  ModalOverlay,
+  useDisclosure,
   ModalBody,
   ModalCloseButton,
-  ModalContent,
-  ModalFooter,
   ModalHeader,
-  ModalOverlay,
-  Stack,
-  Textarea,
-  useDisclosure,
 } from '@chakra-ui/react'
-import { BiImageAdd } from 'react-icons/bi'
 
-import { Form, useForm } from '@redwoodjs/forms'
+import PackItemForm from 'src/forms/PackItemForm/PackItemForm'
 
 type EditPackItemFormValues = {
   title: string
@@ -45,19 +36,11 @@ type EditPackItemModalProps = {
 
 const EditPackItemModal = ({
   isOpen,
-  title,
   packItem,
   onClose,
   onSubmit,
 }: EditPackItemModalProps) => {
-  const formMethods = useForm<EditPackItemFormValues>()
-  const { register, formState } = formMethods
-
-  useEffect(() => {
-    if (!isOpen) {
-      formMethods.reset()
-    }
-  }, [isOpen, formMethods])
+  const [isFormDirty, setIsFormDirty] = useState(false)
 
   const {
     isOpen: isDiscardChangesModalOpen,
@@ -67,7 +50,7 @@ const EditPackItemModal = ({
   const cancelDiscardChangesRef = useRef()
 
   const onCloseWithDirtyCheck = () => {
-    if (formState.isDirty) {
+    if (isFormDirty) {
       onDiscardChangesModalOpen()
     } else {
       onClose()
@@ -84,81 +67,16 @@ const EditPackItemModal = ({
       <Modal onClose={onCloseWithDirtyCheck} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
-          {packItem && (
-            <Form formMethods={formMethods} onSubmit={onSubmit}>
-              <ModalHeader>{title}</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                <Stack spacing={4}>
-                  <FormControl isInvalid={Boolean(formState.errors.title)}>
-                    <FormLabel>Title*</FormLabel>
-                    <Input
-                      defaultValue={packItem.title}
-                      {...register('title', {
-                        required: {
-                          value: true,
-                          message: 'Pack item title is required',
-                        },
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {formState.errors.title?.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <FormControl
-                    isInvalid={Boolean(formState.errors.purchaseUrl)}
-                  >
-                    <FormLabel>Purchase Url*</FormLabel>
-                    <Input
-                      defaultValue={packItem.purchaseUrl}
-                      placeholder="amazon.com/xxxx"
-                      {...register('purchaseUrl', {
-                        required: {
-                          value: true,
-                          message: 'Pack item purchase url is required',
-                        },
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {formState.errors.purchaseUrl?.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel>Image*</FormLabel>
-                    <Input
-                      type="hidden"
-                      value="https://target.scene7.com/is/image/Target/GUEST_58639e78-ad9c-43ca-93fc-d0497a9f2585?wid=1000&hei=1000&qlt=80&fmt=webp"
-                      {...register('imageUrl')}
-                    />
-                    <IconButton
-                      aria-label="Upload image"
-                      icon={<BiImageAdd size="1.5rem" />}
-                      borderWidth="1px"
-                      borderColor="gray.200"
-                      h={'7.5rem'}
-                      w="100%"
-                    />
-                  </FormControl>
-                  <FormControl>
-                    <FormLabel>Description</FormLabel>
-                    <Textarea
-                      defaultValue={packItem.description}
-                      {...register('description')}
-                    />
-                  </FormControl>
-                </Stack>
-              </ModalBody>
-
-              <ModalFooter>
-                <Button mr={3} onClick={onCloseWithDirtyCheck}>
-                  Cancel
-                </Button>
-                <Button colorScheme="teal" type="submit">
-                  Apply
-                </Button>
-              </ModalFooter>
-            </Form>
-          )}
+          <ModalHeader>{packItem ? 'Edit Item' : 'Add Item'}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <PackItemForm
+              onFormDirtyStateChange={setIsFormDirty}
+              onSubmit={onSubmit}
+              onCancel={onCloseWithDirtyCheck}
+              defaultValues={packItem}
+            />
+          </ModalBody>
         </ModalContent>
       </Modal>
       <AlertDialog
@@ -178,6 +96,8 @@ const EditPackItemModal = ({
 
             <AlertDialogFooter>
               <Button
+                variant="outline"
+                colorScheme="gray"
                 ref={cancelDiscardChangesRef}
                 onClick={onDiscardChangesModalClose}
               >

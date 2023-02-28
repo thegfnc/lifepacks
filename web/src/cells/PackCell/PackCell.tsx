@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 
-import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import {
   Alert,
   AlertDialog,
@@ -15,6 +14,7 @@ import {
   IconButton,
   useDisclosure,
 } from '@chakra-ui/react'
+import { MdOutlineModeEdit, MdDeleteOutline } from 'react-icons/md'
 import type {
   FindPackQuery,
   FindPackQueryVariables,
@@ -25,7 +25,7 @@ import type {
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
 
-import Pack from '../Pack/Pack'
+import Pack from '../../components/Pack/Pack'
 
 type PackCellSuccessProps = CellSuccessProps<
   FindPackQuery,
@@ -116,14 +116,15 @@ export const Success = ({
             <HStack>
               <Button
                 as={Link}
-                leftIcon={<EditIcon />}
+                leftIcon={<MdOutlineModeEdit />}
                 variant="outline"
+                colorScheme="gray"
                 to={routes.editPack({ id: pack.id })}
               >
                 Edit Pack
               </Button>
               <IconButton
-                icon={<DeleteIcon />}
+                icon={<MdDeleteOutline />}
                 aria-label="Delete Pack"
                 colorScheme="red"
                 onClick={onDeleteAlertOpen}
@@ -149,7 +150,12 @@ export const Success = ({
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelDeleteRef} onClick={onDeleteAlertClose}>
+              <Button
+                variant="outline"
+                colorScheme="gray"
+                ref={cancelDeleteRef}
+                onClick={onDeleteAlertClose}
+              >
                 Cancel
               </Button>
               <Button

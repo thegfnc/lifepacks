@@ -41,7 +41,6 @@ const HomePage = () => {
               </Text>
               <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
                 <Button
-                  rounded={'full'}
                   bg={'blue.400'}
                   color={'white'}
                   _hover={{
@@ -50,7 +49,7 @@ const HomePage = () => {
                 >
                   Create Project
                 </Button>
-                <Button rounded={'full'}>How It Works</Button>
+                <Button>How It Works</Button>
               </Stack>
             </Stack>
           </Flex>

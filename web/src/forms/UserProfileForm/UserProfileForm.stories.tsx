@@ -4,8 +4,8 @@
 // ```tsx
 // import type { ComponentStory } from '@storybook/react'
 //
-// export const generated: ComponentStory<typeof PackForm> = (args) => {
-//   return <PackForm {...args} />
+// export const generated: ComponentStory<typeof UserProfileForm> = (args) => {
+//   return <UserProfileForm {...args} />
 // }
 // ```
 //
@@ -13,19 +13,13 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import PackForm from './PackForm'
+import UserProfileForm from './UserProfileForm'
 
 export const generated = () => {
-  return (
-    <PackForm
-      onSubmit={() => {}}
-      submitButtonText="Create Pack"
-      isLoading={false}
-    />
-  )
+  return <UserProfileForm onSubmit={() => {}} isLoading={false} />
 }
 
 export default {
-  title: 'Components/PackForm',
-  component: PackForm,
-} as ComponentMeta<typeof PackForm>
+  title: 'Components/UserProfileForm',
+  component: UserProfileForm,
+} as ComponentMeta<typeof UserProfileForm>

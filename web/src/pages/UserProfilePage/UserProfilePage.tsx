@@ -1,29 +1,17 @@
-import { EditIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Stack, useDisclosure } from '@chakra-ui/react'
+import { Box, Flex, Stack } from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
-import BylineCell, { Mode } from 'src/components/BylineCell/BylineCell'
-import EditUserProfileModal from 'src/components/EditUserProfileModal/EditUserProfileModal'
-import PacksCell from 'src/components/PacksCell/PacksCell'
+import BylineCell, { Mode } from 'src/cells/BylineCell'
+import PacksCell from 'src/cells/PacksCell'
+import UserProfileSidebarCell from 'src/cells/UserProfileSidebarCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
-import UserProfileSidebarCell from 'src/components/UserProfileSidebarCell/UserProfileSidebarCell'
-import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 type UserProfilePageProps = {
   username: string
 }
 
 const UserProfilePage = ({ username }: UserProfilePageProps) => {
-  const { data } = useCurrentUserProfile()
-  const isCurrentUser = username === data?.currentUserProfile?.username
-
-  const {
-    isOpen: isEditModalOpen,
-    onOpen: onEditModalOpen,
-    onClose: onEditModalClose,
-  } = useDisclosure()
-
   return (
     <>
       <MetaTags title="User" description="User page" />
@@ -41,26 +29,8 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
             paddingLeft={14}
           >
             <UserProfileSidebarCell username={username} />
-
-            {isCurrentUser && (
-              <Button
-                leftIcon={<EditIcon />}
-                variant="outline"
-                mt={4}
-                onClick={onEditModalOpen}
-              >
-                Edit Profile
-              </Button>
-            )}
           </Box>
         </Flex>
-
-        {isCurrentUser && (
-          <EditUserProfileModal
-            isOpen={isEditModalOpen}
-            onClose={onEditModalClose}
-          />
-        )}
       </PageContainer>
     </>
   )

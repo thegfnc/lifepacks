@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons'
 import {
   Flex,
   Box,
@@ -8,15 +7,10 @@ import {
   Heading,
   Text,
   Button,
-  useBoolean,
   Alert,
   AlertIcon,
   FormControl,
   FormLabel,
-  InputGroup,
-  Input,
-  InputRightElement,
-  IconButton,
   FormErrorMessage,
 } from '@chakra-ui/react'
 
@@ -26,6 +20,7 @@ import { MetaTags } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
+import PasswordInput from 'src/fields/PasswordInput/PasswordInput'
 
 type ResetPasswordFormValues = {
   password: string
@@ -38,7 +33,6 @@ const ForgotPasswordPage = () => {
 
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
-  const [isShowingPassword, setIsShowingPassword] = useBoolean()
 
   const onSubmit = async (data: ResetPasswordFormValues) => {
     let errorMessage = null
@@ -77,7 +71,7 @@ const ForgotPasswordPage = () => {
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
         <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
           <Stack align={'center'}>
-            <Heading fontSize={{ base: '3xl', md: '4xl' }}>
+            <Heading fontSize={{ base: '2xl', md: '3xl' }}>
               Reset Password
             </Heading>
             <Text fontSize={'lg'} color={'gray.600'}>
@@ -96,32 +90,15 @@ const ForgotPasswordPage = () => {
 
                 <FormControl isInvalid={Boolean(formState.errors.password)}>
                   <FormLabel>Password</FormLabel>
-                  <InputGroup size="md">
-                    <Input
-                      type={isShowingPassword ? 'text' : 'password'}
-                      autoComplete="current-password"
-                      pr="2.75rem"
-                      {...register('password', {
-                        required: {
-                          value: true,
-                          message: 'Password is required',
-                        },
-                      })}
-                    />
-                    <InputRightElement width="2.75rem">
-                      <IconButton
-                        h="1.75rem"
-                        size="sm"
-                        aria-label={
-                          isShowingPassword ? 'Hide Password' : 'Show Password'
-                        }
-                        icon={
-                          isShowingPassword ? <ViewOffIcon /> : <ViewIcon />
-                        }
-                        onClick={setIsShowingPassword.toggle}
-                      />
-                    </InputRightElement>
-                  </InputGroup>
+                  <PasswordInput
+                    autoComplete="new-password"
+                    {...register('password', {
+                      required: {
+                        value: true,
+                        message: 'Password is required',
+                      },
+                    })}
+                  />
                   <FormErrorMessage>
                     {formState.errors.password?.message}
                   </FormErrorMessage>

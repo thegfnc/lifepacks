@@ -1,6 +1,5 @@
-import { useReducer, useState } from 'react'
+import { Fragment, useReducer, useState } from 'react'
 
-import { AddIcon } from '@chakra-ui/icons'
 import {
   FormErrorMessage,
   AlertDialog,
@@ -20,14 +19,12 @@ import { Pack, PackItem } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
+import EditPackItemModal from 'src/components/EditPackItemModal/EditPackItemModal'
+import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
-
-import EditPackItemModal from '../EditPackItemModal/EditPackItemModal'
-import PackItemEditable from '../PackItemEditable/PackItemEditable'
 
 type PackFormProps = {
   onSubmit: (data: PackFormSubmitData) => void
-  submitButtonText: string
   isLoading: boolean
   defaultValues?: Pick<Pack, 'title' | 'description'> & {
     packItems: Pick<
@@ -90,12 +87,7 @@ function packItemsReducer(packItems, action) {
   }
 }
 
-const PackForm = ({
-  onSubmit,
-  submitButtonText,
-  isLoading,
-  defaultValues,
-}: PackFormProps) => {
+const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   const formMethods = useForm<PackFormValues>()
   const { register, formState } = formMethods
 
@@ -231,39 +223,40 @@ const PackForm = ({
             </FormErrorMessage>
           </FormControl>
           <Button
-            leftIcon={<AddIcon boxSize={3} />}
+            variant="outline"
+            colorScheme="gray"
             onClick={createOpenAddPackItemModal(0)}
           >
             Add Item
           </Button>
           <Stack spacing={6}>
             {packItems.map((packItem, index) => (
-              <PackItemEditable
-                key={packItem.id || packItem.title}
-                imageUrl={packItem.imageUrl}
-                purchaseUrl={packItem.purchaseUrl}
-                title={packItem.title}
-                description={packItem.description}
-                hideMoveItemUp={Boolean(index === 0)}
-                moveItemUp={createMovePackItemUp(index)}
-                hideMoveItemDown={Boolean(index === packItems.length - 1)}
-                moveItemDown={createMovePackItemDown(index)}
-                editItem={createOpenEditPackItemModal(index)}
-                deleteItem={createOpenDeletePackItemAlert(index)}
-              />
+              <Fragment key={packItem.id || packItem.title}>
+                <PackItemEditable
+                  imageUrl={packItem.imageUrl}
+                  purchaseUrl={packItem.purchaseUrl}
+                  title={packItem.title}
+                  description={packItem.description}
+                  hideMoveItemUp={Boolean(index === 0)}
+                  moveItemUp={createMovePackItemUp(index)}
+                  hideMoveItemDown={Boolean(index === packItems.length - 1)}
+                  moveItemDown={createMovePackItemDown(index)}
+                  editItem={createOpenEditPackItemModal(index)}
+                  deleteItem={createOpenDeletePackItemAlert(index)}
+                />
+                <Button
+                  variant="outline"
+                  colorScheme="gray"
+                  onClick={createOpenAddPackItemModal(index + 1)}
+                >
+                  Add Item
+                </Button>
+              </Fragment>
             ))}
           </Stack>
-          {packItems.length > 0 && (
-            <Button
-              leftIcon={<AddIcon boxSize={3} />}
-              onClick={createOpenAddPackItemModal(packItems.length)}
-            >
-              Add Item
-            </Button>
-          )}
           <Flex justifyContent="flex-end">
-            <Button type="submit" colorScheme="teal" isLoading={isLoading}>
-              {submitButtonText}
+            <Button type="submit" colorScheme="green" isLoading={isLoading}>
+              {defaultValues ? 'Update Pack' : 'Create Pack'}
             </Button>
           </Flex>
         </Stack>
@@ -271,7 +264,7 @@ const PackForm = ({
       <EditPackItemModal
         isOpen={isEditModalOpen}
         title={editModalStatus === 'ADD' ? 'Add Item' : 'Edit Item'}
-        packItem={editModalStatus === 'ADD' ? {} : packItems[indexToEdit]}
+        packItem={editModalStatus === 'ADD' ? null : packItems[indexToEdit]}
         onClose={onEditModalClose}
         onSubmit={editPackItem}
       />
@@ -292,7 +285,12 @@ const PackForm = ({
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelDeleteRef} onClick={onDeleteAlertClose}>
+              <Button
+                variant="outline"
+                colorScheme="gray"
+                ref={cancelDeleteRef}
+                onClick={onDeleteAlertClose}
+              >
                 Cancel
               </Button>
               <Button colorScheme="red" onClick={deletePackItem} ml={3}>

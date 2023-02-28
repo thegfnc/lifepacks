@@ -7,7 +7,7 @@ import type {
 import { routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 
-import PackForm, { PackFormSubmitData } from '../PackForm/PackForm'
+import PackForm, { PackFormSubmitData } from 'src/forms/PackForm/PackForm'
 
 type NewPackProps = {
   username: string
@@ -46,11 +46,7 @@ const NewPack = ({ username }: NewPackProps) => {
           {error.message}
         </Alert>
       )}
-      <PackForm
-        onSubmit={onSubmit}
-        submitButtonText="Create Pack"
-        isLoading={loading}
-      />
+      <PackForm onSubmit={onSubmit} isLoading={loading} />
     </>
   )
 }
