@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { Image, Input } from '@chakra-ui/react'
+import { Center, IconButton, Image, Input, Spinner } from '@chakra-ui/react'
+import { MdDeleteOutline } from 'react-icons/md'
 import slug from 'slug'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -28,11 +29,10 @@ function ImageUploadField<
 }: UseControllerProps<TFieldValues, TName> & ImageUploadFieldProps) {
   const { field } = useController({ name, control })
   const [previewImageUrl, setPreviewImageUrl] = useState(null)
+  const [isUploading, setIsUploading] = useState(false)
 
   useEffect(() => {
-    if (field.value) {
-      setPreviewImageUrl(field.value)
-    }
+    setPreviewImageUrl(field.value)
   }, [field.value])
 
   // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
@@ -47,6 +47,8 @@ function ImageUploadField<
       fileExtenstion,
       ''
     )
+
+    setIsUploading(true)
     setPreviewImageUrl(URL.createObjectURL(imageFile))
 
     const imageFileName =
@@ -62,19 +64,65 @@ function ImageUploadField<
       .getPublicUrl(imageFileName)
 
     field.onChange(publicURL)
+
+    setIsUploading(false)
+  }
+
+  const onDeleteImage = () => {
+    field.onChange(null)
   }
 
   return (
-    <>
-      <Input
-        type="file"
-        onChange={onInputChange}
-        onBlur={field.onBlur}
-        name={field.name}
-        ref={field.ref}
-      />
-      {previewImageUrl && <Image src={previewImageUrl} />}
-    </>
+    <Center
+      h={32}
+      position="relative"
+      bg="blackAlpha.100"
+      borderWidth="1px"
+      borderColor="blackAlpha.200"
+      borderRadius="xl"
+    >
+      {previewImageUrl ? (
+        <>
+          <Image src={previewImageUrl} fit="contain" h="full" />
+          {isUploading && (
+            <Center
+              bg="blackAlpha.300"
+              position="absolute"
+              top={0}
+              left={0}
+              h="full"
+              w="full"
+            >
+              <Spinner size="lg" color="white" emptyColor="blackAlpha.500" />
+            </Center>
+          )}
+          <IconButton
+            colorScheme="whiteAlpha"
+            bg="white"
+            position="absolute"
+            top={2}
+            right={2}
+            aria-label="Delete Image"
+            icon={<MdDeleteOutline size="24px" />}
+            color="red.500"
+            size="md"
+            borderRadius="xl"
+            boxShadow="md"
+            borderWidth="1px"
+            borderColor="blackAlpha.200"
+            onClick={onDeleteImage}
+          />
+        </>
+      ) : (
+        <Input
+          type="file"
+          onChange={onInputChange}
+          onBlur={field.onBlur}
+          name={field.name}
+          ref={field.ref}
+        />
+      )}
+    </Center>
   )
 }
 
