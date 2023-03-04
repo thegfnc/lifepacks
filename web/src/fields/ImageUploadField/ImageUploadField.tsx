@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 
-import { Center, IconButton, Image, Input, Spinner } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Center,
+  IconButton,
+  Image,
+  Input,
+  Spinner,
+} from '@chakra-ui/react'
 import { MdDeleteOutline } from 'react-icons/md'
 import slug from 'slug'
 import { v4 as uuidv4 } from 'uuid'
@@ -114,13 +122,29 @@ function ImageUploadField<
           />
         </>
       ) : (
-        <Input
-          type="file"
-          onChange={onInputChange}
-          onBlur={field.onBlur}
-          name={field.name}
-          ref={field.ref}
-        />
+        <Box w="full" px={6}>
+          <Button
+            as="label"
+            htmlFor="fileInput"
+            w="full"
+            colorScheme="gray"
+            cursor="pointer"
+            bg="none"
+            borderWidth="1px"
+            borderColor="blackAlpha.300"
+          >
+            Select Image
+          </Button>
+          <Input
+            id="fileInput"
+            display="none"
+            type="file"
+            onChange={onInputChange}
+            onBlur={field.onBlur}
+            name={field.name}
+            ref={field.ref}
+          />
+        </Box>
       )}
     </Center>
   )
