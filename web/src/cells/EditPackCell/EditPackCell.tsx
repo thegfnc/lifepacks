@@ -10,6 +10,7 @@ import { routes, navigate } from '@redwoodjs/router'
 import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
 
 import PackForm, { PackFormSubmitData } from 'src/forms/PackForm/PackForm'
+import stripTypename from 'src/helpers/stripTypename'
 
 type EditPackCellProps = CellSuccessProps<
   FindEditPackQuery,
@@ -79,7 +80,11 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
           {error.message}
         </Alert>
       )}
-      <PackForm onSubmit={onSubmit} isLoading={loading} defaultValues={pack} />
+      <PackForm
+        onSubmit={onSubmit}
+        isLoading={loading}
+        defaultValues={stripTypename(pack)}
+      />
     </>
   )
 }

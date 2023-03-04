@@ -38,7 +38,7 @@ const PackItemForm = ({
   onCancel,
   defaultValues,
 }: PackItemFormProps) => {
-  const formMethods = useForm<PackItemFormValues>()
+  const formMethods = useForm<PackItemFormValues>({ defaultValues })
   const { register, formState } = formMethods
 
   useEffect(() => {
@@ -51,7 +51,6 @@ const PackItemForm = ({
         <FormControl isInvalid={Boolean(formState.errors.title)}>
           <FormLabel>Title*</FormLabel>
           <Input
-            defaultValue={defaultValues?.title}
             {...register('title', {
               required: {
                 value: true,
@@ -64,7 +63,6 @@ const PackItemForm = ({
         <FormControl isInvalid={Boolean(formState.errors.purchaseUrl)}>
           <FormLabel>Purchase Url*</FormLabel>
           <Input
-            defaultValue={defaultValues?.purchaseUrl}
             placeholder="amazon.com/xxxx"
             {...register('purchaseUrl', {
               required: {
@@ -95,10 +93,7 @@ const PackItemForm = ({
         </FormControl>
         <FormControl>
           <FormLabel>Description</FormLabel>
-          <Textarea
-            defaultValue={defaultValues?.description}
-            {...register('description')}
-          />
+          <Textarea {...register('description')} />
         </FormControl>
         <HStack justify="flex-end" spacing={2}>
           {onCancel && (

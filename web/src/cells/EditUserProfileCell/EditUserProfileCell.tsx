@@ -15,6 +15,7 @@ import { QUERY as USER_PROFILE_SIDEBAR_CELL_QUERY } from 'src/cells/UserProfileS
 import UserProfileForm, {
   UserProfileFormSubmitData,
 } from 'src/forms/UserProfileForm/UserProfileForm'
+import stripTypename from 'src/helpers/stripTypename'
 import { CURRENT_USER_PROFILE_QUERY } from 'src/hooks/useCurrentUserProfile'
 
 type EditUserProfileCellProps = CellSuccessProps<
@@ -102,7 +103,7 @@ export const Success = ({
         onSubmit={onSubmit}
         onCancel={onCancel}
         isLoading={loading}
-        defaultValues={currentUserProfile}
+        defaultValues={stripTypename(currentUserProfile)}
       />
     </>
   )

@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react'
 
 import PackItemForm from 'src/forms/PackItemForm/PackItemForm'
+import stripTypename from 'src/helpers/stripTypename'
 
 type EditPackItemFormValues = {
   title: string
@@ -74,7 +75,7 @@ const EditPackItemModal = ({
               onFormDirtyStateChange={setIsFormDirty}
               onSubmit={onSubmit}
               onCancel={onCloseWithDirtyCheck}
-              defaultValues={packItem}
+              defaultValues={stripTypename(packItem)}
             />
           </ModalBody>
         </ModalContent>

@@ -21,6 +21,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 import SocialAccountIcon, {
   SocialAccountType,
 } from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
 
 type UserProfileFormProps = {
   onFormDirtyStateChange?: Dispatch<SetStateAction<boolean>>
@@ -32,6 +33,7 @@ type UserProfileFormProps = {
     | 'username'
     | 'givenName'
     | 'familyName'
+    | 'imageUrl'
     | 'biography'
     | 'facebookUrl'
     | 'instagramUrl'
@@ -43,6 +45,7 @@ type UserProfileFormValues = {
   username: string
   givenName: string
   familyName: string
+  imageUrl: string
   biography: string
   facebookUrl: string
   instagramUrl: string
@@ -58,8 +61,13 @@ const UserProfileForm = ({
   isLoading,
   defaultValues,
 }: UserProfileFormProps) => {
-  const formMethods = useForm<UserProfileFormValues>()
-  const { register, formState } = formMethods
+  const { username, ...defaultValuesWithoutUsername } = defaultValues
+  const isUpdateForm = Boolean(defaultValues)
+
+  const formMethods = useForm<UserProfileFormValues>({
+    defaultValues: defaultValuesWithoutUsername,
+  })
+  const { register, formState, control } = formMethods
 
   useEffect(() => {
     onFormDirtyStateChange(formState.isDirty)
@@ -71,30 +79,28 @@ const UserProfileForm = ({
         <Stack spacing={4}>
           <FormControl>
             <FormLabel>Profile Image</FormLabel>
-            <IconButton
-              aria-label="Upload image"
-              icon={<BiImageAdd size="1.5rem" />}
-              borderWidth="1px"
-              borderColor="gray.300"
-              borderStyle="dashed"
-              borderRadius="full"
-              boxSize={24}
+            <ImageUploadField
+              bucket="user-profile-images"
+              name="imageUrl"
+              control={control}
             />
           </FormControl>
 
           <FormControl isInvalid={Boolean(formState.errors.username)}>
             <FormLabel>Username*</FormLabel>
-            <Input
-              autoComplete="username"
-              disabled={Boolean(defaultValues)}
-              defaultValue={defaultValues?.username}
-              {...register('username', {
-                required: {
-                  value: !defaultValues,
-                  message: 'Username is required',
-                },
-              })}
-            />
+            {isUpdateForm ? (
+              <Input disabled={true} defaultValue={username} />
+            ) : (
+              <Input
+                autoComplete="username"
+                {...register('username', {
+                  required: {
+                    value: true,
+                    message: 'Username is required',
+                  },
+                })}
+              />
+            )}
             <FormErrorMessage>
               {formState.errors.username?.message}
             </FormErrorMessage>
@@ -102,11 +108,7 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.givenName)}>
             <FormLabel>First Name</FormLabel>
-            <Input
-              autoComplete="given-name"
-              defaultValue={defaultValues?.givenName}
-              {...register('givenName')}
-            />
+            <Input autoComplete="given-name" {...register('givenName')} />
             <FormErrorMessage>
               {formState.errors.givenName?.message}
             </FormErrorMessage>
@@ -114,11 +116,7 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.familyName)}>
             <FormLabel>Last Name</FormLabel>
-            <Input
-              autoComplete="family-name"
-              defaultValue={defaultValues?.familyName}
-              {...register('familyName')}
-            />
+            <Input autoComplete="family-name" {...register('familyName')} />
             <FormErrorMessage>
               {formState.errors.familyName?.message}
             </FormErrorMessage>
@@ -126,10 +124,7 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.biography)}>
             <FormLabel>Biography</FormLabel>
-            <Textarea
-              defaultValue={defaultValues?.biography}
-              {...register('biography')}
-            />
+            <Textarea {...register('biography')} />
             <FormErrorMessage>
               {formState.errors.biography?.message}
             </FormErrorMessage>
@@ -144,7 +139,6 @@ const UserProfileForm = ({
               <Input
                 pl="2.75rem"
                 placeholder="https://facebook.com/xxxx"
-                defaultValue={defaultValues?.facebookUrl}
                 {...register('facebookUrl')}
               />
             </InputGroup>
@@ -155,7 +149,6 @@ const UserProfileForm = ({
               <Input
                 pl="2.75rem"
                 placeholder="https://instagram.com/xxxx"
-                defaultValue={defaultValues?.instagramUrl}
                 {...register('instagramUrl')}
               />
             </InputGroup>
@@ -166,7 +159,6 @@ const UserProfileForm = ({
               <Input
                 pl="2.75rem"
                 placeholder="https://youtube.com/xxxx"
-                defaultValue={defaultValues?.youtubeUrl}
                 {...register('youtubeUrl')}
               />
             </InputGroup>
@@ -183,7 +175,7 @@ const UserProfileForm = ({
               </Button>
             )}
             <Button type="submit" colorScheme="purple" isLoading={isLoading}>
-              {defaultValues ? 'Update Profile' : 'Create Profile'}
+              {isUpdateForm ? 'Update Profile' : 'Create Profile'}
             </Button>
           </Flex>
         </Stack>

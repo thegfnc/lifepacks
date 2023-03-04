@@ -9429,7 +9429,6 @@ __metadata:
     "@redwoodjs/auth-supabase-api": 4.2.0
     "@redwoodjs/graphql-server": 4.2.0
     jsonwebtoken: ^9.0.0
-    slug: ^8.2.2
   languageName: unknown
   linkType: soft
 
@@ -22626,6 +22625,7 @@ __metadata:
   dependencies:
     "@redwoodjs/auth-supabase-setup": 4.2.0
     "@redwoodjs/core": 4.2.0
+    slug: ^8.2.2
   languageName: unknown
   linkType: soft
 
@@ -25677,6 +25677,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-icons: ^4.7.1
+    uuid: ^9.0.0
   languageName: unknown
   linkType: soft
 
