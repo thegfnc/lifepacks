@@ -6,15 +6,15 @@ import {
   FormErrorMessage,
   FormLabel,
   HStack,
-  IconButton,
   Input,
   Stack,
   Textarea,
 } from '@chakra-ui/react'
-import { BiImageAdd } from 'react-icons/bi'
 import { PackItem } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
+
+import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
 
 type PackItemFormProps = {
   onFormDirtyStateChange?: Dispatch<SetStateAction<boolean>>
@@ -39,7 +39,7 @@ const PackItemForm = ({
   defaultValues,
 }: PackItemFormProps) => {
   const formMethods = useForm<PackItemFormValues>({ defaultValues })
-  const { register, formState } = formMethods
+  const { register, formState, control } = formMethods
 
   useEffect(() => {
     onFormDirtyStateChange(formState.isDirty)
@@ -75,21 +75,19 @@ const PackItemForm = ({
             {formState.errors.purchaseUrl?.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl>
+        <FormControl isInvalid={Boolean(formState.errors.imageUrl)}>
           <FormLabel>Image*</FormLabel>
-          <Input
-            type="hidden"
-            value="https://target.scene7.com/is/image/Target/GUEST_58639e78-ad9c-43ca-93fc-d0497a9f2585?wid=1000&hei=1000&qlt=80&fmt=webp"
-            {...register('imageUrl')}
+          <ImageUploadField
+            bucket="pack-item-images"
+            name="imageUrl"
+            control={control}
+            rules={{
+              required: { value: true, message: 'Pack item image is required' },
+            }}
           />
-          <IconButton
-            aria-label="Upload image"
-            icon={<BiImageAdd size="1.5rem" />}
-            borderWidth="1px"
-            borderColor="gray.200"
-            h={'7.5rem'}
-            w="100%"
-          />
+          <FormErrorMessage>
+            {formState.errors.imageUrl?.message}
+          </FormErrorMessage>
         </FormControl>
         <FormControl>
           <FormLabel>Description</FormLabel>

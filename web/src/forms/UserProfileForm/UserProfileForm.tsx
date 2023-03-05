@@ -6,14 +6,12 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  IconButton,
   Input,
   InputGroup,
   InputLeftElement,
   Stack,
   Textarea,
 } from '@chakra-ui/react'
-import { BiImageAdd } from 'react-icons/bi'
 import { CurrentUserProfile } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'

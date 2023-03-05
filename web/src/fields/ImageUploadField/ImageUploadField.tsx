@@ -24,7 +24,7 @@ import supabaseClient from 'src/client'
 import getFileExtension from 'src/helpers/getFileExtension'
 
 type ImageUploadFieldProps = {
-  bucket: 'user-profile-images'
+  bucket: 'pack-item-images' | 'user-profile-images'
 }
 
 function ImageUploadField<
@@ -34,8 +34,9 @@ function ImageUploadField<
   bucket,
   control,
   name,
+  rules,
 }: UseControllerProps<TFieldValues, TName> & ImageUploadFieldProps) {
-  const { field } = useController({ name, control })
+  const { field, fieldState } = useController({ name, control, rules })
   const [previewImageUrl, setPreviewImageUrl] = useState(null)
   const [isUploading, setIsUploading] = useState(false)
 
@@ -85,8 +86,8 @@ function ImageUploadField<
       h={32}
       position="relative"
       bg="blackAlpha.100"
-      borderWidth="1px"
-      borderColor="blackAlpha.200"
+      borderWidth={fieldState.invalid ? '2px' : '1px'}
+      borderColor={fieldState.invalid ? 'red.500' : 'blackAlpha.200'}
       borderRadius="xl"
     >
       {previewImageUrl ? (
