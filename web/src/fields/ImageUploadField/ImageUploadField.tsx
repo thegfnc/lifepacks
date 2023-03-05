@@ -9,6 +9,7 @@ import {
   Input,
   Spinner,
 } from '@chakra-ui/react'
+import Compressor from 'compressorjs'
 import { MdDeleteOutline } from 'react-icons/md'
 import slug from 'slug'
 import { v4 as uuidv4 } from 'uuid'
@@ -49,7 +50,7 @@ function ImageUploadField<
     return () => URL.revokeObjectURL(previewImageUrl)
   }, [previewImageUrl])
 
-  const onInputChange = async (event) => {
+  const onChange = async (event) => {
     const imageFile = event.target.files[0]
     const fileExtenstion = getFileExtension(imageFile.name)
     const imageFileNameWithoutExtension = imageFile.name.replace(
@@ -60,21 +61,35 @@ function ImageUploadField<
     setIsUploading(true)
     setPreviewImageUrl(URL.createObjectURL(imageFile))
 
-    const imageFileName =
-      slug(uuidv4() + '-' + imageFileNameWithoutExtension) + fileExtenstion
+    /* eslint-disable no-new */
+    new Compressor(imageFile, {
+      quality: 0.8,
+      maxHeight: 2000,
+      maxWidth: 2000,
+      success: async function success(compressedImageFile) {
+        const imageFileName =
+          slug(uuidv4() + '-' + imageFileNameWithoutExtension) + fileExtenstion
 
-    await supabaseClient.storage.from(bucket).upload(imageFileName, imageFile, {
-      cacheControl: '3600',
-      upsert: true,
+        await supabaseClient.storage
+          .from(bucket)
+          .upload(imageFileName, compressedImageFile, {
+            cacheControl: '3600',
+            upsert: true,
+          })
+
+        const { publicURL } = await supabaseClient.storage
+          .from(bucket)
+          .getPublicUrl(imageFileName)
+
+        field.onChange(publicURL)
+
+        setIsUploading(false)
+      },
+      error(err) {
+        console.log(err.message)
+      },
     })
-
-    const { publicURL } = await supabaseClient.storage
-      .from(bucket)
-      .getPublicUrl(imageFileName)
-
-    field.onChange(publicURL)
-
-    setIsUploading(false)
+    /* eslint-enable no-new */
   }
 
   const onDeleteImage = () => {
@@ -83,7 +98,7 @@ function ImageUploadField<
 
   return (
     <Center
-      h={32}
+      h={40}
       position="relative"
       bg="blackAlpha.100"
       borderWidth={fieldState.invalid ? '2px' : '1px'}
@@ -140,7 +155,7 @@ function ImageUploadField<
             id="fileInput"
             display="none"
             type="file"
-            onChange={onInputChange}
+            onChange={onChange}
             onBlur={field.onBlur}
             name={field.name}
             ref={field.ref}
