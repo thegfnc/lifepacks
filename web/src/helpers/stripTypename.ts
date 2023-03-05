@@ -1,11 +1,11 @@
-const stripTypename = (obj: any): any => {
+const stripTypename = (obj) => {
   if (Array.isArray(obj)) {
     return obj.map(stripTypename)
   }
 
   const copy = { ...obj }
 
-  if (copy.hasOwnProperty('__typename')) {
+  if (Object.prototype.hasOwnProperty.call(copy, '__typename')) {
     delete copy.__typename
   }
 
