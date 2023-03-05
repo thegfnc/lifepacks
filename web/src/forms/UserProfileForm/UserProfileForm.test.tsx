@@ -6,6 +6,8 @@ import UserProfileForm from './UserProfileForm'
 //    https://redwoodjs.com/docs/testing#testing-components
 
 describe('UserProfileForm', () => {
+  global.URL.revokeObjectURL = jest.fn()
+
   it('renders successfully', () => {
     expect(() => {
       render(<UserProfileForm onSubmit={() => {}} isLoading={false} />)

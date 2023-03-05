@@ -59,7 +59,7 @@ const UserProfileForm = ({
   isLoading,
   defaultValues,
 }: UserProfileFormProps) => {
-  const { username, ...defaultValuesWithoutUsername } = defaultValues
+  const { username, ...defaultValuesWithoutUsername } = defaultValues || {}
   const isUpdateForm = Boolean(defaultValues)
 
   const formMethods = useForm<UserProfileFormValues>({

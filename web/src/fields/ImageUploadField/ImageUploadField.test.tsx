@@ -1,4 +1,5 @@
-import { render } from '@redwoodjs/testing/web'
+import { useForm } from '@redwoodjs/forms'
+import { render, renderHook } from '@redwoodjs/testing/web'
 
 import ImageUploadField from './ImageUploadField'
 
@@ -7,8 +8,17 @@ import ImageUploadField from './ImageUploadField'
 
 describe('ImageUploadField', () => {
   it('renders successfully', () => {
+    global.URL.revokeObjectURL = jest.fn()
+    const { result } = renderHook(() => useForm())
+
     expect(() => {
-      render(<ImageUploadField />)
+      render(
+        <ImageUploadField
+          control={result.current.control}
+          bucket="pack-item-images"
+          name="imageUrl"
+        />
+      )
     }).not.toThrow()
   })
 })

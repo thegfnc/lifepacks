@@ -10,6 +10,8 @@ import { standard } from './EditUserProfileCell.mock'
 // https://redwoodjs.com/docs/testing#jest-expect-type-considerations
 
 describe('EditUserProfileCell', () => {
+  global.URL.revokeObjectURL = jest.fn()
+
   it('renders Loading successfully', () => {
     expect(() => {
       render(<Loading />)
