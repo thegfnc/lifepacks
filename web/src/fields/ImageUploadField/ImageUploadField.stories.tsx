@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import ImageUploadField from './ImageUploadField'
 
 export const generated = () => {
-  return <ImageUploadField />
+  return <ImageUploadField bucket="user-profile-images" name="imageUrl" />
 }
 
 export default {
