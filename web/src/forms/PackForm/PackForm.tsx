@@ -88,7 +88,7 @@ function packItemsReducer(packItems, action) {
 }
 
 const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
-  const formMethods = useForm<PackFormValues>()
+  const formMethods = useForm<PackFormValues>({ defaultValues })
   const { register, formState } = formMethods
 
   const [packItems, dispatch] = useReducer(
@@ -196,7 +196,6 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               variant="unstyled"
               size="lg"
               lineHeight={1}
-              defaultValue={defaultValues?.title}
               {...register('title', {
                 required: {
                   value: true,
@@ -215,7 +214,6 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               lineHeight={7}
               color="blackAlpha.800"
               variant="unstyled"
-              defaultValue={defaultValues?.description}
               {...register('description')}
             />
             <FormErrorMessage>

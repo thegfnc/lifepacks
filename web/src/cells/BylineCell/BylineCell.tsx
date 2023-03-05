@@ -51,8 +51,8 @@ export const Success = ({
         name={userProfile?.givenName}
       />
       <Text fontSize="lg">
-        {userProfile.givenName} {userProfile.familyName} ·{' '}
-        {date && format(new Date(date), 'MMM d')}
+        {userProfile.givenName} {userProfile.familyName}
+        {date && ' · ' + format(new Date(date), 'MMM d')}
       </Text>
     </HStack>
   ) : (
