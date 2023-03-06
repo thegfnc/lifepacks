@@ -5,8 +5,8 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  HStack,
   Input,
+  SimpleGrid,
   Stack,
   Textarea,
 } from '@chakra-ui/react'
@@ -93,17 +93,30 @@ const PackItemForm = ({
           <FormLabel>Description</FormLabel>
           <Textarea {...register('description')} />
         </FormControl>
-        <HStack justify="flex-end" spacing={2}>
-          {onCancel && (
-            <Button variant="outline" colorScheme="gray" onClick={onCancel}>
-              Cancel
-            </Button>
-          )}
-          <Button colorScheme="purple" type="submit">
-            Apply
-          </Button>
-        </HStack>
       </Stack>
+      <SimpleGrid
+        py={4}
+        px={6}
+        columns={2}
+        spacing={4}
+        position="absolute"
+        bottom={0}
+        left={0}
+        bg="white"
+        w="full"
+        borderBottomRadius="3xl"
+        borderTopWidth="1px"
+        borderTopColor="blackAlpha.300"
+      >
+        {onCancel && (
+          <Button variant="outline" colorScheme="gray" onClick={onCancel}>
+            Cancel
+          </Button>
+        )}
+        <Button colorScheme="purple" type="submit">
+          Apply
+        </Button>
+      </SimpleGrid>
     </Form>
   )
 }

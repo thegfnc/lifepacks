@@ -61,59 +61,84 @@ const PackItemEditable = ({
             borderRadius="3xl"
             pointerEvents="none"
           ></Box>
-          <HStack position="absolute" top={4} right={4}>
+          <HStack
+            spacing={1}
+            position="absolute"
+            top={4}
+            right={4}
+            p={2}
+            bg="white"
+            borderRadius="xl"
+            boxShadow="base"
+            borderWidth="1px"
+            borderColor="blackAlpha.300"
+          >
             {!hideMoveItemUp && (
               <IconButton
                 aria-label="Move Pack Item Up"
-                icon={<MdArrowUpward />}
+                icon={<MdArrowUpward size="24px" />}
+                colorScheme="whiteAlpha"
                 color="black"
                 bg="white"
-                size="lg"
+                _hover={{
+                  bg: 'blackAlpha.200',
+                }}
+                _active={{
+                  bg: 'blackAlpha.300',
+                }}
+                size="md"
                 borderRadius="xl"
-                boxShadow="base"
-                borderWidth="1px"
-                borderColor="blackAlpha.300"
-                isDisabled={hideMoveItemUp}
                 onClick={moveItemUp}
               />
             )}
             {!hideMoveItemDown && (
               <IconButton
                 aria-label="Move Pack Item Down"
-                icon={<MdArrowDownward />}
+                icon={<MdArrowDownward size="24px" />}
+                colorScheme="whiteAlpha"
                 color="black"
                 bg="white"
-                size="lg"
+                _hover={{
+                  bg: 'blackAlpha.200',
+                }}
+                _active={{
+                  bg: 'blackAlpha.300',
+                }}
+                size="md"
                 borderRadius="xl"
-                boxShadow="base"
-                borderWidth="1px"
-                borderColor="blackAlpha.300"
-                isDisabled={hideMoveItemDown}
                 onClick={moveItemDown}
               />
             )}
             <IconButton
               aria-label="Edit Pack Item"
-              icon={<MdOutlineModeEdit />}
+              icon={<MdOutlineModeEdit size="24px" />}
+              colorScheme="whiteAlpha"
               color="black"
               bg="white"
-              size="lg"
+              _hover={{
+                bg: 'blackAlpha.200',
+              }}
+              _active={{
+                bg: 'blackAlpha.300',
+              }}
+              size="md"
               borderRadius="xl"
-              boxShadow="base"
-              borderWidth="1px"
-              borderColor="blackAlpha.300"
               onClick={editItem}
             />
             <IconButton
               aria-label="Delete Pack Item"
-              icon={<MdDeleteOutline />}
+              icon={<MdDeleteOutline size="24px" />}
+              colorScheme="whiteAlpha"
               color="red.500"
               bg="white"
-              size="lg"
+              _hover={{
+                bg: 'blackAlpha.200',
+              }}
+              _active={{
+                bg: 'blackAlpha.300',
+              }}
+              size="md"
               borderRadius="xl"
-              boxShadow="base"
-              borderWidth="1px"
-              borderColor="blackAlpha.300"
               onClick={deleteItem}
             />
           </HStack>

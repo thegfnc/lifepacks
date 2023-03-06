@@ -5,6 +5,7 @@ import {
   useDisclosure,
   HStack,
   Flex,
+  Box,
 } from '@chakra-ui/react'
 import type {
   FindUserProfileSidebarQuery,
@@ -79,47 +80,46 @@ export const Success = ({
           </Button>
         )}
       </Flex>
-      <Text
-        as="h2"
-        fontSize="lg"
-        fontWeight="bold"
-        pt={4}
-        color="blackAlpha.900"
-      >
-        {userProfile.givenName} {userProfile.familyName}
-      </Text>
-      <Text
-        as={Link}
-        fontSize="sm"
-        lineHeight={5}
-        color="blackAlpha.700"
-        to={routes.userProfile({ username: userProfile.username })}
-      >
-        @{userProfile.username}
-      </Text>
-      <Text fontSize="md" lineHeight={6} pt={2}>
-        {userProfile.biography}
-      </Text>
-      <HStack mt={6}>
-        {userProfile.facebookUrl && (
-          <SocialAccountButton
-            accountType={SocialAccountType.Facebook}
-            linkUrl={userProfile.facebookUrl}
-          />
+      <Box mt={4}>
+        {(userProfile.givenName || userProfile.familyName) && (
+          <Text as="h2" fontSize="xl" fontWeight="bold" color="blackAlpha.800">
+            {userProfile.givenName} {userProfile.familyName}
+          </Text>
         )}
-        {userProfile.instagramUrl && (
-          <SocialAccountButton
-            accountType={SocialAccountType.Instagram}
-            linkUrl={userProfile.instagramUrl}
-          />
+        <Text
+          as={Link}
+          fontSize="md"
+          color="blackAlpha.700"
+          to={routes.userProfile({ username: userProfile.username })}
+        >
+          @{userProfile.username}
+        </Text>
+        {userProfile.biography && (
+          <Text fontSize="md" lineHeight={6} mt={2} color="blackAlpha.800">
+            {userProfile.biography}
+          </Text>
         )}
-        {userProfile.youtubeUrl && (
-          <SocialAccountButton
-            accountType={SocialAccountType.YouTube}
-            linkUrl={userProfile.youtubeUrl}
-          />
-        )}
-      </HStack>
+        <HStack mt={4}>
+          {userProfile.facebookUrl && (
+            <SocialAccountButton
+              accountType={SocialAccountType.Facebook}
+              linkUrl={userProfile.facebookUrl}
+            />
+          )}
+          {userProfile.instagramUrl && (
+            <SocialAccountButton
+              accountType={SocialAccountType.Instagram}
+              linkUrl={userProfile.instagramUrl}
+            />
+          )}
+          {userProfile.youtubeUrl && (
+            <SocialAccountButton
+              accountType={SocialAccountType.YouTube}
+              linkUrl={userProfile.youtubeUrl}
+            />
+          )}
+        </HStack>
+      </Box>
 
       {isCurrentUser && (
         <EditUserProfileModal

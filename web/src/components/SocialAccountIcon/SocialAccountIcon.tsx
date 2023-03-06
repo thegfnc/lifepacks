@@ -13,30 +13,23 @@ type SocialAccountIconProps = {
 
 const socialAccountParams = {
   [SocialAccountType.YouTube]: {
-    icon: FaYoutube,
-    iconColor: 'blackAlpha.800',
+    Icon: FaYoutube,
+    iconColor: 'rgba(0, 0, 0, 0.80)',
   },
   [SocialAccountType.Instagram]: {
-    icon: FaInstagram,
-    iconColor: 'blackAlpha.800',
+    Icon: FaInstagram,
+    iconColor: 'rgba(0, 0, 0, 0.80)',
   },
   [SocialAccountType.Facebook]: {
-    icon: FaFacebook,
-    iconColor: 'blackAlpha.800',
+    Icon: FaFacebook,
+    iconColor: 'rgba(0, 0, 0, 0.80)',
   },
 }
 
 const SocialAccountButton = ({ accountType }: SocialAccountIconProps) => {
-  const accountParams = socialAccountParams[accountType]
+  const { Icon, iconColor } = socialAccountParams[accountType]
 
-  return (
-    <Icon
-      as={accountParams.icon}
-      color={accountParams.iconColor}
-      h="20px"
-      w="20px"
-    />
-  )
+  return <Icon color={iconColor} size="24px" />
 }
 
 export default SocialAccountButton

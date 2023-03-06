@@ -129,6 +129,12 @@ function ImageUploadField<
             aria-label="Delete Image"
             icon={<MdDeleteOutline size="24px" />}
             color="red.500"
+            _hover={{
+              bg: 'blackAlpha.200',
+            }}
+            _active={{
+              bg: 'blackAlpha.300',
+            }}
             size="md"
             borderRadius="xl"
             boxShadow="md"
