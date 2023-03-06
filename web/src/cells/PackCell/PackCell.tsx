@@ -14,7 +14,7 @@ import {
   IconButton,
   useDisclosure,
 } from '@chakra-ui/react'
-import { MdOutlineModeEdit, MdDeleteOutline } from 'react-icons/md'
+import { MdDeleteOutline } from 'react-icons/md'
 import type {
   FindPackQuery,
   FindPackQueryVariables,

@@ -56,9 +56,10 @@ const EditUserProfileModal = ({
         onClose={onCloseWithDirtyCheck}
         isOpen={isOpen}
         scrollBehavior="inside"
+        size={{ base: 'full', md: 'md' }}
       >
         <ModalOverlay />
-        <ModalContent borderRadius="3xl">
+        <ModalContent borderRadius={{ base: 'none', md: '3xl' }}>
           <ModalHeader
             fontWeight="medium"
             p="6"

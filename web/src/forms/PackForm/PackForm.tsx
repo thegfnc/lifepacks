@@ -186,7 +186,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   return (
     <>
       <Form formMethods={formMethods} onSubmit={onFormSubmit}>
-        <Stack w="3xl" spacing={6}>
+        <Stack maxWidth="3xl" spacing={6}>
           <FormControl isInvalid={Boolean(formState.errors.title)}>
             <Textarea
               placeholder="Title"

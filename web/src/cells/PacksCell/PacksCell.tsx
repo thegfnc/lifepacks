@@ -34,7 +34,7 @@ export const Empty = ({ username }) => {
 
   return (
     <Center
-      h="2xl"
+      h={{ base: '300px', md: '2xl' }}
       borderWidth="1px"
       borderRadius="3xl"
       borderStyle="dashed"

@@ -5,7 +5,6 @@ import {
   useDisclosure,
   HStack,
   Flex,
-  Box,
 } from '@chakra-ui/react'
 import type {
   FindUserProfileSidebarQuery,
@@ -80,9 +79,15 @@ export const Success = ({
           </Button>
         )}
       </Flex>
-      <Box mt={4}>
+      <Flex direction="column" mt={4}>
         {(userProfile.givenName || userProfile.familyName) && (
-          <Text as="h2" fontSize="xl" fontWeight="bold" color="blackAlpha.800">
+          <Text
+            as={Link}
+            fontSize="xl"
+            fontWeight="bold"
+            color="blackAlpha.800"
+            to={routes.userProfile({ username: userProfile.username })}
+          >
             {userProfile.givenName} {userProfile.familyName}
           </Text>
         )}
@@ -119,7 +124,7 @@ export const Success = ({
             />
           )}
         </HStack>
-      </Box>
+      </Flex>
 
       {isCurrentUser && (
         <EditUserProfileModal
