@@ -28,16 +28,20 @@ const PackItem = ({
       borderWidth={'1px'}
       borderColor={'blackAlpha.300'}
       borderRadius="32px"
-      p={10}
+      p={{ base: 6, md: 10 }}
       boxShadow="none"
     >
       <CardHeader p={0}>
-        <SimpleGrid columns={2} spacing={0}>
-          <Center mr={10}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
+          <Center mr={{ base: 0, md: 10 }}>
             <Image w="full" alt={title} src={imageUrl} />
           </Center>
-          <Center borderLeftWidth="1px" borderLeftColor="blackAlpha.200">
-            <Box w="full" ml={10}>
+          <Center
+            borderTopWidth={{ base: '1px', md: '0' }}
+            borderLeftWidth={{ base: '0', md: '1px' }}
+            borderColor="blackAlpha.200"
+          >
+            <Box w="full" ml={{ base: 0, md: 10 }}>
               <Heading size="md" lineHeight={7} fontWeight="medium">
                 {title}
               </Heading>
@@ -48,6 +52,7 @@ const PackItem = ({
                 mt={4}
                 href={purchaseUrl}
                 target="_blank"
+                w={{ base: 'full', md: 'auto' }}
               >
                 Buy on Amazon
               </Button>
