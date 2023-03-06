@@ -3,6 +3,7 @@ import {
   Flex,
   Image,
   Link as ChakraLink,
+  SimpleGrid,
   Square,
   Stack,
   Tag,
@@ -27,44 +28,60 @@ const Packs = ({ username, packs }: PacksProps) => {
     <Stack>
       {packs.map((pack) => {
         return (
-          <Flex
+          <SimpleGrid
             key={pack.id}
-            py={6}
-            borderBottomWidth="1px"
-            borderBottomColor="blackAlpha.200"
+            columns={2}
+            p={8}
+            borderRadius="32px"
+            borderWidth="1px"
+            borderColor="blackAlpha.300"
           >
-            <Square size="180px" borderRadius="3xl">
+            <Flex
+              direction="column"
+              alignItems="flex-start"
+              justifyContent="space-between"
+              borderRightWidth="1px"
+              borderRightColor="blackAlpha.200"
+              pr={8}
+              position="relative"
+            >
+              <ChakraLink
+                as={Link}
+                to={routes.pack({
+                  username,
+                  slug: pack.slug,
+                })}
+                fontSize="26px"
+                lineHeight={7}
+                fontWeight="bold"
+              >
+                {pack.title}
+              </ChakraLink>
+              <Text color="blackAlpha.700" mt={8}>
+                {format(new Date(pack.createdAt), 'MMM d, yyyy')}
+              </Text>
+              <Tag
+                size="md"
+                position="absolute"
+                right={8}
+                bottom={0}
+                colorScheme="purple"
+                borderRadius="full"
+                bg="purple.50"
+                fontWeight="normal"
+              >
+                {pack.packItems.length}{' '}
+                {pack.packItems.length === 1 ? 'Item' : 'Items'}
+              </Tag>
+            </Flex>
+            <Box ml={8} px="68px">
               <Image
                 src={pack.packItems[0]?.imageUrl}
-                boxSize="180px"
-                fit="contain"
+                w="full"
                 alt={pack.packItems[0]?.title}
               />
-            </Square>
-            <Flex ml={8} alignItems="center">
-              <Box>
-                <Text>{format(new Date(pack.createdAt), 'MMM d')}</Text>
-                <Box mt={2}>
-                  <ChakraLink
-                    as={Link}
-                    to={routes.pack({
-                      username,
-                      slug: pack.slug,
-                    })}
-                    fontSize="xl"
-                    lineHeight={7}
-                    fontWeight="bold"
-                  >
-                    {pack.title}
-                  </ChakraLink>
-                </Box>
-                <Tag size="md" mt={4}>
-                  {pack.packItems.length}{' '}
-                  {pack.packItems.length === 1 ? 'Item' : 'Items'}
-                </Tag>
-              </Box>
-            </Flex>
-          </Flex>
+            </Box>
+          </SimpleGrid>
         )
       })}
     </Stack>

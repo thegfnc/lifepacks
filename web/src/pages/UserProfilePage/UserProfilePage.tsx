@@ -2,7 +2,7 @@ import { Box, Flex, Stack } from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
-import BylineCell, { Mode } from 'src/cells/BylineCell'
+import BylineCell from 'src/cells/BylineCell'
 import PacksCell from 'src/cells/PacksCell'
 import UserProfileSidebarCell from 'src/cells/UserProfileSidebarCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
@@ -18,8 +18,8 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
 
       <PageContainer>
         <Flex>
-          <Stack width="70%" spacing={4} paddingRight={20}>
-            <BylineCell username={username} mode={Mode.User} />
+          <Stack width="70%" spacing={8} paddingRight={20}>
+            <BylineCell username={username} />
             <PacksCell username={username} />
           </Stack>
           <Box

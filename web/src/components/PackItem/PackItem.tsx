@@ -27,24 +27,18 @@ const PackItem = ({
     <Card
       borderWidth={'1px'}
       borderColor={'blackAlpha.300'}
-      boxShadow="lg"
-      borderRadius="3xl"
-      transitionProperty="background"
-      transitionDuration="normal"
-      transitionTimingFunction="ease-in-out"
+      borderRadius="32px"
+      p={10}
+      boxShadow="none"
     >
-      <CardHeader
-        borderBottomWidth="1px"
-        borderBottomColor="blackAlpha.200"
-        p={0}
-      >
+      <CardHeader p={0}>
         <SimpleGrid columns={2} spacing={0}>
-          <Center p={8}>
-            <Image boxSize="296px" fit="contain" alt={title} src={imageUrl} />
+          <Center mr={10}>
+            <Image w="full" alt={title} src={imageUrl} />
           </Center>
           <Center borderLeftWidth="1px" borderLeftColor="blackAlpha.200">
-            <Box p={8} w="full">
-              <Heading size="md" lineHeight={7}>
+            <Box w="full" ml={10}>
+              <Heading size="md" lineHeight={7} fontWeight="medium">
                 {title}
               </Heading>
               <Button
@@ -61,9 +55,20 @@ const PackItem = ({
           </Center>
         </SimpleGrid>
       </CardHeader>
-      <CardBody p={8} fontSize="lg" lineHeight={7} color="blackAlpha.800">
-        {description}
-      </CardBody>
+      {description && (
+        <CardBody
+          mt={10}
+          p={0}
+          pt={10}
+          fontSize="lg"
+          lineHeight={7}
+          color="blackAlpha.800"
+          borderTopWidth="1px"
+          borderTopColor="blackAlpha.200"
+        >
+          {description}
+        </CardBody>
+      )}
     </Card>
   )
 }

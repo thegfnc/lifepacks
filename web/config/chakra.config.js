@@ -5,6 +5,7 @@ module.exports = {
   fonts: {
     heading: `Rubik, sans-serif`,
     body: `Rubik, sans-serif`,
+    bitter: `Bitter, serif`,
   },
   colors: {
     cream: {

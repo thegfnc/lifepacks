@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import { Pack as PackType, PackItem as PackItemType } from 'types/graphql'
 
-import BylineCell, { Mode } from 'src/cells/BylineCell'
+import BylineCell from 'src/cells/BylineCell'
 import PackItem from 'src/components/PackItem/PackItem'
 
 type PackPartial = Pick<PackType, 'createdAt' | 'title' | 'description'> & {
@@ -21,40 +21,32 @@ type PackProps = {
 
 const Pack = ({ username, pack, actionButtons }: PackProps) => {
   return (
-    <>
+    <Stack spacing={6}>
       <Flex alignItems="center" justifyContent="space-between">
-        <BylineCell
-          username={username}
-          mode={Mode.Pack}
-          date={pack.createdAt}
-        />
-
+        <BylineCell username={username} date={pack.createdAt} />
         {actionButtons}
       </Flex>
-      <Heading
-        as="h1"
-        fontSize="5xl"
-        lineHeight="none"
-        fontWeight="extrabold"
-        marginTop={6}
-      >
+      <Heading as="h1" fontSize="5xl" lineHeight="none" fontWeight="extrabold">
         {pack.title}
       </Heading>
-      <Text fontSize="xl" lineHeight={7} marginTop={8}>
+      <Text
+        fontSize="xl"
+        marginTop={8}
+        fontFamily="bitter"
+        color="blackAlpha.800"
+      >
         {pack.description}
       </Text>
-      <Stack spacing={6} marginTop={10}>
-        {pack.packItems.map((packItem) => (
-          <PackItem
-            key={packItem.id}
-            imageUrl={packItem.imageUrl}
-            purchaseUrl={packItem.purchaseUrl}
-            title={packItem.title}
-            description={packItem.description}
-          />
-        ))}
-      </Stack>
-    </>
+      {pack.packItems.map((packItem) => (
+        <PackItem
+          key={packItem.id}
+          imageUrl={packItem.imageUrl}
+          purchaseUrl={packItem.purchaseUrl}
+          title={packItem.title}
+          description={packItem.description}
+        />
+      ))}
+    </Stack>
   )
 }
 

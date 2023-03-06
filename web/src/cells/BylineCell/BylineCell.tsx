@@ -1,19 +1,14 @@
-import { HStack, Stack, Text, Avatar } from '@chakra-ui/react'
+import { HStack, Text, Avatar, LinkBox, LinkOverlay } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import type { FindBylineQuery, FindBylineQueryVariables } from 'types/graphql'
 
+import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
-
-export enum Mode {
-  User,
-  Pack,
-}
 
 type BylineCellSuccessProps = CellSuccessProps<
   FindBylineQuery,
   FindBylineQueryVariables
 > & {
-  mode?: Mode
   date?: string
 }
 
@@ -38,38 +33,27 @@ export const Failure = ({
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({
-  userProfile,
-  mode = Mode.User,
-  date,
-}: BylineCellSuccessProps) => {
-  return mode === Mode.Pack ? (
-    <HStack spacing={3}>
+export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
+  return (
+    <LinkBox as={HStack} spacing={3}>
       <Avatar
         size={'md'}
         src={userProfile.imageUrl}
         name={userProfile?.givenName}
       />
-      <Text fontSize="lg">
-        {userProfile.givenName} {userProfile.familyName}
-        {date && ' · ' + format(new Date(date), 'MMM d')}
-      </Text>
-    </HStack>
-  ) : (
-    <HStack spacing={3}>
-      <Avatar
-        size={'md'}
-        src={userProfile.imageUrl}
-        name={userProfile.givenName}
-      />
-      <Stack spacing={0}>
-        <Text fontSize="lg" lineHeight={7} fontWeight="bold">
+      <Text fontSize="lg" fontWeight="medium" color="blackAlpha.800">
+        <LinkOverlay
+          as={Link}
+          to={routes.userProfile({ username: userProfile.username })}
+        >
           {userProfile.givenName} {userProfile.familyName}
-        </Text>
-        <Text fontSize="sm" lineHeight={5} color="blackAlpha.700">
-          @{userProfile.username}
-        </Text>
-      </Stack>
-    </HStack>
+        </LinkOverlay>
+        {date && (
+          <Text as="span" fontWeight="normal">
+            {' · ' + format(new Date(date), 'MMM d')}
+          </Text>
+        )}
+      </Text>
+    </LinkBox>
   )
 }

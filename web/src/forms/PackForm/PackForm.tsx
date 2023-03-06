@@ -192,7 +192,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               placeholder="Title"
               fontSize="5xl"
               fontWeight="extrabold"
-              color="blackAlpha.900"
+              color="blackAlpha.800"
               variant="unstyled"
               size="lg"
               lineHeight={1}
@@ -209,11 +209,12 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
           </FormControl>
           <FormControl isInvalid={Boolean(formState.errors.description)}>
             <Textarea
-              placeholder="What is your pack about..."
+              placeholder="Introduce your Pack to your readers..."
               fontSize="xl"
               lineHeight={7}
               color="blackAlpha.800"
               variant="unstyled"
+              fontFamily="bitter"
               {...register('description')}
             />
             <FormErrorMessage>
@@ -221,6 +222,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             </FormErrorMessage>
           </FormControl>
           <Button
+            size="lg"
             variant="outline"
             colorScheme="gray"
             onClick={createOpenAddPackItemModal(0)}
@@ -243,6 +245,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                   deleteItem={createOpenDeletePackItemAlert(index)}
                 />
                 <Button
+                  size="lg"
                   variant="outline"
                   colorScheme="gray"
                   onClick={createOpenAddPackItemModal(index + 1)}
