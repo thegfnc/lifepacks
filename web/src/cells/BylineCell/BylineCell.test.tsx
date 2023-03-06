@@ -1,6 +1,6 @@
 import { render } from '@redwoodjs/testing/web'
 
-import { Loading, Empty, Failure, Success, Mode } from './BylineCell'
+import { Loading, Empty, Failure, Success } from './BylineCell'
 import { standard } from './BylineCell.mock'
 
 // Generated boilerplate tests do not account for all circumstances
@@ -39,7 +39,6 @@ describe('BylineCell', () => {
       render(
         <Success
           userProfile={standard().userProfile}
-          mode={Mode.Pack}
           date="2023-02-13T16:05:18.978Z"
         />
       )

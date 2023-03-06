@@ -27,9 +27,13 @@ type PackProps = {
 
 const Pack = ({ username, pack, actionButtons }: PackProps) => {
   const isBylineVisible = useBreakpointValue({ base: false, md: true })
+
   return (
     <Stack spacing={6}>
-      <Flex alignItems="center" justifyContent="space-between">
+      <Flex
+        alignItems="center"
+        justifyContent={{ base: 'flex-end', md: 'space-between' }}
+      >
         {isBylineVisible && (
           <BylineCell username={username} date={pack.createdAt} />
         )}

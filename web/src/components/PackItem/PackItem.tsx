@@ -33,7 +33,7 @@ const PackItem = ({
     >
       <CardHeader p={0}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
-          <Center mr={{ base: 0, md: 10 }}>
+          <Center mr={{ base: 0, md: 10 }} mb={{ base: 6, md: 0 }}>
             <Image w="full" alt={title} src={imageUrl} />
           </Center>
           <Center
@@ -41,7 +41,7 @@ const PackItem = ({
             borderLeftWidth={{ base: '0', md: '1px' }}
             borderColor="blackAlpha.200"
           >
-            <Box w="full" ml={{ base: 0, md: 10 }}>
+            <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 6, md: 0 }}>
               <Heading size="md" lineHeight={7} fontWeight="medium">
                 {title}
               </Heading>
@@ -62,9 +62,9 @@ const PackItem = ({
       </CardHeader>
       {description && (
         <CardBody
-          mt={10}
+          mt={{ base: 6, md: 10 }}
           p={0}
-          pt={10}
+          pt={{ base: 6, md: 10 }}
           fontSize="lg"
           lineHeight={7}
           color="blackAlpha.800"

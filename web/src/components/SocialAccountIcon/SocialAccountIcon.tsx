@@ -1,4 +1,3 @@
-import { Icon } from '@chakra-ui/react'
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 export enum SocialAccountType {
