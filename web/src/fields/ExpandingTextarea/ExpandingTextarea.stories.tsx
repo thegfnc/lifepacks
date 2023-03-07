@@ -16,7 +16,13 @@ import type { ComponentMeta } from '@storybook/react'
 import ExpandingTextarea from './ExpandingTextarea'
 
 export const generated = () => {
-  return <ExpandingTextarea />
+  return (
+    <ExpandingTextarea
+      onChange={() => null}
+      onBlur={() => null}
+      name="expanding-textarea"
+    />
+  )
 }
 
 export default {

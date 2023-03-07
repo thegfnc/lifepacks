@@ -8,7 +8,13 @@ import ExpandingTextarea from './ExpandingTextarea'
 describe('ExpandingTextarea', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<ExpandingTextarea />)
+      render(
+        <ExpandingTextarea
+          onChange={() => null}
+          onBlur={() => null}
+          name="expanding-textarea"
+        />
+      )
     }).not.toThrow()
   })
 })
