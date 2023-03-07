@@ -1,5 +1,8 @@
 import { render } from '@redwoodjs/testing/web'
 
+import 'src/helpers/testUtils/matchMedia.mock'
+import { ThemeWrapper } from 'src/helpers/testUtils/ThemeWrapper'
+
 import { Loading, Empty, Failure, Success } from './PackCell'
 import { standard } from './PackCell.mock'
 
@@ -37,11 +40,13 @@ describe('PackCell', () => {
   it('renders Success successfully', async () => {
     expect(() => {
       render(
-        <Success
-          username="jmdesiderio"
-          pack={standard().pack}
-          currentUserProfile={standard().currentUserProfile}
-        />
+        <ThemeWrapper>
+          <Success
+            username="jmdesiderio"
+            pack={standard().pack}
+            currentUserProfile={standard().currentUserProfile}
+          />
+        </ThemeWrapper>
       )
     }).not.toThrow()
   })

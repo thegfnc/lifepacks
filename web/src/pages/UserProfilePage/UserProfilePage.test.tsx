@@ -1,5 +1,8 @@
 import { render } from '@redwoodjs/testing/web'
 
+import 'src/helpers/testUtils/matchMedia.mock'
+import { ThemeWrapper } from 'src/helpers/testUtils/ThemeWrapper'
+
 import UserProfilePage from './UserProfilePage'
 
 //   Improve this test with help from the Redwood Testing Doc:
@@ -8,7 +11,11 @@ import UserProfilePage from './UserProfilePage'
 describe('UserProfilePage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UserProfilePage username="jmdesiderio" />)
+      render(
+        <ThemeWrapper>
+          <UserProfilePage username="jmdesiderio" />
+        </ThemeWrapper>
+      )
     }).not.toThrow()
   })
 })
