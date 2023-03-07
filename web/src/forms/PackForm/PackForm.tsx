@@ -12,7 +12,6 @@ import {
   Flex,
   FormControl,
   Stack,
-  Textarea,
   useDisclosure,
 } from '@chakra-ui/react'
 import { Pack, PackItem } from 'types/graphql'
@@ -21,6 +20,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 
 import EditPackItemModal from 'src/components/EditPackItemModal/EditPackItemModal'
 import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
+import ExpandingTextarea from 'src/fields/ExpandingTextarea/ExpandingTextarea'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
 
 type PackFormProps = {
@@ -188,7 +188,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
       <Form formMethods={formMethods} onSubmit={onFormSubmit}>
         <Stack maxWidth="3xl" spacing={6}>
           <FormControl isInvalid={Boolean(formState.errors.title)}>
-            <Textarea
+            <ExpandingTextarea
               placeholder="Title"
               fontSize="5xl"
               fontWeight="extrabold"
@@ -196,6 +196,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               variant="unstyled"
               size="lg"
               lineHeight={1}
+              resize="none"
               {...register('title', {
                 required: {
                   value: true,
@@ -208,13 +209,14 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={Boolean(formState.errors.description)}>
-            <Textarea
+            <ExpandingTextarea
               placeholder="Introduce your Pack to your readers..."
               fontSize="xl"
               lineHeight={7}
               color="blackAlpha.800"
               variant="unstyled"
               fontFamily="bitter"
+              resize="none"
               {...register('description')}
             />
             <FormErrorMessage>
