@@ -2,13 +2,13 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 
 import {
   Button,
-  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
   InputGroup,
   InputLeftElement,
+  SimpleGrid,
   Stack,
   Textarea,
 } from '@chakra-ui/react'
@@ -161,7 +161,20 @@ const UserProfileForm = ({
               />
             </InputGroup>
           </Stack>
-          <Flex justifyContent="flex-end" py={4}>
+          <SimpleGrid
+            py={4}
+            px={6}
+            columns={2}
+            spacing={4}
+            position="absolute"
+            bottom={0}
+            left={0}
+            bg="white"
+            w="full"
+            borderBottomRadius="3xl"
+            borderTopWidth="1px"
+            borderTopColor="blackAlpha.300"
+          >
             {onCancel && (
               <Button
                 variant="outline"
@@ -175,7 +188,7 @@ const UserProfileForm = ({
             <Button type="submit" colorScheme="purple" isLoading={isLoading}>
               {isUpdateForm ? 'Update Profile' : 'Create Profile'}
             </Button>
-          </Flex>
+          </SimpleGrid>
         </Stack>
       </Form>
     </>

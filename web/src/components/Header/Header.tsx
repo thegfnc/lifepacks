@@ -45,7 +45,12 @@ const Header = () => {
         justifyContent="center"
         h={'4.5rem'}
       >
-        <Flex width="100%" maxWidth={'7xl'} px={8} alignItems={'center'}>
+        <Flex
+          width="100%"
+          maxWidth={'7xl'}
+          px={{ base: 4, md: 8 }}
+          alignItems={'center'}
+        >
           <Heading
             as={Link}
             to={routes.home()}

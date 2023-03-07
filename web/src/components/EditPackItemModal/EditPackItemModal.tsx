@@ -65,12 +65,25 @@ const EditPackItemModal = ({
 
   return (
     <>
-      <Modal onClose={onCloseWithDirtyCheck} isOpen={isOpen}>
+      <Modal
+        onClose={onCloseWithDirtyCheck}
+        isOpen={isOpen}
+        scrollBehavior="inside"
+        size={{ base: 'full', md: 'md' }}
+      >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>{packItem ? 'Edit Item' : 'Add Item'}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
+        <ModalContent borderRadius={{ base: 'none', md: '3xl' }}>
+          <ModalHeader
+            fontWeight="medium"
+            p="6"
+            lineHeight="shorter"
+            borderBottomWidth="1px"
+            borderBottomColor="blackAlpha.300"
+          >
+            {packItem ? 'Edit Item' : 'Add Item'}
+          </ModalHeader>
+          <ModalCloseButton top={4} right={6} size="lg" />
+          <ModalBody py={4} mb="72px">
             <PackItemForm
               onFormDirtyStateChange={setIsFormDirty}
               onSubmit={onSubmit}

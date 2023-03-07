@@ -52,12 +52,25 @@ const EditUserProfileModal = ({
 
   return (
     <>
-      <Modal onClose={onCloseWithDirtyCheck} isOpen={isOpen}>
+      <Modal
+        onClose={onCloseWithDirtyCheck}
+        isOpen={isOpen}
+        scrollBehavior="inside"
+        size={{ base: 'full', md: 'md' }}
+      >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Edit Profile</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
+        <ModalContent borderRadius={{ base: 'none', md: '3xl' }}>
+          <ModalHeader
+            fontWeight="medium"
+            p="6"
+            lineHeight="shorter"
+            borderBottomWidth="1px"
+            borderBottomColor="blackAlpha.300"
+          >
+            Edit Profile
+          </ModalHeader>
+          <ModalCloseButton top={4} right={6} size="lg" />
+          <ModalBody py={4} mb="72px">
             <EditUserProfileCell
               onFormDirtyStateChange={setIsFormDirty}
               onCancel={onCloseWithDirtyCheck}

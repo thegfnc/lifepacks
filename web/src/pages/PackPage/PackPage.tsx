@@ -17,15 +17,21 @@ const PackPage = ({ username, slug }: PackPageProps) => {
       <MetaTags title="Pack" description="Pack page" />
 
       <PageContainer>
-        <Flex>
-          <Box width="70%" paddingRight={20}>
+        <Flex direction={{ base: 'column', md: 'row' }}>
+          <Box
+            width={{ base: 'full', md: '70%' }}
+            paddingRight={{ base: 0, md: 20 }}
+            mt={{ base: 6, md: 0 }}
+            order={{ base: 2, md: 1 }}
+          >
             <PackCell username={username} slug={slug} />
           </Box>
           <Box
-            width="30%"
-            borderLeftWidth={'1px'}
+            width={{ base: 'full', md: '30%' }}
+            borderLeftWidth={{ base: '0', md: '1px' }}
             borderLeftColor={'blackAlpha.200'}
-            paddingLeft={14}
+            paddingLeft={{ base: 0, md: 14 }}
+            order={{ base: 1, md: 2 }}
           >
             <UserProfileSidebarCell username={username} />
           </Box>

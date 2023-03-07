@@ -27,24 +27,22 @@ const PackItem = ({
     <Card
       borderWidth={'1px'}
       borderColor={'blackAlpha.300'}
-      boxShadow="lg"
-      borderRadius="3xl"
-      transitionProperty="background"
-      transitionDuration="normal"
-      transitionTimingFunction="ease-in-out"
+      borderRadius="32px"
+      p={{ base: 6, md: 10 }}
+      boxShadow="none"
     >
-      <CardHeader
-        borderBottomWidth="1px"
-        borderBottomColor="blackAlpha.200"
-        p={0}
-      >
-        <SimpleGrid columns={2} spacing={0}>
-          <Center p={8}>
-            <Image boxSize="296px" fit="contain" alt={title} src={imageUrl} />
+      <CardHeader p={0}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
+          <Center mr={{ base: 0, md: 10 }} mb={{ base: 6, md: 0 }}>
+            <Image w="full" alt={title} src={imageUrl} />
           </Center>
-          <Center borderLeftWidth="1px" borderLeftColor="blackAlpha.200">
-            <Box p={8} w="full">
-              <Heading size="md" lineHeight={7}>
+          <Center
+            borderTopWidth={{ base: '1px', md: '0' }}
+            borderLeftWidth={{ base: '0', md: '1px' }}
+            borderColor="blackAlpha.200"
+          >
+            <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 6, md: 0 }}>
+              <Heading size="md" lineHeight={7} fontWeight="medium">
                 {title}
               </Heading>
               <Button
@@ -54,6 +52,7 @@ const PackItem = ({
                 mt={4}
                 href={purchaseUrl}
                 target="_blank"
+                w={{ base: 'full', md: 'auto' }}
               >
                 Buy on Amazon
               </Button>
@@ -61,9 +60,20 @@ const PackItem = ({
           </Center>
         </SimpleGrid>
       </CardHeader>
-      <CardBody p={8} fontSize="lg" lineHeight={7} color="blackAlpha.800">
-        {description}
-      </CardBody>
+      {description && (
+        <CardBody
+          mt={{ base: 6, md: 10 }}
+          p={0}
+          pt={{ base: 6, md: 10 }}
+          fontSize="lg"
+          lineHeight={7}
+          color="blackAlpha.800"
+          borderTopWidth="1px"
+          borderTopColor="blackAlpha.200"
+        >
+          {description}
+        </CardBody>
+      )}
     </Card>
   )
 }

@@ -14,7 +14,7 @@ import {
   IconButton,
   useDisclosure,
 } from '@chakra-ui/react'
-import { MdOutlineModeEdit, MdDeleteOutline } from 'react-icons/md'
+import { MdDeleteOutline } from 'react-icons/md'
 import type {
   FindPackQuery,
   FindPackQueryVariables,
@@ -116,7 +116,6 @@ export const Success = ({
             <HStack>
               <Button
                 as={Link}
-                leftIcon={<MdOutlineModeEdit />}
                 variant="outline"
                 colorScheme="gray"
                 to={routes.editPack({ id: pack.id })}
@@ -124,7 +123,7 @@ export const Success = ({
                 Edit Pack
               </Button>
               <IconButton
-                icon={<MdDeleteOutline />}
+                icon={<MdDeleteOutline size="24px" />}
                 aria-label="Delete Pack"
                 colorScheme="red"
                 onClick={onDeleteAlertOpen}
