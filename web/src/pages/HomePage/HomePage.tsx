@@ -1,7 +1,8 @@
-import { Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
+import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 
 const HomePage = () => {
@@ -9,61 +10,63 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" description="Welcome to Lifepacks." />
 
-      <PageContainer>
-        <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
-          <Flex p={8} flex={1} align={'center'} justify={'center'}>
-            <Stack spacing={6} w={'full'} maxW={'lg'}>
-              <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                <Text
-                  as={'span'}
-                  position={'relative'}
-                  _after={{
-                    content: "''",
-                    width: 'full',
-                    height: '30%',
-                    position: 'absolute',
-                    bottom: 1,
-                    left: 0,
-                    bg: 'blue.400',
-                    zIndex: -1,
-                  }}
-                >
-                  Freelance
+      <Box bg="#F4EBD2" overflow="hidden">
+        <PageContainer fillPageHeight={false}>
+          <Stack direction={{ base: 'column', md: 'row' }} px={4}>
+            <Flex py={8} flex={1} align={'center'} justify={'flex-start'}>
+              <Stack spacing={6} w={'full'} maxW="lg">
+                <Heading fontSize="6xl" lineHeight="93%" letterSpacing="tight">
+                  Make guides <br />
+                  for the products <br />
+                  you swear by
+                </Heading>
+                <Text fontFamily="bitter" fontSize="2xl" lineHeight="short">
+                  Publish product recs just like the pros at Wirecutter and
+                  Consumer Reports.
                 </Text>
-                <br />{' '}
-                <Text color={'blue.400'} as={'span'}>
-                  Design Projects
-                </Text>{' '}
-              </Heading>
-              <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
-                The project board is an exclusive resource for contract work.
-                It&apos;s perfect for freelancers, agencies, and moonlighters.
-              </Text>
-              <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-                <Button
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}
-                >
-                  Create Project
-                </Button>
-                <Button>How It Works</Button>
+                <Box pt={4}>
+                  <Button>Get Started</Button>
+                </Box>
               </Stack>
-            </Stack>
-          </Flex>
-          <Flex flex={1}>
-            <Image
-              alt={'Login Image'}
-              objectFit={'cover'}
-              src={
-                'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-              }
-            />
-          </Flex>
-        </Stack>
-      </PageContainer>
+            </Flex>
+            <Flex flex={1}>
+              <Stack spacing={6} mb="-10rem">
+                <PackItem
+                  title="HiFiMan Sundara"
+                  description="The best cans for any entry-level audiophile. Hands down."
+                  purchaseUrl="#"
+                  imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/34344f82-a086-4155-a60d-18061796386d-hifimansundara.jpeg"
+                />
+                <PackItem
+                  title="Apple AirPods Pro"
+                  description="The best cans for any entry-level audiophile. Hands down."
+                  purchaseUrl="#"
+                  imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/21717ce2-ae68-4bd2-98f9-636f21996656-mqd83.jpeg"
+                />
+              </Stack>
+            </Flex>
+          </Stack>
+        </PageContainer>
+      </Box>
+      <Box bg="#6C47FF">
+        <PageContainer fillPageHeight={false}>
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            px={4}
+            mt="88px"
+            justify="center"
+          >
+            <Heading
+              fontSize="6xl"
+              lineHeight="93%"
+              letterSpacing="tight"
+              color="white"
+            >
+              Easily share your expertise
+            </Heading>
+          </Stack>
+        </PageContainer>
+      </Box>
     </>
   )
 }

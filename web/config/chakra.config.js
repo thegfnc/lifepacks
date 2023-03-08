@@ -8,9 +8,6 @@ module.exports = {
     bitter: `Bitter, serif`,
   },
   colors: {
-    cream: {
-      500: '#F4EBD2',
-    },
     yellow: {
       50: '#fffaef',
       100: '#fff1cc',
