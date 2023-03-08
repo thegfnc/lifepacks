@@ -163,7 +163,7 @@ const UserProfileForm = ({
           </Stack>
           <SimpleGrid
             py={4}
-            px={6}
+            px={{ base: 4, md: 6 }}
             columns={2}
             spacing={4}
             position="absolute"
@@ -176,12 +176,7 @@ const UserProfileForm = ({
             borderTopColor="blackAlpha.300"
           >
             {onCancel && (
-              <Button
-                variant="outline"
-                colorScheme="gray"
-                mr={3}
-                onClick={onCancel}
-              >
+              <Button variant="outline" colorScheme="gray" onClick={onCancel}>
                 Cancel
               </Button>
             )}

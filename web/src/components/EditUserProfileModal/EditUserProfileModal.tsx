@@ -62,15 +62,16 @@ const EditUserProfileModal = ({
         <ModalContent borderRadius={{ base: 'none', md: '3xl' }}>
           <ModalHeader
             fontWeight="medium"
-            p="6"
+            py={6}
+            px={{ base: 4, md: 6 }}
             lineHeight="shorter"
             borderBottomWidth="1px"
             borderBottomColor="blackAlpha.300"
           >
             Edit Profile
           </ModalHeader>
-          <ModalCloseButton top={4} right={6} size="lg" />
-          <ModalBody py={4} mb="72px">
+          <ModalCloseButton top={4} right={{ base: 4, md: 6 }} size="lg" />
+          <ModalBody py={4} px={{ base: 4, md: 6 }} mb="72px">
             <EditUserProfileCell
               onFormDirtyStateChange={setIsFormDirty}
               onCancel={onCloseWithDirtyCheck}

@@ -96,7 +96,7 @@ const PackItemForm = ({
       </Stack>
       <SimpleGrid
         py={4}
-        px={6}
+        px={{ base: 4, md: 6 }}
         columns={2}
         spacing={4}
         position="absolute"
