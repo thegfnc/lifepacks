@@ -57,7 +57,7 @@ const HomePage = () => {
           </Stack>
         </PageContainer>
       </Box>
-      <Box bg="#6C47FF">
+      <Box bg="#6C47FF" overflow="hidden">
         <PageContainer fillPageHeight={false}>
           <Flex direction="column" px={4} mt="88px" align="center">
             <Heading
@@ -75,13 +75,23 @@ const HomePage = () => {
               <Button leftIcon={<Text>🎹</Text>}>Music Gear</Button>
               <Button leftIcon={<Text>🏠</Text>}>Lifestyle</Button>
             </HStack>
-            <Box>
+            <Box bg="#F4EBD2" px={24} py={16} mt="72px" borderRadius="64px">
               <Pack
                 pack={{
                   title: 'Camping 101',
                   description:
                     'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
-                  packItems: [],
+                  packItems: [
+                    {
+                      id: 1,
+                      title: 'REI 6-Person Lighted Dome Tent',
+                      description:
+                        'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet.',
+                      purchaseUrl: '#',
+                      imageUrl:
+                        'https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/2f2f1e96-0b28-43af-91c9-2bc1b55ca89c-imageservice.webp',
+                    },
+                  ],
                 }}
               />
             </Box>
