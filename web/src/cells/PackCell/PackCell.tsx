@@ -10,8 +10,11 @@ import {
   AlertDialogOverlay,
   AlertIcon,
   Button,
+  Flex,
   HStack,
   IconButton,
+  Stack,
+  useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react'
 import { MdDeleteOutline } from 'react-icons/md'
@@ -26,6 +29,7 @@ import { Link, navigate, routes } from '@redwoodjs/router'
 import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
 
 import Pack from '../../components/Pack/Pack'
+import BylineCell from '../BylineCell'
 
 type PackCellSuccessProps = CellSuccessProps<
   FindPackQuery,
@@ -78,6 +82,7 @@ export const Success = ({
   pack,
   currentUserProfile,
 }: PackCellSuccessProps) => {
+  const isBylineVisible = useBreakpointValue({ base: false, md: true })
   const {
     isOpen: isDeleteAlertOpen,
     onOpen: onDeleteAlertOpen,
@@ -108,11 +113,15 @@ export const Success = ({
         </Alert>
       )}
 
-      <Pack
-        username={username}
-        pack={pack}
-        actionButtons={
-          currentUserProfile?.username === username && (
+      <Stack spacing={6}>
+        <Flex
+          alignItems="center"
+          justifyContent={{ base: 'flex-end', md: 'space-between' }}
+        >
+          {isBylineVisible && (
+            <BylineCell username={username} date={pack.createdAt} />
+          )}
+          {currentUserProfile?.username === username && (
             <HStack>
               <Button
                 as={Link}
@@ -129,9 +138,10 @@ export const Success = ({
                 onClick={onDeleteAlertOpen}
               />
             </HStack>
-          )
-        }
-      />
+          )}
+        </Flex>
+        <Pack pack={pack} />
+      </Stack>
 
       <AlertDialog
         isOpen={isDeleteAlertOpen}

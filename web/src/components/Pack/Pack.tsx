@@ -1,18 +1,9 @@
-import { ReactNode } from 'react'
-
-import {
-  Flex,
-  Heading,
-  Stack,
-  Text,
-  useBreakpointValue,
-} from '@chakra-ui/react'
+import { Heading, Stack, Text } from '@chakra-ui/react'
 import { Pack as PackType, PackItem as PackItemType } from 'types/graphql'
 
-import BylineCell from 'src/cells/BylineCell'
 import PackItem from 'src/components/PackItem/PackItem'
 
-type PackPartial = Pick<PackType, 'createdAt' | 'title' | 'description'> & {
+type PackPartial = Pick<PackType, 'title' | 'description'> & {
   packItems: Pick<
     PackItemType,
     'id' | 'imageUrl' | 'purchaseUrl' | 'title' | 'description'
@@ -20,25 +11,12 @@ type PackPartial = Pick<PackType, 'createdAt' | 'title' | 'description'> & {
 }
 
 type PackProps = {
-  username: string
   pack: PackPartial
-  actionButtons?: ReactNode
 }
 
-const Pack = ({ username, pack, actionButtons }: PackProps) => {
-  const isBylineVisible = useBreakpointValue({ base: false, md: true })
-
+const Pack = ({ pack }: PackProps) => {
   return (
     <Stack spacing={6}>
-      <Flex
-        alignItems="center"
-        justifyContent={{ base: 'flex-end', md: 'space-between' }}
-      >
-        {isBylineVisible && (
-          <BylineCell username={username} date={pack.createdAt} />
-        )}
-        {actionButtons}
-      </Flex>
       <Heading as="h1" fontSize="5xl" lineHeight="none" fontWeight="extrabold">
         {pack.title}
       </Heading>

@@ -1,7 +1,16 @@
-import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
+import Pack from 'src/components/Pack/Pack'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 
@@ -50,12 +59,7 @@ const HomePage = () => {
       </Box>
       <Box bg="#6C47FF">
         <PageContainer fillPageHeight={false}>
-          <Stack
-            direction={{ base: 'column', md: 'row' }}
-            px={4}
-            mt="88px"
-            justify="center"
-          >
+          <Flex direction="column" px={4} mt="88px" align="center">
             <Heading
               fontSize="6xl"
               lineHeight="93%"
@@ -64,7 +68,24 @@ const HomePage = () => {
             >
               Easily share your expertise
             </Heading>
-          </Stack>
+            <HStack mt={5}>
+              <Button leftIcon={<Text>⛺️</Text>}>Camping</Button>
+              <Button leftIcon={<Text>🎧</Text>}>Audio</Button>
+              <Button leftIcon={<Text>📸</Text>}>Photograph</Button>
+              <Button leftIcon={<Text>🎹</Text>}>Music Gear</Button>
+              <Button leftIcon={<Text>🏠</Text>}>Lifestyle</Button>
+            </HStack>
+            <Box>
+              <Pack
+                pack={{
+                  title: 'Camping 101',
+                  description:
+                    'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
+                  packItems: [],
+                }}
+              />
+            </Box>
+          </Flex>
         </PageContainer>
       </Box>
     </>
