@@ -1,22 +1,23 @@
 import { ReactNode } from 'react'
 
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, BoxProps } from '@chakra-ui/react'
 
 type PageContainerProps = {
   children: ReactNode
-  fillPageHeight?: boolean
+  minHeight?: '100vh' | 'auto'
+  px?: BoxProps['padding']
+  py?: BoxProps['padding']
 }
 
 const PageContainer = ({
   children,
-  fillPageHeight = true,
+  minHeight = '100vh',
+  px = { base: 4, md: 8 },
+  py = { base: 4, md: 8 },
 }: PageContainerProps) => {
   return (
-    <Flex
-      justifyContent={'center'}
-      minHeight={fillPageHeight ? '100vh' : 'auto'}
-    >
-      <Box width={'100%'} maxWidth={'7xl'} p={{ base: 4, md: 8 }}>
+    <Flex justifyContent={'center'} minHeight={minHeight}>
+      <Box width={'100%'} maxWidth={'7xl'} px={px} py={py}>
         {children}
       </Box>
     </Flex>

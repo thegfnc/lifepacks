@@ -1,45 +1,98 @@
 import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
   Box,
   Button,
+  Center,
+  Container,
   Flex,
   Heading,
   HStack,
+  Image,
   Stack,
   Text,
 } from '@chakra-ui/react'
+import amazonLogo from 'public/logos/amazon.png'
+import ebayLogo from 'public/logos/ebay.png'
+import homeDepotLogo from 'public/logos/home_depot.png'
+import targetLogo from 'public/logos/target.png'
+import walmartLogo from 'public/logos/walmart.png'
 
+import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import { useAuth } from 'src/auth'
 import Pack from 'src/components/Pack/Pack'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import UserProfileSidebar from 'src/components/UserProfileSidebar/UserProfileSidebar'
 
 const HomePage = () => {
+  const { isAuthenticated } = useAuth()
+
+  const handleGetStarted = () => {
+    if (isAuthenticated) {
+      navigate(routes.newPack())
+    } else {
+      navigate(routes.signUp())
+    }
+  }
+
   return (
     <>
       <MetaTags title="Home" description="Welcome to Lifepacks." />
 
       <Box bg="#F4EBD2" overflow="hidden">
-        <PageContainer fillPageHeight={false}>
-          <Stack direction={{ base: 'column', md: 'row' }} px={4}>
-            <Flex py={8} flex={1} align={'center'} justify={'flex-start'}>
-              <Stack spacing={6} w={'full'} maxW="lg">
-                <Heading fontSize="6xl" lineHeight="93%" letterSpacing="tight">
+        <PageContainer
+          minHeight="auto"
+          py={{ base: 8, md: 6 }}
+          px={{ base: 4, md: 12 }}
+        >
+          <Stack direction={{ base: 'column', md: 'row' }}>
+            <Flex flex={1} align={'center'}>
+              <Box
+                w={'full'}
+                maxW="lg"
+                textAlign={{ base: 'center', md: 'left' }}
+              >
+                <Heading
+                  fontSize={{ base: '4xl', md: '6xl' }}
+                  lineHeight={{ base: 'none', md: '93%' }}
+                  letterSpacing="tight"
+                >
                   Make guides <br />
                   for the products <br />
                   you swear by
                 </Heading>
-                <Text fontFamily="bitter" fontSize="2xl" lineHeight="short">
+                <Text
+                  fontFamily="bitter"
+                  fontSize={{ base: 'lg', md: '2xl' }}
+                  lineHeight="short"
+                  mt={{ base: 4, md: 6 }}
+                >
                   Publish product recs just like the pros at Wirecutter and
                   Consumer Reports.
                 </Text>
-                <Box pt={4}>
-                  <Button>Get Started</Button>
+                <Box mt={{ base: 4, md: 10 }}>
+                  <Button
+                    size={{ base: 'md', md: 'lg' }}
+                    onClick={handleGetStarted}
+                    w={{ base: 'full', md: 'auto' }}
+                  >
+                    Get Started
+                  </Button>
                 </Box>
-              </Stack>
+              </Box>
             </Flex>
             <Flex flex={1}>
-              <Stack spacing={6} mb="-10rem">
+              <Stack
+                spacing={{ base: 4, md: 6 }}
+                mt={{ base: 8, md: 0 }}
+                mb={{ base: '-24rem', md: '-10rem' }}
+              >
                 <PackItem
                   title="HiFiMan Sundara"
                   description="The best cans for any entry-level audiophile. Hands down."
@@ -58,43 +111,279 @@ const HomePage = () => {
         </PageContainer>
       </Box>
       <Box bg="#6C47FF" overflow="hidden">
-        <PageContainer fillPageHeight={false}>
-          <Flex direction="column" px={4} mt="88px" align="center">
+        <PageContainer
+          minHeight="auto"
+          py={{ base: 8, md: '120px' }}
+          px={{ base: 4, md: 12 }}
+        >
+          <Flex direction="column" align="center">
             <Heading
-              fontSize="6xl"
-              lineHeight="93%"
+              fontSize={{ base: '4xl', md: '6xl' }}
+              lineHeight={{ base: 'none', md: '93%' }}
               letterSpacing="tight"
               color="white"
+              textAlign="center"
             >
               Easily share your expertise
             </Heading>
             <HStack mt={5}>
-              <Button leftIcon={<Text>⛺️</Text>}>Camping</Button>
-              <Button leftIcon={<Text>🎧</Text>}>Audio</Button>
-              <Button leftIcon={<Text>📸</Text>}>Photograph</Button>
-              <Button leftIcon={<Text>🎹</Text>}>Music Gear</Button>
-              <Button leftIcon={<Text>🏠</Text>}>Lifestyle</Button>
+              <Button leftIcon={<Text>⛺️</Text>}>
+                <Text display={{ base: 'none', md: 'block' }}>Camping</Text>
+              </Button>
+              <Button leftIcon={<Text>🎧</Text>}>
+                <Text display={{ base: 'none', md: 'block' }}>Audio</Text>
+              </Button>
+              <Button leftIcon={<Text>📸</Text>}>
+                <Text display={{ base: 'none', md: 'block' }}>Photograph</Text>
+              </Button>
+              <Button leftIcon={<Text>🎹</Text>}>
+                <Text display={{ base: 'none', md: 'block' }}>Music Gear</Text>
+              </Button>
+              <Button leftIcon={<Text>🏠</Text>}>
+                <Text display={{ base: 'none', md: 'block' }}>Lifestyle</Text>
+              </Button>
             </HStack>
-            <Box bg="#F4EBD2" px={24} py={16} mt="72px" borderRadius="64px">
-              <Pack
-                pack={{
-                  title: 'Camping 101',
-                  description:
-                    'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
-                  packItems: [
-                    {
-                      id: 1,
-                      title: 'REI 6-Person Lighted Dome Tent',
-                      description:
-                        'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet.',
-                      purchaseUrl: '#',
-                      imageUrl:
-                        'https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/2f2f1e96-0b28-43af-91c9-2bc1b55ca89c-imageservice.webp',
-                    },
-                  ],
-                }}
-              />
+            <Box
+              bg="#F4EBD2"
+              px={{ base: 6, md: 24 }}
+              py={{ base: 6, md: 16 }}
+              mt="72px"
+              mb="-14rem"
+              borderRadius={{ base: '3xl', md: '64px' }}
+            >
+              <Flex>
+                <Flex direction={{ base: 'column', md: 'row' }}>
+                  <Box
+                    width={{ base: 'full', md: '70%' }}
+                    paddingRight={{ base: 0, md: 20 }}
+                    mt={{ base: 6, md: 0 }}
+                    order={{ base: 2, md: 1 }}
+                  >
+                    <Pack
+                      pack={{
+                        title: 'Camping 101',
+                        description:
+                          'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
+                        packItems: [
+                          {
+                            id: 1,
+                            title: 'REI 6-Person Lighted Dome Tent',
+                            description:
+                              'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet.',
+                            purchaseUrl: '#',
+                            imageUrl:
+                              'https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/2f2f1e96-0b28-43af-91c9-2bc1b55ca89c-imageservice.webp',
+                          },
+                        ],
+                      }}
+                    />
+                  </Box>
+                  <Box
+                    width={{ base: 'full', md: '30%' }}
+                    borderLeftWidth={{ base: '0', md: '1px' }}
+                    borderLeftColor={'blackAlpha.200'}
+                    paddingLeft={{ base: 0, md: 14 }}
+                    order={{ base: 1, md: 2 }}
+                    display={{ base: 'none', md: 'block' }}
+                  >
+                    <UserProfileSidebar
+                      userProfile={{
+                        givenName: 'Bear',
+                        familyName: 'Grylls',
+                        username: 'beargrylls',
+                        biography:
+                          'he/him. my life motto is simple—courage and kindness',
+                        youtubeUrl: '@beargryllsofficial',
+                        instagramUrl: '@beargrylls',
+                        imageUrl:
+                          'https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/user-profile-images/95987dfa-6019-4fd4-a6a6-da5568d10bad-dsc06531.jpg',
+                      }}
+                    />
+                  </Box>
+                </Flex>
+              </Flex>
             </Box>
+          </Flex>
+        </PageContainer>
+      </Box>
+      <Box bg="#FFD15B" py="120px">
+        <PageContainer minHeight="auto" py={0}>
+          <Box px={4} textAlign="center">
+            <Heading
+              fontSize={{ base: '4xl', md: '6xl' }}
+              lineHeight={{ base: 'none', md: '93%' }}
+              letterSpacing="tight"
+              textAlign="center"
+            >
+              Get paid for your <br />
+              recommendations
+            </Heading>
+            <Text fontFamily="bitter" fontSize="2xl" lineHeight="short" mt={6}>
+              Use affiliate links to profit when someone buys from your Pack.
+            </Text>
+          </Box>
+        </PageContainer>
+        <Flex mt="75px" justify="center" overflow="hidden">
+          <HStack spacing={12}>
+            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+              <Image src={ebayLogo} />
+            </Center>
+            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+              <Image src={walmartLogo} h="120px" w="120px" />
+            </Center>
+            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+              <Image src={amazonLogo} h="120px" w="120px" />
+            </Center>
+            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+              <Image src={targetLogo} h="120px" w="120px" />
+            </Center>
+            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+              <Image src={homeDepotLogo} h="120px" w="120px" />
+            </Center>
+          </HStack>
+        </Flex>
+        <PageContainer minHeight="auto" py={0}>
+          <Box mt={16} textAlign="center">
+            <Button size="lg" onClick={handleGetStarted}>
+              Get Started
+            </Button>
+          </Box>
+        </PageContainer>
+      </Box>
+      <Box bg="#F4EBD2">
+        <PageContainer minHeight="auto">
+          <Flex
+            direction="column"
+            px={{ base: 0, md: 4 }}
+            mt="88px"
+            mb="120px"
+            align="center"
+          >
+            <Heading
+              fontSize={{ base: '4xl', md: '6xl' }}
+              lineHeight={{ base: 'none', md: '93%' }}
+              letterSpacing="tight"
+              textAlign="center"
+            >
+              Questions?
+            </Heading>
+            <Container maxW="100ch" mt={16}>
+              <Accordion defaultIndex={[0]} allowMultiple>
+                <Stack spacing={4}>
+                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                    <AccordionButton p={3} borderRadius="16px">
+                      <Box
+                        flex="1"
+                        textAlign="left"
+                        fontSize="2xl"
+                        fontWeight="medium"
+                      >
+                        Is Lifepacks free?
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel
+                      p={0}
+                      px={3}
+                      mb={3}
+                      fontFamily="bitter"
+                      fontSize="2xl"
+                      color="blackAlpha.600"
+                      lineHeight="short"
+                    >
+                      Fisca’s robotic dog uses a rechargeable battery, which is
+                      great for your wallet and the planet. The downside of
+                      this, however, is that the battery must be removed and
+                      charged after 60 minutes of play.
+                    </AccordionPanel>
+                  </AccordionItem>
+
+                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                    <AccordionButton p={3} borderRadius="16px">
+                      <Box
+                        flex="1"
+                        textAlign="left"
+                        fontSize="2xl"
+                        fontWeight="medium"
+                      >
+                        Can I make money from my Packs?
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel
+                      p={0}
+                      px={3}
+                      mb={3}
+                      fontFamily="bitter"
+                      fontSize="2xl"
+                      color="blackAlpha.600"
+                      lineHeight="short"
+                    >
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </AccordionPanel>
+                  </AccordionItem>
+
+                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                    <AccordionButton p={3} borderRadius="16px">
+                      <Box
+                        flex="1"
+                        textAlign="left"
+                        fontSize="2xl"
+                        fontWeight="medium"
+                      >
+                        Who can see the Packs I’ve made?
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel
+                      p={0}
+                      px={3}
+                      mb={3}
+                      fontFamily="bitter"
+                      fontSize="2xl"
+                      color="blackAlpha.600"
+                      lineHeight="short"
+                    >
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </AccordionPanel>
+                  </AccordionItem>
+
+                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                    <AccordionButton p={3} borderRadius="16px">
+                      <Box
+                        flex="1"
+                        textAlign="left"
+                        fontSize="2xl"
+                        fontWeight="medium"
+                      >
+                        Where should I link to my Pack?
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel
+                      p={0}
+                      px={3}
+                      mb={3}
+                      fontFamily="bitter"
+                      fontSize="2xl"
+                      color="blackAlpha.600"
+                      lineHeight="short"
+                    >
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Stack>
+              </Accordion>
+            </Container>
           </Flex>
         </PageContainer>
       </Box>

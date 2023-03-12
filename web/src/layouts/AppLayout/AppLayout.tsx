@@ -1,3 +1,4 @@
+import Footer from 'src/components/Footer/Footer'
 import Header from 'src/components/Header/Header'
 
 type AppLayoutProps = {
@@ -9,6 +10,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   )
 }
