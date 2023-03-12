@@ -11,6 +11,7 @@ import {
   Flex,
   Heading,
   HStack,
+  IconButton,
   Image,
   Stack,
   Text,
@@ -126,28 +127,55 @@ const HomePage = () => {
             >
               Easily share your expertise
             </Heading>
-            <HStack mt={5}>
+            <HStack mt={5} display={{ base: 'none', md: 'block' }}>
               <Button leftIcon={<Text>⛺️</Text>}>
-                <Text display={{ base: 'none', md: 'block' }}>Camping</Text>
+                <Text>Camping</Text>
               </Button>
               <Button leftIcon={<Text>🎧</Text>}>
-                <Text display={{ base: 'none', md: 'block' }}>Audio</Text>
+                <Text>Audio</Text>
               </Button>
               <Button leftIcon={<Text>📸</Text>}>
-                <Text display={{ base: 'none', md: 'block' }}>Photograph</Text>
+                <Text>Photograph</Text>
               </Button>
               <Button leftIcon={<Text>🎹</Text>}>
-                <Text display={{ base: 'none', md: 'block' }}>Music Gear</Text>
+                <Text>Music Gear</Text>
               </Button>
               <Button leftIcon={<Text>🏠</Text>}>
-                <Text display={{ base: 'none', md: 'block' }}>Lifestyle</Text>
+                <Text>Lifestyle</Text>
               </Button>
+            </HStack>
+            <HStack mt={6} display={{ base: 'block', md: 'none' }}>
+              <IconButton
+                aria-label="Camping"
+                px={4}
+                icon={<Text fontSize="2xl">⛺️</Text>}
+              />
+              <IconButton
+                aria-label="Audio"
+                px={4}
+                icon={<Text fontSize="2xl">🎧</Text>}
+              />
+              <IconButton
+                aria-label="Photograph"
+                px={4}
+                icon={<Text fontSize="2xl">📸</Text>}
+              />
+              <IconButton
+                aria-label="Music Gear"
+                px={4}
+                icon={<Text fontSize="2xl">🎹</Text>}
+              />
+              <IconButton
+                aria-label="Lifestyle"
+                px={4}
+                icon={<Text fontSize="2xl">🏠</Text>}
+              />
             </HStack>
             <Box
               bg="#F4EBD2"
               px={{ base: 6, md: 24 }}
               py={{ base: 6, md: 16 }}
-              mt="72px"
+              mt={{ base: 8, md: '72px' }}
               mb="-14rem"
               borderRadius={{ base: '3xl', md: '64px' }}
             >
@@ -206,7 +234,7 @@ const HomePage = () => {
           </Flex>
         </PageContainer>
       </Box>
-      <Box bg="#FFD15B" py="120px">
+      <Box bg="#FFD15B" py={{ base: 10, md: '120px' }}>
         <PageContainer minHeight="auto" py={0}>
           <Box px={4} textAlign="center">
             <Heading
@@ -218,13 +246,18 @@ const HomePage = () => {
               Get paid for your <br />
               recommendations
             </Heading>
-            <Text fontFamily="bitter" fontSize="2xl" lineHeight="short" mt={6}>
+            <Text
+              fontFamily="bitter"
+              fontSize={{ base: 'lg', md: '2xl' }}
+              lineHeight="short"
+              mt={{ base: 4, md: 6 }}
+            >
               Use affiliate links to profit when someone buys from your Pack.
             </Text>
           </Box>
         </PageContainer>
-        <Flex mt="75px" justify="center" overflow="hidden">
-          <HStack spacing={12}>
+        <Flex mt={{ base: 10, md: '75px' }} justify="center" overflow="hidden">
+          <HStack spacing={{ base: 6, md: 12 }}>
             <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
               <Image src={ebayLogo} />
             </Center>
@@ -243,22 +276,20 @@ const HomePage = () => {
           </HStack>
         </Flex>
         <PageContainer minHeight="auto" py={0}>
-          <Box mt={16} textAlign="center">
-            <Button size="lg" onClick={handleGetStarted}>
+          <Box mt={{ base: 10, md: 16 }} textAlign="center">
+            <Button
+              size="lg"
+              onClick={handleGetStarted}
+              w={{ base: 'full', md: 'auto' }}
+            >
               Get Started
             </Button>
           </Box>
         </PageContainer>
       </Box>
       <Box bg="#F4EBD2">
-        <PageContainer minHeight="auto">
-          <Flex
-            direction="column"
-            px={{ base: 0, md: 4 }}
-            mt="88px"
-            mb="120px"
-            align="center"
-          >
+        <PageContainer minHeight="auto" py={{ base: 10, md: '120px' }}>
+          <Flex direction="column" px={{ base: 0, md: 4 }} align="center">
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
               lineHeight={{ base: 'none', md: '93%' }}
@@ -267,15 +298,23 @@ const HomePage = () => {
             >
               Questions?
             </Heading>
-            <Container maxW="100ch" mt={16}>
+            <Container
+              maxW="100ch"
+              mt={{ base: 10, md: 16 }}
+              px={{ base: 0, md: 4 }}
+            >
               <Accordion defaultIndex={[0]} allowMultiple>
                 <Stack spacing={4}>
-                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                  <AccordionItem
+                    bg="white"
+                    p={{ base: 4, md: 7 }}
+                    borderRadius="32px"
+                  >
                     <AccordionButton p={3} borderRadius="16px">
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontSize="2xl"
+                        fontSize={{ base: 'xl', md: '2xl' }}
                         fontWeight="medium"
                       >
                         Is Lifepacks free?
@@ -287,7 +326,7 @@ const HomePage = () => {
                       px={3}
                       mb={3}
                       fontFamily="bitter"
-                      fontSize="2xl"
+                      fontSize={{ base: 'lg', md: '2xl' }}
                       color="blackAlpha.600"
                       lineHeight="short"
                     >
@@ -298,12 +337,16 @@ const HomePage = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                  <AccordionItem
+                    bg="white"
+                    p={{ base: 4, md: 7 }}
+                    borderRadius="32px"
+                  >
                     <AccordionButton p={3} borderRadius="16px">
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontSize="2xl"
+                        fontSize={{ base: 'xl', md: '2xl' }}
                         fontWeight="medium"
                       >
                         Can I make money from my Packs?
@@ -315,7 +358,7 @@ const HomePage = () => {
                       px={3}
                       mb={3}
                       fontFamily="bitter"
-                      fontSize="2xl"
+                      fontSize={{ base: 'lg', md: '2xl' }}
                       color="blackAlpha.600"
                       lineHeight="short"
                     >
@@ -326,12 +369,16 @@ const HomePage = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                  <AccordionItem
+                    bg="white"
+                    p={{ base: 4, md: 7 }}
+                    borderRadius="32px"
+                  >
                     <AccordionButton p={3} borderRadius="16px">
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontSize="2xl"
+                        fontSize={{ base: 'xl', md: '2xl' }}
                         fontWeight="medium"
                       >
                         Who can see the Packs I’ve made?
@@ -343,7 +390,7 @@ const HomePage = () => {
                       px={3}
                       mb={3}
                       fontFamily="bitter"
-                      fontSize="2xl"
+                      fontSize={{ base: 'lg', md: '2xl' }}
                       color="blackAlpha.600"
                       lineHeight="short"
                     >
@@ -354,12 +401,16 @@ const HomePage = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem bg="white" p={7} borderRadius="32px">
+                  <AccordionItem
+                    bg="white"
+                    p={{ base: 4, md: 7 }}
+                    borderRadius="32px"
+                  >
                     <AccordionButton p={3} borderRadius="16px">
                       <Box
                         flex="1"
                         textAlign="left"
-                        fontSize="2xl"
+                        fontSize={{ base: 'xl', md: '2xl' }}
                         fontWeight="medium"
                       >
                         Where should I link to my Pack?
@@ -371,7 +422,7 @@ const HomePage = () => {
                       px={3}
                       mb={3}
                       fontFamily="bitter"
-                      fontSize="2xl"
+                      fontSize={{ base: 'lg', md: '2xl' }}
                       color="blackAlpha.600"
                       lineHeight="short"
                     >
