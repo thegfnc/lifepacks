@@ -14,11 +14,13 @@ import { AuthProvider, useAuth } from './auth'
 
 import './index.css'
 
-Sentry.init({
-  dsn: 'https://344cc4d839624898a7b07d84c1650f34@o1064557.ingest.sentry.io/4504829684547584',
-  integrations: [new BrowserTracing()],
-  tracesSampleRate: 1.0,
-})
+if (process.env.SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+    integrations: [new BrowserTracing()],
+    tracesSampleRate: 1.0,
+  })
+}
 
 const extendedTheme = extendTheme(theme)
 

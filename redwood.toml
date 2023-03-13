@@ -9,7 +9,11 @@
   title = "Lifepacks"
   port = 8910
   apiUrl = "/api"
-  includeEnvironmentVariables = ["SUPABASE_URL", "SUPABASE_KEY"] # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
+  includeEnvironmentVariables = [ # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
+    "SUPABASE_URL",
+    "SUPABASE_KEY",
+    "SENTRY_DSN"
+  ]
 [api]
   port = 8911
 [browser]
