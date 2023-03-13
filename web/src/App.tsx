@@ -38,6 +38,7 @@ const App = () => (
         <ColorModeScript />
         <ChakraProvider theme={extendedTheme}>
           <RedwoodApolloProvider useAuth={useAuth}>
+            <button onClick={() => magicalBreakingButton()}>Break Me</button>
             <Toaster />
             <Routes />
           </RedwoodApolloProvider>
