@@ -7,6 +7,9 @@
       "packages/*"
     ]
   },
+  "dependencies": {
+    "slug": "^8.2.2"
+  },
   "devDependencies": {
     "@redwoodjs/auth-supabase-setup": "4.3.1",
     "@redwoodjs/core": "4.3.1"
@@ -22,8 +25,5 @@
   "prisma": {
     "seed": "yarn rw exec seed"
   },
-  "packageManager": "yarn@3.3.0",
-  "dependencies": {
-    "slug": "^8.2.2"
-  }
+  "packageManager": "yarn@3.3.0"
 }
