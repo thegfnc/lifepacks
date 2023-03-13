@@ -21,7 +21,7 @@ if (process.env.SENTRY_DSN) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
     environment,
-    release: process.env.VERCEL_GIT_COMMIT_REF,
+    release: process.env.VERCEL_GIT_COMMIT_SHA,
     integrations: [new BrowserTracing(), new Sentry.Replay()],
     tracesSampleRate: isDevelopmentEnv ? 1 : 0.1,
     replaysSessionSampleRate: isDevelopmentEnv ? 1 : 0.1,

@@ -14,7 +14,7 @@
     "SUPABASE_KEY",
     "SENTRY_DSN",
     "VERCEL_ENV",
-    "VERCEL_GIT_COMMIT_REF"
+    "VERCEL_GIT_COMMIT_SHA"
   ]
 [api]
   port = 8911
