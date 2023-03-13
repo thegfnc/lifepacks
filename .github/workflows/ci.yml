@@ -8,10 +8,14 @@ on:
     branches: ['main']
 
 env:
-  DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-  TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-  SUPABASE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zbXlxZWtsc2tpcmx0Ymptbm1qIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA0ODAxNzQsImV4cCI6MTk4NjA1NjE3NH0.lU5KR_VPV9RQRQ_d4LCmH66GDnu_di8vDJHnQMIxf_c
-  SUPABASE_URL: https://msmyqeklskirltbjmnmj.supabase.co
+  DATABASE_URL: ${{ vars.DATABASE_URL }}
+  TEST_DATABASE_URL: ${{ vars.TEST_DATABASE_URL }}
+  SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+  SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_DSN: ${{ vars.SENTRY_DSN }}
+  SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+  SENTRY_ORG: ${{ vars.SENTRY_ORG }}
 
 jobs:
   build:

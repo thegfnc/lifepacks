@@ -6093,6 +6093,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/cli@npm:^1.74.6":
+  version: 1.75.0
+  resolution: "@sentry/cli@npm:1.75.0"
+  dependencies:
+    https-proxy-agent: ^5.0.0
+    mkdirp: ^0.5.5
+    node-fetch: ^2.6.7
+    progress: ^2.0.3
+    proxy-from-env: ^1.1.0
+    which: ^2.0.2
+  bin:
+    sentry-cli: bin/sentry-cli
+  checksum: a2195476391564522362d61cad8637b19fa68a5310d9619b73e8cda4941a7d57bb45c65739fe6cf6868e707ee398d28e9bc458bd7368e4cd7cc642d14d47710c
+  languageName: node
+  linkType: hard
+
 "@sentry/core@npm:7.42.0":
   version: 7.42.0
   resolution: "@sentry/core@npm:7.42.0"
@@ -6156,6 +6172,16 @@ __metadata:
     "@sentry/types": 7.42.0
     tslib: ^1.9.3
   checksum: 05a2b35b6392c8b9573311ef8f59da1c5af6cfacbe1ace02dc98ff51555095777c45f1879f1ba2c28d1d561ef901000f683288c703500a402a57d58d3f95b3ce
+  languageName: node
+  linkType: hard
+
+"@sentry/webpack-plugin@npm:^1.20.0":
+  version: 1.20.0
+  resolution: "@sentry/webpack-plugin@npm:1.20.0"
+  dependencies:
+    "@sentry/cli": ^1.74.6
+    webpack-sources: ^2.0.0 || ^3.0.0
+  checksum: 81b527307dc33b14b16f1b7944fbc19c2e856a735b63b133ce0f8ca424d89acd12f97aea781c94185be2dd38c2925ab6b2367023f0c308e9d0d1e41fbdacbddc
   languageName: node
   linkType: hard
 
@@ -19235,7 +19261,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mkdirp@npm:^0.5.1, mkdirp@npm:^0.5.3, mkdirp@npm:^0.5.6":
+"mkdirp@npm:^0.5.1, mkdirp@npm:^0.5.3, mkdirp@npm:^0.5.5, mkdirp@npm:^0.5.6":
   version: 0.5.6
   resolution: "mkdirp@npm:0.5.6"
   dependencies:
@@ -21389,7 +21415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"progress@npm:2.0.3":
+"progress@npm:2.0.3, progress@npm:^2.0.3":
   version: 2.0.3
   resolution: "progress@npm:2.0.3"
   checksum: 1697e07cb1068055dbe9fe858d242368ff5d2073639e652b75a7eb1f2a1a8d4afd404d719de23c7b48481a6aa0040686310e2dac2f53d776daa2176d3f96369c
@@ -21484,6 +21510,13 @@ __metadata:
     forwarded: 0.2.0
     ipaddr.js: 1.9.1
   checksum: c3eed999781a35f7fd935f398b6d8920b6fb00bbc14287bc6de78128ccc1a02c89b95b56742bf7cf0362cc333c61d138532049c7dedc7a328ef13343eff81210
+  languageName: node
+  linkType: hard
+
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: fe7dd8b1bdbbbea18d1459107729c3e4a2243ca870d26d34c2c1bcd3e4425b7bcc5112362df2d93cc7fb9746f6142b5e272fd1cc5c86ddf8580175186f6ad42b
   languageName: node
   linkType: hard
 
@@ -25725,6 +25758,7 @@ __metadata:
     "@redwoodjs/web": 4.3.1
     "@sentry/react": ^7.42.0
     "@sentry/tracing": ^7.42.0
+    "@sentry/webpack-plugin": ^1.20.0
     "@supabase/supabase-js": ^1
     compressorjs: ^1.2.1
     date-fns: ^2.29.3
@@ -25979,6 +26013,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"webpack-sources@npm:^2.0.0 || ^3.0.0, webpack-sources@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "webpack-sources@npm:3.2.3"
+  checksum: 2ef63d77c4fad39de4a6db17323d75eb92897b32674e97d76f0a1e87c003882fc038571266ad0ef581ac734cbe20952912aaa26155f1905e96ce251adbb1eb4e
+  languageName: node
+  linkType: hard
+
 "webpack-sources@npm:^2.2.0":
   version: 2.3.1
   resolution: "webpack-sources@npm:2.3.1"
@@ -25986,13 +26027,6 @@ __metadata:
     source-list-map: ^2.0.1
     source-map: ^0.6.1
   checksum: caf56a9a478eca7e77feca2b6ddc7673f1384eb870280014b300c40cf42abca656f639ff58a8d55a889a92a810ae3c22e71e578aa38fde416e8c2e6827a6ddfd
-  languageName: node
-  linkType: hard
-
-"webpack-sources@npm:^3.2.3":
-  version: 3.2.3
-  resolution: "webpack-sources@npm:3.2.3"
-  checksum: 2ef63d77c4fad39de4a6db17323d75eb92897b32674e97d76f0a1e87c003882fc038571266ad0ef581ac734cbe20952912aaa26155f1905e96ce251adbb1eb4e
   languageName: node
   linkType: hard
 
