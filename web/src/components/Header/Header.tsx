@@ -1,7 +1,6 @@
 import {
   Button,
   Flex,
-  Heading,
   HStack,
   Menu,
   MenuButton,
@@ -17,6 +16,8 @@ import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
+
+import Logo from '../Logo/Logo'
 
 const Header = () => {
   const {
@@ -51,15 +52,7 @@ const Header = () => {
           px={{ base: 4, md: 8 }}
           alignItems={'center'}
         >
-          <Heading
-            as={Link}
-            to={routes.home()}
-            size="md"
-            color={'black'}
-            fontWeight="medium"
-          >
-            Lifepacks
-          </Heading>
+          <Logo />
 
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
             {isAuthLoading || isCurrentUserProfileLoading ? (
