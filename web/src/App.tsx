@@ -17,8 +17,9 @@ import './index.css'
 if (process.env.SENTRY_DSN) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
+    environment: process.env.VERCEL_ENV || 'development',
     integrations: [new BrowserTracing()],
-    tracesSampleRate: 1.0,
+    tracesSampleRate: 0.1,
   })
 }
 
