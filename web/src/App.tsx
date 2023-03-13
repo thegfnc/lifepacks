@@ -15,11 +15,17 @@ import { AuthProvider, useAuth } from './auth'
 import './index.css'
 
 if (process.env.SENTRY_DSN) {
+  const environment = process.env.VERCEL_ENV || 'development'
+  const isDevelopmentEnv = environment === 'development'
+
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
-    environment: process.env.VERCEL_ENV || 'development',
-    integrations: [new BrowserTracing()],
-    tracesSampleRate: 0.1,
+    environment,
+    release: process.env.VERCEL_GIT_COMMIT_REF,
+    integrations: [new BrowserTracing(), new Sentry.Replay()],
+    tracesSampleRate: isDevelopmentEnv ? 1 : 0.1,
+    replaysSessionSampleRate: isDevelopmentEnv ? 1 : 0.1,
+    replaysOnErrorSampleRate: 1.0,
   })
 }
 
