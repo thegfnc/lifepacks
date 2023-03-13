@@ -18,24 +18,24 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <Set wrap={AppLayout}>
         {/* Marketing Pages */}
-        <Route path="/" page={HomePage} name="home" />
+        <Route path="/" page={HomePage} name="home" prerender />
 
         {/* Public Profile and Pack Pages */}
         <Route path="/@{username}" page={UserProfilePage} name="userProfile" />
         <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" />
 
         {/* Public Auth Pages */}
-        <Route path="/log-in" page={LogInPage} name="logIn" />
-        <Route path="/sign-up" page={SignUpPage} name="signUp" />
-        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/log-in" page={LogInPage} name="logIn" prerender />
+        <Route path="/sign-up" page={SignUpPage} name="signUp" prerender />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" prerender />
 
         {/* User Admin Pages*/}
         <Set private unauthenticated="home">
           <Route path="/me/pack/edit/{id:Int}" page={EditPackPage} name="editPack" />
-          <Route path="/me/pack/new" page={NewPackPage} name="newPack" />
+          <Route path="/me/pack/new" page={NewPackPage} name="newPack" prerender />
 
-          <Route path="/me/reset-password" page={ResetPasswordPage} name="resetPassword" />
-          <Route path="/me/complete-sign-up" page={CompleteSignUpPage} name="completeSignUp" />
+          <Route path="/me/reset-password" page={ResetPasswordPage} name="resetPassword" prerender />
+          <Route path="/me/complete-sign-up" page={CompleteSignUpPage} name="completeSignUp" prerender />
         </Set>
       </Set>
 
