@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import {
   Button,
   Flex,
@@ -19,7 +21,11 @@ import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 import Logo from '../Logo/Logo'
 
-const Header = () => {
+type HeaderProps = {
+  ctaComponent?: ReactNode
+}
+
+const Header = ({ ctaComponent }: HeaderProps) => {
   const {
     currentUser,
     isAuthenticated,
@@ -61,9 +67,11 @@ const Header = () => {
               <HStack spacing={2} dir="horizontal">
                 {isAuthenticated && data?.currentUserProfile ? (
                   <>
-                    <Button size={'md'} as={Link} to={routes.newPack()}>
-                      Create Pack
-                    </Button>
+                    {ctaComponent || (
+                      <Button size={'md'} as={Link} to={routes.newPack()}>
+                        Create Pack
+                      </Button>
+                    )}
                     <Menu placement="bottom-end">
                       <MenuButton
                         as={Button}

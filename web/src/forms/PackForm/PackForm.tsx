@@ -1,4 +1,11 @@
-import { Fragment, useReducer, useState } from 'react'
+import {
+  Fragment,
+  useReducer,
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+} from 'react'
 
 import {
   FormErrorMessage,
@@ -9,7 +16,6 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  Flex,
   FormControl,
   Stack,
   useDisclosure,
@@ -20,6 +26,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 
 import EditPackItemModal from 'src/components/EditPackItemModal/EditPackItemModal'
 import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
+import HeaderCtaContext from 'src/contexts/HeaderCtaContext'
 import ExpandingTextarea from 'src/fields/ExpandingTextarea/ExpandingTextarea'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
 
@@ -89,7 +96,8 @@ function packItemsReducer(packItems, action) {
 
 const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   const formMethods = useForm<PackFormValues>({ defaultValues })
-  const { register, formState } = formMethods
+  const { register, formState, handleSubmit } = formMethods
+  const setHeaderCtaComponent = useContext(HeaderCtaContext)
 
   const [packItems, dispatch] = useReducer(
     packItemsReducer,
@@ -170,22 +178,40 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
     onDeleteAlertClose()
   }
 
-  const onFormSubmit = (formData) => {
-    const data = {
-      ...formData,
-      packItems,
-    }
+  const onFormSubmit = useCallback(
+    (formData) => {
+      const data = {
+        ...formData,
+        packItems,
+      }
 
-    if (packItemIdsToDelete.length) {
-      data.packItemIdsToDelete = packItemIdsToDelete
-    }
+      if (packItemIdsToDelete.length) {
+        data.packItemIdsToDelete = packItemIdsToDelete
+      }
 
-    onSubmit(data)
-  }
+      onSubmit(data)
+    },
+    [onSubmit, packItemIdsToDelete, packItems]
+  )
+
+  useEffect(() => {
+    setHeaderCtaComponent(
+      <Button
+        type="submit"
+        colorScheme="green"
+        isLoading={isLoading}
+        onClick={handleSubmit(onFormSubmit)}
+      >
+        Publish Pack
+      </Button>
+    )
+
+    return () => setHeaderCtaComponent(null)
+  }, [handleSubmit, isLoading, onFormSubmit, setHeaderCtaComponent])
 
   return (
     <>
-      <Form formMethods={formMethods} onSubmit={onFormSubmit}>
+      <Form formMethods={formMethods}>
         <Stack maxWidth="3xl" spacing={6}>
           <FormControl isInvalid={Boolean(formState.errors.title)}>
             <ExpandingTextarea
@@ -257,11 +283,6 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               </Fragment>
             ))}
           </Stack>
-          <Flex justifyContent="flex-end">
-            <Button type="submit" colorScheme="green" isLoading={isLoading}>
-              {defaultValues ? 'Update Pack' : 'Create Pack'}
-            </Button>
-          </Flex>
         </Stack>
       </Form>
       <EditPackItemModal
