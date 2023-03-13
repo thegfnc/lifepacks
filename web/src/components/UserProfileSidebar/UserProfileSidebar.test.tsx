@@ -8,7 +8,7 @@ import UserProfileSidebar from './UserProfileSidebar'
 describe('UserProfileSidebar', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UserProfileSidebar />)
+      render(<UserProfileSidebar userProfile={{ username: 'jmdesiderio' }} />)
     }).not.toThrow()
   })
 })

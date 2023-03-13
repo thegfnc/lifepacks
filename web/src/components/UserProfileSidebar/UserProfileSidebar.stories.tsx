@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import UserProfileSidebar from './UserProfileSidebar'
 
 export const generated = () => {
-  return <UserProfileSidebar />
+  return <UserProfileSidebar userProfile={{ username: 'jmdesiderio' }} />
 }
 
 export default {
