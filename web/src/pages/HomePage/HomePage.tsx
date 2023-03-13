@@ -61,8 +61,9 @@ const HomePage = () => {
             <Flex flex={1} align={'center'}>
               <Box
                 w={'full'}
-                maxW="lg"
+                maxW={{ base: 'none', md: 'lg' }}
                 textAlign={{ base: 'center', md: 'left' }}
+                mr={{ base: 0, md: 4 }}
               >
                 <Heading
                   fontSize={{ base: '4xl', md: '6xl' }}
