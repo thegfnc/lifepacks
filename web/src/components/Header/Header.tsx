@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+
 import {
   Button,
   Flex,
@@ -15,6 +17,7 @@ import {
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
+import HeaderCtaContext from 'src/contexts/HeaderCtaContext'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 import Logo from '../Logo/Logo'
@@ -31,6 +34,7 @@ const Header = () => {
     loading: isCurrentUserProfileLoading,
     refetch,
   } = useCurrentUserProfile()
+  const [HeaderCtaComponent] = useContext(HeaderCtaContext)
 
   const logOutAndRefetchCurrentUserProfile = () => {
     logOut()
@@ -61,9 +65,11 @@ const Header = () => {
               <HStack spacing={2} dir="horizontal">
                 {isAuthenticated && data?.currentUserProfile ? (
                   <>
-                    <Button size={'md'} as={Link} to={routes.newPack()}>
-                      Create Pack
-                    </Button>
+                    {HeaderCtaComponent || (
+                      <Button size={'md'} as={Link} to={routes.newPack()}>
+                        Create Pack
+                      </Button>
+                    )}
                     <Menu placement="bottom-end">
                       <MenuButton
                         as={Button}
