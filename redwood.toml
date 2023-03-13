@@ -12,7 +12,9 @@
   includeEnvironmentVariables = [ # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
     "SUPABASE_URL",
     "SUPABASE_KEY",
-    "SENTRY_DSN"
+    "SENTRY_DSN",
+    "VERCEL_ENV",
+    "VERCEL_GIT_COMMIT_REF"
   ]
 [api]
   port = 8911
