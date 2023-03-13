@@ -97,8 +97,7 @@ function packItemsReducer(packItems, action) {
 const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   const formMethods = useForm<PackFormValues>({ defaultValues })
   const { register, formState, handleSubmit } = formMethods
-  const [_HeaderCtaComponent, setHeaderCtaComponent] =
-    useContext(HeaderCtaContext)
+  const setHeaderCtaComponent = useContext(HeaderCtaContext)
 
   const [packItems, dispatch] = useReducer(
     packItemsReducer,

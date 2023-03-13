@@ -12,10 +12,8 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   const [HeaderCtaComponent, setHeaderCtaComponent] = useState(null)
 
   return (
-    <HeaderCtaContext.Provider
-      value={[HeaderCtaComponent, setHeaderCtaComponent]}
-    >
-      <Header />
+    <HeaderCtaContext.Provider value={setHeaderCtaComponent}>
+      <Header ctaComponent={HeaderCtaComponent} />
       {children}
       <Footer />
     </HeaderCtaContext.Provider>

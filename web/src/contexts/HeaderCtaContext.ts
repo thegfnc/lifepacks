@@ -1,7 +1,7 @@
 import { createContext, Dispatch, ReactNode, SetStateAction } from 'react'
 
 const HeaderCtaContext = createContext<
-  [ReactNode, Dispatch<SetStateAction<ReactNode>>] | null
->(null)
+  Dispatch<SetStateAction<ReactNode>> | (() => void)
+>(() => {})
 
 export default HeaderCtaContext
