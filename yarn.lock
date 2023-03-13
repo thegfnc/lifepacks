@@ -6109,17 +6109,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:7.42.0":
-  version: 7.42.0
-  resolution: "@sentry/core@npm:7.42.0"
-  dependencies:
-    "@sentry/types": 7.42.0
-    "@sentry/utils": 7.42.0
-    tslib: ^1.9.3
-  checksum: 8985169236396166e3669530e5b51d9856d9e74cd29e92b8a6f732b11fb0d7d072a557e4e882b045ba244bfb1ad37da03daef9ca69c8675ac2438a17fb2345ce
-  languageName: node
-  linkType: hard
-
 "@sentry/core@npm:7.43.0":
   version: 7.43.0
   resolution: "@sentry/core@npm:7.43.0"
@@ -6172,22 +6161,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:^7.42.0":
-  version: 7.42.0
-  resolution: "@sentry/tracing@npm:7.42.0"
+"@sentry/tracing@npm:^7.43.0":
+  version: 7.43.0
+  resolution: "@sentry/tracing@npm:7.43.0"
   dependencies:
-    "@sentry/core": 7.42.0
-    "@sentry/types": 7.42.0
-    "@sentry/utils": 7.42.0
+    "@sentry/core": 7.43.0
+    "@sentry/types": 7.43.0
+    "@sentry/utils": 7.43.0
     tslib: ^1.9.3
-  checksum: 5f400ad09ca645477b30779844480ec7ddc31727c36be5717e63669c2ce5e9d4649f471f9218ae9803ed878122b0d3dabe2be5704391fed1b2f286b77d44a254
-  languageName: node
-  linkType: hard
-
-"@sentry/types@npm:7.42.0":
-  version: 7.42.0
-  resolution: "@sentry/types@npm:7.42.0"
-  checksum: 9488afad7116d0b6edaa560ed5c869d705ac871a2b7d24ee45d6c4cbc85a7ee894ce90c0247c02a19de1fe5983ca281a8a8559635053ba0d27863ba4cac144a5
+  checksum: 67683a8f6ed7a8e443e3ac24b1c4686d355a0f95bf0a3779e21c812d34b7961d399364d6eb2417bd3d36ee4f22fa5de959cb7aac5a2f4c9dbbb022bf10c2fd71
   languageName: node
   linkType: hard
 
@@ -6195,16 +6177,6 @@ __metadata:
   version: 7.43.0
   resolution: "@sentry/types@npm:7.43.0"
   checksum: c02ac13b4e22e3a65c591d6f79295efdeecadd6f40a4933adf8559ac730caa5686a81c4ca10529fe590051e9562f1ad66dfac353b49c17534898edfabce51161
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:7.42.0":
-  version: 7.42.0
-  resolution: "@sentry/utils@npm:7.42.0"
-  dependencies:
-    "@sentry/types": 7.42.0
-    tslib: ^1.9.3
-  checksum: 05a2b35b6392c8b9573311ef8f59da1c5af6cfacbe1ace02dc98ff51555095777c45f1879f1ba2c28d1d561ef901000f683288c703500a402a57d58d3f95b3ce
   languageName: node
   linkType: hard
 
@@ -25813,7 +25785,7 @@ __metadata:
     "@redwoodjs/router": 4.3.1
     "@redwoodjs/web": 4.3.1
     "@sentry/react": ^7.43.0
-    "@sentry/tracing": ^7.42.0
+    "@sentry/tracing": ^7.43.0
     "@sentry/webpack-plugin": ^1.20.0
     "@supabase/supabase-js": ^1
     compressorjs: ^1.2.1
