@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import {
   Accordion,
   AccordionButton,
@@ -31,8 +33,11 @@ import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import UserProfileSidebar from 'src/components/UserProfileSidebar/UserProfileSidebar'
 
+import { examplePacks } from './homePageData'
+
 const HomePage = () => {
   const { isAuthenticated } = useAuth()
+  const [examplePackTabIndex, setExamplePackTabIndex] = useState(0)
 
   const handleGetStarted = () => {
     if (isAuthenticated) {
@@ -128,48 +133,42 @@ const HomePage = () => {
               Easily share your expertise
             </Heading>
             <HStack mt={5} display={{ base: 'none', md: 'block' }}>
-              <Button leftIcon={<Text>⛺️</Text>}>
-                <Text>Camping</Text>
-              </Button>
-              <Button leftIcon={<Text>🎧</Text>}>
-                <Text>Audio</Text>
-              </Button>
-              <Button leftIcon={<Text>📸</Text>}>
-                <Text>Photograph</Text>
-              </Button>
-              <Button leftIcon={<Text>🎹</Text>}>
-                <Text>Music Gear</Text>
-              </Button>
-              <Button leftIcon={<Text>🏠</Text>}>
-                <Text>Lifestyle</Text>
-              </Button>
+              {examplePacks.map((examplePack, index) => {
+                const isCurrentTab = index === examplePackTabIndex
+
+                return (
+                  <Button
+                    key={examplePack.tabLabel}
+                    bg={isCurrentTab ? 'white' : 'purple.500'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'purple.600' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'purple.700' }}
+                    color={isCurrentTab ? 'black' : 'white'}
+                    onClick={() => setExamplePackTabIndex(index)}
+                    leftIcon={<Text>{examplePack.tabEmoji}</Text>}
+                  >
+                    <Text>{examplePack.tabLabel}</Text>
+                  </Button>
+                )
+              })}
             </HStack>
             <HStack mt={6} display={{ base: 'block', md: 'none' }}>
-              <IconButton
-                aria-label="Camping"
-                px={4}
-                icon={<Text fontSize="2xl">⛺️</Text>}
-              />
-              <IconButton
-                aria-label="Audio"
-                px={4}
-                icon={<Text fontSize="2xl">🎧</Text>}
-              />
-              <IconButton
-                aria-label="Photograph"
-                px={4}
-                icon={<Text fontSize="2xl">📸</Text>}
-              />
-              <IconButton
-                aria-label="Music Gear"
-                px={4}
-                icon={<Text fontSize="2xl">🎹</Text>}
-              />
-              <IconButton
-                aria-label="Lifestyle"
-                px={4}
-                icon={<Text fontSize="2xl">🏠</Text>}
-              />
+              {examplePacks.map((examplePack, index) => {
+                const isCurrentTab = index === examplePackTabIndex
+
+                return (
+                  <IconButton
+                    key={examplePack.tabLabel}
+                    bg={isCurrentTab ? 'white' : 'purple.500'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'purple.600' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'purple.700' }}
+                    color={isCurrentTab ? 'black' : 'white'}
+                    onClick={() => setExamplePackTabIndex(index)}
+                    aria-label={examplePack.tabLabel}
+                    px={4}
+                    icon={<Text fontSize="2xl">{examplePack.tabEmoji}</Text>}
+                  />
+                )
+              })}
             </HStack>
             <Box
               bg="#F4EBD2"
@@ -187,24 +186,7 @@ const HomePage = () => {
                     mt={{ base: 6, md: 0 }}
                     order={{ base: 2, md: 1 }}
                   >
-                    <Pack
-                      pack={{
-                        title: 'Camping 101',
-                        description:
-                          'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
-                        packItems: [
-                          {
-                            id: 1,
-                            title: 'REI 6-Person Lighted Dome Tent',
-                            description:
-                              'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet.',
-                            purchaseUrl: '#',
-                            imageUrl:
-                              'https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/2f2f1e96-0b28-43af-91c9-2bc1b55ca89c-imageservice.webp',
-                          },
-                        ],
-                      }}
-                    />
+                    <Pack pack={examplePacks[examplePackTabIndex].pack} />
                   </Box>
                   <Box
                     width={{ base: 'full', md: '30%' }}
@@ -215,17 +197,9 @@ const HomePage = () => {
                     display={{ base: 'none', md: 'block' }}
                   >
                     <UserProfileSidebar
-                      userProfile={{
-                        givenName: 'Bear',
-                        familyName: 'Grylls',
-                        username: 'beargrylls',
-                        biography:
-                          'he/him. my life motto is simple—courage and kindness',
-                        youtubeUrl: '@beargryllsofficial',
-                        instagramUrl: '@beargrylls',
-                        imageUrl:
-                          'https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/user-profile-images/95987dfa-6019-4fd4-a6a6-da5568d10bad-dsc06531.jpg',
-                      }}
+                      userProfile={
+                        examplePacks[examplePackTabIndex].userProfile
+                      }
                     />
                   </Box>
                 </Flex>
