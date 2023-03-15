@@ -1,5 +1,6 @@
 import { Box, Flex, Stack, useBreakpointValue } from '@chakra-ui/react'
 
+import { routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import BylineCell from 'src/cells/BylineCell'
@@ -16,7 +17,13 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
 
   return (
     <>
-      <MetaTags title="User" description="User page" />
+      {/* Default MetaTags, some props will get overwritten by UserProfileSidebarCell below */}
+      <MetaTags
+        title={`@${username}'s Profile`}
+        description={`Check out the packs created by @${username}`}
+        ogType="profile"
+        ogUrl={`https://www.lifepacks.co${routes.userProfile({ username })}`}
+      />
 
       <PageContainer>
         <Flex direction={{ base: 'column', md: 'row' }}>
@@ -37,7 +44,7 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
             paddingLeft={{ base: 0, md: 14 }}
             order={{ base: 1, md: 2 }}
           >
-            <UserProfileSidebarCell username={username} />
+            <UserProfileSidebarCell username={username} setMetaTags={true} />
           </Box>
         </Flex>
       </PageContainer>

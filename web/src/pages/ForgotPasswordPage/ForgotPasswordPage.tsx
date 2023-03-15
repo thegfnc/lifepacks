@@ -75,7 +75,7 @@ const ForgotPasswordPage = () => {
     <>
       <MetaTags
         title="Forgot Password"
-        description="Enter your e-mail to recieve a link to reset your password."
+        description="Enter your e-mail to recieve a reset password link."
       />
 
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>

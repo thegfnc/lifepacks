@@ -15,7 +15,10 @@ const NewPackPage = () => {
 
   return (
     <PageContainer>
-      <MetaTags title="EditPack" description="EditPack page" />
+      <MetaTags
+        title="Create Pack"
+        description="Create a new pack to share your recommendations with the world."
+      />
 
       <Flex justifyContent="center">
         <Stack w="3xl" spacing={6}>

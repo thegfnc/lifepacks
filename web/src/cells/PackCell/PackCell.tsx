@@ -26,7 +26,15 @@ import type {
 } from 'types/graphql'
 
 import { Link, navigate, routes } from '@redwoodjs/router'
-import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
+import {
+  CellSuccessProps,
+  CellFailureProps,
+  useMutation,
+  MetaTags,
+  Head,
+} from '@redwoodjs/web'
+
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
 import Pack from '../../components/Pack/Pack'
 import BylineCell from '../BylineCell'
@@ -36,6 +44,7 @@ type PackCellSuccessProps = CellSuccessProps<
   FindPackQueryVariables
 > & {
   username: string
+  setMetaTags?: boolean
 }
 
 export const QUERY = gql`
@@ -52,6 +61,11 @@ export const QUERY = gql`
         title
         description
       }
+    }
+    userProfile(username: $username) {
+      givenName
+      familyName
+      imageUrl
     }
     currentUserProfile {
       username
@@ -80,7 +94,9 @@ export const Failure = ({
 export const Success = ({
   username,
   pack,
+  userProfile,
   currentUserProfile,
+  setMetaTags = false,
 }: PackCellSuccessProps) => {
   const isBylineVisible = useBreakpointValue({ base: false, md: true })
   const {
@@ -106,6 +122,34 @@ export const Success = ({
 
   return (
     <>
+      {setMetaTags && (
+        <>
+          <MetaTags
+            title={pack.title}
+            description={`${
+              pack.description
+            } \n This pack was created by ${getUserDisplayName(
+              userProfile.givenName,
+              userProfile.familyName
+            )}`}
+            ogType="article"
+            ogContentUrl={pack.packItems[0].imageUrl || userProfile.imageUrl}
+          />
+          <Head>
+            <meta
+              property="og:article:published_time"
+              content={pack.createdAt}
+            />
+            <meta
+              property="og:article:author"
+              content={getUserDisplayName(
+                userProfile.givenName,
+                userProfile.familyName
+              )}
+            />
+          </Head>
+        </>
+      )}
       {error && (
         <Alert status="error">
           <AlertIcon />

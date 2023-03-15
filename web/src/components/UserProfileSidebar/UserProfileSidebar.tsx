@@ -7,6 +7,7 @@ import { Link, routes } from '@redwoodjs/router'
 
 import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccountButton'
 import { SocialAccountType } from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
 type UserProfileSidebarProps = {
   userProfile: UserProfile
@@ -36,7 +37,7 @@ const UserProfileSidebar = ({
             color="blackAlpha.800"
             to={routes.userProfile({ username: userProfile.username })}
           >
-            {userProfile.givenName} {userProfile.familyName}
+            {getUserDisplayName(userProfile.givenName, userProfile.familyName)}
           </Text>
         )}
         <Text

@@ -65,7 +65,7 @@ const ForgotPasswordPage = () => {
     <>
       <MetaTags
         title="Reset Password"
-        description="Enter your new password to reset it on your account."
+        description="Enter your new password to update your account."
       />
 
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
