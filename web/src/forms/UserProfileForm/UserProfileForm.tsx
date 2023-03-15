@@ -86,19 +86,28 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.username)}>
             <FormLabel>Username*</FormLabel>
-            {isUpdateForm ? (
-              <Input disabled={true} defaultValue={username} />
-            ) : (
-              <Input
-                autoComplete="username"
-                {...register('username', {
-                  required: {
-                    value: true,
-                    message: 'Username is required',
-                  },
-                })}
-              />
-            )}
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                color="gray.400"
+                fontSize="lg"
+              >
+                @
+              </InputLeftElement>
+              {isUpdateForm ? (
+                <Input disabled={true} defaultValue={username} />
+              ) : (
+                <Input
+                  autoComplete="username"
+                  {...register('username', {
+                    required: {
+                      value: true,
+                      message: 'Username is required',
+                    },
+                  })}
+                />
+              )}
+            </InputGroup>
             <FormErrorMessage>
               {formState.errors.username?.message}
             </FormErrorMessage>
@@ -162,18 +171,19 @@ const UserProfileForm = ({
             </InputGroup>
           </Stack>
           <SimpleGrid
-            py={4}
-            px={{ base: 4, md: 6 }}
-            columns={2}
+            pt={4}
+            pb={isUpdateForm ? 4 : 0}
+            px={isUpdateForm ? { base: 4, md: 6 } : 0}
+            columns={onCancel ? 2 : 1}
             spacing={4}
-            position="absolute"
-            bottom={0}
-            left={0}
-            bg="white"
+            position={isUpdateForm ? 'absolute' : 'relative'}
+            bottom={isUpdateForm ? 0 : 'auto'}
+            left={isUpdateForm ? 0 : 'auto'}
+            bg={isUpdateForm ? 'white' : 'none'}
             w="full"
-            borderBottomRadius="3xl"
-            borderTopWidth="1px"
-            borderTopColor="blackAlpha.300"
+            borderBottomRadius={isUpdateForm ? '3xl' : 'none'}
+            borderTopWidth={isUpdateForm ? '1px' : 0}
+            borderTopColor={isUpdateForm ? 'blackAlpha.300' : 'none'}
           >
             {onCancel && (
               <Button variant="outline" colorScheme="gray" onClick={onCancel}>

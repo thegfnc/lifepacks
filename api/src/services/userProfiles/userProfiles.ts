@@ -28,10 +28,13 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
     const currentUser: RedwoodUser = context.currentUser
     const userId = currentUser.sub
 
+    const { username, ...restOfInput } = input
+
     return db.userProfile.create({
       data: {
         userId,
-        ...input,
+        username: username.replace(/@/g, ''),
+        ...restOfInput,
       },
     })
   }
