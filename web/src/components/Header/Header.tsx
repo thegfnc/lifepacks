@@ -88,7 +88,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                           name={data?.currentUserProfile?.givenName}
                         />
                       </MenuButton>
-                      <MenuList>
+                      <MenuList borderRadius="xl">
                         <Text px={3}>{currentUser.email}</Text>
                         <MenuDivider />
                         <MenuItem
