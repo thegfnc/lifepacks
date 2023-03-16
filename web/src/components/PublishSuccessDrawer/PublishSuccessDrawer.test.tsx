@@ -1,16 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import SocialAccount from 'src/types/SocialAccount'
-
-import SocialAccountIcon from './SocialAccountIcon'
+import PublishSuccessDrawer from './PublishSuccessDrawer'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('SocialAccountIcon', () => {
+describe('PublishSuccessDrawer', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<SocialAccountIcon accountType={SocialAccount.Instagram} />)
+      render(<PublishSuccessDrawer />)
     }).not.toThrow()
   })
 })

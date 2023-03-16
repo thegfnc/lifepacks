@@ -11,70 +11,59 @@ import {
 } from 'react-icons/fa'
 import { MdLink } from 'react-icons/md'
 
-export enum SocialAccountType {
-  YouTube = 'YouTube',
-  Instagram = 'Instagram',
-  Facebook = 'Facebook',
-  Twitter = 'Twitter',
-  WhatsApp = 'WhatsApp',
-  Telegram = 'Telegram',
-  Reddit = 'Reddit',
-  LinkedIn = 'LinkedIn',
-  Email = 'Email',
-  Link = 'Link',
-}
+import SocialAccount from 'src/types/SocialAccount'
 
 type SocialAccountIconProps = {
-  accountType: SocialAccountType
+  accountType: SocialAccount
 }
 
 const socialAccountParams = {
-  [SocialAccountType.YouTube]: {
+  [SocialAccount.YouTube]: {
     Icon: FaYoutube,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.Instagram]: {
+  [SocialAccount.Instagram]: {
     Icon: FaInstagram,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.Facebook]: {
+  [SocialAccount.Facebook]: {
     Icon: FaFacebook,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.Twitter]: {
+  [SocialAccount.Twitter]: {
     Icon: FaTwitter,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.WhatsApp]: {
+  [SocialAccount.WhatsApp]: {
     Icon: FaWhatsapp,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.Telegram]: {
+  [SocialAccount.Telegram]: {
     Icon: FaTelegram,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.Reddit]: {
+  [SocialAccount.Reddit]: {
     Icon: FaReddit,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.LinkedIn]: {
+  [SocialAccount.LinkedIn]: {
     Icon: FaLinkedin,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.Email]: {
+  [SocialAccount.Email]: {
     Icon: FaEnvelope,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
-  [SocialAccountType.Link]: {
+  [SocialAccount.Link]: {
     Icon: MdLink,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
 }
 
-const SocialAccountButton = ({ accountType }: SocialAccountIconProps) => {
+const SocialAccountIcon = ({ accountType }: SocialAccountIconProps) => {
   const { Icon, iconColor } = socialAccountParams[accountType]
 
   return <Icon color={iconColor} size="24px" />
 }
 
-export default SocialAccountButton
+export default SocialAccountIcon

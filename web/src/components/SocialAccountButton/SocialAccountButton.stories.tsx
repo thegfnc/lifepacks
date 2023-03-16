@@ -13,14 +13,14 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import { SocialAccountType } from '../SocialAccountIcon/SocialAccountIcon'
+import SocialAccount from 'src/types/SocialAccount'
 
 import SocialAccountButton from './SocialAccountButton'
 
 export const facebook = () => {
   return (
     <SocialAccountButton
-      accountType={SocialAccountType.Facebook}
+      accountType={SocialAccount.Facebook}
       linkUrl="https://www.facebook.com/"
     />
   )
@@ -29,7 +29,7 @@ export const facebook = () => {
 export const youTube = () => {
   return (
     <SocialAccountButton
-      accountType={SocialAccountType.YouTube}
+      accountType={SocialAccount.YouTube}
       linkUrl="https://www.youtube.com/"
     />
   )
@@ -38,7 +38,7 @@ export const youTube = () => {
 export const instagram = () => {
   return (
     <SocialAccountButton
-      accountType={SocialAccountType.Instagram}
+      accountType={SocialAccount.Instagram}
       linkUrl="https://www.instagram.com/"
     />
   )

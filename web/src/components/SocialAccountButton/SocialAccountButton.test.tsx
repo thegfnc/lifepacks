@@ -1,6 +1,6 @@
 import { render } from '@redwoodjs/testing/web'
 
-import { SocialAccountType } from '../SocialAccountIcon/SocialAccountIcon'
+import SocialAccount from 'src/types/SocialAccount'
 
 import SocialAccountButton from './SocialAccountButton'
 
@@ -12,7 +12,7 @@ describe('SocialAccountButton', () => {
     expect(() => {
       render(
         <SocialAccountButton
-          accountType={SocialAccountType.YouTube}
+          accountType={SocialAccount.YouTube}
           linkUrl="https://www.youtube.com/"
         />
       )

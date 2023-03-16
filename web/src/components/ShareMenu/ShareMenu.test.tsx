@@ -8,7 +8,7 @@ import ShareMenu from './ShareMenu'
 describe('ShareMenu', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<ShareMenu />)
+      render(<ShareMenu shareTitle="Text" shareUrl="Url" />)
     }).not.toThrow()
   })
 })

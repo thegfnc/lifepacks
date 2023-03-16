@@ -4,8 +4,8 @@
 // ```tsx
 // import type { ComponentStory } from '@storybook/react'
 //
-// export const generated: ComponentStory<typeof ShareMenu> = (args) => {
-//   return <ShareMenu {...args} />
+// export const generated: ComponentStory<typeof PublishSuccessDrawer> = (args) => {
+//   return <PublishSuccessDrawer {...args} />
 // }
 // ```
 //
@@ -13,13 +13,13 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import ShareMenu from './ShareMenu'
+import PublishSuccessDrawer from './PublishSuccessDrawer'
 
 export const generated = () => {
-  return <ShareMenu shareTitle="Text" shareUrl="Url" />
+  return <PublishSuccessDrawer />
 }
 
 export default {
-  title: 'Components/ShareMenu',
-  component: ShareMenu,
-} as ComponentMeta<typeof ShareMenu>
+  title: 'Components/PublishSuccessDrawer',
+  component: PublishSuccessDrawer,
+} as ComponentMeta<typeof PublishSuccessDrawer>

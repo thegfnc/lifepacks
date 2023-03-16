@@ -7,18 +7,18 @@ import {
   MenuList,
 } from '@chakra-ui/react'
 
-import { toast } from '@redwoodjs/web/dist/toast'
+import { toast } from '@redwoodjs/web/toast'
 
-import SocialAccountIcon, {
-  SocialAccountType,
-} from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import { getCopyLinkClickHandler, getShareUrl } from 'src/helpers/getShareData'
+import SocialAccount from 'src/types/SocialAccount'
 
 type ShareMenuProps = {
   shareUrl: string
-  shareText: string
+  shareTitle: string
 }
 
-const ShareMenu = ({ shareUrl, shareText }: ShareMenuProps) => {
+const ShareMenu = ({ shareUrl, shareTitle }: ShareMenuProps) => {
   return (
     <Menu>
       <MenuButton as={Button} variant="outline" colorScheme="gray">
@@ -26,69 +26,66 @@ const ShareMenu = ({ shareUrl, shareText }: ShareMenuProps) => {
       </MenuButton>
       <MenuList borderRadius="xl">
         <MenuItem
-          onClick={() => {
-            navigator.clipboard.writeText(window.location.href)
-            toast.success('Pack link copied to clipboard')
-          }}
-          icon={<SocialAccountIcon accountType={SocialAccountType.Link} />}
+          onClick={getCopyLinkClickHandler(shareUrl, shareTitle)}
+          icon={<SocialAccountIcon accountType={SocialAccount.Link} />}
         >
           Copy Link
         </MenuItem>
         <MenuDivider />
         <MenuItem
           as="a"
-          href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
+          href={getShareUrl(SocialAccount.Twitter, shareUrl, shareTitle)}
           target="_blank"
-          icon={<SocialAccountIcon accountType={SocialAccountType.Twitter} />}
+          icon={<SocialAccountIcon accountType={SocialAccount.Twitter} />}
         >
           Twitter
         </MenuItem>
         <MenuItem
           as="a"
-          href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`}
+          href={getShareUrl(SocialAccount.Facebook, shareUrl, shareTitle)}
           target="_blank"
-          icon={<SocialAccountIcon accountType={SocialAccountType.Facebook} />}
+          icon={<SocialAccountIcon accountType={SocialAccount.Facebook} />}
         >
           Facebook
         </MenuItem>
         <MenuItem
           as="a"
-          href={`https://www.reddit.com/submit?url=${shareUrl}&title=${shareText}`}
+          href={getShareUrl(SocialAccount.Reddit, shareUrl, shareTitle)}
           target="_blank"
-          icon={<SocialAccountIcon accountType={SocialAccountType.Reddit} />}
+          icon={<SocialAccountIcon accountType={SocialAccount.Reddit} />}
         >
           Reddit
         </MenuItem>
         <MenuItem
           as="a"
-          href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
+          href={getShareUrl(SocialAccount.LinkedIn, shareUrl, shareTitle)}
           target="_blank"
-          icon={<SocialAccountIcon accountType={SocialAccountType.LinkedIn} />}
+          icon={<SocialAccountIcon accountType={SocialAccount.LinkedIn} />}
         >
           LinkedIn
         </MenuItem>
         <MenuDivider />
         <MenuItem
           as="a"
-          href={`https://wa.me/?text=${shareText}%20at%20${shareUrl}`}
+          href={getShareUrl(SocialAccount.WhatsApp, shareUrl, shareTitle)}
           target="_blank"
-          icon={<SocialAccountIcon accountType={SocialAccountType.WhatsApp} />}
+          icon={<SocialAccountIcon accountType={SocialAccount.WhatsApp} />}
         >
           WhatsApp
         </MenuItem>
         <MenuItem
           as="a"
-          href={`https://t.me/share/url?url=${shareUrl}&text=${shareText}`}
+          href={getShareUrl(SocialAccount.Telegram, shareUrl, shareTitle)}
           target="_blank"
-          icon={<SocialAccountIcon accountType={SocialAccountType.Telegram} />}
+          icon={<SocialAccountIcon accountType={SocialAccount.Telegram} />}
         >
           Telegram
         </MenuItem>
         <MenuItem
           as="a"
-          href={`mailto:?subject=${shareText}&body=${shareText}%20at%20${shareUrl}`}
+          href={getShareUrl(SocialAccount.Email, shareUrl, shareTitle)}
           target="_blank"
-          icon={<SocialAccountIcon accountType={SocialAccountType.Email} />}
+          icon={<SocialAccountIcon accountType={SocialAccount.Email} />}
         >
           Email
         </MenuItem>

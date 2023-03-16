@@ -16,10 +16,9 @@ import { CurrentUserProfile } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
-import SocialAccountIcon, {
-  SocialAccountType,
-} from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import SocialAccount from 'src/types/SocialAccount'
 
 type UserProfileFormProps = {
   onFormDirtyStateChange?: Dispatch<SetStateAction<boolean>>
@@ -143,7 +142,7 @@ const UserProfileForm = ({
           <Stack>
             <InputGroup>
               <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccountType.Facebook} />
+                <SocialAccountIcon accountType={SocialAccount.Facebook} />
               </InputLeftElement>
               <Input
                 pl="2.75rem"
@@ -153,7 +152,7 @@ const UserProfileForm = ({
             </InputGroup>
             <InputGroup>
               <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccountType.Instagram} />
+                <SocialAccountIcon accountType={SocialAccount.Instagram} />
               </InputLeftElement>
               <Input
                 pl="2.75rem"
@@ -163,7 +162,7 @@ const UserProfileForm = ({
             </InputGroup>
             <InputGroup>
               <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccountType.YouTube} />
+                <SocialAccountIcon accountType={SocialAccount.YouTube} />
               </InputLeftElement>
               <Input
                 pl="2.75rem"
@@ -173,11 +172,11 @@ const UserProfileForm = ({
             </InputGroup>
             <InputGroup>
               <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccountType.Twitter} />
+                <SocialAccountIcon accountType={SocialAccount.Twitter} />
               </InputLeftElement>
               <Input
                 pl="2.75rem"
-                placeholder="https://youtube.com/xxxx"
+                placeholder="https://twitter.com/xxxx"
                 {...register('twitterUrl')}
               />
             </InputGroup>

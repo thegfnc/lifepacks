@@ -29,7 +29,7 @@ import type {
   DeletePackMutationVariables,
 } from 'types/graphql'
 
-import { Link, navigate, routes } from '@redwoodjs/router'
+import { Link, navigate, routes, useParams } from '@redwoodjs/router'
 import {
   CellSuccessProps,
   CellFailureProps,
@@ -38,6 +38,8 @@ import {
   Head,
 } from '@redwoodjs/web'
 
+import { useAuth } from 'src/auth'
+import PublishSuccessDrawer from 'src/components/PublishSuccessDrawer/PublishSuccessDrawer'
 import ShareMenu from 'src/components/ShareMenu/ShareMenu'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
@@ -98,6 +100,7 @@ export const Failure = ({
 
 export const Success = ({
   username,
+  slug,
   pack,
   userProfile,
   currentUserProfile,
@@ -110,6 +113,9 @@ export const Success = ({
     onClose: onDeleteAlertClose,
   } = useDisclosure()
   const cancelDeleteRef = useRef()
+  const { isAuthenticated } = useAuth()
+  const { isPublished } = useParams()
+  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true })
 
   const [mutate, { loading, error }] = useMutation<
     DeletePackMutation,
@@ -172,10 +178,10 @@ export const Success = ({
           )}
           <HStack>
             <ShareMenu
-              shareUrl={encodeURIComponent(window.location.href)}
-              shareText={encodeURIComponent(
-                `Check out my new pack – '${pack.title}'`
-              )}
+              shareUrl={
+                window.location.origin + routes.pack({ username, slug })
+              }
+              shareTitle={pack.title}
             />
             {currentUserProfile?.username === username && (
               <Menu>
@@ -208,6 +214,17 @@ export const Success = ({
         </Flex>
         <Pack pack={pack} />
       </Stack>
+
+      {isPublished &&
+        isAuthenticated &&
+        currentUserProfile?.username === username && (
+          <PublishSuccessDrawer
+            isOpen={isOpen}
+            onClose={onClose}
+            shareUrl={window.location.origin + routes.pack({ username, slug })}
+            shareTitle={pack.title}
+          />
+        )}
 
       <AlertDialog
         isOpen={isDeleteAlertOpen}

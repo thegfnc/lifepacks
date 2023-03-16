@@ -8,10 +8,11 @@ import {
   Text,
 } from '@chakra-ui/react'
 
+import SocialAccount from 'src/types/SocialAccount'
+
 import Logo from '../Logo/Logo'
 import PageContainer from '../PageContainer/PageContainer'
 import SocialAccountButton from '../SocialAccountButton/SocialAccountButton'
-import { SocialAccountType } from '../SocialAccountIcon/SocialAccountIcon'
 
 const Footer = () => (
   <Box borderTopColor={'blackAlpha.200'} borderTopWidth={'1px'}>
@@ -63,19 +64,19 @@ const Footer = () => (
         <ButtonGroup variant="ghost">
           <SocialAccountButton
             linkUrl="#"
-            accountType={SocialAccountType.Twitter}
+            accountType={SocialAccount.Twitter}
           />
           <SocialAccountButton
             linkUrl="#"
-            accountType={SocialAccountType.YouTube}
+            accountType={SocialAccount.YouTube}
           />
           <SocialAccountButton
             linkUrl="#"
-            accountType={SocialAccountType.Instagram}
+            accountType={SocialAccount.Instagram}
           />
           <SocialAccountButton
             linkUrl="#"
-            accountType={SocialAccountType.Facebook}
+            accountType={SocialAccount.Facebook}
           />
         </ButtonGroup>
       </Stack>
