@@ -8,6 +8,7 @@ export const schema = gql`
     facebookUrl: String
     instagramUrl: String
     youtubeUrl: String
+    twitterUrl: String
   }
 
   type CurrentUserProfile {
@@ -21,6 +22,7 @@ export const schema = gql`
     facebookUrl: String
     instagramUrl: String
     youtubeUrl: String
+    twitterUrl: String
     createdAt: DateTime!
     updatedAt: DateTime!
   }
@@ -39,6 +41,7 @@ export const schema = gql`
     facebookUrl: String
     instagramUrl: String
     youtubeUrl: String
+    twitterUrl: String
   }
 
   input UpdateCurrentUserProfileInput {
@@ -49,6 +52,7 @@ export const schema = gql`
     facebookUrl: String
     instagramUrl: String
     youtubeUrl: String
+    twitterUrl: String
   }
 
   type Mutation {

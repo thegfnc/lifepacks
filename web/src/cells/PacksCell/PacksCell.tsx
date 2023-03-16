@@ -1,5 +1,5 @@
 import { Box, Button, Center, Heading, Text } from '@chakra-ui/react'
-import type { PacksQuery } from 'types/graphql'
+import type { PacksQuery, PacksQueryVariables } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
@@ -7,7 +7,7 @@ import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import Packs from 'src/components/Packs/Packs'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
-type PacksCellProps = CellSuccessProps<PacksQuery> & {
+type PacksCellProps = CellSuccessProps<PacksQuery, PacksQueryVariables> & {
   username: string
 }
 

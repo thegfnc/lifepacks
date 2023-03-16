@@ -1,16 +1,14 @@
 import { render } from '@redwoodjs/testing/web'
 
-import SocialAccount from 'src/types/SocialAccount'
-
-import SocialAccountIcon from './SocialAccountIcon'
+import ShareMenu from './ShareMenu'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('SocialAccountIcon', () => {
+describe('ShareMenu', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<SocialAccountIcon accountType={SocialAccount.Instagram} />)
+      render(<ShareMenu shareTitle="Text" shareUrl="Url" />)
     }).not.toThrow()
   })
 })

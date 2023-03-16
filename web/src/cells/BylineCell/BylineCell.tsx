@@ -5,6 +5,8 @@ import type { FindBylineQuery, FindBylineQueryVariables } from 'types/graphql'
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
+
 type BylineCellSuccessProps = CellSuccessProps<
   FindBylineQuery,
   FindBylineQueryVariables
@@ -46,7 +48,7 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
           as={Link}
           to={routes.userProfile({ username: userProfile.username })}
         >
-          {userProfile.givenName} {userProfile.familyName}
+          {getUserDisplayName(userProfile.givenName, userProfile.familyName)}
         </LinkOverlay>
         {date && (
           <Text as="span" fontWeight="normal">

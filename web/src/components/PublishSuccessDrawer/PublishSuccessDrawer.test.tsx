@@ -1,19 +1,19 @@
 import { render } from '@redwoodjs/testing/web'
 
-import SocialAccount from 'src/types/SocialAccount'
-
-import SocialAccountButton from './SocialAccountButton'
+import PublishSuccessDrawer from './PublishSuccessDrawer'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('SocialAccountButton', () => {
+describe('PublishSuccessDrawer', () => {
   it('renders successfully', () => {
     expect(() => {
       render(
-        <SocialAccountButton
-          accountType={SocialAccount.YouTube}
-          linkUrl="https://www.youtube.com/"
+        <PublishSuccessDrawer
+          isOpen={true}
+          onClose={() => {}}
+          shareUrl="url"
+          shareTitle="title"
         />
       )
     }).not.toThrow()

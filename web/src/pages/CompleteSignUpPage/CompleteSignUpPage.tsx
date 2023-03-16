@@ -52,8 +52,8 @@ const CompleteSignUpPage = () => {
   return (
     <>
       <MetaTags
-        title="Complete Sign Up"
-        description="Finish signing up by creating a user profile."
+        title="Create Profile"
+        description="Choose a username and create your profile to complete the sign up process."
       />
 
       <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>

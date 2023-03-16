@@ -19,7 +19,10 @@ const EditPackPage = ({ id }: EditPackPageProps) => {
 
   return (
     <PageContainer>
-      <MetaTags title="EditPack" description="EditPack page" />
+      <MetaTags
+        title="Edit Pack"
+        description="Update your recommendations in this pack."
+      />
 
       <Flex justifyContent="center">
         <Stack w="3xl" spacing={6}>

@@ -23,6 +23,7 @@ import ebayLogo from 'public/logos/ebay.png'
 import homeDepotLogo from 'public/logos/home_depot.png'
 import targetLogo from 'public/logos/target.png'
 import walmartLogo from 'public/logos/walmart.png'
+import websiteScreenshot from 'public/website_screenshot.png'
 
 import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -49,7 +50,13 @@ const HomePage = () => {
 
   return (
     <>
-      <MetaTags title="Home" description="Welcome to Lifepacks." />
+      <MetaTags
+        title="Make guides for the products you swear by"
+        description="Publish product recommendations just like the pros at Wirecutter."
+        ogType="website"
+        ogUrl="https://www.lifepacks.co/"
+        ogContentUrl={`https://www.lifepacks.co${websiteScreenshot}`}
+      />
 
       <Box bg="#F4EBD2" overflow="hidden">
         <PageContainer
@@ -80,8 +87,8 @@ const HomePage = () => {
                   lineHeight="short"
                   mt={{ base: 4, md: 6 }}
                 >
-                  Publish product recs just like the pros at Wirecutter and
-                  Consumer Reports.
+                  Publish product recommendations just like the pros at
+                  Wirecutter.
                 </Text>
                 <Box mt={{ base: 4, md: 10 }}>
                   <Button

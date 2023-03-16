@@ -16,7 +16,7 @@ type NewPackProps = {
 const MUTATION = gql`
   mutation CreatePackMutation($input: CreatePackInput!) {
     createPack(input: $input) {
-      id
+      slug
     }
   }
 `
@@ -27,7 +27,9 @@ const NewPack = ({ username }: NewPackProps) => {
     CreatePackMutationVariables
   >(MUTATION, {
     refetchQueries: [],
-    onCompleted: () => navigate(routes.userProfile({ username })),
+    onCompleted: ({ createPack: { slug } }) => {
+      navigate(routes.pack({ username, slug }) + '?isPublished=true')
+    },
   })
 
   const onSubmit = (data: PackFormSubmitData) => {

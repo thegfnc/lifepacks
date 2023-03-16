@@ -1,5 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react'
 
+import { routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import PackCell from 'src/cells/PackCell'
@@ -14,7 +15,13 @@ type PackPageProps = {
 const PackPage = ({ username, slug }: PackPageProps) => {
   return (
     <>
-      <MetaTags title="Pack" description="Pack page" />
+      {/* Default MetaTags, some props will get overwritten by PackCell below */}
+      <MetaTags
+        title={`@${username}'s Pack`}
+        description={`This pack was created by @${username}`}
+        ogType="article"
+        ogUrl={`https://www.lifepacks.co${routes.pack({ username, slug })}`}
+      />
 
       <PageContainer>
         <Flex direction={{ base: 'column', md: 'row' }}>
@@ -24,7 +31,7 @@ const PackPage = ({ username, slug }: PackPageProps) => {
             mt={{ base: 6, md: 0 }}
             order={{ base: 2, md: 1 }}
           >
-            <PackCell username={username} slug={slug} />
+            <PackCell username={username} slug={slug} setMetaTags={true} />
           </Box>
           <Box
             width={{ base: 'full', md: '30%' }}

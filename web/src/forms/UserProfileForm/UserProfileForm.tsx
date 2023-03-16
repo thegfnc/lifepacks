@@ -16,10 +16,9 @@ import { CurrentUserProfile } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
-import SocialAccountIcon, {
-  SocialAccountType,
-} from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import SocialAccount from 'src/types/SocialAccount'
 
 type UserProfileFormProps = {
   onFormDirtyStateChange?: Dispatch<SetStateAction<boolean>>
@@ -36,6 +35,7 @@ type UserProfileFormProps = {
     | 'facebookUrl'
     | 'instagramUrl'
     | 'youtubeUrl'
+    | 'twitterUrl'
   >
 }
 
@@ -48,6 +48,7 @@ type UserProfileFormValues = {
   facebookUrl: string
   instagramUrl: string
   youtubeUrl: string
+  twitterUrl: string
 }
 
 export type UserProfileFormSubmitData = UserProfileFormValues
@@ -86,19 +87,28 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.username)}>
             <FormLabel>Username*</FormLabel>
-            {isUpdateForm ? (
-              <Input disabled={true} defaultValue={username} />
-            ) : (
-              <Input
-                autoComplete="username"
-                {...register('username', {
-                  required: {
-                    value: true,
-                    message: 'Username is required',
-                  },
-                })}
-              />
-            )}
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                color="gray.400"
+                fontSize="lg"
+              >
+                @
+              </InputLeftElement>
+              {isUpdateForm ? (
+                <Input disabled={true} defaultValue={username} />
+              ) : (
+                <Input
+                  autoComplete="username"
+                  {...register('username', {
+                    required: {
+                      value: true,
+                      message: 'Username is required',
+                    },
+                  })}
+                />
+              )}
+            </InputGroup>
             <FormErrorMessage>
               {formState.errors.username?.message}
             </FormErrorMessage>
@@ -132,7 +142,7 @@ const UserProfileForm = ({
           <Stack>
             <InputGroup>
               <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccountType.Facebook} />
+                <SocialAccountIcon accountType={SocialAccount.Facebook} />
               </InputLeftElement>
               <Input
                 pl="2.75rem"
@@ -142,7 +152,7 @@ const UserProfileForm = ({
             </InputGroup>
             <InputGroup>
               <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccountType.Instagram} />
+                <SocialAccountIcon accountType={SocialAccount.Instagram} />
               </InputLeftElement>
               <Input
                 pl="2.75rem"
@@ -152,7 +162,7 @@ const UserProfileForm = ({
             </InputGroup>
             <InputGroup>
               <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccountType.YouTube} />
+                <SocialAccountIcon accountType={SocialAccount.YouTube} />
               </InputLeftElement>
               <Input
                 pl="2.75rem"
@@ -160,20 +170,31 @@ const UserProfileForm = ({
                 {...register('youtubeUrl')}
               />
             </InputGroup>
+            <InputGroup>
+              <InputLeftElement width="2.75rem">
+                <SocialAccountIcon accountType={SocialAccount.Twitter} />
+              </InputLeftElement>
+              <Input
+                pl="2.75rem"
+                placeholder="https://twitter.com/xxxx"
+                {...register('twitterUrl')}
+              />
+            </InputGroup>
           </Stack>
           <SimpleGrid
-            py={4}
-            px={{ base: 4, md: 6 }}
-            columns={2}
+            pt={4}
+            pb={isUpdateForm ? 4 : 0}
+            px={isUpdateForm ? { base: 4, md: 6 } : 0}
+            columns={onCancel ? 2 : 1}
             spacing={4}
-            position="absolute"
-            bottom={0}
-            left={0}
-            bg="white"
+            position={isUpdateForm ? 'absolute' : 'relative'}
+            bottom={isUpdateForm ? 0 : 'auto'}
+            left={isUpdateForm ? 0 : 'auto'}
+            bg={isUpdateForm ? 'white' : 'none'}
             w="full"
-            borderBottomRadius="3xl"
-            borderTopWidth="1px"
-            borderTopColor="blackAlpha.300"
+            borderBottomRadius={isUpdateForm ? '3xl' : 'none'}
+            borderTopWidth={isUpdateForm ? '1px' : 0}
+            borderTopColor={isUpdateForm ? 'blackAlpha.300' : 'none'}
           >
             {onCancel && (
               <Button variant="outline" colorScheme="gray" onClick={onCancel}>

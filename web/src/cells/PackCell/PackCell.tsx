@@ -13,11 +13,15 @@ import {
   Flex,
   HStack,
   IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Stack,
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react'
-import { MdDeleteOutline } from 'react-icons/md'
+import { MdDeleteOutline, MdMoreHoriz, MdOutlineModeEdit } from 'react-icons/md'
 import type {
   FindPackQuery,
   FindPackQueryVariables,
@@ -25,8 +29,19 @@ import type {
   DeletePackMutationVariables,
 } from 'types/graphql'
 
-import { Link, navigate, routes } from '@redwoodjs/router'
-import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
+import { Link, navigate, routes, useParams } from '@redwoodjs/router'
+import {
+  CellSuccessProps,
+  CellFailureProps,
+  useMutation,
+  MetaTags,
+  Head,
+} from '@redwoodjs/web'
+
+import { useAuth } from 'src/auth'
+import PublishSuccessDrawer from 'src/components/PublishSuccessDrawer/PublishSuccessDrawer'
+import ShareMenu from 'src/components/ShareMenu/ShareMenu'
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
 import Pack from '../../components/Pack/Pack'
 import BylineCell from '../BylineCell'
@@ -36,6 +51,8 @@ type PackCellSuccessProps = CellSuccessProps<
   FindPackQueryVariables
 > & {
   username: string
+  slug: string
+  setMetaTags?: boolean
 }
 
 export const QUERY = gql`
@@ -52,6 +69,11 @@ export const QUERY = gql`
         title
         description
       }
+    }
+    userProfile(username: $username) {
+      givenName
+      familyName
+      imageUrl
     }
     currentUserProfile {
       username
@@ -79,8 +101,11 @@ export const Failure = ({
 
 export const Success = ({
   username,
+  slug,
   pack,
+  userProfile,
   currentUserProfile,
+  setMetaTags = false,
 }: PackCellSuccessProps) => {
   const isBylineVisible = useBreakpointValue({ base: false, md: true })
   const {
@@ -89,6 +114,15 @@ export const Success = ({
     onClose: onDeleteAlertClose,
   } = useDisclosure()
   const cancelDeleteRef = useRef()
+
+  const { isAuthenticated } = useAuth()
+  const { isPublished } = useParams()
+  const {
+    isOpen: isPublishSuccessDrawerOpen,
+    onClose: onPublishSuccessDrawerClose,
+  } = useDisclosure({
+    defaultIsOpen: Boolean(isPublished),
+  })
 
   const [mutate, { loading, error }] = useMutation<
     DeletePackMutation,
@@ -106,6 +140,34 @@ export const Success = ({
 
   return (
     <>
+      {setMetaTags && (
+        <>
+          <MetaTags
+            title={pack.title}
+            description={`${
+              pack.description
+            } \n This pack was created by ${getUserDisplayName(
+              userProfile.givenName,
+              userProfile.familyName
+            )}`}
+            ogType="article"
+            ogContentUrl={pack.packItems[0]?.imageUrl || userProfile.imageUrl}
+          />
+          <Head>
+            <meta
+              property="og:article:published_time"
+              content={pack.createdAt}
+            />
+            <meta
+              property="og:article:author"
+              content={getUserDisplayName(
+                userProfile.givenName,
+                userProfile.familyName
+              )}
+            />
+          </Head>
+        </>
+      )}
       {error && (
         <Alert status="error">
           <AlertIcon />
@@ -121,27 +183,53 @@ export const Success = ({
           {isBylineVisible && (
             <BylineCell username={username} date={pack.createdAt} />
           )}
-          {currentUserProfile?.username === username && (
-            <HStack>
-              <Button
-                as={Link}
-                variant="outline"
-                colorScheme="gray"
-                to={routes.editPack({ id: pack.id })}
-              >
-                Edit Pack
-              </Button>
-              <IconButton
-                icon={<MdDeleteOutline size="24px" />}
-                aria-label="Delete Pack"
-                colorScheme="red"
-                onClick={onDeleteAlertOpen}
-              />
-            </HStack>
-          )}
+          <HStack>
+            <ShareMenu
+              shareUrl={
+                window.location.origin + routes.pack({ username, slug })
+              }
+              shareTitle={pack.title}
+            />
+            {currentUserProfile?.username === username && (
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
+                  icon={<MdMoreHoriz size="24px" />}
+                  variant="outline"
+                  colorScheme="gray"
+                />
+                <MenuList borderRadius="xl">
+                  <MenuItem
+                    as={Link}
+                    to={routes.editPack({ id: pack.id })}
+                    icon={<MdOutlineModeEdit size="24px" />}
+                  >
+                    Edit Pack
+                  </MenuItem>
+                  <MenuItem
+                    icon={<MdDeleteOutline size="24px" />}
+                    color="red.500"
+                    onClick={onDeleteAlertOpen}
+                  >
+                    Delete Pack
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )}
+          </HStack>
         </Flex>
         <Pack pack={pack} />
       </Stack>
+
+      {isAuthenticated && currentUserProfile?.username === username && (
+        <PublishSuccessDrawer
+          isOpen={isPublishSuccessDrawerOpen}
+          onClose={onPublishSuccessDrawerClose}
+          shareUrl={window.location.origin + routes.pack({ username, slug })}
+          shareTitle={pack.title}
+        />
+      )}
 
       <AlertDialog
         isOpen={isDeleteAlertOpen}

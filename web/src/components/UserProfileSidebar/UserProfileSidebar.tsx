@@ -6,7 +6,8 @@ import { UserProfile } from 'types/graphql'
 import { Link, routes } from '@redwoodjs/router'
 
 import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccountButton'
-import { SocialAccountType } from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
+import SocialAccount from 'src/types/SocialAccount'
 
 type UserProfileSidebarProps = {
   userProfile: UserProfile
@@ -36,7 +37,7 @@ const UserProfileSidebar = ({
             color="blackAlpha.800"
             to={routes.userProfile({ username: userProfile.username })}
           >
-            {userProfile.givenName} {userProfile.familyName}
+            {getUserDisplayName(userProfile.givenName, userProfile.familyName)}
           </Text>
         )}
         <Text
@@ -55,20 +56,26 @@ const UserProfileSidebar = ({
         <HStack mt={4}>
           {userProfile.facebookUrl && (
             <SocialAccountButton
-              accountType={SocialAccountType.Facebook}
+              accountType={SocialAccount.Facebook}
               linkUrl={userProfile.facebookUrl}
             />
           )}
           {userProfile.instagramUrl && (
             <SocialAccountButton
-              accountType={SocialAccountType.Instagram}
+              accountType={SocialAccount.Instagram}
               linkUrl={userProfile.instagramUrl}
             />
           )}
           {userProfile.youtubeUrl && (
             <SocialAccountButton
-              accountType={SocialAccountType.YouTube}
+              accountType={SocialAccount.YouTube}
               linkUrl={userProfile.youtubeUrl}
+            />
+          )}
+          {userProfile.twitterUrl && (
+            <SocialAccountButton
+              accountType={SocialAccount.Twitter}
+              linkUrl={userProfile.twitterUrl}
             />
           )}
         </HStack>

@@ -4,10 +4,23 @@ import type {
   FindUserProfileSidebarQueryVariables,
 } from 'types/graphql'
 
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import {
+  CellSuccessProps,
+  CellFailureProps,
+  MetaTags,
+  Head,
+} from '@redwoodjs/web'
 
 import EditUserProfileModal from 'src/components/EditUserProfileModal/EditUserProfileModal'
 import UserProfileSidebar from 'src/components/UserProfileSidebar/UserProfileSidebar'
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
+
+type UserProfileSidebarCellProps = CellSuccessProps<
+  FindUserProfileSidebarQuery,
+  FindUserProfileSidebarQueryVariables
+> & {
+  setMetaTags?: boolean
+}
 
 export const QUERY = gql`
   query FindUserProfileSidebarQuery($username: String!) {
@@ -20,6 +33,7 @@ export const QUERY = gql`
       facebookUrl
       instagramUrl
       youtubeUrl
+      twitterUrl
     }
     currentUserProfile {
       username
@@ -40,10 +54,8 @@ export const Failure = ({
 export const Success = ({
   userProfile,
   currentUserProfile,
-}: CellSuccessProps<
-  FindUserProfileSidebarQuery,
-  FindUserProfileSidebarQueryVariables
->) => {
+  setMetaTags = false,
+}: UserProfileSidebarCellProps) => {
   const isCurrentUser = userProfile.username === currentUserProfile?.username
 
   const {
@@ -54,6 +66,35 @@ export const Success = ({
 
   return (
     <>
+      {setMetaTags && (
+        <>
+          <MetaTags
+            title={`@${userProfile.username}'s Profile`}
+            description={`${
+              userProfile.biography
+            } \n Check out the packs created by ${getUserDisplayName(
+              userProfile.givenName,
+              userProfile.familyName
+            )}`}
+            ogType="profile"
+            ogContentUrl={userProfile.imageUrl}
+          />
+          <Head>
+            <meta
+              property="og:profile:first_name"
+              content={userProfile.givenName}
+            />
+            <meta
+              property="og:profile:last_name"
+              content={userProfile.familyName}
+            />
+            <meta
+              property="og:profile:username"
+              content={userProfile.username}
+            />
+          </Head>
+        </>
+      )}
       <UserProfileSidebar
         userProfile={userProfile}
         actionButton={
