@@ -124,6 +124,7 @@ export const Success = ({
     defaultIsOpen: Boolean(published),
   })
 
+  // Remove the ?published=true from url after using the value to launch the drawer
   if (published) {
     navigate(routes.pack({ username, slug }), { replace: true })
   }
