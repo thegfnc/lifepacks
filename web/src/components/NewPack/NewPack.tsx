@@ -28,7 +28,7 @@ const NewPack = ({ username }: NewPackProps) => {
   >(MUTATION, {
     refetchQueries: [],
     onCompleted: ({ createPack: { slug } }) => {
-      navigate(routes.pack({ username, slug }) + '?isPublished=true')
+      navigate(routes.pack({ username, slug }) + '?published=true')
     },
   })
 

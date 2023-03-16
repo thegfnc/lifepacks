@@ -116,13 +116,17 @@ export const Success = ({
   const cancelDeleteRef = useRef()
 
   const { isAuthenticated } = useAuth()
-  const { isPublished } = useParams()
+  const { published } = useParams()
   const {
     isOpen: isPublishSuccessDrawerOpen,
     onClose: onPublishSuccessDrawerClose,
   } = useDisclosure({
-    defaultIsOpen: Boolean(isPublished),
+    defaultIsOpen: Boolean(published),
   })
+
+  if (published) {
+    navigate(routes.pack({ username, slug }), { replace: true })
+  }
 
   const [mutate, { loading, error }] = useMutation<
     DeletePackMutation,
