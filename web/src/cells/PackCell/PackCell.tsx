@@ -15,7 +15,6 @@ import {
   IconButton,
   Menu,
   MenuButton,
-  MenuDivider,
   MenuItem,
   MenuList,
   Stack,
@@ -39,9 +38,7 @@ import {
   Head,
 } from '@redwoodjs/web'
 
-import SocialAccountIcon, {
-  SocialAccountType,
-} from 'src/components/SocialAccountIcon/SocialAccountIcon'
+import ShareMenu from 'src/components/ShareMenu/ShareMenu'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
 import Pack from '../../components/Pack/Pack'
@@ -114,11 +111,6 @@ export const Success = ({
   } = useDisclosure()
   const cancelDeleteRef = useRef()
 
-  const shareUrl = encodeURIComponent(window.location.href)
-  const shareText = encodeURIComponent(
-    `Check out my new pack – '${pack.title}'`
-  )
-
   const [mutate, { loading, error }] = useMutation<
     DeletePackMutation,
     DeletePackMutationVariables
@@ -179,94 +171,12 @@ export const Success = ({
             <BylineCell username={username} date={pack.createdAt} />
           )}
           <HStack>
-            <Menu>
-              <MenuButton as={Button} variant="outline" colorScheme="gray">
-                Share
-              </MenuButton>
-              <MenuList borderRadius="xl">
-                <MenuItem
-                  as="a"
-                  href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
-                  target="_blank"
-                  icon={
-                    <SocialAccountIcon
-                      accountType={SocialAccountType.Twitter}
-                    />
-                  }
-                >
-                  Twitter
-                </MenuItem>
-                <MenuItem
-                  as="a"
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`}
-                  target="_blank"
-                  icon={
-                    <SocialAccountIcon
-                      accountType={SocialAccountType.Facebook}
-                    />
-                  }
-                >
-                  Facebook
-                </MenuItem>
-                <MenuItem
-                  as="a"
-                  href={`https://www.reddit.com/submit?url=${shareUrl}&title=${shareText}`}
-                  target="_blank"
-                  icon={
-                    <SocialAccountIcon accountType={SocialAccountType.Reddit} />
-                  }
-                >
-                  Reddit
-                </MenuItem>
-                <MenuItem
-                  as="a"
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
-                  target="_blank"
-                  icon={
-                    <SocialAccountIcon
-                      accountType={SocialAccountType.LinkedIn}
-                    />
-                  }
-                >
-                  LinkedIn
-                </MenuItem>
-                <MenuDivider />
-                <MenuItem
-                  as="a"
-                  href={`https://wa.me/?text=${shareText}%20at%20${shareUrl}`}
-                  target="_blank"
-                  icon={
-                    <SocialAccountIcon
-                      accountType={SocialAccountType.WhatsApp}
-                    />
-                  }
-                >
-                  WhatsApp
-                </MenuItem>
-                <MenuItem
-                  as="a"
-                  href={`https://t.me/share/url?url=${shareUrl}&text=${shareText}`}
-                  target="_blank"
-                  icon={
-                    <SocialAccountIcon
-                      accountType={SocialAccountType.Telegram}
-                    />
-                  }
-                >
-                  Telegram
-                </MenuItem>
-                <MenuItem
-                  as="a"
-                  href={`mailto:?subject=${shareText}&body=${shareText}%20at%20${shareUrl}`}
-                  target="_blank"
-                  icon={
-                    <SocialAccountIcon accountType={SocialAccountType.Email} />
-                  }
-                >
-                  Email
-                </MenuItem>
-              </MenuList>
-            </Menu>
+            <ShareMenu
+              shareUrl={encodeURIComponent(window.location.href)}
+              shareText={encodeURIComponent(
+                `Check out my new pack – '${pack.title}'`
+              )}
+            />
             {currentUserProfile?.username === username && (
               <Menu>
                 <MenuButton

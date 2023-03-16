@@ -9,6 +9,7 @@ import {
   FaWhatsapp,
   FaYoutube,
 } from 'react-icons/fa'
+import { MdLink } from 'react-icons/md'
 
 export enum SocialAccountType {
   YouTube = 'YouTube',
@@ -20,6 +21,7 @@ export enum SocialAccountType {
   Reddit = 'Reddit',
   LinkedIn = 'LinkedIn',
   Email = 'Email',
+  Link = 'Link',
 }
 
 type SocialAccountIconProps = {
@@ -61,6 +63,10 @@ const socialAccountParams = {
   },
   [SocialAccountType.Email]: {
     Icon: FaEnvelope,
+    iconColor: 'rgba(0, 0, 0, 0.80)',
+  },
+  [SocialAccountType.Link]: {
+    Icon: MdLink,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
 }
