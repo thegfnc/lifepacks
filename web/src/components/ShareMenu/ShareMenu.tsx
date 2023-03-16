@@ -7,8 +7,6 @@ import {
   MenuList,
 } from '@chakra-ui/react'
 
-import { toast } from '@redwoodjs/web/toast'
-
 import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
 import { getCopyLinkClickHandler, getShareUrl } from 'src/helpers/getShareData'
 import SocialAccount from 'src/types/SocialAccount'
