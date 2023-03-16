@@ -8,7 +8,14 @@ import PublishSuccessDrawer from './PublishSuccessDrawer'
 describe('PublishSuccessDrawer', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<PublishSuccessDrawer />)
+      render(
+        <PublishSuccessDrawer
+          isOpen={true}
+          onClose={() => {}}
+          shareUrl="url"
+          shareTitle="title"
+        />
+      )
     }).not.toThrow()
   })
 })

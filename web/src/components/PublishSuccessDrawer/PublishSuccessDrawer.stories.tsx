@@ -16,7 +16,14 @@ import type { ComponentMeta } from '@storybook/react'
 import PublishSuccessDrawer from './PublishSuccessDrawer'
 
 export const generated = () => {
-  return <PublishSuccessDrawer />
+  return (
+    <PublishSuccessDrawer
+      isOpen={true}
+      onClose={() => {}}
+      shareUrl="url"
+      shareTitle="title"
+    />
+  )
 }
 
 export default {

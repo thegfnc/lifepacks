@@ -51,6 +51,7 @@ type PackCellSuccessProps = CellSuccessProps<
   FindPackQueryVariables
 > & {
   username: string
+  slug: string
   setMetaTags?: boolean
 }
 
@@ -113,9 +114,15 @@ export const Success = ({
     onClose: onDeleteAlertClose,
   } = useDisclosure()
   const cancelDeleteRef = useRef()
+
   const { isAuthenticated } = useAuth()
   const { isPublished } = useParams()
-  const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true })
+  const {
+    isOpen: isPublishSuccessDrawerOpen,
+    onClose: onPublishSuccessDrawerClose,
+  } = useDisclosure({
+    defaultIsOpen: Boolean(isPublished),
+  })
 
   const [mutate, { loading, error }] = useMutation<
     DeletePackMutation,
@@ -215,16 +222,14 @@ export const Success = ({
         <Pack pack={pack} />
       </Stack>
 
-      {isPublished &&
-        isAuthenticated &&
-        currentUserProfile?.username === username && (
-          <PublishSuccessDrawer
-            isOpen={isOpen}
-            onClose={onClose}
-            shareUrl={window.location.origin + routes.pack({ username, slug })}
-            shareTitle={pack.title}
-          />
-        )}
+      {isAuthenticated && currentUserProfile?.username === username && (
+        <PublishSuccessDrawer
+          isOpen={isPublishSuccessDrawerOpen}
+          onClose={onPublishSuccessDrawerClose}
+          shareUrl={window.location.origin + routes.pack({ username, slug })}
+          shareTitle={pack.title}
+        />
+      )}
 
       <AlertDialog
         isOpen={isDeleteAlertOpen}
