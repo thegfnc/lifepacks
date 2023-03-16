@@ -43,6 +43,7 @@ describe('PackCell', () => {
         <ThemeWrapper>
           <Success
             username="jmdesiderio"
+            slug="pack-slug"
             pack={standard().pack}
             userProfile={standard().userProfile}
             currentUserProfile={standard().currentUserProfile}
