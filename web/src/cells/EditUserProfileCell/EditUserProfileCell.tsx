@@ -38,6 +38,7 @@ export const QUERY = gql`
       facebookUrl
       instagramUrl
       youtubeUrl
+      twitterUrl
     }
   }
 `

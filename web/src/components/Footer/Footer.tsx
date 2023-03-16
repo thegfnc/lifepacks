@@ -63,6 +63,10 @@ const Footer = () => (
         <ButtonGroup variant="ghost">
           <SocialAccountButton
             linkUrl="#"
+            accountType={SocialAccountType.Twitter}
+          />
+          <SocialAccountButton
+            linkUrl="#"
             accountType={SocialAccountType.YouTube}
           />
           <SocialAccountButton

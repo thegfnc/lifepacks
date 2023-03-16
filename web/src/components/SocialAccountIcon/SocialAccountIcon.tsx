@@ -1,9 +1,10 @@
-import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 export enum SocialAccountType {
   YouTube = 'YouTube',
   Instagram = 'Instagram',
   Facebook = 'Facebook',
+  Twitter = 'Twitter',
 }
 
 type SocialAccountIconProps = {
@@ -21,6 +22,10 @@ const socialAccountParams = {
   },
   [SocialAccountType.Facebook]: {
     Icon: FaFacebook,
+    iconColor: 'rgba(0, 0, 0, 0.80)',
+  },
+  [SocialAccountType.Twitter]: {
+    Icon: FaTwitter,
     iconColor: 'rgba(0, 0, 0, 0.80)',
   },
 }

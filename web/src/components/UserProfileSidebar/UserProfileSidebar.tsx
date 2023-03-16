@@ -72,6 +72,12 @@ const UserProfileSidebar = ({
               linkUrl={userProfile.youtubeUrl}
             />
           )}
+          {userProfile.twitterUrl && (
+            <SocialAccountButton
+              accountType={SocialAccountType.Twitter}
+              linkUrl={userProfile.twitterUrl}
+            />
+          )}
         </HStack>
       </Flex>
     </>

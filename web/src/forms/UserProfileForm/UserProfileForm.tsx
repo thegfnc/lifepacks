@@ -36,6 +36,7 @@ type UserProfileFormProps = {
     | 'facebookUrl'
     | 'instagramUrl'
     | 'youtubeUrl'
+    | 'twitterUrl'
   >
 }
 
@@ -48,6 +49,7 @@ type UserProfileFormValues = {
   facebookUrl: string
   instagramUrl: string
   youtubeUrl: string
+  twitterUrl: string
 }
 
 export type UserProfileFormSubmitData = UserProfileFormValues
@@ -167,6 +169,16 @@ const UserProfileForm = ({
                 pl="2.75rem"
                 placeholder="https://youtube.com/xxxx"
                 {...register('youtubeUrl')}
+              />
+            </InputGroup>
+            <InputGroup>
+              <InputLeftElement width="2.75rem">
+                <SocialAccountIcon accountType={SocialAccountType.Twitter} />
+              </InputLeftElement>
+              <Input
+                pl="2.75rem"
+                placeholder="https://youtube.com/xxxx"
+                {...register('twitterUrl')}
               />
             </InputGroup>
           </Stack>

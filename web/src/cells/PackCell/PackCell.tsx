@@ -13,11 +13,15 @@ import {
   Flex,
   HStack,
   IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Stack,
   useBreakpointValue,
   useDisclosure,
 } from '@chakra-ui/react'
-import { MdDeleteOutline } from 'react-icons/md'
+import { MdDeleteOutline, MdMoreHoriz, MdOutlineModeEdit } from 'react-icons/md'
 import type {
   FindPackQuery,
   FindPackQueryVariables,
@@ -133,7 +137,7 @@ export const Success = ({
               userProfile.familyName
             )}`}
             ogType="article"
-            ogContentUrl={pack.packItems[0].imageUrl || userProfile.imageUrl}
+            ogContentUrl={pack.packItems[0]?.imageUrl || userProfile.imageUrl}
           />
           <Head>
             <meta
@@ -165,24 +169,56 @@ export const Success = ({
           {isBylineVisible && (
             <BylineCell username={username} date={pack.createdAt} />
           )}
-          {currentUserProfile?.username === username && (
-            <HStack>
-              <Button
-                as={Link}
-                variant="outline"
-                colorScheme="gray"
-                to={routes.editPack({ id: pack.id })}
-              >
-                Edit Pack
-              </Button>
-              <IconButton
-                icon={<MdDeleteOutline size="24px" />}
-                aria-label="Delete Pack"
-                colorScheme="red"
-                onClick={onDeleteAlertOpen}
-              />
-            </HStack>
-          )}
+          <HStack>
+            <Menu>
+              <MenuButton as={Button} variant="outline" colorScheme="gray">
+                Share
+              </MenuButton>
+              <MenuList>
+                <MenuItem
+                  as={Link}
+                  to={routes.editPack({ id: pack.id })}
+                  icon={<MdOutlineModeEdit size="24px" />}
+                >
+                  Edit Pack
+                </MenuItem>
+                <MenuItem
+                  icon={<MdDeleteOutline size="24px" />}
+                  color="red.500"
+                  onClick={onDeleteAlertOpen}
+                >
+                  Delete Pack
+                </MenuItem>
+              </MenuList>
+            </Menu>
+            {currentUserProfile?.username === username && (
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
+                  icon={<MdMoreHoriz size="24px" />}
+                  variant="outline"
+                  colorScheme="gray"
+                />
+                <MenuList>
+                  <MenuItem
+                    as={Link}
+                    to={routes.editPack({ id: pack.id })}
+                    icon={<MdOutlineModeEdit size="24px" />}
+                  >
+                    Edit Pack
+                  </MenuItem>
+                  <MenuItem
+                    icon={<MdDeleteOutline size="24px" />}
+                    color="red.500"
+                    onClick={onDeleteAlertOpen}
+                  >
+                    Delete Pack
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )}
+          </HStack>
         </Flex>
         <Pack pack={pack} />
       </Stack>
