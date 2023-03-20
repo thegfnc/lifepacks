@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.16",
-    "@chakra-ui/react": "2.5.1",
+    "@chakra-ui/react": "2.5.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@redwoodjs/auth": "4.3.1",
