@@ -6,7 +6,7 @@
     "@redwoodjs/api": "4.3.1",
     "@redwoodjs/auth-supabase-api": "4.3.1",
     "@redwoodjs/graphql-server": "4.3.1",
-    "@sentry/node": "^7.43.0",
+    "@sentry/node": "^7.44.1",
     "jsonwebtoken": "^9.0.0"
   }
 }
