@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@redwoodjs/api": "4.3.1",
-    "@redwoodjs/auth-supabase-api": "4.3.1",
-    "@redwoodjs/graphql-server": "4.3.1",
+    "@redwoodjs/api": "4.4.2",
+    "@redwoodjs/auth-supabase-api": "4.4.2",
+    "@redwoodjs/graphql-server": "4.4.2",
     "@sentry/node": "^7.43.0",
     "jsonwebtoken": "^9.0.0"
   }
