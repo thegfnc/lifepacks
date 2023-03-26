@@ -13,8 +13,6 @@ type UserProfilePageProps = {
 }
 
 const UserProfilePage = ({ username }: UserProfilePageProps) => {
-  const isBylineVisible = useBreakpointValue({ base: false, md: true })
-
   return (
     <>
       {/* Default MetaTags, some props will get overwritten by UserProfileSidebarCell below */}
@@ -26,27 +24,8 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
       />
 
       <PageContainer>
-        <Flex direction={{ base: 'column', md: 'row' }}>
-          <Stack
-            width={{ base: 'full', md: '70%' }}
-            spacing={8}
-            paddingRight={{ base: 0, md: 20 }}
-            mt={{ base: 6, md: 0 }}
-            order={{ base: 2, md: 1 }}
-          >
-            {isBylineVisible && <BylineCell username={username} />}
-            <PacksCell username={username} />
-          </Stack>
-          <Box
-            width={{ base: 'full', md: '30%' }}
-            borderLeftWidth={{ base: '0', md: '1px' }}
-            borderLeftColor={'blackAlpha.200'}
-            paddingLeft={{ base: 0, md: 14 }}
-            order={{ base: 1, md: 2 }}
-          >
-            <UserProfileSidebarCell username={username} setMetaTags={true} />
-          </Box>
-        </Flex>
+        <UserProfileSidebarCell username={username} setMetaTags={true} />
+        <PacksCell username={username} />
       </PageContainer>
     </>
   )

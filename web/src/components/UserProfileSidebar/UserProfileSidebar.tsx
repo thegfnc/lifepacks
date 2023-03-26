@@ -24,7 +24,11 @@ const UserProfileSidebar = ({
         <Avatar
           size={'xl'}
           src={userProfile.imageUrl}
-          name={userProfile.givenName}
+          name={getUserDisplayName(
+            userProfile.givenName,
+            userProfile.familyName,
+            userProfile.username
+          )}
         />
         {actionButton}
       </Flex>
@@ -37,7 +41,11 @@ const UserProfileSidebar = ({
             color="blackAlpha.800"
             to={routes.userProfile({ username: userProfile.username })}
           >
-            {getUserDisplayName(userProfile.givenName, userProfile.familyName)}
+            {getUserDisplayName(
+              userProfile.givenName,
+              userProfile.familyName,
+              userProfile.username
+            )}
           </Text>
         )}
         <Text

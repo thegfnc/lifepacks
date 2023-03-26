@@ -48,7 +48,11 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
           as={Link}
           to={routes.userProfile({ username: userProfile.username })}
         >
-          {getUserDisplayName(userProfile.givenName, userProfile.familyName)}
+          {getUserDisplayName(
+            userProfile.givenName,
+            userProfile.familyName,
+            userProfile.username
+          )}
         </LinkOverlay>
         {date && (
           <Text as="span" fontWeight="normal">

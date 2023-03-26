@@ -22,6 +22,9 @@ export const QUERY = gql`
         title
         imageUrl
       }
+      userProfile {
+        username
+      }
     }
   }
 `
@@ -87,6 +90,6 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ username, packs }: PacksCellProps) => {
-  return <Packs username={username} packs={packs} />
+export const Success = ({ packs }: PacksCellProps) => {
+  return <Packs packs={packs} />
 }

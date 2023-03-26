@@ -68,8 +68,8 @@ const ForgotPasswordPage = () => {
         description="Enter your new password to update your account."
       />
 
-      <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
-        <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
+      <Flex align={'center'} justify={'center'}>
+        <Stack spacing={8} mx={'auto'} w={'md'} py={24} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={{ base: '2xl', md: '3xl' }}>
               Reset Password

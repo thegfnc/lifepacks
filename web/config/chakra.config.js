@@ -8,6 +8,9 @@ module.exports = {
     bitter: `Bitter, serif`,
   },
   colors: {
+    brown: {
+      500: '#F1EEE5',
+    },
     yellow: {
       50: '#fffaef',
       100: '#fff1cc',
@@ -48,7 +51,7 @@ module.exports = {
   styles: {
     global: {
       body: {
-        bg: 'white',
+        bg: 'brown.500',
       },
     },
   },
@@ -57,7 +60,18 @@ module.exports = {
       baseStyle: {
         fontWeight: 'medium',
         lineHeight: 'base',
-        rounded: 'full',
+        rounded: '2xl',
+      },
+      variants: {
+        outline: {
+          borderColor: 'blackAlpha.300',
+          _hover: {
+            bg: 'blackAlpha.100',
+          },
+          _active: {
+            bg: 'blackAlpha.300',
+          },
+        },
       },
       defaultProps: {
         colorScheme: 'purple',

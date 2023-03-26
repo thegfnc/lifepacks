@@ -56,7 +56,7 @@ const CompleteSignUpPage = () => {
         description="Choose a username and create your profile to complete the sign up process."
       />
 
-      <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.50'}>
+      <Flex align={'center'} justify={'center'}>
         <Stack spacing={8} mx={'auto'} w={'md'} py={12} px={6}>
           <Stack align={'center'}>
             <Heading fontSize={{ base: '3xl', md: '4xl' }}>

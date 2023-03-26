@@ -74,7 +74,8 @@ export const Success = ({
               userProfile.biography
             } \n Check out the packs created by ${getUserDisplayName(
               userProfile.givenName,
-              userProfile.familyName
+              userProfile.familyName,
+              userProfile.username
             )}`}
             ogType="profile"
             ogContentUrl={userProfile.imageUrl}

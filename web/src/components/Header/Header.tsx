@@ -12,6 +12,8 @@ import {
   Spinner,
   Text,
   Avatar,
+  Link as ChakraLink,
+  Box,
 } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -59,6 +61,11 @@ const Header = ({ ctaComponent }: HeaderProps) => {
           alignItems={'center'}
         >
           <Logo />
+          <Box ml={10}>
+            <ChakraLink as={Link} to={routes.explore()}>
+              Explore Packs
+            </ChakraLink>
+          </Box>
 
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
             {isAuthLoading || isCurrentUserProfileLoading ? (

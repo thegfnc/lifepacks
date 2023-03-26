@@ -58,7 +58,7 @@ const HomePage = () => {
         ogContentUrl={`https://www.lifepacks.co${websiteScreenshot}`}
       />
 
-      <Box bg="#F4EBD2" overflow="hidden">
+      <Box bg="brown.500" overflow="hidden">
         <PageContainer
           minHeight="auto"
           py={{ base: 8, md: 6 }}
@@ -153,6 +153,7 @@ const HomePage = () => {
                     color={isCurrentTab ? 'black' : 'white'}
                     onClick={() => setExamplePackTabIndex(index)}
                     leftIcon={<Text>{examplePack.tabEmoji}</Text>}
+                    rounded="full"
                   >
                     <Text>{examplePack.tabLabel}</Text>
                   </Button>
@@ -179,7 +180,7 @@ const HomePage = () => {
               })}
             </HStack>
             <Box
-              bg="#F4EBD2"
+              bg="brown.500"
               px={{ base: 6, md: 24 }}
               py={{ base: 6, md: 16 }}
               mt={{ base: 8, md: '72px' }}
@@ -269,7 +270,7 @@ const HomePage = () => {
           </Box>
         </PageContainer>
       </Box>
-      <Box bg="#F4EBD2">
+      <Box bg="brown.500">
         <PageContainer minHeight="auto" py={{ base: 10, md: '120px' }}>
           <Flex direction="column" px={{ base: 0, md: 4 }} align="center">
             <Heading
