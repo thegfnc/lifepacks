@@ -1,9 +1,6 @@
-import { Box, Flex, Stack, useBreakpointValue } from '@chakra-ui/react'
-
 import { routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
-import BylineCell from 'src/cells/BylineCell'
 import PacksCell from 'src/cells/PacksCell'
 import UserProfileSidebarCell from 'src/cells/UserProfileSidebarCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'

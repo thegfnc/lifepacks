@@ -6,13 +6,12 @@ import {
   Grid,
   GridItem,
   Heading,
-  HStack,
   Image,
   Link as ChakraLink,
   LinkBox,
   LinkOverlay,
-  SimpleGrid,
   Text,
+  Wrap,
 } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { Pack, PackItem, UserProfile } from 'types/graphql'
@@ -38,22 +37,32 @@ type PacksProps = {
 
 const Packs = ({ packs, showByline = false }: PacksProps) => {
   return (
-    <SimpleGrid spacing={6} columns={{ base: 1, sm: 2, md: 3 }}>
+    <Wrap spacing={6}>
       {packs.map((pack) => {
+        const numberOfImages = Math.min(pack.packItems.length, 3)
+
         return (
-          <LinkBox as={Card} key={pack.id} borderRadius="24px">
+          <LinkBox
+            as={Card}
+            key={pack.id}
+            borderRadius="24px"
+            maxH="360px"
+            maxW="360px"
+          >
             <Grid
               templateRows="repeat(3, 1fr)"
-              templateColumns="repeat(3, 1fr)"
+              templateColumns="repeat(6, 1fr)"
               h="full"
               w="full"
             >
               <GridItem
                 rowSpan={2}
-                colSpan={2}
+                colSpan={
+                  numberOfImages === 3 ? 4 : numberOfImages === 2 ? 3 : 6
+                }
                 as={Center}
                 p={4}
-                borderRightWidth={'1px'}
+                borderRightWidth={numberOfImages >= 2 ? '1px' : 0}
                 borderColor="blackAlpha.200"
               >
                 <Image
@@ -61,34 +70,50 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                   fit="contain"
                   alt={pack.packItems[0]?.title}
                   fallback={<ImageFallback />}
+                  maxH="full"
+                  maxW="full"
                 />
               </GridItem>
-              <GridItem as={Center} p={4}>
-                <Image
-                  src={pack.packItems[1]?.imageUrl}
-                  fit="contain"
-                  alt={pack.packItems[1]?.title}
-                  fallback={<ImageFallback />}
-                />
-              </GridItem>
-              <GridItem
-                as={Center}
-                p={4}
-                borderTopWidth={'1px'}
-                borderColor="blackAlpha.200"
-              >
-                <Image
-                  src={pack.packItems[2]?.imageUrl}
-                  fit="contain"
-                  alt={pack.packItems[2]?.title}
-                  fallback={<ImageFallback />}
-                />
-              </GridItem>
+              {numberOfImages >= 2 && (
+                <GridItem
+                  as={Center}
+                  p={4}
+                  colSpan={numberOfImages === 2 ? 3 : 2}
+                  rowSpan={numberOfImages === 2 ? 2 : 1}
+                >
+                  <Image
+                    src={pack.packItems[1]?.imageUrl}
+                    fit="contain"
+                    alt={pack.packItems[1]?.title}
+                    fallback={<ImageFallback />}
+                    maxH="full"
+                    maxW="full"
+                  />
+                </GridItem>
+              )}
+              {numberOfImages === 3 && (
+                <GridItem
+                  as={Center}
+                  p={4}
+                  borderTopWidth={'1px'}
+                  borderColor="blackAlpha.200"
+                  colSpan={2}
+                >
+                  <Image
+                    src={pack.packItems[2]?.imageUrl}
+                    fit="contain"
+                    alt={pack.packItems[2]?.title}
+                    fallback={<ImageFallback />}
+                    maxH="full"
+                    maxW="full"
+                  />
+                </GridItem>
+              )}
               <GridItem
                 as={Flex}
                 direction="column"
                 justify="space-between"
-                colSpan={3}
+                colSpan={6}
                 borderTopWidth={'1px'}
                 borderColor="blackAlpha.200"
                 p={4}
@@ -110,39 +135,32 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                   w="full"
                 >
                   {showByline && (
-                    <HStack spacing={0}>
-                      <ChakraLink
-                        fontSize="sm"
-                        as={Link}
-                        to={routes.userProfile({
-                          username: pack.userProfile.username,
-                        })}
-                      >
-                        <Avatar
-                          size={'xs'}
-                          src={pack.userProfile.imageUrl}
-                          name={getUserDisplayName(
-                            pack.userProfile.givenName,
-                            pack.userProfile.familyName,
-                            pack.userProfile.username
-                          )}
-                        />
-                      </ChakraLink>
-                      <ChakraLink
-                        fontSize="sm"
-                        as={Link}
-                        to={routes.userProfile({
-                          username: pack.userProfile.username,
-                        })}
-                        pl={2}
-                      >
+                    <ChakraLink
+                      fontSize="sm"
+                      as={Link}
+                      to={routes.userProfile({
+                        username: pack.userProfile.username,
+                      })}
+                      display="flex"
+                      alignItems="center"
+                    >
+                      <Avatar
+                        size={'xs'}
+                        src={pack.userProfile.imageUrl}
+                        name={getUserDisplayName(
+                          pack.userProfile.givenName,
+                          pack.userProfile.familyName,
+                          pack.userProfile.username
+                        )}
+                      />
+                      <Text as="span" ml={2}>
                         {getUserDisplayName(
                           pack.userProfile.givenName,
                           pack.userProfile.familyName,
                           pack.userProfile.username
                         )}
-                      </ChakraLink>
-                    </HStack>
+                      </Text>
+                    </ChakraLink>
                   )}
                   <Text color="blackAlpha.600" fontSize="sm">
                     {format(new Date(pack.createdAt), 'MMM d, yyyy')}
@@ -153,7 +171,7 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
           </LinkBox>
         )
       })}
-    </SimpleGrid>
+    </Wrap>
   )
 }
 
