@@ -11,7 +11,7 @@ import type {
 import { CellSuccessProps, CellFailureProps, useMutation } from '@redwoodjs/web'
 
 import { QUERY as BYLINE_CELL_QUERY } from 'src/cells/BylineCell'
-import { QUERY as USER_PROFILE_SIDEBAR_CELL_QUERY } from 'src/cells/UserProfileSidebarCell'
+import { QUERY as USER_PROFILE_SIDEBAR_CELL_QUERY } from 'src/cells/UserProfileCell'
 import UserProfileForm, {
   UserProfileFormSubmitData,
 } from 'src/forms/UserProfileForm/UserProfileForm'

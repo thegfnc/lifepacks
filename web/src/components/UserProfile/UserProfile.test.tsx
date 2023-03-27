@@ -1,6 +1,6 @@
 import { render } from '@redwoodjs/testing/web'
 
-import UserProfileSidebar from './UserProfileSidebar'
+import UserProfileSidebar from './UserProfile'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components

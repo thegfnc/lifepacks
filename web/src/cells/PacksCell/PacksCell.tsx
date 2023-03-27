@@ -36,14 +36,7 @@ export const Empty = ({ username }) => {
   const isCurrentUser = username === data?.currentUserProfile?.username
 
   return (
-    <Center
-      h={{ base: '300px', md: '2xl' }}
-      borderWidth="1px"
-      borderRadius="3xl"
-      borderStyle="dashed"
-      borderColor="gray.400"
-      bg="blackAlpha.50"
-    >
+    <Center borderRadius="3xl" bg="blackAlpha.50" p={12}>
       <Box textAlign="center">
         {isCurrentUser ? (
           <>

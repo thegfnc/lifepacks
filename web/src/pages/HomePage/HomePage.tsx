@@ -32,7 +32,9 @@ import { useAuth } from 'src/auth'
 import Pack from 'src/components/Pack/Pack'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
-import UserProfileSidebar from 'src/components/UserProfileSidebar/UserProfileSidebar'
+import UserProfile, {
+  UserProfileLayout,
+} from 'src/components/UserProfile/UserProfile'
 
 import { examplePacks } from './homePageData'
 
@@ -205,7 +207,8 @@ const HomePage = () => {
                     order={{ base: 1, md: 2 }}
                     display={{ base: 'none', md: 'block' }}
                   >
-                    <UserProfileSidebar
+                    <UserProfile
+                      layout={UserProfileLayout.Sidebar}
                       userProfile={
                         examplePacks[examplePackTabIndex].userProfile
                       }

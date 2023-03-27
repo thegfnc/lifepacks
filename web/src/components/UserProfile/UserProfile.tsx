@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { Text, Avatar, HStack, Flex } from '@chakra-ui/react'
-import { UserProfile } from 'types/graphql'
+import { UserProfile as UserProfileType } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 
@@ -9,15 +9,22 @@ import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccoun
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import SocialAccount from 'src/types/SocialAccount'
 
-type UserProfileSidebarProps = {
-  userProfile: UserProfile
-  actionButton?: ReactNode
+export enum UserProfileLayout {
+  Banner = 'Banner',
+  Sidebar = 'Sidebar',
 }
 
-const UserProfileSidebar = ({
+type UserProfileProps = {
+  userProfile: UserProfileType
+  actionButton?: ReactNode
+  layout?: UserProfileLayout
+}
+
+const UserProfile = ({
   userProfile,
   actionButton,
-}: UserProfileSidebarProps) => {
+  layout = UserProfileLayout.Sidebar,
+}: UserProfileProps) => {
   return (
     <>
       <Flex justify="space-between">
@@ -92,4 +99,4 @@ const UserProfileSidebar = ({
   )
 }
 
-export default UserProfileSidebar
+export default UserProfile

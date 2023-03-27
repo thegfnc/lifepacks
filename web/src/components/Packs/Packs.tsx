@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Box,
   Card,
   Center,
   Flex,
@@ -38,7 +37,7 @@ type PacksProps = {
 
 const Packs = ({ packs, showByline = false }: PacksProps) => {
   return (
-    <SimpleGrid minChildWidth="360px" spacing={6}>
+    <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={6}>
       {packs.map((pack) => {
         const numberOfImages = Math.min(pack.packItems.length, 3)
 
