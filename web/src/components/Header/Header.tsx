@@ -30,12 +30,7 @@ type HeaderProps = {
 }
 
 const Header = ({ ctaComponent }: HeaderProps) => {
-  const {
-    currentUser,
-    isAuthenticated,
-    loading: isAuthLoading,
-    logOut,
-  } = useAuth()
+  const { isAuthenticated, loading: isAuthLoading, logOut } = useAuth()
   const {
     data,
     loading: isCurrentUserProfileLoading,

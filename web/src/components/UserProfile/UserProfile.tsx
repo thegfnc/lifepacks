@@ -1,14 +1,6 @@
 import { ReactNode } from 'react'
 
-import {
-  Text,
-  Avatar,
-  HStack,
-  Flex,
-  Box,
-  Center,
-  Stack,
-} from '@chakra-ui/react'
+import { Text, Avatar, HStack, Flex, Center, Stack } from '@chakra-ui/react'
 import { UserProfile as UserProfileType } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
