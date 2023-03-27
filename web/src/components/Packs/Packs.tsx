@@ -1,5 +1,6 @@
 import {
   Avatar,
+  Box,
   Card,
   Center,
   Flex,
@@ -10,8 +11,8 @@ import {
   Link as ChakraLink,
   LinkBox,
   LinkOverlay,
+  SimpleGrid,
   Text,
-  Wrap,
 } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { Pack, PackItem, UserProfile } from 'types/graphql'
@@ -37,7 +38,7 @@ type PacksProps = {
 
 const Packs = ({ packs, showByline = false }: PacksProps) => {
   return (
-    <Wrap spacing={6}>
+    <SimpleGrid minChildWidth="360px" spacing={6}>
       {packs.map((pack) => {
         const numberOfImages = Math.min(pack.packItems.length, 3)
 
@@ -46,8 +47,7 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
             as={Card}
             key={pack.id}
             borderRadius="24px"
-            maxH="360px"
-            maxW="360px"
+            css={{ aspectRatio: '1 / 1' }}
           >
             <Grid
               templateRows="repeat(3, 1fr)"
@@ -72,6 +72,7 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                   fallback={<ImageFallback />}
                   maxH="full"
                   maxW="full"
+                  borderRadius="xl"
                 />
               </GridItem>
               {numberOfImages >= 2 && (
@@ -88,6 +89,7 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                     fallback={<ImageFallback />}
                     maxH="full"
                     maxW="full"
+                    borderRadius="xl"
                   />
                 </GridItem>
               )}
@@ -106,6 +108,7 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                     fallback={<ImageFallback />}
                     maxH="full"
                     maxW="full"
+                    borderRadius="xl"
                   />
                 </GridItem>
               )}
@@ -171,7 +174,7 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
           </LinkBox>
         )
       })}
-    </Wrap>
+    </SimpleGrid>
   )
 }
 
