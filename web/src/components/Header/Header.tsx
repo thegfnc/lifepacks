@@ -15,10 +15,12 @@ import {
   Link as ChakraLink,
   Box,
 } from '@chakra-ui/react'
+import { MdLogout, MdOutlineAccountCircle } from 'react-icons/md'
 
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 import Logo from '../Logo/Logo'
@@ -44,6 +46,12 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     logOut()
     refetch()
   }
+
+  const userDisplayName = getUserDisplayName(
+    data?.currentUserProfile?.givenName,
+    data?.currentUserProfile?.familyName,
+    data?.currentUserProfile?.username
+  )
 
   return (
     <>
@@ -92,22 +100,36 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                           h={10}
                           w={10}
                           src={data?.currentUserProfile?.imageUrl}
-                          name={data?.currentUserProfile?.givenName}
+                          name={userDisplayName}
                         />
                       </MenuButton>
                       <MenuList borderRadius="xl">
-                        <Text px={3}>{currentUser.email}</Text>
+                        {data?.currentUserProfile?.username && (
+                          <Box px={3}>
+                            <Text fontWeight="medium">{userDisplayName}</Text>
+                            {!userDisplayName.endsWith(
+                              data.currentUserProfile.username
+                            ) && (
+                              <Text fontSize="xs" color="blackAlpha.600">
+                                {'@' + data.currentUserProfile.username}
+                              </Text>
+                            )}
+                          </Box>
+                        )}
                         <MenuDivider />
                         <MenuItem
                           as={Link}
                           to={routes.userProfile({
                             username: data?.currentUserProfile?.username,
                           })}
+                          icon={<MdOutlineAccountCircle size="20px" />}
                         >
                           View Profile
                         </MenuItem>
-                        <MenuDivider />
-                        <MenuItem onClick={logOutAndRefetchCurrentUserProfile}>
+                        <MenuItem
+                          onClick={logOutAndRefetchCurrentUserProfile}
+                          icon={<MdLogout size="20px" />}
+                        >
                           Log Out
                         </MenuItem>
                       </MenuList>
