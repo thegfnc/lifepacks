@@ -1,6 +1,14 @@
 import { ReactNode } from 'react'
 
-import { Text, Avatar, HStack, Flex } from '@chakra-ui/react'
+import {
+  Text,
+  Avatar,
+  HStack,
+  Flex,
+  Box,
+  Center,
+  Stack,
+} from '@chakra-ui/react'
 import { UserProfile as UserProfileType } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -14,17 +22,104 @@ export enum UserProfileLayout {
   Sidebar = 'Sidebar',
 }
 
-type UserProfileProps = {
+type UserProfileLayoutPartialProps = {
   userProfile: UserProfileType
   actionButton?: ReactNode
+}
+
+type UserProfileProps = UserProfileLayoutPartialProps & {
   layout?: UserProfileLayout
 }
 
-const UserProfile = ({
+const UserProfileBannerLayout = ({
   userProfile,
   actionButton,
-  layout = UserProfileLayout.Sidebar,
-}: UserProfileProps) => {
+}: UserProfileLayoutPartialProps) => {
+  const userDisplayName = getUserDisplayName(
+    userProfile.givenName,
+    userProfile.familyName,
+    userProfile.username
+  )
+
+  return (
+    <Center textAlign="center" flexDirection="column">
+      <Center>
+        <Avatar
+          boxSize={'112px'}
+          src={userProfile.imageUrl}
+          name={userDisplayName}
+        />
+      </Center>
+      <Stack mt={4} spacing={1}>
+        <Text
+          as={Link}
+          fontSize="2xl"
+          fontWeight="bold"
+          lineHeight="shorter"
+          color="blackAlpha.800"
+          to={routes.userProfile({ username: userProfile.username })}
+        >
+          {userDisplayName}
+        </Text>
+        {!userDisplayName.endsWith(userProfile.username) && (
+          <Text
+            as={Link}
+            fontSize="md"
+            color="blackAlpha.700"
+            to={routes.userProfile({ username: userProfile.username })}
+          >
+            @{userProfile.username}
+          </Text>
+        )}
+      </Stack>
+      {userProfile.biography && (
+        <Text
+          fontSize="md"
+          lineHeight={6}
+          mt={2}
+          color="blackAlpha.800"
+          maxW="xl"
+        >
+          {userProfile.biography}
+        </Text>
+      )}
+      <Center mt={4}>
+        <HStack>
+          {userProfile.facebookUrl && (
+            <SocialAccountButton
+              accountType={SocialAccount.Facebook}
+              linkUrl={userProfile.facebookUrl}
+            />
+          )}
+          {userProfile.instagramUrl && (
+            <SocialAccountButton
+              accountType={SocialAccount.Instagram}
+              linkUrl={userProfile.instagramUrl}
+            />
+          )}
+          {userProfile.youtubeUrl && (
+            <SocialAccountButton
+              accountType={SocialAccount.YouTube}
+              linkUrl={userProfile.youtubeUrl}
+            />
+          )}
+          {userProfile.twitterUrl && (
+            <SocialAccountButton
+              accountType={SocialAccount.Twitter}
+              linkUrl={userProfile.twitterUrl}
+            />
+          )}
+        </HStack>
+      </Center>
+      {actionButton && <Center mt={4}>{actionButton}</Center>}
+    </Center>
+  )
+}
+
+const UserProfileSidebarLayout = ({
+  userProfile,
+  actionButton,
+}: UserProfileLayoutPartialProps) => {
   return (
     <>
       <Flex justify="space-between">
@@ -96,6 +191,24 @@ const UserProfile = ({
         </HStack>
       </Flex>
     </>
+  )
+}
+
+const UserProfile = ({
+  userProfile,
+  actionButton,
+  layout = UserProfileLayout.Sidebar,
+}: UserProfileProps) => {
+  return layout === UserProfileLayout.Sidebar ? (
+    <UserProfileSidebarLayout
+      userProfile={userProfile}
+      actionButton={actionButton}
+    />
+  ) : (
+    <UserProfileBannerLayout
+      userProfile={userProfile}
+      actionButton={actionButton}
+    />
   )
 }
 

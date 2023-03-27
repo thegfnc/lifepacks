@@ -6,6 +6,7 @@ import { MetaTags } from '@redwoodjs/web'
 import PacksCell from 'src/cells/PacksCell'
 import UserProfileCell from 'src/cells/UserProfileCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import { UserProfileLayout } from 'src/components/UserProfile/UserProfile'
 
 type UserProfilePageProps = {
   username: string
@@ -23,8 +24,12 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
       />
 
       <PageContainer>
-        <UserProfileCell username={username} setMetaTags={true} />
-        <HStack spacing={5}>
+        <UserProfileCell
+          username={username}
+          setMetaTags={true}
+          layout={UserProfileLayout.Banner}
+        />
+        <HStack spacing={5} mt={6}>
           <Text fontWeight="semibold" fontSize="xs" color="blackAlpha.600">
             PACKS
           </Text>
