@@ -7,7 +7,7 @@ export const standard = defineScenario<Prisma.PackItemCreateArgs>({
     one: {
       data: {
         userId: '6b555fae-0bf4-448a-b467-db072d608116',
-        username: 'cooldude',
+        username: 'outtaherecya',
         givenName: 'Jason',
         familyName: 'Desiderio',
         updatedAt: '2023-01-21T06:28:17.296Z',
