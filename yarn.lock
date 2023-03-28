@@ -6075,16 +6075,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:7.43.0":
-  version: 7.43.0
-  resolution: "@sentry/browser@npm:7.43.0"
+"@sentry/browser@npm:7.45.0":
+  version: 7.45.0
+  resolution: "@sentry/browser@npm:7.45.0"
   dependencies:
-    "@sentry/core": 7.43.0
-    "@sentry/replay": 7.43.0
-    "@sentry/types": 7.43.0
-    "@sentry/utils": 7.43.0
+    "@sentry-internal/tracing": 7.45.0
+    "@sentry/core": 7.45.0
+    "@sentry/replay": 7.45.0
+    "@sentry/types": 7.45.0
+    "@sentry/utils": 7.45.0
     tslib: ^1.9.3
-  checksum: 0e041f2a532f29d3e45a52671526e6689f61fc349dad9ad0854eca68d01a9f00d68e973dc50c6f0811f321aae7d20a4db0d537d5d97f6d0080ba596d5584188a
+  checksum: 5fbdfde362216c6ebf5e83e24e720985e022a06148a562f261bb18d9acd8ce1e97c604a9ee4184f258fd3e5653afe8f98ef9643dc71a35572680edc4fa8fea32
   languageName: node
   linkType: hard
 
@@ -6101,17 +6102,6 @@ __metadata:
   bin:
     sentry-cli: bin/sentry-cli
   checksum: a2195476391564522362d61cad8637b19fa68a5310d9619b73e8cda4941a7d57bb45c65739fe6cf6868e707ee398d28e9bc458bd7368e4cd7cc642d14d47710c
-  languageName: node
-  linkType: hard
-
-"@sentry/core@npm:7.43.0":
-  version: 7.43.0
-  resolution: "@sentry/core@npm:7.43.0"
-  dependencies:
-    "@sentry/types": 7.43.0
-    "@sentry/utils": 7.43.0
-    tslib: ^1.9.3
-  checksum: 04377cfb162e2c70931ced2819cbe4d5f1b682545cb55a9c5281082d928e44df4001629652277739cc285a000ebddeed4d258934c655dbdd0d1834002f3c2f42
   languageName: node
   linkType: hard
 
@@ -6142,29 +6132,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:^7.43.0":
-  version: 7.43.0
-  resolution: "@sentry/react@npm:7.43.0"
+"@sentry/react@npm:^7.45.0":
+  version: 7.45.0
+  resolution: "@sentry/react@npm:7.45.0"
   dependencies:
-    "@sentry/browser": 7.43.0
-    "@sentry/types": 7.43.0
-    "@sentry/utils": 7.43.0
+    "@sentry/browser": 7.45.0
+    "@sentry/types": 7.45.0
+    "@sentry/utils": 7.45.0
     hoist-non-react-statics: ^3.3.2
     tslib: ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x || 18.x
-  checksum: f12d05bb8cd8de350a5dfe598bd0fa7657924ccf590561f41b1e6a5c71c9783363c7c985395af783193732b469338d259dc6e3ca8cb8b77aae166ec6bb3bd425
+  checksum: e7fbe46662097cb42f41490987cf5991250f2fabf7ddaef17bcc4469a05a591b5e35646a0b0f7e64b24e5f181ba0eb07a0952deb1b339961760c20df8a7989ce
   languageName: node
   linkType: hard
 
-"@sentry/replay@npm:7.43.0":
-  version: 7.43.0
-  resolution: "@sentry/replay@npm:7.43.0"
+"@sentry/replay@npm:7.45.0":
+  version: 7.45.0
+  resolution: "@sentry/replay@npm:7.45.0"
   dependencies:
-    "@sentry/core": 7.43.0
-    "@sentry/types": 7.43.0
-    "@sentry/utils": 7.43.0
-  checksum: 94207ee455d413e07676c9181bba6d9f515cdad36b951ea657f5d64462e340bdeb90d2b210c8692ac6ea8d9c77f70ca44e9a66a85acac84366373bbcf273e13a
+    "@sentry/core": 7.45.0
+    "@sentry/types": 7.45.0
+    "@sentry/utils": 7.45.0
+  checksum: aed0dd2c7362bce8ab3fa1c6011877af38b4a2b6f080137d80ada6414875ad6564034545aad8b4bebeb7397cb1a7801004160114670575c2859ca6619649db50
   languageName: node
   linkType: hard
 
@@ -6177,27 +6167,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:7.43.0":
-  version: 7.43.0
-  resolution: "@sentry/types@npm:7.43.0"
-  checksum: c02ac13b4e22e3a65c591d6f79295efdeecadd6f40a4933adf8559ac730caa5686a81c4ca10529fe590051e9562f1ad66dfac353b49c17534898edfabce51161
-  languageName: node
-  linkType: hard
-
 "@sentry/types@npm:7.45.0":
   version: 7.45.0
   resolution: "@sentry/types@npm:7.45.0"
   checksum: e445f86940bb662a7e3cea21e0c6d6299dd6f1103e695f0d11b795c22eaba5148065b29b6f3b68ade434d7a43f372aec8e224798c07bbb074aedeec5a85a1306
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:7.43.0":
-  version: 7.43.0
-  resolution: "@sentry/utils@npm:7.43.0"
-  dependencies:
-    "@sentry/types": 7.43.0
-    tslib: ^1.9.3
-  checksum: e2b3769f48e91c1e5327886a1c50ee6d9ce9efd122249cb685cdc8b82829ba0791317e8ece5bf55e619909b5e3fbcdd2652f1590158155093df889b6979fc307
   languageName: node
   linkType: hard
 
@@ -25817,7 +25790,7 @@ __metadata:
     "@redwoodjs/forms": 4.4.2
     "@redwoodjs/router": 4.4.2
     "@redwoodjs/web": 4.4.2
-    "@sentry/react": ^7.43.0
+    "@sentry/react": ^7.45.0
     "@sentry/tracing": ^7.45.0
     "@sentry/webpack-plugin": ^1.20.0
     "@supabase/supabase-js": ^1
