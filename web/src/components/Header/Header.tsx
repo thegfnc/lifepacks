@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useRef } from 'react'
 
+import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 import {
   Button,
   Flex,
@@ -14,10 +15,15 @@ import {
   Avatar,
   Link as ChakraLink,
   Box,
+  IconButton,
+  useDisclosure,
+  Collapse,
+  Stack,
+  useOutsideClick,
 } from '@chakra-ui/react'
 import { MdLogout, MdOutlineAccountCircle } from 'react-icons/md'
 
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes, useLocation } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
@@ -30,12 +36,25 @@ type HeaderProps = {
 }
 
 const Header = ({ ctaComponent }: HeaderProps) => {
+  const collapseRef = useRef()
   const { isAuthenticated, loading: isAuthLoading, logOut } = useAuth()
+  const { pathname } = useLocation()
+  const { isOpen, onToggle, onClose } = useDisclosure()
   const {
     data,
     loading: isCurrentUserProfileLoading,
     refetch,
   } = useCurrentUserProfile()
+
+  // Close the navigation panel on route change and outside click
+  useEffect(() => {
+    onClose()
+  }, [onClose, pathname])
+
+  useOutsideClick({
+    ref: collapseRef,
+    handler: () => onClose(),
+  })
 
   const logOutAndRefetchCurrentUserProfile = () => {
     logOut()
@@ -46,6 +65,12 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     data?.currentUserProfile?.givenName,
     data?.currentUserProfile?.familyName,
     data?.currentUserProfile?.username
+  )
+
+  const navigation = (
+    <ChakraLink as={Link} to={routes.explore()}>
+      Explore Packs
+    </ChakraLink>
   )
 
   return (
@@ -63,11 +88,24 @@ const Header = ({ ctaComponent }: HeaderProps) => {
           px={{ base: 4, md: 8 }}
           alignItems={'center'}
         >
+          <Flex ml={-2} mr={2} display={{ base: 'flex', md: 'none' }}>
+            <IconButton
+              onClick={onToggle}
+              icon={
+                isOpen ? (
+                  <CloseIcon w={4} h={4} />
+                ) : (
+                  <HamburgerIcon w={6} h={6} />
+                )
+              }
+              color="black"
+              variant={'ghost'}
+              aria-label={'Toggle Navigation'}
+            />
+          </Flex>
           <Logo />
-          <Box ml={10}>
-            <ChakraLink as={Link} to={routes.explore()}>
-              Explore Packs
-            </ChakraLink>
+          <Box ml={10} display={{ base: 'none', md: 'block' }}>
+            {navigation}
           </Box>
 
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
@@ -154,6 +192,15 @@ const Header = ({ ctaComponent }: HeaderProps) => {
           </Flex>
         </Flex>
       </Flex>
+      <Collapse ref={collapseRef} in={isOpen} animateOpacity>
+        <Stack
+          p={4}
+          borderBottomColor={'blackAlpha.200'}
+          borderBottomWidth={'1px'}
+        >
+          {navigation}
+        </Stack>
+      </Collapse>
     </>
   )
 }

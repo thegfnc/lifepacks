@@ -72,6 +72,14 @@ module.exports = {
             bg: 'blackAlpha.300',
           },
         },
+        ghost: {
+          _hover: {
+            bg: 'blackAlpha.100',
+          },
+          _active: {
+            bg: 'blackAlpha.300',
+          },
+        },
       },
       defaultProps: {
         colorScheme: 'purple',

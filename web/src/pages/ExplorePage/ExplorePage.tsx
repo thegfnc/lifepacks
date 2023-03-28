@@ -18,7 +18,7 @@ const ExplorePage = () => {
 
       <PageContainer>
         <Heading size="2xl">Explore Packs</Heading>
-        <Box mt={8}>
+        <Box my={8}>
           <LatestPacksCell />
         </Box>
       </PageContainer>

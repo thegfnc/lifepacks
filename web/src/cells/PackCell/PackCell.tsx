@@ -204,7 +204,7 @@ export const Success = ({
                   as={IconButton}
                   aria-label="Options"
                   icon={<MdMoreHoriz size="24px" />}
-                  variant="outline"
+                  variant="ghost"
                   colorScheme="gray"
                 />
                 <MenuList borderRadius="xl">
