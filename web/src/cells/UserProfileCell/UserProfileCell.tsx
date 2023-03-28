@@ -1,7 +1,7 @@
 import { Button, useDisclosure } from '@chakra-ui/react'
 import type {
-  FindUserProfileSidebarQuery,
-  FindUserProfileSidebarQueryVariables,
+  FindUserProfileQuery,
+  FindUserProfileQueryVariables,
 } from 'types/graphql'
 
 import {
@@ -12,18 +12,21 @@ import {
 } from '@redwoodjs/web'
 
 import EditUserProfileModal from 'src/components/EditUserProfileModal/EditUserProfileModal'
-import UserProfileSidebar from 'src/components/UserProfileSidebar/UserProfileSidebar'
+import UserProfile, {
+  UserProfileLayout,
+} from 'src/components/UserProfile/UserProfile'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
-type UserProfileSidebarCellProps = CellSuccessProps<
-  FindUserProfileSidebarQuery,
-  FindUserProfileSidebarQueryVariables
+type UserProfileCellProps = CellSuccessProps<
+  FindUserProfileQuery,
+  FindUserProfileQueryVariables
 > & {
   setMetaTags?: boolean
+  layout?: UserProfileLayout
 }
 
 export const QUERY = gql`
-  query FindUserProfileSidebarQuery($username: String!) {
+  query FindUserProfileQuery($username: String!) {
     userProfile(username: $username) {
       username
       givenName
@@ -47,7 +50,7 @@ export const Empty = () => <div>Empty</div>
 
 export const Failure = ({
   error,
-}: CellFailureProps<FindUserProfileSidebarQueryVariables>) => (
+}: CellFailureProps<FindUserProfileQueryVariables>) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
@@ -55,7 +58,8 @@ export const Success = ({
   userProfile,
   currentUserProfile,
   setMetaTags = false,
-}: UserProfileSidebarCellProps) => {
+  layout,
+}: UserProfileCellProps) => {
   const isCurrentUser = userProfile.username === currentUserProfile?.username
 
   const {
@@ -74,7 +78,8 @@ export const Success = ({
               userProfile.biography
             } \n Check out the packs created by ${getUserDisplayName(
               userProfile.givenName,
-              userProfile.familyName
+              userProfile.familyName,
+              userProfile.username
             )}`}
             ogType="profile"
             ogContentUrl={userProfile.imageUrl}
@@ -95,7 +100,8 @@ export const Success = ({
           </Head>
         </>
       )}
-      <UserProfileSidebar
+      <UserProfile
+        layout={layout}
         userProfile={userProfile}
         actionButton={
           isCurrentUser && (

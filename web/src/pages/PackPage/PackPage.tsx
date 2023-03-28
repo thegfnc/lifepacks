@@ -4,8 +4,9 @@ import { routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import PackCell from 'src/cells/PackCell'
-import UserProfileSidebarCell from 'src/cells/UserProfileSidebarCell'
+import UserProfileCell from 'src/cells/UserProfileCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import { UserProfileLayout } from 'src/components/UserProfile/UserProfile'
 
 type PackPageProps = {
   username: string
@@ -40,7 +41,10 @@ const PackPage = ({ username, slug }: PackPageProps) => {
             paddingLeft={{ base: 0, md: 14 }}
             order={{ base: 1, md: 2 }}
           >
-            <UserProfileSidebarCell username={username} />
+            <UserProfileCell
+              username={username}
+              layout={UserProfileLayout.Sidebar}
+            />
           </Box>
         </Flex>
       </PageContainer>

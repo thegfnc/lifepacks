@@ -22,6 +22,9 @@ export const QUERY = gql`
         title
         imageUrl
       }
+      userProfile {
+        username
+      }
     }
   }
 `
@@ -33,14 +36,7 @@ export const Empty = ({ username }) => {
   const isCurrentUser = username === data?.currentUserProfile?.username
 
   return (
-    <Center
-      h={{ base: '300px', md: '2xl' }}
-      borderWidth="1px"
-      borderRadius="3xl"
-      borderStyle="dashed"
-      borderColor="gray.400"
-      bg="blackAlpha.50"
-    >
+    <Center borderRadius="3xl" bg="blackAlpha.50" p={12}>
       <Box textAlign="center">
         {isCurrentUser ? (
           <>
@@ -87,6 +83,6 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ username, packs }: PacksCellProps) => {
-  return <Packs username={username} packs={packs} />
+export const Success = ({ packs }: PacksCellProps) => {
+  return <Packs packs={packs} />
 }

@@ -19,6 +19,7 @@ const Routes = () => {
       <Set wrap={AppLayout}>
         {/* Marketing Pages */}
         <Route path="/" page={HomePage} name="home" />
+        <Route path="/explore" page={ExplorePage} name="explore" />
 
         {/* Public Profile and Pack Pages */}
         <Route path="/@{username}" page={UserProfilePage} name="userProfile" />
@@ -29,7 +30,7 @@ const Routes = () => {
         <Route path="/sign-up" page={SignUpPage} name="signUp" />
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
 
-        {/* User Admin Pages*/}
+        {/* Dashboard Pages*/}
         <Set private unauthenticated="home">
           <Route path="/me/pack/edit/{id:Int}" page={EditPackPage} name="editPack" />
           <Route path="/me/pack/new" page={NewPackPage} name="newPack" />

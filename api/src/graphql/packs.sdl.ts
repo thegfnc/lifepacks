@@ -5,6 +5,7 @@ export const schema = gql`
     slug: String!
     title: String!
     description: String
+    userProfile: UserProfile!
     packItems: [PackItem]!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -13,6 +14,7 @@ export const schema = gql`
   type Query {
     packs(username: String!): [Pack!]! @skipAuth
     pack(username: String!, slug: String, id: Int): Pack @skipAuth
+    latestPacks(take: Int): [Pack!]! @skipAuth
   }
 
   input CreatePackInput {

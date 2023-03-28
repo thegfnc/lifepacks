@@ -8,6 +8,12 @@ import type {
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
+export const latestPacks: QueryResolvers['latestPacks'] = async ({
+  take = 99,
+}) => {
+  return db.pack.findMany({ orderBy: { createdAt: 'desc' }, take })
+}
+
 export const packs: QueryResolvers['packs'] = async ({ username }) => {
   const { userId } = await db.userProfile.findUnique({ where: { username } })
 
@@ -204,5 +210,8 @@ export const Pack: PackRelationResolvers = {
     return db.pack
       .findUnique({ where: { id: root?.id } })
       .packItems({ orderBy: [{ displaySequence: 'asc' }] })
+  },
+  userProfile: (_obj, { root }) => {
+    return db.pack.findUnique({ where: { id: root?.id } }).userProfile()
   },
 }

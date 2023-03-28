@@ -34,6 +34,7 @@ export const standard = (/* vars, { ctx, req } */) => ({
     givenName: 'Jason',
     familyName: 'Desiderio',
     imageUrl: 'https://www.somesite.com/image',
+    username: '@jmdesiderio',
   },
   currentUserProfile: {
     username: 'jmdesiderio',

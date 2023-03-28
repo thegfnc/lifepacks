@@ -10,7 +10,6 @@ describe('Packs', () => {
     expect(() => {
       render(
         <Packs
-          username="jmdesiderio"
           packs={[
             {
               id: 2,
@@ -30,6 +29,9 @@ describe('Packs', () => {
                     'https://i5.walmartimages.com/asr/e2eaf2d6-392e-4703-8338-d9b113e0e124.85c6678244824a2e565fa624c03c2301.jpeg',
                 },
               ],
+              userProfile: {
+                username: '@jmdesiderio',
+              },
             },
           ]}
         />

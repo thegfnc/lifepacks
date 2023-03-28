@@ -1,102 +1,179 @@
 import {
-  Box,
+  Avatar,
+  Card,
+  Center,
   Flex,
+  Grid,
+  GridItem,
+  Heading,
   Image,
   Link as ChakraLink,
-  Stack,
-  Tag,
+  LinkBox,
+  LinkOverlay,
+  SimpleGrid,
   Text,
 } from '@chakra-ui/react'
 import { format } from 'date-fns'
-import { Pack, PackItem } from 'types/graphql'
+import { Pack, PackItem, UserProfile } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
+
+import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
 import ImageFallback from '../ImageFallback/ImageFallback'
 
 type PackPartial = Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> & {
   packItems: Pick<PackItem, 'imageUrl' | 'title'>[]
+  userProfile: Pick<
+    UserProfile,
+    'username' | 'givenName' | 'familyName' | 'imageUrl'
+  >
 }
 
 type PacksProps = {
-  username: string
   packs: PackPartial[]
+  showByline?: boolean
 }
 
-const Packs = ({ username, packs }: PacksProps) => {
+const Packs = ({ packs, showByline = false }: PacksProps) => {
   return (
-    <Stack spacing={6}>
+    <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={6}>
       {packs.map((pack) => {
+        const numberOfImages = Math.min(pack.packItems.length, 3)
+
         return (
-          <Flex
+          <LinkBox
+            as={Card}
             key={pack.id}
-            px={{ base: 4, md: 8 }}
-            py={{ base: 6, md: 8 }}
-            borderRadius="32px"
-            borderWidth="1px"
-            borderColor="blackAlpha.300"
-            direction={{ base: 'column', md: 'row' }}
+            borderRadius="24px"
+            css={{ aspectRatio: '1 / 1' }}
           >
-            <Flex
-              direction="column"
-              alignItems="flex-start"
-              justifyContent="space-between"
-              borderTopWidth={{ base: '1px', md: 0 }}
-              borderRightWidth={{ base: 0, md: '1px' }}
-              borderColor="blackAlpha.200"
-              pr={{ base: 0, md: 8 }}
-              pt={{ base: 6, md: 0 }}
-              mt={{ base: 6, md: 0 }}
-              position="relative"
-              w={{ base: 'full', md: '50%' }}
-              order={{ base: 2, md: 1 }}
+            <Grid
+              templateRows="repeat(3, 1fr)"
+              templateColumns="repeat(6, 1fr)"
+              h="full"
+              w="full"
             >
-              <ChakraLink
-                as={Link}
-                to={routes.pack({
-                  username,
-                  slug: pack.slug,
-                })}
-                fontSize="26px"
-                lineHeight={7}
-                fontWeight="bold"
+              <GridItem
+                rowSpan={2}
+                colSpan={
+                  numberOfImages === 3 ? 4 : numberOfImages === 2 ? 3 : 6
+                }
+                as={Center}
+                p={4}
+                borderRightWidth={numberOfImages >= 2 ? '1px' : 0}
+                borderColor="blackAlpha.200"
               >
-                {pack.title}
-              </ChakraLink>
-              <Text color="blackAlpha.700" mt={8}>
-                {format(new Date(pack.createdAt), 'MMM d, yyyy')}
-              </Text>
-              <Tag
-                size="md"
-                position="absolute"
-                right={{ base: 0, md: 8 }}
-                bottom={0}
-                colorScheme="purple"
-                borderRadius="full"
-                bg="purple.50"
-                fontWeight="normal"
+                <Image
+                  src={pack.packItems[0]?.imageUrl}
+                  fit="contain"
+                  alt={pack.packItems[0]?.title}
+                  fallback={<ImageFallback />}
+                  maxH="full"
+                  maxW="full"
+                  borderRadius="xl"
+                />
+              </GridItem>
+              {numberOfImages >= 2 && (
+                <GridItem
+                  as={Center}
+                  p={4}
+                  colSpan={numberOfImages === 2 ? 3 : 2}
+                  rowSpan={numberOfImages === 2 ? 2 : 1}
+                >
+                  <Image
+                    src={pack.packItems[1]?.imageUrl}
+                    fit="contain"
+                    alt={pack.packItems[1]?.title}
+                    fallback={<ImageFallback />}
+                    maxH="full"
+                    maxW="full"
+                    borderRadius="xl"
+                  />
+                </GridItem>
+              )}
+              {numberOfImages === 3 && (
+                <GridItem
+                  as={Center}
+                  p={4}
+                  borderTopWidth={'1px'}
+                  borderColor="blackAlpha.200"
+                  colSpan={2}
+                >
+                  <Image
+                    src={pack.packItems[2]?.imageUrl}
+                    fit="contain"
+                    alt={pack.packItems[2]?.title}
+                    fallback={<ImageFallback />}
+                    maxH="full"
+                    maxW="full"
+                    borderRadius="xl"
+                  />
+                </GridItem>
+              )}
+              <GridItem
+                as={Flex}
+                direction="column"
+                justify="space-between"
+                colSpan={6}
+                borderTopWidth={'1px'}
+                borderColor="blackAlpha.200"
+                p={4}
               >
-                {pack.packItems.length}{' '}
-                {pack.packItems.length === 1 ? 'Item' : 'Items'}
-              </Tag>
-            </Flex>
-            <Box
-              ml={{ base: 0, md: 8 }}
-              px="68px"
-              width={{ base: 'full', md: '50%' }}
-              order={{ base: 1, md: 2 }}
-            >
-              <Image
-                src={pack.packItems[0]?.imageUrl}
-                w="full"
-                alt={pack.packItems[0]?.title}
-                fallback={<ImageFallback />}
-              />
-            </Box>
-          </Flex>
+                <Heading fontSize="26px" lineHeight={7} fontWeight="bold">
+                  <LinkOverlay
+                    as={Link}
+                    to={routes.pack({
+                      username: pack.userProfile.username,
+                      slug: pack.slug,
+                    })}
+                  >
+                    {pack.title}
+                  </LinkOverlay>
+                </Heading>
+                <Flex
+                  mt={4}
+                  justify={showByline ? 'space-between' : 'flex-end'}
+                  w="full"
+                >
+                  {showByline && (
+                    <ChakraLink
+                      fontSize="sm"
+                      as={Link}
+                      to={routes.userProfile({
+                        username: pack.userProfile.username,
+                      })}
+                      display="flex"
+                      alignItems="center"
+                    >
+                      <Avatar
+                        size={'xs'}
+                        src={pack.userProfile.imageUrl}
+                        name={getUserDisplayName(
+                          pack.userProfile.givenName,
+                          pack.userProfile.familyName,
+                          pack.userProfile.username
+                        )}
+                      />
+                      <Text as="span" ml={2}>
+                        {getUserDisplayName(
+                          pack.userProfile.givenName,
+                          pack.userProfile.familyName,
+                          pack.userProfile.username
+                        )}
+                      </Text>
+                    </ChakraLink>
+                  )}
+                  <Text color="blackAlpha.600" fontSize="sm">
+                    {format(new Date(pack.createdAt), 'MMM d, yyyy')}
+                  </Text>
+                </Flex>
+              </GridItem>
+            </Grid>
+          </LinkBox>
         )
       })}
-    </Stack>
+    </SimpleGrid>
   )
 }
 

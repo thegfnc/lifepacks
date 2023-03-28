@@ -74,6 +74,7 @@ export const QUERY = gql`
       givenName
       familyName
       imageUrl
+      username
     }
     currentUserProfile {
       username
@@ -153,7 +154,8 @@ export const Success = ({
               pack.description
             } \n This pack was created by ${getUserDisplayName(
               userProfile.givenName,
-              userProfile.familyName
+              userProfile.familyName,
+              userProfile.username
             )}`}
             ogType="article"
             ogContentUrl={pack.packItems[0]?.imageUrl || userProfile.imageUrl}
@@ -167,7 +169,8 @@ export const Success = ({
               property="og:article:author"
               content={getUserDisplayName(
                 userProfile.givenName,
-                userProfile.familyName
+                userProfile.familyName,
+                userProfile.username
               )}
             />
           </Head>
@@ -201,7 +204,7 @@ export const Success = ({
                   as={IconButton}
                   aria-label="Options"
                   icon={<MdMoreHoriz size="24px" />}
-                  variant="outline"
+                  variant="ghost"
                   colorScheme="gray"
                 />
                 <MenuList borderRadius="xl">

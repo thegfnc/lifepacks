@@ -13,7 +13,7 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import UserProfileSidebar from './UserProfileSidebar'
+import UserProfileSidebar from './UserProfile'
 
 export const generated = () => {
   return <UserProfileSidebar userProfile={{ username: 'jmdesiderio' }} />

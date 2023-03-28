@@ -15,7 +15,12 @@ import PageContainer from '../PageContainer/PageContainer'
 import SocialAccountButton from '../SocialAccountButton/SocialAccountButton'
 
 const Footer = () => (
-  <Box borderTopColor={'blackAlpha.200'} borderTopWidth={'1px'}>
+  <Box
+    bg="black"
+    color="white"
+    borderTopColor={'blackAlpha.200'}
+    borderTopWidth={'1px'}
+  >
     <PageContainer minHeight="auto">
       <Stack
         as="footer"
@@ -26,7 +31,7 @@ const Footer = () => (
         py={{ base: '4', md: '6' }}
       >
         <Stack spacing={{ base: '6', md: '8' }} align="start">
-          <Logo />
+          <Logo color="white" />
           <Text color="muted">Make guides for the products you swear by.</Text>
         </Stack>
         <Stack
