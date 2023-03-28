@@ -5,7 +5,7 @@ export const standard = (/* vars, { ctx, req } */) => ({
       id: 42,
       slug: '',
       title: '',
-      createdAt: '',
+      createdAt: '2023-02-13T16:05:18.978Z',
       packItems: [{ id: 1, title: '', imageUrl: 'imageUrl.png' }],
       userProfile: {
         username: '@jmdesiderio',
@@ -18,7 +18,7 @@ export const standard = (/* vars, { ctx, req } */) => ({
       id: 43,
       slug: '',
       title: '',
-      createdAt: '',
+      createdAt: '2023-02-13T16:05:18.978Z',
       packItems: [{ id: 2, title: '', imageUrl: 'imageUrl.png' }],
       userProfile: {
         username: '@jmdesiderio',
@@ -31,7 +31,7 @@ export const standard = (/* vars, { ctx, req } */) => ({
       id: 44,
       slug: '',
       title: '',
-      createdAt: '',
+      createdAt: '2023-02-13T16:05:18.978Z',
       packItems: [{ id: 2, title: '', imageUrl: 'imageUrl.png' }],
       userProfile: {
         username: '@jmdesiderio',

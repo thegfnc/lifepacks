@@ -3,10 +3,21 @@ import type { Prisma, PackItem } from '@prisma/client'
 import type { ScenarioData } from '@redwoodjs/testing/api'
 
 export const standard = defineScenario<Prisma.PackItemCreateArgs>({
+  userProfile: {
+    one: {
+      data: {
+        userId: '6b555fae-0bf4-448a-b467-db072d608117',
+        username: 'cooldude',
+        givenName: 'Jason',
+        familyName: 'Desiderio',
+        updatedAt: '2023-01-21T06:28:17.296Z',
+      },
+    },
+  },
   packItem: {
     one: {
       data: {
-        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
+        userId: '6b555fae-0bf4-448a-b467-db072d608117',
         title: 'String',
         purchaseUrl: 'String',
         imageUrl: 'String',
@@ -15,7 +26,7 @@ export const standard = defineScenario<Prisma.PackItemCreateArgs>({
         updatedAt: '2023-02-13T15:56:29.208Z',
         pack: {
           create: {
-            userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
+            userId: '6b555fae-0bf4-448a-b467-db072d608117',
             slug: 'cooking',
             title: 'Cooking',
             description: 'String',
@@ -26,7 +37,7 @@ export const standard = defineScenario<Prisma.PackItemCreateArgs>({
     },
     two: {
       data: {
-        userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
+        userId: '6b555fae-0bf4-448a-b467-db072d608117',
         title: 'String',
         purchaseUrl: 'String',
         imageUrl: 'String',
@@ -35,7 +46,7 @@ export const standard = defineScenario<Prisma.PackItemCreateArgs>({
         updatedAt: '2023-02-13T15:56:29.208Z',
         pack: {
           create: {
-            userId: 'b3b7d312-e144-4472-94e7-a830f0fe0ec6',
+            userId: '6b555fae-0bf4-448a-b467-db072d608117',
             slug: 'music',
             title: 'Music',
             description: 'String',
