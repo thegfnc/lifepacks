@@ -65,7 +65,8 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                 borderColor="blackAlpha.200"
               >
                 <Image
-                  src={pack.packItems[0]?.imageUrl}
+                  // src={pack.packItems[0]?.imageUrl}
+                  src={null}
                   fit="contain"
                   alt={pack.packItems[0]?.title}
                   fallback={<ImageFallback />}
@@ -82,7 +83,8 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                   rowSpan={numberOfImages === 2 ? 2 : 1}
                 >
                   <Image
-                    src={pack.packItems[1]?.imageUrl}
+                    // src={pack.packItems[1]?.imageUrl}
+                    src={null}
                     fit="contain"
                     alt={pack.packItems[1]?.title}
                     fallback={<ImageFallback />}
@@ -101,7 +103,8 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                   colSpan={2}
                 >
                   <Image
-                    src={pack.packItems[2]?.imageUrl}
+                    // src={pack.packItems[2]?.imageUrl}
+                    src={null}
                     fit="contain"
                     alt={pack.packItems[2]?.title}
                     fallback={<ImageFallback />}
