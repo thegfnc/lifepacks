@@ -66,11 +66,15 @@ const UserProfileForm = ({
   const formMethods = useForm<UserProfileFormValues>({
     defaultValues: defaultValuesWithoutUsername,
   })
-  const { register, formState, control } = formMethods
+  const { register, formState, control, setFocus } = formMethods
 
   useEffect(() => {
     onFormDirtyStateChange(formState.isDirty)
   }, [formState.isDirty, onFormDirtyStateChange])
+
+  useEffect(() => {
+    setFocus('givenName')
+  }, [setFocus])
 
   return (
     <>

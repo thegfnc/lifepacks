@@ -39,11 +39,15 @@ const PackItemForm = ({
   defaultValues,
 }: PackItemFormProps) => {
   const formMethods = useForm<PackItemFormValues>({ defaultValues })
-  const { register, formState, control } = formMethods
+  const { register, formState, control, setFocus } = formMethods
 
   useEffect(() => {
     onFormDirtyStateChange(formState.isDirty)
   }, [formState.isDirty, onFormDirtyStateChange])
+
+  useEffect(() => {
+    setFocus('title')
+  }, [setFocus])
 
   return (
     <Form formMethods={formMethods} onSubmit={onSubmit}>

@@ -25,7 +25,8 @@ const setHeight = (node) => {
 const ExpandingTextarea = forwardRef<Ref, ExpandingTextareaProps>(
   ({ focusOnMount = false, onChange, onBlur, name, ...rest }, ref) => {
     const internalRef = useRef(null)
-    const callbackRef = useCallback(
+
+    const autoFocusCallbackRef = useCallback(
       (inputElement) => {
         if (focusOnMount && inputElement) {
           inputElement.focus()
@@ -34,7 +35,7 @@ const ExpandingTextarea = forwardRef<Ref, ExpandingTextareaProps>(
       [focusOnMount]
     )
 
-    const refs = useMergeRefs(internalRef, ref, callbackRef)
+    const refs = useMergeRefs(internalRef, ref, autoFocusCallbackRef)
 
     useEffect(() => {
       setHeight(internalRef.current)
