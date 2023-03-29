@@ -120,7 +120,12 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                 borderColor="blackAlpha.200"
                 p={4}
               >
-                <Heading fontSize="26px" lineHeight={7} fontWeight="bold">
+                <Heading
+                  fontSize="26px"
+                  lineHeight={7}
+                  fontWeight="bold"
+                  noOfLines={2}
+                >
                   <LinkOverlay
                     as={Link}
                     to={routes.pack({
