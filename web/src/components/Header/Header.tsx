@@ -168,6 +168,14 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                       </MenuList>
                     </Menu>
                   </>
+                ) : isAuthenticated ? (
+                  <Button
+                    onClick={logOutAndRefetchCurrentUserProfile}
+                    colorScheme="gray"
+                    variant="outline"
+                  >
+                    Log Out
+                  </Button>
                 ) : (
                   <>
                     <Button

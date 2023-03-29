@@ -121,8 +121,8 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                 p={4}
               >
                 <Heading
-                  fontSize="26px"
-                  lineHeight={7}
+                  fontSize={{ base: '22px', md: '26px' }}
+                  lineHeight={{ base: 6, md: 7 }}
                   fontWeight="bold"
                   noOfLines={2}
                 >
@@ -137,7 +137,6 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                   </LinkOverlay>
                 </Heading>
                 <Flex
-                  mt={4}
                   justify={showByline ? 'space-between' : 'flex-end'}
                   w="full"
                 >
