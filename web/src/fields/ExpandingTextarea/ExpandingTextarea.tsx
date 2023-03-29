@@ -1,10 +1,13 @@
-import { forwardRef, useEffect, useRef } from 'react'
+import { forwardRef, useEffect, useRef, useCallback } from 'react'
 
 import { Textarea, TextareaProps, useMergeRefs } from '@chakra-ui/react'
 
 import { UseFormRegisterReturn } from '@redwoodjs/forms'
 
-type ExpandingTextareaProps = UseFormRegisterReturn & TextareaProps
+type ExpandingTextareaProps = UseFormRegisterReturn &
+  TextareaProps & {
+    focusOnMount?: boolean
+  }
 
 type Ref = HTMLTextAreaElement
 
@@ -20,9 +23,18 @@ const setHeight = (node) => {
 }
 
 const ExpandingTextarea = forwardRef<Ref, ExpandingTextareaProps>(
-  ({ onChange, onBlur, name, ...rest }, ref) => {
+  ({ focusOnMount = false, onChange, onBlur, name, ...rest }, ref) => {
     const internalRef = useRef(null)
-    const refs = useMergeRefs(internalRef, ref)
+    const callbackRef = useCallback(
+      (inputElement) => {
+        if (focusOnMount && inputElement) {
+          inputElement.focus()
+        }
+      },
+      [focusOnMount]
+    )
+
+    const refs = useMergeRefs(internalRef, ref, callbackRef)
 
     useEffect(() => {
       setHeight(internalRef.current)
