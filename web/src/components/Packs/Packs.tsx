@@ -49,8 +49,8 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
             css={{ aspectRatio: '1 / 1' }}
           >
             <Grid
-              templateRows="repeat(3, 1fr)"
-              templateColumns="repeat(6, 1fr)"
+              templateRows="repeat(3, minmax(0, 1fr))"
+              templateColumns="repeat(6, minmax(0, 1fr))"
               h="full"
               w="full"
             >

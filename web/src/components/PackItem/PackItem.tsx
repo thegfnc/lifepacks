@@ -34,7 +34,7 @@ const PackItem = ({
       <CardHeader p={0}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
           <Center mr={{ base: 0, md: 10 }} mb={{ base: 6, md: 0 }}>
-            <Image w="full" alt={title} src={imageUrl} />
+            <Image maxW="full" maxH="400px" alt={title} src={imageUrl} />
           </Center>
           <Center
             borderTopWidth={{ base: '1px', md: '0' }}
