@@ -56,7 +56,7 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
         </LinkOverlay>
         {date && (
           <Text as="span" fontWeight="normal">
-            {' · ' + format(new Date(date), 'MMM d')}
+            {' · ' + format(new Date(date), 'MMM d, yyyy')}
           </Text>
         )}
       </Text>
