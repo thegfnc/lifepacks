@@ -10,7 +10,8 @@
   port = 8910
   apiUrl = "/api"
   sourceMap = true
-  includeEnvironmentVariables = [ # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
+  # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
+  includeEnvironmentVariables = [
     "SUPABASE_URL",
     "SUPABASE_KEY",
     "SENTRY_DSN",
