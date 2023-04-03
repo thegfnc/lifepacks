@@ -28,7 +28,6 @@ Here is a list of the standard set of URLs to use while developing locally.
 
 ## Services Used
 * [Lifepacks Production](https://www.lifepacks.co/)
-
 * [Github Repo](https://github.com/jmdesiderio/lifepacks)
 * [Google Analytics](https://analytics.google.com/analytics/web/)
 * [Google Domains](https://domains.google.com/)
