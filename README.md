@@ -28,8 +28,12 @@ Here is a list of the standard set of URLs to use while developing locally.
 
 ## Services Used
 * [Lifepacks Production](https://www.lifepacks.co/)
-* [Google Domains](https://domains.google.com/)
+
 * [Github Repo](https://github.com/jmdesiderio/lifepacks)
+* [Google Analytics](https://analytics.google.com/analytics/web/)
+* [Google Domains](https://domains.google.com/)
+* [Google Search Console](https://search.google.com/u/2/search-console?resource_id=sc-domain%3Alifepacks.co)
+* [Sentry Dashboard](https://lifepacks.sentry.io/issues/)
 * [Supbase Dashboard](https://app.supabase.com/projects)
 * [Vercel Dashboard](https://vercel.com/jmdesiderio/lifepacks)
 
