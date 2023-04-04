@@ -44,7 +44,7 @@ const MailingListSignUp = () => {
       {error && (
         <Alert status="error" color="black">
           <AlertIcon />
-          {error}
+          {error.message}
         </Alert>
       )}
       {isSuccessful ? (
