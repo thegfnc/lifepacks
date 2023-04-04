@@ -32,6 +32,7 @@ Here is a list of the standard set of URLs to use while developing locally.
 * [Google Analytics](https://analytics.google.com/analytics/web/)
 * [Google Domains](https://domains.google.com/)
 * [Google Search Console](https://search.google.com/u/2/search-console?resource_id=sc-domain%3Alifepacks.co)
+* [Sendinblue Dashboard](https://app.sendinblue.com/)
 * [Sentry Dashboard](https://lifepacks.sentry.io/issues/)
 * [Supbase Dashboard](https://app.supabase.com/projects)
 * [Vercel Dashboard](https://vercel.com/jmdesiderio/lifepacks)
