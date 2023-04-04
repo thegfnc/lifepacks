@@ -15,55 +15,72 @@ import SocialAccount from 'src/types/SocialAccount'
 
 type SocialAccountIconProps = {
   accountType: SocialAccount
+  colorMode?: 'light' | 'dark'
 }
 
 const socialAccountParams = {
   [SocialAccount.YouTube]: {
     Icon: FaYoutube,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.Instagram]: {
     Icon: FaInstagram,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.Facebook]: {
     Icon: FaFacebook,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.Twitter]: {
     Icon: FaTwitter,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.WhatsApp]: {
     Icon: FaWhatsapp,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.Telegram]: {
     Icon: FaTelegram,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.Reddit]: {
     Icon: FaReddit,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.LinkedIn]: {
     Icon: FaLinkedin,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.Email]: {
     Icon: FaEnvelope,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
   [SocialAccount.Link]: {
     Icon: MdLink,
-    iconColor: 'rgba(0, 0, 0, 0.80)',
+    darkIconColor: 'rgba(0, 0, 0, 0.80)',
+    lightIconColor: 'rgba(255, 255, 255, 0.80)',
   },
 }
 
-const SocialAccountIcon = ({ accountType }: SocialAccountIconProps) => {
-  const { Icon, iconColor } = socialAccountParams[accountType]
+const SocialAccountIcon = ({
+  accountType,
+  colorMode = 'dark',
+}: SocialAccountIconProps) => {
+  const { Icon, darkIconColor, lightIconColor } =
+    socialAccountParams[accountType]
 
-  return <Icon color={iconColor} size="24px" />
+  const color = colorMode === 'dark' ? darkIconColor : lightIconColor
+
+  return <Icon color={color} size="24px" />
 }
 
 export default SocialAccountIcon
