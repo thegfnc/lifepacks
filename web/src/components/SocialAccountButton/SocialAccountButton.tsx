@@ -10,6 +10,20 @@ type SocialAccountButtonsProps = {
   onClick?: () => void
   boxSize?: IconButtonProps['boxSize']
   label?: string
+  colorMode?: 'light' | 'dark'
+}
+
+const colors = {
+  dark: {
+    bg: 'blackAlpha.200',
+    _hover: { bg: 'blackAlpha.300' },
+    _active: { bg: 'blackAlpha.400' },
+  },
+  light: {
+    bg: 'whiteAlpha.400',
+    _hover: { bg: 'whiteAlpha.300' },
+    _active: { bg: 'whiteAlpha.200' },
+  },
 }
 
 const SocialAccountButton = ({
@@ -18,6 +32,7 @@ const SocialAccountButton = ({
   onClick,
   boxSize = 10,
   label = null,
+  colorMode = 'dark',
 }: SocialAccountButtonsProps) => {
   if (!linkUrl && !onClick) {
     throw new Error(
@@ -37,13 +52,15 @@ const SocialAccountButton = ({
   return (
     <Flex direction="column" align="center">
       <IconButton
-        bg="blackAlpha.200"
-        _hover={{ bg: 'blackAlpha.300' }}
-        _active={{ bg: 'blackAlpha.400' }}
+        bg={colors[colorMode].bg}
+        _hover={colors[colorMode]._hover}
+        _active={colors[colorMode]._active}
         isRound={true}
         boxSize={boxSize}
         aria-label={accountType}
-        icon={<SocialAccountIcon accountType={accountType} />}
+        icon={
+          <SocialAccountIcon accountType={accountType} colorMode={colorMode} />
+        }
         {...props}
       />
       {label && (
