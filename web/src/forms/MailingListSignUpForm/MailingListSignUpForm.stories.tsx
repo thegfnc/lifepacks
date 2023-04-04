@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import MailingListSignUpForm from './MailingListSignUpForm'
 
 export const generated = () => {
-  return <MailingListSignUpForm />
+  return <MailingListSignUpForm onSubmit={() => {}} isLoading={false} />
 }
 
 export default {

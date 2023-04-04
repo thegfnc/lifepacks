@@ -8,7 +8,7 @@ import MailingListSignUpForm from './MailingListSignUpForm'
 describe('MailingListSignUpForm', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<MailingListSignUpForm />)
+      render(<MailingListSignUpForm onSubmit={() => {}} isLoading={false} />)
     }).not.toThrow()
   })
 })
