@@ -1,16 +1,9 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Divider,
-  Input,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
+import { Box, ButtonGroup, Divider, Stack, Text } from '@chakra-ui/react'
 
 import SocialAccount from 'src/types/SocialAccount'
 
 import Logo from '../Logo/Logo'
+import MailingListSignUp from '../MailingListSignUp/MailingListSignUp'
 import PageContainer from '../PageContainer/PageContainer'
 import SocialAccountButton from '../SocialAccountButton/SocialAccountButton'
 
@@ -23,7 +16,7 @@ const Footer = () => (
         spacing="8"
         direction={{ base: 'column', md: 'row' }}
         justify="space-between"
-        align="flex-end"
+        align={{ base: 'flex-start', md: 'flex-end' }}
         py={{ base: '4', md: '6' }}
       >
         <Stack spacing={{ base: '2', md: '4' }} align="start">
@@ -34,21 +27,7 @@ const Footer = () => (
           direction={{ base: 'column-reverse', md: 'column', lg: 'row' }}
           spacing={{ base: '12', md: '8' }}
         >
-          <Stack spacing="4">
-            <Text fontSize="sm" fontWeight="semibold" color="subtle">
-              Stay up to date
-            </Text>
-            <Stack
-              spacing="4"
-              direction={{ base: 'column', sm: 'row' }}
-              maxW={{ lg: '360px' }}
-            >
-              <Input placeholder="Enter your email" type="email" required />
-              <Button type="submit" flexShrink={0} colorScheme="whiteAlpha">
-                Subscribe
-              </Button>
-            </Stack>
-          </Stack>
+          <MailingListSignUp />
         </Stack>
       </Stack>
       <Divider colorScheme="whiteAlpha" />

@@ -39,7 +39,7 @@ export const QUERY = gql`
 const MUTATION = gql`
   mutation UpdatePackMutation($id: Int!, $input: UpdatePackInput!) {
     updatePack(id: $id, input: $input) {
-      id
+      slug
     }
   }
 `
@@ -60,7 +60,8 @@ export const Success = ({ id, username, pack }: EditPackCellProps) => {
     UpdatePackMutationVariables
   >(MUTATION, {
     refetchQueries: [{ query: QUERY, variables: { username, id } }],
-    onCompleted: () => navigate(routes.userProfile({ username })),
+    onCompleted: ({ updatePack: { slug } }) =>
+      navigate(routes.pack({ username, slug })),
   })
 
   const onSubmit = (data: PackFormSubmitData) => {

@@ -21,8 +21,8 @@ const colors = {
   },
   light: {
     bg: 'whiteAlpha.400',
-    _hover: { bg: 'whiteAlpha.300' },
-    _active: { bg: 'whiteAlpha.200' },
+    _hover: { bg: 'whiteAlpha.500' },
+    _active: { bg: 'whiteAlpha.600' },
   },
 }
 
