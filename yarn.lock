@@ -6175,12 +6175,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/tracing@npm:^7.45.0":
-  version: 7.45.0
-  resolution: "@sentry/tracing@npm:7.45.0"
+"@sentry/tracing@npm:^7.46.0":
+  version: 7.46.0
+  resolution: "@sentry/tracing@npm:7.46.0"
   dependencies:
-    "@sentry-internal/tracing": 7.45.0
-  checksum: 49df4bc0cfafcee65f9338e77c59429478e6287644fdd6927a4d0c8d2113458ec54e008acee746f3beeb6ae99347550bb4e0dbc94545096c05e7882a2a5ae0bb
+    "@sentry-internal/tracing": 7.46.0
+  checksum: d116560ca173cd6620d07a8e7f7e7245974f9f5cb56e8ffa2b3a7832c6945cc349d3c5b6755069664bbafa8933a39eef88919157a47ca74704aa257302eb8fee
   languageName: node
   linkType: hard
 
@@ -25751,7 +25751,7 @@ __metadata:
     "@redwoodjs/router": 4.4.3
     "@redwoodjs/web": 4.4.3
     "@sentry/react": ^7.45.0
-    "@sentry/tracing": ^7.45.0
+    "@sentry/tracing": ^7.46.0
     "@sentry/webpack-plugin": ^1.20.0
     "@supabase/supabase-js": ^1
     compressorjs: ^1.2.1
