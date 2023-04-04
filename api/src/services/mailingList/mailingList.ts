@@ -3,6 +3,8 @@ import type { MutationResolvers } from 'types/graphql'
 
 import { validate } from '@redwoodjs/api'
 
+const GENERAL_MAILING_LIST_ID = 2
+
 const apiInstance = new SibApiV3Sdk.ContactsApi()
 
 apiInstance.setApiKey(
@@ -19,7 +21,7 @@ export const mailingListSignUp: MutationResolvers['mailingListSignUp'] =
     const createContact = new SibApiV3Sdk.CreateContact()
 
     createContact.email = input.email
-    createContact.listIds = [2]
+    createContact.listIds = [GENERAL_MAILING_LIST_ID]
 
     try {
       const data = await apiInstance.createContact(createContact)
