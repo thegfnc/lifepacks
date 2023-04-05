@@ -24,13 +24,7 @@ const PackItem = ({
   description,
 }: PackItemProps) => {
   return (
-    <Card
-      borderWidth={'1px'}
-      borderColor={'blackAlpha.300'}
-      borderRadius="32px"
-      p={{ base: 6, md: 10 }}
-      boxShadow="none"
-    >
+    <Card borderRadius="32px" p={{ base: 6, md: 10 }} boxShadow="none">
       <CardHeader p={0}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
           <Center mr={{ base: 0, md: 10 }} mb={{ base: 6, md: 0 }}>

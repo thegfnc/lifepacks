@@ -1,7 +1,7 @@
 import * as SibApiV3Sdk from '@sendinblue/client'
 import type { MutationResolvers } from 'types/graphql'
 
-import { validate } from '@redwoodjs/api'
+import { validate, validateWith } from '@redwoodjs/api'
 
 const GENERAL_MAILING_LIST_ID = 2
 
@@ -29,12 +29,16 @@ export const mailingListSignUp: MutationResolvers['mailingListSignUp'] =
     } catch (error) {
       console.error(error.response.body)
 
-      if (error.response.body.code === 'duplicate_parameter') {
-        throw new Error('Looks like this email is already signed up.')
-      }
+      validateWith(() => {
+        if (error.response.body.code === 'duplicate_parameter') {
+          throw new Error('This email has already signed up.')
+        }
+      })
 
-      throw new Error(
-        'Sorry, there was an error signing up for the mailing list.'
-      )
+      validateWith(() => {
+        throw new Error(
+          'Sorry, there was an error signing up for the mailing list.'
+        )
+      })
     }
   }

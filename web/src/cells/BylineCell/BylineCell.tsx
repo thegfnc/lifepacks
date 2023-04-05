@@ -1,4 +1,11 @@
-import { HStack, Text, Avatar, LinkBox, LinkOverlay } from '@chakra-ui/react'
+import {
+  HStack,
+  Text,
+  Avatar,
+  LinkBox,
+  LinkOverlay,
+  Stack,
+} from '@chakra-ui/react'
 import { format } from 'date-fns'
 import type { FindBylineQuery, FindBylineQueryVariables } from 'types/graphql'
 
@@ -43,23 +50,27 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
         src={userProfile.imageUrl}
         name={userProfile?.givenName}
       />
-      <Text fontSize="lg" fontWeight="medium" color="blackAlpha.800">
-        <LinkOverlay
-          as={Link}
-          to={routes.userProfile({ username: userProfile.username })}
-        >
-          {getUserDisplayName(
-            userProfile.givenName,
-            userProfile.familyName,
-            userProfile.username
+      <Stack spacing={0}>
+        <Text fontSize="md" fontWeight="medium" color="blackAlpha.800">
+          <LinkOverlay
+            as={Link}
+            to={routes.userProfile({ username: userProfile.username })}
+          >
+            {getUserDisplayName(
+              userProfile.givenName,
+              userProfile.familyName,
+              userProfile.username
+            )}
+          </LinkOverlay>
+        </Text>
+        <Text fontSize="md" color="blackAlpha.600">
+          {date && (
+            <Text as="span" fontWeight="normal">
+              {format(new Date(date), 'MMM d, yyyy')}
+            </Text>
           )}
-        </LinkOverlay>
-        {date && (
-          <Text as="span" fontWeight="normal">
-            {' · ' + format(new Date(date), 'MMM d, yyyy')}
-          </Text>
-        )}
-      </Text>
+        </Text>
+      </Stack>
     </LinkBox>
   )
 }

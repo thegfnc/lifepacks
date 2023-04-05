@@ -25,7 +25,7 @@ import targetLogo from 'public/logos/target.png'
 import walmartLogo from 'public/logos/walmart.png'
 import websiteScreenshot from 'public/website_screenshot.png'
 
-import { navigate, routes } from '@redwoodjs/router'
+import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
@@ -61,11 +61,7 @@ const HomePage = () => {
       />
 
       <Box bg="brown.500" overflow="hidden">
-        <PageContainer
-          minHeight="auto"
-          py={{ base: 8, md: 6 }}
-          px={{ base: 4, md: 12 }}
-        >
+        <PageContainer minHeight="auto" py={{ base: 8, md: 6 }}>
           <Stack direction={{ base: 'column', md: 'row' }}>
             <Flex flex={1} align={'center'}>
               <Box
@@ -89,16 +85,16 @@ const HomePage = () => {
                   lineHeight="short"
                   mt={{ base: 4, md: 6 }}
                 >
-                  Publish product recommendations just like the pros at
-                  Wirecutter.
+                  Publish product recommendations just like the professionals.
                 </Text>
                 <Box mt={{ base: 4, md: 10 }}>
                   <Button
+                    as={Link}
                     size={{ base: 'md', md: 'lg' }}
-                    onClick={handleGetStarted}
+                    to={routes.explore()}
                     w={{ base: 'full', md: 'auto' }}
                   >
-                    Get Started
+                    Explore Packs
                   </Button>
                 </Box>
               </Box>
@@ -126,12 +122,9 @@ const HomePage = () => {
           </Stack>
         </PageContainer>
       </Box>
-      <Box bg="#6C47FF" overflow="hidden">
-        <PageContainer
-          minHeight="auto"
-          py={{ base: 8, md: '120px' }}
-          px={{ base: 4, md: 12 }}
-        >
+
+      <Box bg="purple.500" overflow="hidden">
+        <PageContainer minHeight="auto" py={{ base: 8, md: '120px' }}>
           <Flex direction="column" align="center">
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
@@ -140,18 +133,18 @@ const HomePage = () => {
               color="white"
               textAlign="center"
             >
-              Easily share your expertise
+              Share your expert opinion
             </Heading>
-            <HStack mt={5} display={{ base: 'none', md: 'block' }}>
+            <HStack mt={8} display={{ base: 'none', md: 'block' }}>
               {examplePacks.map((examplePack, index) => {
                 const isCurrentTab = index === examplePackTabIndex
 
                 return (
                   <Button
                     key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'purple.500'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'purple.600' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'purple.700' }}
+                    bg={isCurrentTab ? 'white' : 'whiteAlpha.200'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.300' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
                     color={isCurrentTab ? 'black' : 'white'}
                     onClick={() => setExamplePackTabIndex(index)}
                     leftIcon={<Text>{examplePack.tabEmoji}</Text>}
@@ -185,9 +178,9 @@ const HomePage = () => {
               bg="brown.500"
               px={{ base: 6, md: 24 }}
               py={{ base: 6, md: 16 }}
-              mt={{ base: 8, md: '72px' }}
+              mt={8}
               mb="-14rem"
-              borderRadius={{ base: '3xl', md: '64px' }}
+              borderRadius={{ base: '3xl', md: '24px' }}
             >
               <Flex>
                 <Flex direction={{ base: 'column', md: 'row' }}>
@@ -220,7 +213,8 @@ const HomePage = () => {
           </Flex>
         </PageContainer>
       </Box>
-      <Box bg="#FFD15B" py={{ base: 10, md: '120px' }}>
+
+      <Box bg="yellow.500" py={{ base: 10, md: '120px' }}>
         <PageContainer minHeight="auto" py={0}>
           <Box px={4} textAlign="center">
             <Heading
@@ -238,7 +232,7 @@ const HomePage = () => {
               lineHeight="short"
               mt={{ base: 4, md: 6 }}
             >
-              Use affiliate links to profit when someone buys from your Pack.
+              Use affiliate links to profit when someone buys from your pack.
             </Text>
           </Box>
         </PageContainer>
@@ -273,6 +267,7 @@ const HomePage = () => {
           </Box>
         </PageContainer>
       </Box>
+
       <Box bg="brown.500">
         <PageContainer minHeight="auto" py={{ base: 10, md: '120px' }}>
           <Flex direction="column" px={{ base: 0, md: 4 }} align="center">
@@ -282,7 +277,7 @@ const HomePage = () => {
               letterSpacing="tight"
               textAlign="center"
             >
-              Questions?
+              Ask us anything
             </Heading>
             <Container
               maxW="100ch"

@@ -6,6 +6,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  HStack,
   Image,
   Link as ChakraLink,
   LinkBox,
@@ -136,41 +137,43 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
                     {pack.title}
                   </LinkOverlay>
                 </Heading>
-                <Flex
-                  justify={showByline ? 'space-between' : 'flex-end'}
-                  w="full"
-                >
-                  {showByline && (
-                    <ChakraLink
-                      fontSize="sm"
-                      as={Link}
-                      to={routes.userProfile({
-                        username: pack.userProfile.username,
-                      })}
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Avatar
-                        size={'xs'}
-                        src={pack.userProfile.imageUrl}
-                        name={getUserDisplayName(
-                          pack.userProfile.givenName,
-                          pack.userProfile.familyName,
-                          pack.userProfile.username
-                        )}
-                      />
-                      <Text as="span" ml={2}>
-                        {getUserDisplayName(
-                          pack.userProfile.givenName,
-                          pack.userProfile.familyName,
-                          pack.userProfile.username
-                        )}
-                      </Text>
-                    </ChakraLink>
-                  )}
-                  <Text color="blackAlpha.600" fontSize="sm">
-                    {format(new Date(pack.createdAt), 'MMM d, yyyy')}
-                  </Text>
+                <Flex align="center" w="full">
+                  <HStack spacing="6px">
+                    {showByline && (
+                      <>
+                        <ChakraLink
+                          fontSize="sm"
+                          as={Link}
+                          to={routes.userProfile({
+                            username: pack.userProfile.username,
+                          })}
+                          display="flex"
+                          alignItems="center"
+                        >
+                          <Avatar
+                            size={'xs'}
+                            src={pack.userProfile.imageUrl}
+                            name={getUserDisplayName(
+                              pack.userProfile.givenName,
+                              pack.userProfile.familyName,
+                              pack.userProfile.username
+                            )}
+                          />
+                          <Text as="span" ml={2}>
+                            {getUserDisplayName(
+                              pack.userProfile.givenName,
+                              pack.userProfile.familyName,
+                              pack.userProfile.username
+                            )}
+                          </Text>
+                        </ChakraLink>
+                        <Text color="blackAlpha.600">{'·'}</Text>
+                      </>
+                    )}
+                    <Text color="blackAlpha.600" fontSize="sm">
+                      {format(new Date(pack.createdAt), 'MMM d, yyyy')}
+                    </Text>
+                  </HStack>
                 </Flex>
               </GridItem>
             </Grid>
