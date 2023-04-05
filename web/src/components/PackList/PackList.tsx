@@ -31,12 +31,12 @@ type PackPartial = Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> & {
   >
 }
 
-type PacksProps = {
+type PackListProps = {
   packs: PackPartial[]
   showByline?: boolean
 }
 
-const Packs = ({ packs, showByline = false }: PacksProps) => {
+const PackList = ({ packs, showByline = false }: PackListProps) => {
   return (
     <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={6}>
       {packs.map((pack) => {
@@ -184,4 +184,4 @@ const Packs = ({ packs, showByline = false }: PacksProps) => {
   )
 }
 
-export default Packs
+export default PackList

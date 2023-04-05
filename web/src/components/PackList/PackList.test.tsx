@@ -1,15 +1,15 @@
 import { render } from '@redwoodjs/testing/web'
 
-import Packs from './Packs'
+import PackList from './PackList'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('Packs', () => {
+describe('PackList', () => {
   it('renders successfully', () => {
     expect(() => {
       render(
-        <Packs
+        <PackList
           packs={[
             {
               id: 2,

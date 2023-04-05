@@ -1,18 +1,21 @@
 import { Box, Button, Center, Heading, Text } from '@chakra-ui/react'
-import type { PacksQuery, PacksQueryVariables } from 'types/graphql'
+import type { PackListQuery, PackListQueryVariables } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
-import Packs from 'src/components/Packs/Packs'
+import PackList from 'src/components/PackList/PackList'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
-type PacksCellProps = CellSuccessProps<PacksQuery, PacksQueryVariables> & {
+type PackListCellProps = CellSuccessProps<
+  PackListQuery,
+  PackListQueryVariables
+> & {
   username: string
 }
 
 export const QUERY = gql`
-  query PacksQuery($username: String!) {
+  query PackListQuery($username: String!) {
     packs(username: $username) {
       id
       slug
@@ -83,6 +86,6 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
-export const Success = ({ packs }: PacksCellProps) => {
-  return <Packs packs={packs} />
+export const Success = ({ packs }: PackListCellProps) => {
+  return <PackList packs={packs} />
 }

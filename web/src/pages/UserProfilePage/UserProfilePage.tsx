@@ -3,7 +3,7 @@ import { Box, Divider, HStack, Text } from '@chakra-ui/react'
 import { routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
-import PacksCell from 'src/cells/PacksCell'
+import PackListCell from 'src/cells/PackListCell'
 import UserProfileCell from 'src/cells/UserProfileCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import { UserProfileLayout } from 'src/components/UserProfile/UserProfile'
@@ -36,7 +36,7 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
           <Divider borderColor="blackAlpha.200" />
         </HStack>
         <Box mt={4}>
-          <PacksCell username={username} />
+          <PackListCell username={username} />
         </Box>
       </PageContainer>
     </>

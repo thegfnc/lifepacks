@@ -4,8 +4,8 @@
 // ```tsx
 // import type { ComponentStory } from '@storybook/react'
 //
-// export const generated: ComponentStory<typeof Packs> = (args) => {
-//   return <Packs {...args} />
+// export const generated: ComponentStory<typeof PackList> = (args) => {
+//   return <PackList {...args} />
 // }
 // ```
 //
@@ -13,11 +13,11 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import Packs from './Packs'
+import PackList from './PackList'
 
 export const generated = () => {
   return (
-    <Packs
+    <PackList
       packs={[
         {
           id: 2,
@@ -47,6 +47,6 @@ export const generated = () => {
 }
 
 export default {
-  title: 'Components/Packs',
-  component: Packs,
-} as ComponentMeta<typeof Packs>
+  title: 'Components/PackList',
+  component: PackList,
+} as ComponentMeta<typeof PackList>
