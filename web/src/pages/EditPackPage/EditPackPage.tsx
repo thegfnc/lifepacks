@@ -15,7 +15,7 @@ const Loading = () => {
 }
 
 const EditPackPage = ({ id }: EditPackPageProps) => {
-  const { data } = useCurrentUserProfile()
+  const { currentUserProfile } = useCurrentUserProfile()
 
   return (
     <PageContainer>
@@ -26,8 +26,8 @@ const EditPackPage = ({ id }: EditPackPageProps) => {
 
       <Flex justifyContent="center">
         <Stack w="3xl" spacing={6}>
-          {data?.currentUserProfile ? (
-            <EditPackCell username={data.currentUserProfile.username} id={id} />
+          {currentUserProfile ? (
+            <EditPackCell username={currentUserProfile.username} id={id} />
           ) : (
             <Loading />
           )}

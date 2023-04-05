@@ -16,6 +16,7 @@ import UserProfile, {
   UserProfileLayout,
 } from 'src/components/UserProfile/UserProfile'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
+import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 type UserProfileCellProps = CellSuccessProps<
   FindUserProfileQuery,
@@ -38,9 +39,6 @@ export const QUERY = gql`
       youtubeUrl
       twitterUrl
     }
-    currentUserProfile {
-      username
-    }
   }
 `
 
@@ -56,10 +54,10 @@ export const Failure = ({
 
 export const Success = ({
   userProfile,
-  currentUserProfile,
   setMetaTags = false,
   layout,
 }: UserProfileCellProps) => {
+  const { currentUserProfile } = useCurrentUserProfile()
   const isCurrentUser = userProfile.username === currentUserProfile?.username
 
   const {

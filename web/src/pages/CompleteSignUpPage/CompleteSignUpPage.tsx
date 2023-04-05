@@ -33,7 +33,7 @@ const MUTATION = gql`
 `
 
 const CompleteSignUpPage = () => {
-  const { data } = useCurrentUserProfile()
+  const { currentUserProfile } = useCurrentUserProfile()
   const [mutate, { loading, error }] = useMutation<
     CreateCurrentUserProfileMutation,
     CreateCurrentUserProfileMutationVariables
@@ -41,7 +41,7 @@ const CompleteSignUpPage = () => {
     refetchQueries: [{ query: CURRENT_USER_PROFILE_QUERY }],
   })
 
-  if (data?.currentUserProfile) {
+  if (currentUserProfile) {
     navigate(routes.home())
   }
 

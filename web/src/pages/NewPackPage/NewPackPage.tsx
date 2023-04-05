@@ -11,7 +11,7 @@ const Loading = () => {
 }
 
 const NewPackPage = () => {
-  const { data } = useCurrentUserProfile()
+  const { currentUserProfile } = useCurrentUserProfile()
 
   return (
     <PageContainer>
@@ -22,8 +22,8 @@ const NewPackPage = () => {
 
       <Flex justifyContent="center">
         <Stack w="3xl" spacing={6}>
-          {data?.currentUserProfile ? (
-            <NewPack username={data.currentUserProfile.username} />
+          {currentUserProfile ? (
+            <NewPack username={currentUserProfile.username} />
           ) : (
             <Loading />
           )}

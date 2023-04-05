@@ -41,7 +41,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
   const { pathname } = useLocation()
   const { isOpen, onToggle, onClose } = useDisclosure()
   const {
-    data,
+    currentUserProfile,
     loading: isCurrentUserProfileLoading,
     refetch,
   } = useCurrentUserProfile()
@@ -62,9 +62,9 @@ const Header = ({ ctaComponent }: HeaderProps) => {
   }
 
   const userDisplayName = getUserDisplayName(
-    data?.currentUserProfile?.givenName,
-    data?.currentUserProfile?.familyName,
-    data?.currentUserProfile?.username
+    currentUserProfile?.givenName,
+    currentUserProfile?.familyName,
+    currentUserProfile?.username
   )
 
   const navigation = (
@@ -107,7 +107,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
               <Spinner />
             ) : (
               <HStack spacing={2} dir="horizontal">
-                {isAuthenticated && data?.currentUserProfile ? (
+                {isAuthenticated && currentUserProfile ? (
                   <>
                     {ctaComponent || (
                       <Button size={'md'} as={Link} to={routes.newPack()}>
@@ -126,19 +126,19 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                         <Avatar
                           h={10}
                           w={10}
-                          src={data?.currentUserProfile?.imageUrl}
+                          src={currentUserProfile?.imageUrl}
                           name={userDisplayName}
                         />
                       </MenuButton>
                       <MenuList borderRadius="xl">
-                        {data?.currentUserProfile?.username && (
+                        {currentUserProfile?.username && (
                           <Box px={3}>
                             <Text fontWeight="medium">{userDisplayName}</Text>
                             {!userDisplayName.endsWith(
-                              data.currentUserProfile.username
+                              currentUserProfile.username
                             ) && (
                               <Text fontSize="xs" color="blackAlpha.600">
-                                {'@' + data.currentUserProfile.username}
+                                {'@' + currentUserProfile.username}
                               </Text>
                             )}
                           </Box>
@@ -147,7 +147,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                         <MenuItem
                           as={Link}
                           to={routes.userProfile({
-                            username: data?.currentUserProfile?.username,
+                            username: currentUserProfile?.username,
                           })}
                           icon={<MdOutlineAccountCircle size="20px" />}
                         >

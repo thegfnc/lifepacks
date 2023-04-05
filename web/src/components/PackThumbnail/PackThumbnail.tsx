@@ -25,6 +25,7 @@ import { Pack, PackItem, UserProfile } from 'types/graphql'
 import { Link, routes } from '@redwoodjs/router'
 
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
+import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 import ImageFallback from '../ImageFallback/ImageFallback'
 
@@ -42,6 +43,7 @@ type PackThumbnailProps = {
 }
 
 const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
+  const { currentUserProfile } = useCurrentUserProfile()
   const numberOfImages = Math.min(pack.packItems.length, 3)
 
   return (
@@ -174,32 +176,34 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
                 {format(new Date(pack.createdAt), 'MMM d, yyyy')}
               </Text>
             </HStack>
-            <Menu>
-              <MenuButton
-                as={IconButton}
-                aria-label="Options"
-                icon={<MdMoreHoriz size="24px" />}
-                variant="ghost"
-                colorScheme="gray"
-                size="sm"
-              />
-              <MenuList borderRadius="xl">
-                <MenuItem
-                  as={Link}
-                  to={routes.editPack({ id: pack.id })}
-                  icon={<MdOutlineModeEdit size="24px" />}
-                >
-                  Edit Pack
-                </MenuItem>
-                <MenuItem
-                  icon={<MdDeleteOutline size="24px" />}
-                  color="red.500"
-                  onClick={() => {}}
-                >
-                  Delete Pack
-                </MenuItem>
-              </MenuList>
-            </Menu>
+            {pack.userProfile.username === currentUserProfile?.username && (
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
+                  icon={<MdMoreHoriz size="24px" />}
+                  variant="ghost"
+                  colorScheme="gray"
+                  size="xs"
+                />
+                <MenuList borderRadius="xl">
+                  <MenuItem
+                    as={Link}
+                    to={routes.editPack({ id: pack.id })}
+                    icon={<MdOutlineModeEdit size="24px" />}
+                  >
+                    Edit Pack
+                  </MenuItem>
+                  <MenuItem
+                    icon={<MdDeleteOutline size="24px" />}
+                    color="red.500"
+                    onClick={() => {}}
+                  >
+                    Delete Pack
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )}
           </Flex>
         </GridItem>
       </Grid>
