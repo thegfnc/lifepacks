@@ -162,14 +162,14 @@ const HomePage = () => {
                 return (
                   <IconButton
                     key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'purple.500'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'purple.600' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'purple.700' }}
-                    color={isCurrentTab ? 'black' : 'white'}
+                    bg={isCurrentTab ? 'white' : 'whiteAlpha.200'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.300' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
                     onClick={() => setExamplePackTabIndex(index)}
                     aria-label={examplePack.tabLabel}
                     px={4}
                     icon={<Text fontSize="2xl">{examplePack.tabEmoji}</Text>}
+                    rounded="full"
                   />
                 )
               })}
