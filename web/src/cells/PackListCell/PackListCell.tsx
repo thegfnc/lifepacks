@@ -35,8 +35,8 @@ export const QUERY = gql`
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = ({ username }) => {
-  const { data } = useCurrentUserProfile()
-  const isCurrentUser = username === data?.currentUserProfile?.username
+  const { currentUserProfile } = useCurrentUserProfile()
+  const isCurrentUser = username === currentUserProfile?.username
 
   return (
     <Center borderRadius="3xl" bg="blackAlpha.50" p={12}>
@@ -66,8 +66,8 @@ export const Empty = ({ username }) => {
               fontWeight="bold"
               color="gray.700"
             >
-              {data?.currentUserProfile?.givenName || username} hasn&apos;t
-              created a pack yet.
+              {currentUserProfile?.givenName || username} hasn&apos;t created a
+              pack yet.
             </Heading>
             <Text fontSize="md" lineHeight={6} color="gray.500">
               Check back soon for products they swear by.

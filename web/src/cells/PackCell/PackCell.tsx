@@ -42,6 +42,7 @@ import { useAuth } from 'src/auth'
 import PublishSuccessDrawer from 'src/components/PublishSuccessDrawer/PublishSuccessDrawer'
 import ShareMenu from 'src/components/ShareMenu/ShareMenu'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
+import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 import Pack from '../../components/Pack/Pack'
 import BylineCell from '../BylineCell'
@@ -76,9 +77,6 @@ export const QUERY = gql`
       imageUrl
       username
     }
-    currentUserProfile {
-      username
-    }
   }
 `
 
@@ -105,9 +103,9 @@ export const Success = ({
   slug,
   pack,
   userProfile,
-  currentUserProfile,
   setMetaTags = false,
 }: PackCellSuccessProps) => {
+  const { currentUserProfile } = useCurrentUserProfile()
   const isBylineVisible = useBreakpointValue({ base: false, md: true })
   const {
     isOpen: isDeleteAlertOpen,

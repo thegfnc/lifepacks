@@ -1,4 +1,4 @@
-import { GetCurrentUserProfile } from 'types/graphql'
+import { useEffect, useState } from 'react'
 
 import { navigate, routes, useLocation } from '@redwoodjs/router'
 import { useQuery } from '@redwoodjs/web'
@@ -24,21 +24,49 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
   }
 `
 
-export default function useCurrentUserProfile(): QueryOperationResult<GetCurrentUserProfile> {
+function useCurrentUserProfile() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
   const { currentUser } = useAuth()
   const { pathname } = useLocation()
-  const query = useQuery(CURRENT_USER_PROFILE_QUERY)
+
+  const {
+    data: queryData,
+    loading: queryLoading,
+    error: queryError,
+    refetch,
+  } = useQuery(CURRENT_USER_PROFILE_QUERY)
+
+  useEffect(() => {
+    if (queryData) {
+      setData(queryData)
+      setLoading(false)
+    }
+    if (queryError) {
+      setError(queryError)
+      setLoading(false)
+    }
+  }, [queryData, queryError])
 
   // If a user hasn't created a user profile yet, redirect them to finish sign up
   if (
     pathname !== routes.completeSignUp() &&
     currentUser &&
-    !query.loading &&
-    !query.data.currentUserProfile
+    !queryLoading &&
+    !queryData.currentUserProfile
   ) {
     navigate(routes.completeSignUp())
   }
   // End if
 
-  return query
+  return {
+    currentUserProfile: data?.currentUserProfile,
+    loading: loading || queryLoading,
+    error,
+    refetch,
+  }
 }
+
+export default useCurrentUserProfile

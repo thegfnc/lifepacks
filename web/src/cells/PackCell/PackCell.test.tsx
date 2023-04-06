@@ -46,7 +46,6 @@ describe('PackCell', () => {
             slug="pack-slug"
             pack={standard().pack}
             userProfile={standard().userProfile}
-            currentUserProfile={standard().currentUserProfile}
           />
         </ThemeWrapper>
       )

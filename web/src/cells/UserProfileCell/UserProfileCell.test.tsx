@@ -36,12 +36,7 @@ describe('UserProfileSidebarCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(
-        <Success
-          userProfile={standard().userProfile}
-          currentUserProfile={standard().currentUserProfile}
-        />
-      )
+      render(<Success userProfile={standard().userProfile} />)
     }).not.toThrow()
   })
 })

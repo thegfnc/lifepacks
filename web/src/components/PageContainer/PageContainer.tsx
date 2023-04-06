@@ -6,18 +6,20 @@ type PageContainerProps = {
   children: ReactNode
   minHeight?: '100vh' | 'auto'
   px?: BoxProps['padding']
-  py?: BoxProps['padding']
+  pt?: BoxProps['padding']
+  pb?: BoxProps['padding']
 }
 
 const PageContainer = ({
   children,
   minHeight = '100vh',
   px = { base: 4, md: 10 },
-  py = { base: 4, md: 8 },
+  pt = { base: 4, md: 8 },
+  pb = { base: 4, md: 20 },
 }: PageContainerProps) => {
   return (
     <Flex justifyContent={'center'} minHeight={minHeight}>
-      <Box width={'100%'} maxWidth={'7xl'} px={px} py={py}>
+      <Box width={'100%'} maxWidth={'7xl'} px={px} pt={pt} pb={pb}>
         {children}
       </Box>
     </Flex>

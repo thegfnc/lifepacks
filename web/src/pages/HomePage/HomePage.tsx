@@ -61,7 +61,11 @@ const HomePage = () => {
       />
 
       <Box bg="brown.500" overflow="hidden">
-        <PageContainer minHeight="auto" py={{ base: 8, md: 6 }}>
+        <PageContainer
+          minHeight="auto"
+          pt={{ base: 8, md: 6 }}
+          pb={{ base: 8, md: 6 }}
+        >
           <Stack direction={{ base: 'column', md: 'row' }}>
             <Flex flex={1} align={'center'}>
               <Box
@@ -90,7 +94,7 @@ const HomePage = () => {
                 <Box mt={{ base: 4, md: 10 }}>
                   <Button
                     as={Link}
-                    size={{ base: 'md', md: 'lg' }}
+                    size={{ base: 'md', md: 'xl' }}
                     to={routes.explore()}
                     w={{ base: 'full', md: 'auto' }}
                   >
@@ -124,7 +128,11 @@ const HomePage = () => {
       </Box>
 
       <Box bg="purple.500" overflow="hidden">
-        <PageContainer minHeight="auto" py={{ base: 8, md: '120px' }}>
+        <PageContainer
+          minHeight="auto"
+          pt={{ base: 8, md: '120px' }}
+          pb={{ base: 8, md: '120px' }}
+        >
           <Flex direction="column" align="center">
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
@@ -142,9 +150,9 @@ const HomePage = () => {
                 return (
                   <Button
                     key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'whiteAlpha.200'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.300' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.500' }}
                     color={isCurrentTab ? 'black' : 'white'}
                     onClick={() => setExamplePackTabIndex(index)}
                     leftIcon={<Text>{examplePack.tabEmoji}</Text>}
@@ -162,9 +170,9 @@ const HomePage = () => {
                 return (
                   <IconButton
                     key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'whiteAlpha.200'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.300' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.500' }}
                     onClick={() => setExamplePackTabIndex(index)}
                     aria-label={examplePack.tabLabel}
                     px={4}
@@ -215,7 +223,7 @@ const HomePage = () => {
       </Box>
 
       <Box bg="yellow.500" py={{ base: 10, md: '120px' }}>
-        <PageContainer minHeight="auto" py={0}>
+        <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box px={4} textAlign="center">
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
@@ -255,12 +263,13 @@ const HomePage = () => {
             </Center>
           </HStack>
         </Flex>
-        <PageContainer minHeight="auto" py={0}>
+        <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box mt={{ base: 10, md: 16 }} textAlign="center">
             <Button
-              size="lg"
+              size="xl"
               onClick={handleGetStarted}
               w={{ base: 'full', md: 'auto' }}
+              px="92px"
             >
               Get Started
             </Button>
@@ -269,7 +278,11 @@ const HomePage = () => {
       </Box>
 
       <Box bg="brown.500">
-        <PageContainer minHeight="auto" py={{ base: 10, md: '120px' }}>
+        <PageContainer
+          minHeight="auto"
+          pt={{ base: 10, md: '120px' }}
+          pb={{ base: 10, md: '120px' }}
+        >
           <Flex direction="column" px={{ base: 0, md: 4 }} align="center">
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
