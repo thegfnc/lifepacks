@@ -62,6 +62,14 @@ module.exports = {
         lineHeight: 'base',
         rounded: 'xl',
       },
+      sizes: {
+        xl: {
+          fontSize: 'xl',
+          lineHeight: 'shorter',
+          py: 5,
+          px: 7,
+        },
+      },
       variants: {
         outline: {
           borderColor: 'blackAlpha.300',

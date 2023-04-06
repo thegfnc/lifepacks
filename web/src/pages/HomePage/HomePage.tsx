@@ -94,7 +94,7 @@ const HomePage = () => {
                 <Box mt={{ base: 4, md: 10 }}>
                   <Button
                     as={Link}
-                    size={{ base: 'md', md: 'lg' }}
+                    size={{ base: 'md', md: 'xl' }}
                     to={routes.explore()}
                     w={{ base: 'full', md: 'auto' }}
                   >
@@ -150,9 +150,9 @@ const HomePage = () => {
                 return (
                   <Button
                     key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'whiteAlpha.200'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.300' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.500' }}
                     color={isCurrentTab ? 'black' : 'white'}
                     onClick={() => setExamplePackTabIndex(index)}
                     leftIcon={<Text>{examplePack.tabEmoji}</Text>}
@@ -170,9 +170,9 @@ const HomePage = () => {
                 return (
                   <IconButton
                     key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'whiteAlpha.200'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.300' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
+                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.500' }}
                     onClick={() => setExamplePackTabIndex(index)}
                     aria-label={examplePack.tabLabel}
                     px={4}
@@ -266,9 +266,10 @@ const HomePage = () => {
         <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box mt={{ base: 10, md: 16 }} textAlign="center">
             <Button
-              size="lg"
+              size="xl"
               onClick={handleGetStarted}
               w={{ base: 'full', md: 'auto' }}
+              px="92px"
             >
               Get Started
             </Button>
