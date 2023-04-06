@@ -48,7 +48,11 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
       <Avatar
         size={'md'}
         src={userProfile.imageUrl}
-        name={userProfile?.givenName}
+        name={getUserDisplayName(
+          userProfile.givenName,
+          userProfile.familyName,
+          userProfile.username
+        )}
       />
       <Stack spacing={0}>
         <Text fontSize="md" fontWeight="medium" color="blackAlpha.800">
