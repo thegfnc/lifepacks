@@ -24,7 +24,7 @@
     "@redwoodjs/web": "4.4.3",
     "@sentry/react": "^7.45.0",
     "@sentry/tracing": "^7.46.0",
-    "@supabase/supabase-js": "^1",
+    "@supabase/supabase-js": "^2",
     "compressorjs": "^1.2.1",
     "date-fns": "^2.29.3",
     "framer-motion": "10.10.0",
