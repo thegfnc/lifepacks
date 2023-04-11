@@ -1,6 +1,5 @@
 import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react'
 import * as Sentry from '@sentry/react'
-import { BrowserTracing } from '@sentry/tracing'
 import * as theme from 'config/chakra.config'
 
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
@@ -22,7 +21,7 @@ if (process.env.SENTRY_DSN) {
     dsn: process.env.SENTRY_DSN,
     environment,
     release: process.env.VERCEL_GIT_COMMIT_SHA,
-    integrations: [new BrowserTracing(), new Sentry.Replay()],
+    integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
     tracesSampleRate: isDevelopmentEnv ? 1 : 0.1,
     replaysSessionSampleRate: isDevelopmentEnv ? 1 : 0.1,
     replaysOnErrorSampleRate: 1.0,

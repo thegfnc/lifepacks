@@ -10,6 +10,11 @@ if (process.env.SENTRY_DSN && !isSentryInitialized) {
     dsn: process.env.SENTRY_DSN,
     environment: process.env.VERCEL_ENV || 'development',
     release: process.env.VERCEL_GIT_COMMIT_SHA,
+    tracesSampleRate: 1.0,
+    integrations: [
+      // Automatically instrument Node.js libraries and frameworks
+      ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations(),
+    ],
   })
   isSentryInitialized = true
 }
