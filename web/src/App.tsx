@@ -13,19 +13,22 @@ import { AuthProvider, useAuth } from './auth'
 
 import './index.css'
 
-if (process.env.SENTRY_DSN) {
+let isSentryInitialized = false
+
+if (process.env.SENTRY_DSN && !isSentryInitialized) {
   const environment = process.env.VERCEL_ENV || 'development'
   const isDevelopmentEnv = environment === 'development'
 
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
-    environment,
     release: process.env.VERCEL_GIT_COMMIT_SHA,
+    environment,
     integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
     tracesSampleRate: isDevelopmentEnv ? 1 : 0.1,
     replaysSessionSampleRate: isDevelopmentEnv ? 1 : 0.1,
     replaysOnErrorSampleRate: 1.0,
   })
+  isSentryInitialized = true
 }
 
 const extendedTheme = extendTheme(theme)
