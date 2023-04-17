@@ -176,7 +176,7 @@ const HomePage = () => {
                     onClick={() => setExamplePackTabIndex(index)}
                     aria-label={examplePack.tabLabel}
                     px={4}
-                    icon={<Text fontSize="2xl">{examplePack.tabEmoji}</Text>}
+                    icon={<Text fontSize="xl">{examplePack.tabEmoji}</Text>}
                     rounded="full"
                   />
                 )
@@ -187,7 +187,7 @@ const HomePage = () => {
               px={{ base: 6, md: 24 }}
               py={{ base: 6, md: 16 }}
               mt={8}
-              mb="-14rem"
+              mb="-13rem"
               borderRadius={{ base: '3xl', md: '24px' }}
             >
               <Flex>
