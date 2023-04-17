@@ -23,7 +23,7 @@
     "@redwoodjs/router": "4.5.0",
     "@redwoodjs/web": "4.5.0",
     "@sentry/react": "^7.47.0",
-    "@supabase/supabase-js": "^1",
+    "@supabase/supabase-js": "^2",
     "compressorjs": "^1.2.1",
     "date-fns": "^2.29.3",
     "framer-motion": "10.11.2",
