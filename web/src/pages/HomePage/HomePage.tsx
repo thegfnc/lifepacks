@@ -187,7 +187,7 @@ const HomePage = () => {
               px={{ base: 6, md: 24 }}
               py={{ base: 6, md: 16 }}
               mt={8}
-              mb="-14rem"
+              mb="-13rem"
               borderRadius={{ base: '3xl', md: '24px' }}
             >
               <Flex>
