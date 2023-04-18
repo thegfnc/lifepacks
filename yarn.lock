@@ -6102,6 +6102,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry-internal/tracing@npm:7.48.0":
+  version: 7.48.0
+  resolution: "@sentry-internal/tracing@npm:7.48.0"
+  dependencies:
+    "@sentry/core": 7.48.0
+    "@sentry/types": 7.48.0
+    "@sentry/utils": 7.48.0
+    tslib: ^1.9.3
+  checksum: d6d7967ba5172fc236ef48ac4e3ebe2a6fb0553243d08849e0f6f65eb210157282bbe7c3659522691b2e15809548a424bf3e8af2c3308d38d9453221cd513ef2
+  languageName: node
+  linkType: hard
+
 "@sentry/browser@npm:7.47.0":
   version: 7.47.0
   resolution: "@sentry/browser@npm:7.47.0"
@@ -6143,19 +6155,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:^7.47.0":
-  version: 7.47.0
-  resolution: "@sentry/node@npm:7.47.0"
+"@sentry/core@npm:7.48.0":
+  version: 7.48.0
+  resolution: "@sentry/core@npm:7.48.0"
   dependencies:
-    "@sentry-internal/tracing": 7.47.0
-    "@sentry/core": 7.47.0
-    "@sentry/types": 7.47.0
-    "@sentry/utils": 7.47.0
+    "@sentry/types": 7.48.0
+    "@sentry/utils": 7.48.0
+    tslib: ^1.9.3
+  checksum: c72efee022b32616ae0b8d630181f2b777f8182594f8fea6b8730dc520429ae3e420c0ef4cf3f027b7473a450b74978991f59b61813cff914d1566cca3d863eb
+  languageName: node
+  linkType: hard
+
+"@sentry/node@npm:^7.48.0":
+  version: 7.48.0
+  resolution: "@sentry/node@npm:7.48.0"
+  dependencies:
+    "@sentry-internal/tracing": 7.48.0
+    "@sentry/core": 7.48.0
+    "@sentry/types": 7.48.0
+    "@sentry/utils": 7.48.0
     cookie: ^0.4.1
     https-proxy-agent: ^5.0.0
     lru_map: ^0.3.3
     tslib: ^1.9.3
-  checksum: 2444c1d6c169dcf729d4819c03004cc4a9a8eea0a3cd22191c977ce25a26012f3a81107f259dba5656d823eed93807352a0a910d2a54cd1e52224548399b22ac
+  checksum: 5173c1c2d55bb54b8f3fdc83659463ad9739f8fb214bdf95991e8030e5026d248f9c676b98fe36dd8d79d37b00e7df2fddf0f3debca7c4b4369905f94d14a05d
   languageName: node
   linkType: hard
 
@@ -6192,6 +6215,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sentry/types@npm:7.48.0":
+  version: 7.48.0
+  resolution: "@sentry/types@npm:7.48.0"
+  checksum: 07aad912448522fe0cd6cb8336b04b00a788b5d048ab03fee815acefae0570c97ccee641c8d94c669a87fda615381b64d417f39acb320ca71d3636752ac1b377
+  languageName: node
+  linkType: hard
+
 "@sentry/utils@npm:7.47.0":
   version: 7.47.0
   resolution: "@sentry/utils@npm:7.47.0"
@@ -6199,6 +6229,16 @@ __metadata:
     "@sentry/types": 7.47.0
     tslib: ^1.9.3
   checksum: 3879332f058a533aaf88353a0b75d2196a56b4ab31ad7e0eafb72585843c15b1dc9a67e4934b1f5a6ed24443f6f256e47b7bc81eea179c73e78ad875ce7bcf3c
+  languageName: node
+  linkType: hard
+
+"@sentry/utils@npm:7.48.0":
+  version: 7.48.0
+  resolution: "@sentry/utils@npm:7.48.0"
+  dependencies:
+    "@sentry/types": 7.48.0
+    tslib: ^1.9.3
+  checksum: 8c603e1b362e988e2857a7a836b2aa184343707f447246b4ad308d10ffbbc3f3cc0c0d5b5ff7e7085950c0705ec2d69f949651243f572056e1e13650885b9418
   languageName: node
   linkType: hard
 
@@ -9464,7 +9504,7 @@ __metadata:
     "@redwoodjs/auth-supabase-api": 4.5.0
     "@redwoodjs/graphql-server": 4.5.0
     "@sendinblue/client": ^3.3.1
-    "@sentry/node": ^7.47.0
+    "@sentry/node": ^7.48.0
     jsonwebtoken: ^9.0.0
   languageName: unknown
   linkType: soft
