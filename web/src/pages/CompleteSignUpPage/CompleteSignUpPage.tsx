@@ -68,7 +68,7 @@ const CompleteSignUpPage = () => {
           </Stack>
           <Box rounded={'lg'} bg={'white'} boxShadow={'lg'} p={8}>
             {error && (
-              <Alert status="error">
+              <Alert status="error" mb={4}>
                 <AlertIcon />
                 {error.message}
               </Alert>

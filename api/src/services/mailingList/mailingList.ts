@@ -14,8 +14,9 @@ apiInstance.setApiKey(
 
 export const mailingListSignUp: MutationResolvers['mailingListSignUp'] =
   async ({ input }) => {
-    validate(input.email, {
+    validate(input.email, 'Email Address', {
       email: { message: 'Please provide a valid email address.' },
+      presence: true,
     })
 
     const createContact = new SibApiV3Sdk.CreateContact()

@@ -19,6 +19,7 @@ import {
   FormControl,
   Stack,
   useDisclosure,
+  Tooltip,
 } from '@chakra-ui/react'
 import { Pack, PackItem } from 'types/graphql'
 
@@ -229,6 +230,10 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                   value: true,
                   message: 'Pack title is required',
                 },
+                maxLength: {
+                  value: 100,
+                  message: 'Pack title cannot exceed 100 characters',
+                },
               })}
             />
             <FormErrorMessage>
@@ -244,20 +249,33 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               variant="unstyled"
               fontFamily="bitter"
               resize="none"
-              {...register('description')}
+              {...register('description', {
+                maxLength: {
+                  value: 1000,
+                  message: 'Pack description cannot exceed 1000 characters',
+                },
+              })}
             />
             <FormErrorMessage>
               {formState.errors.description?.message}
             </FormErrorMessage>
           </FormControl>
-          <Button
-            size="lg"
-            variant="outline"
-            colorScheme="gray"
-            onClick={createOpenAddPackItemModal(0)}
+          <Tooltip
+            hasArrow
+            label="You can only have up to 8 items in a Pack"
+            bg="red.600"
+            isDisabled={packItems.length < 8}
           >
-            Add Item
-          </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              colorScheme="gray"
+              onClick={createOpenAddPackItemModal(0)}
+              isDisabled={packItems.length >= 8}
+            >
+              Add Item
+            </Button>
+          </Tooltip>
           <Stack spacing={6}>
             {packItems.map((packItem, index) => (
               <Fragment key={packItem.id || packItem.title}>
@@ -273,14 +291,22 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                   editItem={createOpenEditPackItemModal(index)}
                   deleteItem={createOpenDeletePackItemAlert(index)}
                 />
-                <Button
-                  size="lg"
-                  variant="outline"
-                  colorScheme="gray"
-                  onClick={createOpenAddPackItemModal(index + 1)}
+                <Tooltip
+                  hasArrow
+                  label="You can only have up to 8 items in a Pack"
+                  bg="red.600"
+                  isDisabled={packItems.length < 8}
                 >
-                  Add Item
-                </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    colorScheme="gray"
+                    onClick={createOpenAddPackItemModal(index + 1)}
+                    isDisabled={packItems.length >= 8}
+                  >
+                    Add Item
+                  </Button>
+                </Tooltip>
               </Fragment>
             ))}
           </Stack>

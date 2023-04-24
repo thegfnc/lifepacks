@@ -1,7 +1,19 @@
 import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 
+import { validate } from '@redwoodjs/api'
+
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
+
+import validateCommonUserProfileInputFields from './validateCommonUserProfileInputFields'
+
+export const userProfile: QueryResolvers['userProfile'] = ({ username }) => {
+  validate(username, 'Username', { presence: true })
+
+  return db.userProfile.findUnique({
+    where: { username },
+  })
+}
 
 export const currentUserProfile: QueryResolvers['currentUserProfile'] = () => {
   const currentUser: RedwoodUser = context.currentUser
@@ -17,14 +29,18 @@ export const currentUserProfile: QueryResolvers['currentUserProfile'] = () => {
   })
 }
 
-export const userProfile: QueryResolvers['userProfile'] = ({ username }) => {
-  return db.userProfile.findUnique({
-    where: { username },
-  })
-}
-
 export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfile'] =
   ({ input }) => {
+    validate(input.username, 'Username', {
+      presence: true,
+      length: { min: 3, max: 50 },
+      format: {
+        pattern: /^[a-z0-9]+$/,
+        message: 'Username can only contain lowercase letters and numbers.',
+      },
+    })
+    validateCommonUserProfileInputFields(input)
+
     const currentUser: RedwoodUser = context.currentUser
     const userId = currentUser.sub
 
@@ -33,7 +49,7 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
     return db.userProfile.create({
       data: {
         userId,
-        username: username.replace(/@/g, ''),
+        username,
         ...restOfInput,
       },
     })
@@ -41,6 +57,8 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
 
 export const updateCurrentUserProfile: MutationResolvers['updateCurrentUserProfile'] =
   ({ input }) => {
+    validateCommonUserProfileInputFields(input)
+
     const currentUser: RedwoodUser = context.currentUser
     const userId = currentUser.sub
 

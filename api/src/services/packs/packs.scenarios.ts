@@ -1,3 +1,7 @@
+// Until multi model structures are supported in Redwood, I have to disable for this file
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import type { Prisma, Pack } from '@prisma/client'
 
 import type { ScenarioData } from '@redwoodjs/testing/api'

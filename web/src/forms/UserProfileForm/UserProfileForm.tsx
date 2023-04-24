@@ -18,6 +18,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 
 import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import isValidUrl from 'src/helpers/isValidUrl'
 import SocialAccount from 'src/types/SocialAccount'
 
 type UserProfileFormProps = {
@@ -109,6 +110,19 @@ const UserProfileForm = ({
                       value: true,
                       message: 'Username is required',
                     },
+                    pattern: {
+                      value: /^[a-z0-9]+$/,
+                      message:
+                        'Username can only contain lowercase letters and numbers',
+                    },
+                    maxLength: {
+                      value: 50,
+                      message: 'Username cannot be more than 50 characters',
+                    },
+                    minLength: {
+                      value: 3,
+                      message: 'Username must be at least 3 characters',
+                    },
                   })}
                 />
               )}
@@ -120,7 +134,15 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.givenName)}>
             <FormLabel>First Name</FormLabel>
-            <Input autoComplete="given-name" {...register('givenName')} />
+            <Input
+              autoComplete="given-name"
+              {...register('givenName', {
+                maxLength: {
+                  value: 100,
+                  message: 'First name cannot be more than 100 characters',
+                },
+              })}
+            />
             <FormErrorMessage>
               {formState.errors.givenName?.message}
             </FormErrorMessage>
@@ -128,7 +150,15 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.familyName)}>
             <FormLabel>Last Name</FormLabel>
-            <Input autoComplete="family-name" {...register('familyName')} />
+            <Input
+              autoComplete="family-name"
+              {...register('familyName', {
+                maxLength: {
+                  value: 100,
+                  message: 'Last name cannot be more than 100 characters',
+                },
+              })}
+            />
             <FormErrorMessage>
               {formState.errors.familyName?.message}
             </FormErrorMessage>
@@ -136,7 +166,14 @@ const UserProfileForm = ({
 
           <FormControl isInvalid={Boolean(formState.errors.biography)}>
             <FormLabel>Biography</FormLabel>
-            <Textarea {...register('biography')} />
+            <Textarea
+              {...register('biography', {
+                maxLength: {
+                  value: 500,
+                  message: 'Biography cannot be more than 500 characters',
+                },
+              })}
+            />
             <FormErrorMessage>
               {formState.errors.biography?.message}
             </FormErrorMessage>
@@ -144,46 +181,106 @@ const UserProfileForm = ({
 
           <FormLabel>Social Links</FormLabel>
           <Stack>
-            <InputGroup>
-              <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccount.Facebook} />
-              </InputLeftElement>
-              <Input
-                pl="2.75rem"
-                placeholder="https://facebook.com/xxxx"
-                {...register('facebookUrl')}
-              />
-            </InputGroup>
-            <InputGroup>
-              <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccount.Instagram} />
-              </InputLeftElement>
-              <Input
-                pl="2.75rem"
-                placeholder="https://instagram.com/xxxx"
-                {...register('instagramUrl')}
-              />
-            </InputGroup>
-            <InputGroup>
-              <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccount.YouTube} />
-              </InputLeftElement>
-              <Input
-                pl="2.75rem"
-                placeholder="https://youtube.com/xxxx"
-                {...register('youtubeUrl')}
-              />
-            </InputGroup>
-            <InputGroup>
-              <InputLeftElement width="2.75rem">
-                <SocialAccountIcon accountType={SocialAccount.Twitter} />
-              </InputLeftElement>
-              <Input
-                pl="2.75rem"
-                placeholder="https://twitter.com/xxxx"
-                {...register('twitterUrl')}
-              />
-            </InputGroup>
+            <FormControl isInvalid={Boolean(formState.errors.facebookUrl)}>
+              <InputGroup>
+                <InputLeftElement width="2.75rem">
+                  <SocialAccountIcon accountType={SocialAccount.Facebook} />
+                </InputLeftElement>
+                <Input
+                  pl="2.75rem"
+                  placeholder="https://facebook.com/xxxx"
+                  {...register('facebookUrl', {
+                    maxLength: {
+                      value: 2000,
+                      message:
+                        'Facebook URL cannot be more than 2000 characters',
+                    },
+                    validate: (value) => {
+                      if (value === '') return true
+                      return isValidUrl(value) || 'Facebook URL is invalid'
+                    },
+                  })}
+                />
+              </InputGroup>
+              <FormErrorMessage>
+                {formState.errors.facebookUrl?.message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={Boolean(formState.errors.instagramUrl)}>
+              <InputGroup>
+                <InputLeftElement width="2.75rem">
+                  <SocialAccountIcon accountType={SocialAccount.Instagram} />
+                </InputLeftElement>
+                <Input
+                  pl="2.75rem"
+                  placeholder="https://instagram.com/xxxx"
+                  {...register('instagramUrl', {
+                    maxLength: {
+                      value: 2000,
+                      message:
+                        'Instagram URL cannot be more than 2000 characters',
+                    },
+                    validate: (value) => {
+                      if (value === '') return true
+                      return isValidUrl(value) || 'Instagram URL is invalid'
+                    },
+                  })}
+                />
+              </InputGroup>
+              <FormErrorMessage>
+                {formState.errors.instagramUrl?.message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={Boolean(formState.errors.youtubeUrl)}>
+              <InputGroup>
+                <InputLeftElement width="2.75rem">
+                  <SocialAccountIcon accountType={SocialAccount.YouTube} />
+                </InputLeftElement>
+                <Input
+                  pl="2.75rem"
+                  placeholder="https://youtube.com/xxxx"
+                  {...register('youtubeUrl', {
+                    maxLength: {
+                      value: 2000,
+                      message:
+                        'YouTube URL cannot be more than 2000 characters',
+                    },
+                    validate: (value) => {
+                      if (value === '') return true
+                      return isValidUrl(value) || 'YouTube URL is invalid'
+                    },
+                  })}
+                />
+              </InputGroup>
+              <FormErrorMessage>
+                {formState.errors.youtubeUrl?.message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={Boolean(formState.errors.twitterUrl)}>
+              <InputGroup>
+                <InputLeftElement width="2.75rem">
+                  <SocialAccountIcon accountType={SocialAccount.Twitter} />
+                </InputLeftElement>
+                <Input
+                  pl="2.75rem"
+                  placeholder="https://twitter.com/xxxx"
+                  {...register('twitterUrl', {
+                    maxLength: {
+                      value: 2000,
+                      message:
+                        'Twitter URL cannot be more than 2000 characters',
+                    },
+                    validate: (value) => {
+                      if (value === '') return true
+                      return isValidUrl(value) || 'Twitter URL is invalid'
+                    },
+                  })}
+                />
+              </InputGroup>
+              <FormErrorMessage>
+                {formState.errors.twitterUrl?.message}
+              </FormErrorMessage>
+            </FormControl>
           </Stack>
           <SimpleGrid
             pt={4}
