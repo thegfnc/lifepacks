@@ -47,7 +47,7 @@ model Pack {
 model PackItem {
   id                Int       @id @default(autoincrement())
   userId            String    @db.Uuid
-  pack              Pack      @relation(fields: [packId], references: [id], onDelete: Cascade)
+  pack              Pack      @relation(fields: [packId], references: [id])
   packId            Int
   title             String
   purchaseUrl       String

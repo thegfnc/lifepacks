@@ -34,6 +34,10 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
     validate(input.username, 'Username', {
       presence: true,
       length: { min: 3, max: 50 },
+      format: {
+        pattern: /^[a-z0-9]+$/,
+        message: 'Username can only contain lowercase letters and numbers.',
+      },
     })
     validateCommonUserProfileInputFields(input)
 
@@ -45,7 +49,7 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
     return db.userProfile.create({
       data: {
         userId,
-        username: username.replace(/@/g, ''),
+        username,
         ...restOfInput,
       },
     })

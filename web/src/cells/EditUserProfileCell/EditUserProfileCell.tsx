@@ -94,7 +94,7 @@ export const Success = ({
   return (
     <>
       {error && (
-        <Alert status="error">
+        <Alert status="error" mb={4}>
           <AlertIcon />
           {error.message}
         </Alert>

@@ -1,25 +1,17 @@
-// import type {
-//   QueryResolvers,
-//   MutationResolvers,
-//   PackItemRelationResolvers,
-// } from 'types/graphql'
-
 import { validate, validateWith } from '@redwoodjs/api'
 
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
-// export const packItems: QueryResolvers['packItems'] = () => {
-//   return db.packItem.findMany()
-// }
-
-// export const packItem: QueryResolvers['packItem'] = ({ id }) => {
-//   return db.packItem.findUnique({
-//     where: { id },
-//   })
-// }
+import validiateCommonPackItemInputFields from './validateCommonPackItemInputFields'
 
 export const createPackItem = ({ input }) => {
+  validate(input.packId, 'Pack Id', {
+    presence: true,
+    numericality: { integer: true },
+  })
+  validiateCommonPackItemInputFields(input)
+
   const currentUser: RedwoodUser = context.currentUser
   const userId = currentUser.sub
 
@@ -51,6 +43,7 @@ export const updatePackItem = async ({ id, input }) => {
       throw new Error('You are not authorized to update that pack item.')
     }
   })
+  validiateCommonPackItemInputFields(input)
 
   return db.packItem.update({
     where: { id },
@@ -68,11 +61,11 @@ type DeletePackItemsByIdInput = {
   ids: number[]
 }
 
-export const deletePackItemsById = async ({
+export const deletePackItemsByIds = async ({
   ids,
 }: DeletePackItemsByIdInput) => {
   validateWith(() => {
-    if (!ids || ids.length === 0) {
+    if (!ids || !Array.isArray(ids) || ids.length === 0) {
       throw new Error('You must provide at least one pack item id to delete.')
     }
   })
@@ -112,7 +105,10 @@ type DeletePackItemsByPackIdInput = {
 export const deletePackItemsByPackId = async ({
   packId,
 }: DeletePackItemsByPackIdInput) => {
-  validate(packId, 'Pack Id', { presence: true })
+  validate(packId, 'Pack Id', {
+    presence: true,
+    numericality: { integer: true },
+  })
 
   const currentUser: RedwoodUser = context.currentUser
   const userId = currentUser.sub

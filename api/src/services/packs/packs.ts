@@ -12,10 +12,12 @@ import { db } from 'src/lib/db'
 
 import {
   createPackItem,
-  deletePackItemsById,
+  deletePackItemsByIds,
   deletePackItemsByPackId,
   updatePackItem,
 } from '../packItems/packItems'
+
+import validiateCommonPackInputFields from './validateCommonPackInputFields'
 
 export const latestPacks: QueryResolvers['latestPacks'] = async ({
   take = 99,
@@ -59,7 +61,7 @@ export const pack: QueryResolvers['pack'] = async ({ username, slug, id }) => {
 export const createPack: MutationResolvers['createPack'] = async ({
   input,
 }) => {
-  validate(input.title, 'Title', { presence: true })
+  validiateCommonPackInputFields(input)
 
   const currentUser: RedwoodUser = context.currentUser
   const userId = currentUser.sub
@@ -115,11 +117,17 @@ export const updatePack: MutationResolvers['updatePack'] = async ({
       throw new Error('You are not authorized to update that pack.')
     }
   })
+  validiateCommonPackInputFields(input)
 
   await db.pack.update({
     data: { title: input.title, description: input.description },
     where: { id },
   })
+
+  // PACK ITEMS DELETE
+  if (input.packItemIdsToDelete && input.packItemIdsToDelete.length > 0) {
+    await deletePackItemsByIds({ ids: input.packItemIdsToDelete })
+  }
 
   // PACK ITEMS
   const inputPackItemsWithDisplaySequence = input.packItems.map(
@@ -128,11 +136,6 @@ export const updatePack: MutationResolvers['updatePack'] = async ({
       displaySequence: index,
     })
   )
-
-  // PACK ITEMS DELETE
-  if (input.packItemIdsToDelete && input.packItemIdsToDelete.length > 0) {
-    await deletePackItemsById({ ids: input.packItemIdsToDelete })
-  }
 
   // PACK ITEMS CREATE
   const packItemsToCreate = inputPackItemsWithDisplaySequence.filter(

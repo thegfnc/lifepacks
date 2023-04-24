@@ -15,6 +15,7 @@ import { PackItem } from 'types/graphql'
 import { Form, useForm } from '@redwoodjs/forms'
 
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import isValidUrl from 'src/helpers/isValidUrl'
 
 type PackItemFormProps = {
   onFormDirtyStateChange?: Dispatch<SetStateAction<boolean>>
@@ -60,6 +61,10 @@ const PackItemForm = ({
                 value: true,
                 message: 'Pack item title is required',
               },
+              maxLength: {
+                value: 100,
+                message: 'Pack item title cannot exceed 100 characters',
+              },
             })}
           />
           <FormErrorMessage>{formState.errors.title?.message}</FormErrorMessage>
@@ -73,6 +78,12 @@ const PackItemForm = ({
                 value: true,
                 message: 'Pack item purchase url is required',
               },
+              maxLength: {
+                value: 2000,
+                message: 'Instagram URL cannot be more than 2000 characters',
+              },
+              validate: (value) =>
+                isValidUrl(value) || 'Purchase URL is invalid',
             })}
           />
           <FormErrorMessage>
@@ -93,9 +104,19 @@ const PackItemForm = ({
             {formState.errors.imageUrl?.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl>
+        <FormControl isInvalid={Boolean(formState.errors.description)}>
           <FormLabel>Description</FormLabel>
-          <Textarea {...register('description')} />
+          <Textarea
+            {...register('description', {
+              maxLength: {
+                value: 1000,
+                message: 'Description cannot exceed 1000 characters',
+              },
+            })}
+          />
+          <FormErrorMessage>
+            {formState.errors.description?.message}
+          </FormErrorMessage>
         </FormControl>
       </Stack>
       <SimpleGrid
