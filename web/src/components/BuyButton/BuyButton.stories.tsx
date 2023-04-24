@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import BuyButton from './BuyButton'
 
 export const generated = () => {
-  return <BuyButton />
+  return <BuyButton purchaseUrl="https://www.amazon.com/" />
 }
 
 export default {
