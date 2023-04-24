@@ -10,6 +10,8 @@ import {
   SimpleGrid,
 } from '@chakra-ui/react'
 
+import BuyButton from '../BuyButton/BuyButton'
+
 type PackItemProps = {
   imageUrl: string
   purchaseUrl: string
@@ -39,17 +41,7 @@ const PackItem = ({
               <Heading size="md" lineHeight={7} fontWeight="medium">
                 {title}
               </Heading>
-              <Button
-                as="a"
-                colorScheme="yellow"
-                size="lg"
-                mt={4}
-                href={purchaseUrl}
-                target="_blank"
-                w={{ base: 'full', md: 'auto' }}
-              >
-                Buy on Amazon
-              </Button>
+              <BuyButton purchaseUrl={purchaseUrl} />
             </Box>
           </Center>
         </SimpleGrid>
