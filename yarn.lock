@@ -14987,9 +14987,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:10.12.2":
-  version: 10.12.2
-  resolution: "framer-motion@npm:10.12.2"
+"framer-motion@npm:10.12.4":
+  version: 10.12.4
+  resolution: "framer-motion@npm:10.12.4"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     tslib: ^2.4.0
@@ -15004,7 +15004,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 881892cfdda91ce226820cedaa65f4acf1b8c7d59340e3cf070fc911604a5ef68fa2f0fe27c1346914e4e61719d2f02799e9b7472d3a4dbea094563b14ddfaaf
+  checksum: d0cb0c811fd85f2de63e75b36a5554cbea7e5ea7f171acd81709c1b50fadccce001a8b95859ba449fc1d5d54f38e5c8523917437cdccf79c0859e86d1497a44c
   languageName: node
   linkType: hard
 
@@ -26080,7 +26080,7 @@ __metadata:
     "@supabase/supabase-js": ^1
     compressorjs: ^1.2.1
     date-fns: ^2.29.3
-    framer-motion: 10.12.2
+    framer-motion: 10.12.4
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
