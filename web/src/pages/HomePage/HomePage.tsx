@@ -127,12 +127,8 @@ const HomePage = () => {
         </PageContainer>
       </Box>
 
-      <Box bg="purple.500" overflow="hidden">
-        <PageContainer
-          minHeight="auto"
-          pt={{ base: 8, md: '120px' }}
-          pb={{ base: 8, md: '120px' }}
-        >
+      <Box bg="purple.500" overflow="hidden" maxH="100vh">
+        <PageContainer minHeight="auto" pt={{ base: 8, md: '120px' }} pb={10}>
           <Flex direction="column" align="center">
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
@@ -187,7 +183,6 @@ const HomePage = () => {
               px={{ base: 6, md: 24 }}
               py={{ base: 6, md: 16 }}
               mt={8}
-              mb="-13rem"
               borderRadius={{ base: '3xl', md: '24px' }}
             >
               <Flex>

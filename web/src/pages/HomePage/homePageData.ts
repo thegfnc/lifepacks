@@ -155,7 +155,7 @@ export const examplePacks = [
     tabEmoji: '🎹',
     tabLabel: 'Music Gear',
     pack: {
-      title: 'The Next Generation of Synethesizers',
+      title: 'The Next Generation of Synths',
       description:
         'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
       packItems: [
