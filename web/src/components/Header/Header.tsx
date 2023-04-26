@@ -48,12 +48,6 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     currentUserProfile?.username
   )
 
-  const navigation = (
-    <ChakraLink as={Link} to={routes.explore()}>
-      Explore Packs
-    </ChakraLink>
-  )
-
   return (
     <>
       <Flex alignItems={'center'} justifyContent="center" h={'4.5rem'}>
@@ -64,9 +58,6 @@ const Header = ({ ctaComponent }: HeaderProps) => {
           alignItems={'center'}
         >
           <Logo />
-          <Box ml={10} display={{ base: 'none', md: 'block' }}>
-            {navigation}
-          </Box>
 
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
             {isAuthLoading || isCurrentUserProfileLoading ? (
