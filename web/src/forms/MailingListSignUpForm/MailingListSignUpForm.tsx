@@ -47,7 +47,7 @@ const MailingListSignUpForm = ({
             >
               Stay in the loop
             </FormLabel>
-            <InputGroup mt={6}>
+            <InputGroup mt={{ base: 4, md: 6 }}>
               <Input
                 placeholder="Enter your email"
                 type="email"
@@ -65,13 +65,13 @@ const MailingListSignUpForm = ({
                 color="whiteAlpha.600"
                 _placeholder={{ color: 'whiteAlpha.600' }}
                 pl={{ base: 4, md: 10 }}
-                pr={28}
+                pr={{ base: '86px', md: 28 }}
                 py={{ base: '24px', md: '46px' }}
                 borderRadius={{ base: 'xl', md: '3xl' }}
                 borderWidth={0}
                 lineHeight="none"
               />
-              <InputRightElement h="full" width="auto" mr="10">
+              <InputRightElement h="full" width="auto" mr={{ base: 4, md: 10 }}>
                 <IconButton
                   aria-label="Subscribe"
                   type="submit"
@@ -80,7 +80,8 @@ const MailingListSignUpForm = ({
                   isLoading={isLoading}
                   icon={<MdArrowRightAlt size="24px" />}
                   borderRadius="full"
-                  size="lg"
+                  size={{ base: 'md', md: 'lg' }}
+                  pl={0}
                 />
               </InputRightElement>
             </InputGroup>

@@ -50,7 +50,7 @@ const MailingListSignUp = () => {
         <MailingListSignUpForm onSubmit={onSubmit} isLoading={loading} />
       )}
       {error && (
-        <Alert mt={8} status="error" color="black">
+        <Alert mt={{ base: 4, md: 8 }} status="error" color="black">
           <AlertIcon />
           {error.message}
         </Alert>
