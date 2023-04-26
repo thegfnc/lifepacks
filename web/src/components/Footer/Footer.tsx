@@ -14,7 +14,7 @@ const Footer = () => (
           color="whiteAlpha.700"
           fontSize={{ base: 'sm', md: 'md' }}
         >
-          For direct support and press inquiries, contact us directly at{' '}
+          For support and press inquiries, contact us directly at{' '}
           <Link href="mailto:lifepacksco@gmail.com" color="white">
             lifepacksco@gmail.com
           </Link>
