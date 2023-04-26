@@ -2,6 +2,8 @@ import { Heading, HStack, Text } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
 
+import { useAuth } from 'src/auth'
+
 type LogoProps = {
   color?: string
 }
@@ -35,10 +37,12 @@ const LogoText = () => {
 }
 
 const Logo = ({ color = 'black' }: LogoProps) => {
+  const { isAuthenticated } = useAuth()
+
   return (
     <Heading
       as={Link}
-      to={routes.home()}
+      to={isAuthenticated ? routes.explore() : routes.home()}
       size="md"
       color={color}
       fontWeight="medium"

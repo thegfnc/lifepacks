@@ -1,11 +1,14 @@
 import {
-  Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  IconButton,
   Input,
+  InputGroup,
+  InputRightElement,
   Stack,
 } from '@chakra-ui/react'
+import { MdArrowRightAlt } from 'react-icons/md'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
@@ -33,36 +36,57 @@ const MailingListSignUpForm = ({
         <Stack
           spacing="4"
           direction={{ base: 'column', sm: 'row' }}
-          maxW={{ lg: '360px' }}
           align="flex-end"
         >
           <FormControl isInvalid={Boolean(formState.errors.email)}>
-            <FormLabel fontSize="sm" fontWeight="semibold" color="subtle">
-              Stay up to date
+            <FormLabel
+              fontSize={{ base: '20px', md: '28px' }}
+              fontWeight="semibold"
+              color="subtle"
+            >
+              Stay in the loop
             </FormLabel>
-            <Input
-              placeholder="Enter your email"
-              type="email"
-              autoComplete="email"
-              {...register('email', {
-                required: {
-                  value: true,
-                  message: 'E-mail address is required',
-                },
-              })}
-            />
+            <InputGroup mt={{ base: 4, md: 6 }}>
+              <Input
+                placeholder="Enter your email"
+                type="email"
+                autoComplete="email"
+                {...register('email', {
+                  required: {
+                    value: true,
+                    message: 'E-mail address is required',
+                  },
+                })}
+                h="auto"
+                width="full"
+                fontSize={{ base: '18px', md: '4xl' }}
+                bg="whiteAlpha.200"
+                color="whiteAlpha.600"
+                _placeholder={{ color: 'whiteAlpha.600' }}
+                pl={{ base: 4, md: 10 }}
+                pr={{ base: '86px', md: 28 }}
+                py={{ base: '24px', md: '46px' }}
+                borderRadius={{ base: 'xl', md: '3xl' }}
+                borderWidth={0}
+                lineHeight="none"
+              />
+              <InputRightElement h="full" width="auto" mr={{ base: 4, md: 10 }}>
+                <IconButton
+                  aria-label="Subscribe"
+                  type="submit"
+                  flexShrink={0}
+                  colorScheme="purple"
+                  isLoading={isLoading}
+                  icon={<MdArrowRightAlt size="24px" />}
+                  borderRadius="full"
+                  size={'lg'}
+                />
+              </InputRightElement>
+            </InputGroup>
             <FormErrorMessage>
               {formState.errors.email?.message}
             </FormErrorMessage>
           </FormControl>
-          <Button
-            type="submit"
-            flexShrink={0}
-            colorScheme="whiteAlpha"
-            isLoading={isLoading}
-          >
-            Subscribe
-          </Button>
         </Stack>
       </Stack>
     </Form>

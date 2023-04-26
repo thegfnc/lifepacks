@@ -35,7 +35,7 @@ import UserProfile, {
   UserProfileLayout,
 } from 'src/components/UserProfile/UserProfile'
 
-import { examplePacks } from './homePageData'
+import { examplePacks, faqs } from './homePageData'
 
 const HomePage = () => {
   const { isAuthenticated } = useAuth()
@@ -350,153 +350,44 @@ const HomePage = () => {
             >
               <Accordion defaultIndex={[0]} allowMultiple>
                 <Stack spacing={4}>
-                  <AccordionItem>
-                    {({ isExpanded }) => (
-                      <Box
-                        bg={isExpanded ? 'purple.500' : 'white'}
-                        color={isExpanded ? 'white' : 'blackAlpha.700'}
-                        p={{ base: 3, md: 6 }}
-                        borderRadius="32px"
-                        transition={'background .2s ease-in-out'}
-                      >
-                        <AccordionButton p={4} borderRadius="16px">
-                          <Box
-                            flex="1"
-                            textAlign="left"
-                            fontSize={{ base: 'xl', md: '2xl' }}
-                            fontWeight="medium"
-                          >
-                            Is Lifepacks free?
-                          </Box>
-                        </AccordionButton>
-                        <AccordionPanel
-                          p={0}
-                          px={3}
-                          mb={3}
-                          fontFamily="bitter"
-                          fontSize={{ base: 'lg', md: '2xl' }}
-                          color="white"
-                          lineHeight="short"
+                  {faqs.map(({ question, answer }, index) => (
+                    <AccordionItem key={index}>
+                      {({ isExpanded }) => (
+                        <Box
+                          bg={isExpanded ? 'purple.500' : 'white'}
+                          color={isExpanded ? 'white' : 'blackAlpha.700'}
+                          p={{ base: 4, md: 6 }}
+                          borderRadius="32px"
+                          transition={'background .2s ease-in-out'}
                         >
-                          Fisca’s robotic dog uses a rechargeable battery, which
-                          is great for your wallet and the planet. The downside
-                          of this, however, is that the battery must be removed
-                          and charged after 60 minutes of play.
-                        </AccordionPanel>
-                      </Box>
-                    )}
-                  </AccordionItem>
-
-                  <AccordionItem>
-                    {({ isExpanded }) => (
-                      <Box
-                        bg={isExpanded ? 'purple.500' : 'white'}
-                        color={isExpanded ? 'white' : 'blackAlpha.700'}
-                        p={{ base: 3, md: 6 }}
-                        borderRadius="32px"
-                        transition={'background .2s ease-in-out'}
-                      >
-                        <AccordionButton p={4} borderRadius="16px">
-                          <Box
-                            flex="1"
-                            textAlign="left"
-                            fontSize={{ base: 'xl', md: '2xl' }}
-                            fontWeight="medium"
+                          <AccordionButton
+                            p={{ base: 3, md: 4 }}
+                            borderRadius="16px"
                           >
-                            Can I make money from my packs?
-                          </Box>
-                        </AccordionButton>
-                        <AccordionPanel
-                          p={0}
-                          px={3}
-                          mb={3}
-                          fontFamily="bitter"
-                          fontSize={{ base: 'lg', md: '2xl' }}
-                          color="white"
-                          lineHeight="short"
-                        >
-                          Fisca’s robotic dog uses a rechargeable battery, which
-                          is great for your wallet and the planet. The downside
-                          of this, however, is that the battery must be removed
-                          and charged after 60 minutes of play.
-                        </AccordionPanel>
-                      </Box>
-                    )}
-                  </AccordionItem>
-
-                  <AccordionItem>
-                    {({ isExpanded }) => (
-                      <Box
-                        bg={isExpanded ? 'purple.500' : 'white'}
-                        color={isExpanded ? 'white' : 'blackAlpha.700'}
-                        p={{ base: 3, md: 6 }}
-                        borderRadius="32px"
-                        transition={'background .2s ease-in-out'}
-                      >
-                        <AccordionButton p={4} borderRadius="16px">
-                          <Box
-                            flex="1"
-                            textAlign="left"
-                            fontSize={{ base: 'xl', md: '2xl' }}
-                            fontWeight="medium"
+                            <Box
+                              flex="1"
+                              textAlign="left"
+                              fontSize={{ base: 'xl', md: '2xl' }}
+                              fontWeight="medium"
+                            >
+                              {question}
+                            </Box>
+                          </AccordionButton>
+                          <AccordionPanel
+                            p={0}
+                            px={3}
+                            mb={3}
+                            fontFamily="bitter"
+                            fontSize={{ base: 'lg', md: '2xl' }}
+                            color="white"
+                            lineHeight="short"
                           >
-                            Who can see the packs I’ve made?
-                          </Box>
-                        </AccordionButton>
-                        <AccordionPanel
-                          p={0}
-                          px={3}
-                          mb={3}
-                          fontFamily="bitter"
-                          fontSize={{ base: 'lg', md: '2xl' }}
-                          color="white"
-                          lineHeight="short"
-                        >
-                          Fisca’s robotic dog uses a rechargeable battery, which
-                          is great for your wallet and the planet. The downside
-                          of this, however, is that the battery must be removed
-                          and charged after 60 minutes of play.
-                        </AccordionPanel>
-                      </Box>
-                    )}
-                  </AccordionItem>
-
-                  <AccordionItem>
-                    {({ isExpanded }) => (
-                      <Box
-                        bg={isExpanded ? 'purple.500' : 'white'}
-                        color={isExpanded ? 'white' : 'blackAlpha.700'}
-                        p={{ base: 3, md: 6 }}
-                        borderRadius="32px"
-                        transition={'background .2s ease-in-out'}
-                      >
-                        <AccordionButton p={4} borderRadius="16px">
-                          <Box
-                            flex="1"
-                            textAlign="left"
-                            fontSize={{ base: 'xl', md: '2xl' }}
-                            fontWeight="medium"
-                          >
-                            Where should I share the link to my pack?
-                          </Box>
-                        </AccordionButton>
-                        <AccordionPanel
-                          p={0}
-                          px={3}
-                          mb={3}
-                          fontFamily="bitter"
-                          fontSize={{ base: 'lg', md: '2xl' }}
-                          color="white"
-                          lineHeight="short"
-                        >
-                          Fisca’s robotic dog uses a rechargeable battery, which
-                          is great for your wallet and the planet. The downside
-                          of this, however, is that the battery must be removed
-                          and charged after 60 minutes of play.
-                        </AccordionPanel>
-                      </Box>
-                    )}
-                  </AccordionItem>
+                            {answer}
+                          </AccordionPanel>
+                        </Box>
+                      )}
+                    </AccordionItem>
+                  ))}
                 </Stack>
               </Accordion>
             </Container>

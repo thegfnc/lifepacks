@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Alert, AlertIcon, Stack } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box } from '@chakra-ui/react'
 import type {
   MailingListSignUpMutation,
   MailingListSignUpMutationVariables,
@@ -40,13 +40,7 @@ const MailingListSignUp = () => {
   }
 
   return (
-    <Stack>
-      {error && (
-        <Alert status="error" color="black">
-          <AlertIcon />
-          {error.message}
-        </Alert>
-      )}
+    <Box>
       {isSuccessful ? (
         <Alert status="success" color="black">
           <AlertIcon />
@@ -55,7 +49,13 @@ const MailingListSignUp = () => {
       ) : (
         <MailingListSignUpForm onSubmit={onSubmit} isLoading={loading} />
       )}
-    </Stack>
+      {error && (
+        <Alert mt={{ base: 4, md: 8 }} status="error" color="black">
+          <AlertIcon />
+          {error.message}
+        </Alert>
+      )}
+    </Box>
   )
 }
 
