@@ -79,7 +79,7 @@ const MailingListSignUpForm = ({
                   isLoading={isLoading}
                   icon={<MdArrowRightAlt size="24px" />}
                   borderRadius="full"
-                  size={{ base: 'md', md: 'lg' }}
+                  size={'lg'}
                 />
               </InputRightElement>
             </InputGroup>
