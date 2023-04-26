@@ -80,7 +80,6 @@ const MailingListSignUpForm = ({
                   icon={<MdArrowRightAlt size="24px" />}
                   borderRadius="full"
                   size={{ base: 'md', md: 'lg' }}
-                  pl={0}
                 />
               </InputRightElement>
             </InputGroup>
