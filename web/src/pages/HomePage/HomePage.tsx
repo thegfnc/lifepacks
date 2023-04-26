@@ -224,6 +224,7 @@ const HomePage = () => {
                       userProfile={
                         examplePacks[examplePackTabIndex].userProfile
                       }
+                      disableLinks={true}
                     />
                   </Box>
                 </Flex>

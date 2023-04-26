@@ -17,6 +17,7 @@ export enum UserProfileLayout {
 type UserProfileLayoutPartialProps = {
   userProfile: UserProfileType
   actionButton?: ReactNode
+  disableLinks?: boolean
 }
 
 type UserProfileProps = UserProfileLayoutPartialProps & {
@@ -26,7 +27,13 @@ type UserProfileProps = UserProfileLayoutPartialProps & {
 const UserProfileBannerLayout = ({
   userProfile,
   actionButton,
+  disableLinks,
 }: UserProfileLayoutPartialProps) => {
+  const linkProps = {
+    as: Link,
+    to: routes.userProfile({ username: userProfile.username }),
+  }
+
   const userDisplayName = getUserDisplayName(
     userProfile.givenName,
     userProfile.familyName,
@@ -44,21 +51,19 @@ const UserProfileBannerLayout = ({
       </Center>
       <Stack mt={4} spacing={1}>
         <Text
-          as={Link}
           fontSize="2xl"
           fontWeight="bold"
           lineHeight="shorter"
           color="blackAlpha.800"
-          to={routes.userProfile({ username: userProfile.username })}
+          {...(disableLinks ? {} : linkProps)}
         >
           {userDisplayName}
         </Text>
         {!userDisplayName.endsWith(userProfile.username) && (
           <Text
-            as={Link}
             fontSize="md"
             color="blackAlpha.700"
-            to={routes.userProfile({ username: userProfile.username })}
+            {...(disableLinks ? {} : linkProps)}
           >
             @{userProfile.username}
           </Text>
@@ -111,7 +116,13 @@ const UserProfileBannerLayout = ({
 const UserProfileSidebarLayout = ({
   userProfile,
   actionButton,
+  disableLinks,
 }: UserProfileLayoutPartialProps) => {
+  const linkProps = {
+    as: Link,
+    to: routes.userProfile({ username: userProfile.username }),
+  }
+
   return (
     <>
       <Flex justify="space-between">
@@ -129,11 +140,10 @@ const UserProfileSidebarLayout = ({
       <Flex direction="column" mt={4}>
         {(userProfile.givenName || userProfile.familyName) && (
           <Text
-            as={Link}
             fontSize="xl"
             fontWeight="bold"
             color="blackAlpha.800"
-            to={routes.userProfile({ username: userProfile.username })}
+            {...(disableLinks ? {} : linkProps)}
           >
             {getUserDisplayName(
               userProfile.givenName,
@@ -143,10 +153,9 @@ const UserProfileSidebarLayout = ({
           </Text>
         )}
         <Text
-          as={Link}
           fontSize="md"
           color="blackAlpha.700"
-          to={routes.userProfile({ username: userProfile.username })}
+          {...(disableLinks ? {} : linkProps)}
         >
           @{userProfile.username}
         </Text>
@@ -189,17 +198,20 @@ const UserProfileSidebarLayout = ({
 const UserProfile = ({
   userProfile,
   actionButton,
+  disableLinks = false,
   layout = UserProfileLayout.Sidebar,
 }: UserProfileProps) => {
   return layout === UserProfileLayout.Sidebar ? (
     <UserProfileSidebarLayout
       userProfile={userProfile}
       actionButton={actionButton}
+      disableLinks={disableLinks}
     />
   ) : (
     <UserProfileBannerLayout
       userProfile={userProfile}
       actionButton={actionButton}
+      disableLinks={disableLinks}
     />
   )
 }
