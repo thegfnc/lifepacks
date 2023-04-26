@@ -40,10 +40,14 @@ const MailingListSignUpForm = ({
           align="flex-end"
         >
           <FormControl isInvalid={Boolean(formState.errors.email)}>
-            <FormLabel fontSize="28px" fontWeight="semibold" color="subtle">
-              Stay in touch
+            <FormLabel
+              fontSize={{ base: '20px', md: '28px' }}
+              fontWeight="semibold"
+              color="subtle"
+            >
+              Stay in the loop
             </FormLabel>
-            <InputGroup>
+            <InputGroup mt={6}>
               <Input
                 placeholder="Enter your email"
                 type="email"
@@ -56,14 +60,14 @@ const MailingListSignUpForm = ({
                 })}
                 h="auto"
                 width="full"
-                fontSize="4xl"
+                fontSize={{ base: '18px', md: '4xl' }}
                 bg="whiteAlpha.200"
                 color="whiteAlpha.600"
                 _placeholder={{ color: 'whiteAlpha.600' }}
-                pl={10}
+                pl={{ base: 4, md: 10 }}
                 pr={28}
-                py="46px"
-                borderRadius="3xl"
+                py={{ base: '24px', md: '46px' }}
+                borderRadius={{ base: 'xl', md: '3xl' }}
                 borderWidth={0}
                 lineHeight="none"
               />
