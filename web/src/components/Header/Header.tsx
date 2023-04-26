@@ -12,7 +12,6 @@ import {
   Spinner,
   Text,
   Avatar,
-  Link as ChakraLink,
   Box,
 } from '@chakra-ui/react'
 import { MdLogout, MdOutlineAccountCircle } from 'react-icons/md'
