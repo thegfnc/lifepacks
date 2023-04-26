@@ -3,7 +3,6 @@ import { Heading, HStack, Text } from '@chakra-ui/react'
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
-import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 type LogoProps = {
   color?: string
