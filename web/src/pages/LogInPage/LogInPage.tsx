@@ -40,7 +40,7 @@ const LogInPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.home())
+      navigate(routes.explore())
     }
   }, [isAuthenticated])
 

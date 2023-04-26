@@ -42,7 +42,7 @@ const CompleteSignUpPage = () => {
   })
 
   if (currentUserProfile) {
-    navigate(routes.home())
+    navigate(routes.explore())
   }
 
   const onSubmit = (data: UserProfileFormSubmitData) => {
