@@ -228,3 +228,26 @@ export const examplePacks = [
     },
   },
 ]
+
+export const faqs = [
+  {
+    question: 'Is Lifepacks free?',
+    answer:
+      'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet. The downside of this, however, is that the battery must be removed and charged after 60 minutes of play.',
+  },
+  {
+    question: 'Can I make money from my packs?',
+    answer:
+      'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet. The downside of this, however, is that the battery must be removed and charged after 60 minutes of play.',
+  },
+  {
+    question: 'Who can see the packs I’ve made?',
+    answer:
+      'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet. The downside of this, however, is that the battery must be removed and charged after 60 minutes of play.',
+  },
+  {
+    question: 'Where should I share the link to my pack?',
+    answer:
+      'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet. The downside of this, however, is that the battery must be removed and charged after 60 minutes of play.',
+  },
+]
