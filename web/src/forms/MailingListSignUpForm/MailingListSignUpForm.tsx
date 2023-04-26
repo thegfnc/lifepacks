@@ -3,9 +3,13 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  IconButton,
   Input,
+  InputGroup,
+  InputRightElement,
   Stack,
 } from '@chakra-ui/react'
+import { MdArrowRightAlt } from 'react-icons/md'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
@@ -33,36 +37,53 @@ const MailingListSignUpForm = ({
         <Stack
           spacing="4"
           direction={{ base: 'column', sm: 'row' }}
-          maxW={{ lg: '360px' }}
           align="flex-end"
         >
           <FormControl isInvalid={Boolean(formState.errors.email)}>
-            <FormLabel fontSize="sm" fontWeight="semibold" color="subtle">
-              Stay up to date
+            <FormLabel fontSize="28px" fontWeight="semibold" color="subtle">
+              Stay in touch
             </FormLabel>
-            <Input
-              placeholder="Enter your email"
-              type="email"
-              autoComplete="email"
-              {...register('email', {
-                required: {
-                  value: true,
-                  message: 'E-mail address is required',
-                },
-              })}
-            />
+            <InputGroup>
+              <Input
+                placeholder="Enter your email"
+                type="email"
+                autoComplete="email"
+                {...register('email', {
+                  required: {
+                    value: true,
+                    message: 'E-mail address is required',
+                  },
+                })}
+                h="auto"
+                width="full"
+                fontSize="4xl"
+                bg="whiteAlpha.200"
+                color="whiteAlpha.600"
+                _placeholder={{ color: 'whiteAlpha.600' }}
+                pl={10}
+                pr={28}
+                py="46px"
+                borderRadius="3xl"
+                borderWidth={0}
+                lineHeight="none"
+              />
+              <InputRightElement h="full" width="auto" mr="10">
+                <IconButton
+                  aria-label="Subscribe"
+                  type="submit"
+                  flexShrink={0}
+                  colorScheme="purple"
+                  isLoading={isLoading}
+                  icon={<MdArrowRightAlt size="24px" />}
+                  borderRadius="full"
+                  size="lg"
+                />
+              </InputRightElement>
+            </InputGroup>
             <FormErrorMessage>
               {formState.errors.email?.message}
             </FormErrorMessage>
           </FormControl>
-          <Button
-            type="submit"
-            flexShrink={0}
-            colorScheme="whiteAlpha"
-            isLoading={isLoading}
-          >
-            Subscribe
-          </Button>
         </Stack>
       </Stack>
     </Form>
