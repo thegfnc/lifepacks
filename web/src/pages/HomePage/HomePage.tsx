@@ -181,7 +181,7 @@ const HomePage = () => {
               bg="brown.500"
               px={{ base: 6, md: 24 }}
               py={{ base: 6, md: '76px' }}
-              mt="65px"
+              mt={{ base: 8, md: '65px' }}
               borderRadius={{ base: '3xl', md: '24px' }}
               position="relative"
             >
