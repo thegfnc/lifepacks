@@ -127,7 +127,7 @@ const HomePage = () => {
         </PageContainer>
       </Box>
 
-      <Box bg="purple.500" overflow="hidden" maxH="100vh">
+      <Box bg="purple.500" overflow="hidden" maxH="115vh">
         <PageContainer minHeight="auto" pt={{ base: 8, md: '120px' }} pb={10}>
           <Flex direction="column" align="center">
             <Heading
@@ -171,7 +171,7 @@ const HomePage = () => {
                     _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.500' }}
                     onClick={() => setExamplePackTabIndex(index)}
                     aria-label={examplePack.tabLabel}
-                    px={4}
+                    px={'14px'}
                     icon={<Text fontSize="xl">{examplePack.tabEmoji}</Text>}
                     rounded="full"
                   />
@@ -239,27 +239,67 @@ const HomePage = () => {
             </Text>
           </Box>
         </PageContainer>
-        <Flex mt={{ base: 10, md: '75px' }} justify="center" overflow="hidden">
+        <Flex
+          mt={{ base: 10, md: '75px' }}
+          justify="center"
+          overflow="hidden"
+          pb={{ base: 10, md: 16 }}
+        >
           <HStack spacing={{ base: 6, md: 12 }}>
-            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+            <Center
+              p={20}
+              h="290px"
+              w="290px"
+              bg="white"
+              borderRadius="32px"
+              boxShadow="xl"
+            >
               <Image src={ebayLogo} />
             </Center>
-            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+            <Center
+              p={20}
+              h="290px"
+              w="290px"
+              bg="white"
+              borderRadius="32px"
+              boxShadow="xl"
+            >
               <Image src={walmartLogo} h="120px" w="120px" />
             </Center>
-            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+            <Center
+              p={20}
+              h="290px"
+              w="290px"
+              bg="white"
+              borderRadius="32px"
+              boxShadow="xl"
+            >
               <Image src={amazonLogo} h="120px" w="120px" />
             </Center>
-            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+            <Center
+              p={20}
+              h="290px"
+              w="290px"
+              bg="white"
+              borderRadius="32px"
+              boxShadow="xl"
+            >
               <Image src={targetLogo} h="120px" w="120px" />
             </Center>
-            <Center p={20} h="290px" w="290px" bg="white" borderRadius="32px">
+            <Center
+              p={20}
+              h="290px"
+              w="290px"
+              bg="white"
+              borderRadius="32px"
+              boxShadow="xl"
+            >
               <Image src={homeDepotLogo} h="120px" w="120px" />
             </Center>
           </HStack>
         </Flex>
         <PageContainer minHeight="auto" pt={0} pb={0}>
-          <Box mt={{ base: 10, md: 16 }} textAlign="center">
+          <Box textAlign="center">
             <Button
               size="xl"
               onClick={handleGetStarted}
