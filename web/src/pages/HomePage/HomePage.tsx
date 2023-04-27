@@ -97,7 +97,7 @@ const HomePage = () => {
                 </Box>
               </Box>
             </Flex>
-            <Flex flex={1}>
+            <Flex flex={1} justify="center">
               <Stack
                 spacing={{ base: 4, md: 6 }}
                 mt={{ base: 8, md: 0 }}
@@ -138,6 +138,7 @@ const HomePage = () => {
             >
               Share your expert opinion
             </Heading>
+            {/* desktop */}
             <HStack mt={8} display={{ base: 'none', md: 'block' }}>
               {examplePacks.map((examplePack, index) => {
                 const isCurrentTab = index === examplePackTabIndex
@@ -158,6 +159,7 @@ const HomePage = () => {
                 )
               })}
             </HStack>
+            {/* mobile */}
             <HStack mt={6} display={{ base: 'block', md: 'none' }}>
               {examplePacks.map((examplePack, index) => {
                 const isCurrentTab = index === examplePackTabIndex
@@ -256,6 +258,7 @@ const HomePage = () => {
             </Text>
           </Box>
         </PageContainer>
+        {/* desktop */}
         <Flex
           mt={{ base: 10, md: '75px' }}
           justify="center"
@@ -279,6 +282,7 @@ const HomePage = () => {
             ))}
           </HStack>
         </Flex>
+        {/* mobile */}
         <Flex
           justify="center"
           display={{ base: 'flex', md: 'none' }}
