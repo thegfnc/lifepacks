@@ -33,7 +33,7 @@ function useCurrentUserProfile() {
     pathname !== routes.completeSignUp() &&
     currentUser &&
     !loading &&
-    data &&
+    !error &&
     !data.currentUserProfile
   ) {
     navigate(routes.completeSignUp())
