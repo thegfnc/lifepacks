@@ -49,12 +49,9 @@ const ForgotPasswordPage = () => {
     setIsLoading(true)
 
     try {
-      const { error } = await client.auth.api.resetPasswordForEmail(
-        data.email,
-        {
-          redirectTo: `${window.location.origin}${routes.resetPassword()}`,
-        }
-      )
+      const { error } = await client.auth.resetPasswordForEmail(data.email, {
+        redirectTo: `${window.location.origin}${routes.resetPassword()}`,
+      })
 
       if (error) {
         errorMessage = error.message

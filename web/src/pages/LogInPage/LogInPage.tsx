@@ -52,6 +52,7 @@ const LogInPage = () => {
 
     try {
       const { error } = await logIn({
+        authMethod: 'password',
         email: data.email,
         password: data.password,
       })
