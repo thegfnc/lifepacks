@@ -55,6 +55,7 @@ function useCurrentUserProfile() {
     pathname !== routes.completeSignUp() &&
     currentUser &&
     !queryLoading &&
+    queryData &&
     !queryData.currentUserProfile
   ) {
     navigate(routes.completeSignUp())
