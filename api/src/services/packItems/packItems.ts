@@ -1,4 +1,4 @@
-import { validate, validateWith } from '@redwoodjs/api'
+import { validate, validateWithSync } from '@redwoodjs/api'
 
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
@@ -38,7 +38,7 @@ export const updatePackItem = async ({ id, input }) => {
     },
   })
 
-  validateWith(() => {
+  validateWithSync(() => {
     if (packItemToUpdate.userId !== userId) {
       throw new Error('You are not authorized to update that pack item.')
     }
@@ -64,7 +64,7 @@ type DeletePackItemsByIdInput = {
 export const deletePackItemsByIds = async ({
   ids,
 }: DeletePackItemsByIdInput) => {
-  validateWith(() => {
+  validateWithSync(() => {
     if (!ids || !Array.isArray(ids) || ids.length === 0) {
       throw new Error('You must provide at least one pack item id to delete.')
     }
@@ -82,7 +82,7 @@ export const deletePackItemsByIds = async ({
   })
 
   for (const packItemToDelete of packItemsToDelete) {
-    validateWith(() => {
+    validateWithSync(() => {
       if (packItemToDelete.userId !== userId) {
         throw new Error('You are not authorized to delete that pack item.')
       }
@@ -120,7 +120,7 @@ export const deletePackItemsByPackId = async ({
   })
 
   for (const packItemToDelete of packItemsToDelete) {
-    validateWith(() => {
+    validateWithSync(() => {
       if (packItemToDelete.userId !== userId) {
         throw new Error('You are not authorized to delete that pack item.')
       }

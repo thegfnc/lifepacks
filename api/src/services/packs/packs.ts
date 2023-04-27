@@ -5,7 +5,7 @@ import type {
   PackRelationResolvers,
 } from 'types/graphql'
 
-import { validate, validateWith } from '@redwoodjs/api'
+import { validate, validateWithSync } from '@redwoodjs/api'
 
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
@@ -37,7 +37,7 @@ export const packs: QueryResolvers['packs'] = async ({ username }) => {
 
 export const pack: QueryResolvers['pack'] = async ({ username, slug, id }) => {
   validate(username, 'Username', { presence: true })
-  validateWith(() => {
+  validateWithSync(() => {
     if (!slug && !id) {
       throw new Error('You must provide `id` or `slug` to fetch a pack.')
     }
@@ -112,7 +112,7 @@ export const updatePack: MutationResolvers['updatePack'] = async ({
   // PACK
   const packToUpdate = await db.pack.findUnique({ where: { id } })
 
-  validateWith(() => {
+  validateWithSync(() => {
     if (packToUpdate.userId !== userId) {
       throw new Error('You are not authorized to update that pack.')
     }
@@ -183,7 +183,7 @@ export const deletePack: MutationResolvers['deletePack'] = async ({ id }) => {
 
   const packToDelete = await db.pack.findUnique({ where: { id } })
 
-  validateWith(() => {
+  validateWithSync(() => {
     if (packToDelete.userId !== userId) {
       throw new Error('You are not authorized to delete that pack.')
     }
