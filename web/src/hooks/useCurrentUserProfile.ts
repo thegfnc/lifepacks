@@ -25,37 +25,17 @@ export const CURRENT_USER_PROFILE_QUERY = gql`
 `
 
 function useCurrentUserProfile() {
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
   const { currentUser } = useAuth()
   const { pathname } = useLocation()
 
-  const {
-    data: queryData,
-    loading: queryLoading,
-    error: queryError,
-    refetch,
-  } = useQuery(CURRENT_USER_PROFILE_QUERY)
-
-  useEffect(() => {
-    if (queryData) {
-      setData(queryData)
-      setLoading(false)
-    }
-    if (queryError) {
-      setError(queryError)
-      setLoading(false)
-    }
-  }, [queryData, queryError])
+  const { data, loading, error, refetch } = useQuery(CURRENT_USER_PROFILE_QUERY)
 
   // If a user hasn't created a user profile yet, redirect them to finish sign up
   if (
     pathname !== routes.completeSignUp() &&
     currentUser &&
-    !queryLoading &&
-    !queryData.currentUserProfile
+    !loading &&
+    !data.currentUserProfile
   ) {
     navigate(routes.completeSignUp())
   }
@@ -63,7 +43,7 @@ function useCurrentUserProfile() {
 
   return {
     currentUserProfile: data?.currentUserProfile,
-    loading: loading || queryLoading,
+    loading,
     error,
     refetch,
   }
