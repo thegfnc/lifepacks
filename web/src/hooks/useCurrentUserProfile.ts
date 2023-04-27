@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { navigate, routes, useLocation } from '@redwoodjs/router'
 import { useQuery } from '@redwoodjs/web'
 
@@ -35,6 +33,7 @@ function useCurrentUserProfile() {
     pathname !== routes.completeSignUp() &&
     currentUser &&
     !loading &&
+    data &&
     !data.currentUserProfile
   ) {
     navigate(routes.completeSignUp())
