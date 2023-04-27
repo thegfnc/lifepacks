@@ -125,7 +125,7 @@ const HomePage = () => {
         <PageContainer
           minHeight="auto"
           pt={{ base: 8, md: '120px' }}
-          pb={10}
+          pb={0}
           px={{ base: 2, md: 10 }}
         >
           <Flex direction="column" align="center">
@@ -182,9 +182,11 @@ const HomePage = () => {
             <Box
               bg="brown.500"
               px={{ base: 6, md: 24 }}
-              py={{ base: 6, md: '76px' }}
+              pt={{ base: 6, md: '76px' }}
+              pb={{ base: 6, md: 14 }}
               mt={{ base: 8, md: '65px' }}
-              borderRadius={{ base: '3xl', md: '24px' }}
+              borderTopLeftRadius={{ base: '3xl', md: '24px' }}
+              borderTopRightRadius={{ base: '3xl', md: '24px' }}
               position="relative"
             >
               <Box
