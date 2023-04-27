@@ -1,3 +1,9 @@
+import amazonLogo from 'public/logos/amazon.png'
+import ebayLogo from 'public/logos/ebay.png'
+import homeDepotLogo from 'public/logos/home_depot.png'
+import targetLogo from 'public/logos/target.png'
+import walmartLogo from 'public/logos/walmart.png'
+
 export const examplePacks = [
   {
     tabEmoji: '⛺️',
@@ -250,4 +256,12 @@ export const faqs = [
     answer:
       'Fisca’s robotic dog uses a rechargeable battery, which is great for your wallet and the planet. The downside of this, however, is that the battery must be removed and charged after 60 minutes of play.',
   },
+]
+
+export const stores = [
+  { storeName: 'ebay', storeLogo: ebayLogo },
+  { storeName: 'Walmart', storeLogo: walmartLogo },
+  { storeName: 'Amazon', storeLogo: amazonLogo },
+  { storeName: 'Target', storeLogo: targetLogo },
+  { storeName: 'The Home Depot', storeLogo: homeDepotLogo },
 ]

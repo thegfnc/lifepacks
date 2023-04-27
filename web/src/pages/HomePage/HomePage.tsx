@@ -17,11 +17,6 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
-import amazonLogo from 'public/logos/amazon.png'
-import ebayLogo from 'public/logos/ebay.png'
-import homeDepotLogo from 'public/logos/home_depot.png'
-import targetLogo from 'public/logos/target.png'
-import walmartLogo from 'public/logos/walmart.png'
 import websiteScreenshot from 'public/website_screenshot.png'
 
 import { Link, navigate, routes } from '@redwoodjs/router'
@@ -35,7 +30,7 @@ import UserProfile, {
   UserProfileLayout,
 } from 'src/components/UserProfile/UserProfile'
 
-import { examplePacks, faqs } from './homePageData'
+import { examplePacks, faqs, stores } from './homePageData'
 
 const HomePage = () => {
   const { isAuthenticated } = useAuth()
@@ -127,7 +122,12 @@ const HomePage = () => {
       </Box>
 
       <Box bg="purple.500" overflow="hidden" maxH="115vh">
-        <PageContainer minHeight="auto" pt={{ base: 8, md: '120px' }} pb={10}>
+        <PageContainer
+          minHeight="auto"
+          pt={{ base: 8, md: '120px' }}
+          pb={10}
+          px={{ base: 2, md: 10 }}
+        >
           <Flex direction="column" align="center">
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
@@ -234,7 +234,7 @@ const HomePage = () => {
         </PageContainer>
       </Box>
 
-      <Box bg="yellow.500" py={{ base: 10, md: '120px' }}>
+      <Box bg="yellow.500" py={{ base: 12, md: '120px' }}>
         <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box px={4} textAlign="center">
             <Heading
@@ -261,67 +261,57 @@ const HomePage = () => {
           justify="center"
           overflow="hidden"
           pb={{ base: 10, md: 16 }}
+          display={{ base: 'none', md: 'flex' }}
         >
           <HStack spacing={{ base: 6, md: 12 }}>
-            <Center
-              p={20}
-              h="290px"
-              w="290px"
-              bg="white"
-              borderRadius="32px"
-              boxShadow="xl"
-            >
-              <Image src={ebayLogo} />
-            </Center>
-            <Center
-              p={20}
-              h="290px"
-              w="290px"
-              bg="white"
-              borderRadius="32px"
-              boxShadow="xl"
-            >
-              <Image src={walmartLogo} h="120px" w="120px" />
-            </Center>
-            <Center
-              p={20}
-              h="290px"
-              w="290px"
-              bg="white"
-              borderRadius="32px"
-              boxShadow="xl"
-            >
-              <Image src={amazonLogo} h="120px" w="120px" />
-            </Center>
-            <Center
-              p={20}
-              h="290px"
-              w="290px"
-              bg="white"
-              borderRadius="32px"
-              boxShadow="xl"
-            >
-              <Image src={targetLogo} h="120px" w="120px" />
-            </Center>
-            <Center
-              p={20}
-              h="290px"
-              w="290px"
-              bg="white"
-              borderRadius="32px"
-              boxShadow="xl"
-            >
-              <Image src={homeDepotLogo} h="120px" w="120px" />
-            </Center>
+            {stores.map((store) => (
+              <Center
+                key={store.storeName}
+                p={20}
+                h={'290px'}
+                w={'290px'}
+                bg="white"
+                borderRadius="32px"
+                boxShadow="xl"
+              >
+                <Image src={store.storeLogo} h={'120px'} w={'120px'} />
+              </Center>
+            ))}
           </HStack>
+        </Flex>
+        <Flex
+          justify="center"
+          display={{ base: 'flex', md: 'none' }}
+          mt={6}
+          mb={2}
+          mx={2}
+        >
+          <Flex justify="center" w="full" maxW="500px" flexWrap="wrap">
+            {stores.slice(0, 4).map((store) => (
+              <Center
+                key={store.storeName}
+                p={'45px'}
+                h={'170px'}
+                w={'170px'}
+                bg="white"
+                borderRadius="32px"
+                boxShadow="xl"
+                mb={4}
+                mx={2}
+              >
+                <Image src={store.storeLogo} h="80px" w="80px" />
+              </Center>
+            ))}
+          </Flex>
         </Flex>
         <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box textAlign="center">
             <Button
-              size="xl"
+              size={{ base: 'lg', md: 'xl' }}
               onClick={handleGetStarted}
-              w={{ base: 'full', md: 'auto' }}
+              w="full"
               px="92px"
+              maxW={{ base: '356px', md: '290px' }}
             >
               Get Started
             </Button>
