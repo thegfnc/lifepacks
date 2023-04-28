@@ -49,7 +49,7 @@ export const examplePacks = [
     pack: {
       title: 'The Best Toys for Your Little One',
       description:
-        'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
+        'Engaging baby toys are crucial for encouraging learning, exploration, and development in infants and toddlers. This guide offers a comprehensive overview of some of the most creative and thoughtful baby toys available today.',
       packItems: [
         {
           id: 3,
@@ -87,7 +87,7 @@ export const examplePacks = [
     pack: {
       title: 'Best lenses for Food Photography',
       description:
-        'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
+        "Capturing mouth-watering images of food can be a challenging task, but having the right lens can make all the difference. In this review, we'll take a closer look at my go-to lenses for getting those stunning texture details.",
       packItems: [
         {
           id: 5,
@@ -125,7 +125,7 @@ export const examplePacks = [
     pack: {
       title: 'Bring Color To Your Kitchen',
       description:
-        'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
+        "Having color in your kitchen can affect your mood and appetite, and it can also enhance the overall aesthetic of the space.  Here's how to turn your kitchen into an art gallery.",
       packItems: [
         {
           id: 7,
@@ -163,7 +163,7 @@ export const examplePacks = [
     pack: {
       title: 'The Next Generation of Synths',
       description:
-        'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
+        'These synths offer the perfect blend of vintage and modern technology, providing musicians with the best of both worlds.',
       packItems: [
         {
           id: 9,
@@ -201,7 +201,7 @@ export const examplePacks = [
     pack: {
       title: 'Summer Fashion Trends',
       description:
-        'Camping can be a fun way to explore the great outdoors, but having the right gear can make all the difference in your comfort and safety while in nature.',
+        "Summer is the perfect time to embrace bold and bright colors in your fashion choices. In this guide, we'll take a closer look at some of the hottest color trends for summer fashion.",
       packItems: [
         {
           id: 11,

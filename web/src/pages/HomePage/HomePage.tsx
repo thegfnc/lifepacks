@@ -54,7 +54,7 @@ const HomePage = () => {
         ogContentUrl={`https://www.lifepacks.co${websiteScreenshot}`}
       />
 
-      <Box bg="brown.500" overflow="hidden">
+      <Box as="section" bg="brown.500" overflow="hidden">
         <PageContainer
           minHeight="auto"
           pt={{ base: 8, md: 6 }}
@@ -116,7 +116,7 @@ const HomePage = () => {
                 />
                 <PackItem
                   title="Apple AirPods Pro"
-                  description="The best cans for any entry-level audiophile. Hands down."
+                  description="High-quality wireless earbud option with great sound quality, convenient connectivity, and a sleek design."
                   purchaseUrl="#"
                   imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/21717ce2-ae68-4bd2-98f9-636f21996656-mqd83.jpeg"
                 />
@@ -126,7 +126,7 @@ const HomePage = () => {
         </PageContainer>
       </Box>
 
-      <Box bg="purple.500" overflow="hidden" maxH="115vh">
+      <Box as="section" bg="purple.500" overflow="hidden" maxH="115vh">
         <PageContainer
           minHeight="auto"
           pt={{ base: 8, md: '120px' }}
@@ -243,7 +243,7 @@ const HomePage = () => {
         </PageContainer>
       </Box>
 
-      <Box bg="yellow.500" py={{ base: 12, md: '120px' }}>
+      <Box as="section" bg="yellow.500" py={{ base: 12, md: '120px' }}>
         <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box px={4} textAlign="center">
             <Heading
@@ -330,7 +330,7 @@ const HomePage = () => {
         </PageContainer>
       </Box>
 
-      <Box bg="brown.500">
+      <Box as="section" bg="brown.500">
         <PageContainer
           minHeight="auto"
           pt={{ base: 10, md: '120px' }}

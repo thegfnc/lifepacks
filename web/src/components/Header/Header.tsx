@@ -49,7 +49,12 @@ const Header = ({ ctaComponent }: HeaderProps) => {
 
   return (
     <>
-      <Flex alignItems={'center'} justifyContent="center" h={'4.5rem'}>
+      <Flex
+        as="header"
+        alignItems={'center'}
+        justifyContent="center"
+        h={'4.5rem'}
+      >
         <Flex
           width="100%"
           maxWidth={'7xl'}

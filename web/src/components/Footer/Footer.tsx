@@ -5,7 +5,7 @@ import MailingListSignUp from '../MailingListSignUp/MailingListSignUp'
 import PageContainer from '../PageContainer/PageContainer'
 
 const Footer = () => (
-  <Box bg="blackAlpha.900" color="white">
+  <Box as="footer" bg="blackAlpha.900" color="white">
     <PageContainer minHeight="auto" pb={0} pt={0}>
       <Box as="footer" role="contentinfo" py={{ base: '12', md: '24' }}>
         <MailingListSignUp />
