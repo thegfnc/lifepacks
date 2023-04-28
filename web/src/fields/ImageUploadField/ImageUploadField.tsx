@@ -21,7 +21,7 @@ import {
   UseControllerProps,
 } from '@redwoodjs/forms'
 
-import supabaseClient from 'src/client'
+import { useAuth } from 'src/auth'
 import getFileExtension from 'src/helpers/getFileExtension'
 
 type ImageUploadFieldProps = {
@@ -37,6 +37,7 @@ function ImageUploadField<
   name,
   rules,
 }: UseControllerProps<TFieldValues, TName> & ImageUploadFieldProps) {
+  const { client } = useAuth()
   const { field, fieldState } = useController({ name, control, rules })
   const [previewImageUrl, setPreviewImageUrl] = useState(null)
   const [isUploading, setIsUploading] = useState(false)
@@ -70,18 +71,18 @@ function ImageUploadField<
         const imageFileName =
           slug(uuidv4() + '-' + imageFileNameWithoutExtension) + fileExtenstion
 
-        await supabaseClient.storage
+        await client.storage
           .from(bucket)
           .upload(imageFileName, compressedImageFile, {
             cacheControl: '3600',
             upsert: true,
           })
 
-        const { publicURL } = await supabaseClient.storage
+        const { data } = await client.storage
           .from(bucket)
           .getPublicUrl(imageFileName)
 
-        field.onChange(publicURL)
+        field.onChange(data.publicUrl)
 
         setIsUploading(false)
       },

@@ -41,7 +41,7 @@ const ForgotPasswordPage = () => {
     setIsLoading(true)
 
     try {
-      const { error } = await client.auth.update({
+      const { error } = await client.auth.updateUser({
         password: data.password,
       })
 
