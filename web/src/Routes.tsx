@@ -18,7 +18,7 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <Set wrap={AppLayout}>
         {/* Marketing Pages */}
-        <Route path="/" page={HomePage} name="home" />
+        <Route path="/" page={HomePage} name="home" prerender />
         <Route path="/explore" page={ExplorePage} name="explore" />
 
         {/* Public Profile and Pack Pages */}
@@ -26,9 +26,9 @@ const Routes = () => {
         <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" />
 
         {/* Public Auth Pages */}
-        <Route path="/log-in" page={LogInPage} name="logIn" />
-        <Route path="/sign-up" page={SignUpPage} name="signUp" />
-        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/log-in" page={LogInPage} name="logIn" prerender />
+        <Route path="/sign-up" page={SignUpPage} name="signUp" prerender />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" prerender />
 
         {/* Dashboard Pages*/}
         <Set private unauthenticated="home">
@@ -41,7 +41,7 @@ const Routes = () => {
       </Set>
 
       {/* System Pages */}
-      <Route notfound page={NotFoundPage} />
+      <Route notfound page={NotFoundPage} prerender />
     </Router>
   )
 }
