@@ -14,7 +14,7 @@ type PageContainerProps = {
 const PageContainer = ({
   children,
   minHeight = '100vh',
-  maxHeight = 'auto',
+  maxHeight = 'none',
   px = { base: 4, md: 10 },
   pt = { base: 4, md: 8 },
   pb = { base: 4, md: 20 },
