@@ -1,4 +1,6 @@
-import { Button } from '@chakra-ui/react'
+import { Button, chakra } from '@chakra-ui/react'
+
+import isValidUrl from 'src/helpers/isValidUrl'
 
 type BuyButtonProps = {
   purchaseUrl: string
@@ -26,18 +28,23 @@ const findStoreNameFromPurchaseUrl = (purchaseUrl: string) => {
 }
 
 const BuyButton = ({ purchaseUrl }: BuyButtonProps) => {
+  const isValidPurchaseUrl = isValidUrl(purchaseUrl)
   const storeName = findStoreNameFromPurchaseUrl(purchaseUrl)
   const buttonText = storeName ? `Buy on ${storeName}` : 'Buy Item'
 
+  const linkProps = {
+    as: chakra('a'),
+    href: purchaseUrl,
+    target: '_blank',
+  }
+
   return (
     <Button
-      as="a"
       colorScheme="yellow"
       size="lg"
       mt={4}
-      href={purchaseUrl}
-      target="_blank"
       w={{ base: 'full', md: 'auto' }}
+      {...(isValidPurchaseUrl ? linkProps : {})}
     >
       {buttonText}
     </Button>
