@@ -54,7 +54,7 @@ const HomePage = () => {
         ogContentUrl={`https://www.lifepacks.co${websiteScreenshot}`}
       />
 
-      <Box bg="brown.500" overflow="hidden">
+      <Box bg="brown.500" overflow="hidden" maxH="calc(100vh - 115px)">
         <PageContainer
           minHeight="auto"
           pt={{ base: 8, md: 6 }}
@@ -101,7 +101,7 @@ const HomePage = () => {
               <Stack
                 spacing={{ base: 4, md: 6 }}
                 mt={{ base: 8, md: 0 }}
-                mb={{ base: '-24rem', md: '-10rem' }}
+                // mb={{ base: '-24rem', md: '-10rem' }}
               >
                 <PackItem
                   title="HiFiMan Sundara"
