@@ -54,7 +54,11 @@ const HomePage = () => {
         ogContentUrl={`https://www.lifepacks.co${websiteScreenshot}`}
       />
 
-      <Box bg="brown.500" overflow="hidden" maxH="calc(100vh - 115px)">
+      <Box
+        bg="brown.500"
+        overflow="hidden"
+        maxH={{ base: '150vh', md: 'calc(100vh - 115px)' }}
+      >
         <PageContainer
           minHeight="auto"
           pt={{ base: 8, md: 6 }}
