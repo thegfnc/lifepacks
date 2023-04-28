@@ -54,17 +54,18 @@ const HomePage = () => {
         ogContentUrl={`https://www.lifepacks.co${websiteScreenshot}`}
       />
 
-      <Box
-        bg="brown.500"
-        overflow="hidden"
-        maxH={{ base: '150vh', md: 'calc(100vh - 115px)' }}
-      >
+      <Box bg="brown.500" overflow="hidden">
         <PageContainer
           minHeight="auto"
           pt={{ base: 8, md: 6 }}
-          pb={{ base: 8, md: 6 }}
+          pb={0}
+          maxHeight={{ base: '150vh', md: 'calc(100vh - 115px)' }}
         >
-          <Stack direction={{ base: 'column', md: 'row' }}>
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            overflow="hidden"
+            height="full"
+          >
             <Flex flex={1} align={'center'}>
               <Box
                 w={'full'}
