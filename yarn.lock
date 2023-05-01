@@ -5657,15 +5657,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redwoodjs/auth-supabase-web@npm:5.0.2":
-  version: 5.0.2
-  resolution: "@redwoodjs/auth-supabase-web@npm:5.0.2"
+"@redwoodjs/auth-supabase-web@npm:5.0.3":
+  version: 5.0.3
+  resolution: "@redwoodjs/auth-supabase-web@npm:5.0.3"
   dependencies:
     "@babel/runtime-corejs3": 7.21.0
     core-js: 3.30.1
   peerDependencies:
     "@supabase/supabase-js": 2.21.0
-  checksum: aef8a01c425032be689eb840f1879167e2c6c421469c89272f60bb5a9a3acf31c715ed1dfe77feea8b6d354dee737f4bcf7d89eb44e6003fd0e476f7fa1e53ec
+  checksum: 4b7901afe4f43b4c58d7c3cdea0fd412ca3f574e481230b48ce0c545d284770e4af6cb15128d0fe915e8d7870d5587ed8b13095819aac524549a64f0bd41f736
   languageName: node
   linkType: hard
 
@@ -26284,7 +26284,7 @@ __metadata:
     "@emotion/react": 11.10.8
     "@emotion/styled": 11.10.8
     "@redwoodjs/auth": 5.0.2
-    "@redwoodjs/auth-supabase-web": 5.0.2
+    "@redwoodjs/auth-supabase-web": 5.0.3
     "@redwoodjs/forms": 5.0.2
     "@redwoodjs/router": 5.0.2
     "@redwoodjs/web": 5.0.2
