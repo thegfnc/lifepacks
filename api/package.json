@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@redwoodjs/api": "5.0.2",
+    "@redwoodjs/api": "5.0.3",
     "@redwoodjs/auth-supabase-api": "5.0.2",
     "@redwoodjs/graphql-server": "5.0.2",
     "@sendinblue/client": "^3.3.1",
