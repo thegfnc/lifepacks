@@ -19,10 +19,9 @@ import {
 } from '@chakra-ui/react'
 import websiteScreenshot from 'public/website_screenshot.png'
 
-import { Link, navigate, routes } from '@redwoodjs/router'
+import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
-import { useAuth } from 'src/auth'
 import Pack from 'src/components/Pack/Pack'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
@@ -33,16 +32,7 @@ import UserProfile, {
 import { examplePacks, faqs, stores } from './homePageData'
 
 const HomePage = () => {
-  const { isAuthenticated } = useAuth()
   const [examplePackTabIndex, setExamplePackTabIndex] = useState(0)
-
-  const handleGetStarted = () => {
-    if (isAuthenticated) {
-      navigate(routes.newPack())
-    } else {
-      navigate(routes.signUp())
-    }
-  }
 
   return (
     <>
