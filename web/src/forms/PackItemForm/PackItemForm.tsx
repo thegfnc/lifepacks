@@ -17,7 +17,7 @@ import { MdHelpOutline } from 'react-icons/md'
 import { PackItem } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
-import { Link, routes } from '@redwoodjs/router'
+import { routes } from '@redwoodjs/router'
 
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
 import isValidUrl from 'src/helpers/isValidUrl'
