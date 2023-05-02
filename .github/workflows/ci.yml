@@ -55,10 +55,10 @@ jobs:
       - run: yarn install
       # run migrations on the actual database
       - run: yarn rw prisma migrate deploy
-      # run seed script in the actual db
-      - run: yarn rw prisma db seed
       # build the redwood app
       - run: yarn rw build
+      # run seed script in the actual db
+      - run: yarn rw prisma db seed
       # run the linter
       - run: yarn rw lint
       # run the api tests
