@@ -318,13 +318,14 @@ const HomePage = () => {
         <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box textAlign="center">
             <Button
+              as={Link}
               size={{ base: 'lg', md: 'xl' }}
-              onClick={handleGetStarted}
+              to={routes.affiliateLinks101()}
               w="full"
               px="92px"
               maxW={{ base: '356px', md: '290px' }}
             >
-              Get Started
+              Learn More
             </Button>
           </Box>
         </PageContainer>
