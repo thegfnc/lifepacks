@@ -36,7 +36,6 @@ const AffiliateLinkCard = ({ store }) => {
         spacing={4}
         padding={6}
         _hover={{ bg: 'blackAlpha.50' }}
-        _active={{ bg: 'blackAlpha.50' }}
         transition={'background .2s ease-in-out'}
       >
         <Flex justify="space-between" align="center">
