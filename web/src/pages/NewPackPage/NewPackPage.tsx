@@ -14,21 +14,19 @@ const NewPackPage = () => {
   const { currentUserProfile } = useCurrentUserProfile()
 
   return (
-    <PageContainer>
+    <PageContainer size="sm">
       <MetaTags
         title="Create Pack"
         description="Create a new pack to share your recommendations with the world."
       />
 
-      <Flex justifyContent="center">
-        <Stack w="3xl" spacing={6}>
-          {currentUserProfile ? (
-            <NewPack username={currentUserProfile.username} />
-          ) : (
-            <Loading />
-          )}
-        </Stack>
-      </Flex>
+      <Stack spacing={6}>
+        {currentUserProfile ? (
+          <NewPack username={currentUserProfile.username} />
+        ) : (
+          <Loading />
+        )}
+      </Stack>
     </PageContainer>
   )
 }

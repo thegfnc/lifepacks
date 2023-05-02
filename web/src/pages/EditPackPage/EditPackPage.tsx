@@ -18,21 +18,19 @@ const EditPackPage = ({ id }: EditPackPageProps) => {
   const { currentUserProfile } = useCurrentUserProfile()
 
   return (
-    <PageContainer>
+    <PageContainer size="sm">
       <MetaTags
         title="Edit Pack"
         description="Update your recommendations in this pack."
       />
 
-      <Flex justifyContent="center">
-        <Stack w="3xl" spacing={6}>
-          {currentUserProfile ? (
-            <EditPackCell username={currentUserProfile.username} id={id} />
-          ) : (
-            <Loading />
-          )}
-        </Stack>
-      </Flex>
+      <Stack spacing={6}>
+        {currentUserProfile ? (
+          <EditPackCell username={currentUserProfile.username} id={id} />
+        ) : (
+          <Loading />
+        )}
+      </Stack>
     </PageContainer>
   )
 }
