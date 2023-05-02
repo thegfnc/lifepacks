@@ -1,4 +1,4 @@
-import { Flex, Spinner, Stack } from '@chakra-ui/react'
+import { Spinner, Stack } from '@chakra-ui/react'
 
 import { MetaTags } from '@redwoodjs/web'
 
