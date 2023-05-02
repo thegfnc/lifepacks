@@ -5,15 +5,12 @@ import * as Sentry from '@sentry/node'
 
 let isSentryInitialized = false
 
-if (process.env.SENTRY_DSN && !isSentryInitialized) {
-  const environment = process.env.VERCEL_ENV || 'development'
-  const isDevelopmentEnv = environment === 'development'
-
+if (process.env.VERCEL_ENV && process.env.SENTRY_DSN && !isSentryInitialized) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
     release: process.env.VERCEL_GIT_COMMIT_SHA,
-    environment,
-    tracesSampleRate: isDevelopmentEnv ? 1 : 0.1,
+    environment: process.env.VERCEL_ENV,
+    tracesSampleRate: 0.1,
     integrations: [
       // Automatically instrument Node.js libraries and frameworks
       ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations(),

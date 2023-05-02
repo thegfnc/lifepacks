@@ -10,22 +10,24 @@ module.exports = (config, { mode }) => {
   // config.module.rules.push(YOUR_RULE)
 
   // Add custom plugins for your project
-  config.plugins.push(
-    new SentryWebpackPlugin({
-      org: process.env.SENTRY_ORG,
-      project: process.env.SENTRY_PROJECT,
+  if (mode !== 'development') {
+    config.plugins.push(
+      new SentryWebpackPlugin({
+        org: process.env.SENTRY_ORG,
+        project: process.env.SENTRY_PROJECT,
 
-      // Specify the directory containing build artifacts
-      include: config.output.path,
+        // Specify the directory containing build artifacts
+        include: config.output.path,
 
-      // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
-      // and needs the `project:releases` and `org:read` scopes
-      authToken: process.env.SENTRY_AUTH_TOKEN,
+        // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
+        // and needs the `project:releases` and `org:read` scopes
+        authToken: process.env.SENTRY_AUTH_TOKEN,
 
-      // Optionally uncomment the line below to override automatic release name detection
-      release: process.env.VERCEL_GIT_COMMIT_SHA,
-    })
-  )
+        // Optionally uncomment the line below to override automatic release name detection
+        release: process.env.VERCEL_GIT_COMMIT_SHA,
+      })
+    )
+  }
 
   return config
 }
