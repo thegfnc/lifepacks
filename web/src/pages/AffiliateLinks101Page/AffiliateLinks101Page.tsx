@@ -62,10 +62,20 @@ const AffiliateLinks101Page = () => {
         description="AffiliateLinks101 page"
       />
 
-      <Heading as="h1" fontSize="5xl" lineHeight="none" fontWeight="extrabold">
+      <Heading
+        as="h1"
+        fontSize={{ base: '3xl', md: '5xl' }}
+        lineHeight="none"
+        fontWeight="extrabold"
+      >
         Affiliate Links 101
       </Heading>
-      <Text fontSize="xl" mt={6} fontFamily="bitter" color="blackAlpha.800">
+      <Text
+        fontSize={{ base: 'lg', md: 'xl' }}
+        mt={{ base: 4, md: 6 }}
+        fontFamily="bitter"
+        color="blackAlpha.800"
+      >
         Affiliate links are a way for people to earn commissions by promoting
         products they love. Essentially, when you sign up for an affiliate
         program, you get a special link that you can share with your audience.
@@ -73,12 +83,17 @@ const AffiliateLinks101Page = () => {
         percentage of the sale. It&apos;s a win-win situation: the company gets
         more customers, and you get a little extra income.
       </Text>
-      <Text fontSize="xl" fontFamily="bitter" color="blackAlpha.800" mt={4}>
+      <Text
+        fontSize={{ base: 'lg', md: 'xl' }}
+        fontFamily="bitter"
+        color="blackAlpha.800"
+        mt={4}
+      >
         To create an affiliate link and earn a commission, you’ll need to sign
         up with the corresponding provider. Here’s a list of the most popular
         ones.
       </Text>
-      <Stack mt={10} spacing={3}>
+      <Stack mt={{ base: 6, md: 10 }} spacing={3}>
         {affiliatePrograms.map((store) => (
           <AffiliateLinkCard store={store} key={store.storeName} />
         ))}
