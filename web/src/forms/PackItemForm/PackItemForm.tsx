@@ -4,15 +4,20 @@ import {
   Button,
   FormControl,
   FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Input,
   SimpleGrid,
   Stack,
   Textarea,
+  Link as ChakraLink,
+  HStack,
 } from '@chakra-ui/react'
+import { MdHelpOutline } from 'react-icons/md'
 import { PackItem } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
+import { Link, routes } from '@redwoodjs/router'
 
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
 import isValidUrl from 'src/helpers/isValidUrl'
@@ -86,9 +91,20 @@ const PackItemForm = ({
                 isValidUrl(value) || 'Purchase URL is invalid',
             })}
           />
-          <FormErrorMessage>
-            {formState.errors.purchaseUrl?.message}
-          </FormErrorMessage>
+          {!formState.errors.purchaseUrl ? (
+            <FormHelperText>
+              <HStack spacing={1}>
+                <MdHelpOutline />
+                <ChakraLink href={routes.affiliateLinks101()} target="_blank">
+                  Learn how to earn money on your recommendations
+                </ChakraLink>
+              </HStack>
+            </FormHelperText>
+          ) : (
+            <FormErrorMessage>
+              {formState.errors.purchaseUrl?.message}
+            </FormErrorMessage>
+          )}
         </FormControl>
         <FormControl isInvalid={Boolean(formState.errors.imageUrl)}>
           <FormLabel>Image*</FormLabel>
