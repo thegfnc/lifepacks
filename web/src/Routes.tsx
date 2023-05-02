@@ -30,6 +30,10 @@ const Routes = () => {
         <Route path="/sign-up" page={SignUpPage} name="signUp" prerender />
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" prerender />
 
+        {/* Help Pages */}
+        <Route path="/help/affiliate-links-101" page={AffiliateLinks101Page} name="affiliateLinks101" prerender />
+        <Route path="/help/faqs" page={FaqsPage} name="faqs" prerender />
+
         {/* Dashboard Pages*/}
         <Set private unauthenticated="home">
           <Route path="/me/pack/edit/{id:Int}" page={EditPackPage} name="editPack" />
