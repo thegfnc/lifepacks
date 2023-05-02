@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { MdArrowOutward } from 'react-icons/md'
 
+import { routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import PageContainer from 'src/components/PageContainer/PageContainer'
@@ -26,12 +27,18 @@ const AffiliateLinkCard = ({ store }) => {
     <LinkBox
       as={Card}
       boxShadow="none"
-      borderRadius="3xl"
-      padding={6}
       onMouseEnter={setIsHovering.on}
       onMouseLeave={setIsHovering.off}
+      borderRadius="3xl"
+      overflow="hidden"
     >
-      <Stack spacing={4}>
+      <Stack
+        spacing={4}
+        padding={6}
+        _hover={{ bg: 'blackAlpha.50' }}
+        _active={{ bg: 'blackAlpha.50' }}
+        transition={'background .2s ease-in-out'}
+      >
         <Flex justify="space-between" align="center">
           <HStack spacing="14px">
             <Image src={store.storeLogo} h="32px" w="32px" borderRadius="lg" />
@@ -58,8 +65,10 @@ const AffiliateLinks101Page = () => {
   return (
     <PageContainer size="sm">
       <MetaTags
-        title="AffiliateLinks101"
-        description="AffiliateLinks101 page"
+        title="Affiliate Links 101"
+        description="Sign up for an affiliate program to earn commissions while promoting products you love."
+        ogType="website"
+        ogUrl={`https://www.lifepacks.co${routes.affiliateLinks101()}`}
       />
 
       <Heading
