@@ -205,33 +205,39 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
               <HStack spacing="6px">
                 {showByline && (
                   <>
-                    <ChakraLink
-                      fontSize="sm"
-                      as={Link}
-                      to={routes.userProfile({
-                        username: pack.userProfile.username,
-                      })}
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <Avatar
-                        size={'xs'}
-                        src={pack.userProfile.imageUrl}
-                        name={getUserDisplayName(
-                          pack.userProfile.givenName,
-                          pack.userProfile.familyName,
-                          pack.userProfile.username
-                        )}
-                      />
-                      <Text as="span" ml={2}>
-                        {getUserDisplayName(
-                          pack.userProfile.givenName,
-                          pack.userProfile.familyName,
-                          pack.userProfile.username
-                        )}
-                      </Text>
-                    </ChakraLink>
-                    <Text color="blackAlpha.600">{'·'}</Text>
+                    <Flex alignItems="center">
+                      <ChakraLink
+                        as={Link}
+                        to={routes.userProfile({
+                          username: pack.userProfile.username,
+                        })}
+                      >
+                        <Avatar
+                          size={'xs'}
+                          src={pack.userProfile.imageUrl}
+                          name={getUserDisplayName(
+                            pack.userProfile.givenName,
+                            pack.userProfile.familyName,
+                            pack.userProfile.username
+                          )}
+                        />
+                      </ChakraLink>
+                      <ChakraLink
+                        as={Link}
+                        to={routes.userProfile({
+                          username: pack.userProfile.username,
+                        })}
+                      >
+                        <Text ml={2} fontSize="sm">
+                          {getUserDisplayName(
+                            pack.userProfile.givenName,
+                            pack.userProfile.familyName,
+                            pack.userProfile.username
+                          )}
+                        </Text>
+                      </ChakraLink>
+                    </Flex>
+                    <Text color="blackAlpha.600">{' · '}</Text>
                   </>
                 )}
                 <Text color="blackAlpha.600" fontSize="sm">
