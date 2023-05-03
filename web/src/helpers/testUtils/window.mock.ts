@@ -11,3 +11,8 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: jest.fn(),
   })),
 })
+
+Object.defineProperty(window, 'gtag', {
+  writable: true,
+  value: jest.fn(),
+})

@@ -1,6 +1,5 @@
 import { render } from '@redwoodjs/testing/web'
 
-import 'src/helpers/testUtils/matchMedia.mock'
 import { ThemeWrapper } from 'src/helpers/testUtils/ThemeWrapper'
 
 import { Loading, Empty, Failure, Success } from './PackCell'
