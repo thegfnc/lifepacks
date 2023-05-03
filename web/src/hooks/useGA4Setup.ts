@@ -2,6 +2,9 @@ import { useEffect } from 'react'
 
 import { useAuth } from 'src/auth'
 
+// gtag types taken from
+// https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/gtag.js/index.d.ts
+
 declare global {
   interface Window {
     gtag: (command: 'set', config: UserId) => void
