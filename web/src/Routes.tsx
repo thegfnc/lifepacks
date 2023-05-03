@@ -12,8 +12,11 @@ import { Router, Route, Set } from '@redwoodjs/router'
 import AppLayout from 'src/layouts/AppLayout/AppLayout'
 
 import { useAuth } from './auth'
+import useGA4Setup from './hooks/useGA4Setup'
 
 const Routes = () => {
+  useGA4Setup()
+
   return (
     <Router useAuth={useAuth}>
       <Set wrap={AppLayout}>
