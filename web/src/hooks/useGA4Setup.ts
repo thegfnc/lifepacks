@@ -16,9 +16,7 @@ const useGA4Setup = () => {
   const { currentUser } = useAuth()
 
   useEffect(() => {
-    if (currentUser?.sub) {
-      window.gtag('set', { user_id: currentUser.sub })
-    }
+    window.gtag('set', { user_id: currentUser?.sub })
   }, [currentUser])
 }
 
