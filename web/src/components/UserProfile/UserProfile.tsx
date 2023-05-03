@@ -44,7 +44,7 @@ const UserProfileBannerLayout = ({
     <Center textAlign="center" flexDirection="column">
       <Center>
         <Avatar
-          boxSize={'112px'}
+          size={'2xl'}
           src={userProfile.imageUrl}
           name={userDisplayName}
         />
