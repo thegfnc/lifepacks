@@ -6233,9 +6233,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/cli@npm:^1.74.6":
-  version: 1.75.0
-  resolution: "@sentry/cli@npm:1.75.0"
+"@sentry/cli@npm:^1.75.1":
+  version: 1.75.2
+  resolution: "@sentry/cli@npm:1.75.2"
   dependencies:
     https-proxy-agent: ^5.0.0
     mkdirp: ^0.5.5
@@ -6245,7 +6245,7 @@ __metadata:
     which: ^2.0.2
   bin:
     sentry-cli: bin/sentry-cli
-  checksum: a2195476391564522362d61cad8637b19fa68a5310d9619b73e8cda4941a7d57bb45c65739fe6cf6868e707ee398d28e9bc458bd7368e4cd7cc642d14d47710c
+  checksum: b8c6a55371795ad724b136ae725e1c31d7976a46e26aebb49e7816386d0f914fd865ceeda977306adc4e8c0917dadcaee6765de23c7fd6a0f8e75c0b9e1bb372
   languageName: node
   linkType: hard
 
@@ -6319,13 +6319,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/webpack-plugin@npm:^1.20.0":
-  version: 1.20.0
-  resolution: "@sentry/webpack-plugin@npm:1.20.0"
+"@sentry/webpack-plugin@npm:^1.20.1":
+  version: 1.20.1
+  resolution: "@sentry/webpack-plugin@npm:1.20.1"
   dependencies:
-    "@sentry/cli": ^1.74.6
+    "@sentry/cli": ^1.75.1
     webpack-sources: ^2.0.0 || ^3.0.0
-  checksum: 81b527307dc33b14b16f1b7944fbc19c2e856a735b63b133ce0f8ca424d89acd12f97aea781c94185be2dd38c2925ab6b2367023f0c308e9d0d1e41fbdacbddc
+  checksum: 59a405034999c732370c09ec4a56be6ceffb74bf34f3de0e233e67ab134a6798a105ef43e012ea47afddddc9c88e6c5e47963691aadfd0ef52837889b7f3be45
   languageName: node
   linkType: hard
 
@@ -26368,7 +26368,7 @@ __metadata:
     "@redwoodjs/router": 5.0.6
     "@redwoodjs/web": 5.0.6
     "@sentry/react": ^7.49.0
-    "@sentry/webpack-plugin": ^1.20.0
+    "@sentry/webpack-plugin": ^1.20.1
     "@supabase/supabase-js": 2.21.0
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
