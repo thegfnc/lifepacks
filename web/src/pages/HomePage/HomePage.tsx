@@ -49,12 +49,14 @@ const HomePage = () => {
           minHeight="auto"
           pt={{ base: 8, md: 6 }}
           pb={0}
+          px={0} // moved padding to Stack below so box-shadow doesn't cut off
           maxHeight={{ base: '150vh', md: 'calc(100vh - 115px)' }}
         >
           <Stack
             direction={{ base: 'column', md: 'row' }}
             overflow="hidden"
             height="full"
+            px={{ base: 4, md: 10 }}
           >
             <Flex flex={1} align={'center'}>
               <Box
