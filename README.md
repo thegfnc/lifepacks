@@ -1,5 +1,5 @@
 # README
-Welcome to [Lifepacks](https://www.lifepacks.co)!
+Welcome to [Lifepacks](https://lifepacks.co/)!
 
 ## Local Dev Commands
 Here is a list of the standard set of dev commands to run while developing.
@@ -27,12 +27,12 @@ Here is a list of the standard set of URLs to use while developing locally.
 * Inbucket URL: http://localhost:54324
 
 ## Services Used
-* [Lifepacks Production](https://www.lifepacks.co/)
+* [Lifepacks Production](https://lifepacks.co/)
 * [Github Repo](https://github.com/jmdesiderio/lifepacks)
 * [Google Analytics](https://analytics.google.com/analytics/web/)
 * [Google Domains](https://domains.google.com/)
 * [Google Search Console](https://search.google.com/u/2/search-console?resource_id=sc-domain%3Alifepacks.co)
-* [Sendinblue Dashboard](https://app.sendinblue.com/)
+* [Brevo Dashboard](https://app.brevo.com/)
 * [Sentry Dashboard](https://lifepacks.sentry.io/issues/)
 * [Supbase Dashboard](https://app.supabase.com/projects)
 * [Vercel Dashboard](https://vercel.com/jmdesiderio/lifepacks)

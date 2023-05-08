@@ -40,8 +40,8 @@ const HomePage = () => {
         title="Make guides for the products you swear by"
         description="Publish product recommendations just like the pros at Wirecutter."
         ogType="website"
-        ogUrl="https://www.lifepacks.co/"
-        ogContentUrl={`https://www.lifepacks.co${websiteScreenshot}`}
+        ogUrl="https://lifepacks.co/"
+        ogContentUrl={`https://lifepacks.co${websiteScreenshot}`}
       />
 
       <Box as="section" bg="brown.500" overflow="hidden">

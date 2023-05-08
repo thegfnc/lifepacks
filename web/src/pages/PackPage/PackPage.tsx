@@ -21,7 +21,7 @@ const PackPage = ({ username, slug }: PackPageProps) => {
         title={`@${username}'s Pack`}
         description={`This pack was created by @${username}`}
         ogType="article"
-        ogUrl={`https://www.lifepacks.co${routes.pack({ username, slug })}`}
+        ogUrl={`https://lifepacks.co${routes.pack({ username, slug })}`}
       />
 
       <PageContainer>

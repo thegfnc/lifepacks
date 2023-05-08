@@ -67,7 +67,7 @@ const AffiliateLinks101Page = () => {
         title="Affiliate Links 101"
         description="Sign up for an affiliate program to earn commissions while promoting products you love."
         ogType="website"
-        ogUrl={`https://www.lifepacks.co${routes.affiliateLinks101()}`}
+        ogUrl={`https://lifepacks.co${routes.affiliateLinks101()}`}
       />
 
       <Heading

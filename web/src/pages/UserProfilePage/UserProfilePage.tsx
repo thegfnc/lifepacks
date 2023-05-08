@@ -20,7 +20,7 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
         title={`@${username}'s Profile`}
         description={`Check out the packs created by @${username}`}
         ogType="profile"
-        ogUrl={`https://www.lifepacks.co${routes.userProfile({ username })}`}
+        ogUrl={`https://lifepacks.co${routes.userProfile({ username })}`}
       />
 
       <PageContainer>

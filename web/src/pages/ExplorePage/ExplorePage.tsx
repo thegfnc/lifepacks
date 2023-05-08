@@ -13,7 +13,7 @@ const ExplorePage = () => {
         title={`Explore Packs`}
         description={`Explore all of the packs that Lifepacks has to offer.`}
         ogType="website"
-        ogUrl={`https://www.lifepacks.co${routes.explore()}`}
+        ogUrl={`https://lifepacks.co${routes.explore()}`}
       />
 
       <PageContainer>
