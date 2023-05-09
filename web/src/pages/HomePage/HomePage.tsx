@@ -56,7 +56,8 @@ const HomePage = () => {
             direction={{ base: 'column', md: 'row' }}
             overflow="hidden"
             height="full"
-            py={{ base: 8, md: 6 }}
+            pt={{ base: 8, md: 6 }}
+            pb={{ base: 8, md: 10 }}
             px={{ base: 4, md: 10 }}
           >
             <Flex flex={1} align={'center'}>
