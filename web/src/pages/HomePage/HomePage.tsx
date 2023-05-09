@@ -47,15 +47,16 @@ const HomePage = () => {
       <Box as="section" bg="brown.500" overflow="hidden">
         <PageContainer
           minHeight="auto"
-          pt={{ base: 8, md: 6 }}
+          pt={0}
           pb={0}
-          px={0} // moved padding to Stack below so box-shadow doesn't cut off
+          px={0} // moved paddings to Stack below so box-shadow doesn't cut off
           maxHeight={{ base: '150vh', md: 'calc(100vh - 115px)' }}
         >
           <Stack
             direction={{ base: 'column', md: 'row' }}
             overflow="hidden"
             height="full"
+            py={{ base: 8, md: 6 }}
             px={{ base: 4, md: 10 }}
           >
             <Flex flex={1} align={'center'}>
