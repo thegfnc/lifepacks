@@ -46,11 +46,11 @@ const HomePage = () => {
 
       <Box as="section" bg="brown.500" overflow="hidden">
         <PageContainer
-          minHeight="auto"
           pt={0}
           pb={0}
           px={0} // moved paddings to Stack below so box-shadow doesn't cut off
           maxHeight={{ base: '150vh', md: 'calc(100vh - 115px)' }}
+          minHeight={{ base: 'auto', md: '600px' }}
         >
           <Stack
             direction={{ base: 'column', md: 'row' }}

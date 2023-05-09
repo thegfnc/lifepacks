@@ -4,7 +4,7 @@ import { Box, Flex, BoxProps } from '@chakra-ui/react'
 
 type PageContainerProps = {
   children: ReactNode
-  minHeight?: '100vh' | 'auto'
+  minHeight?: BoxProps['minHeight']
   maxHeight?: BoxProps['maxHeight']
   size?: 'sm' | 'lg'
   px?: BoxProps['padding']
