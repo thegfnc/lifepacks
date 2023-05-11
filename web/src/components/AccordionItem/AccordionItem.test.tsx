@@ -1,3 +1,5 @@
+import { Accordion } from '@chakra-ui/react'
+
 import { render } from '@redwoodjs/testing/web'
 
 import AccordionItem from './AccordionItem'
@@ -8,7 +10,11 @@ import AccordionItem from './AccordionItem'
 describe('AccordionItem', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<AccordionItem title="Title" body="Body" />)
+      render(
+        <Accordion>
+          <AccordionItem title="Title" body="Body" />
+        </Accordion>
+      )
     }).not.toThrow()
   })
 })
