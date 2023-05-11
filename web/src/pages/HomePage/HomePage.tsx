@@ -343,7 +343,7 @@ const HomePage = () => {
               mt={{ base: 10, md: 16 }}
               px={{ base: 0, md: 4 }}
             >
-              <Accordion defaultIndex={[0]} allowMultiple>
+              <Accordion defaultIndex={[0]}>
                 <Stack spacing={4}>
                   {faq.slice(0, 3).map(({ question, answer }, index) => (
                     <AccordionItem
