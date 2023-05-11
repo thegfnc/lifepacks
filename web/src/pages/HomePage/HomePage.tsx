@@ -355,7 +355,7 @@ const HomePage = () => {
                   ))}
                 </Stack>
               </Accordion>
-              <Flex mt={16} justify="center">
+              <Flex mt={{ base: 10, md: 16 }} justify="center">
                 <Button
                   as={Link}
                   to={routes.faq()}
