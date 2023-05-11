@@ -57,7 +57,7 @@ const FaqPage = () => {
         .
       </Text>
       <Accordion allowMultiple>
-        <Stack spacing={4} mt={10}>
+        <Stack spacing={4} mt={{ base: 6, md: 10 }} mb={10}>
           {faq.map(({ question, answer }, index) => (
             <AccordionItem key={index} title={question} body={answer} />
           ))}
