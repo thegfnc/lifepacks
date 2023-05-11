@@ -2,9 +2,6 @@ import { useState } from 'react'
 
 import {
   Accordion,
-  AccordionButton,
-  AccordionItem,
-  AccordionPanel,
   Box,
   Button,
   Center,
@@ -22,14 +19,15 @@ import websiteScreenshot from 'public/website_screenshot.png'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import AccordionItem from 'src/components/AccordionItem/AccordionItem'
 import Pack from 'src/components/Pack/Pack'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import UserProfile, {
   UserProfileLayout,
 } from 'src/components/UserProfile/UserProfile'
-
-import { examplePacks, faqs, stores } from './homePageData'
+import { faq } from 'src/data/faqData'
+import { examplePacks, stores } from 'src/data/homePageData'
 
 const HomePage = () => {
   const [examplePackTabIndex, setExamplePackTabIndex] = useState(0)
@@ -325,7 +323,7 @@ const HomePage = () => {
         </PageContainer>
       </Box>
 
-      <Box as="section" bg="brown.500">
+      <Box as="section" bg="white">
         <PageContainer
           minHeight="auto"
           pt={{ base: 10, md: '120px' }}
@@ -347,46 +345,27 @@ const HomePage = () => {
             >
               <Accordion defaultIndex={[0]} allowMultiple>
                 <Stack spacing={4}>
-                  {faqs.map(({ question, answer }, index) => (
-                    <AccordionItem key={index}>
-                      {({ isExpanded }) => (
-                        <Box
-                          bg={isExpanded ? 'purple.500' : 'white'}
-                          color={isExpanded ? 'white' : 'blackAlpha.700'}
-                          p={{ base: 4, md: 6 }}
-                          borderRadius="32px"
-                          transition={'background .2s ease-in-out'}
-                        >
-                          <AccordionButton
-                            p={{ base: 3, md: 4 }}
-                            borderRadius="16px"
-                          >
-                            <Box
-                              flex="1"
-                              textAlign="left"
-                              fontSize={{ base: 'xl', md: '2xl' }}
-                              fontWeight="medium"
-                            >
-                              {question}
-                            </Box>
-                          </AccordionButton>
-                          <AccordionPanel
-                            p={0}
-                            px={3}
-                            mb={3}
-                            fontFamily="bitter"
-                            fontSize={{ base: 'lg', md: '2xl' }}
-                            color="white"
-                            lineHeight="short"
-                          >
-                            {answer}
-                          </AccordionPanel>
-                        </Box>
-                      )}
-                    </AccordionItem>
+                  {faq.slice(0, 3).map(({ question, answer }, index) => (
+                    <AccordionItem
+                      key={index}
+                      title={question}
+                      body={answer}
+                      colorMode="dark"
+                    />
                   ))}
                 </Stack>
               </Accordion>
+              <Flex mt={16} justify="center">
+                <Button
+                  as={Link}
+                  to={routes.faq()}
+                  size="xl"
+                  variant="outline"
+                  colorScheme="gray"
+                >
+                  View all FAQ
+                </Button>
+              </Flex>
             </Container>
           </Flex>
         </PageContainer>

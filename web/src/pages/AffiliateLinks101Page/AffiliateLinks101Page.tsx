@@ -10,15 +10,15 @@ import {
   Stack,
   Text,
   useBoolean,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
 import { MdArrowOutward } from 'react-icons/md'
 
-import { routes } from '@redwoodjs/router'
+import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import PageContainer from 'src/components/PageContainer/PageContainer'
-
-import { affiliatePrograms } from './affiliateLinks101PageData'
+import { affiliatePrograms } from 'src/data/affiliateLinks101PageData'
 
 const AffiliateLinkCard = ({ store }) => {
   const [isHovering, setIsHovering] = useBoolean()
@@ -100,6 +100,18 @@ const AffiliateLinks101Page = () => {
         To create an affiliate link and earn a commission, you’ll need to sign
         up with the corresponding provider. Here’s a list of the most popular
         ones.
+      </Text>
+      <Text
+        fontSize={{ base: 'lg', md: 'xl' }}
+        mt={4}
+        fontFamily="bitter"
+        color="blackAlpha.800"
+      >
+        For frequently asked questions, check out the{' '}
+        <ChakraLink as={Link} to={routes.faq()}>
+          FAQ page
+        </ChakraLink>
+        .
       </Text>
       <Stack mt={{ base: 6, md: 10 }} spacing={3}>
         {affiliatePrograms.map((store) => (

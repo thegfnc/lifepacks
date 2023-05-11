@@ -38,7 +38,7 @@ const Routes = () => {
 
           {/* Help Pages */}
           <Route path="/help/affiliate-links-101" page={AffiliateLinks101Page} name="affiliateLinks101" prerender />
-          <Route path="/help/faqs" page={FaqsPage} name="faqs" prerender />
+          <Route path="/help/faq" page={FaqPage} name="faq" prerender />
 
           {/* Dashboard Pages*/}
           <Set private unauthenticated="home">

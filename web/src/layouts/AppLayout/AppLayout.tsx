@@ -14,7 +14,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <HeaderCtaContext.Provider value={setHeaderCtaComponent}>
       <Header ctaComponent={HeaderCtaComponent} />
-      {children}
+      <main>{children}</main>
       <Footer />
     </HeaderCtaContext.Provider>
   )
