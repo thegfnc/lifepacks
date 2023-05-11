@@ -16,7 +16,7 @@ import type { ComponentMeta } from '@storybook/react'
 import AccordionItem from './AccordionItem'
 
 export const generated = () => {
-  return <AccordionItem />
+  return <AccordionItem title="Title" body="Body" />
 }
 
 export default {

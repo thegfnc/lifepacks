@@ -8,7 +8,7 @@ import AccordionItem from './AccordionItem'
 describe('AccordionItem', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<AccordionItem />)
+      render(<AccordionItem title="Title" body="Body" />)
     }).not.toThrow()
   })
 })
