@@ -43,6 +43,9 @@ const AccordionItem = ({
             borderRadius="32px"
             display="block"
             textAlign="left"
+            _hover={{
+              bg: { base: 'auto', md: 'blackAlpha.50' },
+            }}
           >
             <Flex align="center">
               <Box
