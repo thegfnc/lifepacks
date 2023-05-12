@@ -216,7 +216,6 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
         <Stack spacing={6}>
           <FormControl isInvalid={Boolean(formState.errors.title)}>
             <ExpandingTextarea
-              focusOnMount={true}
               placeholder="Title"
               fontSize="5xl"
               fontWeight="extrabold"
