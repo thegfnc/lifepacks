@@ -5,7 +5,6 @@ import {
   Box,
   AccordionIcon,
   Flex,
-  Fade,
 } from '@chakra-ui/react'
 
 type AccordionItemProps = {
