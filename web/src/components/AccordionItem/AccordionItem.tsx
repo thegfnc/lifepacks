@@ -4,6 +4,8 @@ import {
   AccordionPanel,
   Box,
   AccordionIcon,
+  Flex,
+  Fade,
 } from '@chakra-ui/react'
 
 type AccordionItemProps = {
@@ -34,32 +36,37 @@ const AccordionItem = ({
         <Box
           bg={isExpanded ? 'purple.500' : themeColors.bg}
           color={isExpanded ? 'white' : 'blackAlpha.800'}
-          p={{ base: 4, md: 6 }}
           borderRadius="32px"
-          transition={'background .2s ease-in-out'}
+          transition={'background .15s ease-in-out'}
         >
-          <AccordionButton p={{ base: 3, md: 4 }} borderRadius="16px">
-            <Box
-              flex="1"
-              textAlign="left"
-              fontSize={{ base: 'xl', md: '2xl' }}
-              fontWeight="medium"
-            >
-              {title}
-            </Box>
-            <AccordionIcon boxSize="24px" />
-          </AccordionButton>
-          <AccordionPanel
-            p={0}
-            px={3}
-            mb={3}
-            fontFamily="bitter"
-            fontSize={{ base: 'lg', md: '2xl' }}
-            color="white"
-            lineHeight="short"
+          <AccordionButton
+            p={{ base: 7, md: 10 }}
+            borderRadius="32px"
+            display="block"
+            textAlign="left"
           >
-            {body}
-          </AccordionPanel>
+            <Flex align="center">
+              <Box
+                flex="1"
+                textAlign="left"
+                fontSize={{ base: 'xl', md: '2xl' }}
+                fontWeight="medium"
+              >
+                {title}
+              </Box>
+              <AccordionIcon boxSize="24px" />
+            </Flex>
+            <AccordionPanel
+              p={0}
+              mt={4}
+              fontFamily="bitter"
+              fontSize={{ base: 'lg', md: '2xl' }}
+              color="white"
+              lineHeight="short"
+            >
+              {body}
+            </AccordionPanel>
+          </AccordionButton>
         </Box>
       )}
     </ChakraAccordionItem>

@@ -359,7 +359,8 @@ const HomePage = () => {
                 <Button
                   as={Link}
                   to={routes.faq()}
-                  size="xl"
+                  size={{ base: 'lg', md: 'xl' }}
+                  w={{ base: 'full', md: 'auto' }}
                   variant="outline"
                   colorScheme="gray"
                 >
