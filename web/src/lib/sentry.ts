@@ -30,11 +30,11 @@ export const useSentrySetUser = () => {
   const { currentUser } = useAuth()
 
   useEffect(() => {
-    if (currentUser) {
-      Sentry.setUser({ id: currentUser.sub, email: currentUser.email })
-    } else {
-      Sentry.setUser(null)
-    }
+    Sentry.setUser({
+      id: currentUser?.sub,
+      email: currentUser?.email,
+      ip_address: '{{auto}}',
+    })
   }, [currentUser])
 }
 
