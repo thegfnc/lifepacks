@@ -11,13 +11,7 @@ type AppLayoutProps = {
 }
 
 const AppLayout = ({ children }: AppLayoutProps) => {
-  const { currentUser } = useAuth()
   const [HeaderCtaComponent, setHeaderCtaComponent] = useState(null)
-
-  useEffect(
-    () => Sentry.setUser({ id: currentUser.sub, email: currentUser.email }),
-    [currentUser]
-  )
 
   return (
     <HeaderCtaContext.Provider value={setHeaderCtaComponent}>

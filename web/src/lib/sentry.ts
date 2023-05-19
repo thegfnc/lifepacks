@@ -1,4 +1,8 @@
+import { useEffect } from 'react'
+
 import * as Sentry from '@sentry/react'
+
+import { useAuth } from 'src/auth'
 
 let isSentryInitialized = false
 
@@ -21,5 +25,17 @@ if (
 }
 
 export const getIsSentryInitialized = () => isSentryInitialized
+
+export const useSentrySetUser = () => {
+  const { currentUser } = useAuth()
+
+  useEffect(() => {
+    if (currentUser) {
+      Sentry.setUser({ id: currentUser.sub, email: currentUser.email })
+    } else {
+      Sentry.setUser(null)
+    }
+  }, [currentUser])
+}
 
 export default Sentry
