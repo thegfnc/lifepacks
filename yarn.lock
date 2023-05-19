@@ -6163,7 +6163,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:^7.52.1":
+"@sentry/hub@npm:^7.44.1":
+  version: 7.52.1
+  resolution: "@sentry/hub@npm:7.52.1"
+  dependencies:
+    "@sentry/core": 7.52.1
+    "@sentry/types": 7.52.1
+    "@sentry/utils": 7.52.1
+    tslib: ^1.9.3
+  checksum: 20fa955d5ac7a9ab88fbfe150f311febd4cef9c737df5ec41e7f4fff56288df9be79d8a164d31029bd40b9adbd9e626cea72615df85b60d3c7fadaed3d43b8f0
+  languageName: node
+  linkType: hard
+
+"@sentry/node@npm:^7.44.1, @sentry/node@npm:^7.52.1":
   version: 7.52.1
   resolution: "@sentry/node@npm:7.52.1"
   dependencies:
@@ -6176,6 +6188,23 @@ __metadata:
     lru_map: ^0.3.3
     tslib: ^1.9.3
   checksum: 6525a1f4149b428b28b332151734dadc5929360927f018ffa0af5fcdd7a7651e92b03e6bfdfeec82bb0deb9c65614702aaeb9553b9fd32b2165e313f84753220
+  languageName: node
+  linkType: hard
+
+"@sentry/profiling-node@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@sentry/profiling-node@npm:0.3.0"
+  dependencies:
+    "@sentry/hub": ^7.44.1
+    "@sentry/node": ^7.44.1
+    "@sentry/tracing": ^7.44.1
+    "@sentry/types": ^7.44.1
+    "@sentry/utils": ^7.44.1
+    detect-libc: ^2.0.1
+    nan: ^2.17.0
+    node-abi: ^3.28.0
+    node-gyp: ^9.3.0
+  checksum: 00d37064d98a50539a3e539093128121d2639f994f1ae4dd1d7197df4ca1a338f5dee7fc136b205e4473d88e0ed9ab04f5012ebc4d7fdb3e628431f4d1045f9b
   languageName: node
   linkType: hard
 
@@ -6205,14 +6234,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:7.52.1":
+"@sentry/tracing@npm:^7.44.1":
+  version: 7.52.1
+  resolution: "@sentry/tracing@npm:7.52.1"
+  dependencies:
+    "@sentry-internal/tracing": 7.52.1
+  checksum: da0ae44d5e829013e8d9ddc2e2dbbb778f30ff92b39a40f69e9d0b3f109dc3ca3d117ae6402875801628a7b335258707769bbf25fa0a9ed738cdc670016f1612
+  languageName: node
+  linkType: hard
+
+"@sentry/types@npm:7.52.1, @sentry/types@npm:^7.44.1":
   version: 7.52.1
   resolution: "@sentry/types@npm:7.52.1"
   checksum: dd912c132d7be2a8f6616aab9332618d9da2e7e5526040ee1f49241de8b7bc266adb79690173c3806cfc23ae509d30d51aa1fb487b99f91cd30b7e463b8cd507
   languageName: node
   linkType: hard
 
-"@sentry/utils@npm:7.52.1":
+"@sentry/utils@npm:7.52.1, @sentry/utils@npm:^7.44.1":
   version: 7.52.1
   resolution: "@sentry/utils@npm:7.52.1"
   dependencies:
@@ -9534,6 +9572,7 @@ __metadata:
     "@redwoodjs/graphql-server": 5.2.1
     "@sendinblue/client": ^3.3.1
     "@sentry/node": ^7.52.1
+    "@sentry/profiling-node": ^0.3.0
     jsonwebtoken: ^9.0.0
   languageName: unknown
   linkType: soft
@@ -13021,6 +13060,13 @@ __metadata:
   version: 6.1.0
   resolution: "detect-indent@npm:6.1.0"
   checksum: dd83cdeda9af219cf77f5e9a0dc31d828c045337386cfb55ce04fad94ba872ee7957336834154f7647b89b899c3c7acc977c57a79b7c776b506240993f97acc7
+  languageName: node
+  linkType: hard
+
+"detect-libc@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "detect-libc@npm:2.0.1"
+  checksum: 153009d0ce4073ea885a97641aa1cc0327ff168b971fa3c770958345ad3ead4618f3747334435dc8edff32c0f56d8ba16dcf5271543c99b24af532b1cf84a61d
   languageName: node
   linkType: hard
 
@@ -19786,7 +19832,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nan@npm:^2.12.1":
+"nan@npm:^2.12.1, nan@npm:^2.17.0":
   version: 2.17.0
   resolution: "nan@npm:2.17.0"
   dependencies:
@@ -19889,6 +19935,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-abi@npm:^3.28.0":
+  version: 3.40.0
+  resolution: "node-abi@npm:3.40.0"
+  dependencies:
+    semver: ^7.3.5
+  checksum: 3a0b430eb5baebd42d762bc4e91ec66c83685eba82ef4af284ea79a897d6d5e041781fd9be812b644df4e6fe3b5eadbe1bf8a35655daba05ea89a3cfc8f2c421
+  languageName: node
+  linkType: hard
+
 "node-abort-controller@npm:^3.1.1":
   version: 3.1.1
   resolution: "node-abort-controller@npm:3.1.1"
@@ -19970,7 +20025,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-gyp@npm:latest":
+"node-gyp@npm:^9.3.0, node-gyp@npm:latest":
   version: 9.3.1
   resolution: "node-gyp@npm:9.3.1"
   dependencies:
