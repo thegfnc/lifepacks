@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/order
+import Sentry from 'src/lib/sentry'
+
 import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react'
 import * as theme from 'config/chakra.config'
 
@@ -5,7 +8,6 @@ import { RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 import { Toaster } from '@redwoodjs/web/toast'
 
-import Sentry from 'src/lib/sentry'
 import FatalErrorPage from 'src/pages/FatalErrorPage'
 import Routes from 'src/Routes'
 

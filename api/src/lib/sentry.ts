@@ -30,4 +30,6 @@ if (
   isSentryInitialized = true
 }
 
+export const getIsSentryInitialized = () => isSentryInitialized
+
 export default Sentry

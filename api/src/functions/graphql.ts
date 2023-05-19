@@ -10,8 +10,19 @@ import services from 'src/services/**/*.{js,ts}'
 import { getCurrentUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 import { logger } from 'src/lib/logger'
+import { getIsSentryInitialized } from 'src/lib/sentry'
 
-import 'src/lib/sentry'
+const extraPlugins = []
+
+if (getIsSentryInitialized()) {
+  extraPlugins.push(
+    useSentry({
+      includeRawResult: true,
+      includeResolverArgs: true,
+      includeExecuteVariables: true,
+    })
+  )
+}
 
 export const handler = createGraphQLHandler({
   getCurrentUser,
@@ -20,13 +31,7 @@ export const handler = createGraphQLHandler({
   directives,
   sdls,
   services,
-  extraPlugins: [
-    useSentry({
-      includeRawResult: true,
-      includeResolverArgs: true,
-      includeExecuteVariables: true,
-    }),
-  ],
+  extraPlugins,
   onException: () => {
     // Disconnect from your database with an unhandled exception.
     db.$disconnect()
