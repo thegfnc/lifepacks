@@ -14,7 +14,7 @@ module.exports = (config, { mode }) => {
     config.plugins.push(
       new SentryWebpackPlugin({
         org: process.env.SENTRY_ORG,
-        project: process.env.SENTRY_PROJECT,
+        project: process.env.SENTRY_WEB_PROJECT,
 
         // Specify the directory containing build artifacts
         include: config.output.path,

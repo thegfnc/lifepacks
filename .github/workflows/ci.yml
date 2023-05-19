@@ -14,8 +14,8 @@ env:
   SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
   SUPABASE_URL: ${{ vars.SUPABASE_URL }}
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  SENTRY_DSN: ${{ vars.SENTRY_DSN }}
-  SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+  SENTRY_WEB_DSN: ${{ vars.SENTRY_WEB_DSN }}
+  SENTRY_WEB_PROJECT: ${{ vars.SENTRY_WEB_PROJECT }}
   SENTRY_ORG: ${{ vars.SENTRY_ORG }}
 
 jobs:

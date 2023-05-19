@@ -5,9 +5,13 @@ import * as Sentry from '@sentry/node'
 
 let isSentryInitialized = false
 
-if (process.env.VERCEL_ENV && process.env.SENTRY_DSN && !isSentryInitialized) {
+if (
+  process.env.VERCEL_ENV &&
+  process.env.SENTRY_API_DSN &&
+  !isSentryInitialized
+) {
   Sentry.init({
-    dsn: process.env.SENTRY_DSN,
+    dsn: process.env.SENTRY_API_DSN,
     release: process.env.VERCEL_GIT_COMMIT_SHA,
     environment: process.env.VERCEL_ENV,
     tracesSampleRate: 0.1,

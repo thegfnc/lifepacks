@@ -14,7 +14,7 @@
   includeEnvironmentVariables = [
     "SUPABASE_URL",
     "SUPABASE_KEY",
-    "SENTRY_DSN",
+    "SENTRY_WEB_DSN",
     "VERCEL_ENV",
     "VERCEL_GIT_COMMIT_SHA"
   ]

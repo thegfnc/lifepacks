@@ -15,9 +15,13 @@ import './index.css'
 
 let isSentryInitialized = false
 
-if (process.env.VERCEL_ENV && process.env.SENTRY_DSN && !isSentryInitialized) {
+if (
+  process.env.VERCEL_ENV &&
+  process.env.SENTRY_WEB_DSN &&
+  !isSentryInitialized
+) {
   Sentry.init({
-    dsn: process.env.SENTRY_DSN,
+    dsn: process.env.SENTRY_WEB_DSN,
     release: process.env.VERCEL_GIT_COMMIT_SHA,
     environment: process.env.VERCEL_ENV,
     integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
