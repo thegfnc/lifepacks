@@ -1,3 +1,5 @@
+import { useSentry } from '@envelop/sentry'
+
 import { authDecoder } from '@redwoodjs/auth-supabase-api'
 import { createGraphQLHandler } from '@redwoodjs/graphql-server'
 
@@ -9,6 +11,8 @@ import { getCurrentUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 import { logger } from 'src/lib/logger'
 
+import 'src/lib/sentry'
+
 export const handler = createGraphQLHandler({
   getCurrentUser,
   authDecoder,
@@ -16,6 +20,13 @@ export const handler = createGraphQLHandler({
   directives,
   sdls,
   services,
+  extraPlugins: [
+    useSentry({
+      includeRawResult: true,
+      includeResolverArgs: true,
+      includeExecuteVariables: true,
+    }),
+  ],
   onException: () => {
     // Disconnect from your database with an unhandled exception.
     db.$disconnect()

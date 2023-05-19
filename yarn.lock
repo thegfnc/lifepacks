@@ -3431,6 +3431,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@envelop/sentry@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "@envelop/sentry@npm:5.1.1"
+  dependencies:
+    tslib: ^2.5.0
+  peerDependencies:
+    "@envelop/core": ^3.0.6
+    "@sentry/node": ^6 || ^7
+    graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: 316056d1c57fb9273bbc05d3579cac6933a835344aed1fb3901969f09c17b6491ff68ee9b904e608552d2d5fa1f6cc8098d2917c820962a932e0194159ba4d87
+  languageName: node
+  linkType: hard
+
 "@envelop/types@npm:3.0.2":
   version: 3.0.2
   resolution: "@envelop/types@npm:3.0.2"
@@ -9567,6 +9580,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:api"
   dependencies:
+    "@envelop/sentry": ^5.1.1
     "@redwoodjs/api": 5.2.1
     "@redwoodjs/auth-supabase-api": 5.2.1
     "@redwoodjs/graphql-server": 5.2.1

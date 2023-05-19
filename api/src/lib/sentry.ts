@@ -29,3 +29,5 @@ if (
   })
   isSentryInitialized = true
 }
+
+export default Sentry
