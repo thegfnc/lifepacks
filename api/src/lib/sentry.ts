@@ -1,6 +1,8 @@
 import * as Sentry from '@sentry/node'
 import { ProfilingIntegration } from '@sentry/profiling-node'
 
+import { db as client } from 'src/lib/db'
+
 // RedwoodJS + Sentry Inspiration:
 // https://gist.github.com/rockymeza/7dec7ddb435a6851e6e27d40b1ad0c1a#file-sentry-js-L5-L13
 
@@ -21,6 +23,8 @@ if (
       // Automatically instrument Node.js libraries and frameworks
       ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations(),
       new ProfilingIntegration(),
+      new Sentry.Integrations.Prisma({ client }),
+      new Sentry.Integrations.GraphQL(),
     ],
   })
   isSentryInitialized = true
