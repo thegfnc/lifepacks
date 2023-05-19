@@ -1,5 +1,8 @@
-import { Decoded } from '@redwoodjs/api'
+import { AuthContextPayload, Decoded } from '@redwoodjs/api'
 import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
+
+import getIpAddress from 'src/helpers/getIpAddress'
+import Sentry from 'src/lib/sentry'
 
 /**
  * Represents the user attributes returned by the decoding the
@@ -44,21 +47,28 @@ interface DecodedWithUserMetaData extends Decoded {
 export const getCurrentUser = async (
   decoded: DecodedWithUserMetaData,
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-  { token, type },
+  { token, type }: AuthContextPayload[1],
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
-  { event, context }
+  { event, context }: AuthContextPayload[2]
 ): Promise<RedwoodUser> => {
   if (!decoded) {
     return null
   }
 
-  const { roles } = decoded.user_metadata
+  const user = { ...decoded }
 
+  const { roles } = decoded.user_metadata
   if (roles) {
-    return { ...decoded, roles }
+    user['roles'] = roles
   }
 
-  return { ...decoded }
+  Sentry.setUser({
+    id: decoded.sub,
+    email: decoded.email,
+    ip_address: getIpAddress({ event }),
+  })
+
+  return user
 }
 
 /**

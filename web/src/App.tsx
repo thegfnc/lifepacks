@@ -1,8 +1,10 @@
+// eslint-disable-next-line import/order
+import Sentry from 'src/lib/sentry'
+
 import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react'
-import * as Sentry from '@sentry/react'
 import * as theme from 'config/chakra.config'
 
-import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
+import { RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 import { Toaster } from '@redwoodjs/web/toast'
 
@@ -13,30 +15,10 @@ import { AuthProvider, useAuth } from './auth'
 
 import './index.css'
 
-let isSentryInitialized = false
-
-if (
-  process.env.VERCEL_ENV &&
-  process.env.SENTRY_WEB_DSN &&
-  !isSentryInitialized
-) {
-  Sentry.init({
-    dsn: process.env.SENTRY_WEB_DSN,
-    release: process.env.VERCEL_GIT_COMMIT_SHA,
-    environment: process.env.VERCEL_ENV,
-    integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
-    tracesSampleRate: 0.1,
-    replaysSessionSampleRate: 0.1,
-    replaysOnErrorSampleRate: 1.0,
-  })
-
-  isSentryInitialized = true
-}
-
 const extendedTheme = extendTheme(theme)
 
 const App = () => (
-  <FatalErrorBoundary page={FatalErrorPage}>
+  <Sentry.ErrorBoundary fallback={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider>
         <ColorModeScript />
@@ -48,7 +30,7 @@ const App = () => (
         </ChakraProvider>
       </AuthProvider>
     </RedwoodProvider>
-  </FatalErrorBoundary>
+  </Sentry.ErrorBoundary>
 )
 
 export default App

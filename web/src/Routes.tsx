@@ -15,9 +15,11 @@ import AppLayout from 'src/layouts/AppLayout/AppLayout'
 
 import { useAuth } from './auth'
 import useGA4Setup from './hooks/useGA4Setup'
+import { useSentrySetUser } from './lib/sentry'
 
 const Routes = () => {
   useGA4Setup()
+  useSentrySetUser()
 
   return (
     <Router useAuth={useAuth}>
