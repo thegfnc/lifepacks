@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@envelop/sentry": "^5.1.1",
-    "@redwoodjs/api": "5.2.1",
+    "@redwoodjs/api": "5.2.2",
     "@redwoodjs/auth-supabase-api": "5.2.1",
     "@redwoodjs/graphql-server": "5.2.1",
     "@sendinblue/client": "^3.3.1",
