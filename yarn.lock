@@ -5643,6 +5643,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/auth@npm:5.2.2":
+  version: 5.2.2
+  resolution: "@redwoodjs/auth@npm:5.2.2"
+  dependencies:
+    "@babel/runtime-corejs3": 7.21.5
+    core-js: 3.30.2
+    react: 18.2.0
+  checksum: e4dde83907e3335083013ce7f9d8cf6441f5e4d30d59b273eaf9d9ae78cb096e482960bb71d2f3a0236a7842a5eb02c61dc17da622695b3acec831abb354055e
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/cli-helpers@npm:5.2.1":
   version: 5.2.1
   resolution: "@redwoodjs/cli-helpers@npm:5.2.1"
@@ -6100,6 +6111,38 @@ __metadata:
     tsc: dist/bins/tsc.js
     webpack: dist/bins/webpack.js
   checksum: d511b879b5962ef69e765be8a03d569b6968f57e024eba715cc5b02b642c3f8d020a01751a0798d9e76595f8dc6fed9e537e506a6713e4c0deff03167e732793
+  languageName: node
+  linkType: hard
+
+"@redwoodjs/web@npm:5.2.2":
+  version: 5.2.2
+  resolution: "@redwoodjs/web@npm:5.2.2"
+  dependencies:
+    "@apollo/client": 3.7.14
+    "@babel/runtime-corejs3": 7.21.5
+    "@redwoodjs/auth": 5.2.2
+    core-js: 3.30.2
+    graphql: 16.6.0
+    graphql-tag: 2.12.6
+    react-helmet-async: 1.3.0
+    react-hot-toast: 2.4.1
+    stacktracey: 2.1.8
+    ts-toolbelt: 9.6.0
+  peerDependencies:
+    prop-types: 15.8.1
+    react: 18.2.0
+    react-dom: 18.2.0
+  bin:
+    build-storybook: dist/bins/build-storybook.js
+    cross-env: dist/bins/cross-env.js
+    msw: dist/bins/msw.js
+    redwood: dist/bins/redwood.js
+    rw: dist/bins/redwood.js
+    rwfw: dist/bins/rwfw.js
+    start-storybook: dist/bins/start-storybook.js
+    tsc: dist/bins/tsc.js
+    webpack: dist/bins/webpack.js
+  checksum: d59355aaafdf1df90d269ffb02beee4bd46415cfd4057c7e5eeee51fc523d01862369fb682e9ad9a09ce76925d05fe2573c5b291f5accd6d0e16c03f07fcd614
   languageName: node
   linkType: hard
 
@@ -26361,7 +26404,7 @@ __metadata:
     "@redwoodjs/auth-supabase-web": 5.2.1
     "@redwoodjs/forms": 5.2.1
     "@redwoodjs/router": 5.2.1
-    "@redwoodjs/web": 5.2.1
+    "@redwoodjs/web": 5.2.2
     "@sentry/react": ^7.52.1
     "@sentry/webpack-plugin": ^1.20.1
     "@supabase/supabase-js": 2.22.0
