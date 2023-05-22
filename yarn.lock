@@ -5643,6 +5643,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/auth@npm:5.2.2":
+  version: 5.2.2
+  resolution: "@redwoodjs/auth@npm:5.2.2"
+  dependencies:
+    "@babel/runtime-corejs3": 7.21.5
+    core-js: 3.30.2
+    react: 18.2.0
+  checksum: e4dde83907e3335083013ce7f9d8cf6441f5e4d30d59b273eaf9d9ae78cb096e482960bb71d2f3a0236a7842a5eb02c61dc17da622695b3acec831abb354055e
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/cli-helpers@npm:5.2.1":
   version: 5.2.1
   resolution: "@redwoodjs/cli-helpers@npm:5.2.1"
@@ -5977,6 +5988,21 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
   checksum: efcf07520cb13686aa0cd777d21e9c1f05c5ce9768fee3e98b6d0fee0d9980135575d401b13b37ba7e929e4ea3fd4e02b4538bc21bc12841c0b8901a07351aed
+  languageName: node
+  linkType: hard
+
+"@redwoodjs/router@npm:5.2.2":
+  version: 5.2.2
+  resolution: "@redwoodjs/router@npm:5.2.2"
+  dependencies:
+    "@babel/runtime-corejs3": 7.21.5
+    "@reach/skip-nav": 0.18.0
+    "@redwoodjs/auth": 5.2.2
+    core-js: 3.30.2
+  peerDependencies:
+    react: 18.2.0
+    react-dom: 18.2.0
+  checksum: 05294e6bf7cb8dfbfdd2b71d5352368bd2b9265a42e9cdf03da147d1aeca7bfc470eed0720bcf559d52b05002df4c449d5e5d8a514750f2c8853452a129f8366
   languageName: node
   linkType: hard
 
@@ -26360,7 +26386,7 @@ __metadata:
     "@redwoodjs/auth": 5.2.1
     "@redwoodjs/auth-supabase-web": 5.2.1
     "@redwoodjs/forms": 5.2.1
-    "@redwoodjs/router": 5.2.1
+    "@redwoodjs/router": 5.2.2
     "@redwoodjs/web": 5.2.1
     "@sentry/react": ^7.52.1
     "@sentry/webpack-plugin": ^1.20.1

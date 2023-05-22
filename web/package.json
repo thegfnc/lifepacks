@@ -20,7 +20,7 @@
     "@redwoodjs/auth": "5.2.1",
     "@redwoodjs/auth-supabase-web": "5.2.1",
     "@redwoodjs/forms": "5.2.1",
-    "@redwoodjs/router": "5.2.1",
+    "@redwoodjs/router": "5.2.2",
     "@redwoodjs/web": "5.2.1",
     "@sentry/react": "^7.52.1",
     "@supabase/supabase-js": "2.22.0",
