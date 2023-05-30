@@ -22,7 +22,7 @@
     "@redwoodjs/forms": "5.2.3",
     "@redwoodjs/router": "5.2.3",
     "@redwoodjs/web": "5.2.3",
-    "@sentry/react": "^7.52.1",
+    "@sentry/react": "^7.53.1",
     "@supabase/supabase-js": "2.22.0",
     "compressorjs": "^1.2.1",
     "date-fns": "^2.30.0",
