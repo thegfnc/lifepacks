@@ -7606,12 +7606,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/postgrest-js@npm:^1.1.1":
-  version: 1.6.0
-  resolution: "@supabase/postgrest-js@npm:1.6.0"
+"@supabase/postgrest-js@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "@supabase/postgrest-js@npm:1.7.0"
   dependencies:
     cross-fetch: ^3.1.5
-  checksum: 2287ebdd024197481330f83ace8d7ea15b39b25bb22a4b26fec4db443f8269368a0c2b4a3ff5fb62a7bdba50e41f893e94889151b0f5931b623ccbc0d34ff709
+  checksum: dff68d516f4c54d7425941fa41579f4cfc0f95b490f299ab9a0fe96a01946c7e6a3622f174c0013770e5de2066f8d5c09e54fe8977d74b19687511fe4fc3f663
   languageName: node
   linkType: hard
 
@@ -7635,17 +7635,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:2.22.0":
-  version: 2.22.0
-  resolution: "@supabase/supabase-js@npm:2.22.0"
+"@supabase/supabase-js@npm:2.23.0":
+  version: 2.23.0
+  resolution: "@supabase/supabase-js@npm:2.23.0"
   dependencies:
     "@supabase/functions-js": ^2.1.0
     "@supabase/gotrue-js": ^2.26.0
-    "@supabase/postgrest-js": ^1.1.1
+    "@supabase/postgrest-js": ^1.7.0
     "@supabase/realtime-js": ^2.7.2
     "@supabase/storage-js": ^2.5.1
     cross-fetch: ^3.1.5
-  checksum: cac2085a5aec4a0a04db1d0e11aee0b416d160b0f4d37a2df05de53e1d9252680d6d4020fb16dc005de888356a7768425ce7113d28c821f8e022eb7641e9cdd7
+  checksum: f6649ebb5d984248b1ac58186db63e145f2132d57271a6f619ea0e056d0685650d5aabae98e5e8c8cec3e25b6ddbbf64d966799c2184533923c79b13a3bb0a7e
   languageName: node
   linkType: hard
 
@@ -26420,7 +26420,7 @@ __metadata:
     "@redwoodjs/web": 5.2.3
     "@sentry/react": ^7.53.1
     "@sentry/webpack-plugin": ^1.20.1
-    "@supabase/supabase-js": 2.22.0
+    "@supabase/supabase-js": 2.23.0
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
     framer-motion: 10.12.16
