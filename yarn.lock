@@ -22422,12 +22422,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^4.8.0":
-  version: 4.8.0
-  resolution: "react-icons@npm:4.8.0"
+"react-icons@npm:^4.9.0":
+  version: 4.9.0
+  resolution: "react-icons@npm:4.9.0"
   peerDependencies:
     react: "*"
-  checksum: fd8e6656ce863ca739e079a321fe122bcf21708270ddac4ce32b7e1f333a9957f97eca08f58c4837057e23355749a9b80569978a67adc734cb4a1dfdc506ba3f
+  checksum: 66eb6d170643d2a35a92418e9fa4416f728ebb537d99d3d0d875faa3e46952667da31777f9ca10b7351515785b3d92dd052fd67b7863471d332cd3b68beec7d1
   languageName: node
   linkType: hard
 
@@ -26411,7 +26411,7 @@ __metadata:
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
-    react-icons: ^4.8.0
+    react-icons: ^4.9.0
     uuid: ^9.0.0
   languageName: unknown
   linkType: soft
