@@ -5840,9 +5840,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redwoodjs/forms@npm:5.2.3":
-  version: 5.2.3
-  resolution: "@redwoodjs/forms@npm:5.2.3"
+"@redwoodjs/forms@npm:5.2.4":
+  version: 5.2.4
+  resolution: "@redwoodjs/forms@npm:5.2.4"
   dependencies:
     "@babel/runtime-corejs3": 7.21.5
     core-js: 3.30.2
@@ -5851,7 +5851,7 @@ __metadata:
   peerDependencies:
     graphql: 16.6.0
     react: 18.2.0
-  checksum: 46017f45294fa86dcb5b72557c4a8d35deca235a8331263a152f5de3cbb72d72661bb0b74d6d4f36313fbe7d372398a44c05f28438845e31a8168881340b47be
+  checksum: 0824cd9df57d18518801652daa79bb6351b9bd5b43312ecd07f3e135e53f3762f82d7a095f8eb6353141d05a4a0c06e2c413d496c74ca317cc9b1e0ba47c063e
   languageName: node
   linkType: hard
 
@@ -26415,7 +26415,7 @@ __metadata:
     "@emotion/styled": 11.11.0
     "@redwoodjs/auth": 5.2.3
     "@redwoodjs/auth-supabase-web": 5.2.3
-    "@redwoodjs/forms": 5.2.3
+    "@redwoodjs/forms": 5.2.4
     "@redwoodjs/router": 5.2.3
     "@redwoodjs/web": 5.2.3
     "@sentry/react": ^7.53.1
