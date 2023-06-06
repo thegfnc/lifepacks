@@ -20,14 +20,16 @@ const Pack = ({ pack }: PackProps) => {
       <Heading as="h1" fontSize="5xl" lineHeight="none" fontWeight="extrabold">
         {pack.title}
       </Heading>
-      <Text
-        fontSize="xl"
-        marginTop={8}
-        fontFamily="bitter"
-        color="blackAlpha.800"
-      >
-        {pack.description}
-      </Text>
+      {pack.description && (
+        <Text
+          fontSize="xl"
+          marginTop={8}
+          fontFamily="bitter"
+          color="blackAlpha.800"
+        >
+          {pack.description}
+        </Text>
+      )}
       {pack.packItems.map((packItem) => (
         <PackItem
           key={packItem.id}

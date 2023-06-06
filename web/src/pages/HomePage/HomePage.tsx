@@ -136,7 +136,7 @@ const HomePage = () => {
               Share your expert opinion
             </Heading>
             {/* desktop */}
-            <HStack mt={8} display={{ base: 'none', md: 'block' }}>
+            <HStack mt={8} display={{ base: 'none', md: 'flex' }}>
               {examplePacks.map((examplePack, index) => {
                 const isCurrentTab = index === examplePackTabIndex
 
@@ -157,7 +157,7 @@ const HomePage = () => {
               })}
             </HStack>
             {/* mobile */}
-            <HStack mt={6} display={{ base: 'block', md: 'none' }}>
+            <HStack mt={6} display={{ base: 'flex', md: 'none' }}>
               {examplePacks.map((examplePack, index) => {
                 const isCurrentTab = index === examplePackTabIndex
 

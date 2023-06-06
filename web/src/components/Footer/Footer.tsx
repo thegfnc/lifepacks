@@ -32,7 +32,12 @@ const Footer = () => (
         spacing={2}
       >
         <Logo color="whiteAlpha.600" />
-        <Text fontSize="md" color="whiteAlpha.600" py={{ base: 4, md: 0 }}>
+        <Text
+          fontSize="md"
+          color="whiteAlpha.600"
+          py={{ base: 4, md: 0 }}
+          as="div"
+        >
           <HStack spacing={4}>
             <ChakraLink as={Link} to={routes.privacyPolicy()}>
               Privacy Policy
