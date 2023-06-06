@@ -11,6 +11,7 @@ import {
   HStack,
   IconButton,
   Image,
+  Show,
   Stack,
   Text,
 } from '@chakra-ui/react'
@@ -136,46 +137,54 @@ const HomePage = () => {
               Share your expert opinion
             </Heading>
             {/* desktop */}
-            <HStack mt={8} display={{ base: 'none', md: 'flex' }}>
-              {examplePacks.map((examplePack, index) => {
-                const isCurrentTab = index === examplePackTabIndex
+            <Show above="md">
+              <HStack mt={8}>
+                {examplePacks.map((examplePack, index) => {
+                  const isCurrentTab = index === examplePackTabIndex
 
-                return (
-                  <Button
-                    key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.500' }}
-                    color={isCurrentTab ? 'black' : 'white'}
-                    onClick={() => setExamplePackTabIndex(index)}
-                    leftIcon={<Text>{examplePack.tabEmoji}</Text>}
-                    rounded="full"
-                  >
-                    <Text>{examplePack.tabLabel}</Text>
-                  </Button>
-                )
-              })}
-            </HStack>
+                  return (
+                    <Button
+                      key={examplePack.tabLabel}
+                      bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
+                      _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                      _active={{
+                        bg: isCurrentTab ? 'white' : 'whiteAlpha.500',
+                      }}
+                      color={isCurrentTab ? 'black' : 'white'}
+                      onClick={() => setExamplePackTabIndex(index)}
+                      leftIcon={<Text>{examplePack.tabEmoji}</Text>}
+                      rounded="full"
+                    >
+                      <Text>{examplePack.tabLabel}</Text>
+                    </Button>
+                  )
+                })}
+              </HStack>
+            </Show>
             {/* mobile */}
-            <HStack mt={6} display={{ base: 'flex', md: 'none' }}>
-              {examplePacks.map((examplePack, index) => {
-                const isCurrentTab = index === examplePackTabIndex
+            <Show below="md">
+              <HStack mt={6}>
+                {examplePacks.map((examplePack, index) => {
+                  const isCurrentTab = index === examplePackTabIndex
 
-                return (
-                  <IconButton
-                    key={examplePack.tabLabel}
-                    bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
-                    _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
-                    _active={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.500' }}
-                    onClick={() => setExamplePackTabIndex(index)}
-                    aria-label={examplePack.tabLabel}
-                    px={'14px'}
-                    icon={<Text fontSize="xl">{examplePack.tabEmoji}</Text>}
-                    rounded="full"
-                  />
-                )
-              })}
-            </HStack>
+                  return (
+                    <IconButton
+                      key={examplePack.tabLabel}
+                      bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
+                      _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
+                      _active={{
+                        bg: isCurrentTab ? 'white' : 'whiteAlpha.500',
+                      }}
+                      onClick={() => setExamplePackTabIndex(index)}
+                      aria-label={examplePack.tabLabel}
+                      px={'14px'}
+                      icon={<Text fontSize="xl">{examplePack.tabEmoji}</Text>}
+                      rounded="full"
+                    />
+                  )
+                })}
+              </HStack>
+            </Show>
             <Box
               bg="brown.500"
               px={{ base: 6, md: 24 }}
@@ -186,22 +195,23 @@ const HomePage = () => {
               borderTopRightRadius={{ base: '3xl', md: '24px' }}
               position="relative"
             >
-              <Box
-                borderBottomColor="blackAlpha.200"
-                borderBottomWidth="1px"
-                position="absolute"
-                top={0}
-                left={0}
-                right={0}
-                height="36px"
-                display={{ base: 'none', md: 'block' }}
-              >
-                <HStack spacing={2} position="absolute" top={3} left={6}>
-                  <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
-                  <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
-                  <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
-                </HStack>
-              </Box>
+              <Show above="md">
+                <Box
+                  borderBottomColor="blackAlpha.200"
+                  borderBottomWidth="1px"
+                  position="absolute"
+                  top={0}
+                  left={0}
+                  right={0}
+                  height="36px"
+                >
+                  <HStack spacing={2} position="absolute" top={3} left={6}>
+                    <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
+                    <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
+                    <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
+                  </HStack>
+                </Box>
+              </Show>
               <Flex>
                 <Flex direction={{ base: 'column', md: 'row' }}>
                   <Box
@@ -212,22 +222,23 @@ const HomePage = () => {
                   >
                     <Pack pack={examplePacks[examplePackTabIndex].pack} />
                   </Box>
-                  <Box
-                    width={{ base: 'full', md: '30%' }}
-                    borderLeftWidth={{ base: '0', md: '1px' }}
-                    borderLeftColor={'blackAlpha.200'}
-                    paddingLeft={{ base: 0, md: 14 }}
-                    order={{ base: 1, md: 2 }}
-                    display={{ base: 'none', md: 'block' }}
-                  >
-                    <UserProfile
-                      layout={UserProfileLayout.Sidebar}
-                      userProfile={
-                        examplePacks[examplePackTabIndex].userProfile
-                      }
-                      disableLinks={true}
-                    />
-                  </Box>
+                  <Show above="md">
+                    <Box
+                      width={{ base: 'full', md: '30%' }}
+                      borderLeftWidth={{ base: '0', md: '1px' }}
+                      borderLeftColor={'blackAlpha.200'}
+                      paddingLeft={{ base: 0, md: 14 }}
+                      order={{ base: 1, md: 2 }}
+                    >
+                      <UserProfile
+                        layout={UserProfileLayout.Sidebar}
+                        userProfile={
+                          examplePacks[examplePackTabIndex].userProfile
+                        }
+                        disableLinks={true}
+                      />
+                    </Box>
+                  </Show>
                 </Flex>
               </Flex>
             </Box>
@@ -258,55 +269,52 @@ const HomePage = () => {
           </Box>
         </PageContainer>
         {/* desktop */}
-        <Flex
-          mt={{ base: 10, md: '75px' }}
-          justify="center"
-          overflow="hidden"
-          pb={{ base: 10, md: 16 }}
-          display={{ base: 'none', md: 'flex' }}
-        >
-          <HStack spacing={{ base: 6, md: 12 }}>
-            {stores.map((store) => (
-              <Center
-                key={store.storeName}
-                p={20}
-                h={'290px'}
-                w={'290px'}
-                bg="white"
-                borderRadius="32px"
-                boxShadow="xl"
-              >
-                <Image src={store.storeLogo} h={'120px'} w={'120px'} />
-              </Center>
-            ))}
-          </HStack>
-        </Flex>
-        {/* mobile */}
-        <Flex
-          justify="center"
-          display={{ base: 'flex', md: 'none' }}
-          mt={6}
-          mb={2}
-          mx={2}
-        >
-          <Flex justify="center" w="full" maxW="500px" flexWrap="wrap">
-            {stores.slice(0, 4).map((store) => (
-              <Center
-                key={store.storeName}
-                p={'45px'}
-                h={'170px'}
-                w={'170px'}
-                bg="white"
-                borderRadius="32px"
-                boxShadow="xl"
-                mb={4}
-                mx={2}
-              >
-                <Image src={store.storeLogo} h="80px" w="80px" />
-              </Center>
-            ))}
+        <Show above="md">
+          <Flex
+            mt={{ base: 10, md: '75px' }}
+            justify="center"
+            overflow="hidden"
+            pb={{ base: 10, md: 16 }}
+          >
+            <HStack spacing={{ base: 6, md: 12 }}>
+              {stores.map((store) => (
+                <Center
+                  key={store.storeName}
+                  p={20}
+                  h={'290px'}
+                  w={'290px'}
+                  bg="white"
+                  borderRadius="32px"
+                  boxShadow="xl"
+                >
+                  <Image src={store.storeLogo} h={'120px'} w={'120px'} />
+                </Center>
+              ))}
+            </HStack>
           </Flex>
-        </Flex>
+        </Show>
+        {/* mobile */}
+        <Show below="md">
+          <Flex justify="center" mt={6} mb={2} mx={2}>
+            <Flex justify="center" w="full" maxW="500px" flexWrap="wrap">
+              {stores.slice(0, 4).map((store) => (
+                <Center
+                  key={store.storeName}
+                  p={'45px'}
+                  h={'170px'}
+                  w={'170px'}
+                  bg="white"
+                  borderRadius="32px"
+                  boxShadow="xl"
+                  mb={4}
+                  mx={2}
+                >
+                  <Image src={store.storeLogo} h="80px" w="80px" />
+                </Center>
+              ))}
+            </Flex>
+          </Flex>
+        </Show>
         <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box textAlign="center">
             <Button
