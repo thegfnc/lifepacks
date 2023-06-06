@@ -94,8 +94,7 @@ const TermsOfServicePage = () => {
         </Paragraph>
         <Paragraph>
           This TOS is governed by and construed in accordance with the laws of
-          the State of California, without regard to its conflict of laws
-          provisions.
+          the State of Texas, without regard to its conflict of laws provisions.
         </Paragraph>
         <Paragraph>
           <b>6. Entire Agreement</b>
@@ -125,7 +124,7 @@ const TermsOfServicePage = () => {
           <b>9. Notices</b>
         </Paragraph>
         <Paragraph>
-          ll notices and other communications under this TOS will be in writing
+          All notices and other communications under this TOS will be in writing
           and will be deemed to have been duly given when delivered in person,
           upon the first business day following deposit in the United States
           mail, postage prepaid, certified or registered, return receipt

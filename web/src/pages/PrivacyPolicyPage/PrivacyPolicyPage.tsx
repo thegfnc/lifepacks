@@ -103,11 +103,6 @@ const PrivacyPolicyPage = () => {
           If you have any questions about this PP, please contact us at{' '}
           <Link href="mailto:lifepacksco@gmail.com">lifepacksco@gmail.com</Link>
           .
-          <br />
-          <br />
-          Please note that this is just a sample PP and may not be appropriate
-          for all apps. You should consult with an attorney to create a PP that
-          is specific to your app and your business needs.
         </Paragraph>
       </Stack>
     </PageContainer>
