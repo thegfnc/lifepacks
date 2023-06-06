@@ -82,10 +82,10 @@ const UserProfileBannerLayout = ({
       )}
       <Center mt={4}>
         <HStack>
-          {userProfile.facebookUrl && (
+          {userProfile.youtubeUrl && (
             <SocialAccountButton
-              accountType={SocialAccount.Facebook}
-              linkUrl={userProfile.facebookUrl}
+              accountType={SocialAccount.YouTube}
+              linkUrl={userProfile.youtubeUrl}
             />
           )}
           {userProfile.instagramUrl && (
@@ -94,16 +94,16 @@ const UserProfileBannerLayout = ({
               linkUrl={userProfile.instagramUrl}
             />
           )}
-          {userProfile.youtubeUrl && (
-            <SocialAccountButton
-              accountType={SocialAccount.YouTube}
-              linkUrl={userProfile.youtubeUrl}
-            />
-          )}
           {userProfile.twitterUrl && (
             <SocialAccountButton
               accountType={SocialAccount.Twitter}
               linkUrl={userProfile.twitterUrl}
+            />
+          )}
+          {userProfile.facebookUrl && (
+            <SocialAccountButton
+              accountType={SocialAccount.Facebook}
+              linkUrl={userProfile.facebookUrl}
             />
           )}
         </HStack>

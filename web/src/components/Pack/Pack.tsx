@@ -21,12 +21,7 @@ const Pack = ({ pack }: PackProps) => {
         {pack.title}
       </Heading>
       {pack.description && (
-        <Text
-          fontSize="xl"
-          marginTop={8}
-          fontFamily="bitter"
-          color="blackAlpha.800"
-        >
+        <Text fontSize="xl" fontFamily="bitter" color="blackAlpha.800">
           {pack.description}
         </Text>
       )}

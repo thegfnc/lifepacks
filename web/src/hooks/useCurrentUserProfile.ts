@@ -1,3 +1,5 @@
+import { GetCurrentUserProfile } from 'types/graphql'
+
 import { navigate, routes, useLocation } from '@redwoodjs/router'
 import { useQuery } from '@redwoodjs/web'
 
@@ -26,7 +28,9 @@ function useCurrentUserProfile() {
   const { currentUser } = useAuth()
   const { pathname } = useLocation()
 
-  const { data, loading, error, refetch } = useQuery(CURRENT_USER_PROFILE_QUERY)
+  const { data, loading, error, refetch } = useQuery<GetCurrentUserProfile>(
+    CURRENT_USER_PROFILE_QUERY
+  )
 
   // If a user hasn't created a user profile yet, redirect them to finish sign up
   if (
