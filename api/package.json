@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@envelop/sentry": "5.1.1",
+    "@envelop/sentry": "6.0.0",
     "@redwoodjs/api": "5.3.0",
     "@redwoodjs/auth-supabase-api": "5.3.0",
     "@redwoodjs/graphql-server": "5.3.0",
