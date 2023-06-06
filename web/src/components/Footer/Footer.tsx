@@ -1,4 +1,6 @@
-import { Box, Link, Stack, Text } from '@chakra-ui/react'
+import { Box, Link as ChakraLink, HStack, Stack, Text } from '@chakra-ui/react'
+
+import { Link, routes } from '@redwoodjs/router'
 
 import Logo from '../Logo/Logo'
 import MailingListSignUp from '../MailingListSignUp/MailingListSignUp'
@@ -15,9 +17,9 @@ const Footer = () => (
           fontSize={{ base: 'sm', md: 'md' }}
         >
           For support and press inquiries, contact us directly at{' '}
-          <Link href="mailto:lifepacksco@gmail.com" color="white">
+          <ChakraLink href="mailto:lifepacksco@gmail.com" color="white">
             lifepacksco@gmail.com
-          </Link>
+          </ChakraLink>
         </Text>
       </Box>
       <Stack
@@ -30,6 +32,16 @@ const Footer = () => (
         spacing={2}
       >
         <Logo color="whiteAlpha.600" />
+        <Text fontSize="md" color="whiteAlpha.600" py={{ base: 4, md: 0 }}>
+          <HStack spacing={4}>
+            <ChakraLink as={Link} to={routes.privacyPolicy()}>
+              Privacy Policy
+            </ChakraLink>
+            <ChakraLink as={Link} to={routes.termsOfService()}>
+              Terms of Service
+            </ChakraLink>
+          </HStack>
+        </Text>
         <Text fontSize="md" color="whiteAlpha.600">
           &copy; {new Date().getFullYear()} Lifepacks. All rights reserved.
         </Text>
