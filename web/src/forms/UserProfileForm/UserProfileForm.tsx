@@ -1,7 +1,9 @@
 import { Dispatch, SetStateAction, useEffect } from 'react'
 
 import {
+  Box,
   Button,
+  Checkbox,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -10,6 +12,7 @@ import {
   InputLeftElement,
   SimpleGrid,
   Stack,
+  Text,
   Textarea,
 } from '@chakra-ui/react'
 import { CurrentUserProfile } from 'types/graphql'
@@ -50,6 +53,7 @@ type UserProfileFormValues = {
   instagramUrl: string
   youtubeUrl: string
   twitterUrl: string
+  mailingListSignUp?: boolean
 }
 
 export type UserProfileFormSubmitData = UserProfileFormValues
@@ -179,109 +183,128 @@ const UserProfileForm = ({
             </FormErrorMessage>
           </FormControl>
 
-          <FormLabel>Social Links</FormLabel>
-          <Stack>
-            <FormControl isInvalid={Boolean(formState.errors.facebookUrl)}>
-              <InputGroup>
-                <InputLeftElement width="2.75rem">
-                  <SocialAccountIcon accountType={SocialAccount.Facebook} />
-                </InputLeftElement>
-                <Input
-                  pl="2.75rem"
-                  placeholder="https://facebook.com/xxxx"
-                  {...register('facebookUrl', {
-                    maxLength: {
-                      value: 2000,
-                      message:
-                        'Facebook URL cannot be more than 2000 characters',
-                    },
-                    validate: (value) => {
-                      if (value === '') return true
-                      return isValidUrl(value) || 'Facebook URL is invalid'
-                    },
-                  })}
-                />
-              </InputGroup>
-              <FormErrorMessage>
-                {formState.errors.facebookUrl?.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormControl isInvalid={Boolean(formState.errors.instagramUrl)}>
-              <InputGroup>
-                <InputLeftElement width="2.75rem">
-                  <SocialAccountIcon accountType={SocialAccount.Instagram} />
-                </InputLeftElement>
-                <Input
-                  pl="2.75rem"
-                  placeholder="https://instagram.com/xxxx"
-                  {...register('instagramUrl', {
-                    maxLength: {
-                      value: 2000,
-                      message:
-                        'Instagram URL cannot be more than 2000 characters',
-                    },
-                    validate: (value) => {
-                      if (value === '') return true
-                      return isValidUrl(value) || 'Instagram URL is invalid'
-                    },
-                  })}
-                />
-              </InputGroup>
-              <FormErrorMessage>
-                {formState.errors.instagramUrl?.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormControl isInvalid={Boolean(formState.errors.youtubeUrl)}>
-              <InputGroup>
-                <InputLeftElement width="2.75rem">
-                  <SocialAccountIcon accountType={SocialAccount.YouTube} />
-                </InputLeftElement>
-                <Input
-                  pl="2.75rem"
-                  placeholder="https://youtube.com/xxxx"
-                  {...register('youtubeUrl', {
-                    maxLength: {
-                      value: 2000,
-                      message:
-                        'YouTube URL cannot be more than 2000 characters',
-                    },
-                    validate: (value) => {
-                      if (value === '') return true
-                      return isValidUrl(value) || 'YouTube URL is invalid'
-                    },
-                  })}
-                />
-              </InputGroup>
-              <FormErrorMessage>
-                {formState.errors.youtubeUrl?.message}
-              </FormErrorMessage>
-            </FormControl>
-            <FormControl isInvalid={Boolean(formState.errors.twitterUrl)}>
-              <InputGroup>
-                <InputLeftElement width="2.75rem">
-                  <SocialAccountIcon accountType={SocialAccount.Twitter} />
-                </InputLeftElement>
-                <Input
-                  pl="2.75rem"
-                  placeholder="https://twitter.com/xxxx"
-                  {...register('twitterUrl', {
-                    maxLength: {
-                      value: 2000,
-                      message:
-                        'Twitter URL cannot be more than 2000 characters',
-                    },
-                    validate: (value) => {
-                      if (value === '') return true
-                      return isValidUrl(value) || 'Twitter URL is invalid'
-                    },
-                  })}
-                />
-              </InputGroup>
-              <FormErrorMessage>
-                {formState.errors.twitterUrl?.message}
-              </FormErrorMessage>
-            </FormControl>
-          </Stack>
+          <Box>
+            <FormLabel>Social Links</FormLabel>
+            <Stack>
+              <FormControl isInvalid={Boolean(formState.errors.youtubeUrl)}>
+                <InputGroup>
+                  <InputLeftElement width="2.75rem">
+                    <SocialAccountIcon accountType={SocialAccount.YouTube} />
+                  </InputLeftElement>
+                  <Input
+                    pl="2.75rem"
+                    placeholder="https://youtube.com/xxxx"
+                    {...register('youtubeUrl', {
+                      maxLength: {
+                        value: 2000,
+                        message:
+                          'YouTube URL cannot be more than 2000 characters',
+                      },
+                      validate: (value) => {
+                        if (value === '') return true
+                        return isValidUrl(value) || 'YouTube URL is invalid'
+                      },
+                    })}
+                  />
+                </InputGroup>
+                <FormErrorMessage>
+                  {formState.errors.youtubeUrl?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={Boolean(formState.errors.instagramUrl)}>
+                <InputGroup>
+                  <InputLeftElement width="2.75rem">
+                    <SocialAccountIcon accountType={SocialAccount.Instagram} />
+                  </InputLeftElement>
+                  <Input
+                    pl="2.75rem"
+                    placeholder="https://instagram.com/xxxx"
+                    {...register('instagramUrl', {
+                      maxLength: {
+                        value: 2000,
+                        message:
+                          'Instagram URL cannot be more than 2000 characters',
+                      },
+                      validate: (value) => {
+                        if (value === '') return true
+                        return isValidUrl(value) || 'Instagram URL is invalid'
+                      },
+                    })}
+                  />
+                </InputGroup>
+                <FormErrorMessage>
+                  {formState.errors.instagramUrl?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={Boolean(formState.errors.twitterUrl)}>
+                <InputGroup>
+                  <InputLeftElement width="2.75rem">
+                    <SocialAccountIcon accountType={SocialAccount.Twitter} />
+                  </InputLeftElement>
+                  <Input
+                    pl="2.75rem"
+                    placeholder="https://twitter.com/xxxx"
+                    {...register('twitterUrl', {
+                      maxLength: {
+                        value: 2000,
+                        message:
+                          'Twitter URL cannot be more than 2000 characters',
+                      },
+                      validate: (value) => {
+                        if (value === '') return true
+                        return isValidUrl(value) || 'Twitter URL is invalid'
+                      },
+                    })}
+                  />
+                </InputGroup>
+                <FormErrorMessage>
+                  {formState.errors.twitterUrl?.message}
+                </FormErrorMessage>
+              </FormControl>
+              <FormControl isInvalid={Boolean(formState.errors.facebookUrl)}>
+                <InputGroup>
+                  <InputLeftElement width="2.75rem">
+                    <SocialAccountIcon accountType={SocialAccount.Facebook} />
+                  </InputLeftElement>
+                  <Input
+                    pl="2.75rem"
+                    placeholder="https://facebook.com/xxxx"
+                    {...register('facebookUrl', {
+                      maxLength: {
+                        value: 2000,
+                        message:
+                          'Facebook URL cannot be more than 2000 characters',
+                      },
+                      validate: (value) => {
+                        if (value === '') return true
+                        return isValidUrl(value) || 'Facebook URL is invalid'
+                      },
+                    })}
+                  />
+                </InputGroup>
+                <FormErrorMessage>
+                  {formState.errors.facebookUrl?.message}
+                </FormErrorMessage>
+              </FormControl>
+            </Stack>
+          </Box>
+          {!isUpdateForm && (
+            <Checkbox
+              defaultChecked
+              spacing={2}
+              alignItems="top"
+              lineHeight="1.2"
+              colorScheme="gray"
+              color="blackAlpha.700"
+              mt={4}
+              {...register('mailingListSignUp')}
+            >
+              <Text fontSize="sm">
+                I want to receive occassional updates about features and
+                promotions from Lifepacks.
+              </Text>
+            </Checkbox>
+          )}
           <SimpleGrid
             pt={4}
             pb={isUpdateForm ? 4 : 0}
