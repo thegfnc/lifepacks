@@ -10,11 +10,14 @@ import {
 import {
   CreateCurrentUserProfileMutation,
   CreateCurrentUserProfileMutationVariables,
+  MailingListSignUpMutation,
+  MailingListSignUpMutationVariables,
 } from 'types/graphql'
 
 import { navigate, routes } from '@redwoodjs/router'
 import { MetaTags, useMutation } from '@redwoodjs/web'
 
+import { useAuth } from 'src/auth'
 import UserProfileForm, {
   UserProfileFormSubmitData,
 } from 'src/forms/UserProfileForm/UserProfileForm'
@@ -22,7 +25,7 @@ import useCurrentUserProfile, {
   CURRENT_USER_PROFILE_QUERY,
 } from 'src/hooks/useCurrentUserProfile'
 
-const MUTATION = gql`
+const CREATE_CURRENT_USER_PROFILE_MUTATION = gql`
   mutation CreateCurrentUserProfileMutation(
     $input: CreateCurrentUserProfileInput!
   ) {
@@ -32,21 +35,54 @@ const MUTATION = gql`
   }
 `
 
+const MAILING_LIST_SIGN_UP_MUTATION = gql`
+  mutation MailingListSignUpMutation($input: MailingListSignUpInput!) {
+    mailingListSignUp(input: $input) {
+      id
+    }
+  }
+`
+
 const CompleteSignUpPage = () => {
+  const { currentUser } = useAuth()
   const { currentUserProfile } = useCurrentUserProfile()
-  const [mutate, { loading, error }] = useMutation<
+
+  const [
+    mutateCreateCurrentUserProfile,
+    {
+      loading: loadingCreateCurrentUserProfile,
+      error: errorCreateCurrentUserProfile,
+    },
+  ] = useMutation<
     CreateCurrentUserProfileMutation,
     CreateCurrentUserProfileMutationVariables
-  >(MUTATION, {
+  >(CREATE_CURRENT_USER_PROFILE_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_PROFILE_QUERY }],
   })
+
+  const [
+    mutateMailingListSignUp,
+    { loading: loadingMailingListSignUp, error: errorMailingListSignUp },
+  ] = useMutation<
+    MailingListSignUpMutation,
+    MailingListSignUpMutationVariables
+  >(MAILING_LIST_SIGN_UP_MUTATION)
 
   if (currentUserProfile) {
     navigate(routes.explore())
   }
 
-  const onSubmit = (data: UserProfileFormSubmitData) => {
-    mutate({ variables: { input: data } })
+  const onSubmit = ({
+    mailingListSignUp,
+    ...data
+  }: UserProfileFormSubmitData) => {
+    mutateCreateCurrentUserProfile({ variables: { input: data } })
+
+    if (mailingListSignUp) {
+      mutateMailingListSignUp({
+        variables: { input: { email: currentUser.email } },
+      })
+    }
   }
 
   return (
@@ -67,13 +103,21 @@ const CompleteSignUpPage = () => {
             </Text>
           </Stack>
           <Box rounded={'lg'} bg={'white'} boxShadow={'lg'} p={8}>
-            {error && (
+            {(errorCreateCurrentUserProfile || errorMailingListSignUp) && (
               <Alert status="error" mb={4}>
                 <AlertIcon />
-                {error.message}
+                {
+                  (errorCreateCurrentUserProfile || errorMailingListSignUp)
+                    .message
+                }
               </Alert>
             )}
-            <UserProfileForm onSubmit={onSubmit} isLoading={loading} />
+            <UserProfileForm
+              onSubmit={onSubmit}
+              isLoading={
+                loadingCreateCurrentUserProfile || loadingMailingListSignUp
+              }
+            />
           </Box>
         </Stack>
       </Flex>
