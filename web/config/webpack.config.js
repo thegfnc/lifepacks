@@ -15,9 +15,6 @@ module.exports = (config, { mode }) => {
       sentryWebpackPlugin({
         org: process.env.SENTRY_ORG,
         project: process.env.SENTRY_WEB_PROJECT,
-
-        // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
-        // and needs the `project:releases` and `org:read` scopes
         authToken: process.env.SENTRY_AUTH_TOKEN,
       })
     )
