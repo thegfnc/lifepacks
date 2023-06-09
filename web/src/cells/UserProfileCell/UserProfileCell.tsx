@@ -72,7 +72,11 @@ export const Success = ({
       {setMetaTags && (
         <>
           <MetaTags
-            title={`@${userProfile.username}'s Profile`}
+            title={`${getUserDisplayName(
+              userProfile.givenName,
+              userProfile.familyName,
+              userProfile.username
+            )}'s Profile`}
             description={userProfile.biography}
             ogType="profile"
             ogUrl={`https://lifepacks.co${routes.userProfile({
