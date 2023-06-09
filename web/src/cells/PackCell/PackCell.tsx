@@ -155,8 +155,6 @@ export const Success = ({
               userProfile.familyName,
               userProfile.username
             )}`}
-            ogType="article"
-            ogUrl={`https://lifepacks.co${routes.pack({ username, slug })}`}
             ogContentUrl={pack.packItems[0]?.imageUrl || userProfile.imageUrl}
           />
           <Head>
@@ -193,7 +191,7 @@ export const Success = ({
           <HStack>
             <ShareMenu
               shareUrl={
-                window.location.origin + routes.pack({ username, slug })
+                'https://lifepacks.co' + routes.pack({ username, slug })
               }
               shareTitle={pack.title}
             />
@@ -233,7 +231,7 @@ export const Success = ({
         <PublishSuccessDrawer
           isOpen={isPublishSuccessDrawerOpen}
           onClose={onPublishSuccessDrawerClose}
-          shareUrl={window.location.origin + routes.pack({ username, slug })}
+          shareUrl={'https://lifepacks.co' + routes.pack({ username, slug })}
           shareTitle={pack.title}
         />
       )}

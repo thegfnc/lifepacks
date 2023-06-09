@@ -17,12 +17,12 @@ const PackPage = ({ username, slug }: PackPageProps) => {
   return (
     <>
       {/* Default MetaTags, some props will get overwritten by PackCell below */}
-      {/* <MetaTags
+      <MetaTags
         title={`@${username}'s Pack`}
         description={`This pack was created by @${username}`}
         ogType="article"
         ogUrl={`https://lifepacks.co${routes.pack({ username, slug })}`}
-      /> */}
+      />
 
       <PageContainer>
         <Flex direction={{ base: 'column', md: 'row' }} mb={10}>
