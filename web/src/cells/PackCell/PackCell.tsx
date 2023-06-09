@@ -147,14 +147,18 @@ export const Success = ({
       {setMetaTags && (
         <>
           <MetaTags
-            title={pack.title}
-            description={`${
-              pack.description
-            } \n This pack was created by ${getUserDisplayName(
-              userProfile.givenName,
-              userProfile.familyName,
-              userProfile.username
-            )}`}
+            title={
+              pack.title +
+              ' by ' +
+              getUserDisplayName(
+                userProfile.givenName,
+                userProfile.familyName,
+                userProfile.username
+              )
+            }
+            description={pack.description}
+            ogType="article"
+            ogUrl={`https://lifepacks.co${routes.pack({ username, slug })}`}
             ogContentUrl={pack.packItems[0]?.imageUrl || userProfile.imageUrl}
           />
           <Head>
