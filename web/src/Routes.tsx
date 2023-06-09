@@ -30,8 +30,8 @@ const Routes = () => {
           <Route path="/explore" page={ExplorePage} name="explore" prerender />
 
           {/* Public Profile and Pack Pages */}
-          <Route path="/@{username}" page={UserProfilePage} name="userProfile" />
-          <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" />
+          <Route path="/@{username}" page={UserProfilePage} name="userProfile" prerender />
+          <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" prerender />
 
           {/* Public Auth Pages */}
           <Route path="/log-in" page={LogInPage} name="logIn" prerender />
