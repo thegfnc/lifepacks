@@ -4,6 +4,7 @@ import type {
   FindUserProfileQueryVariables,
 } from 'types/graphql'
 
+import { routes } from '@redwoodjs/router'
 import {
   CellSuccessProps,
   CellFailureProps,
@@ -71,15 +72,16 @@ export const Success = ({
       {setMetaTags && (
         <>
           <MetaTags
-            title={`@${userProfile.username}'s Profile`}
-            description={`${
-              userProfile.biography
-            } \n Check out the packs created by ${getUserDisplayName(
+            title={`${getUserDisplayName(
               userProfile.givenName,
               userProfile.familyName,
               userProfile.username
-            )}`}
+            )}'s Profile`}
+            description={userProfile.biography}
             ogType="profile"
+            ogUrl={`https://lifepacks.co${routes.userProfile({
+              username: userProfile.username,
+            })}`}
             ogContentUrl={userProfile.imageUrl}
           />
           <Head>

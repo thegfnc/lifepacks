@@ -37,7 +37,7 @@ const HomePage = () => {
     <>
       <MetaTags
         title="Make guides for the products you swear by"
-        description="Publish product recommendations just like the pros at Wirecutter."
+        description="Publish product recommendations just like the professionals."
         ogType="website"
         ogUrl="https://lifepacks.co/"
         ogContentUrl={`https://lifepacks.co${websiteScreenshot}`}
