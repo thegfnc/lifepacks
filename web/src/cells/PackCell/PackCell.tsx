@@ -156,6 +156,7 @@ export const Success = ({
               userProfile.username
             )}`}
             ogType="article"
+            ogUrl={`https://lifepacks.co${routes.pack({ username, slug })}`}
             ogContentUrl={pack.packItems[0]?.imageUrl || userProfile.imageUrl}
           />
           <Head>
