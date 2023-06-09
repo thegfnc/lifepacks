@@ -12,7 +12,7 @@ import FatalErrorPage from 'src/pages/FatalErrorPage'
 import Routes from 'src/Routes'
 
 import { AuthProvider, useAuth } from './auth'
-
+import { graphQLClientConfig } from './lib/apollo'
 import './index.css'
 
 const extendedTheme = extendTheme(theme)
@@ -23,7 +23,10 @@ const App = () => (
       <AuthProvider>
         <ColorModeScript />
         <ChakraProvider theme={extendedTheme}>
-          <RedwoodApolloProvider useAuth={useAuth}>
+          <RedwoodApolloProvider
+            useAuth={useAuth}
+            graphQLClientConfig={graphQLClientConfig}
+          >
             <Toaster />
             <Routes />
           </RedwoodApolloProvider>
