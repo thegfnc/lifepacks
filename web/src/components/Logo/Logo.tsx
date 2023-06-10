@@ -1,18 +1,41 @@
-import { Heading, HStack, Text } from '@chakra-ui/react'
+import { BoxProps, ColorProps, Heading, HStack, Text } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 
 type LogoProps = {
-  color?: string
+  color?: ColorProps['color']
+  size?: 'md' | 'lg' | 'xl'
 }
 
 type LogoIconProps = {
   boxSize?: number
 }
 
-const LogoIcon = ({ boxSize = 24 }: LogoIconProps) => {
+type LogoTextProps = {
+  fontSize?: BoxProps['fontSize']
+}
+
+const LOGO_SIZES = {
+  md: {
+    iconBoxSize: 22,
+    textFontSize: 'xl',
+    stackSpacing: 2,
+  },
+  lg: {
+    iconBoxSize: 28,
+    textFontSize: '2xl',
+    stackSpacing: '10px',
+  },
+  xl: {
+    iconBoxSize: 32,
+    textFontSize: '3xl',
+    stackSpacing: 3,
+  },
+}
+
+const LogoIcon = ({ boxSize }: LogoIconProps) => {
   return (
     <svg
       fill="none"
@@ -32,24 +55,28 @@ const LogoIcon = ({ boxSize = 24 }: LogoIconProps) => {
   )
 }
 
-const LogoText = () => {
-  return <Text>Lifepacks</Text>
+const LogoText = ({ fontSize }: LogoTextProps) => {
+  return (
+    <Text fontSize={fontSize} fontWeight="medium">
+      Lifepacks
+    </Text>
+  )
 }
 
-const Logo = ({ color = 'black' }: LogoProps) => {
+const Logo = ({ color = 'black', size = 'md' }: LogoProps) => {
   const { isAuthenticated } = useAuth()
+
+  const logoSizes = LOGO_SIZES[size]
 
   return (
     <Heading
       as={Link}
       to={isAuthenticated ? routes.explore() : routes.home()}
-      size="md"
       color={color}
-      fontWeight="medium"
     >
-      <HStack spacing={2}>
-        <LogoIcon boxSize={22} />
-        <LogoText />
+      <HStack spacing={logoSizes.stackSpacing}>
+        <LogoIcon boxSize={logoSizes.iconBoxSize} />
+        <LogoText fontSize={logoSizes.textFontSize} />
       </HStack>
     </Heading>
   )

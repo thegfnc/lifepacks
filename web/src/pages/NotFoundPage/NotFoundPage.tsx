@@ -16,7 +16,7 @@ import PageContainer from 'src/components/PageContainer/PageContainer'
 export default () => (
   <PageContainer size="sm">
     <Center>
-      <Logo />
+      <Logo size="xl" />
     </Center>
     <Center h="full" flexDirection="column">
       <Flex>
