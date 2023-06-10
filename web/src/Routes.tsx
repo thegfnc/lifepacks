@@ -45,7 +45,7 @@ const Routes = () => {
           <Route path="/privacy-policy" page={PrivacyPolicyPage} name="privacyPolicy" prerender />
           <Route path="/terms-of-service" page={TermsOfServicePage} name="termsOfService" prerender />
 
-          {/* Dashboard Pages*/}
+          {/* Private Dashboard Pages*/}
           <Set private unauthenticated="home">
             <Route path="/me/pack/edit/{id:Int}" page={EditPackPage} name="editPack" />
             <Route path="/me/pack/new" page={NewPackPage} name="newPack" />
