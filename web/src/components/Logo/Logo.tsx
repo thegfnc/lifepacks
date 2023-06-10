@@ -17,7 +17,7 @@ type LogoTextProps = {
   fontSize?: BoxProps['fontSize']
 }
 
-const LOGO_SIZES = {
+const LOGO_PROPS = {
   md: {
     iconBoxSize: 22,
     textFontSize: 'xl',
@@ -66,7 +66,7 @@ const LogoText = ({ fontSize }: LogoTextProps) => {
 const Logo = ({ color = 'black', size = 'md' }: LogoProps) => {
   const { isAuthenticated } = useAuth()
 
-  const logoSizes = LOGO_SIZES[size]
+  const logoSizes = LOGO_PROPS[size]
 
   return (
     <Heading
