@@ -41,6 +41,7 @@ import {
 import { useAuth } from 'src/auth'
 import PublishSuccessDrawer from 'src/components/PublishSuccessDrawer/PublishSuccessDrawer'
 import ShareMenu from 'src/components/ShareMenu/ShareMenu'
+import getLogoCard from 'src/helpers/getLogoCard'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
@@ -159,7 +160,11 @@ export const Success = ({
             description={pack.description}
             ogType="article"
             ogUrl={`https://lifepacks.co${routes.pack({ username, slug })}`}
-            ogContentUrl={pack.packItems[0]?.imageUrl || userProfile.imageUrl}
+            ogContentUrl={
+              pack.packItems[0]?.imageUrl ||
+              userProfile.imageUrl ||
+              getLogoCard({ color: 'random' })
+            }
           />
           <Head>
             <meta
