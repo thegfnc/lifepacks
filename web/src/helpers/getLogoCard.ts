@@ -20,13 +20,17 @@ const LOGO_CARD_FILES = {
 }
 
 const getLogoCard = ({ color }: getLogoCard) => {
+  let logoCardFile = null
+
   if (color === 'random') {
     const colors = Object.keys(LOGO_CARD_FILES)
     const randomColor = colors[Math.floor(Math.random() * colors.length)]
-    return LOGO_CARD_FILES[randomColor]
+    logoCardFile = LOGO_CARD_FILES[randomColor]
+  } else {
+    logoCardFile = LOGO_CARD_FILES[color]
   }
 
-  return LOGO_CARD_FILES[color]
+  return `https://lifepacks.co${logoCardFile}`
 }
 
 export default getLogoCard
