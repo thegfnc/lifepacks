@@ -6312,9 +6312,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/bundler-plugin-core@npm:2.2.1":
-  version: 2.2.1
-  resolution: "@sentry/bundler-plugin-core@npm:2.2.1"
+"@sentry/bundler-plugin-core@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@sentry/bundler-plugin-core@npm:2.2.2"
   dependencies:
     "@sentry/cli": ^2.17.0
     "@sentry/node": 7.53.1
@@ -6323,7 +6323,7 @@ __metadata:
     glob: 9.3.2
     magic-string: 0.27.0
     unplugin: 1.0.1
-  checksum: 9cb76a5f07d14f81d160b1be168d658e37d4d652829537292d1e728054171bd1b24e3cfab2f7b93316866bfaa8635deb826d6ca3a76273c27445930b0bff280e
+  checksum: 39d7cf9d9df053bef63b752b39c983f0bc896892851c2f253a7ef587943dc7cc5297bcec69f5c5a7b12d46cefc4bdd68b3fac239db92615e9999b1d5f61422ce
   languageName: node
   linkType: hard
 
@@ -6522,16 +6522,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/webpack-plugin@npm:2.2.1":
-  version: 2.2.1
-  resolution: "@sentry/webpack-plugin@npm:2.2.1"
+"@sentry/webpack-plugin@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@sentry/webpack-plugin@npm:2.2.2"
   dependencies:
-    "@sentry/bundler-plugin-core": 2.2.1
+    "@sentry/bundler-plugin-core": 2.2.2
     unplugin: 1.0.1
     uuid: ^9.0.0
   peerDependencies:
     webpack: ">=4.40.0"
-  checksum: eb6febb473874145196a4c5d62639d693cdb82bf14b7394583af44565b2ae30290a1b9daeda9eafbab756d8c2c90a051629cf08f6b136976645d9ab6d83f99f1
+  checksum: 0d2ddb8f3cf5783937fcfea02868882b1089dbb0e9827ab2bcfc4356d137785ebbf6e88695093730722e9348bda54d3b46f920aa35931933410ec8e513eb2af3
   languageName: node
   linkType: hard
 
@@ -9848,7 +9848,7 @@ __metadata:
     "@sendinblue/client": ^3.3.1
     "@sentry/node": 7.54.0
     "@sentry/profiling-node": ^0.3.0
-    "@sentry/webpack-plugin": 2.2.1
+    "@sentry/webpack-plugin": 2.2.2
     jsonwebtoken: ^9.0.0
   languageName: unknown
   linkType: soft
@@ -26599,7 +26599,7 @@ __metadata:
     "@redwoodjs/router": 5.3.0
     "@redwoodjs/web": 5.3.0
     "@sentry/react": 7.54.0
-    "@sentry/webpack-plugin": 2.2.1
+    "@sentry/webpack-plugin": 2.2.2
     "@supabase/supabase-js": 2.24.0
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
