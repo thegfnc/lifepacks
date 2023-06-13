@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, Text } from '@chakra-ui/react'
+import { Heading, Stack, Text } from '@chakra-ui/react'
 import { Pack as PackType, PackItem as PackItemType } from 'types/graphql'
 
 import PackItem from 'src/components/PackItem/PackItem'
