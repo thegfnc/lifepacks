@@ -30,6 +30,7 @@ const PackPage = ({ username, slug }: PackPageProps) => {
             paddingRight={{ base: 0, lg: 10, xl: 20 }}
             borderRightWidth={{ base: 0, lg: '1px' }}
             borderColor="blackAlpha.200"
+            flexGrow={1}
           >
             <PackCell username={username} slug={slug} setMetaTags={true} />
           </Box>

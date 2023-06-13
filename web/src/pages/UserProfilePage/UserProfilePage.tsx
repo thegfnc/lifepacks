@@ -35,7 +35,7 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
           </Text>
           <Divider borderColor="blackAlpha.200" />
         </HStack>
-        <Box mt={4}>
+        <Box mt={4} mb={10}>
           <PackListCell username={username} />
         </Box>
       </PageContainer>
