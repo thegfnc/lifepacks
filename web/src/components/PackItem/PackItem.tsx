@@ -27,7 +27,11 @@ const PackItem = ({
   return (
     <Card borderRadius="32px" p={{ base: 6, md: 10 }} boxShadow="lg">
       <CardHeader p={0}>
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={0}>
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          spacing={0}
+          minH={{ base: 0, md: '220px' }}
+        >
           <Center mr={{ base: 0, md: 10 }} mb={{ base: 6, md: 0 }}>
             <Image maxW="full" maxH="400px" alt={title} src={imageUrl} />
           </Center>

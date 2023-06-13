@@ -6,6 +6,7 @@ type BuyButtonProps = {
   purchaseUrl: string
 }
 
+// Try to keep this sorted from most popular to least popular
 const findStoreNameFromPurchaseUrl = (purchaseUrl: string) => {
   const patterns = [
     { name: 'Amazon', pattern: /amazon\.com/ },
