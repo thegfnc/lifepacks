@@ -86,9 +86,8 @@ const HomePage = () => {
                 <Box mt={{ base: 4, md: 10 }}>
                   <Button
                     as={Link}
-                    size={{ base: 'md', md: 'xl' }}
+                    size={{ base: 'lg', md: 'xl' }}
                     to={routes.explore()}
-                    w={{ base: 'full', md: 'auto' }}
                   >
                     Explore Packs
                   </Button>
@@ -96,11 +95,7 @@ const HomePage = () => {
               </Box>
             </Flex>
             <Flex flex={1} justify="center">
-              <Stack
-                spacing={{ base: 4, md: 6 }}
-                mt={{ base: 8, md: 0 }}
-                // mb={{ base: '-24rem', md: '-10rem' }}
-              >
+              <Stack spacing={{ base: 4, md: 6 }} mt={{ base: 8, md: 0 }}>
                 <PackItem
                   title="HiFiMan Sundara"
                   description="The best cans for any entry-level audiophile. Hands down."
@@ -321,9 +316,6 @@ const HomePage = () => {
               as={Link}
               size={{ base: 'lg', md: 'xl' }}
               to={routes.affiliateLinks101()}
-              w="full"
-              px="92px"
-              maxW={{ base: '356px', md: '290px' }}
             >
               Learn More
             </Button>
@@ -368,7 +360,6 @@ const HomePage = () => {
                   as={Link}
                   to={routes.faq()}
                   size={{ base: 'lg', md: 'xl' }}
-                  w={{ base: 'full', md: 'auto' }}
                   variant="outline"
                   colorScheme="gray"
                 >
