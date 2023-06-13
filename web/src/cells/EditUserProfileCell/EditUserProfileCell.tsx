@@ -30,7 +30,6 @@ type EditUserProfileCellProps = CellSuccessProps<
 export const QUERY = gql`
   query FindEditUserProfileQuery {
     currentUserProfile {
-      id
       username
       givenName
       familyName
