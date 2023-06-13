@@ -4,6 +4,9 @@ export const graphQLClientConfig = {
       UserProfile: {
         keyFields: ['username'],
       },
+      CurrentUserProfile: {
+        keyFields: ['username'],
+      },
     },
   },
 }

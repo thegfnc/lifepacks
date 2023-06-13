@@ -107,7 +107,6 @@ export const Success = ({
   setMetaTags = false,
 }: PackCellSuccessProps) => {
   const { currentUserProfile } = useCurrentUserProfile()
-  const isBylineVisible = useBreakpointValue({ base: false, md: true })
   const {
     isOpen: isDeleteAlertOpen,
     onOpen: onDeleteAlertOpen,
@@ -190,13 +189,8 @@ export const Success = ({
       )}
 
       <Stack spacing={6}>
-        <Flex
-          alignItems="center"
-          justifyContent={{ base: 'flex-end', md: 'space-between' }}
-        >
-          {isBylineVisible && (
-            <BylineCell username={username} date={pack.createdAt} />
-          )}
+        <Flex alignItems="center" justifyContent={{ base: 'space-between' }}>
+          <BylineCell username={username} date={pack.createdAt} />
           <HStack>
             <ShareMenu
               shareUrl={

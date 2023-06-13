@@ -29,17 +29,21 @@ const PackPage = ({ username, slug }: PackPageProps) => {
           <Box
             width={{ base: 'full', md: '70%' }}
             paddingRight={{ base: 0, md: 20 }}
-            mt={{ base: 6, md: 0 }}
-            order={{ base: 2, md: 1 }}
           >
             <PackCell username={username} slug={slug} setMetaTags={true} />
           </Box>
           <Box
             width={{ base: 'full', md: '30%' }}
-            borderLeftWidth={{ base: '0', md: '1px' }}
-            borderLeftColor={'blackAlpha.200'}
-            paddingLeft={{ base: 0, md: 14 }}
-            order={{ base: 1, md: 2 }}
+            borderLeftWidth="1px"
+            borderRightWidth={{ base: '1px', md: 0 }}
+            borderTopWidth={{ base: '1px', md: 0 }}
+            borderBottomWidth={{ base: '1px', md: 0 }}
+            borderColor="blackAlpha.200"
+            borderRadius={{ base: '32px', md: 0 }}
+            paddingLeft={{ base: 10, md: 14 }}
+            paddingRight={{ base: 10, md: 0 }}
+            py={{ base: 10, md: 0 }}
+            mt={{ base: 12, md: 0 }}
           >
             <UserProfileCell
               username={username}
