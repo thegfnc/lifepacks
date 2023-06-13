@@ -25,7 +25,7 @@ const PackPage = ({ username, slug }: PackPageProps) => {
       />
 
       <PageContainer>
-        <Flex direction={{ base: 'column', lg: 'row' }} mb={10}>
+        <Flex direction={{ base: 'column', lg: 'row' }} mb={12}>
           <Box
             paddingRight={{ base: 0, lg: 10, xl: 20 }}
             borderRightWidth={{ base: 0, lg: '1px' }}
