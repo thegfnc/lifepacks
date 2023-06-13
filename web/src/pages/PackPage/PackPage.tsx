@@ -25,25 +25,22 @@ const PackPage = ({ username, slug }: PackPageProps) => {
       />
 
       <PageContainer>
-        <Flex direction={{ base: 'column', md: 'row' }} mb={10}>
+        <Flex direction={{ base: 'column', lg: 'row' }} mb={10}>
           <Box
-            width={{ base: 'full', md: '70%' }}
-            paddingRight={{ base: 0, md: 20 }}
+            paddingRight={{ base: 0, lg: 10, xl: 20 }}
+            borderRightWidth={{ base: 0, lg: '1px' }}
+            borderColor="blackAlpha.200"
           >
             <PackCell username={username} slug={slug} setMetaTags={true} />
           </Box>
           <Box
-            width={{ base: 'full', md: '30%' }}
-            borderLeftWidth="1px"
-            borderRightWidth={{ base: '1px', md: 0 }}
-            borderTopWidth={{ base: '1px', md: 0 }}
-            borderBottomWidth={{ base: '1px', md: 0 }}
+            minWidth={{ base: 'full', lg: '264px', xl: '320px' }}
+            borderWidth={{ base: '1px', lg: 0 }}
             borderColor="blackAlpha.200"
-            borderRadius={{ base: '32px', md: 0 }}
-            paddingLeft={{ base: 10, md: 14 }}
-            paddingRight={{ base: 10, md: 0 }}
-            py={{ base: 10, md: 0 }}
-            mt={{ base: 12, md: 0 }}
+            borderRadius={{ base: '32px', lg: 0 }}
+            ml={{ base: 0, lg: 10 }}
+            mt={{ base: 12, lg: 0 }}
+            p={{ base: 10, lg: 0 }}
           >
             <UserProfileCell
               username={username}
