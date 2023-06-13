@@ -16,6 +16,7 @@ const findStoreNameFromPurchaseUrl = (purchaseUrl: string) => {
     { name: 'Home Depot', pattern: /homedepot\.com/ },
     { name: 'eBay', pattern: /ebay\.com/ },
     { name: 'Etsy', pattern: /etsy\.com/ },
+    { name: 'Sweetwater', pattern: /sweetwater\.com/ },
   ]
 
   for (const { name, pattern } of patterns) {

@@ -77,7 +77,7 @@ const PackItemForm = ({
         <FormControl isInvalid={Boolean(formState.errors.purchaseUrl)}>
           <FormLabel>Purchase Url*</FormLabel>
           <Input
-            placeholder="amazon.com/xxxx"
+            placeholder="https://store.com/xxxx"
             {...register('purchaseUrl', {
               required: {
                 value: true,
