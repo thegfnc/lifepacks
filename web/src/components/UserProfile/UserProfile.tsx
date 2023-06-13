@@ -47,6 +47,7 @@ const UserProfileBannerLayout = ({
           size={'2xl'}
           src={userProfile.imageUrl}
           name={userDisplayName}
+          {...(disableLinks ? {} : linkProps)}
         />
       </Center>
       <Stack mt={4} spacing={1}>
@@ -134,6 +135,7 @@ const UserProfileSidebarLayout = ({
             userProfile.familyName,
             userProfile.username
           )}
+          {...(disableLinks ? {} : linkProps)}
         />
         {actionButton}
       </Flex>
