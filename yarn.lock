@@ -6274,18 +6274,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry-internal/tracing@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry-internal/tracing@npm:7.54.0"
-  dependencies:
-    "@sentry/core": 7.54.0
-    "@sentry/types": 7.54.0
-    "@sentry/utils": 7.54.0
-    tslib: ^1.9.3
-  checksum: b4aca84e17c204f61b1791bd96be57b1c48f20afd2863b3ab29cc801fa09fe6fb8d56e76513bba9ebffbc0d0524ff334a0cc4459dfba95e85e0c2b12f8828bec
-  languageName: node
-  linkType: hard
-
 "@sentry-internal/tracing@npm:7.55.0":
   version: 7.55.0
   resolution: "@sentry-internal/tracing@npm:7.55.0"
@@ -6298,17 +6286,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry/browser@npm:7.54.0"
+"@sentry/browser@npm:7.55.0":
+  version: 7.55.0
+  resolution: "@sentry/browser@npm:7.55.0"
   dependencies:
-    "@sentry-internal/tracing": 7.54.0
-    "@sentry/core": 7.54.0
-    "@sentry/replay": 7.54.0
-    "@sentry/types": 7.54.0
-    "@sentry/utils": 7.54.0
+    "@sentry-internal/tracing": 7.55.0
+    "@sentry/core": 7.55.0
+    "@sentry/replay": 7.55.0
+    "@sentry/types": 7.55.0
+    "@sentry/utils": 7.55.0
     tslib: ^1.9.3
-  checksum: e926aa5527a845ccb967b2a33632dd0110e0133c0b9e43d9e449cedd0c1b36761b3c1883a9a97076c640a4aea24fe23bbb4a61f3235660c893fc9f388df949e8
+  checksum: fb7bbaedf50c3a4d9e30cbabefbbc6861be4f05d7669998c7d530efd6bbb0e9c89c2da5c857bb67120801a7d474be0091f0a56b209000490ea7517cb3257becf
   languageName: node
   linkType: hard
 
@@ -6353,17 +6341,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/core@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry/core@npm:7.54.0"
-  dependencies:
-    "@sentry/types": 7.54.0
-    "@sentry/utils": 7.54.0
-    tslib: ^1.9.3
-  checksum: 3b931d986aa5e28ec21cbdb4a425f890165b8b459c169a647d1b6fea0fe8a6bf788caf77a74d7f92b6984080404c537025e27c38aeb7245a80603b4e5d6ace94
-  languageName: node
-  linkType: hard
-
 "@sentry/core@npm:7.55.0, @sentry/core@npm:^7.53.0":
   version: 7.55.0
   resolution: "@sentry/core@npm:7.55.0"
@@ -6403,23 +6380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry/node@npm:7.54.0"
-  dependencies:
-    "@sentry-internal/tracing": 7.54.0
-    "@sentry/core": 7.54.0
-    "@sentry/types": 7.54.0
-    "@sentry/utils": 7.54.0
-    cookie: ^0.4.1
-    https-proxy-agent: ^5.0.0
-    lru_map: ^0.3.3
-    tslib: ^1.9.3
-  checksum: 17b7b2d49ee3da1ac36f2de10a107bbe4630de05969599f2a16688f3f3af7bfbfcc9d89b9e7bbd5f1c3d0abc8c8372d2ffca21ab1119fd1a3f1ea0fe7d43e369
-  languageName: node
-  linkType: hard
-
-"@sentry/node@npm:^7.53.0":
+"@sentry/node@npm:7.55.0, @sentry/node@npm:^7.53.0":
   version: 7.55.0
   resolution: "@sentry/node@npm:7.55.0"
   dependencies:
@@ -6453,29 +6414,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry/react@npm:7.54.0"
+"@sentry/react@npm:7.55.0":
+  version: 7.55.0
+  resolution: "@sentry/react@npm:7.55.0"
   dependencies:
-    "@sentry/browser": 7.54.0
-    "@sentry/types": 7.54.0
-    "@sentry/utils": 7.54.0
+    "@sentry/browser": 7.55.0
+    "@sentry/types": 7.55.0
+    "@sentry/utils": 7.55.0
     hoist-non-react-statics: ^3.3.2
     tslib: ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x || 18.x
-  checksum: 9337a7edf85bc3cc10694015e7dac907eee20e07690609c38a4b011b4a0e435050d88d2f783fb6f431b861890379d706cf52726556885427eebbc578f54087f7
+  checksum: 268ec5bfeeb2c8a7f56ed0594d160cc0a440fc27f1906c2030758ea26a68d03ae6e4b83ff5a1191e41ae7e2aa56bbd634f707b75f293e57777775a35bf3ef346
   languageName: node
   linkType: hard
 
-"@sentry/replay@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry/replay@npm:7.54.0"
+"@sentry/replay@npm:7.55.0":
+  version: 7.55.0
+  resolution: "@sentry/replay@npm:7.55.0"
   dependencies:
-    "@sentry/core": 7.54.0
-    "@sentry/types": 7.54.0
-    "@sentry/utils": 7.54.0
-  checksum: 7aa05b809e50410dd57df6a71d6e874a726b0574256a3d0e04cff01b22db06250b3bc72de802c3bb8247df7d0044a3cd8e3b6f193510aa3a0360afe9104e944f
+    "@sentry/core": 7.55.0
+    "@sentry/types": 7.55.0
+    "@sentry/utils": 7.55.0
+  checksum: 0a344726440e8da1f03becc0f00618abaa6141511ddecfb98d2cdcf9150e6f20e3d1bafc28af9bc6ca037b010a1dcc535cb47447f2f81b46d327c6a7e605850d
   languageName: node
   linkType: hard
 
@@ -6483,13 +6444,6 @@ __metadata:
   version: 7.53.1
   resolution: "@sentry/types@npm:7.53.1"
   checksum: c7d8c871c1d2956959bebca8ea5f746ae224cf201176b58cd8d46f5864f563702020c99f9481e2d7f57b90c5d3eb440fa30aac8d8a42067d13efa33ff840e218
-  languageName: node
-  linkType: hard
-
-"@sentry/types@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry/types@npm:7.54.0"
-  checksum: ea0647b97758cd2a2b9e3c7d766e34c7654d2d0577d8dba72ec8800d2d79f23444b55b3e3ed36bfa7aba9bb61a303474cdea936c2ec8078bb9da6a54c49380d2
   languageName: node
   linkType: hard
 
@@ -6507,16 +6461,6 @@ __metadata:
     "@sentry/types": 7.53.1
     tslib: ^1.9.3
   checksum: e35df27205e5bf521a013b55dada4f79b1d2b97a3a7d30f2b9e0e0bc16519634e017075bea3752ebfb5184074aaa62459b7bd523139f54795c3ef4da2a5d0274
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:7.54.0":
-  version: 7.54.0
-  resolution: "@sentry/utils@npm:7.54.0"
-  dependencies:
-    "@sentry/types": 7.54.0
-    tslib: ^1.9.3
-  checksum: c39af0747e70b8706ba56c6edf46150f20414d5a1e380c16121a5d93a306d733b30d8b5bda77572bdfbc36fd597eb99799d1f5245e1f679682e4a0d78b0f6b08
   languageName: node
   linkType: hard
 
@@ -9854,7 +9798,7 @@ __metadata:
     "@redwoodjs/auth-supabase-api": 5.3.0
     "@redwoodjs/graphql-server": 5.3.0
     "@sendinblue/client": ^3.3.1
-    "@sentry/node": 7.54.0
+    "@sentry/node": 7.55.0
     "@sentry/profiling-node": ^1.0.4
     "@sentry/webpack-plugin": 2.2.2
     jsonwebtoken: ^9.0.0
@@ -26606,7 +26550,7 @@ __metadata:
     "@redwoodjs/forms": 5.3.0
     "@redwoodjs/router": 5.3.0
     "@redwoodjs/web": 5.3.0
-    "@sentry/react": 7.54.0
+    "@sentry/react": 7.55.0
     "@sentry/webpack-plugin": 2.2.2
     "@supabase/supabase-js": 2.25.0
     compressorjs: ^1.2.1
