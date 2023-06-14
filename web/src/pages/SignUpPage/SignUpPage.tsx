@@ -16,6 +16,7 @@ import {
   FormErrorMessage,
   Link as ChakraLink,
 } from '@chakra-ui/react'
+import { FaGoogle } from 'react-icons/fa'
 
 import { Form, useForm } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
@@ -30,7 +31,7 @@ type SignUpFormvalues = {
 }
 
 const SignUpPage = () => {
-  const { isAuthenticated, signUp } = useAuth()
+  const { isAuthenticated, signUp, logIn } = useAuth()
   const formMethods = useForm<SignUpFormvalues>()
   const { register, formState } = formMethods
 
@@ -43,6 +44,24 @@ const SignUpPage = () => {
       navigate(routes.explore())
     }
   }, [isAuthenticated])
+
+  const signUpWithGoogle = async () => {
+    setError(null)
+    setIsLoading(true)
+
+    const { data, error } = await logIn({
+      authMethod: 'oauth',
+      provider: 'google',
+    })
+
+    if (error) {
+      setError(error.message)
+      setIsLoading(false)
+      return
+    }
+
+    console.log(data)
+  }
 
   const onSubmit = async (data: SignUpFormvalues) => {
     let errorMessage = null
@@ -143,9 +162,19 @@ const SignUpPage = () => {
                     </FormErrorMessage>
                   </FormControl>
 
-                  <Button type="submit" isLoading={isLoading}>
-                    Sign up
-                  </Button>
+                  <Stack spacing={3}>
+                    <Button type="submit" isLoading={isLoading}>
+                      Sign up
+                    </Button>
+                    <Button
+                      onClick={signUpWithGoogle}
+                      isLoading={isLoading}
+                      leftIcon={<FaGoogle />}
+                      colorScheme="gray"
+                    >
+                      Sign up with Google
+                    </Button>
+                  </Stack>
                 </Stack>
               </Form>
             )}
