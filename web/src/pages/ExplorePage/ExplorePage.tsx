@@ -5,6 +5,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import LatestPacksCell from 'src/cells/LatestPacksCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 const ExplorePage = () => {
   return (
@@ -13,7 +14,7 @@ const ExplorePage = () => {
         title={`Explore Packs`}
         description={`Explore all of the packs that Lifepacks has to offer.`}
         ogType="website"
-        ogUrl={`https://lifepacks.co${routes.explore()}`}
+        ogUrl={getEnvironmentUrl(routes.explore())}
       />
 
       <PageContainer>

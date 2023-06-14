@@ -4,6 +4,7 @@ import { routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import PageContainer from 'src/components/PageContainer/PageContainer'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 const Paragraph = ({ children }) => (
   <Text
@@ -22,7 +23,7 @@ const PrivacyPolicyPage = () => {
         title="Privacy Policy"
         description='This Privacy Policy (PP) governs how Lifepacks collects, uses, and shares your personal information when you use our app (the "App").'
         ogType="website"
-        ogUrl={`https://lifepacks.co${routes.privacyPolicy()}`}
+        ogUrl={getEnvironmentUrl(routes.privacyPolicy())}
       />
 
       <Heading

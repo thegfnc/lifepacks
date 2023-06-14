@@ -16,6 +16,7 @@ import EditUserProfileModal from 'src/components/EditUserProfileModal/EditUserPr
 import UserProfile, {
   UserProfileLayout,
 } from 'src/components/UserProfile/UserProfile'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 import getLogoCard from 'src/helpers/getLogoCard'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
@@ -80,9 +81,11 @@ export const Success = ({
             )}'s Profile`}
             description={userProfile.biography}
             ogType="profile"
-            ogUrl={`https://lifepacks.co${routes.userProfile({
-              username: userProfile.username,
-            })}`}
+            ogUrl={getEnvironmentUrl(
+              routes.userProfile({
+                username: userProfile.username,
+              })
+            )}
             ogContentUrl={
               userProfile.imageUrl || getLogoCard({ color: 'random' })
             }

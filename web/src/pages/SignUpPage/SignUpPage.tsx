@@ -24,6 +24,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import PasswordInput from 'src/fields/PasswordInput/PasswordInput'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 type SignUpFormvalues = {
   email: string
@@ -36,7 +37,8 @@ const SignUpPage = () => {
   const { register, formState } = formMethods
 
   const [isSuccess, setIsSuccess] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingPasswordLogin, setIsLoadingPasswordLogin] = useState(false)
+  const [isLoadingGoogleLogin, setIsLoadingGoogleLogin] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -47,27 +49,28 @@ const SignUpPage = () => {
 
   const signUpWithGoogle = async () => {
     setError(null)
-    setIsLoading(true)
+    setIsLoadingGoogleLogin(true)
 
-    const { data, error } = await logIn({
+    const { error } = await logIn({
       authMethod: 'oauth',
       provider: 'google',
+      options: {
+        redirectTo: getEnvironmentUrl(routes.explore()),
+      },
     })
 
     if (error) {
       setError(error.message)
-      setIsLoading(false)
+      setIsLoadingGoogleLogin(false)
       return
     }
-
-    console.log(data)
   }
 
   const onSubmit = async (data: SignUpFormvalues) => {
     let errorMessage = null
 
     setError(errorMessage)
-    setIsLoading(true)
+    setIsLoadingPasswordLogin(true)
 
     try {
       const { error } = await signUp({
@@ -82,7 +85,7 @@ const SignUpPage = () => {
       errorMessage = error.message
     }
 
-    setIsLoading(false)
+    setIsLoadingPasswordLogin(false)
     if (errorMessage) {
       setError(errorMessage)
     } else {
@@ -163,12 +166,12 @@ const SignUpPage = () => {
                   </FormControl>
 
                   <Stack spacing={3}>
-                    <Button type="submit" isLoading={isLoading}>
+                    <Button type="submit" isLoading={isLoadingPasswordLogin}>
                       Sign up
                     </Button>
                     <Button
                       onClick={signUpWithGoogle}
-                      isLoading={isLoading}
+                      isLoading={isLoadingGoogleLogin}
                       leftIcon={<FaGoogle />}
                       colorScheme="gray"
                     >

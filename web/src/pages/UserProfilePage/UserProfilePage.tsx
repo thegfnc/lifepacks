@@ -7,6 +7,7 @@ import PackListCell from 'src/cells/PackListCell'
 import UserProfileCell from 'src/cells/UserProfileCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import { UserProfileLayout } from 'src/components/UserProfile/UserProfile'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 type UserProfilePageProps = {
   username: string
@@ -20,7 +21,7 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
         title={`@${username}'s Profile`}
         description={`Check out the packs created by @${username}`}
         ogType="profile"
-        ogUrl={`https://lifepacks.co${routes.userProfile({ username })}`}
+        ogUrl={getEnvironmentUrl(routes.userProfile({ username }))}
       />
 
       <PageContainer>
