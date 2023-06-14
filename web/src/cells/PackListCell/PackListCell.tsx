@@ -66,13 +66,12 @@ export const Empty = ({ username }) => {
               fontWeight="bold"
               color="gray.700"
             >
-              {currentUserProfile?.givenName || username} hasn&apos;t created a
-              pack yet.
+              {'@' + username} hasn&apos;t created a pack yet.
             </Heading>
             <Text fontSize="md" lineHeight={6} color="gray.500">
               Check back soon for products they swear by.
             </Text>
-            <Button colorScheme="purple" mt={4} as={Link} to={routes.home()}>
+            <Button colorScheme="purple" mt={4} as={Link} to={routes.explore()}>
               Browse Other Packs
             </Button>
           </>
