@@ -5,6 +5,8 @@ export const schema = gql`
 
   input MailingListSignUpInput {
     email: String!
+    givenName: String
+    familyName: String
   }
 
   type Mutation {

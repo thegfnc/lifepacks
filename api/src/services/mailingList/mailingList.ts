@@ -18,10 +18,16 @@ export const mailingListSignUp: MutationResolvers['mailingListSignUp'] =
       email: { message: 'Please provide a valid email address.' },
       presence: true,
     })
+    validate(input.givenName, 'First Name', { length: { max: 100 } })
+    validate(input.familyName, 'Last Name', { length: { max: 100 } })
 
     const createContact = new SibApiV3Sdk.CreateContact()
 
     createContact.email = input.email
+    createContact.attributes = {
+      FIRSTNAME: input.givenName,
+      LASTNAME: input.familyName,
+    }
     createContact.listIds = [GENERAL_MAILING_LIST_ID]
 
     try {

@@ -80,7 +80,13 @@ const CompleteSignUpPage = () => {
 
     if (mailingListSignUp) {
       mutateMailingListSignUp({
-        variables: { input: { email: currentUser.email } },
+        variables: {
+          input: {
+            email: currentUser.email,
+            givenName: data.givenName,
+            familyName: data.familyName,
+          },
+        },
       })
     }
   }
