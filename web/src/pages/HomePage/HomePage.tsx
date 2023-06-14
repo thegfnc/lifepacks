@@ -207,7 +207,7 @@ const HomePage = () => {
             </Hide>
             <Box
               bg="brown.500"
-              px={{ base: 6, md: 24 }}
+              px={{ base: 6, md: 10, lg: 14, xl: 24 }}
               pt={{ base: 6, md: '76px' }}
               pb={{ base: 6, md: 14 }}
               mt={{ base: 8, md: '65px' }}
@@ -236,7 +236,7 @@ const HomePage = () => {
                 <Flex direction={{ base: 'column', md: 'row' }}>
                   <Box
                     width={{ base: 'full', md: '70%' }}
-                    paddingRight={{ base: 0, md: 20 }}
+                    paddingRight={{ base: 0, md: 10, xl: 20 }}
                     mt={{ base: 6, md: 0 }}
                     order={{ base: 2, md: 1 }}
                   >
@@ -247,7 +247,7 @@ const HomePage = () => {
                       width={{ base: 'full', md: '30%' }}
                       borderLeftWidth={{ base: '0', md: '1px' }}
                       borderLeftColor={'blackAlpha.200'}
-                      paddingLeft={{ base: 0, md: 14 }}
+                      paddingLeft={{ base: 0, md: 10 }}
                       order={{ base: 1, md: 2 }}
                     >
                       <UserProfile
