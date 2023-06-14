@@ -44,7 +44,6 @@ const BuyButton = ({ purchaseUrl }: BuyButtonProps) => {
     <Button
       colorScheme="yellow"
       size="lg"
-      mt={4}
       w={{ base: 'full', md: 'auto' }}
       {...(isValidPurchaseUrl ? linkProps : {})}
     >

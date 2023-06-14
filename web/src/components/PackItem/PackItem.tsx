@@ -25,38 +25,49 @@ const PackItem = ({
   description,
 }: PackItemProps) => {
   return (
-    <Card borderRadius="32px" p={{ base: 6, md: 10 }} boxShadow="lg">
+    <Card
+      borderRadius={{ base: '24px', md: '32px' }}
+      p={{ base: 4, md: 10 }}
+      boxShadow={{ base: 'md', md: 'lg' }}
+    >
       <CardHeader p={0}>
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
           spacing={0}
           minH={{ base: 0, md: '220px' }}
         >
-          <Center mr={{ base: 0, md: 10 }} mb={{ base: 6, md: 0 }}>
-            <Image maxW="full" maxH="400px" alt={title} src={imageUrl} />
+          <Center mr={{ base: 0, md: 10 }} mb={{ base: 4, md: 0 }}>
+            <Image
+              maxW="full"
+              maxH={{ base: '350px' }}
+              alt={title}
+              src={imageUrl}
+            />
           </Center>
           <Center
             borderTopWidth={{ base: '1px', md: '0' }}
             borderLeftWidth={{ base: '0', md: '1px' }}
             borderColor="blackAlpha.200"
           >
-            <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 6, md: 0 }}>
-              <Heading size="md" lineHeight={7} fontWeight="medium">
+            <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 4, md: 0 }}>
+              <Heading size="md" lineHeight="1.2" fontWeight="semibold">
                 {title}
               </Heading>
-              <BuyButton purchaseUrl={purchaseUrl} />
+              <Box mt={4}>
+                <BuyButton purchaseUrl={purchaseUrl} />
+              </Box>
             </Box>
           </Center>
         </SimpleGrid>
       </CardHeader>
       {description && (
         <CardBody
-          mt={{ base: 6, md: 10 }}
+          mt={{ base: 4, md: 10 }}
           p={0}
-          pt={{ base: 6, md: 10 }}
-          fontSize="lg"
-          lineHeight={7}
-          color="blackAlpha.800"
+          pt={{ base: 4, md: 10 }}
+          fontSize={{ base: 'md', md: 'lg' }}
+          lineHeight={{ base: '1.5', md: '1.33' }}
+          color="blackAlpha.700"
           borderTopWidth="1px"
           borderTopColor="blackAlpha.200"
         >
