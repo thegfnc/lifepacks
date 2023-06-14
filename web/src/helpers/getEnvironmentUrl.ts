@@ -7,6 +7,7 @@ function getEnvironmentUrl(pathname = ''): StartWithHttpOrHttps {
     // If running in the browser, use the current URL
     origin = window.location.origin
   } else if (process.env.VERCEL_ENV === 'production') {
+    // If building production, use the production URL for prerenders
     origin = 'https://lifepacks.co'
   } else if (process.env.VERCEL_URL) {
     // If running on the server, use the Vercel environment variable
