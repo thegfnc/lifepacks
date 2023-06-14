@@ -207,7 +207,7 @@ const HomePage = () => {
             </Hide>
             <Box
               bg="brown.500"
-              px={{ base: 6, md: 10, lg: 14, xl: 24 }}
+              px={{ base: 6, md: 14, xl: 24 }}
               pt={{ base: 6, md: '76px' }}
               pb={{ base: 6, md: 14 }}
               mt={{ base: 8, md: '65px' }}
@@ -235,14 +235,14 @@ const HomePage = () => {
               <Flex>
                 <Flex direction={{ base: 'column', md: 'row' }}>
                   <Box
-                    width={{ base: 'full', md: '70%' }}
-                    paddingRight={{ base: 0, md: 10, xl: 20 }}
+                    width={{ base: 'full', lg: '70%' }}
+                    paddingRight={{ base: 0, lg: 10, xl: 20 }}
                     mt={{ base: 6, md: 0 }}
                     order={{ base: 2, md: 1 }}
                   >
                     <Pack pack={examplePacks[examplePackTabIndex].pack} />
                   </Box>
-                  <Show above="md">
+                  <Show above="lg">
                     <Box
                       width={{ base: 'full', md: '30%' }}
                       borderLeftWidth={{ base: '0', md: '1px' }}
