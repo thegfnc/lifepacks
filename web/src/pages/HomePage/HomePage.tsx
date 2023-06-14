@@ -8,6 +8,7 @@ import {
   Container,
   Flex,
   Heading,
+  Hide,
   HStack,
   IconButton,
   Image,
@@ -52,38 +53,59 @@ const HomePage = () => {
           minHeight={{ base: 'auto', md: '600px' }}
         >
           <Stack
-            direction={{ base: 'column', md: 'row' }}
+            direction={{ base: 'column', lg: 'row' }}
             overflow="hidden"
             height="full"
             pt={{ base: 8, md: 6 }}
             pb={{ base: 8, md: 10 }}
             px={{ base: 4, md: 10 }}
+            spacing={0}
           >
-            <Flex flex={1} align={'center'}>
+            <Flex align={'center'} justify="center" mt={{ base: 4, lg: 0 }}>
               <Box
                 w={'full'}
-                maxW={{ base: 'none', md: 'lg' }}
-                textAlign={{ base: 'center', md: 'left' }}
-                mr={{ base: 0, md: 4 }}
+                maxW={{ base: '760px', lg: '400px', xl: '448px' }}
+                textAlign={{ base: 'center', lg: 'left' }}
+                mr={{ base: 0, lg: '40px', xl: '72px' }}
               >
-                <Heading
-                  fontSize={{ base: '4xl', md: '6xl' }}
-                  lineHeight={{ base: 'none', md: '93%' }}
-                  letterSpacing="tight"
-                >
-                  Make guides <br />
-                  for the products <br />
-                  you swear by
-                </Heading>
-                <Text
-                  fontFamily="bitter"
-                  fontSize={{ base: 'lg', md: '2xl' }}
-                  lineHeight="short"
-                  mt={{ base: 4, md: 6 }}
-                >
-                  Publish product recommendations just like the professionals.
-                </Text>
-                <Box mt={{ base: 4, md: 10 }}>
+                <Show above="lg">
+                  <Heading
+                    fontSize={{ lg: '48px', xl: '56px' }}
+                    lineHeight={1}
+                    letterSpacing="tight"
+                  >
+                    Make guides <br />
+                    for the products <br />
+                    you swear by
+                  </Heading>
+                  <Text
+                    fontFamily="bitter"
+                    fontSize={{ base: 'lg', md: '2xl' }}
+                    lineHeight="1.33"
+                    mt={{ base: 4, md: 6 }}
+                  >
+                    Publish product recommendations
+                    <br /> just like the professionals.
+                  </Text>
+                </Show>
+                <Hide above="lg">
+                  <Heading
+                    fontSize={{ base: '36px', md: '48px' }}
+                    lineHeight={1}
+                    letterSpacing="tight"
+                  >
+                    Make guides for the products you swear by
+                  </Heading>
+                  <Text
+                    fontFamily="bitter"
+                    fontSize={{ base: '18px', md: '2xl' }}
+                    lineHeight="1.33"
+                    mt={{ base: 4 }}
+                  >
+                    Publish product recommendations just like the professionals.
+                  </Text>
+                </Hide>
+                <Box mt={{ base: 6, lg: 10 }}>
                   <Button
                     as={Link}
                     size={{ base: 'lg', md: 'xl' }}
@@ -94,8 +116,11 @@ const HomePage = () => {
                 </Box>
               </Box>
             </Flex>
-            <Flex flex={1} justify="center">
-              <Stack spacing={{ base: 4, md: 6 }} mt={{ base: 8, md: 0 }}>
+            <Flex flex={1} justify="center" mt={{ base: 8, md: 10, lg: 0 }}>
+              <Stack
+                spacing={{ base: 4, md: 6 }}
+                maxW={{ base: '440px', md: '760px', lg: 'none' }}
+              >
                 <PackItem
                   title="HiFiMan Sundara"
                   description="The best cans for any entry-level audiophile. Hands down."
@@ -132,7 +157,7 @@ const HomePage = () => {
               Share your expert opinion
             </Heading>
             {/* desktop */}
-            <Show above="md">
+            <Show above="lg">
               <HStack mt={8}>
                 {examplePacks.map((examplePack, index) => {
                   const isCurrentTab = index === examplePackTabIndex
@@ -157,7 +182,7 @@ const HomePage = () => {
               </HStack>
             </Show>
             {/* mobile */}
-            <Show below="md">
+            <Hide above="lg">
               <HStack mt={6}>
                 {examplePacks.map((examplePack, index) => {
                   const isCurrentTab = index === examplePackTabIndex
@@ -179,7 +204,7 @@ const HomePage = () => {
                   )
                 })}
               </HStack>
-            </Show>
+            </Hide>
             <Box
               bg="brown.500"
               px={{ base: 6, md: 24 }}
@@ -289,7 +314,7 @@ const HomePage = () => {
           </Flex>
         </Show>
         {/* mobile */}
-        <Show below="md">
+        <Hide above="md">
           <Flex justify="center" mt={6} mb={2} mx={2}>
             <Flex justify="center" w="full" maxW="500px" flexWrap="wrap">
               {stores.slice(0, 4).map((store) => (
@@ -309,7 +334,7 @@ const HomePage = () => {
               ))}
             </Flex>
           </Flex>
-        </Show>
+        </Hide>
         <PageContainer minHeight="auto" pt={0} pb={0}>
           <Box textAlign="center">
             <Button
