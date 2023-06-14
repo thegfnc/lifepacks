@@ -12,6 +12,7 @@ import { MetaTags } from '@redwoodjs/web'
 import AccordionItem from 'src/components/AccordionItem/AccordionItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import { faq } from 'src/data/faqData'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 const FaqPage = () => {
   return (
@@ -20,7 +21,7 @@ const FaqPage = () => {
         title="Frequently Asked Questions"
         description="Here are the most common questions we get about Lifepacks."
         ogType="website"
-        ogUrl={`https://lifepacks.co${routes.faq()}`}
+        ogUrl={getEnvironmentUrl(routes.faq())}
       />
 
       <Heading

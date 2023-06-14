@@ -24,6 +24,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import PasswordInput from 'src/fields/PasswordInput/PasswordInput'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 type LogInFormValues = {
   email: string
@@ -36,7 +37,8 @@ const LogInPage = () => {
   const formMethods = useForm<LogInFormValues>()
   const { register, formState } = formMethods
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingPasswordLogin, setIsLoadingPasswordLogin] = useState(false)
+  const [isLoadingGoogleLogin, setIsLoadingGoogleLogin] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -47,25 +49,28 @@ const LogInPage = () => {
 
   const logInWithGoogle = async () => {
     setError(null)
+    setIsLoadingGoogleLogin(true)
 
-    const { data, error } = await logIn({
+    const { error } = await logIn({
       authMethod: 'oauth',
       provider: 'google',
+      options: {
+        redirectTo: getEnvironmentUrl(routes.explore()),
+      },
     })
 
     if (error) {
       setError(error.message)
+      setIsLoadingGoogleLogin(false)
       return
     }
-
-    console.log(data)
   }
 
   const onSubmit = async (data: LogInFormValues) => {
     let errorMessage = null
 
     setError(errorMessage)
-    setIsLoading(true)
+    setIsLoadingPasswordLogin(true)
 
     try {
       const { error } = await logIn({
@@ -83,7 +88,7 @@ const LogInPage = () => {
 
     if (errorMessage) {
       setError(errorMessage)
-      setIsLoading(false)
+      setIsLoadingPasswordLogin(false)
     }
   }
 
@@ -153,12 +158,12 @@ const LogInPage = () => {
                 </FormControl>
 
                 <Stack spacing={3}>
-                  <Button type="submit" isLoading={isLoading}>
+                  <Button type="submit" isLoading={isLoadingPasswordLogin}>
                     Log in
                   </Button>
                   <Button
                     onClick={logInWithGoogle}
-                    isLoading={isLoading}
+                    isLoading={isLoadingGoogleLogin}
                     leftIcon={<FaGoogle />}
                     colorScheme="gray"
                   >

@@ -30,6 +30,7 @@ import UserProfile, {
 } from 'src/components/UserProfile/UserProfile'
 import { faq } from 'src/data/faqData'
 import { examplePacks, stores } from 'src/data/homePageData'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 const HomePage = () => {
   const [examplePackTabIndex, setExamplePackTabIndex] = useState(0)
@@ -40,8 +41,8 @@ const HomePage = () => {
         title="Make guides for the products you swear by"
         description="Publish product recommendations just like the professionals."
         ogType="website"
-        ogUrl="https://lifepacks.co/"
-        ogContentUrl={`https://lifepacks.co${websiteScreenshot}`}
+        ogUrl={getEnvironmentUrl('/')}
+        ogContentUrl={getEnvironmentUrl(websiteScreenshot)}
       />
 
       <Box as="section" bg="brown.500" overflow="hidden">

@@ -19,6 +19,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import { affiliatePrograms } from 'src/data/affiliateLinks101PageData'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 const AffiliateLinkCard = ({ store }) => {
   const [isHovering, setIsHovering] = useBoolean()
@@ -67,7 +68,7 @@ const AffiliateLinks101Page = () => {
         title="Affiliate Links 101"
         description="Sign up for an affiliate program to earn commissions while promoting products you love."
         ogType="website"
-        ogUrl={`https://lifepacks.co${routes.affiliateLinks101()}`}
+        ogUrl={getEnvironmentUrl(routes.affiliateLinks101())}
       />
 
       <Heading

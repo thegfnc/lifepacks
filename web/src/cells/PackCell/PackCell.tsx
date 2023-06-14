@@ -40,6 +40,7 @@ import {
 import { useAuth } from 'src/auth'
 import PublishSuccessDrawer from 'src/components/PublishSuccessDrawer/PublishSuccessDrawer'
 import ShareMenu from 'src/components/ShareMenu/ShareMenu'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 import getLogoCard from 'src/helpers/getLogoCard'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
@@ -157,7 +158,7 @@ export const Success = ({
             }
             description={pack.description}
             ogType="article"
-            ogUrl={`https://lifepacks.co${routes.pack({ username, slug })}`}
+            ogUrl={getEnvironmentUrl(routes.pack({ username, slug }))}
             ogContentUrl={
               pack.packItems[0]?.imageUrl ||
               userProfile.imageUrl ||
@@ -192,9 +193,7 @@ export const Success = ({
           <BylineCell username={username} date={pack.createdAt} />
           <HStack>
             <ShareMenu
-              shareUrl={
-                'https://lifepacks.co' + routes.pack({ username, slug })
-              }
+              shareUrl={getEnvironmentUrl(routes.pack({ username, slug }))}
               shareTitle={pack.title}
             />
             {currentUserProfile?.username === username && (
@@ -233,7 +232,7 @@ export const Success = ({
         <PublishSuccessDrawer
           isOpen={isPublishSuccessDrawerOpen}
           onClose={onPublishSuccessDrawerClose}
-          shareUrl={'https://lifepacks.co' + routes.pack({ username, slug })}
+          shareUrl={getEnvironmentUrl + routes.pack({ username, slug })}
           shareTitle={pack.title}
         />
       )}

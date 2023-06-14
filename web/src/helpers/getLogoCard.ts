@@ -3,6 +3,8 @@ import LogoCardBlackOnWhite from 'public/logo_card_black_on_white.png'
 import LogoCardBlackOnYellow from 'public/logo_card_black_on_yellow.png'
 import LogoCardWhiteOnPurple from 'public/logo_card_white_on_purple.png'
 
+import getEnvironmentUrl from './getEnvironmentUrl'
+
 type getLogoCard = {
   color:
     | 'blackOnBrown'
@@ -30,7 +32,7 @@ const getLogoCard = ({ color }: getLogoCard) => {
     logoCardFile = LOGO_CARD_FILES[color]
   }
 
-  return `https://lifepacks.co${logoCardFile}`
+  return getEnvironmentUrl(logoCardFile)
 }
 
 export default getLogoCard

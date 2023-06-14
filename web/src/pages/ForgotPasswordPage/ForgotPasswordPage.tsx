@@ -22,6 +22,7 @@ import { Link, routes, navigate } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
+import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 type ForgotPasswordFormValues = {
   email: string
@@ -50,7 +51,7 @@ const ForgotPasswordPage = () => {
 
     try {
       const { error } = await client.auth.resetPasswordForEmail(data.email, {
-        redirectTo: `${window.location.origin}${routes.resetPassword()}`,
+        redirectTo: getEnvironmentUrl(routes.resetPassword()),
       })
 
       if (error) {
