@@ -16,6 +16,7 @@ import {
   FormHelperText,
   Link as ChakraLink,
 } from '@chakra-ui/react'
+import { FaGoogle } from 'react-icons/fa'
 
 import { Form, useForm } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
@@ -43,6 +44,22 @@ const LogInPage = () => {
       navigate(routes.explore())
     }
   }, [isAuthenticated])
+
+  const logInWithGoogle = async () => {
+    setError(null)
+
+    const { data, error } = await logIn({
+      authMethod: 'oauth',
+      provider: 'google',
+    })
+
+    if (error) {
+      setError(error.message)
+      return
+    }
+
+    console.log(data)
+  }
 
   const onSubmit = async (data: LogInFormValues) => {
     let errorMessage = null
@@ -135,9 +152,19 @@ const LogInPage = () => {
                   </FormHelperText>
                 </FormControl>
 
-                <Button type="submit" isLoading={isLoading}>
-                  Log in
-                </Button>
+                <Stack spacing={3}>
+                  <Button type="submit" isLoading={isLoading}>
+                    Log in
+                  </Button>
+                  <Button
+                    onClick={logInWithGoogle}
+                    isLoading={isLoading}
+                    leftIcon={<FaGoogle />}
+                    colorScheme="gray"
+                  >
+                    Log in with Google
+                  </Button>
+                </Stack>
               </Stack>
             </Form>
           </Box>
