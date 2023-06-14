@@ -30,7 +30,11 @@ const PackPage = ({ username, slug }: PackPageProps) => {
             paddingRight={{ base: 0, lg: 10, xl: 20 }}
             borderRightWidth={{ base: 0, lg: '1px' }}
             borderColor="blackAlpha.200"
-            flexGrow={1}
+            minWidth={{
+              base: 'full',
+              lg: 'calc(100% - 304px)', // width of sidebar + left margin
+              xl: 'calc(100% - 360px)', // width of sidebar + left margin
+            }}
           >
             <PackCell username={username} slug={slug} setMetaTags={true} />
           </Box>
