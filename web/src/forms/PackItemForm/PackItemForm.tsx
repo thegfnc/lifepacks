@@ -129,6 +129,7 @@ const PackItemForm = ({
                 message: 'Description cannot exceed 1000 characters',
               },
             })}
+            rows={5}
           />
           <FormErrorMessage>
             {formState.errors.description?.message}
