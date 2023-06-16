@@ -44,6 +44,7 @@ import { toast } from '@redwoodjs/web/toast'
 
 import { QUERY as LATEST_PACKS_QUERY } from 'src/cells/LatestPacksCell'
 import { QUERY as PACK_LIST_QUERY } from 'src/cells/PackListCell'
+import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
@@ -130,7 +131,10 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
             borderColor="blackAlpha.200"
           >
             <Image
-              src={pack.packItems[0]?.imageUrl}
+              src={getImageUrlWithTransform({
+                src: pack.packItems[0]?.imageUrl,
+                transform: { width: 475, height: 475 },
+              })}
               fit="contain"
               alt={pack.packItems[0]?.title}
               fallback={<ImageFallback />}
@@ -147,7 +151,10 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
               rowSpan={numberOfImages === 2 ? 2 : 1}
             >
               <Image
-                src={pack.packItems[1]?.imageUrl}
+                src={getImageUrlWithTransform({
+                  src: pack.packItems[1]?.imageUrl,
+                  transform: { width: 225, height: 225 },
+                })}
                 fit="contain"
                 alt={pack.packItems[1]?.title}
                 fallback={<ImageFallback />}
@@ -166,7 +173,10 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
               colSpan={2}
             >
               <Image
-                src={pack.packItems[2]?.imageUrl}
+                src={getImageUrlWithTransform({
+                  src: pack.packItems[2]?.imageUrl,
+                  transform: { width: 225, height: 225 },
+                })}
                 fit="contain"
                 alt={pack.packItems[2]?.title}
                 fallback={<ImageFallback />}
@@ -214,7 +224,10 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
                       >
                         <Avatar
                           size={'xs'}
-                          src={pack.userProfile.imageUrl}
+                          src={getImageUrlWithTransform({
+                            src: pack.userProfile.imageUrl,
+                            transform: { width: 24, height: 24 },
+                          })}
                           name={getUserDisplayName(
                             pack.userProfile.givenName,
                             pack.userProfile.familyName,

@@ -19,6 +19,7 @@ import { MdLogout, MdOutlineAccountCircle } from 'react-icons/md'
 import { Link, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
+import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
@@ -87,7 +88,10 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                         <Avatar
                           h={10}
                           w={10}
-                          src={currentUserProfile?.imageUrl}
+                          src={getImageUrlWithTransform({
+                            src: currentUserProfile?.imageUrl,
+                            transform: { width: 40, height: 40 },
+                          })}
                           name={userDisplayName}
                         />
                       </MenuButton>

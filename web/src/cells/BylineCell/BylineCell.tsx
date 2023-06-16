@@ -12,6 +12,7 @@ import type { FindBylineQuery, FindBylineQueryVariables } from 'types/graphql'
 import { Link, routes } from '@redwoodjs/router'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
+import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 
 type BylineCellSuccessProps = CellSuccessProps<
@@ -47,7 +48,10 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
     <LinkBox as={HStack} spacing={3}>
       <Avatar
         size={'md'}
-        src={userProfile.imageUrl}
+        src={getImageUrlWithTransform({
+          src: userProfile.imageUrl,
+          transform: { width: 48, height: 48 },
+        })}
         name={getUserDisplayName(
           userProfile.givenName,
           userProfile.familyName,

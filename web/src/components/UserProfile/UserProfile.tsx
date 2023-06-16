@@ -6,6 +6,7 @@ import { UserProfile as UserProfileType } from 'types/graphql'
 import { Link, routes } from '@redwoodjs/router'
 
 import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccountButton'
+import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import SocialAccount from 'src/types/SocialAccount'
 
@@ -45,7 +46,10 @@ const UserProfileBannerLayout = ({
       <Center>
         <Avatar
           size={'2xl'}
-          src={userProfile.imageUrl}
+          src={getImageUrlWithTransform({
+            src: userProfile.imageUrl,
+            transform: { width: 128, height: 128 },
+          })}
           name={userDisplayName}
           {...(disableLinks ? {} : linkProps)}
         />
@@ -129,7 +133,10 @@ const UserProfileSidebarLayout = ({
       <Flex justify="space-between">
         <Avatar
           size={'xl'}
-          src={userProfile.imageUrl}
+          src={getImageUrlWithTransform({
+            src: userProfile.imageUrl,
+            transform: { width: 96, height: 96 },
+          })}
           name={getUserDisplayName(
             userProfile.givenName,
             userProfile.familyName,

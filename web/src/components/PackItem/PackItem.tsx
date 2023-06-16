@@ -9,6 +9,8 @@ import {
   SimpleGrid,
 } from '@chakra-ui/react'
 
+import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
+
 import BuyButton from '../BuyButton/BuyButton'
 
 type PackItemProps = {
@@ -41,7 +43,10 @@ const PackItem = ({
               maxW="full"
               maxH={{ base: '350px' }}
               alt={title}
-              src={imageUrl}
+              src={getImageUrlWithTransform({
+                src: imageUrl,
+                transform: { width: 350, height: 350 },
+              })}
             />
           </Center>
           <Center
