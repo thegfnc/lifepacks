@@ -17,6 +17,10 @@ function getImageUrlWithTransform({
 
   const { height, width, resize } = transform
 
+  if (height > 2500 || width > 2500) {
+    throw new Error('Max image dimension is 2500px')
+  }
+
   const params = new URLSearchParams({
     ...(height ? { height: height.toString() } : {}),
     ...(width ? { width: width.toString() } : {}),
