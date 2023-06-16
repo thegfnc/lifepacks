@@ -15,6 +15,12 @@ function getImageUrlWithTransform({
 }: GetIMageUrlWithTransformInput) {
   if (!src) return ''
 
+  // Need to figure out a more long term solution than this
+  const renderSrc = src.replace(
+    'storage/v1/object/public',
+    'storage/v1/render/image/public'
+  )
+
   const { height, width, resize } = transform
 
   if (height > 2500 || width > 2500) {
@@ -27,7 +33,7 @@ function getImageUrlWithTransform({
     ...(resize ? { resize } : { resize: 'contain' }),
   })
 
-  return `${src}?${params.toString()}`
+  return `${renderSrc}?${params.toString()}`
 }
 
 export default getImageUrlWithTransform

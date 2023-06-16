@@ -90,7 +90,11 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                           w={10}
                           src={getImageUrlWithTransform({
                             src: currentUserProfile?.imageUrl,
-                            transform: { width: 40, height: 40 },
+                            transform: {
+                              width: 80,
+                              height: 80,
+                              resize: 'cover',
+                            },
                           })}
                           name={userDisplayName}
                         />

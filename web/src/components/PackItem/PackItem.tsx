@@ -45,7 +45,7 @@ const PackItem = ({
               alt={title}
               src={getImageUrlWithTransform({
                 src: imageUrl,
-                transform: { width: 350, height: 350 },
+                transform: { width: 700, height: 700 },
               })}
             />
           </Center>

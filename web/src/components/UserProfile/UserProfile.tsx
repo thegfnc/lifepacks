@@ -48,7 +48,7 @@ const UserProfileBannerLayout = ({
           size={'2xl'}
           src={getImageUrlWithTransform({
             src: userProfile.imageUrl,
-            transform: { width: 128, height: 128 },
+            transform: { width: 256, height: 256, resize: 'cover' },
           })}
           name={userDisplayName}
           {...(disableLinks ? {} : linkProps)}
@@ -135,7 +135,7 @@ const UserProfileSidebarLayout = ({
           size={'xl'}
           src={getImageUrlWithTransform({
             src: userProfile.imageUrl,
-            transform: { width: 96, height: 96 },
+            transform: { width: 192, height: 192, resize: 'cover' },
           })}
           name={getUserDisplayName(
             userProfile.givenName,

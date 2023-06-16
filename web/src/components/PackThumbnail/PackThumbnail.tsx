@@ -133,7 +133,7 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
             <Image
               src={getImageUrlWithTransform({
                 src: pack.packItems[0]?.imageUrl,
-                transform: { width: 475, height: 475 },
+                transform: { width: 950, height: 950 },
               })}
               fit="contain"
               alt={pack.packItems[0]?.title}
@@ -153,7 +153,7 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
               <Image
                 src={getImageUrlWithTransform({
                   src: pack.packItems[1]?.imageUrl,
-                  transform: { width: 225, height: 225 },
+                  transform: { width: 450, height: 450 },
                 })}
                 fit="contain"
                 alt={pack.packItems[1]?.title}
@@ -175,7 +175,7 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
               <Image
                 src={getImageUrlWithTransform({
                   src: pack.packItems[2]?.imageUrl,
-                  transform: { width: 225, height: 225 },
+                  transform: { width: 450, height: 450 },
                 })}
                 fit="contain"
                 alt={pack.packItems[2]?.title}
@@ -226,7 +226,11 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
                           size={'xs'}
                           src={getImageUrlWithTransform({
                             src: pack.userProfile.imageUrl,
-                            transform: { width: 24, height: 24 },
+                            transform: {
+                              width: 48,
+                              height: 48,
+                              resize: 'cover',
+                            },
                           })}
                           name={getUserDisplayName(
                             pack.userProfile.givenName,

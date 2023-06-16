@@ -50,7 +50,7 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
         size={'md'}
         src={getImageUrlWithTransform({
           src: userProfile.imageUrl,
-          transform: { width: 48, height: 48 },
+          transform: { width: 96, height: 96, resize: 'cover' },
         })}
         name={getUserDisplayName(
           userProfile.givenName,
