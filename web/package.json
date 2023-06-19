@@ -34,6 +34,6 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@sentry/webpack-plugin": "2.2.2"
+    "@sentry/webpack-plugin": "2.3.0"
   }
 }
