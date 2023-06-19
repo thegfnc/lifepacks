@@ -131,7 +131,7 @@ const HomePage = () => {
                 <PackItem
                   title="Apple AirPods Pro"
                   description="High-quality wireless earbud option with great sound quality, convenient connectivity, and a sleek design."
-                  purchaseUrl="https://amzn.to/42PxSmL"
+                  purchaseUrl="https://goto.walmart.com/c/4408565/565706/9383?veh=aff&sourceid=imp_000011112222333344&u=https%3A%2F%2Fwww.walmart.com%2Fip%2FApple-AirPods-Pro-2nd-Generation%2F1752657021%3Fathbdg%3DL1102"
                   imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/21717ce2-ae68-4bd2-98f9-636f21996656-mqd83.jpeg"
                 />
               </Stack>
