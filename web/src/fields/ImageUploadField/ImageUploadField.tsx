@@ -23,6 +23,7 @@ import {
 
 import { useAuth } from 'src/auth'
 import getFileExtension from 'src/helpers/getFileExtension'
+import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 
 type ImageUploadFieldProps = {
   bucket: 'pack-item-images' | 'user-profile-images'
@@ -43,7 +44,12 @@ function ImageUploadField<
   const [isUploading, setIsUploading] = useState(false)
 
   useEffect(() => {
-    setPreviewImageUrl(field.value)
+    setPreviewImageUrl(
+      getImageUrlWithTransform({
+        src: field.value,
+        transform: { width: 320, height: 320, resize: 'contain' },
+      })
+    )
   }, [field.value])
 
   // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
