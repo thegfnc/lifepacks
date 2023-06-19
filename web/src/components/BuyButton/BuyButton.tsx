@@ -11,6 +11,7 @@ const findStoreNameFromPurchaseUrl = (purchaseUrl: string) => {
   const patterns = [
     { name: 'Amazon', pattern: /amazon\.com/ },
     { name: 'Amazon', pattern: /a\.co/ },
+    { name: 'Amazon', pattern: /amzn\.to/ },
     { name: 'Walmart', pattern: /walmart\.com/ },
     { name: 'Target', pattern: /target\.com/ },
     { name: 'Best Buy', pattern: /bestbuy\.com/ },
