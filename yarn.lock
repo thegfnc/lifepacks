@@ -6414,7 +6414,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:7.55.0, @sentry/node@npm:^7.53.0":
+"@sentry/node@npm:7.56.0":
+  version: 7.56.0
+  resolution: "@sentry/node@npm:7.56.0"
+  dependencies:
+    "@sentry-internal/tracing": 7.56.0
+    "@sentry/core": 7.56.0
+    "@sentry/types": 7.56.0
+    "@sentry/utils": 7.56.0
+    cookie: ^0.4.1
+    https-proxy-agent: ^5.0.0
+    lru_map: ^0.3.3
+    tslib: ^1.9.3
+  checksum: 3516979ccc4bb91dde74f23975b6b043afe4c80bd28437c0f14f1ee57368e09eeff4549ab3c4223d3d30985e621ed745b81912cc6ae6d69f458b8d3e48ee3542
+  languageName: node
+  linkType: hard
+
+"@sentry/node@npm:^7.53.0":
   version: 7.55.0
   resolution: "@sentry/node@npm:7.55.0"
   dependencies:
@@ -7796,12 +7812,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/gotrue-js@npm:^2.26.0":
-  version: 2.26.0
-  resolution: "@supabase/gotrue-js@npm:2.26.0"
+"@supabase/gotrue-js@npm:^2.31.0":
+  version: 2.31.0
+  resolution: "@supabase/gotrue-js@npm:2.31.0"
   dependencies:
     cross-fetch: ^3.1.5
-  checksum: 93aa6e7404d224b14b34246fc4168398beb3fc104d46299f7a96e4b06c822d1b159ca2239015d5df4698d035ac0125f6ccb318d9b414d5b3dabadf027bb39673
+  checksum: b04c29c965e8b90779baed425d356d6132772aff602cd4980fe80df08ab2d9b25312c197b1150f7cee9450047a5c26225b02565af5d3881314f50b6d406b15f6
   languageName: node
   linkType: hard
 
@@ -7834,17 +7850,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:2.25.0":
-  version: 2.25.0
-  resolution: "@supabase/supabase-js@npm:2.25.0"
+"@supabase/supabase-js@npm:2.26.0":
+  version: 2.26.0
+  resolution: "@supabase/supabase-js@npm:2.26.0"
   dependencies:
     "@supabase/functions-js": ^2.1.0
-    "@supabase/gotrue-js": ^2.26.0
+    "@supabase/gotrue-js": ^2.31.0
     "@supabase/postgrest-js": ^1.7.0
     "@supabase/realtime-js": ^2.7.3
     "@supabase/storage-js": ^2.5.1
     cross-fetch: ^3.1.5
-  checksum: 89a06f04e4782186c9a6ee3825542c70da581abc85255c5567eefcfb39a68ede5186c9ffb9fda31f5248a4ffb944b5259f5c57e71de68085cd41bb531640ad91
+  checksum: c56047a832895bdecd72dbe763dea79ba07e12589bf3d81aaf7d367cf7d918c5ee784fb9527f3d0ec3e8389a2a7e448b4ff21c1ae31e8b01e7b9f3f2775802bb
   languageName: node
   linkType: hard
 
@@ -9849,7 +9865,7 @@ __metadata:
     "@redwoodjs/auth-supabase-api": 5.3.1
     "@redwoodjs/graphql-server": 5.3.1
     "@sendinblue/client": ^3.3.1
-    "@sentry/node": 7.55.0
+    "@sentry/node": 7.56.0
     "@sentry/profiling-node": ^1.0.6
     "@sentry/webpack-plugin": 2.3.0
     jsonwebtoken: ^9.0.0
@@ -26603,7 +26619,7 @@ __metadata:
     "@redwoodjs/web": 5.3.1
     "@sentry/react": 7.56.0
     "@sentry/webpack-plugin": 2.3.0
-    "@supabase/supabase-js": 2.25.0
+    "@supabase/supabase-js": 2.26.0
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
     framer-motion: 10.12.16
