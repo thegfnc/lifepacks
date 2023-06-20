@@ -9,7 +9,7 @@
     "@redwoodjs/graphql-server": "5.3.1",
     "@sendinblue/client": "^3.3.1",
     "@sentry/node": "7.55.0",
-    "@sentry/profiling-node": "^1.0.4",
+    "@sentry/profiling-node": "^1.0.6",
     "@sentry/webpack-plugin": "2.3.0",
     "jsonwebtoken": "^9.0.0"
   }
