@@ -11,8 +11,8 @@
     "slug": "^8.2.2"
   },
   "devDependencies": {
-    "@redwoodjs/auth-supabase-setup": "5.3.1",
-    "@redwoodjs/core": "5.3.1"
+    "@redwoodjs/auth-supabase-setup": "5.3.2",
+    "@redwoodjs/core": "5.3.2"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
