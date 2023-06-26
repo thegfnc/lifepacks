@@ -16,13 +16,13 @@ import {
   FormHelperText,
   Link as ChakraLink,
 } from '@chakra-ui/react'
-import { FaGoogle } from 'react-icons/fa'
 
 import { Form, useForm } from '@redwoodjs/forms'
 import { Link, navigate, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
+import ThirdPartyLogo from 'src/components/ThirdPartyLogo/ThirdPartyLogo'
 import PasswordInput from 'src/fields/PasswordInput/PasswordInput'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
@@ -164,7 +164,7 @@ const LogInPage = () => {
                   <Button
                     onClick={logInWithGoogle}
                     isLoading={isLoadingGoogleLogin}
-                    leftIcon={<FaGoogle />}
+                    leftIcon={<ThirdPartyLogo type="Google" />}
                     colorScheme="gray"
                   >
                     Log in with Google
