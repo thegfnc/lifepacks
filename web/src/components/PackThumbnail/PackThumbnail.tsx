@@ -47,6 +47,7 @@ import { QUERY as PACK_LIST_QUERY } from 'src/cells/PackListCell'
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
+import { trackSelectPack, trackSelectUserProfile } from 'src/lib/analytics'
 
 import ImageFallback from '../ImageFallback/ImageFallback'
 
@@ -207,6 +208,9 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
                   username: pack.userProfile.username,
                   slug: pack.slug,
                 })}
+                onClick={() => {
+                  trackSelectPack(pack.id, pack.slug)
+                }}
               >
                 {pack.title}
               </LinkOverlay>
@@ -221,6 +225,9 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
                         to={routes.userProfile({
                           username: pack.userProfile.username,
                         })}
+                        onClick={() =>
+                          trackSelectUserProfile(pack.userProfile.username)
+                        }
                       >
                         <Avatar
                           size={'xs'}
@@ -244,6 +251,9 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
                         to={routes.userProfile({
                           username: pack.userProfile.username,
                         })}
+                        onClick={() =>
+                          trackSelectUserProfile(pack.userProfile.username)
+                        }
                       >
                         <Text ml={2} fontSize="sm">
                           {getUserDisplayName(

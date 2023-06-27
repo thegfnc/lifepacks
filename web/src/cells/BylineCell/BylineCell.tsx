@@ -14,6 +14,7 @@ import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
+import { trackSelectUserProfile } from 'src/lib/analytics'
 
 type BylineCellSuccessProps = CellSuccessProps<
   FindBylineQuery,
@@ -63,6 +64,7 @@ export const Success = ({ userProfile, date }: BylineCellSuccessProps) => {
           <LinkOverlay
             as={Link}
             to={routes.userProfile({ username: userProfile.username })}
+            onClick={() => trackSelectUserProfile(userProfile.username)}
           >
             {getUserDisplayName(
               userProfile.givenName,

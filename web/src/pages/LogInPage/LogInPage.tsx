@@ -25,6 +25,7 @@ import { useAuth } from 'src/auth'
 import ThirdPartyLogo from 'src/components/ThirdPartyLogo/ThirdPartyLogo'
 import PasswordInput from 'src/fields/PasswordInput/PasswordInput'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
+import { trackLoginWithGoogle, trackLoginWithPassword } from 'src/lib/analytics'
 
 type LogInFormValues = {
   email: string
@@ -64,6 +65,8 @@ const LogInPage = () => {
       setIsLoadingGoogleLogin(false)
       return
     }
+
+    trackLoginWithGoogle()
   }
 
   const onSubmit = async (data: LogInFormValues) => {
@@ -89,6 +92,8 @@ const LogInPage = () => {
     if (errorMessage) {
       setError(errorMessage)
       setIsLoadingPasswordLogin(false)
+    } else {
+      trackLoginWithPassword()
     }
   }
 

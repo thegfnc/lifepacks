@@ -8,6 +8,7 @@ import { Link, routes } from '@redwoodjs/router'
 import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccountButton'
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
+import { trackSelectUserProfile } from 'src/lib/analytics'
 import SocialAccount from 'src/types/SocialAccount'
 
 export enum UserProfileLayout {
@@ -33,6 +34,7 @@ const UserProfileBannerLayout = ({
   const linkProps = {
     as: Link,
     to: routes.userProfile({ username: userProfile.username }),
+    onClick: () => trackSelectUserProfile(userProfile.username),
   }
 
   const userDisplayName = getUserDisplayName(
@@ -126,6 +128,7 @@ const UserProfileSidebarLayout = ({
   const linkProps = {
     as: Link,
     to: routes.userProfile({ username: userProfile.username }),
+    onClick: () => trackSelectUserProfile(userProfile.username),
   }
 
   return (
