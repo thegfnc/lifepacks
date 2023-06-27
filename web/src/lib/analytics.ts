@@ -1,4 +1,4 @@
-import { Gtag } from 'src/types/gtag'
+import { Gtag } from 'src/types/Gtag'
 
 function getDataLayer() {
   if (typeof window !== 'undefined') {
