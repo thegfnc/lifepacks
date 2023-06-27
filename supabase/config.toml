@@ -65,8 +65,8 @@ enable_confirmations = true
 # `discord`, `facebook`, `github`, `gitlab`, `google`, `twitch`, `twitter`, `slack`, `spotify`.
 [auth.external.google]
 enabled = true
-client_id = "387600849896-vgq5d67f177pdqtdr3vb5helu8679rd4.apps.googleusercontent.com"
-secret = "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"
+client_id = "236970628493-j7lb8pjdc0hmbt7smeujearbrfj46l3u.apps.googleusercontent.com"
+secret = "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"
 # Overrides the default auth redirectUrl.
 # redirect_uri = ""
 

@@ -25,6 +25,10 @@ import { useAuth } from 'src/auth'
 import ThirdPartyLogo from 'src/components/ThirdPartyLogo/ThirdPartyLogo'
 import PasswordInput from 'src/fields/PasswordInput/PasswordInput'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
+import {
+  trackLoginWithGoogle,
+  trackSignUpWithPassword,
+} from 'src/lib/analytics'
 
 type SignUpFormvalues = {
   email: string
@@ -64,6 +68,8 @@ const SignUpPage = () => {
       setIsLoadingGoogleLogin(false)
       return
     }
+
+    trackLoginWithGoogle()
   }
 
   const onSubmit = async (data: SignUpFormvalues) => {
@@ -90,6 +96,8 @@ const SignUpPage = () => {
       setError(errorMessage)
     } else {
       setIsSuccess(true)
+
+      trackSignUpWithPassword()
     }
   }
 

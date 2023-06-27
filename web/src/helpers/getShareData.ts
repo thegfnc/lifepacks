@@ -1,5 +1,6 @@
 import { toast } from '@redwoodjs/web/toast'
 
+import { trackShare } from 'src/lib/analytics'
 import SocialAccount from 'src/types/SocialAccount'
 
 export const getShareUrl = (
@@ -43,6 +44,16 @@ export const getCopyLinkClickHandler = (
     navigator.clipboard.writeText(
       getShareUrl(SocialAccount.Link, shareUrl, shareTitle)
     )
+    getShareTrackingHandler('copy_link', shareUrl)()
     toast.success('Pack link copied to clipboard')
+  }
+}
+
+export const getShareTrackingHandler = (
+  accountType: SocialAccount | 'copy_link',
+  shareUrl: string
+) => {
+  return () => {
+    trackShare(accountType, 'pack', shareUrl)
   }
 }
