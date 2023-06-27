@@ -7,14 +7,17 @@ function getDataLayer() {
   return []
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const gtag: Gtag = (...args) => {
+const gtag: Gtag = (...args) => {
   getDataLayer().push(args)
 }
 
 //////////////////////////////
 // Tracking Functions Below //
 //////////////////////////////
+
+export const setUserId = (user_id: string) => {
+  gtag('set', { user_id })
+}
 
 export const trackLoginWithGoogle = () => {
   gtag('event', 'login', {

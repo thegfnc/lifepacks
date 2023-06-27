@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 
 import { useAuth } from 'src/auth'
-import { gtag } from 'src/lib/analytics'
+import { setUserId } from 'src/lib/analytics'
 
 const useGA4Setup = () => {
   const { currentUser } = useAuth()
 
   useEffect(() => {
-    gtag('set', { user_id: currentUser?.sub })
+    setUserId(currentUser?.sub)
   }, [currentUser])
 }
 
