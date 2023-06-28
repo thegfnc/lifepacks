@@ -7,8 +7,8 @@ function getDataLayer() {
   return []
 }
 
-const gtag: Gtag = (...args) => {
-  getDataLayer().push(args)
+const gtag: Gtag = function () {
+  getDataLayer().push(arguments)
 }
 
 //////////////////////////////
