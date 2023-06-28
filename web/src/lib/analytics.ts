@@ -8,6 +8,7 @@ function getDataLayer() {
 }
 
 const gtag: Gtag = function () {
+  // eslint-disable-next-line prefer-rest-params
   getDataLayer().push(arguments)
 }
 
