@@ -15,6 +15,8 @@ import {
   AlertIcon,
   FormHelperText,
   Link as ChakraLink,
+  HStack,
+  Divider,
 } from '@chakra-ui/react'
 
 import { Form, useForm } from '@redwoodjs/forms'
@@ -166,6 +168,17 @@ const LogInPage = () => {
                   <Button type="submit" isLoading={isLoadingPasswordLogin}>
                     Log in
                   </Button>
+                  <HStack spacing={5} my={4}>
+                    <Divider borderColor="blackAlpha.400" />
+                    <Text
+                      fontWeight="semibold"
+                      fontSize="xs"
+                      color="blackAlpha.500"
+                    >
+                      OR
+                    </Text>
+                    <Divider borderColor="blackAlpha.400" />
+                  </HStack>
                   <Button
                     onClick={logInWithGoogle}
                     isLoading={isLoadingGoogleLogin}

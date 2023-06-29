@@ -15,6 +15,8 @@ import {
   FormLabel,
   FormErrorMessage,
   Link as ChakraLink,
+  HStack,
+  Divider,
 } from '@chakra-ui/react'
 
 import { Form, useForm } from '@redwoodjs/forms'
@@ -177,6 +179,17 @@ const SignUpPage = () => {
                     <Button type="submit" isLoading={isLoadingPasswordLogin}>
                       Sign up
                     </Button>
+                    <HStack spacing={5} my={4}>
+                      <Divider borderColor="blackAlpha.400" />
+                      <Text
+                        fontWeight="semibold"
+                        fontSize="xs"
+                        color="blackAlpha.500"
+                      >
+                        OR
+                      </Text>
+                      <Divider borderColor="blackAlpha.400" />
+                    </HStack>
                     <Button
                       onClick={signUpWithGoogle}
                       isLoading={isLoadingGoogleLogin}
