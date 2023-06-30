@@ -98,7 +98,7 @@ function ImageUploadField<
         setIsUploading(false)
       },
       error(err) {
-        console.log(err.message)
+        throw new Error(err.message)
       },
     })
     /* eslint-enable no-new */
