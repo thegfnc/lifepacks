@@ -88,7 +88,12 @@ function ImageUploadField<
           .from(bucket)
           .getPublicUrl(imageFileName)
 
-        field.onChange(data.publicUrl)
+        // breaking change was introduced that made it impossible to correctly type
+        // the onChange in a field component. Can remove `any` once it's reverted.
+        // https://github.com/react-hook-form/react-hook-form/pull/10342
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        field.onChange(data.publicUrl as any)
 
         setIsUploading(false)
       },

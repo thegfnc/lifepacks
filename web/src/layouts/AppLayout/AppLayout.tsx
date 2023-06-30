@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { StrictMode, useState } from 'react'
 
 import Footer from 'src/components/Footer/Footer'
 import Header from 'src/components/Header/Header'
@@ -12,11 +12,13 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   const [HeaderCtaComponent, setHeaderCtaComponent] = useState(null)
 
   return (
-    <HeaderCtaContext.Provider value={setHeaderCtaComponent}>
-      <Header ctaComponent={HeaderCtaComponent} />
-      <main>{children}</main>
-      <Footer />
-    </HeaderCtaContext.Provider>
+    <StrictMode>
+      <HeaderCtaContext.Provider value={setHeaderCtaComponent}>
+        <Header ctaComponent={HeaderCtaComponent} />
+        <main>{children}</main>
+        <Footer />
+      </HeaderCtaContext.Provider>
+    </StrictMode>
   )
 }
 
