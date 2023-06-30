@@ -6037,6 +6037,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/eslint-plugin@npm:latest":
+  version: 5.4.0
+  resolution: "@redwoodjs/eslint-plugin@npm:5.4.0"
+  dependencies:
+    "@typescript-eslint/utils": 5.60.1
+    eslint: 8.43.0
+  checksum: 06c729614cc68a357f81c8b44a64c93631f3c681e60d5a68a9fb4d5cf5435996dd5371ffedcd3b0ecdf1f358578025fa906050ae589755f7deed80e23645dff0
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/fastify@npm:5.4.0":
   version: 5.4.0
   resolution: "@redwoodjs/fastify@npm:5.4.0"
@@ -23563,6 +23573,7 @@ __metadata:
   dependencies:
     "@redwoodjs/auth-supabase-setup": 5.4.0
     "@redwoodjs/core": 5.4.0
+    "@redwoodjs/eslint-plugin": latest
     slug: ^8.2.2
   languageName: unknown
   linkType: soft
