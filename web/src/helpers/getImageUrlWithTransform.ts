@@ -19,7 +19,7 @@ function getImageUrlWithTransform({
   let params = null
 
   // Since we're only paying for supabase on production, we can't use image transforms for the preview envs
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.VERCEL_ENV === 'production') {
     // Need to figure out a more long term solution than this
     renderSrc = src.replace(
       'storage/v1/object/public',
