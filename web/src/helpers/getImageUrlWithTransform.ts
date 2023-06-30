@@ -15,25 +15,31 @@ function getImageUrlWithTransform({
 }: GetIMageUrlWithTransformInput) {
   if (!src) return ''
 
-  // Need to figure out a more long term solution than this
-  const renderSrc = src.replace(
-    'storage/v1/object/public',
-    'storage/v1/render/image/public'
-  )
+  let renderSrc = src
+  let params = null
 
-  const { height, width, resize } = transform
+  // Since we're only paying for supabase on production, we can't use image transforms for the preview envs
+  if (process.env.NODE_ENV === 'production') {
+    // Need to figure out a more long term solution than this
+    renderSrc = src.replace(
+      'storage/v1/object/public',
+      'storage/v1/render/image/public'
+    )
 
-  if (height > 2500 || width > 2500) {
-    throw new Error('Max image dimension is 2500px')
+    const { height, width, resize } = transform
+
+    if (height > 2500 || width > 2500) {
+      throw new Error('Max image dimension is 2500px')
+    }
+
+    params = new URLSearchParams({
+      ...(height ? { height: height.toString() } : {}),
+      ...(width ? { width: width.toString() } : {}),
+      ...(resize ? { resize } : { resize: 'contain' }),
+    })
   }
 
-  const params = new URLSearchParams({
-    ...(height ? { height: height.toString() } : {}),
-    ...(width ? { width: width.toString() } : {}),
-    ...(resize ? { resize } : { resize: 'contain' }),
-  })
-
-  return `${renderSrc}?${params.toString()}`
+  return `${renderSrc}${params ? '?' + params.toString() : ''}`
 }
 
 export default getImageUrlWithTransform
