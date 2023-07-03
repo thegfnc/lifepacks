@@ -6516,7 +6516,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/node@npm:7.56.0, @sentry/node@npm:^7.53.0":
+"@sentry/node@npm:7.57.0":
+  version: 7.57.0
+  resolution: "@sentry/node@npm:7.57.0"
+  dependencies:
+    "@sentry-internal/tracing": 7.57.0
+    "@sentry/core": 7.57.0
+    "@sentry/types": 7.57.0
+    "@sentry/utils": 7.57.0
+    cookie: ^0.4.1
+    https-proxy-agent: ^5.0.0
+    lru_map: ^0.3.3
+    tslib: ^2.4.1 || ^1.9.3
+  checksum: 934e13121c305aa8648b23990e562d8a5d1456f24543ef479c1d8cd7da6404e48e7d3cba5b1674e8c07bab6428cdab2d8f057dc5620a46d652483c1c81bb2891
+  languageName: node
+  linkType: hard
+
+"@sentry/node@npm:^7.53.0":
   version: 7.56.0
   resolution: "@sentry/node@npm:7.56.0"
   dependencies:
@@ -9989,7 +10005,7 @@ __metadata:
     "@redwoodjs/auth-supabase-api": 5.4.2
     "@redwoodjs/graphql-server": 5.4.2
     "@sendinblue/client": ^3.3.1
-    "@sentry/node": 7.56.0
+    "@sentry/node": 7.57.0
     "@sentry/profiling-node": ^1.0.6
     "@sentry/webpack-plugin": 2.4.0
     jsonwebtoken: ^9.0.0
