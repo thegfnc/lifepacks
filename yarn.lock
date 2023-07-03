@@ -6401,18 +6401,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/bundler-plugin-core@npm:2.3.0":
-  version: 2.3.0
-  resolution: "@sentry/bundler-plugin-core@npm:2.3.0"
+"@sentry/bundler-plugin-core@npm:2.4.0":
+  version: 2.4.0
+  resolution: "@sentry/bundler-plugin-core@npm:2.4.0"
   dependencies:
     "@sentry/cli": ^2.17.0
     "@sentry/node": 7.53.1
     "@sentry/utils": 7.53.1
+    dotenv: ^16.3.1
     find-up: 5.0.0
     glob: 9.3.2
     magic-string: 0.27.0
     unplugin: 1.0.1
-  checksum: 832874968b70ac87fc86b0b401ea10853009c9341d1170d205098592bf3bf7c2a60a32aed59b75cb9f16a9d1c67514dab8fb1913429b3b80cb3cb5acaeab3480
+  checksum: 3a4319930b85257494e6423c22c37966a62747a9625da1cb7e971e2c21201194aae1c13678f68ca9a722b0da4d86b98d26938d175e5c4a165a3191e806e2a2af
   languageName: node
   linkType: hard
 
@@ -6603,16 +6604,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/webpack-plugin@npm:2.3.0":
-  version: 2.3.0
-  resolution: "@sentry/webpack-plugin@npm:2.3.0"
+"@sentry/webpack-plugin@npm:2.4.0":
+  version: 2.4.0
+  resolution: "@sentry/webpack-plugin@npm:2.4.0"
   dependencies:
-    "@sentry/bundler-plugin-core": 2.3.0
+    "@sentry/bundler-plugin-core": 2.4.0
     unplugin: 1.0.1
     uuid: ^9.0.0
   peerDependencies:
     webpack: ">=4.40.0"
-  checksum: 634b8f8be31af752352c9173221340d4797f2b224d411a9cd1530dea16bf692fda9c58adbfc5fd7a008a0da9d211b7dda0e38e7fe81ceee8abb5c2b2425e9bf4
+  checksum: 7655a0ca180025453b51f4af7a84290fd60537204189629f36657b556a761c2db89014d92d323150e1b124a5d5e3a68f62ced96c40d554b3b101f96486b5979f
   languageName: node
   linkType: hard
 
@@ -9950,7 +9951,7 @@ __metadata:
     "@sendinblue/client": ^3.3.1
     "@sentry/node": 7.56.0
     "@sentry/profiling-node": ^1.0.6
-    "@sentry/webpack-plugin": 2.3.0
+    "@sentry/webpack-plugin": 2.4.0
     jsonwebtoken: ^9.0.0
   languageName: unknown
   linkType: soft
@@ -13737,6 +13738,13 @@ __metadata:
   version: 14.3.2
   resolution: "dotenv@npm:14.3.2"
   checksum: cb428358aa3a8da735be727f8a9de56e148ddf97d84a75e528039dc90e55787688766e48204a50b8326ba1ebaa6e039584c1019dfc28fa144e68145d8cbe5946
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.3.1":
+  version: 16.3.1
+  resolution: "dotenv@npm:16.3.1"
+  checksum: b95ff1bbe624ead85a3cd70dbd827e8e06d5f05f716f2d0cbc476532d54c7c9469c3bc4dd93ea519f6ad711cb522c00ac9a62b6eb340d5affae8008facc3fbd7
   languageName: node
   linkType: hard
 
@@ -26740,7 +26748,7 @@ __metadata:
     "@redwoodjs/router": 5.4.2
     "@redwoodjs/web": 5.4.2
     "@sentry/react": 7.56.0
-    "@sentry/webpack-plugin": 2.3.0
+    "@sentry/webpack-plugin": 2.4.0
     "@supabase/supabase-js": 2.26.0
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
