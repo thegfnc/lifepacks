@@ -19,10 +19,11 @@ if (
     tracesSampleRate: 0.1,
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
-    beforeSend(event) {
+    beforeSend(event, hint) {
       // Check if it is an exception, and if so, show the report dialog
       if (event.exception) {
-        console.log('event.exception', event)
+        console.log('event', event)
+        console.log('hint', hint)
         // Sentry.showReportDialog({ eventId: event.event_id })
       }
       return event
