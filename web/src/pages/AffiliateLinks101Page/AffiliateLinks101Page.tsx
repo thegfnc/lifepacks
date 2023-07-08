@@ -11,12 +11,14 @@ import {
   Text,
   useBoolean,
   Link as ChakraLink,
+  Box,
 } from '@chakra-ui/react'
 import { MdArrowOutward } from 'react-icons/md'
 
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import Feedback from 'src/components/Feedback/Feedback'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import { affiliatePrograms } from 'src/data/affiliateLinks101PageData'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -118,6 +120,9 @@ const AffiliateLinks101Page = () => {
           <AffiliateLinkCard store={store} key={store.storeName} />
         ))}
       </Stack>
+      <Box mt="120px">
+        <Feedback />
+      </Box>
     </PageContainer>
   )
 }

@@ -67,3 +67,16 @@ export const trackSelectUserProfile = (content_id: string | number) => {
     content_id,
   })
 }
+
+export const trackFeedbackSelect = (select_value: string) => {
+  gtag('event', 'feedback_select', {
+    select_value,
+  })
+}
+
+export const trackFeedbackWritten = (select_value: string, text: string) => {
+  gtag('event', 'feedback_written', {
+    select_value,
+    text,
+  })
+}
