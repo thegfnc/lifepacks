@@ -5,7 +5,7 @@ import {
   Box,
   Button,
   Center,
-  Fade,
+  Collapse,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -74,7 +74,11 @@ const Feedback = () => {
             </Button>
           </HStack>
         </Center>
-        <Fade in={Boolean(feedbackSelection)} unmountOnExit={true}>
+        <Collapse
+          in={Boolean(feedbackSelection)}
+          unmountOnExit={true}
+          animateOpacity={true}
+        >
           {isSubmitted ? (
             <Box
               textAlign="center"
@@ -123,7 +127,7 @@ const Feedback = () => {
               </Stack>
             </Form>
           )}
-        </Fade>
+        </Collapse>
       </Stack>
     </Center>
   )
