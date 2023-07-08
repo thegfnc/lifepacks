@@ -67,7 +67,6 @@ const AffiliateLinks101Page = () => {
       <MetaTags
         title="Affiliate Links 101"
         description="Sign up for an affiliate program to earn commissions while promoting products you love."
-        ogType="website"
         ogUrl={getEnvironmentUrl(routes.affiliateLinks101())}
       />
 

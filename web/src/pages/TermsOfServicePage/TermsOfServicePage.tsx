@@ -22,7 +22,6 @@ const TermsOfServicePage = () => {
       <MetaTags
         title="Terms of Service"
         description='This Terms of Service (TOS) agreement governs your use of the Lifepacks app (the "App"). By using the App, you agree to be bound by this TOS'
-        ogType="website"
         ogUrl={getEnvironmentUrl(routes.termsOfService())}
       />
 

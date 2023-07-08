@@ -22,7 +22,6 @@ const PrivacyPolicyPage = () => {
       <MetaTags
         title="Privacy Policy"
         description='This Privacy Policy (PP) governs how Lifepacks collects, uses, and shares your personal information when you use our app (the "App").'
-        ogType="website"
         ogUrl={getEnvironmentUrl(routes.privacyPolicy())}
       />
 

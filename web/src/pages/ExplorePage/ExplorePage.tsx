@@ -13,7 +13,6 @@ const ExplorePage = () => {
       <MetaTags
         title={`Explore Packs`}
         description={`Explore all of the packs that Lifepacks has to offer.`}
-        ogType="website"
         ogUrl={getEnvironmentUrl(routes.explore())}
       />
 

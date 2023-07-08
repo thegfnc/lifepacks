@@ -20,7 +20,6 @@ const FaqPage = () => {
       <MetaTags
         title="Frequently Asked Questions"
         description="Here are the most common questions we get about Lifepacks."
-        ogType="website"
         ogUrl={getEnvironmentUrl(routes.faq())}
       />
 

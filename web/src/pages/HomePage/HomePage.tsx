@@ -37,13 +37,7 @@ const HomePage = () => {
 
   return (
     <>
-      <MetaTags
-        title="Make guides for the products you swear by"
-        description="Publish product recommendations just like the professionals."
-        ogType="website"
-        ogUrl={getEnvironmentUrl('/')}
-        ogContentUrl={getEnvironmentUrl(websiteScreenshot)}
-      />
+      <MetaTags ogUrl={getEnvironmentUrl('/')} />
 
       <Box as="section" bg="brown.500" overflow="hidden">
         <PageContainer
