@@ -16,7 +16,6 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
-import websiteScreenshot from 'public/website_screenshot.png'
 
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
