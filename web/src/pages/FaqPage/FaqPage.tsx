@@ -4,6 +4,7 @@ import {
   Link as ChakraLink,
   Stack,
   Text,
+  Box,
 } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -64,7 +65,9 @@ const FaqPage = () => {
           ))}
         </Stack>
       </Accordion>
-      <Feedback />
+      <Box mt="120px">
+        <Feedback />
+      </Box>
     </PageContainer>
   )
 }
