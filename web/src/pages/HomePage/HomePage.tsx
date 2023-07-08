@@ -38,6 +38,14 @@ const HomePage = () => {
     <>
       <MetaTags ogUrl={getEnvironmentUrl('/')} />
 
+      <Button
+        onClick={() => {
+          throw new Error('test sentry user feedback')
+        }}
+      >
+        Test Error
+      </Button>
+
       <Box as="section" bg="brown.500" overflow="hidden">
         <PageContainer
           pt={0}
