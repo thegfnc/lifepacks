@@ -19,13 +19,6 @@ if (
     tracesSampleRate: 0.1,
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
-    beforeSend(event) {
-      // Check if it is an exception, and if so, show the report dialog
-      if (event.exception) {
-        Sentry.showReportDialog({ eventId: event.event_id })
-      }
-      return event
-    },
   })
 
   isSentryInitialized = true
