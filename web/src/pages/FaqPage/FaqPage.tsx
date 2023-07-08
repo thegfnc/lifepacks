@@ -10,6 +10,7 @@ import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import AccordionItem from 'src/components/AccordionItem/AccordionItem'
+import Feedback from 'src/components/Feedback/Feedback'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import { faq } from 'src/data/faqData'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -63,6 +64,7 @@ const FaqPage = () => {
           ))}
         </Stack>
       </Accordion>
+      <Feedback />
     </PageContainer>
   )
 }
