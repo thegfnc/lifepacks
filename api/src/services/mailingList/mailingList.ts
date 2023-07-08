@@ -34,8 +34,6 @@ export const mailingListSignUp: MutationResolvers['mailingListSignUp'] =
       const data = await apiInstance.createContact(createContact)
       return data.body
     } catch (error) {
-      console.error(error.response.body)
-
       validateWithSync(() => {
         if (error.response.body.code === 'duplicate_parameter') {
           throw new Error('This email has already signed up.')
