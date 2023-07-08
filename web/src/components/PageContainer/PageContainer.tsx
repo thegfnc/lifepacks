@@ -24,7 +24,7 @@ const PageContainer = ({
   size = 'lg',
   px = { base: 4, md: 10 },
   pt = { base: 4, md: 8 },
-  pb = { base: 4, md: '120px' },
+  pb = { base: 20, md: '120px' },
 }: PageContainerProps) => {
   const maxWidth = maxWidths[size]
 

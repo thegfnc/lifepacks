@@ -65,7 +65,7 @@ const FaqPage = () => {
           ))}
         </Stack>
       </Accordion>
-      <Box mt="120px">
+      <Box mt={{ base: 20, md: '120px' }}>
         <Feedback />
       </Box>
     </PageContainer>
