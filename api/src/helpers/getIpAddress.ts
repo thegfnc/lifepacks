@@ -8,7 +8,7 @@ const getIpAddress = ({ event }: GetIpAddressInput) => {
   return (
     event?.headers?.['client-ip'] ||
     event?.requestContext?.identity?.sourceIp ||
-    'localhost'
+    'null'
   )
 }
 
