@@ -7,6 +7,7 @@ import PackListCell from 'src/cells/PackListCell'
 import UserProfileCell from 'src/cells/UserProfileCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import { UserProfileLayout } from 'src/components/UserProfile/UserProfile'
+import RichTextEditor from 'src/fields/RichTextEditor'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 type UserProfilePageProps = {
@@ -30,6 +31,7 @@ const UserProfilePage = ({ username }: UserProfilePageProps) => {
           setMetaTags={true}
           layout={UserProfileLayout.Banner}
         />
+        <RichTextEditor />
         <HStack spacing={5} mt={6}>
           <Text fontWeight="semibold" fontSize="xs" color="blackAlpha.600">
             PACKS
