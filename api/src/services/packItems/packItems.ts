@@ -3,14 +3,17 @@ import { validate, validateWithSync } from '@redwoodjs/api'
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 
-import validiateCommonPackItemInputFields from './validateCommonPackItemInputFields'
+import { normalizeCommonPackItemInputFields } from './packItemsInputNormalization'
+import {
+  validatePackIdInput,
+  validiateCommonPackItemInputFields,
+} from './packItemsInputValidation'
 
 export const createPackItem = ({ input }) => {
-  validate(input.packId, 'Pack Id', {
-    presence: true,
-    numericality: { integer: true },
-  })
+  validatePackIdInput(input)
   validiateCommonPackItemInputFields(input)
+
+  normalizeCommonPackItemInputFields(input)
 
   const currentUser: RedwoodUser = context.currentUser
   const userId = currentUser.sub
@@ -43,7 +46,10 @@ export const updatePackItem = async ({ id, input }) => {
       throw new Error('You are not authorized to update that pack item.')
     }
   })
+
   validiateCommonPackItemInputFields(input)
+
+  normalizeCommonPackItemInputFields(input)
 
   return db.packItem.update({
     where: { id },

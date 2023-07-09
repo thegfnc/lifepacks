@@ -17,7 +17,8 @@ import {
   updatePackItem,
 } from '../packItems/packItems'
 
-import validiateCommonPackInputFields from './validateCommonPackInputFields'
+import { normalizeCommonPackInputFields } from './packsInputNormalization'
+import { validiateCommonPackInputFields } from './packsInputValidation'
 
 export const latestPacks: QueryResolvers['latestPacks'] = async ({
   take = 99,
@@ -62,6 +63,8 @@ export const createPack: MutationResolvers['createPack'] = async ({
   input,
 }) => {
   validiateCommonPackInputFields(input)
+
+  normalizeCommonPackInputFields(input)
 
   const currentUser: RedwoodUser = context.currentUser
   const userId = currentUser.sub
@@ -117,7 +120,10 @@ export const updatePack: MutationResolvers['updatePack'] = async ({
       throw new Error('You are not authorized to update that pack.')
     }
   })
+
   validiateCommonPackInputFields(input)
+
+  normalizeCommonPackInputFields(input)
 
   await db.pack.update({
     data: { title: input.title, description: input.description },
@@ -176,7 +182,7 @@ export const updatePack: MutationResolvers['updatePack'] = async ({
 }
 
 export const deletePack: MutationResolvers['deletePack'] = async ({ id }) => {
-  validate(id, 'Id', { presence: true })
+  validate(id, 'Id', { presence: true, numericality: { integer: true } })
 
   const currentUser: RedwoodUser = context.currentUser
   const userId = currentUser.sub
