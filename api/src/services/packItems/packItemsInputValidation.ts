@@ -2,7 +2,14 @@ import { validate } from '@redwoodjs/api'
 
 import isValidUrl from 'src/helpers/isValidUrl'
 
-export default function validiateCommonPackItemInputFields(input) {
+export function validatePackIdInput(input) {
+  validate(input.packId, 'Pack Id', {
+    presence: true,
+    numericality: { integer: true },
+  })
+}
+
+export function validiateCommonPackItemInputFields(input) {
   validate(input.title, 'Title', { presence: true, length: { max: 100 } })
   validate(input.description, 'Description', { length: { max: 1000 } })
   validate(input.imageUrl, 'Image', {

@@ -2,7 +2,18 @@ import { validate } from '@redwoodjs/api'
 
 import isValidUrl from 'src/helpers/isValidUrl'
 
-export default function validateCommonUserProfileInputFields(input) {
+export function validateUsernameInput(input) {
+  validate(input.username, 'Username', {
+    presence: true,
+    length: { min: 3, max: 50 },
+    format: {
+      pattern: /^[a-z0-9]+$/,
+      message: 'Username can only contain lowercase letters and numbers.',
+    },
+  })
+}
+
+export function validateCommonUserProfileInputFields(input) {
   validate(input.givenName, 'First Name', { length: { max: 100 } })
   validate(input.familyName, 'Last Name', { length: { max: 100 } })
   validate(input.biography, 'Biography', { length: { max: 500 } })
