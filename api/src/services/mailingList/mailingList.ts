@@ -37,7 +37,7 @@ export const mailingListSignUp: MutationResolvers['mailingListSignUp'] =
       return data.body
     } catch (error) {
       if (error.response.body.code === 'duplicate_parameter') {
-        reportError('This email has already signed up.')
+        reportError('This email has already signed up for the mailing list.')
         return
       }
 
