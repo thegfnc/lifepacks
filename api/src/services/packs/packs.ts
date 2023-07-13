@@ -5,7 +5,7 @@ import type {
   PackRelationResolvers,
 } from 'types/graphql'
 
-import { validate, validateWithSync } from '@redwoodjs/api'
+import { validate, validateUniqueness, validateWithSync } from '@redwoodjs/api'
 
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
@@ -68,16 +68,27 @@ export const createPack: MutationResolvers['createPack'] = async ({
 
   const currentUser: RedwoodUser = context.currentUser
   const userId = currentUser.sub
+  const packSlug = slug(input.title)
 
   // PACK
-  const createdPack = await db.pack.create({
-    data: {
-      userId,
-      slug: slug(input.title),
-      title: input.title,
-      description: input.description,
+  const createdPack = await validateUniqueness(
+    'pack',
+    {
+      slug: packSlug,
+      $scope: { userId },
     },
-  })
+    { message: 'You already have a pack with that title.' },
+    (db) => {
+      return db.pack.create({
+        data: {
+          userId,
+          slug: packSlug,
+          title: input.title,
+          description: input.description,
+        },
+      })
+    }
+  )
 
   // PACK ITEMS
   const inputPackItemsWithDisplaySequence = input.packItems.map(

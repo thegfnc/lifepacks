@@ -3,6 +3,8 @@ import type { MutationResolvers } from 'types/graphql'
 
 import { validate, validateWithSync } from '@redwoodjs/api'
 
+import { reportError } from 'src/lib/sentry'
+
 const GENERAL_MAILING_LIST_ID = 2
 
 const apiInstance = new SibApiV3Sdk.ContactsApi()
@@ -34,11 +36,10 @@ export const mailingListSignUp: MutationResolvers['mailingListSignUp'] =
       const data = await apiInstance.createContact(createContact)
       return data.body
     } catch (error) {
-      validateWithSync(() => {
-        if (error.response.body.code === 'duplicate_parameter') {
-          throw new Error('This email has already signed up.')
-        }
-      })
+      if (error.response.body.code === 'duplicate_parameter') {
+        reportError('This email has already signed up for the mailing list.')
+        return
+      }
 
       validateWithSync(() => {
         throw new Error(
