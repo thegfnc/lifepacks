@@ -1,6 +1,6 @@
 import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 
-import { validate } from '@redwoodjs/api'
+import { validate, validateUniqueness } from '@redwoodjs/api'
 
 import { RedwoodUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
@@ -49,13 +49,20 @@ export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfi
 
     const { username, ...restOfInput } = input
 
-    return db.userProfile.create({
-      data: {
-        userId,
-        username,
-        ...restOfInput,
-      },
-    })
+    return validateUniqueness(
+      'userProfile',
+      { username },
+      { message: 'Username is already in use.' },
+      (db) => {
+        return db.userProfile.create({
+          data: {
+            userId,
+            username,
+            ...restOfInput,
+          },
+        })
+      }
+    )
   }
 
 export const updateCurrentUserProfile: MutationResolvers['updateCurrentUserProfile'] =
