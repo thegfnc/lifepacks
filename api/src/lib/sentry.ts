@@ -9,7 +9,7 @@ import { db as client } from 'src/lib/db'
 let isSentryInitialized = false
 
 if (
-  process.env.VERCEL_ENV &&
+  process.env.VERCEL_ENV !== 'development' &&
   process.env.SENTRY_API_DSN &&
   !isSentryInitialized
 ) {
@@ -31,5 +31,15 @@ if (
 }
 
 export const getIsSentryInitialized = () => isSentryInitialized
+
+export async function reportError(error) {
+  if (!isSentryInitialized) return
+
+  if (typeof error === 'string') {
+    Sentry.captureMessage(error)
+  } else {
+    Sentry.captureException(error)
+  }
+}
 
 export default Sentry

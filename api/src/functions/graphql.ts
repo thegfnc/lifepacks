@@ -10,7 +10,7 @@ import services from 'src/services/**/*.{js,ts}'
 import { getCurrentUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 import { logger } from 'src/lib/logger'
-import { getIsSentryInitialized } from 'src/lib/sentry'
+import Sentry, { getIsSentryInitialized } from 'src/lib/sentry'
 
 const extraPlugins = []
 
@@ -35,5 +35,7 @@ export const handler = createGraphQLHandler({
   onException: () => {
     // Disconnect from your database with an unhandled exception.
     db.$disconnect()
+    // Flush remaining Sentry events before shutdown.
+    Sentry.close(2000)
   },
 })
