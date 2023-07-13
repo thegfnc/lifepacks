@@ -7,7 +7,7 @@ import { useAuth } from 'src/auth'
 let isSentryInitialized = false
 
 if (
-  process.env.VERCEL_ENV &&
+  process.env.VERCEL_ENV !== 'development' &&
   process.env.SENTRY_WEB_DSN &&
   !isSentryInitialized
 ) {
