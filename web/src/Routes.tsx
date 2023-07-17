@@ -24,6 +24,7 @@ const Routes = () => {
       <Set wrap={AppLayout}>
         {/* Marketing Pages */}
         <Route path="/" page={HomePage} name="home" prerender />
+        <Route path="/about" page={AboutPage} name="about" prerender />
         <Route path="/explore" page={ExplorePage} name="explore" prerender />
 
         {/* Public Profile and Pack Pages */}
@@ -36,11 +37,12 @@ const Routes = () => {
         <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" prerender />
 
         {/* Help Pages */}
-        <Route path="/help/affiliate-links-101" page={AffiliateLinks101Page} name="affiliateLinks101" prerender />
-        <Route path="/help/faq" page={FaqPage} name="faq" prerender />
+        <Route path="/help/affiliate-links-101" page={HelpAffiliateLinks101Page} name="affiliateLinks101" prerender />
+        <Route path="/help/faq" page={HelpFaqPage} name="faq" prerender />
+
         {/* Legal Pages */}
-        <Route path="/privacy-policy" page={PrivacyPolicyPage} name="privacyPolicy" prerender />
-        <Route path="/terms-of-service" page={TermsOfServicePage} name="termsOfService" prerender />
+        <Route path="/privacy-policy" page={LegalPrivacyPolicyPage} name="privacyPolicy" prerender />
+        <Route path="/terms-of-service" page={LegalTermsOfServicePage} name="termsOfService" prerender />
 
         {/* Private Dashboard Pages*/}
         <Set private unauthenticated="home">

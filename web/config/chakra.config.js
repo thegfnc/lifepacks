@@ -60,7 +60,7 @@ module.exports = {
       baseStyle: {
         fontWeight: 'medium',
         lineHeight: 'base',
-        rounded: 'xl',
+        rounded: 'full',
       },
       sizes: {
         xl: {

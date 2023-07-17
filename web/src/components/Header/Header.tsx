@@ -13,10 +13,15 @@ import {
   Text,
   Avatar,
   Box,
+  Link as ChakraLink,
 } from '@chakra-ui/react'
-import { MdLogout, MdOutlineAccountCircle } from 'react-icons/md'
+import {
+  MdLogout,
+  MdOutlineAccountCircle,
+  MdOutlineHelpOutline,
+} from 'react-icons/md'
 
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes, useLocation } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
@@ -31,6 +36,7 @@ type HeaderProps = {
 
 const Header = ({ ctaComponent }: HeaderProps) => {
   const { isAuthenticated, loading: isAuthLoading, logOut } = useAuth()
+  const { pathname } = useLocation()
   const {
     currentUserProfile,
     loading: isCurrentUserProfileLoading,
@@ -48,6 +54,54 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     currentUserProfile?.username
   )
 
+  // Build menu items
+  const menu = []
+
+  if ((isAuthenticated && currentUserProfile) || !isAuthenticated) {
+    menu.push({
+      name: 'About',
+      to: routes.about(),
+    })
+    menu.push({
+      name: 'FAQ',
+      to: routes.faq(),
+    })
+  }
+
+  if (!isAuthenticated) {
+    menu.push({
+      name: 'Log In',
+      to: routes.logIn(),
+    })
+  }
+
+  // Determine main action button
+  let mainActionButton
+
+  if (isAuthenticated && currentUserProfile) {
+    mainActionButton = ctaComponent || (
+      <Button size={'md'} as={Link} to={routes.newPack()}>
+        Create Pack
+      </Button>
+    )
+  } else if (isAuthenticated) {
+    mainActionButton = (
+      <Button
+        onClick={logOutAndRefetchCurrentUserProfile}
+        colorScheme="gray"
+        variant="outline"
+      >
+        Log Out
+      </Button>
+    )
+  } else {
+    mainActionButton = (
+      <Button as={Link} to={routes.signUp()} colorScheme={'purple'}>
+        Sign Up
+      </Button>
+    )
+  }
+
   return (
     <>
       <Flex
@@ -55,6 +109,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
         alignItems={'center'}
         justifyContent="center"
         h={'4.5rem'}
+        bgColor={pathname === routes.home() ? '#E4DDFF' : 'transparent'}
       >
         <Flex
           width="100%"
@@ -69,13 +124,24 @@ const Header = ({ ctaComponent }: HeaderProps) => {
               <Spinner />
             ) : (
               <HStack spacing={2} dir="horizontal">
+                <HStack spacing={0}>
+                  {menu.map((item) => (
+                    <ChakraLink
+                      key={item.to}
+                      as={Link}
+                      to={item.to}
+                      px={4}
+                      fontWeight={500}
+                    >
+                      {item.name}
+                    </ChakraLink>
+                  ))}
+                </HStack>
+
+                {mainActionButton}
+
                 {isAuthenticated && currentUserProfile ? (
                   <>
-                    {ctaComponent || (
-                      <Button size={'md'} as={Link} to={routes.newPack()}>
-                        Create Pack
-                      </Button>
-                    )}
                     <Menu placement="bottom-end">
                       <MenuButton
                         as={Button}
@@ -123,6 +189,14 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                           View Profile
                         </MenuItem>
                         <MenuItem
+                          as={Link}
+                          to={routes.faq()}
+                          icon={<MdOutlineHelpOutline size="20px" />}
+                        >
+                          Help
+                        </MenuItem>
+                        <MenuDivider />
+                        <MenuItem
                           onClick={logOutAndRefetchCurrentUserProfile}
                           icon={<MdLogout size="20px" />}
                         >
@@ -131,33 +205,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                       </MenuList>
                     </Menu>
                   </>
-                ) : isAuthenticated ? (
-                  <Button
-                    onClick={logOutAndRefetchCurrentUserProfile}
-                    colorScheme="gray"
-                    variant="outline"
-                  >
-                    Log Out
-                  </Button>
-                ) : (
-                  <>
-                    <Button
-                      as={Link}
-                      to={routes.logIn()}
-                      colorScheme="gray"
-                      variant="outline"
-                    >
-                      Log In
-                    </Button>
-                    <Button
-                      as={Link}
-                      to={routes.signUp()}
-                      colorScheme={'purple'}
-                    >
-                      Sign Up
-                    </Button>
-                  </>
-                )}
+                ) : null}
               </HStack>
             )}
           </Flex>
