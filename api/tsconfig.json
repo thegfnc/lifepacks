@@ -6,6 +6,10 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
     "rootDirs": [
       "./src",
