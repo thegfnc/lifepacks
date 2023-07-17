@@ -21,7 +21,7 @@ import {
   MdOutlineHelpOutline,
 } from 'react-icons/md'
 
-import { Link, NavLink, routes, useLocation } from '@redwoodjs/router'
+import { Link, routes, useLocation } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
