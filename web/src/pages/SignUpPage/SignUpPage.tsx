@@ -49,7 +49,7 @@ const SignUpPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.explore())
+      navigate(routes.home())
     }
   }, [isAuthenticated])
 
@@ -61,7 +61,7 @@ const SignUpPage = () => {
       authMethod: 'oauth',
       provider: 'google',
       options: {
-        redirectTo: getEnvironmentUrl(routes.explore()),
+        redirectTo: getEnvironmentUrl(routes.home()),
       },
     })
 

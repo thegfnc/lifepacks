@@ -103,7 +103,7 @@ const AboutPage = () => {
                   <Button
                     as={Link}
                     size={{ base: 'lg', md: 'xl' }}
-                    to={routes.explore()}
+                    to={routes.home()}
                   >
                     Explore Packs
                   </Button>

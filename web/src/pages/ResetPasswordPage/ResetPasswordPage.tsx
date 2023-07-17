@@ -57,7 +57,7 @@ const ForgotPasswordPage = () => {
       setIsLoading(false)
     } else {
       toast.success('Your password has been changed.')
-      navigate(routes.explore())
+      navigate(routes.home())
     }
   }
 

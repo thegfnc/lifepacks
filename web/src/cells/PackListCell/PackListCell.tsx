@@ -71,7 +71,7 @@ export const Empty = ({ username }) => {
             <Text fontSize="md" lineHeight={6} color="gray.500">
               Check back soon for products they swear by.
             </Text>
-            <Button colorScheme="purple" mt={4} as={Link} to={routes.explore()}>
+            <Button colorScheme="purple" mt={4} as={Link} to={routes.home()}>
               Browse Other Packs
             </Button>
           </>

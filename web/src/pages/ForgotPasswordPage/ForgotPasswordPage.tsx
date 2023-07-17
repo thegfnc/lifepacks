@@ -39,7 +39,7 @@ const ForgotPasswordPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.explore())
+      navigate(routes.home())
     }
   }, [isAuthenticated])
 

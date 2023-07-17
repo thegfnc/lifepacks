@@ -69,7 +69,7 @@ const CompleteSignUpPage = () => {
   >(MAILING_LIST_SIGN_UP_MUTATION)
 
   if (currentUserProfile) {
-    navigate(routes.explore())
+    navigate(routes.home())
   }
 
   const onSubmit = ({

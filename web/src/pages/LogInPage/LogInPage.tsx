@@ -46,7 +46,7 @@ const LogInPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.explore())
+      navigate(routes.home())
     }
   }, [isAuthenticated])
 
@@ -58,7 +58,7 @@ const LogInPage = () => {
       authMethod: 'oauth',
       provider: 'google',
       options: {
-        redirectTo: getEnvironmentUrl(routes.explore()),
+        redirectTo: getEnvironmentUrl(routes.home()),
       },
     })
 

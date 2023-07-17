@@ -25,7 +25,6 @@ const Routes = () => {
         {/* Marketing Pages */}
         <Route path="/" page={HomePage} name="home" prerender />
         <Route path="/about" page={AboutPage} name="about" prerender />
-        <Route path="/explore" page={ExplorePage} name="explore" prerender />
 
         {/* Public Profile and Pack Pages */}
         <Route path="/@{username}" page={UserProfilePage} name="userProfile" prerender />

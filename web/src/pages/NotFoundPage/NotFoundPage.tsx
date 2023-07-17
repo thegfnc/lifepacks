@@ -51,7 +51,7 @@ export default () => (
             <Button
               size="lg"
               as={Link}
-              to={routes.explore()}
+              to={routes.home()}
               colorScheme="gray"
               variant="outline"
             >

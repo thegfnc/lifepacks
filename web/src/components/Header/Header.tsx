@@ -21,7 +21,7 @@ import {
   MdOutlineHelpOutline,
 } from 'react-icons/md'
 
-import { Link, routes, useLocation } from '@redwoodjs/router'
+import { Link, NavLink, routes, useLocation } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
@@ -61,10 +61,12 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     menu.push({
       name: 'About',
       to: routes.about(),
+      isActive: pathname === routes.about(),
     })
     menu.push({
       name: 'FAQ',
       to: routes.faq(),
+      isActive: pathname === routes.faq(),
     })
   }
 
@@ -72,6 +74,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     menu.push({
       name: 'Log In',
       to: routes.logIn(),
+      isActive: pathname === routes.logIn(),
     })
   }
 
@@ -132,6 +135,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                       to={item.to}
                       px={4}
                       fontWeight={500}
+                      textDecoration={item.isActive ? 'underline' : 'none'}
                     >
                       {item.name}
                     </ChakraLink>
