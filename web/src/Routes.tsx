@@ -24,24 +24,24 @@ const Routes = () => {
       <Set wrap={AppLayout}>
         {/* Marketing Pages */}
         <Route path="/" page={HomePage} name="home" />
-        <Route path="/about" page={AboutPage} name="about" prerender />
+        <Route path="/about" page={AboutPage} name="about" />
 
         {/* Public Profile and Pack Pages */}
-        <Route path="/@{username}" page={UserProfilePage} name="userProfile" prerender />
-        <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" prerender />
+        <Route path="/@{username}" page={UserProfilePage} name="userProfile" />
+        <Route path="/@{username}/pack/{slug}" page={PackPage} name="pack" />
 
         {/* Public Auth Pages */}
-        <Route path="/log-in" page={LogInPage} name="logIn" prerender />
-        <Route path="/sign-up" page={SignUpPage} name="signUp" prerender />
-        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" prerender />
+        <Route path="/log-in" page={LogInPage} name="logIn" />
+        <Route path="/sign-up" page={SignUpPage} name="signUp" />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
 
         {/* Help Pages */}
-        <Route path="/help/affiliate-links-101" page={HelpAffiliateLinks101Page} name="affiliateLinks101" prerender />
-        <Route path="/help/faq" page={HelpFaqPage} name="faq" prerender />
+        <Route path="/help/affiliate-links-101" page={HelpAffiliateLinks101Page} name="affiliateLinks101" />
+        <Route path="/help/faq" page={HelpFaqPage} name="faq" />
 
         {/* Legal Pages */}
-        <Route path="/privacy-policy" page={LegalPrivacyPolicyPage} name="privacyPolicy" prerender />
-        <Route path="/terms-of-service" page={LegalTermsOfServicePage} name="termsOfService" prerender />
+        <Route path="/privacy-policy" page={LegalPrivacyPolicyPage} name="privacyPolicy" />
+        <Route path="/terms-of-service" page={LegalTermsOfServicePage} name="termsOfService" />
 
         {/* Private Dashboard Pages*/}
         <Set private unauthenticated="home">
@@ -54,7 +54,7 @@ const Routes = () => {
       </Set>
 
       {/* System Pages */}
-      <Route notfound page={NotFoundPage} prerender />
+      <Route notfound page={NotFoundPage} />
     </Router>
   )
 }
