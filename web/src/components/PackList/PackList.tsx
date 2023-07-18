@@ -1,8 +1,8 @@
 import { SimpleGrid, Stack } from '@chakra-ui/react'
 import { Pack, PackItem, UserProfile } from 'types/graphql'
 
-import PackThumbnailGridItem from '../PackThumbnailGridItem/PackThumbnailGridItem'
-import PackThumbnailListItem from '../PackThumbnailListItem/PackThumbnailListItem'
+import PackThumbnailGridItem from 'src/components/PackThumbnailGridItem'
+import PackThumbnailListItem from 'src/components/PackThumbnailListItem'
 
 type PackPartial = Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> & {
   packItems: Pick<PackItem, 'imageUrl' | 'title'>[]
