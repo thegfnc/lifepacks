@@ -8,6 +8,7 @@ import {
   Show,
   Stack,
   Text,
+  Wrap,
 } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -15,6 +16,7 @@ import { MetaTags } from '@redwoodjs/web'
 
 import PacksMostRecentCell from 'src/cells/PacksMostRecentCell'
 import PacksStaffPicksCell from 'src/cells/PacksStaffPicksCell'
+import UserProfilesFeaturedCell from 'src/cells/UserProfilesFeaturedCell'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -179,9 +181,56 @@ const HomePage = () => {
               )}
             </Box>
           </Box>
-          <Box minW="320px" ml="80px">
-            <Heading size="md">Featured Members</Heading>
-            <Heading size="md">Topics</Heading>
+          <Box minW="320px" maxW="320px" ml="80px">
+            <Heading fontSize="lg" fontWeight={500} lineHeight={1.33}>
+              Featured Members
+            </Heading>
+            <UserProfilesFeaturedCell />
+            <Heading fontSize="lg" fontWeight={500} mt={12}>
+              Topics
+            </Heading>
+            <Wrap mt={4} spacing={3} color="blackAlpha.900">
+              <Button
+                variant="outline"
+                size="md"
+                colorScheme="gray"
+                fontWeight={400}
+              >
+                Fitness
+              </Button>
+              <Button
+                variant="outline"
+                size="md"
+                colorScheme="gray"
+                fontWeight={400}
+              >
+                Entertainment
+              </Button>
+              <Button
+                variant="outline"
+                size="md"
+                colorScheme="gray"
+                fontWeight={400}
+              >
+                Music
+              </Button>
+              <Button
+                variant="outline"
+                size="md"
+                colorScheme="gray"
+                fontWeight={400}
+              >
+                Photography
+              </Button>
+              <Button
+                variant="outline"
+                size="md"
+                colorScheme="gray"
+                fontWeight={400}
+              >
+                Technology
+              </Button>
+            </Wrap>
           </Box>
         </Flex>
       </PageContainer>

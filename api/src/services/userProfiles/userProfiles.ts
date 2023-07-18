@@ -36,6 +36,14 @@ export const currentUserProfile: QueryResolvers['currentUserProfile'] = () => {
   })
 }
 
+export const userProfilesFeatured: QueryResolvers['userProfilesFeatured'] =
+  () => {
+    return db.userProfile.findMany({
+      where: { featured: true },
+      orderBy: { createdAt: 'desc' },
+    })
+  }
+
 export const createCurrentUserProfile: MutationResolvers['createCurrentUserProfile'] =
   ({ input }) => {
     validateUsernameInput(input)

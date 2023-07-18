@@ -23,6 +23,7 @@ model UserProfile {
   youtubeUrl      String?
   twitterUrl      String?
   featured        Boolean   @default(false)
+  verified        Boolean   @default(false)
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 

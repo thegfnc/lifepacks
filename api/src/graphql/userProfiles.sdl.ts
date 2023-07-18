@@ -29,7 +29,8 @@ export const schema = gql`
 
   type Query {
     currentUserProfile: CurrentUserProfile @skipAuth
-    userProfile(username: String!): UserProfile @skipAuth
+    userProfile(username: String!): UserProfile! @skipAuth
+    userProfilesFeatured: [UserProfile!]! @skipAuth
   }
 
   input CreateCurrentUserProfileInput {
