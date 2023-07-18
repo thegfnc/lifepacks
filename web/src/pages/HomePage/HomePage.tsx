@@ -47,6 +47,7 @@ const HomePage = () => {
             height="full"
             px={{ base: 4, md: 10 }}
             spacing={0}
+            mb={{ base: 0, md: '-30px' }}
           >
             <Flex align={'center'} justify="center" mt={{ base: 4, lg: 0 }}>
               <Box
