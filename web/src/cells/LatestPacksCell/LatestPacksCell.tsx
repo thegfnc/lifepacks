@@ -37,5 +37,5 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({
   latestPacks,
 }: CellSuccessProps<LatestPacksQuery>) => {
-  return <PackList packs={latestPacks} showByline={true} />
+  return <PackList packs={latestPacks} showByline={true} layout="list" />
 }

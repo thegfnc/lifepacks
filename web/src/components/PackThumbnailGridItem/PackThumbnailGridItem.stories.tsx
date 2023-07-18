@@ -4,8 +4,8 @@
 // ```tsx
 // import type { ComponentStory } from '@storybook/react'
 //
-// export const generated: ComponentStory<typeof PackThumbnail> = (args) => {
-//   return <PackThumbnail {...args} />
+// export const generated: ComponentStory<typeof PackThumbnailGridItem> = (args) => {
+//   return <PackThumbnailGridItem {...args} />
 // }
 // ```
 //
@@ -13,11 +13,11 @@
 
 import type { ComponentMeta } from '@storybook/react'
 
-import PackThumbnail from './PackThumbnail'
+import PackThumbnailGridItem from './PackThumbnailGridItem'
 
 export const generated = () => {
   return (
-    <PackThumbnail
+    <PackThumbnailGridItem
       pack={{
         id: 1,
         createdAt: '2023-02-13T16:05:18.978Z',
@@ -48,6 +48,6 @@ export const generated = () => {
 }
 
 export default {
-  title: 'Components/PackThumbnail',
-  component: PackThumbnail,
-} as ComponentMeta<typeof PackThumbnail>
+  title: 'Components/PackThumbnailGridItem',
+  component: PackThumbnailGridItem,
+} as ComponentMeta<typeof PackThumbnailGridItem>

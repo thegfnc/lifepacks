@@ -86,5 +86,5 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ packs }: PackListCellProps) => {
-  return <PackList packs={packs} />
+  return <PackList packs={packs} layout="grid" />
 }

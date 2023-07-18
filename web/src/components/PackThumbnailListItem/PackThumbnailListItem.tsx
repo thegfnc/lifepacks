@@ -27,6 +27,7 @@ import {
   MenuList,
   Text,
   useDisclosure,
+  Box,
 } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { MdDeleteOutline, MdMoreHoriz, MdOutlineModeEdit } from 'react-icons/md'
@@ -59,7 +60,7 @@ type PackPartial = Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> & {
   >
 }
 
-type PackThumbnailProps = {
+type PackThumbnailListItemProps = {
   pack: PackPartial
   showByline?: boolean
 }
@@ -72,7 +73,10 @@ const MUTATION = gql`
   }
 `
 
-const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
+const PackThumbnailListItem = ({
+  pack,
+  showByline = false,
+}: PackThumbnailListItemProps) => {
   const { currentUserProfile } = useCurrentUserProfile()
   const {
     isOpen: isDeleteAlertOpen,
@@ -115,86 +119,17 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
         as={Card}
         key={pack.id}
         borderRadius="24px"
-        css={{ aspectRatio: '1 / 1' }}
+        transition="background-color .2s ease-in-out"
+        _hover={{ bgColor: 'gray.50' }}
+        _active={{ bgColor: 'gray.100' }}
       >
-        <Grid
-          templateRows="repeat(3, minmax(0, 1fr))"
-          templateColumns="repeat(6, minmax(0, 1fr))"
-          h="full"
-          w="full"
-        >
-          <GridItem
-            rowSpan={2}
-            colSpan={numberOfImages === 3 ? 4 : numberOfImages === 2 ? 3 : 6}
-            p={4}
-            borderRightWidth={numberOfImages >= 2 ? '1px' : 0}
-            borderColor="blackAlpha.200"
-          >
-            <Center borderRadius="xl" overflow="hidden" h="full" w="full">
-              <Image
-                src={getImageUrlWithTransform({
-                  src: pack.packItems[0]?.imageUrl,
-                  transform: { width: 950, height: 950 },
-                })}
-                fit="contain"
-                alt={pack.packItems[0]?.title}
-                fallback={<ImageFallback />}
-                maxH="full"
-                maxW="full"
-              />
-            </Center>
-          </GridItem>
-          {numberOfImages >= 2 && (
-            <GridItem
-              p={4}
-              colSpan={numberOfImages === 2 ? 3 : 2}
-              rowSpan={numberOfImages === 2 ? 2 : 1}
-            >
-              <Center borderRadius="xl" overflow="hidden" h="full" w="full">
-                <Image
-                  src={getImageUrlWithTransform({
-                    src: pack.packItems[1]?.imageUrl,
-                    transform: { width: 450, height: 450 },
-                  })}
-                  fit="contain"
-                  alt={pack.packItems[1]?.title}
-                  fallback={<ImageFallback />}
-                  maxH="full"
-                  maxW="full"
-                />
-              </Center>
-            </GridItem>
-          )}
-          {numberOfImages === 3 && (
-            <GridItem
-              p={4}
-              borderTopWidth={'1px'}
-              borderColor="blackAlpha.200"
-              colSpan={2}
-            >
-              <Center borderRadius="xl" overflow="hidden" h="full" w="full">
-                <Image
-                  src={getImageUrlWithTransform({
-                    src: pack.packItems[2]?.imageUrl,
-                    transform: { width: 450, height: 450 },
-                  })}
-                  fit="contain"
-                  alt={pack.packItems[2]?.title}
-                  fallback={<ImageFallback />}
-                  maxH="full"
-                  maxW="full"
-                />
-              </Center>
-            </GridItem>
-          )}
-          <GridItem
+        <Flex height="224px">
+          <Box
             as={Flex}
             direction="column"
             justify="space-between"
-            colSpan={6}
-            borderTopWidth={'1px'}
-            borderColor="blackAlpha.200"
-            p={4}
+            p={6}
+            flexGrow={1}
           >
             <Heading
               fontSize={{ base: '22px', md: '26px' }}
@@ -300,8 +235,80 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
                 </Menu>
               )}
             </Flex>
-          </GridItem>
-        </Grid>
+          </Box>
+          <Grid
+            templateRows="repeat(2, minmax(0, 1fr))"
+            templateColumns="repeat(6, minmax(0, 1fr))"
+            minW="338px"
+            borderLeft="1px solid"
+            borderColor="blackAlpha.200"
+          >
+            <GridItem
+              rowSpan={2}
+              colSpan={numberOfImages === 3 ? 4 : numberOfImages === 2 ? 3 : 6}
+              p={4}
+              borderRightWidth={numberOfImages >= 2 ? '1px' : 0}
+              borderColor="blackAlpha.200"
+            >
+              <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+                <Image
+                  src={getImageUrlWithTransform({
+                    src: pack.packItems[0]?.imageUrl,
+                    transform: { width: 950, height: 950 },
+                  })}
+                  fit="contain"
+                  alt={pack.packItems[0]?.title}
+                  fallback={<ImageFallback />}
+                  maxH="full"
+                  maxW="full"
+                />
+              </Center>
+            </GridItem>
+            {numberOfImages >= 2 && (
+              <GridItem
+                p={4}
+                colSpan={numberOfImages === 2 ? 3 : 2}
+                rowSpan={numberOfImages === 2 ? 2 : 1}
+              >
+                <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+                  <Image
+                    src={getImageUrlWithTransform({
+                      src: pack.packItems[1]?.imageUrl,
+                      transform: { width: 450, height: 450 },
+                    })}
+                    fit="contain"
+                    alt={pack.packItems[1]?.title}
+                    fallback={<ImageFallback />}
+                    maxH="full"
+                    maxW="full"
+                  />
+                </Center>
+              </GridItem>
+            )}
+            {numberOfImages === 3 && (
+              <GridItem
+                p={4}
+                borderTopWidth={'1px'}
+                borderColor="blackAlpha.200"
+                colSpan={2}
+              >
+                <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+                  <Image
+                    src={getImageUrlWithTransform({
+                      src: pack.packItems[2]?.imageUrl,
+                      transform: { width: 450, height: 450 },
+                    })}
+                    fit="contain"
+                    alt={pack.packItems[2]?.title}
+                    fallback={<ImageFallback />}
+                    maxH="full"
+                    maxW="full"
+                  />
+                </Center>
+              </GridItem>
+            )}
+          </Grid>
+        </Flex>
       </LinkBox>
 
       {isCurrentUserPack && (
@@ -346,4 +353,4 @@ const PackThumbnail = ({ pack, showByline = false }: PackThumbnailProps) => {
   )
 }
 
-export default PackThumbnail
+export default PackThumbnailListItem

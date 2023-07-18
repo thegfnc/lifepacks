@@ -46,16 +46,7 @@ export default () => (
             justify={{ base: 'center', md: 'flex-start' }}
           >
             <Button size="lg" as={Link} to={routes.home()}>
-              Home
-            </Button>
-            <Button
-              size="lg"
-              as={Link}
-              to={routes.home()}
-              colorScheme="gray"
-              variant="outline"
-            >
-              Explore Packs
+              Go to Home
             </Button>
           </HStack>
         </Box>

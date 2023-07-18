@@ -57,7 +57,7 @@ export const trackSignUpWithPassword = () => {
 }
 
 export const trackSharePack = (method: string, item_id: string) => {
-  va.track('share_pack', { platform: method, url: item_id })
+  va.track('share_pack', { method, url: item_id })
   gtag('event', 'share', {
     content_type: 'pack',
     method,
@@ -78,7 +78,7 @@ export const trackSelectPack = (
 }
 
 export const trackSelectUserProfile = (content_id: string | number) => {
-  va.track('select_user_profile', { id: content_id })
+  va.track('select_user_profile', { username: content_id })
   gtag('event', 'select_content', {
     content_type: 'user_profile',
     content_id,

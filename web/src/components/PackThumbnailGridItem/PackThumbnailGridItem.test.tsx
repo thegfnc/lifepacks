@@ -1,15 +1,15 @@
 import { render } from '@redwoodjs/testing/web'
 
-import PackThumbnail from './PackThumbnail'
+import PackThumbnailGridItem from './PackThumbnailGridItem'
 
 //   Improve this test with help from the Redwood Testing Doc:
 //    https://redwoodjs.com/docs/testing#testing-components
 
-describe('PackThumbnail', () => {
+describe('PackThumbnailGridItem', () => {
   it('renders successfully', () => {
     expect(() => {
       render(
-        <PackThumbnail
+        <PackThumbnailGridItem
           pack={{
             id: 1,
             createdAt: '2023-02-13T16:05:18.978Z',

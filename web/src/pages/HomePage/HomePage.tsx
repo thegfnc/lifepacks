@@ -142,10 +142,25 @@ const HomePage = () => {
       </Box>
 
       <PageContainer>
-        <Heading size="2xl">Explore Packs</Heading>
-        <Box my={8}>
-          <LatestPacksCell />
-        </Box>
+        <Flex mt={16}>
+          <Box flexGrow={1}>
+            <HStack spacing={2}>
+              <Button colorScheme="gray" size="lg">
+                Staff Picks
+              </Button>
+              <Button variant="ghost" size="lg">
+                Most Recent
+              </Button>
+            </HStack>
+            <Box mt={4}>
+              <LatestPacksCell />
+            </Box>
+          </Box>
+          <Box minW="320px" ml="80px">
+            <Heading size="md">Featured Members</Heading>
+            <Heading size="md">Topics</Heading>
+          </Box>
+        </Flex>
       </PageContainer>
     </>
   )
