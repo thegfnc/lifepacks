@@ -119,9 +119,9 @@ const PackThumbnailGridItem = ({
         key={pack.id}
         borderRadius="24px"
         css={{ aspectRatio: '1 / 1' }}
-        transition="background-color .2s ease-in-out"
-        _hover={{ bgColor: 'gray.50' }}
-        _active={{ bgColor: 'gray.100' }}
+        transition="box-shadow .15s ease-in-out"
+        _hover={{ boxShadow: 'md' }}
+        _active={{ boxShadow: 'sm' }}
       >
         <Grid
           templateRows="repeat(3, minmax(0, 1fr))"

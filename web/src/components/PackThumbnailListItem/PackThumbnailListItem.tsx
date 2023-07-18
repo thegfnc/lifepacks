@@ -119,9 +119,9 @@ const PackThumbnailListItem = ({
         as={Card}
         key={pack.id}
         borderRadius="24px"
-        transition="background-color .2s ease-in-out"
-        _hover={{ bgColor: 'gray.50' }}
-        _active={{ bgColor: 'gray.100' }}
+        transition="box-shadow .15s ease-in-out"
+        _hover={{ boxShadow: 'md' }}
+        _active={{ boxShadow: 'sm' }}
       >
         <Flex height="224px">
           <Box
