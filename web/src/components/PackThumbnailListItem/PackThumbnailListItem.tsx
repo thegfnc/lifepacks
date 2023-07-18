@@ -240,6 +240,7 @@ const PackThumbnailListItem = ({
             templateRows="repeat(2, minmax(0, 1fr))"
             templateColumns="repeat(6, minmax(0, 1fr))"
             minW="338px"
+            maxW="338px"
             borderLeft="1px solid"
             borderColor="blackAlpha.200"
           >
