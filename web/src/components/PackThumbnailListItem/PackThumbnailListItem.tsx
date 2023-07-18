@@ -246,7 +246,7 @@ const PackThumbnailListItem = ({
           >
             <GridItem
               rowSpan={2}
-              colSpan={numberOfImages === 3 ? 4 : numberOfImages === 2 ? 3 : 6}
+              colSpan={numberOfImages === 3 ? 4 : 6}
               p={4}
               borderRightWidth={numberOfImages >= 2 ? '1px' : 0}
               borderColor="blackAlpha.200"
@@ -265,48 +265,44 @@ const PackThumbnailListItem = ({
                 />
               </Center>
             </GridItem>
-            {numberOfImages >= 2 && (
-              <GridItem
-                p={4}
-                colSpan={numberOfImages === 2 ? 3 : 2}
-                rowSpan={numberOfImages === 2 ? 2 : 1}
-              >
-                <Center borderRadius="xl" overflow="hidden" h="full" w="full">
-                  <Image
-                    src={getImageUrlWithTransform({
-                      src: pack.packItems[1]?.imageUrl,
-                      transform: { width: 450, height: 450 },
-                    })}
-                    fit="contain"
-                    alt={pack.packItems[1]?.title}
-                    fallback={<ImageFallback />}
-                    maxH="full"
-                    maxW="full"
-                  />
-                </Center>
-              </GridItem>
-            )}
             {numberOfImages === 3 && (
-              <GridItem
-                p={4}
-                borderTopWidth={'1px'}
-                borderColor="blackAlpha.200"
-                colSpan={2}
-              >
-                <Center borderRadius="xl" overflow="hidden" h="full" w="full">
-                  <Image
-                    src={getImageUrlWithTransform({
-                      src: pack.packItems[2]?.imageUrl,
-                      transform: { width: 450, height: 450 },
-                    })}
-                    fit="contain"
-                    alt={pack.packItems[2]?.title}
-                    fallback={<ImageFallback />}
-                    maxH="full"
-                    maxW="full"
-                  />
-                </Center>
-              </GridItem>
+              <>
+                <GridItem p={4} colSpan={2} rowSpan={1}>
+                  <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+                    <Image
+                      src={getImageUrlWithTransform({
+                        src: pack.packItems[1]?.imageUrl,
+                        transform: { width: 450, height: 450 },
+                      })}
+                      fit="contain"
+                      alt={pack.packItems[1]?.title}
+                      fallback={<ImageFallback />}
+                      maxH="full"
+                      maxW="full"
+                    />
+                  </Center>
+                </GridItem>
+                <GridItem
+                  p={4}
+                  borderTopWidth={'1px'}
+                  borderColor="blackAlpha.200"
+                  colSpan={2}
+                >
+                  <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+                    <Image
+                      src={getImageUrlWithTransform({
+                        src: pack.packItems[2]?.imageUrl,
+                        transform: { width: 450, height: 450 },
+                      })}
+                      fit="contain"
+                      alt={pack.packItems[2]?.title}
+                      fallback={<ImageFallback />}
+                      maxH="full"
+                      maxW="full"
+                    />
+                  </Center>
+                </GridItem>
+              </>
             )}
           </Grid>
         </Flex>

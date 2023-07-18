@@ -29,7 +29,10 @@ export const packsMostRecent: QueryResolvers['packsMostRecent'] = async ({
 }
 
 export const packsStaffPicks: QueryResolvers['packsStaffPicks'] = async () => {
-  return db.pack.findMany({ orderBy: { createdAt: 'desc' } })
+  return db.pack.findMany({
+    where: { featured: true },
+    orderBy: { createdAt: 'desc' },
+  })
 }
 
 export const packs: QueryResolvers['packs'] = async ({ username }) => {

@@ -14,11 +14,21 @@ import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
 import PacksMostRecentCell from 'src/cells/PacksMostRecentCell'
+import PacksStaffPicksCell from 'src/cells/PacksStaffPicksCell'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
+enum PackListType {
+  MostRecent = 'MostRecent',
+  StaffPicks = 'StaffPicks',
+}
+
 const HomePage = () => {
+  const [packListType, setPackListType] = React.useState<PackListType>(
+    PackListType.StaffPicks
+  )
+
   return (
     <>
       <MetaTags ogUrl={getEnvironmentUrl(routes.home())} />
@@ -145,15 +155,27 @@ const HomePage = () => {
         <Flex mt={16}>
           <Box flexGrow={1}>
             <HStack spacing={2}>
-              <Button colorScheme="gray" size="lg">
+              <Button
+                colorScheme="gray"
+                size="lg"
+                onClick={() => setPackListType(PackListType.StaffPicks)}
+              >
                 Staff Picks
               </Button>
-              <Button variant="ghost" size="lg">
+              <Button
+                colorScheme="gray"
+                size="lg"
+                onClick={() => setPackListType(PackListType.MostRecent)}
+              >
                 Most Recent
               </Button>
             </HStack>
             <Box mt={4}>
-              <PacksMostRecentCell />
+              {packListType === PackListType.StaffPicks ? (
+                <PacksStaffPicksCell />
+              ) : (
+                <PacksMostRecentCell />
+              )}
             </Box>
           </Box>
           <Box minW="320px" ml="80px">
