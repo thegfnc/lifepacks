@@ -1,12 +1,12 @@
-import type { LatestPacksQuery } from 'types/graphql'
+import type { PascksMostRecentQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import PackList from 'src/components/PackList/PackList'
 
 export const QUERY = gql`
-  query LatestPacksQuery {
-    latestPacks {
+  query PascksMostRecentQuery {
+    packsMostRecent {
       id
       slug
       title
@@ -35,7 +35,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({
-  latestPacks,
-}: CellSuccessProps<LatestPacksQuery>) => {
-  return <PackList packs={latestPacks} showByline={true} layout="list" />
+  packsMostRecent,
+}: CellSuccessProps<PascksMostRecentQuery>) => {
+  return <PackList packs={packsMostRecent} showByline={true} layout="list" />
 }

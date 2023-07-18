@@ -20,12 +20,16 @@ import {
 import { normalizeCommonPackInputFields } from './packsInputNormalization'
 import { validiateCommonPackInputFields } from './packsInputValidation'
 
-export const latestPacks: QueryResolvers['latestPacks'] = async ({
+export const packsMostRecent: QueryResolvers['packsMostRecent'] = async ({
   take = 99,
 }) => {
   validate(take, 'Take', { numericality: { lessThan: 100 } })
 
   return db.pack.findMany({ orderBy: { createdAt: 'desc' }, take })
+}
+
+export const packsStaffPicks: QueryResolvers['packsStaffPicks'] = async () => {
+  return db.pack.findMany({ orderBy: { createdAt: 'desc' } })
 }
 
 export const packs: QueryResolvers['packs'] = async ({ username }) => {

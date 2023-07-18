@@ -43,8 +43,8 @@ import { Link, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { QUERY as LATEST_PACKS_QUERY } from 'src/cells/LatestPacksCell'
 import { QUERY as PACK_LIST_QUERY } from 'src/cells/PackListCell'
+import { QUERY as PACKS_MOST_RECENT_QUERY } from 'src/cells/PacksMostRecentCell'
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
@@ -97,7 +97,7 @@ const PackThumbnailListItem = ({
       toast.error(error.message)
     },
     refetchQueries: [
-      { query: LATEST_PACKS_QUERY },
+      { query: PACKS_MOST_RECENT_QUERY },
       {
         query: PACK_LIST_QUERY,
         variables: { username: currentUserProfile?.username },

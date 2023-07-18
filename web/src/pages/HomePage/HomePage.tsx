@@ -13,7 +13,7 @@ import {
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
-import LatestPacksCell from 'src/cells/LatestPacksCell'
+import PacksMostRecentCell from 'src/cells/PacksMostRecentCell'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -153,7 +153,7 @@ const HomePage = () => {
               </Button>
             </HStack>
             <Box mt={4}>
-              <LatestPacksCell />
+              <PacksMostRecentCell />
             </Box>
           </Box>
           <Box minW="320px" ml="80px">

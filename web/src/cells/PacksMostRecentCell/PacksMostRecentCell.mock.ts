@@ -1,6 +1,6 @@
 // Define your own mock data here:
 export const standard = (/* vars, { ctx, req } */) => ({
-  latestPacks: [
+  packsMostRecent: [
     {
       id: 42,
       slug: '',
