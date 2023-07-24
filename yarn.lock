@@ -23688,7 +23688,7 @@ __metadata:
   dependencies:
     "@redwoodjs/auth-supabase-setup": 5.4.3
     "@redwoodjs/core": 5.4.3
-    slug: ^8.2.2
+    slug: ^8.2.3
   languageName: unknown
   linkType: soft
 
@@ -24334,12 +24334,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slug@npm:^8.2.2":
-  version: 8.2.2
-  resolution: "slug@npm:8.2.2"
+"slug@npm:^8.2.3":
+  version: 8.2.3
+  resolution: "slug@npm:8.2.3"
   bin:
     slug: cli.js
-  checksum: bf91990a6c8b0a7014a883c6c07c4b2fca0e898846eebbe8778ed89c1df969cd7e95e99b59d7849429f237887295bf487bf4c9e7a40cb97c1fbf84b18df06018
+  checksum: 82499b57e5d2f8425e5fa366da86cf911b0d60c2d3143cadd89039fb6c5b8a3d340cd2fe26f4c85b62a6bdaa64327da5e7554ddbda176b58ee56ad932bfa3708
   languageName: node
   linkType: hard
 
