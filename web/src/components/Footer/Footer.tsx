@@ -65,7 +65,12 @@ const Footer = () => (
         spacing={2}
         color="blackAlpha.700"
       >
-        <Text fontSize="sm">&copy; {new Date().getFullYear()} Lifepacks</Text>
+        <Text fontSize="sm">
+          &copy; {new Date().getFullYear()}{' '}
+          <ChakraLink as={Link} to={routes.home()}>
+            Lifepacks
+          </ChakraLink>
+        </Text>
         <Text fontSize="sm" py={{ base: 4, md: 0 }} as="div">
           <HStack spacing={3}>
             <ChakraLink as={Link} to={routes.termsOfService()}>
