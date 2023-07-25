@@ -42,7 +42,7 @@ const HomePage = () => {
           pb={0}
           px={0} // moved paddings to Stack below so box-shadow doesn't cut off
           maxHeight={{ base: '150vh', md: 'calc(100vh - 110px)' }}
-          minHeight={{ base: 'auto', md: '720px' }}
+          minHeight={{ base: 'auto', md: '630px' }}
         >
           <Stack
             direction={{ base: 'column', lg: 'row' }}
@@ -138,12 +138,14 @@ const HomePage = () => {
                   description="The best cans for any entry-level audiophile. Hands down."
                   purchaseUrl="https://amzn.to/3Jiswta"
                   imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/34344f82-a086-4155-a60d-18061796386d-hifimansundara.jpeg"
+                  disableBuyButton={true}
                 />
                 <PackItem
                   title="Apple AirPods Pro"
                   description="High-quality wireless earbud option with great sound quality, convenient connectivity, and a sleek design."
                   purchaseUrl="https://goto.walmart.com/c/4408565/565706/9383?veh=aff&sourceid=imp_000011112222333344&u=https%3A%2F%2Fwww.walmart.com%2Fip%2FApple-AirPods-Pro-2nd-Generation%2F1752657021%3Fathbdg%3DL1102"
                   imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/21717ce2-ae68-4bd2-98f9-636f21996656-mqd83.jpeg"
+                  disableBuyButton={true}
                 />
               </Stack>
             </Flex>

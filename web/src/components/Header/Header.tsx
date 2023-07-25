@@ -134,7 +134,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                       key={item.to}
                       as={Link}
                       to={item.to}
-                      px={4}
+                      px={3}
                       fontWeight={500}
                       textDecoration={item.isActive ? 'underline' : 'none'}
                     >

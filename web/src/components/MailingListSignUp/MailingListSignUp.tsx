@@ -42,7 +42,7 @@ const MailingListSignUp = () => {
   return (
     <Box>
       {isSuccessful ? (
-        <Alert status="success" color="black">
+        <Alert status="success" borderRadius="xl">
           <AlertIcon />
           Thank you for signing up!
         </Alert>
