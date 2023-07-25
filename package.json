@@ -8,7 +8,7 @@
     ]
   },
   "dependencies": {
-    "slug": "^8.2.2"
+    "slug": "^8.2.3"
   },
   "devDependencies": {
     "@redwoodjs/auth-supabase-setup": "5.4.3",
