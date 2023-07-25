@@ -9,6 +9,7 @@ export const schema = gql`
     instagramUrl: String
     youtubeUrl: String
     twitterUrl: String
+    verified: Boolean
   }
 
   type CurrentUserProfile {

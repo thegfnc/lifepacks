@@ -13,6 +13,7 @@ export const QUERY = gql`
       givenName
       familyName
       biography
+      verified
     }
   }
 `
@@ -43,6 +44,7 @@ export const Success = ({
             givenName={userProfile.givenName}
             familyName={userProfile.familyName}
             biography={userProfile.biography}
+            verified={userProfile.verified}
           />
         </Box>
       ))}
