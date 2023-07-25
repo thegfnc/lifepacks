@@ -104,7 +104,7 @@ const ForgotPasswordPage = () => {
                   </FormErrorMessage>
                 </FormControl>
 
-                <Button type="submit" isLoading={isLoading}>
+                <Button type="submit" isLoading={isLoading} variant="primary">
                   Reset Password
                 </Button>
               </Stack>

@@ -85,7 +85,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
 
   if (isAuthenticated && currentUserProfile) {
     mainActionButton = ctaComponent || (
-      <Button size={'lg'} as={Link} to={routes.newPack()} variant="primary">
+      <Button size="lg" as={Link} to={routes.newPack()} variant="primary">
         Create Pack
       </Button>
     )
@@ -157,8 +157,8 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                         w={10}
                       >
                         <Avatar
-                          h={10}
-                          w={10}
+                          h={12}
+                          w={12}
                           src={getImageUrlWithTransform({
                             src: currentUserProfile?.imageUrl,
                             transform: {

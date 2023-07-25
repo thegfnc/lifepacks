@@ -176,7 +176,11 @@ const SignUpPage = () => {
                   </FormControl>
 
                   <Stack spacing={3}>
-                    <Button type="submit" isLoading={isLoadingPasswordLogin}>
+                    <Button
+                      type="submit"
+                      isLoading={isLoadingPasswordLogin}
+                      variant="primary"
+                    >
                       Sign up
                     </Button>
                     <HStack spacing={5} my={4}>
