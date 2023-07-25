@@ -21,10 +21,19 @@ const Footer = () => (
       <Grid
         as="footer"
         role="contentinfo"
-        py={{ base: '12', md: '20' }}
-        templateColumns="repeat(4, 1fr)"
+        py={20}
+        templateColumns={{
+          base: 'repeat(1, 1fr)',
+          md: 'repeat(3, 1fr)',
+          lg: 'repeat(4, 1fr)',
+        }}
+        gap={8}
       >
-        <GridItem colSpan={2} display="flex" alignItems="flex-start">
+        <GridItem
+          colSpan={{ base: 1, lg: 2 }}
+          display="flex"
+          alignItems="flex-start"
+        >
           <Link to={routes.home()}>
             <LogoIcon boxSize={44} />
           </Link>
@@ -33,7 +42,7 @@ const Footer = () => (
           <Heading size="sm" lineHeight="base">
             Resources
           </Heading>
-          <Stack mt={4}>
+          <Stack my={4}>
             <ChakraLink as={Link} to={routes.about()}>
               About
             </ChakraLink>
@@ -55,11 +64,10 @@ const Footer = () => (
           </Text>
         </GridItem>
       </Grid>
-      <Stack
+      <HStack
         py={{ base: 6, md: 8 }}
         justify="space-between"
-        direction={{ base: 'column', md: 'row' }}
-        align={{ base: 'flex-start', md: 'center' }}
+        align="center"
         borderTopColor="blackAlpha.200"
         borderTopWidth="1px"
         spacing={2}
@@ -82,7 +90,7 @@ const Footer = () => (
             </ChakraLink>
           </HStack>
         </Text>
-      </Stack>
+      </HStack>
     </PageContainer>
   </Box>
 )

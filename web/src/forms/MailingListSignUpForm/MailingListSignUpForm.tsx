@@ -3,7 +3,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Heading,
   Input,
   Stack,
 } from '@chakra-ui/react'
@@ -38,7 +37,7 @@ const MailingListSignUpForm = ({
         >
           <FormControl isInvalid={Boolean(formState.errors.email)}>
             <FormLabel
-              fontSize={{ base: '20px', md: '16px' }}
+              fontSize={'16px'}
               fontWeight="semibold"
               color="subtle"
               size="sm"
