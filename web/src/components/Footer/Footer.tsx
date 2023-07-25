@@ -1,54 +1,75 @@
-import { Box, Link as ChakraLink, HStack, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Link as ChakraLink,
+  Grid,
+  GridItem,
+  HStack,
+  Heading,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
 
-import Logo from '../Logo/Logo'
+import { LogoIcon } from '../Logo/Logo'
 import MailingListSignUp from '../MailingListSignUp/MailingListSignUp'
 import PageContainer from '../PageContainer/PageContainer'
 
 const Footer = () => (
-  <Box as="footer" bg="blackAlpha.900" color="white">
+  <Box as="footer" bg="blackAlpha.50">
     <PageContainer minHeight="auto" pb={0} pt={0}>
-      <Box as="footer" role="contentinfo" py={{ base: '12', md: '24' }}>
-        <MailingListSignUp />
-        <Text
-          mt={{ base: 4, md: 6 }}
-          color="whiteAlpha.700"
-          fontSize={{ base: 'sm', md: 'md' }}
-        >
-          For support and press inquiries, contact us directly at{' '}
-          <ChakraLink href="mailto:lifepacksco@gmail.com" color="white">
-            lifepacksco@gmail.com
-          </ChakraLink>
-        </Text>
-      </Box>
+      <Grid
+        as="footer"
+        role="contentinfo"
+        py={{ base: '12', md: '24' }}
+        templateColumns="repeat(4, 1fr)"
+      >
+        <GridItem colSpan={2}>
+          <LogoIcon boxSize={44} />
+        </GridItem>
+        <GridItem>
+          <Heading size="md">Resources</Heading>
+          <Stack>
+            <ChakraLink as={Link} to={routes.about()}>
+              About
+            </ChakraLink>
+            <ChakraLink as={Link} to={routes.affiliateLinks101()}>
+              Affiliate Links 101
+            </ChakraLink>
+            <ChakraLink as={Link} to={routes.faq()}>
+              FAQ
+            </ChakraLink>
+          </Stack>
+        </GridItem>
+        <GridItem>
+          <MailingListSignUp />
+          <Text mt={{ base: 4, md: 6 }} fontSize={{ base: 'sm', md: 'md' }}>
+            For support and press inquiries, contact us directly at{' '}
+            <ChakraLink href="mailto:lifepacksco@gmail.com">
+              lifepacksco@gmail.com
+            </ChakraLink>
+          </Text>
+        </GridItem>
+      </Grid>
       <Stack
         py={{ base: 6, md: 10 }}
         justify="space-between"
         direction={{ base: 'column', md: 'row' }}
         align={{ base: 'flex-start', md: 'center' }}
-        borderTopColor="whiteAlpha.200"
+        borderTopColor="blackAlpha.200"
         borderTopWidth="1px"
         spacing={2}
       >
-        <Logo color="whiteAlpha.600" />
-        <Text
-          fontSize="md"
-          color="whiteAlpha.600"
-          py={{ base: 4, md: 0 }}
-          as="div"
-        >
+        <Text fontSize="md">&copy; {new Date().getFullYear()} Lifepacks</Text>
+        <Text fontSize="md" py={{ base: 4, md: 0 }} as="div">
           <HStack spacing={4}>
-            <ChakraLink as={Link} to={routes.privacyPolicy()}>
-              Privacy Policy
-            </ChakraLink>
             <ChakraLink as={Link} to={routes.termsOfService()}>
-              Terms of Service
+              Terms
+            </ChakraLink>
+            <ChakraLink as={Link} to={routes.privacyPolicy()}>
+              Privacy
             </ChakraLink>
           </HStack>
-        </Text>
-        <Text fontSize="md" color="whiteAlpha.600">
-          &copy; {new Date().getFullYear()} Lifepacks. All rights reserved.
         </Text>
       </Stack>
     </PageContainer>

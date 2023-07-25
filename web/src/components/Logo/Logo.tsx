@@ -33,7 +33,9 @@ const LOGO_PROPS = {
   },
 }
 
-const LogoIcon = ({ boxSize }: LogoIconProps) => {
+export const LogoIcon = ({
+  boxSize = LOGO_PROPS.md.iconBoxSize,
+}: LogoIconProps) => {
   return (
     <svg
       fill="none"
