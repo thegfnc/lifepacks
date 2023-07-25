@@ -34,6 +34,8 @@ type HeaderProps = {
   ctaComponent?: ReactNode
 }
 
+export const DESKTOP_HEADER_HEIGHT = '80px'
+
 const Header = ({ ctaComponent }: HeaderProps) => {
   const { isAuthenticated, loading: isAuthLoading, logOut } = useAuth()
   const { pathname } = useLocation()
@@ -83,15 +85,15 @@ const Header = ({ ctaComponent }: HeaderProps) => {
 
   if (isAuthenticated && currentUserProfile) {
     mainActionButton = ctaComponent || (
-      <Button size={'md'} as={Link} to={routes.newPack()}>
+      <Button size={'lg'} as={Link} to={routes.newPack()} variant="primary">
         Create Pack
       </Button>
     )
   } else if (isAuthenticated) {
     mainActionButton = (
       <Button
+        size="lg"
         onClick={logOutAndRefetchCurrentUserProfile}
-        colorScheme="gray"
         variant="outline"
       >
         Log Out
@@ -99,7 +101,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     )
   } else {
     mainActionButton = (
-      <Button as={Link} to={routes.signUp()} colorScheme={'purple'}>
+      <Button size="lg" as={Link} to={routes.signUp()} variant="primary">
         Sign Up
       </Button>
     )
@@ -111,8 +113,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
         as="header"
         alignItems={'center'}
         justifyContent="center"
-        h={'4.5rem'}
-        bgColor={pathname === routes.home() ? '#E4DDFF' : 'transparent'}
+        h={DESKTOP_HEADER_HEIGHT}
       >
         <Flex
           width="100%"

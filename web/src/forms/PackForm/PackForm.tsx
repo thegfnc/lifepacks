@@ -199,7 +199,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
     setHeaderCtaComponent(
       <Button
         type="submit"
-        colorScheme="green"
+        variant="green"
         isLoading={isLoading}
         onClick={handleSubmit(onFormSubmit)}
       >

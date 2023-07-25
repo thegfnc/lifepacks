@@ -58,7 +58,7 @@ const Feedback = () => {
           <HStack>
             <Button
               leftIcon={<MdThumbUp />}
-              colorScheme="green"
+              variant="green"
               onClick={handleYesClick}
               isDisabled={Boolean(feedbackSelection === 'no')}
             >

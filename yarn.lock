@@ -22968,6 +22968,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-wrap-balancer@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "react-wrap-balancer@npm:1.0.0"
+  peerDependencies:
+    react: ">=16.8.0 || ^17.0.0 || ^18"
+  checksum: 50ff2fdc72ab7a6040a93db47001ce21949dc33beb433dccbf670082db15348334d910dccbd65da050fc34e9fda94077adc1e122a57a5b14122ebfede3bb1ce6
+  languageName: node
+  linkType: hard
+
 "react@npm:18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -26885,6 +26894,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-icons: ^4.10.1
+    react-wrap-balancer: ^1.0.0
     uuid: ^9.0.0
   languageName: unknown
   linkType: soft

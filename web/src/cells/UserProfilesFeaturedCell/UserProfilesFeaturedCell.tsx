@@ -29,7 +29,7 @@ export const Success = ({
   userProfilesFeatured,
 }: CellSuccessProps<UserProfilesFeaturedQuery>) => {
   return (
-    <Box mt={3}>
+    <>
       {userProfilesFeatured.map((userProfile) => (
         <Box
           py={4}
@@ -46,6 +46,6 @@ export const Success = ({
           />
         </Box>
       ))}
-    </Box>
+    </>
   )
 }

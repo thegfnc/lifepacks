@@ -54,7 +54,7 @@ export const Empty = ({ username }) => {
             <Text fontSize="md" lineHeight={6} color="gray.500">
               Recommend products you swear by.
             </Text>
-            <Button colorScheme="purple" mt={4} as={Link} to={routes.newPack()}>
+            <Button variant="primary" mt={4} as={Link} to={routes.newPack()}>
               Create Pack
             </Button>
           </>
@@ -71,7 +71,7 @@ export const Empty = ({ username }) => {
             <Text fontSize="md" lineHeight={6} color="gray.500">
               Check back soon for products they swear by.
             </Text>
-            <Button colorScheme="purple" mt={4} as={Link} to={routes.home()}>
+            <Button variant="primary" mt={4} as={Link} to={routes.home()}>
               Browse Other Packs
             </Button>
           </>

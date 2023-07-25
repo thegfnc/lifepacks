@@ -75,7 +75,7 @@ const MailingListSignUpForm = ({
                   aria-label="Subscribe"
                   type="submit"
                   flexShrink={0}
-                  colorScheme="purple"
+                  variant="primary"
                   isLoading={isLoading}
                   icon={<MdArrowRightAlt size="24px" />}
                   borderRadius="full"

@@ -10,6 +10,7 @@ import {
   Text,
   Wrap,
 } from '@chakra-ui/react'
+import { Balancer } from 'react-wrap-balancer'
 
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
@@ -17,25 +18,25 @@ import { MetaTags } from '@redwoodjs/web'
 import PacksMostRecentCell from 'src/cells/PacksMostRecentCell'
 import PacksStaffPicksCell from 'src/cells/PacksStaffPicksCell'
 import UserProfilesFeaturedCell from 'src/cells/UserProfilesFeaturedCell'
+import { DESKTOP_HEADER_HEIGHT } from 'src/components/Header/Header'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
-enum PackListType {
-  MostRecent = 'MostRecent',
-  StaffPicks = 'StaffPicks',
-}
-
 const HomePage = () => {
-  const [packListType, setPackListType] = React.useState<PackListType>(
-    PackListType.StaffPicks
-  )
-
   return (
     <>
       <MetaTags ogUrl={getEnvironmentUrl(routes.home())} />
 
-      <Box as="section" bg="#E4DDFF" overflow="hidden">
+      <Box
+        as="section"
+        bg="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%)"
+        overflow="hidden"
+        borderBottom="1px solid"
+        borderBottomColor="blackAlpha.100"
+        pt={DESKTOP_HEADER_HEIGHT}
+        mt={'-' + DESKTOP_HEADER_HEIGHT}
+      >
         <PageContainer
           pt={0}
           pb={0}
@@ -62,17 +63,18 @@ const HomePage = () => {
                   <Heading
                     fontSize={{ lg: '48px', xl: '56px' }}
                     lineHeight={1}
-                    letterSpacing="tight"
+                    letterSpacing="tighter"
+                    color="#190660"
+                    fontWeight={800}
                   >
-                    Share the <br />
-                    products you <br />
-                    swear by.
+                    <Balancer>Recommend the products you swear by.</Balancer>
                   </Heading>
                   <Text
                     fontFamily="bitter"
                     fontSize={{ base: 'lg', md: '2xl' }}
                     lineHeight="1.33"
                     mt={{ base: 4, md: 6 }}
+                    color="#190660"
                   >
                     Easily create product guides and earn commission–just like
                     the pros at <i>Wirecutter</i> and <i>Consumer Reports</i>.
@@ -82,15 +84,18 @@ const HomePage = () => {
                   <Heading
                     fontSize={{ base: '36px', md: '48px' }}
                     lineHeight={1}
-                    letterSpacing="tight"
+                    letterSpacing="tighter"
+                    color="#190660"
+                    fontWeight={800}
                   >
-                    Share the products you swear by.
+                    <Balancer>Recommend the products you swear by.</Balancer>
                   </Heading>
                   <Text
                     fontFamily="bitter"
                     fontSize={{ base: '18px', md: '2xl' }}
                     lineHeight="1.33"
                     mt={{ base: 4 }}
+                    color="#190660"
                   >
                     Easily create product guides and earn commission–just like
                     the pros at <i>Wirecutter</i> and <i>Consumer Reports</i>.
@@ -102,6 +107,7 @@ const HomePage = () => {
                       as={Link}
                       size={{ base: 'lg', md: 'xl' }}
                       to={routes.signUp()}
+                      variant="primary"
                     >
                       Sign Up
                     </Button>
@@ -109,7 +115,7 @@ const HomePage = () => {
                       as={Link}
                       size={{ base: 'lg', md: 'xl' }}
                       to={routes.about()}
-                      colorScheme="gray"
+                      variant="secondary"
                     >
                       Learn More
                     </Button>
@@ -122,15 +128,6 @@ const HomePage = () => {
               justify="center"
               mt={{ base: 8, md: 10, lg: 0 }}
               position="relative"
-              _after={{
-                content: '""',
-                background:
-                  'linear-gradient(180deg, rgba(95, 69, 255, 0.00) 0%, rgba(95, 69, 255, 0.20) 100%)',
-                position: 'absolute',
-                bottom: 0,
-                height: '200px',
-                width: '100%',
-              }}
             >
               <Stack
                 spacing={{ base: 4, md: 6 }}
@@ -157,35 +154,28 @@ const HomePage = () => {
       <PageContainer>
         <Flex mt={16}>
           <Box flexGrow={1}>
-            <HStack spacing={2}>
-              <Button
-                colorScheme="gray"
-                size="lg"
-                onClick={() => setPackListType(PackListType.StaffPicks)}
-              >
-                Staff Picks
-              </Button>
-              <Button
-                colorScheme="gray"
-                size="lg"
-                onClick={() => setPackListType(PackListType.MostRecent)}
-              >
-                Most Recent
-              </Button>
-            </HStack>
-            <Box mt={4}>
-              {packListType === PackListType.StaffPicks ? (
+            <Box>
+              <Heading fontSize="lg" fontWeight={500} lineHeight={1.33}>
+                Trending Packs
+              </Heading>
+              <Box mt={3}>
                 <PacksStaffPicksCell />
-              ) : (
+              </Box>
+              <Heading fontSize="lg" fontWeight={500} lineHeight={1.33} mt={16}>
+                Recent Packs
+              </Heading>
+              <Box mt={3}>
                 <PacksMostRecentCell />
-              )}
+              </Box>
             </Box>
           </Box>
           <Box minW="320px" maxW="320px" ml="80px">
             <Heading fontSize="lg" fontWeight={500} lineHeight={1.33}>
               Featured Members
             </Heading>
-            <UserProfilesFeaturedCell />
+            <Box mt={3}>
+              <UserProfilesFeaturedCell />
+            </Box>
             <Heading fontSize="lg" fontWeight={500} mt={12}>
               Topics
             </Heading>
