@@ -202,6 +202,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
         variant="green"
         isLoading={isLoading}
         onClick={handleSubmit(onFormSubmit)}
+        size="lg"
       >
         Publish Pack
       </Button>

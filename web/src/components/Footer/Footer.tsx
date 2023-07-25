@@ -21,15 +21,19 @@ const Footer = () => (
       <Grid
         as="footer"
         role="contentinfo"
-        py={{ base: '12', md: '24' }}
+        py={{ base: '12', md: '20' }}
         templateColumns="repeat(4, 1fr)"
       >
-        <GridItem colSpan={2}>
-          <LogoIcon boxSize={44} />
+        <GridItem colSpan={2} display="flex" alignItems="flex-start">
+          <Link to={routes.home()}>
+            <LogoIcon boxSize={44} />
+          </Link>
         </GridItem>
         <GridItem>
-          <Heading size="md">Resources</Heading>
-          <Stack>
+          <Heading size="sm" lineHeight="base">
+            Resources
+          </Heading>
+          <Stack mt={4}>
             <ChakraLink as={Link} to={routes.about()}>
               About
             </ChakraLink>
@@ -43,7 +47,7 @@ const Footer = () => (
         </GridItem>
         <GridItem>
           <MailingListSignUp />
-          <Text mt={{ base: 4, md: 6 }} fontSize={{ base: 'sm', md: 'md' }}>
+          <Text mt={{ base: 4, md: 12 }} fontSize="sm" color="blackAlpha.600">
             For support and press inquiries, contact us directly at{' '}
             <ChakraLink href="mailto:lifepacksco@gmail.com">
               lifepacksco@gmail.com
@@ -52,20 +56,22 @@ const Footer = () => (
         </GridItem>
       </Grid>
       <Stack
-        py={{ base: 6, md: 10 }}
+        py={{ base: 6, md: 8 }}
         justify="space-between"
         direction={{ base: 'column', md: 'row' }}
         align={{ base: 'flex-start', md: 'center' }}
         borderTopColor="blackAlpha.200"
         borderTopWidth="1px"
         spacing={2}
+        color="blackAlpha.700"
       >
-        <Text fontSize="md">&copy; {new Date().getFullYear()} Lifepacks</Text>
-        <Text fontSize="md" py={{ base: 4, md: 0 }} as="div">
-          <HStack spacing={4}>
+        <Text fontSize="sm">&copy; {new Date().getFullYear()} Lifepacks</Text>
+        <Text fontSize="sm" py={{ base: 4, md: 0 }} as="div">
+          <HStack spacing={3}>
             <ChakraLink as={Link} to={routes.termsOfService()}>
               Terms
             </ChakraLink>
+            <Text>{' · '}</Text>
             <ChakraLink as={Link} to={routes.privacyPolicy()}>
               Privacy
             </ChakraLink>

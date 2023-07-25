@@ -3,6 +3,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Heading,
   Input,
   Stack,
 } from '@chakra-ui/react'
@@ -40,6 +41,10 @@ const MailingListSignUpForm = ({
               fontSize={{ base: '20px', md: '16px' }}
               fontWeight="semibold"
               color="subtle"
+              size="sm"
+              lineHeight="base"
+              marginBottom={0}
+              marginRight={0}
             >
               Stay in touch
             </FormLabel>
@@ -56,12 +61,16 @@ const MailingListSignUpForm = ({
               borderRadius="xl"
               borderWidth={0}
               background="blackAlpha.50"
+              mt={4}
             />
             <Button
               aria-label="Subscribe"
               type="submit"
-              variant="primary"
+              variant="secondary"
               isLoading={isLoading}
+              w="full"
+              mt={2}
+              borderRadius="xl"
             >
               Sign up for mailing list
             </Button>
