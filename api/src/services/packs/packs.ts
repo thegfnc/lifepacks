@@ -21,7 +21,7 @@ import { normalizeCommonPackInputFields } from './packsInputNormalization'
 import { validiateCommonPackInputFields } from './packsInputValidation'
 
 export const packsMostRecent: QueryResolvers['packsMostRecent'] = async ({
-  take = 99,
+  take = 3,
 }) => {
   validate(take, 'Take', { numericality: { lessThan: 100 } })
 

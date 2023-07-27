@@ -44,20 +44,23 @@ const UserProfileThumbnailListItem = ({
         name={getUserDisplayName(givenName, familyName, username)}
       />
       <Stack spacing={0}>
-        <Text fontSize="md" fontWeight="medium" color="blackAlpha.800">
-          <HStack spacing={1}>
-            <LinkOverlay
-              as={Link}
-              to={routes.userProfile({ username: username })}
-              onClick={() => trackSelectUserProfile(username)}
-            >
-              {getUserDisplayName(givenName, familyName, username)}
-            </LinkOverlay>
-            <Text color="purple.500">
-              {verified ? <MdVerified size="20px" /> : null}
-            </Text>
-          </HStack>
-        </Text>
+        <HStack
+          spacing={1}
+          fontSize="md"
+          fontWeight="medium"
+          color="blackAlpha.800"
+        >
+          <LinkOverlay
+            as={Link}
+            to={routes.userProfile({ username: username })}
+            onClick={() => trackSelectUserProfile(username)}
+          >
+            {getUserDisplayName(givenName, familyName, username)}
+          </LinkOverlay>
+          <Text color="purple.500">
+            {verified ? <MdVerified size="20px" /> : null}
+          </Text>
+        </HStack>
         <Text fontSize="sm" color="blackAlpha.600" fontWeight="normal">
           {biography}
         </Text>

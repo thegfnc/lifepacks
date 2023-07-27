@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Center,
   Flex,
   HStack,
   Heading,
@@ -169,6 +170,11 @@ const HomePage = () => {
               <Box mt={3}>
                 <PacksMostRecentCell />
               </Box>
+              <Center mt={6}>
+                <Button variant="secondary" size="lg">
+                  Load more
+                </Button>
+              </Center>
             </Box>
           </Box>
           <Box minW="320px" maxW="320px" ml="80px">
