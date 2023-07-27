@@ -25,7 +25,11 @@ export const packsMostRecent: QueryResolvers['packsMostRecent'] = async ({
 }) => {
   validate(take, 'Take', { numericality: { lessThan: 100 } })
 
-  return db.pack.findMany({ orderBy: { createdAt: 'desc' }, take })
+  return db.pack.findMany({
+    where: { featured: false },
+    orderBy: { createdAt: 'desc' },
+    take,
+  })
 }
 
 export const packsStaffPicks: QueryResolvers['packsStaffPicks'] = async () => {

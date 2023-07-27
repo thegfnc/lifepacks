@@ -52,6 +52,7 @@ module.exports = {
     global: {
       body: {
         bg: 'brown.500',
+        color: 'blackAlpha.900',
       },
     },
   },

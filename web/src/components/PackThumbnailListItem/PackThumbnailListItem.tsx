@@ -132,9 +132,10 @@ const PackThumbnailListItem = ({
             flexGrow={1}
           >
             <Heading
-              fontSize={{ base: '22px', md: '26px' }}
-              lineHeight={{ base: 6, md: 7 }}
-              fontWeight="bold"
+              fontSize="20px"
+              lineHeight="short"
+              fontWeight="medium"
+              letterSpacing=".2px"
               noOfLines={2}
             >
               <LinkOverlay
