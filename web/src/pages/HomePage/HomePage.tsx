@@ -51,7 +51,7 @@ const HomePage = () => {
             height="full"
             px={{ base: 4, md: 10 }}
             spacing={0}
-            mb={{ base: 0, md: '-30px' }}
+            mb={{ base: 0, md: '-250px' }}
           >
             <Flex align={'center'} justify="center" mt={{ base: 4, lg: 0 }}>
               <Box
@@ -135,17 +135,17 @@ const HomePage = () => {
                 maxW={{ base: '440px', md: '760px', lg: 'none' }}
               >
                 <PackItem
-                  title="HiFiMan Sundara"
-                  description="The best cans for any entry-level audiophile. Hands down."
-                  purchaseUrl="https://amzn.to/3Jiswta"
-                  imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/34344f82-a086-4155-a60d-18061796386d-hifimansundara.jpeg"
+                  title="KitchenAid Artisan Series Tilt Head Stand Mixer"
+                  description="This was my gateway into baking. Take your cookies and cakes to the next level."
+                  purchaseUrl="https://amzn.to/"
+                  imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/render/image/public/pack-item-images/2ebd0064-d1e8-414f-a008-90eaf26eac63-kitchenaid.png?height=700&width=700&resize=contain"
                   disableBuyButton={true}
                 />
                 <PackItem
-                  title="Apple AirPods Pro"
-                  description="High-quality wireless earbud option with great sound quality, convenient connectivity, and a sleek design."
-                  purchaseUrl="https://goto.walmart.com/c/4408565/565706/9383?veh=aff&sourceid=imp_000011112222333344&u=https%3A%2F%2Fwww.walmart.com%2Fip%2FApple-AirPods-Pro-2nd-Generation%2F1752657021%3Fathbdg%3DL1102"
-                  imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/object/public/pack-item-images/21717ce2-ae68-4bd2-98f9-636f21996656-mqd83.jpeg"
+                  title="Le Creuset Enameled Cast Iron Dutch Oven, 2.75 Qt"
+                  description="A beautiful, versatile kitchen staple for stews, sauces, bread and more."
+                  purchaseUrl="https://goto.walmart.com/"
+                  imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/render/image/public/pack-item-images/a0944bd5-16f6-473c-bc6a-91eb90cf42b1-dutchoven.png?height=700&width=700&resize=contain"
                   disableBuyButton={true}
                 />
               </Stack>
