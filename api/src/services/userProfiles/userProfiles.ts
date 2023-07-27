@@ -40,7 +40,7 @@ export const userProfilesFeatured: QueryResolvers['userProfilesFeatured'] =
   () => {
     return db.userProfile.findMany({
       where: { featured: true },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: 'asc' },
     })
   }
 
