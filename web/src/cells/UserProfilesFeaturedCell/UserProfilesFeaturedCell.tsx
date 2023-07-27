@@ -33,7 +33,7 @@ export const Success = ({
     <>
       {userProfilesFeatured.map((userProfile) => (
         <Box
-          py={4}
+          py={5}
           key={userProfile.username}
           borderBottom="1px solid"
           borderBottomColor="blackAlpha.200"

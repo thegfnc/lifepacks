@@ -161,13 +161,13 @@ const HomePage = () => {
               <Heading fontSize="lg" fontWeight={700} lineHeight={1.33}>
                 Trending Packs
               </Heading>
-              <Box mt={3}>
+              <Box mt={6}>
                 <PacksStaffPicksCell />
               </Box>
               <Heading fontSize="lg" fontWeight={700} lineHeight={1.33} mt={16}>
                 Recent Packs
               </Heading>
-              <Box mt={3}>
+              <Box mt={6}>
                 <PacksMostRecentCell />
               </Box>
               <Center mt={6}>
@@ -181,10 +181,10 @@ const HomePage = () => {
             <Heading fontSize="lg" fontWeight={700} lineHeight={1.33}>
               Featured Members
             </Heading>
-            <Box mt={3}>
+            <Box mt={2}>
               <UserProfilesFeaturedCell />
             </Box>
-            <Heading fontSize="lg" fontWeight={500} mt={12}>
+            <Heading fontSize="lg" fontWeight={500} mt={14}>
               Topics
             </Heading>
             <Wrap mt={4} spacing={3} color="blackAlpha.900">
