@@ -158,13 +158,13 @@ const HomePage = () => {
         <Flex mt={16}>
           <Box flexGrow={1}>
             <Box>
-              <Heading fontSize="lg" fontWeight={500} lineHeight={1.33}>
+              <Heading fontSize="lg" fontWeight={700} lineHeight={1.33}>
                 Trending Packs
               </Heading>
               <Box mt={3}>
                 <PacksStaffPicksCell />
               </Box>
-              <Heading fontSize="lg" fontWeight={500} lineHeight={1.33} mt={16}>
+              <Heading fontSize="lg" fontWeight={700} lineHeight={1.33} mt={16}>
                 Recent Packs
               </Heading>
               <Box mt={3}>
@@ -178,7 +178,7 @@ const HomePage = () => {
             </Box>
           </Box>
           <Box minW="320px" maxW="320px" ml="80px">
-            <Heading fontSize="lg" fontWeight={500} lineHeight={1.33}>
+            <Heading fontSize="lg" fontWeight={700} lineHeight={1.33}>
               Featured Members
             </Heading>
             <Box mt={3}>
