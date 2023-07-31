@@ -22,7 +22,7 @@ const viteConfig: UserConfig = {
     process.env.VERCEL_ENV !== 'development' &&
       sentryVitePlugin({
         org: process.env.SENTRY_ORG,
-        project: process.env.SENTRY_PROJECT,
+        project: process.env.SENTRY_WEB_PROJECT,
 
         // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
         // and need `project:releases` and `org:read` scopes
