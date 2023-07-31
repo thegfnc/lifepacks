@@ -18,7 +18,6 @@ type PackItemProps = {
   purchaseUrl: string
   title: string
   description: string
-  disableBuyButton?: boolean
 }
 
 const PackItem = ({
@@ -26,7 +25,6 @@ const PackItem = ({
   purchaseUrl,
   title,
   description,
-  disableBuyButton,
 }: PackItemProps) => {
   return (
     <Card
@@ -61,10 +59,7 @@ const PackItem = ({
                 {title}
               </Heading>
               <Box mt={4}>
-                <BuyButton
-                  purchaseUrl={purchaseUrl}
-                  disableLink={disableBuyButton}
-                />
+                <BuyButton purchaseUrl={purchaseUrl} />
               </Box>
             </Box>
           </Center>

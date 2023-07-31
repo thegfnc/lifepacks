@@ -249,7 +249,6 @@ const AboutPage = () => {
                         userProfile={
                           examplePacks[examplePackTabIndex].userProfile
                         }
-                        disableLinks={true}
                       />
                     </Box>
                   </Show>

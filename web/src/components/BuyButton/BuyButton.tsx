@@ -4,7 +4,6 @@ import isValidUrl from 'src/helpers/isValidUrl'
 
 type BuyButtonProps = {
   purchaseUrl: string
-  disableLink?: boolean
 }
 
 // Try to keep this sorted from most popular to least popular
@@ -31,7 +30,7 @@ const findStoreNameFromPurchaseUrl = (purchaseUrl: string) => {
   return null
 }
 
-const BuyButton = ({ purchaseUrl, disableLink }: BuyButtonProps) => {
+const BuyButton = ({ purchaseUrl }: BuyButtonProps) => {
   const isValidPurchaseUrl = isValidUrl(purchaseUrl)
   const storeName = findStoreNameFromPurchaseUrl(purchaseUrl)
   const buttonText = storeName ? `Buy on ${storeName}` : 'Buy Item'
@@ -47,7 +46,7 @@ const BuyButton = ({ purchaseUrl, disableLink }: BuyButtonProps) => {
       variant="yellow"
       size="lg"
       w={{ base: 'full', md: 'auto' }}
-      {...(!disableLink && isValidPurchaseUrl ? linkProps : {})}
+      {...(isValidPurchaseUrl ? linkProps : {})}
     >
       {buttonText}
     </Button>
