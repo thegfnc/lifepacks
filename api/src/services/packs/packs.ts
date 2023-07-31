@@ -22,13 +22,26 @@ import { validiateCommonPackInputFields } from './packsInputValidation'
 
 export const packsMostRecent: QueryResolvers['packsMostRecent'] = async ({
   take = 3,
+  cursor,
 }) => {
   validate(take, 'Take', { numericality: { lessThan: 100 } })
+
+  let cursorWhereClause = null
+
+  if (cursor) {
+    validate(cursor, 'Cursor', { numericality: { integer: true } })
+
+    cursorWhereClause = {
+      cursor: { id: cursor },
+      skip: 1, // skip the cursor
+    }
+  }
 
   return db.pack.findMany({
     where: { featured: false },
     orderBy: { createdAt: 'desc' },
     take,
+    ...cursorWhereClause,
   })
 }
 

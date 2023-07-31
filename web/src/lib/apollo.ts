@@ -1,4 +1,6 @@
-export const graphQLClientConfig = {
+import { GraphQLClientConfigProp } from '@redwoodjs/web/apollo'
+
+export const graphQLClientConfig: GraphQLClientConfigProp = {
   cacheConfig: {
     typePolicies: {
       UserProfile: {
