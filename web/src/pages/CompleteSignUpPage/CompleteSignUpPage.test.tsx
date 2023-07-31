@@ -6,7 +6,7 @@ import CompleteSignUpPage from './CompleteSignUpPage'
 //   https://redwoodjs.com/docs/testing#testing-pages-layouts
 
 describe('CompleteSignUpPage', () => {
-  global.URL.revokeObjectURL = jest.fn()
+  globalThis.URL.revokeObjectURL = jest.fn()
 
   it('renders successfully', () => {
     expect(() => {

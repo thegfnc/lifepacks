@@ -1,7 +1,7 @@
 // This object will be used to override Chakra-UI theme defaults.
 // See https://chakra-ui.com/docs/styled-system/theming/theme for theming options
 
-module.exports = {
+const theme = {
   fonts: {
     heading: `Rubik, sans-serif`,
     body: `Rubik, sans-serif`,
@@ -137,3 +137,5 @@ module.exports = {
     },
   },
 }
+
+export default theme

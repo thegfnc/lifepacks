@@ -6,7 +6,7 @@ import PackItemForm from './PackItemForm'
 //    https://redwoodjs.com/docs/testing#testing-components
 
 describe('PackItemForm', () => {
-  global.URL.revokeObjectURL = jest.fn()
+  globalThis.URL.revokeObjectURL = jest.fn()
 
   it('renders successfully', () => {
     expect(() => {
