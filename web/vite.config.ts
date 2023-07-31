@@ -18,7 +18,9 @@ const viteConfig: UserConfig = {
     sourcemap: true, // Source map generation must be turned on
   },
   plugins: [
-    redwood(), // Put the Sentry vite plugin after all other plugins
+    redwood(),
+
+    // Put the Sentry vite plugin after all other plugins
     process.env.VERCEL_ENV !== 'development' &&
       sentryVitePlugin({
         org: process.env.SENTRY_ORG,
