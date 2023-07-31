@@ -9,6 +9,7 @@ type getLogoCard = {
     | 'random'
 }
 
+// these are stored in the web/public folder
 const LOGO_CARD_FILES = {
   blackOnBrown: '/logo_card_black_on_brown.png',
   blackOnWhite: '/logo_card_black_on_white.png',
