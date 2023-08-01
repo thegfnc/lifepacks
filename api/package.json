@@ -10,7 +10,6 @@
     "@sendinblue/client": "^3.3.1",
     "@sentry/node": "7.61.0",
     "@sentry/profiling-node": "1.1.2",
-    "@sentry/webpack-plugin": "2.4.0",
     "jsonwebtoken": "9.0.1",
     "sanitize-html": "^2.11.0"
   }

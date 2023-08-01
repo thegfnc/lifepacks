@@ -6482,18 +6482,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry-internal/tracing@npm:7.53.1":
-  version: 7.53.1
-  resolution: "@sentry-internal/tracing@npm:7.53.1"
-  dependencies:
-    "@sentry/core": 7.53.1
-    "@sentry/types": 7.53.1
-    "@sentry/utils": 7.53.1
-    tslib: ^1.9.3
-  checksum: 2be8b0e00e95ded3b92965393cacb366fe575267073476fc88917c422c742e14848c81d08d6edae3c72649eb31a2c0483ac6a4fca3afed11a949fb0581af83ac
-  languageName: node
-  linkType: hard
-
 "@sentry-internal/tracing@npm:7.60.1":
   version: 7.60.1
   resolution: "@sentry-internal/tracing@npm:7.60.1"
@@ -6532,22 +6520,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/bundler-plugin-core@npm:2.4.0":
-  version: 2.4.0
-  resolution: "@sentry/bundler-plugin-core@npm:2.4.0"
-  dependencies:
-    "@sentry/cli": ^2.17.0
-    "@sentry/node": 7.53.1
-    "@sentry/utils": 7.53.1
-    dotenv: ^16.3.1
-    find-up: 5.0.0
-    glob: 9.3.2
-    magic-string: 0.27.0
-    unplugin: 1.0.1
-  checksum: 3a4319930b85257494e6423c22c37966a62747a9625da1cb7e971e2c21201194aae1c13678f68ca9a722b0da4d86b98d26938d175e5c4a165a3191e806e2a2af
-  languageName: node
-  linkType: hard
-
 "@sentry/bundler-plugin-core@npm:2.5.0":
   version: 2.5.0
   resolution: "@sentry/bundler-plugin-core@npm:2.5.0"
@@ -6576,17 +6548,6 @@ __metadata:
   bin:
     sentry-cli: bin/sentry-cli
   checksum: a2c4a738db286b9752f8e980a8cdfe4d85cf42a837e0b384982757b628a3c8d6a83a8eb5b4216d60521428315b23eb7dbad1bdc1c0f17729f9a72e7d7e95273f
-  languageName: node
-  linkType: hard
-
-"@sentry/core@npm:7.53.1":
-  version: 7.53.1
-  resolution: "@sentry/core@npm:7.53.1"
-  dependencies:
-    "@sentry/types": 7.53.1
-    "@sentry/utils": 7.53.1
-    tslib: ^1.9.3
-  checksum: 99a883f6c48b79bc70d0baaf887ccd720a02a816d203f1337a2d044448db45f7052f7f6a6806067885fde004768bf5e8c8d251573c4d117e5dc22b61c20ba29d
   languageName: node
   linkType: hard
 
@@ -6632,22 +6593,6 @@ __metadata:
     "@sentry/utils": 7.55.0
     tslib: ^1.9.3
   checksum: f13b4e763a99f8a15436f4770d14715f0d4032d37ae5d8bb2cf2d883f917b882862de7475cebb00684b8a372484359d6221d7bdb589993e50110b38a3f45d680
-  languageName: node
-  linkType: hard
-
-"@sentry/node@npm:7.53.1":
-  version: 7.53.1
-  resolution: "@sentry/node@npm:7.53.1"
-  dependencies:
-    "@sentry-internal/tracing": 7.53.1
-    "@sentry/core": 7.53.1
-    "@sentry/types": 7.53.1
-    "@sentry/utils": 7.53.1
-    cookie: ^0.4.1
-    https-proxy-agent: ^5.0.0
-    lru_map: ^0.3.3
-    tslib: ^1.9.3
-  checksum: 229b2eebddffadd2ae4abd3689327647b43b26ad9c5230f001446b98a070d61fa075073a3afee68af0f48f325a0537e3ee0cb338fc4091c2da87942fc5ab8ebd
   languageName: node
   linkType: hard
 
@@ -6727,13 +6672,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/types@npm:7.53.1":
-  version: 7.53.1
-  resolution: "@sentry/types@npm:7.53.1"
-  checksum: c7d8c871c1d2956959bebca8ea5f746ae224cf201176b58cd8d46f5864f563702020c99f9481e2d7f57b90c5d3eb440fa30aac8d8a42067d13efa33ff840e218
-  languageName: node
-  linkType: hard
-
 "@sentry/types@npm:7.55.0":
   version: 7.55.0
   resolution: "@sentry/types@npm:7.55.0"
@@ -6752,16 +6690,6 @@ __metadata:
   version: 7.61.0
   resolution: "@sentry/types@npm:7.61.0"
   checksum: f4d7375a736920f81f7014d090b16198e837b479c5cc041c75842686453a5ca1eb711f991b77821b9dfcb988ba3a418304b3d5c453900e0411132f7d664eb5a0
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:7.53.1":
-  version: 7.53.1
-  resolution: "@sentry/utils@npm:7.53.1"
-  dependencies:
-    "@sentry/types": 7.53.1
-    tslib: ^1.9.3
-  checksum: e35df27205e5bf521a013b55dada4f79b1d2b97a3a7d30f2b9e0e0bc16519634e017075bea3752ebfb5184074aaa62459b7bd523139f54795c3ef4da2a5d0274
   languageName: node
   linkType: hard
 
@@ -6802,19 +6730,6 @@ __metadata:
     "@sentry/bundler-plugin-core": 2.5.0
     unplugin: 1.0.1
   checksum: ff703d527ffcd14fcb3323b2136b4242286c1998755bd4d8983423a56361266f58d09e96a7a87a0542dd4fa2de5c6f8678ef15a091457220ced7177d46199a1a
-  languageName: node
-  linkType: hard
-
-"@sentry/webpack-plugin@npm:2.4.0":
-  version: 2.4.0
-  resolution: "@sentry/webpack-plugin@npm:2.4.0"
-  dependencies:
-    "@sentry/bundler-plugin-core": 2.4.0
-    unplugin: 1.0.1
-    uuid: ^9.0.0
-  peerDependencies:
-    webpack: ">=4.40.0"
-  checksum: 7655a0ca180025453b51f4af7a84290fd60537204189629f36657b556a761c2db89014d92d323150e1b124a5d5e3a68f62ced96c40d554b3b101f96486b5979f
   languageName: node
   linkType: hard
 
@@ -8738,7 +8653,6 @@ __metadata:
     "@sendinblue/client": ^3.3.1
     "@sentry/node": 7.61.0
     "@sentry/profiling-node": 1.1.2
-    "@sentry/webpack-plugin": 2.4.0
     jsonwebtoken: 9.0.1
     sanitize-html: ^2.11.0
   languageName: unknown
@@ -23259,7 +23173,6 @@ __metadata:
     "@redwoodjs/web": 6.0.2
     "@sentry/react": 7.61.0
     "@sentry/vite-plugin": ^2.5.0
-    "@sentry/webpack-plugin": 2.4.0
     "@supabase/supabase-js": 2.31.0
     "@vercel/analytics": ^1.0.1
     compressorjs: ^1.2.1
