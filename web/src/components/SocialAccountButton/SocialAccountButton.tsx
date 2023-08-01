@@ -41,7 +41,7 @@ const SocialAccountButton = ({
   }
 
   const props = {
-    ...(linkUrl && { as: 'a', href: linkUrl, target: '_blank' }),
+    ...(linkUrl && { href: linkUrl, target: '_blank' }),
     ...(onClick && { onClick }),
   }
 
