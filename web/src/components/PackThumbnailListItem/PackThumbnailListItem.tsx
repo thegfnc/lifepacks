@@ -249,7 +249,7 @@ const PackThumbnailListItem = ({
               rowSpan={2}
               colSpan={numberOfImages === 3 ? 4 : 6}
               p={4}
-              borderRightWidth={numberOfImages >= 2 ? '1px' : 0}
+              borderRightWidth={numberOfImages === 3 ? '1px' : 0}
               borderColor="blackAlpha.200"
             >
               <Center borderRadius="xl" overflow="hidden" h="full" w="full">

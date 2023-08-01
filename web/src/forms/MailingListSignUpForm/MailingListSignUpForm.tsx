@@ -29,7 +29,7 @@ const MailingListSignUpForm = ({
 
   return (
     <Form formMethods={formMethods} onSubmit={onSubmit}>
-      <Stack spacing="4">
+      <Stack spacing="1">
         <Stack
           spacing="4"
           direction={{ base: 'column', sm: 'row' }}
@@ -62,22 +62,22 @@ const MailingListSignUpForm = ({
               background="blackAlpha.50"
               mt={4}
             />
-            <Button
-              aria-label="Subscribe"
-              type="submit"
-              variant="secondary"
-              isLoading={isLoading}
-              w="full"
-              mt={2}
-              borderRadius="xl"
-            >
-              Sign up for mailing list
-            </Button>
             <FormErrorMessage>
               {formState.errors.email?.message}
             </FormErrorMessage>
           </FormControl>
         </Stack>
+        <Button
+          aria-label="Subscribe"
+          type="submit"
+          variant="secondary"
+          isLoading={isLoading}
+          w="full"
+          mt={2}
+          borderRadius="xl"
+        >
+          Sign up for mailing list
+        </Button>
       </Stack>
     </Form>
   )
