@@ -40,18 +40,15 @@ const SocialAccountButton = ({
     )
   }
 
-  const props = {}
-  if (linkUrl) {
-    props['as'] = 'a'
-    props['href'] = linkUrl
-    props['target'] = '_blank'
-  } else if (onClick) {
-    props['onClick'] = onClick
+  const props = {
+    ...(linkUrl && { as: 'a', href: linkUrl, target: '_blank' }),
+    ...(onClick && { onClick }),
   }
 
   return (
     <Flex direction="column" align="center">
       <IconButton
+        as={linkUrl ? 'a' : 'button'}
         bg={colors[colorMode].bg}
         _hover={colors[colorMode]._hover}
         _active={colors[colorMode]._active}
