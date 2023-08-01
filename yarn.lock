@@ -6762,7 +6762,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/gotrue-js@npm:^2.46.1":
+"@supabase/gotrue-js@npm:^2.31.0":
   version: 2.46.1
   resolution: "@supabase/gotrue-js@npm:2.46.1"
   dependencies:
@@ -6800,17 +6800,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:2.31.0":
-  version: 2.31.0
-  resolution: "@supabase/supabase-js@npm:2.31.0"
+"@supabase/supabase-js@npm:2.26.0":
+  version: 2.26.0
+  resolution: "@supabase/supabase-js@npm:2.26.0"
   dependencies:
     "@supabase/functions-js": ^2.1.0
-    "@supabase/gotrue-js": ^2.46.1
+    "@supabase/gotrue-js": ^2.31.0
     "@supabase/postgrest-js": ^1.7.0
     "@supabase/realtime-js": ^2.7.3
     "@supabase/storage-js": ^2.5.1
     cross-fetch: ^3.1.5
-  checksum: deedff497e03ffe994f82500150da1f892ad89b112827caf8fae90a1140556ef609306a91fa3e5ee29b77e630919778d617024906880fa43393e01ff41ba8699
+  checksum: c56047a832895bdecd72dbe763dea79ba07e12589bf3d81aaf7d367cf7d918c5ee784fb9527f3d0ec3e8389a2a7e448b4ff21c1ae31e8b01e7b9f3f2775802bb
   languageName: node
   linkType: hard
 
@@ -23170,7 +23170,7 @@ __metadata:
     "@redwoodjs/web": 6.0.2
     "@sentry/react": 7.61.0
     "@sentry/vite-plugin": ^2.5.0
-    "@supabase/supabase-js": 2.31.0
+    "@supabase/supabase-js": 2.26.0
     "@vercel/analytics": ^1.0.1
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
