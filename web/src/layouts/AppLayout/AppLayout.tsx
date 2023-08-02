@@ -17,7 +17,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <StrictMode>
       <MetaTags
-        title="Make guides for the products you swear by"
+        title="Recommend the products you swear by"
         description="Publish product recommendations just like the professionals."
         ogType="website"
         ogContentUrl={getLogoCard({ color: 'random' })}
