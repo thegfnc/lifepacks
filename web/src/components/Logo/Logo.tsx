@@ -63,7 +63,7 @@ const LogoText = ({ fontSize }: LogoTextProps) => {
   )
 }
 
-const Logo = ({ color = 'black', size = 'md' }: LogoProps) => {
+const Logo = ({ color = 'blackAlpha.900', size = 'md' }: LogoProps) => {
   const logoSizes = LOGO_PROPS[size]
 
   return (

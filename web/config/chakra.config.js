@@ -8,7 +8,7 @@ const theme = {
     bitter: `Bitter, serif`,
   },
   colors: {
-    brown: {
+    beige: {
       500: '#FBF5ED',
     },
     yellow: {
@@ -47,11 +47,16 @@ const theme = {
       800: '#34268c',
       900: '#281d6b',
     },
+    // marketing is a place to stick one off colors that are not part of the theme,
+    // typically used on the homepage or other marketing pages for some flourish
+    marketing: {
+      deepBlue: '#190660',
+    },
   },
   styles: {
     global: {
       body: {
-        bg: 'brown.500',
+        bg: 'beige.500',
         color: 'blackAlpha.900',
       },
     },

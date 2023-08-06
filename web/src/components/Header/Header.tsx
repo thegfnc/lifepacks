@@ -114,6 +114,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
         alignItems={'center'}
         justifyContent="center"
         h={DESKTOP_HEADER_HEIGHT}
+        color={pathname === routes.home() ? 'marketing.deepBlue' : 'inherit'}
       >
         <Flex
           width="100%"
@@ -121,7 +122,13 @@ const Header = ({ ctaComponent }: HeaderProps) => {
           px={{ base: 4, md: 10 }}
           alignItems={'center'}
         >
-          <Logo />
+          <Logo
+            color={
+              pathname === routes.home()
+                ? 'marketing.deepBlue'
+                : 'blackAlpha.900'
+            }
+          />
 
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
             {isAuthLoading || isCurrentUserProfileLoading ? (
@@ -153,8 +160,8 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                         rounded={'full'}
                         variant={'link'}
                         cursor={'pointer'}
-                        h={10}
-                        w={10}
+                        h={12}
+                        w={12}
                       >
                         <Avatar
                           h={12}
@@ -162,8 +169,8 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                           src={getImageUrlWithTransform({
                             src: currentUserProfile?.imageUrl,
                             transform: {
-                              width: 80,
-                              height: 80,
+                              width: 96,
+                              height: 96,
                               resize: 'cover',
                             },
                           })}

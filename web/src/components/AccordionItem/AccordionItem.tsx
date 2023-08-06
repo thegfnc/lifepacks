@@ -18,7 +18,7 @@ const colors = {
     bg: 'white',
   },
   dark: {
-    bg: 'brown.500',
+    bg: 'beige.500',
   },
 }
 
@@ -44,7 +44,7 @@ const AccordionItem = ({
             display="block"
             textAlign="left"
             _hover={{
-              bg: { base: 'auto', md: 'blackAlpha.50' },
+              bg: { base: 'auto', md: 'blackAlpha.200' },
             }}
           >
             <Flex align="center">

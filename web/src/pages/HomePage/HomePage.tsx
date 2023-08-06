@@ -64,7 +64,7 @@ const HomePage = () => {
                     fontSize={{ lg: '48px', xl: '56px' }}
                     lineHeight={1}
                     letterSpacing="tighter"
-                    color="#190660"
+                    color="marketing.deepBlue"
                     fontWeight={800}
                   >
                     <Balancer>Recommend the products you swear by.</Balancer>
@@ -74,7 +74,7 @@ const HomePage = () => {
                     fontSize={{ base: 'lg', md: '2xl' }}
                     lineHeight="1.33"
                     mt={{ base: 4, md: 6 }}
-                    color="#190660"
+                    color="marketing.deepBlue"
                   >
                     Easily create product guides and earn commission–just like
                     the pros at <i>Wirecutter</i> and <i>Consumer Reports</i>.
@@ -85,7 +85,7 @@ const HomePage = () => {
                     fontSize={{ base: '36px', md: '48px' }}
                     lineHeight={1}
                     letterSpacing="tighter"
-                    color="#190660"
+                    color="marketing.deepBlue"
                     fontWeight={800}
                   >
                     <Balancer>Recommend the products you swear by.</Balancer>
@@ -95,7 +95,7 @@ const HomePage = () => {
                     fontSize={{ base: '18px', md: '2xl' }}
                     lineHeight="1.33"
                     mt={{ base: 4 }}
-                    color="#190660"
+                    color="marketing.deepBlue"
                   >
                     Easily create product guides and earn commission–just like
                     the pros at <i>Wirecutter</i> and <i>Consumer Reports</i>.
