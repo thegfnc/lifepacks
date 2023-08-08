@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button, Center } from '@chakra-ui/react'
+import { Button, Center, useBreakpointValue } from '@chakra-ui/react'
 import type { PascksMostRecentQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
@@ -45,6 +45,10 @@ export const Success = ({
   // fetchMore, so I'm using this state hook as a workaround for now
   const [isUpdating, setIsUpdating] = useState(false)
   const [isEndOfList, setIsEndOfList] = useState(false)
+  const layout = useBreakpointValue<'grid' | 'list'>({
+    base: 'grid',
+    md: 'list',
+  })
 
   const cursor = packsMostRecent.at(-1).id
   const take = 10
@@ -77,7 +81,7 @@ export const Success = ({
 
   return (
     <>
-      <PackList packs={packsMostRecent} showByline={true} layout="list" />
+      <PackList packs={packsMostRecent} showByline={true} layout={layout} />
       {!isEndOfList && (
         <Center mt={6}>
           <Button

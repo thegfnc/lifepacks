@@ -131,7 +131,7 @@ const HomePage = () => {
       </Box>
 
       <PageContainer>
-        <Flex mt={16}>
+        <Flex mt={16} direction={{ base: 'column', md: 'row' }}>
           <Box flexGrow={1}>
             <Box>
               <Heading fontSize="xl" fontWeight={700} lineHeight={1.33}>

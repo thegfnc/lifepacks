@@ -1,3 +1,4 @@
+import { useBreakpointValue } from '@chakra-ui/react'
 import type { PacksStaffPicksQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
@@ -37,5 +38,10 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({
   packsStaffPicks,
 }: CellSuccessProps<PacksStaffPicksQuery>) => {
-  return <PackList packs={packsStaffPicks} showByline={true} layout="list" />
+  const layout = useBreakpointValue<'grid' | 'list'>({
+    base: 'grid',
+    md: 'list',
+  })
+
+  return <PackList packs={packsStaffPicks} showByline={true} layout={layout} />
 }
