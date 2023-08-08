@@ -173,9 +173,9 @@ const HomePage = () => {
             </Box>
           </Box>
           <Box
-            minW={{ base: 'full', lg: '320px' }}
-            maxW={{ base: 'full', lg: '320px' }}
-            ml={{ base: 0, lg: '48px', xl: '80px' }}
+            minW={{ base: 'full', lg: '275px', xl: '320px' }}
+            maxW={{ base: 'full', lg: '275px', xl: '320px' }}
+            ml={{ base: 0, lg: '36px', xl: '80px' }}
             mt={{ base: 14, lg: 0 }}
           >
             <Heading fontSize="xl" fontWeight={700} lineHeight={1.33}>

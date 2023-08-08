@@ -123,7 +123,7 @@ const PackThumbnailListItem = ({
         _hover={{ boxShadow: 'md' }}
         _active={{ boxShadow: 'sm' }}
       >
-        <Flex height="224px">
+        <Flex height={{ base: '192px', xl: '224px' }}>
           <Box
             as={Flex}
             direction="column"
@@ -136,7 +136,7 @@ const PackThumbnailListItem = ({
               lineHeight="short"
               fontWeight="medium"
               letterSpacing=".2px"
-              noOfLines={2}
+              noOfLines={3}
             >
               <LinkOverlay
                 as={Link}
@@ -248,7 +248,7 @@ const PackThumbnailListItem = ({
             <GridItem
               rowSpan={2}
               colSpan={numberOfImages === 3 ? 4 : 6}
-              p={4}
+              p={{ base: 4, xl: 6 }}
               borderRightWidth={numberOfImages === 3 ? '1px' : 0}
               borderColor="blackAlpha.200"
             >
@@ -268,7 +268,7 @@ const PackThumbnailListItem = ({
             </GridItem>
             {numberOfImages === 3 && (
               <>
-                <GridItem p={4} colSpan={2} rowSpan={1}>
+                <GridItem p={{ base: 4, xl: 6 }} colSpan={2} rowSpan={1}>
                   <Center borderRadius="xl" overflow="hidden" h="full" w="full">
                     <Image
                       src={getImageUrlWithTransform({
@@ -284,7 +284,7 @@ const PackThumbnailListItem = ({
                   </Center>
                 </GridItem>
                 <GridItem
-                  p={4}
+                  p={{ base: 4, xl: 6 }}
                   borderTopWidth={'1px'}
                   borderColor="blackAlpha.200"
                   colSpan={2}
