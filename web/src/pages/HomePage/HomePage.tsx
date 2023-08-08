@@ -16,7 +16,7 @@ import { MetaTags } from '@redwoodjs/web'
 import PacksMostRecentCell from 'src/cells/PacksMostRecentCell'
 import PacksStaffPicksCell from 'src/cells/PacksStaffPicksCell'
 import UserProfilesFeaturedCell from 'src/cells/UserProfilesFeaturedCell'
-import { DESKTOP_HEADER_HEIGHT } from 'src/components/Header/Header'
+import { HEADER_HEIGHT } from 'src/components/Header/Header'
 import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -29,28 +29,30 @@ const HomePage = () => {
       <Box
         as="section"
         bg="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%)"
-        overflow="hidden"
+        overflow={{ base: 'auto', lg: 'hidden' }}
         borderBottom="1px solid"
         borderBottomColor="blackAlpha.100"
-        pt={DESKTOP_HEADER_HEIGHT}
-        mt={'-' + DESKTOP_HEADER_HEIGHT}
+        pt={HEADER_HEIGHT}
+        mt={'-' + HEADER_HEIGHT}
       >
         <PageContainer
           pt={0}
           pb={0}
           px={0} // moved paddings to Stack below so box-shadow doesn't cut off
-          maxHeight={{ base: '150vh', md: 'calc(100vh - 110px)' }}
-          minHeight={{ base: '350px', md: '630px' }}
+          maxHeight={{ base: 'none', lg: 'calc(100vh - 110px)' }}
+          minHeight={{ base: 'auto', lg: '630px' }}
         >
           <Stack
             direction="row"
             overflow="hidden"
             height="full"
-            px={{ base: 4, md: 10 }}
+            px={{ base: 4, lg: 10 }}
+            pt={{ base: 20, lg: 0 }}
+            pb={{ base: '100px', lg: 0 }}
             spacing={0}
-            mb={{ base: 0, md: '-250px' }}
+            mb={{ base: 0, lg: '-250px' }}
           >
-            <Flex align={'center'} justify="center" mt={{ base: 4, lg: 0 }}>
+            <Flex align={'center'} justify="center">
               <Box
                 w={'full'}
                 maxW={{ base: '760px', lg: '400px', xl: '448px' }}
@@ -68,7 +70,7 @@ const HomePage = () => {
                 </Heading>
                 <Text
                   fontFamily="bitter"
-                  fontSize={{ base: '2xl', md: '2xl' }}
+                  fontSize={{ base: '20px', md: '22px' }}
                   lineHeight="1.33"
                   mt={{ base: 4, md: 6 }}
                   color="marketing.deepBlue"
@@ -131,7 +133,10 @@ const HomePage = () => {
       </Box>
 
       <PageContainer>
-        <Flex mt={16} direction={{ base: 'column', md: 'row' }}>
+        <Flex
+          mt={{ base: 10, lg: 16 }}
+          direction={{ base: 'column', lg: 'row' }}
+        >
           <Box flexGrow={1}>
             <Box>
               <Heading fontSize="xl" fontWeight={700} lineHeight={1.33}>
@@ -140,7 +145,12 @@ const HomePage = () => {
               <Box mt={6}>
                 <PacksStaffPicksCell />
               </Box>
-              <Heading fontSize="xl" fontWeight={700} lineHeight={1.33} mt={16}>
+              <Heading
+                fontSize="xl"
+                fontWeight={700}
+                lineHeight={1.33}
+                mt={{ base: 14, lg: 16 }}
+              >
                 Recent Packs
               </Heading>
               <Box mt={6}>
@@ -149,9 +159,10 @@ const HomePage = () => {
             </Box>
           </Box>
           <Box
-            minW="320px"
-            maxW="320px"
+            minW={{ base: 'full', lg: '320px' }}
+            maxW={{ base: 'full', lg: '320px' }}
             ml={{ base: 0, md: '48px', xl: '80px' }}
+            mt={{ base: 14, lg: 0 }}
           >
             <Heading fontSize="xl" fontWeight={700} lineHeight={1.33}>
               Featured Members

@@ -45,7 +45,7 @@ type HeaderProps = {
   ctaComponent?: ReactNode
 }
 
-export const DESKTOP_HEADER_HEIGHT = '80px'
+export const HEADER_HEIGHT = '80px'
 
 const Header = ({ ctaComponent }: HeaderProps) => {
   const { isAuthenticated, loading: isAuthLoading, logOut } = useAuth()
@@ -129,7 +129,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
         as="header"
         alignItems={'center'}
         justifyContent="center"
-        h={DESKTOP_HEADER_HEIGHT}
+        h={HEADER_HEIGHT}
         color={pathname === routes.home() ? 'marketing.deepBlue' : 'inherit'}
       >
         <Flex
