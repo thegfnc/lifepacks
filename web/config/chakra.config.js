@@ -69,11 +69,15 @@ const theme = {
         rounded: 'full',
       },
       sizes: {
+        lg: {
+          fontSize: 'md',
+          px: 5,
+        },
         xl: {
-          fontSize: 'xl',
-          lineHeight: 'shorter',
-          py: 5,
-          px: 7,
+          fontSize: 'lg',
+          lineHeight: 'short',
+          py: 4,
+          px: 6,
         },
       },
       variants: {

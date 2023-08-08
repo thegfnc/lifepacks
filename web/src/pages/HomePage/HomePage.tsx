@@ -148,7 +148,11 @@ const HomePage = () => {
               </Box>
             </Box>
           </Box>
-          <Box minW="320px" maxW="320px" ml={{ base: '48px', xl: '80px' }}>
+          <Box
+            minW="320px"
+            maxW="320px"
+            ml={{ base: 0, md: '48px', xl: '80px' }}
+          >
             <Heading fontSize="xl" fontWeight={700} lineHeight={1.33}>
               Featured Members
             </Heading>
