@@ -13557,9 +13557,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:10.15.0":
-  version: 10.15.0
-  resolution: "framer-motion@npm:10.15.0"
+"framer-motion@npm:10.15.1":
+  version: 10.15.1
+  resolution: "framer-motion@npm:10.15.1"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     tslib: ^2.4.0
@@ -13574,7 +13574,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: bb7da5552f50a9781be3076adf9cfbbfaf25aa7ba3885ecdab600b7321b25be6b5f631422a90b714dd21ca12d9a1be79c5116e32a34799c0ff09aa34719fb82e
+  checksum: d9fe626b6eb7816d447d3f0414c72a280c8b9ababcac99f81a2213ece79ef7d9ada5b164268ddf6987c08ae862e9f91fbf9380ee6e3e53be03f092439ddbd6fb
   languageName: node
   linkType: hard
 
@@ -23118,7 +23118,7 @@ __metadata:
     "@vercel/analytics": ^1.0.1
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
-    framer-motion: 10.15.0
+    framer-motion: 10.15.1
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
