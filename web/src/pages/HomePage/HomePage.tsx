@@ -13,6 +13,7 @@ import { Balancer } from 'react-wrap-balancer'
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import { useAuth } from 'src/auth'
 import PacksMostRecentCell from 'src/cells/PacksMostRecentCell'
 import PacksStaffPicksCell from 'src/cells/PacksStaffPicksCell'
 import UserProfilesFeaturedCell from 'src/cells/UserProfilesFeaturedCell'
@@ -22,6 +23,8 @@ import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
 const HomePage = () => {
+  const { isAuthenticated } = useAuth()
+
   return (
     <>
       <MetaTags ogUrl={getEnvironmentUrl(routes.home())} />
@@ -80,14 +83,25 @@ const HomePage = () => {
                 </Text>
                 <Box mt={{ base: 6, lg: 10 }}>
                   <HStack spacing={3}>
-                    <Button
-                      as={Link}
-                      size={{ base: 'lg', md: 'xl' }}
-                      to={routes.signUp()}
-                      variant="primary"
-                    >
-                      Sign Up
-                    </Button>
+                    {isAuthenticated ? (
+                      <Button
+                        as={Link}
+                        size={{ base: 'lg', md: 'xl' }}
+                        to={routes.newPack()}
+                        variant="primary"
+                      >
+                        Create Pack
+                      </Button>
+                    ) : (
+                      <Button
+                        as={Link}
+                        size={{ base: 'lg', md: 'xl' }}
+                        to={routes.signUp()}
+                        variant="primary"
+                      >
+                        Sign Up
+                      </Button>
+                    )}
                     <Button
                       as={Link}
                       size={{ base: 'lg', md: 'xl' }}
