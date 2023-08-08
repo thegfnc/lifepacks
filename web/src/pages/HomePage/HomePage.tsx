@@ -49,7 +49,7 @@ const HomePage = () => {
             direction="row"
             overflow="hidden"
             height="full"
-            px={{ base: 4, lg: 10 }}
+            px={{ base: 4, md: 10 }}
             pt={{ base: 20, lg: 0 }}
             pb={{ base: '100px', lg: 0 }}
             spacing={0}
