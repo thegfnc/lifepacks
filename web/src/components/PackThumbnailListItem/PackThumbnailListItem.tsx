@@ -240,8 +240,8 @@ const PackThumbnailListItem = ({
           <Grid
             templateRows="repeat(2, minmax(0, 1fr))"
             templateColumns="repeat(6, minmax(0, 1fr))"
-            minW="338px"
-            maxW="338px"
+            minW={{ base: '288px', xl: '338px' }}
+            maxW={{ base: '288px', xl: '338px' }}
             borderLeft="1px solid"
             borderColor="blackAlpha.200"
           >
