@@ -4,11 +4,9 @@ import {
   Flex,
   HStack,
   Heading,
-  Hide,
   Show,
   Stack,
   Text,
-  Wrap,
 } from '@chakra-ui/react'
 import { Balancer } from 'react-wrap-balancer'
 
