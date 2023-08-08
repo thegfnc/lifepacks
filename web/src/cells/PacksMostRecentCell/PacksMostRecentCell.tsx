@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button, Center, useBreakpointValue } from '@chakra-ui/react'
+import { Button, Center, Show, useBreakpointValue } from '@chakra-ui/react'
 import type { PascksMostRecentQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
@@ -83,16 +83,18 @@ export const Success = ({
     <>
       <PackList packs={packsMostRecent} showByline={true} layout={layout} />
       {!isEndOfList && (
-        <Center mt={6}>
-          <Button
-            variant="secondary"
-            size="lg"
-            onClick={onFetchMore}
-            isLoading={isUpdating}
-          >
-            Load more
-          </Button>
-        </Center>
+        <Show above="lg">
+          <Center mt={6}>
+            <Button
+              variant="secondary"
+              size="lg"
+              onClick={onFetchMore}
+              isLoading={isUpdating}
+            >
+              Load more
+            </Button>
+          </Center>
+        </Show>
       )}
     </>
   )
