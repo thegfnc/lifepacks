@@ -17,11 +17,11 @@
     "@chakra-ui/react": "2.8.0",
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@redwoodjs/auth": "6.0.3",
-    "@redwoodjs/auth-supabase-web": "6.0.3",
-    "@redwoodjs/forms": "6.0.3",
-    "@redwoodjs/router": "6.0.3",
-    "@redwoodjs/web": "6.0.3",
+    "@redwoodjs/auth": "6.0.4",
+    "@redwoodjs/auth-supabase-web": "6.0.4",
+    "@redwoodjs/forms": "6.0.4",
+    "@redwoodjs/router": "6.0.4",
+    "@redwoodjs/web": "6.0.4",
     "@sentry/react": "7.61.1",
     "@supabase/supabase-js": "2.32.0",
     "@vercel/analytics": "^1.0.1",
@@ -36,7 +36,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@redwoodjs/vite": "6.0.3",
+    "@redwoodjs/vite": "6.0.4",
     "@sentry/vite-plugin": "^2.5.0"
   }
 }
