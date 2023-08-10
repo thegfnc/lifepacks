@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@envelop/sentry": "6.0.0",
-    "@redwoodjs/api": "6.0.4",
-    "@redwoodjs/auth-supabase-api": "6.0.4",
-    "@redwoodjs/graphql-server": "6.0.4",
+    "@redwoodjs/api": "6.0.5",
+    "@redwoodjs/auth-supabase-api": "6.0.5",
+    "@redwoodjs/graphql-server": "6.0.5",
     "@sendinblue/client": "^3.3.1",
     "@sentry/node": "7.61.1",
     "@sentry/profiling-node": "1.1.2",
