@@ -77,6 +77,13 @@ export const trackSelectPack = (
   })
 }
 
+export const trackSelectBuy = (
+  pack_item_id: string | number,
+  purchase_url: string
+) => {
+  va.track('select_buy', { id: pack_item_id, purchase_url })
+}
+
 export const trackSelectUserProfile = (content_id: string | number) => {
   va.track('select_user_profile', { username: content_id })
   gtag('event', 'select_content', {

@@ -8,7 +8,7 @@ import BuyButton from './BuyButton'
 describe('BuyButton', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<BuyButton purchaseUrl="https://www.amazon.com/" />)
+      render(<BuyButton packItemId={1} purchaseUrl="https://www.amazon.com/" />)
     }).not.toThrow()
   })
 })

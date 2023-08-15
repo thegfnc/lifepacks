@@ -16,7 +16,7 @@ import type { Meta } from '@storybook/react'
 import BuyButton from './BuyButton'
 
 export const generated = () => {
-  return <BuyButton purchaseUrl="https://www.amazon.com/" />
+  return <BuyButton packItemId={1} purchaseUrl="https://www.amazon.com/" />
 }
 
 export default {

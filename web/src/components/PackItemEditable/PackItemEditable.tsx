@@ -11,6 +11,7 @@ import PackItem from '../PackItem/PackItem'
 const noop = () => {}
 
 type PackItemEditableProps = {
+  id: number
   imageUrl: string
   purchaseUrl: string
   title: string
@@ -24,6 +25,7 @@ type PackItemEditableProps = {
 }
 
 const PackItemEditable = ({
+  id,
   imageUrl,
   purchaseUrl,
   title,
@@ -45,6 +47,7 @@ const PackItemEditable = ({
         onMouseLeave={setIsHovering.off}
       >
         <PackItem
+          id={id}
           imageUrl={imageUrl}
           purchaseUrl={purchaseUrl}
           title={title}
