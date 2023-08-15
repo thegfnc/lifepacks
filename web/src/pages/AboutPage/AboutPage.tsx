@@ -22,7 +22,6 @@ import { MetaTags } from '@redwoodjs/web'
 
 import AccordionItem from 'src/components/AccordionItem/AccordionItem'
 import Pack from 'src/components/Pack/Pack'
-import PackItem from 'src/components/PackItem/PackItem'
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import UserProfile, {
   UserProfileLayout,
