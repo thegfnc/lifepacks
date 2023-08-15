@@ -23,7 +23,7 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <Set wrap={AppLayout}>
         {/* Marketing Pages */}
-        <Route path="/" page={HomePage} name="home" />
+        <Route path="/" page={HomePage} name="home" prerender />
         <Route path="/about" page={AboutPage} name="about" prerender />
 
         {/* Public Profile and Pack Pages */}
