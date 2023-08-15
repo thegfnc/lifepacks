@@ -131,13 +131,13 @@ const HomePage = () => {
                     title="KitchenAid Artisan Series Tilt Head Stand Mixer"
                     description="This was my gateway into baking. Take your cookies and cakes to the next level."
                     purchaseUrl="https://amzn.to/"
-                    imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/render/image/public/pack-item-images/2ebd0064-d1e8-414f-a008-90eaf26eac63-kitchenaid.png?height=700&width=700&resize=contain"
+                    imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/render/image/public/pack-item-images/2ebd0064-d1e8-414f-a008-90eaf26eac63-kitchenaid.png"
                   />
                   <PackItem
                     title="Le Creuset Enameled Cast Iron Dutch Oven, 2.75 Qt"
                     description="A beautiful, versatile kitchen staple for stews, sauces, bread and more."
                     purchaseUrl="https://goto.walmart.com/"
-                    imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/render/image/public/pack-item-images/a0944bd5-16f6-473c-bc6a-91eb90cf42b1-dutchoven.png?height=700&width=700&resize=contain"
+                    imageUrl="https://lewdorirqeadvphajbbq.supabase.co/storage/v1/render/image/public/pack-item-images/a0944bd5-16f6-473c-bc6a-91eb90cf42b1-dutchoven.png"
                   />
                 </Stack>
               </Flex>
