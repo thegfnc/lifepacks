@@ -7160,11 +7160,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/bundler-plugin-core@npm:2.5.0":
-  version: 2.5.0
-  resolution: "@sentry/bundler-plugin-core@npm:2.5.0"
+"@sentry/bundler-plugin-core@npm:2.6.2":
+  version: 2.6.2
+  resolution: "@sentry/bundler-plugin-core@npm:2.6.2"
   dependencies:
-    "@sentry/cli": ^2.17.0
+    "@sentry/cli": ^2.20.1
     "@sentry/node": ^7.60.0
     "@sentry/utils": ^7.60.0
     dotenv: ^16.3.1
@@ -7172,13 +7172,13 @@ __metadata:
     glob: 9.3.2
     magic-string: 0.27.0
     unplugin: 1.0.1
-  checksum: 73c0f6ab1d667a57becec57997c20f37c1e02d6830fb9c7baf123ed5fc88f81e91743d627db96a9f1d418533877d3ac3ecbdbcb35f0b7c6891434a2dff788157
+  checksum: f65809ab7c657e0f1b03899f8f698266de21618898def8173b10131a1c00f6016479f55f01128492e8f9a8f262648cc2627b0d3ed3d79e2a1eb4b7156cc77336
   languageName: node
   linkType: hard
 
-"@sentry/cli@npm:^2.17.0":
-  version: 2.18.1
-  resolution: "@sentry/cli@npm:2.18.1"
+"@sentry/cli@npm:^2.20.1":
+  version: 2.20.5
+  resolution: "@sentry/cli@npm:2.20.5"
   dependencies:
     https-proxy-agent: ^5.0.0
     node-fetch: ^2.6.7
@@ -7187,7 +7187,7 @@ __metadata:
     which: ^2.0.2
   bin:
     sentry-cli: bin/sentry-cli
-  checksum: a2c4a738db286b9752f8e980a8cdfe4d85cf42a837e0b384982757b628a3c8d6a83a8eb5b4216d60521428315b23eb7dbad1bdc1c0f17729f9a72e7d7e95273f
+  checksum: 221e36105775ce336da9d59cb30db9518f090e28baaed9178f30cee5a3bc58ffa4ea453d371fd42721c3fa67159bbfe3ef488d40d4e761a143b03c511f3462a2
   languageName: node
   linkType: hard
 
@@ -7319,13 +7319,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/vite-plugin@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@sentry/vite-plugin@npm:2.5.0"
+"@sentry/vite-plugin@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "@sentry/vite-plugin@npm:2.6.2"
   dependencies:
-    "@sentry/bundler-plugin-core": 2.5.0
+    "@sentry/bundler-plugin-core": 2.6.2
     unplugin: 1.0.1
-  checksum: ff703d527ffcd14fcb3323b2136b4242286c1998755bd4d8983423a56361266f58d09e96a7a87a0542dd4fa2de5c6f8678ef15a091457220ced7177d46199a1a
+  checksum: 5ce20718a12c67fa623cdb7530c1f945a6d74e74e0263b71a7bd30ef697db06d18e189820674651b7d34c186a1c666ef8e9c6bd11dd67ee72c35c2dda45dc0b7
   languageName: node
   linkType: hard
 
@@ -26368,7 +26368,7 @@ __metadata:
     "@redwoodjs/vite": 6.0.6
     "@redwoodjs/web": 6.0.6
     "@sentry/react": 7.61.1
-    "@sentry/vite-plugin": ^2.5.0
+    "@sentry/vite-plugin": ^2.6.2
     "@supabase/supabase-js": 2.32.0
     "@vercel/analytics": ^1.0.2
     compressorjs: ^1.2.1
