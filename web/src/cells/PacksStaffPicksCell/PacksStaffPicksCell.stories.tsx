@@ -1,4 +1,4 @@
-import type { StoryObj, StoryFn } from '@storybook/react'
+import type { StoryObj } from '@storybook/react'
 
 import { Loading, Empty, Failure, Success } from './PacksStaffPicksCell'
 import { standard } from './PacksStaffPicksCell.mock'
