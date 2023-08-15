@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
 import { Button, Center, Show, useBreakpointValue } from '@chakra-ui/react'
-import type { PascksMostRecentQuery } from 'types/graphql'
+import type { PacksMostRecentQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 import PackList from 'src/components/PackList/PackList'
 
 export const QUERY = gql`
-  query PascksMostRecentQuery($cursor: Int, $take: Int) {
+  query PacksMostRecentQuery($cursor: Int, $take: Int) {
     packsMostRecent(cursor: $cursor, take: $take) {
       id
       slug
@@ -40,7 +40,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 export const Success = ({
   packsMostRecent,
   queryResult,
-}: CellSuccessProps<PascksMostRecentQuery>) => {
+}: CellSuccessProps<PacksMostRecentQuery>) => {
   // for some reason the `updating` prop in Success isn't updating during
   // fetchMore, so I'm using this state hook as a workaround for now
   const [isUpdating, setIsUpdating] = useState(false)
