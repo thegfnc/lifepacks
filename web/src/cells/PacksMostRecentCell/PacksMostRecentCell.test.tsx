@@ -1,3 +1,5 @@
+import { ChakraProvider } from '@chakra-ui/react'
+
 import { render } from '@redwoodjs/testing/web'
 
 import { Loading, Empty, Failure, Success } from './PacksMostRecentCell'
@@ -36,7 +38,11 @@ describe('PacksMostRecentCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success packsMostRecent={standard().packsMostRecent} />)
+      render(
+        <ChakraProvider>
+          <Success packsMostRecent={standard().packsMostRecent} />
+        </ChakraProvider>
+      )
     }).not.toThrow()
   })
 })

@@ -16,7 +16,23 @@ import type { Meta } from '@storybook/react'
 import PackThumbnailListItem from './PackThumbnailListItem'
 
 export const generated = () => {
-  return <PackThumbnailListItem />
+  return (
+    <PackThumbnailListItem
+      pack={{
+        id: 1,
+        createdAt: '2023-06-14 01:08:39.453',
+        slug: 'slug',
+        title: 'Pack Title',
+        packItems: [],
+        userProfile: {
+          username: 'username',
+          givenName: 'givenName',
+          familyName: 'familyName',
+          imageUrl: 'imageUrl',
+        },
+      }}
+    />
+  )
 }
 
 export default {

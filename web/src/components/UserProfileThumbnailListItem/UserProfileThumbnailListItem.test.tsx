@@ -8,7 +8,16 @@ import UserProfileThumbnailListItem from './UserProfileThumbnailListItem'
 describe('UserProfileThumbnailListItem', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<UserProfileThumbnailListItem />)
+      render(
+        <UserProfileThumbnailListItem
+          username="username"
+          imageUrl="imageUrl"
+          givenName="givenName"
+          familyName="familyName"
+          biography="biography"
+          verified={true}
+        />
+      )
     }).not.toThrow()
   })
 })

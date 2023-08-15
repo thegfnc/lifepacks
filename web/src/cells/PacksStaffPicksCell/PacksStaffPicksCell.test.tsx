@@ -1,3 +1,5 @@
+import { ChakraProvider } from '@chakra-ui/react'
+
 import { render } from '@redwoodjs/testing/web'
 
 import { Loading, Empty, Failure, Success } from './PacksStaffPicksCell'
@@ -36,7 +38,11 @@ describe('PacksStaffPicksCell', () => {
 
   it('renders Success successfully', async () => {
     expect(() => {
-      render(<Success packsStaffPicks={standard().packsStaffPicks} />)
+      render(
+        <ChakraProvider>
+          <Success packsStaffPicks={standard().packsStaffPicks} />
+        </ChakraProvider>
+      )
     }).not.toThrow()
   })
 })

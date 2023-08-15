@@ -16,7 +16,16 @@ import type { Meta } from '@storybook/react'
 import UserProfileThumbnailListItem from './UserProfileThumbnailListItem'
 
 export const generated = () => {
-  return <UserProfileThumbnailListItem />
+  return (
+    <UserProfileThumbnailListItem
+      username="username"
+      imageUrl="imageUrl"
+      givenName="givenName"
+      familyName="familyName"
+      biography="biography"
+      verified={true}
+    />
+  )
 }
 
 export default {
