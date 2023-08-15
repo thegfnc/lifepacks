@@ -11,7 +11,7 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import type { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import ImageUploadField from './ImageUploadField'
 
@@ -22,4 +22,4 @@ export const generated = () => {
 export default {
   title: 'Components/ImageUploadField',
   component: ImageUploadField,
-} as ComponentMeta<typeof ImageUploadField>
+} as Meta<typeof ImageUploadField>

@@ -11,7 +11,7 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import type { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import EditPackItemModal from './EditPackItemModal'
 
@@ -40,4 +40,4 @@ export const generated = () => {
 export default {
   title: 'Components/EditPackItemModal',
   component: EditPackItemModal,
-} as ComponentMeta<typeof EditPackItemModal>
+} as Meta<typeof EditPackItemModal>

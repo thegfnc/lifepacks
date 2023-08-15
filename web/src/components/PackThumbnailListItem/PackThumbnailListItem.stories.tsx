@@ -11,7 +11,7 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import type { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import PackThumbnailListItem from './PackThumbnailListItem'
 
@@ -22,4 +22,4 @@ export const generated = () => {
 export default {
   title: 'Components/PackThumbnailListItem',
   component: PackThumbnailListItem,
-} as ComponentMeta<typeof PackThumbnailListItem>
+} as Meta<typeof PackThumbnailListItem>

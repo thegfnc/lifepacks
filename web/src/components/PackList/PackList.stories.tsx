@@ -11,7 +11,7 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import type { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import PackList from './PackList'
 
@@ -49,4 +49,4 @@ export const generated = () => {
 export default {
   title: 'Components/PackList',
   component: PackList,
-} as ComponentMeta<typeof PackList>
+} as Meta<typeof PackList>

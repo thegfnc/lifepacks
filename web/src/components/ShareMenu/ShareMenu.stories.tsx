@@ -11,7 +11,7 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import type { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import ShareMenu from './ShareMenu'
 
@@ -22,4 +22,4 @@ export const generated = () => {
 export default {
   title: 'Components/ShareMenu',
   component: ShareMenu,
-} as ComponentMeta<typeof ShareMenu>
+} as Meta<typeof ShareMenu>
