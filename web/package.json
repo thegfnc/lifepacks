@@ -24,7 +24,7 @@
     "@redwoodjs/web": "6.0.6",
     "@sentry/react": "7.61.1",
     "@supabase/supabase-js": "2.32.0",
-    "@vercel/analytics": "^1.0.1",
+    "@vercel/analytics": "^1.0.2",
     "compressorjs": "^1.2.1",
     "date-fns": "^2.30.0",
     "framer-motion": "10.15.1",
