@@ -1,8 +1,10 @@
 import { Button, chakra } from '@chakra-ui/react'
 
 import isValidUrl from 'src/helpers/isValidUrl'
+import { trackSelectBuy } from 'src/lib/analytics'
 
 type BuyButtonProps = {
+  packItemId: number
   purchaseUrl: string
 }
 
@@ -30,7 +32,7 @@ const findStoreNameFromPurchaseUrl = (purchaseUrl: string) => {
   return null
 }
 
-const BuyButton = ({ purchaseUrl }: BuyButtonProps) => {
+const BuyButton = ({ packItemId, purchaseUrl }: BuyButtonProps) => {
   const isValidPurchaseUrl = isValidUrl(purchaseUrl)
   const storeName = findStoreNameFromPurchaseUrl(purchaseUrl)
   const buttonText = storeName ? `Buy on ${storeName}` : 'Buy Item'
@@ -39,6 +41,7 @@ const BuyButton = ({ purchaseUrl }: BuyButtonProps) => {
     as: chakra('a'),
     href: purchaseUrl,
     target: '_blank',
+    onClick: () => trackSelectBuy(packItemId, purchaseUrl),
   }
 
   return (

@@ -280,6 +280,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             {packItems.map((packItem, index) => (
               <Fragment key={packItem.id || packItem.title}>
                 <PackItemEditable
+                  id={packItem.id}
                   imageUrl={packItem.imageUrl}
                   purchaseUrl={packItem.purchaseUrl}
                   title={packItem.title}

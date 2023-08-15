@@ -40,6 +40,7 @@ const Pack = ({ pack }: PackProps) => {
           {pack.packItems.map((packItem) => (
             <PackItem
               key={packItem.id}
+              id={packItem.id}
               imageUrl={packItem.imageUrl}
               purchaseUrl={packItem.purchaseUrl}
               title={packItem.title}

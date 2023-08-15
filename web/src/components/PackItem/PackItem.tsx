@@ -14,6 +14,7 @@ import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import BuyButton from '../BuyButton/BuyButton'
 
 type PackItemProps = {
+  id: number
   imageUrl: string
   purchaseUrl: string
   title: string
@@ -21,6 +22,7 @@ type PackItemProps = {
 }
 
 const PackItem = ({
+  id,
   imageUrl,
   purchaseUrl,
   title,
@@ -59,7 +61,7 @@ const PackItem = ({
                 {title}
               </Heading>
               <Box mt={4}>
-                <BuyButton purchaseUrl={purchaseUrl} />
+                <BuyButton packItemId={id} purchaseUrl={purchaseUrl} />
               </Box>
             </Box>
           </Center>
