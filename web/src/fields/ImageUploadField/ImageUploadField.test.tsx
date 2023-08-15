@@ -8,7 +8,7 @@ import ImageUploadField from './ImageUploadField'
 
 describe('ImageUploadField', () => {
   it('renders successfully', () => {
-    global.URL.revokeObjectURL = jest.fn()
+    globalThis.URL.revokeObjectURL = jest.fn()
     const { result } = renderHook(() => useForm())
 
     expect(() => {

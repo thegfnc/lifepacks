@@ -57,7 +57,7 @@ const ForgotPasswordPage = () => {
       setIsLoading(false)
     } else {
       toast.success('Your password has been changed.')
-      navigate(routes.explore())
+      navigate(routes.home())
     }
   }
 
@@ -104,7 +104,7 @@ const ForgotPasswordPage = () => {
                   </FormErrorMessage>
                 </FormControl>
 
-                <Button type="submit" isLoading={isLoading}>
+                <Button type="submit" isLoading={isLoading} variant="primary">
                   Reset Password
                 </Button>
               </Stack>

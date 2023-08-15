@@ -39,7 +39,7 @@ const ForgotPasswordPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.explore())
+      navigate(routes.home())
     }
   }, [isAuthenticated])
 
@@ -125,7 +125,7 @@ const ForgotPasswordPage = () => {
                     </FormErrorMessage>
                   </FormControl>
 
-                  <Button type="submit" isLoading={isLoading}>
+                  <Button type="submit" isLoading={isLoading} variant="primary">
                     Request Password Reset
                   </Button>
                 </Stack>

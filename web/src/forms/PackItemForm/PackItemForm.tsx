@@ -155,7 +155,7 @@ const PackItemForm = ({
             Cancel
           </Button>
         )}
-        <Button colorScheme="purple" type="submit">
+        <Button variant="primary" type="submit">
           Apply
         </Button>
       </SimpleGrid>

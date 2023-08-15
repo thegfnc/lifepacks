@@ -325,7 +325,7 @@ const UserProfileForm = ({
                 Cancel
               </Button>
             )}
-            <Button type="submit" colorScheme="purple" isLoading={isLoading}>
+            <Button type="submit" variant="primary" isLoading={isLoading}>
               {isUpdateForm ? 'Update Profile' : 'Create Profile'}
             </Button>
           </SimpleGrid>

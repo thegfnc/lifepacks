@@ -1,27 +1,27 @@
 // This object will be used to override Chakra-UI theme defaults.
 // See https://chakra-ui.com/docs/styled-system/theming/theme for theming options
 
-module.exports = {
+const theme = {
   fonts: {
     heading: `Rubik, sans-serif`,
     body: `Rubik, sans-serif`,
     bitter: `Bitter, serif`,
   },
   colors: {
-    brown: {
-      500: '#EEE9DF',
+    beige: {
+      500: '#FBF5ED',
     },
     yellow: {
-      50: '#fffbf1',
-      100: '#fef2d5',
-      200: '#fdecc0',
-      300: '#fce4a4',
-      400: '#fcde92',
-      500: '#fbd677',
-      600: '#e4c36c',
-      700: '#b29854',
-      800: '#8a7641',
-      900: '#695a32',
+      50: '#fffcec',
+      100: '#fff6c5',
+      200: '#fff1a9',
+      300: '#ffeb82',
+      400: '#ffe76a',
+      500: '#ffe145',
+      600: '#e8cd3f',
+      700: '#b5a031',
+      800: '#8c7c26',
+      900: '#6b5f1d',
     },
     green: {
       50: '#e6f7f0',
@@ -36,22 +36,28 @@ module.exports = {
       900: '#00482e',
     },
     purple: {
-      50: '#f2eefe',
-      100: '#d5cbfd',
-      200: '#c1b2fc',
-      300: '#a58efb',
-      400: '#9379fa',
-      500: '#7857f9',
-      600: '#6d4fe3',
-      700: '#553eb1',
-      800: '#423089',
-      900: '#322569',
+      50: '#E5DFFF',
+      100: '#cdc5ff',
+      200: '#b5a9ff',
+      300: '#9482ff',
+      400: '#7f6aff',
+      500: '#5f45ff',
+      600: '#563fe8',
+      700: '#4331b5',
+      800: '#34268c',
+      900: '#281d6b',
+    },
+    // marketing is a place to stick one off colors that are not part of the theme,
+    // typically used on the homepage or other marketing pages for some flourish
+    marketing: {
+      deepBlue: '#190660',
     },
   },
   styles: {
     global: {
       body: {
-        bg: 'brown.500',
+        bg: 'beige.500',
+        color: 'blackAlpha.900',
       },
     },
   },
@@ -60,19 +66,65 @@ module.exports = {
       baseStyle: {
         fontWeight: 'medium',
         lineHeight: 'base',
-        rounded: 'xl',
+        rounded: 'full',
       },
       sizes: {
+        lg: {
+          fontSize: 'md',
+          px: 5,
+        },
         xl: {
-          fontSize: 'xl',
-          lineHeight: 'shorter',
-          py: 5,
-          px: 7,
+          fontSize: 'lg',
+          lineHeight: 'short',
+          py: 4,
+          px: 6,
         },
       },
       variants: {
+        primary: {
+          color: 'white',
+          bg: 'purple.500',
+          _hover: {
+            bg: 'purple.600',
+          },
+          _active: {
+            bg: 'purple.700',
+          },
+        },
+        secondary: {
+          color: 'blackAlpha.900',
+          bg: 'blackAlpha.100',
+          _hover: {
+            bg: 'blackAlpha.200',
+          },
+          _active: {
+            bg: 'blackAlpha.300',
+          },
+        },
+        green: {
+          color: 'white',
+          bg: 'green.500',
+          _hover: {
+            bg: 'green.600',
+          },
+          _active: {
+            bg: 'green.700',
+          },
+        },
+        yellow: {
+          color: 'blackAlpha.900',
+          bg: 'yellow.500',
+          _hover: {
+            bg: 'yellow.600',
+          },
+          _active: {
+            bg: 'yellow.700',
+          },
+        },
         outline: {
-          borderColor: 'blackAlpha.300',
+          color: 'blackAlpha.900',
+          borderColor: 'blackAlpha.200',
+          fontWeight: 400,
           _hover: {
             bg: 'blackAlpha.100',
           },
@@ -81,6 +133,8 @@ module.exports = {
           },
         },
         ghost: {
+          color: 'blackAlpha.900',
+          fontWeight: 400,
           _hover: {
             bg: 'blackAlpha.100',
           },
@@ -89,9 +143,8 @@ module.exports = {
           },
         },
       },
-      defaultProps: {
-        colorScheme: 'purple',
-      },
     },
   },
 }
+
+export default theme

@@ -232,7 +232,7 @@ export const Success = ({
         <PublishSuccessDrawer
           isOpen={isPublishSuccessDrawerOpen}
           onClose={onPublishSuccessDrawerClose}
-          shareUrl={getEnvironmentUrl + routes.pack({ username, slug })}
+          shareUrl={getEnvironmentUrl(routes.pack({ username, slug }))}
           shareTitle={pack.title}
         />
       )}

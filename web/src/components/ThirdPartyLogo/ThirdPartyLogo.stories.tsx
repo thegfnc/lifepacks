@@ -11,7 +11,7 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import type { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import ThirdPartyLogo from './ThirdPartyLogo'
 
@@ -22,4 +22,4 @@ export const generated = () => {
 export default {
   title: 'Components/ThirdPartyLogo',
   component: ThirdPartyLogo,
-} as ComponentMeta<typeof ThirdPartyLogo>
+} as Meta<typeof ThirdPartyLogo>

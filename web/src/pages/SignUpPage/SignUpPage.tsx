@@ -49,7 +49,7 @@ const SignUpPage = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.explore())
+      navigate(routes.home())
     }
   }, [isAuthenticated])
 
@@ -61,7 +61,7 @@ const SignUpPage = () => {
       authMethod: 'oauth',
       provider: 'google',
       options: {
-        redirectTo: getEnvironmentUrl(routes.explore()),
+        redirectTo: getEnvironmentUrl(routes.home()),
       },
     })
 
@@ -176,7 +176,11 @@ const SignUpPage = () => {
                   </FormControl>
 
                   <Stack spacing={3}>
-                    <Button type="submit" isLoading={isLoadingPasswordLogin}>
+                    <Button
+                      type="submit"
+                      isLoading={isLoadingPasswordLogin}
+                      variant="primary"
+                    >
                       Sign up
                     </Button>
                     <HStack spacing={5} my={4}>

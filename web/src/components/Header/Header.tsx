@@ -1,5 +1,6 @@
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
+import { HamburgerIcon } from '@chakra-ui/icons'
 import {
   Button,
   Flex,
@@ -13,10 +14,25 @@ import {
   Text,
   Avatar,
   Box,
+  Link as ChakraLink,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerBody,
+  useDisclosure,
+  Show,
+  Hide,
+  IconButton,
+  Stack,
+  DrawerCloseButton,
 } from '@chakra-ui/react'
-import { MdLogout, MdOutlineAccountCircle } from 'react-icons/md'
+import {
+  MdLogout,
+  MdOutlineAccountCircle,
+  MdOutlineHelpOutline,
+} from 'react-icons/md'
 
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes, useLocation } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
@@ -29,13 +45,21 @@ type HeaderProps = {
   ctaComponent?: ReactNode
 }
 
+export const HEADER_HEIGHT = '80px'
+
 const Header = ({ ctaComponent }: HeaderProps) => {
   const { isAuthenticated, loading: isAuthLoading, logOut } = useAuth()
+  const { pathname } = useLocation()
   const {
     currentUserProfile,
     loading: isCurrentUserProfileLoading,
     refetch,
   } = useCurrentUserProfile()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  useEffect(() => {
+    onClose()
+  }, [pathname, onClose])
 
   const logOutAndRefetchCurrentUserProfile = () => {
     logOut()
@@ -48,13 +72,65 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     currentUserProfile?.username
   )
 
+  // Build menu items
+  const menu = []
+
+  if ((isAuthenticated && currentUserProfile) || !isAuthenticated) {
+    menu.push({
+      name: 'About',
+      to: routes.about(),
+      isActive: pathname === routes.about(),
+    })
+    menu.push({
+      name: 'FAQ',
+      to: routes.faq(),
+      isActive: pathname === routes.faq(),
+    })
+  }
+
+  if (!isAuthenticated) {
+    menu.push({
+      name: 'Log In',
+      to: routes.logIn(),
+      isActive: pathname === routes.logIn(),
+    })
+  }
+
+  // Determine main action button
+  let mainActionButton
+
+  if (isAuthenticated && currentUserProfile) {
+    mainActionButton = ctaComponent || (
+      <Button size="lg" as={Link} to={routes.newPack()} variant="primary">
+        Create Pack
+      </Button>
+    )
+  } else if (isAuthenticated) {
+    mainActionButton = (
+      <Button
+        size="lg"
+        onClick={logOutAndRefetchCurrentUserProfile}
+        variant="outline"
+      >
+        Log Out
+      </Button>
+    )
+  } else {
+    mainActionButton = (
+      <Button size="lg" as={Link} to={routes.signUp()} variant="primary">
+        Sign Up
+      </Button>
+    )
+  }
+
   return (
     <>
       <Flex
         as="header"
         alignItems={'center'}
         justifyContent="center"
-        h={'4.5rem'}
+        h={HEADER_HEIGHT}
+        color={pathname === routes.home() ? 'marketing.deepBlue' : 'inherit'}
       >
         <Flex
           width="100%"
@@ -62,37 +138,57 @@ const Header = ({ ctaComponent }: HeaderProps) => {
           px={{ base: 4, md: 10 }}
           alignItems={'center'}
         >
-          <Logo />
+          <Logo
+            color={
+              pathname === routes.home()
+                ? 'marketing.deepBlue'
+                : 'blackAlpha.900'
+            }
+          />
 
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
             {isAuthLoading || isCurrentUserProfileLoading ? (
               <Spinner />
             ) : (
               <HStack spacing={2} dir="horizontal">
-                {isAuthenticated && currentUserProfile ? (
+                <Show above="md">
+                  <HStack spacing={0}>
+                    {menu.map((item) => (
+                      <ChakraLink
+                        key={item.to}
+                        as={Link}
+                        to={item.to}
+                        px={3}
+                        fontWeight={500}
+                        textDecoration={item.isActive ? 'underline' : 'none'}
+                      >
+                        {item.name}
+                      </ChakraLink>
+                    ))}
+                  </HStack>
+                </Show>
+
+                {mainActionButton}
+
+                {isAuthenticated && currentUserProfile && (
                   <>
-                    {ctaComponent || (
-                      <Button size={'md'} as={Link} to={routes.newPack()}>
-                        Create Pack
-                      </Button>
-                    )}
                     <Menu placement="bottom-end">
                       <MenuButton
                         as={Button}
                         rounded={'full'}
                         variant={'link'}
                         cursor={'pointer'}
-                        h={10}
-                        w={10}
+                        h={12}
+                        w={12}
                       >
                         <Avatar
-                          h={10}
-                          w={10}
+                          h={12}
+                          w={12}
                           src={getImageUrlWithTransform({
                             src: currentUserProfile?.imageUrl,
                             transform: {
-                              width: 80,
-                              height: 80,
+                              width: 96,
+                              height: 96,
                               resize: 'cover',
                             },
                           })}
@@ -123,6 +219,14 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                           View Profile
                         </MenuItem>
                         <MenuItem
+                          as={Link}
+                          to={routes.faq()}
+                          icon={<MdOutlineHelpOutline size="20px" />}
+                        >
+                          Help
+                        </MenuItem>
+                        <MenuDivider />
+                        <MenuItem
                           onClick={logOutAndRefetchCurrentUserProfile}
                           icon={<MdLogout size="20px" />}
                         >
@@ -131,38 +235,48 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                       </MenuList>
                     </Menu>
                   </>
-                ) : isAuthenticated ? (
-                  <Button
-                    onClick={logOutAndRefetchCurrentUserProfile}
-                    colorScheme="gray"
-                    variant="outline"
-                  >
-                    Log Out
-                  </Button>
-                ) : (
-                  <>
-                    <Button
-                      as={Link}
-                      to={routes.logIn()}
-                      colorScheme="gray"
-                      variant="outline"
-                    >
-                      Log In
-                    </Button>
-                    <Button
-                      as={Link}
-                      to={routes.signUp()}
-                      colorScheme={'purple'}
-                    >
-                      Sign Up
-                    </Button>
-                  </>
                 )}
+
+                <Hide above="md">
+                  <IconButton
+                    icon={<HamburgerIcon />}
+                    onClick={onOpen}
+                    aria-label="Open Header Menu"
+                    variant="ghost"
+                    fontSize="2xl"
+                    mr="-6px"
+                    ml="-4px"
+                  />
+                </Hide>
               </HStack>
             )}
           </Flex>
         </Flex>
       </Flex>
+
+      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton size="lg" right={2} borderRadius="full" />
+          <DrawerBody>
+            <Stack py={12} spacing={4}>
+              {menu.map((item) => (
+                <ChakraLink
+                  key={item.to}
+                  as={Link}
+                  to={item.to}
+                  px={3}
+                  fontWeight={500}
+                  textDecoration={item.isActive ? 'underline' : 'none'}
+                  fontSize="lg"
+                >
+                  {item.name}
+                </ChakraLink>
+              ))}
+            </Stack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   )
 }

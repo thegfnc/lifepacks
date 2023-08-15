@@ -1,6 +1,6 @@
 import { toast } from '@redwoodjs/web/toast'
 
-import { trackShare } from 'src/lib/analytics'
+import { trackSharePack } from 'src/lib/analytics'
 import SocialAccount from 'src/types/SocialAccount'
 
 export const getShareUrl = (
@@ -54,6 +54,6 @@ export const getShareTrackingHandler = (
   shareUrl: string
 ) => {
   return () => {
-    trackShare(accountType, 'pack', shareUrl)
+    trackSharePack(accountType, shareUrl)
   }
 }

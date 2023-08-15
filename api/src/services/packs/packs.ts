@@ -20,12 +20,36 @@ import {
 import { normalizeCommonPackInputFields } from './packsInputNormalization'
 import { validiateCommonPackInputFields } from './packsInputValidation'
 
-export const latestPacks: QueryResolvers['latestPacks'] = async ({
-  take = 99,
+export const packsMostRecent: QueryResolvers['packsMostRecent'] = async ({
+  take = 3,
+  cursor,
 }) => {
   validate(take, 'Take', { numericality: { lessThan: 100 } })
 
-  return db.pack.findMany({ orderBy: { createdAt: 'desc' }, take })
+  let cursorWhereClause = null
+
+  if (cursor) {
+    validate(cursor, 'Cursor', { numericality: { integer: true } })
+
+    cursorWhereClause = {
+      cursor: { id: cursor },
+      skip: 1, // skip the cursor
+    }
+  }
+
+  return db.pack.findMany({
+    where: { featured: false },
+    orderBy: { createdAt: 'desc' },
+    take,
+    ...cursorWhereClause,
+  })
+}
+
+export const packsStaffPicks: QueryResolvers['packsStaffPicks'] = async () => {
+  return db.pack.findMany({
+    where: { featured: true },
+    orderBy: { createdAt: 'desc' },
+  })
 }
 
 export const packs: QueryResolvers['packs'] = async ({ username }) => {

@@ -19,7 +19,6 @@ export enum UserProfileLayout {
 type UserProfileLayoutPartialProps = {
   userProfile: UserProfileType
   actionButton?: ReactNode
-  disableLinks?: boolean
 }
 
 type UserProfileProps = UserProfileLayoutPartialProps & {
@@ -29,7 +28,6 @@ type UserProfileProps = UserProfileLayoutPartialProps & {
 const UserProfileBannerLayout = ({
   userProfile,
   actionButton,
-  disableLinks,
 }: UserProfileLayoutPartialProps) => {
   const linkProps = {
     as: Link,
@@ -53,7 +51,7 @@ const UserProfileBannerLayout = ({
             transform: { width: 256, height: 256, resize: 'cover' },
           })}
           name={userDisplayName}
-          {...(disableLinks ? {} : linkProps)}
+          {...linkProps}
         />
       </Center>
       <Stack mt={4} spacing={1}>
@@ -62,16 +60,12 @@ const UserProfileBannerLayout = ({
           fontWeight="bold"
           lineHeight="shorter"
           color="blackAlpha.800"
-          {...(disableLinks ? {} : linkProps)}
+          {...linkProps}
         >
           {userDisplayName}
         </Text>
         {!userDisplayName.endsWith(userProfile.username) && (
-          <Text
-            fontSize="md"
-            color="blackAlpha.700"
-            {...(disableLinks ? {} : linkProps)}
-          >
+          <Text fontSize="md" color="blackAlpha.700" {...linkProps}>
             @{userProfile.username}
           </Text>
         )}
@@ -123,7 +117,6 @@ const UserProfileBannerLayout = ({
 const UserProfileSidebarLayout = ({
   userProfile,
   actionButton,
-  disableLinks,
 }: UserProfileLayoutPartialProps) => {
   const linkProps = {
     as: Link,
@@ -145,7 +138,7 @@ const UserProfileSidebarLayout = ({
             userProfile.familyName,
             userProfile.username
           )}
-          {...(disableLinks ? {} : linkProps)}
+          {...linkProps}
         />
         {actionButton}
       </Flex>
@@ -155,7 +148,7 @@ const UserProfileSidebarLayout = ({
             fontSize="xl"
             fontWeight="bold"
             color="blackAlpha.800"
-            {...(disableLinks ? {} : linkProps)}
+            {...linkProps}
           >
             {getUserDisplayName(
               userProfile.givenName,
@@ -164,11 +157,7 @@ const UserProfileSidebarLayout = ({
             )}
           </Text>
         )}
-        <Text
-          fontSize="md"
-          color="blackAlpha.700"
-          {...(disableLinks ? {} : linkProps)}
-        >
+        <Text fontSize="md" color="blackAlpha.700" {...linkProps}>
           @{userProfile.username}
         </Text>
         {userProfile.biography && (
@@ -210,20 +199,17 @@ const UserProfileSidebarLayout = ({
 const UserProfile = ({
   userProfile,
   actionButton,
-  disableLinks = false,
   layout = UserProfileLayout.Sidebar,
 }: UserProfileProps) => {
   return layout === UserProfileLayout.Sidebar ? (
     <UserProfileSidebarLayout
       userProfile={userProfile}
       actionButton={actionButton}
-      disableLinks={disableLinks}
     />
   ) : (
     <UserProfileBannerLayout
       userProfile={userProfile}
       actionButton={actionButton}
-      disableLinks={disableLinks}
     />
   )
 }

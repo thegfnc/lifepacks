@@ -2,7 +2,8 @@
 import Sentry from 'src/lib/sentry'
 
 import { ChakraProvider, ColorModeScript, extendTheme } from '@chakra-ui/react'
-import * as theme from 'config/chakra.config'
+import { Analytics } from '@vercel/analytics/react'
+import theme from 'config/chakra.config'
 
 import { RedwoodProvider } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
@@ -19,6 +20,7 @@ const extendedTheme = extendTheme(theme)
 
 const App = () => (
   <Sentry.ErrorBoundary fallback={FatalErrorPage}>
+    <Analytics />
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider>
         <ColorModeScript />

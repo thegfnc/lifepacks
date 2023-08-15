@@ -13,27 +13,30 @@
     ]
   },
   "dependencies": {
-    "@chakra-ui/icons": "2.0.19",
-    "@chakra-ui/react": "2.7.1",
+    "@chakra-ui/icons": "2.1.0",
+    "@chakra-ui/react": "2.8.0",
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@redwoodjs/auth": "5.4.3",
-    "@redwoodjs/auth-supabase-web": "5.4.3",
-    "@redwoodjs/forms": "5.4.3",
-    "@redwoodjs/router": "5.4.3",
-    "@redwoodjs/web": "5.4.3",
-    "@sentry/react": "7.57.0",
-    "@supabase/supabase-js": "2.26.0",
+    "@redwoodjs/auth": "6.0.6",
+    "@redwoodjs/auth-supabase-web": "6.0.6",
+    "@redwoodjs/forms": "6.0.6",
+    "@redwoodjs/router": "6.0.6",
+    "@redwoodjs/web": "6.0.6",
+    "@sentry/react": "7.61.1",
+    "@supabase/supabase-js": "2.32.0",
+    "@vercel/analytics": "^1.0.1",
     "compressorjs": "^1.2.1",
     "date-fns": "^2.30.0",
-    "framer-motion": "10.12.18",
+    "framer-motion": "10.15.1",
     "prop-types": "15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
+    "react-wrap-balancer": "^1.0.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@sentry/webpack-plugin": "2.4.0"
+    "@redwoodjs/vite": "6.0.6",
+    "@sentry/vite-plugin": "^2.5.0"
   }
 }

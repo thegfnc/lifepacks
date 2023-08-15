@@ -1,56 +1,96 @@
-import { Box, Link as ChakraLink, HStack, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Link as ChakraLink,
+  Grid,
+  GridItem,
+  HStack,
+  Heading,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
 
-import Logo from '../Logo/Logo'
+import { LogoIcon } from '../Logo/Logo'
 import MailingListSignUp from '../MailingListSignUp/MailingListSignUp'
 import PageContainer from '../PageContainer/PageContainer'
 
 const Footer = () => (
-  <Box as="footer" bg="blackAlpha.900" color="white">
+  <Box as="footer" bg="blackAlpha.50">
     <PageContainer minHeight="auto" pb={0} pt={0}>
-      <Box as="footer" role="contentinfo" py={{ base: '12', md: '24' }}>
-        <MailingListSignUp />
-        <Text
-          mt={{ base: 4, md: 6 }}
-          color="whiteAlpha.700"
-          fontSize={{ base: 'sm', md: 'md' }}
+      <Grid
+        as="footer"
+        role="contentinfo"
+        py={20}
+        templateColumns={{
+          base: 'repeat(1, 1fr)',
+          md: 'repeat(3, 1fr)',
+          lg: 'repeat(4, 1fr)',
+        }}
+        gap={8}
+      >
+        <GridItem
+          colSpan={{ base: 1, lg: 2 }}
+          display="flex"
+          alignItems="flex-start"
         >
-          For support and press inquiries, contact us directly at{' '}
-          <ChakraLink href="mailto:lifepacksco@gmail.com" color="white">
-            lifepacksco@gmail.com
-          </ChakraLink>
-        </Text>
-      </Box>
-      <Stack
-        py={{ base: 6, md: 10 }}
+          <Link to={routes.home()}>
+            <LogoIcon boxSize={44} />
+          </Link>
+        </GridItem>
+        <GridItem>
+          <Heading size="sm" lineHeight="base">
+            Resources
+          </Heading>
+          <Stack my={4}>
+            <ChakraLink as={Link} to={routes.about()}>
+              About
+            </ChakraLink>
+            <ChakraLink as={Link} to={routes.affiliateLinks101()}>
+              Affiliate Links 101
+            </ChakraLink>
+            <ChakraLink as={Link} to={routes.faq()}>
+              FAQ
+            </ChakraLink>
+          </Stack>
+        </GridItem>
+        <GridItem>
+          <MailingListSignUp />
+          <Text mt={{ base: 4, md: 12 }} fontSize="sm" color="blackAlpha.600">
+            For support and press inquiries, contact us directly at{' '}
+            <ChakraLink href="mailto:lifepacksco@gmail.com">
+              lifepacksco@gmail.com
+            </ChakraLink>
+          </Text>
+        </GridItem>
+      </Grid>
+      <HStack
+        py={{ base: 6, md: 8 }}
         justify="space-between"
-        direction={{ base: 'column', md: 'row' }}
-        align={{ base: 'flex-start', md: 'center' }}
-        borderTopColor="whiteAlpha.200"
+        align="center"
+        borderTopColor="blackAlpha.200"
         borderTopWidth="1px"
         spacing={2}
+        color="blackAlpha.700"
       >
-        <Logo color="whiteAlpha.600" />
-        <Text
-          fontSize="md"
-          color="whiteAlpha.600"
-          py={{ base: 4, md: 0 }}
-          as="div"
-        >
-          <HStack spacing={4}>
-            <ChakraLink as={Link} to={routes.privacyPolicy()}>
-              Privacy Policy
-            </ChakraLink>
+        <Text fontSize="sm">
+          &copy; {new Date().getFullYear()}{' '}
+          <ChakraLink as={Link} to={routes.home()}>
+            Lifepacks
+          </ChakraLink>
+        </Text>
+        <Text fontSize="sm" py={{ base: 4, md: 0 }} as="div">
+          <HStack spacing={3}>
             <ChakraLink as={Link} to={routes.termsOfService()}>
-              Terms of Service
+              Terms
+            </ChakraLink>
+            <Text>{' · '}</Text>
+            <ChakraLink as={Link} to={routes.privacyPolicy()}>
+              Privacy
             </ChakraLink>
           </HStack>
         </Text>
-        <Text fontSize="md" color="whiteAlpha.600">
-          &copy; {new Date().getFullYear()} Lifepacks. All rights reserved.
-        </Text>
-      </Stack>
+      </HStack>
     </PageContainer>
   </Box>
 )

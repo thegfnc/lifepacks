@@ -12,9 +12,10 @@ export const schema = gql`
   }
 
   type Query {
-    latestPacks(take: Int): [Pack!]! @skipAuth
+    packsMostRecent(take: Int, cursor: Int): [Pack!]! @skipAuth
+    packsStaffPicks: [Pack!]! @skipAuth
     packs(username: String!): [Pack!]! @skipAuth
-    pack(username: String!, slug: String, id: Int): Pack @skipAuth
+    pack(username: String!, slug: String, id: Int): Pack! @skipAuth
   }
 
   input CreatePackInput {

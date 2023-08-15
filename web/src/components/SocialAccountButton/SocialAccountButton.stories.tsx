@@ -11,7 +11,7 @@
 //
 // See https://storybook.js.org/docs/react/writing-stories/args.
 
-import type { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 
 import SocialAccount from 'src/types/SocialAccount'
 
@@ -47,4 +47,4 @@ export const instagram = () => {
 export default {
   title: 'Components/SocialAccountButton',
   component: SocialAccountButton,
-} as ComponentMeta<typeof SocialAccountButton>
+} as Meta<typeof SocialAccountButton>

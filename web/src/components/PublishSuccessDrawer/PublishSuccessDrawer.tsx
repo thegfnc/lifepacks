@@ -13,7 +13,11 @@ import {
 } from '@chakra-ui/react'
 
 import SocialAccountButton from 'src/components/SocialAccountButton/SocialAccountButton'
-import { getCopyLinkClickHandler, getShareUrl } from 'src/helpers/getShareData'
+import {
+  getCopyLinkClickHandler,
+  getShareTrackingHandler,
+  getShareUrl,
+} from 'src/helpers/getShareData'
 import SocialAccount from 'src/types/SocialAccount'
 
 type PublishSuccessDrawerProps = {
@@ -56,6 +60,10 @@ const PublishSuccessDrawer = ({
                     shareUrl,
                     shareTitle
                   )}
+                  onClick={getShareTrackingHandler(
+                    SocialAccount.Facebook,
+                    shareUrl
+                  )}
                   boxSize={14}
                   label="Facebook"
                 />
@@ -66,6 +74,10 @@ const PublishSuccessDrawer = ({
                     shareUrl,
                     shareTitle
                   )}
+                  onClick={getShareTrackingHandler(
+                    SocialAccount.Twitter,
+                    shareUrl
+                  )}
                   boxSize={14}
                   label="Twitter"
                 />
@@ -75,6 +87,10 @@ const PublishSuccessDrawer = ({
                     SocialAccount.Email,
                     shareUrl,
                     shareTitle
+                  )}
+                  onClick={getShareTrackingHandler(
+                    SocialAccount.Email,
+                    shareUrl
                   )}
                   boxSize={14}
                   label="Email"
