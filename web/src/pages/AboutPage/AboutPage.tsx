@@ -48,11 +48,10 @@ const AboutPage = () => {
         <PageContainer
           pt={0}
           pb={0}
-          px={0} // moved paddings to Stack below so box-shadow doesn't cut off
           maxHeight={{ base: 'none', lg: 'calc(100vh - 110px)' }}
           minHeight={{ base: 'auto', lg: '630px' }}
         >
-          <Flex align="center" justify="center" py="163px">
+          <Flex align="center" justify="center" py={{ base: 24, md: '163px' }}>
             <Stack
               w={'full'}
               maxW={{ base: '674px' }}
@@ -60,7 +59,7 @@ const AboutPage = () => {
               spacing={6}
             >
               <Heading
-                fontSize={{ base: '48px', xl: '56px' }}
+                fontSize={{ base: '40px', lg: '56px' }}
                 lineHeight={1}
                 letterSpacing="tighter"
                 color="marketing.deepBlue"
@@ -73,7 +72,7 @@ const AboutPage = () => {
               </Heading>
               <Text
                 fontFamily="bitter"
-                fontSize={{ base: '20px', md: '22px' }}
+                fontSize={{ base: '18px', md: '22px' }}
                 lineHeight="1.33"
                 color="marketing.deepBlue"
               >
@@ -97,19 +96,20 @@ const AboutPage = () => {
       </Box>
 
       <Box as="section">
-        <PageContainer minHeight="auto" pt={12} pb={12}>
+        <PageContainer minHeight="auto" pt={0} pb={0}>
           <Grid
             templateColumns={{
               base: 'repeat(1, 1fr)',
               md: 'repeat(2, 1fr)',
             }}
             gap={6}
+            my={{ base: 14, md: 12 }}
           >
             <GridItem>
-              <Flex align="center" height="100%" px="50px">
+              <Flex align="center" height="100%" px={{ base: 0, md: '50px' }}>
                 <Stack spacing={6}>
                   <Heading
-                    fontSize={{ base: '48px' }}
+                    fontSize={{ base: '40px', md: '48px' }}
                     lineHeight={1}
                     letterSpacing="tighter"
                     color="marketing.deepBlue"
@@ -149,24 +149,25 @@ const AboutPage = () => {
       </Box>
 
       <Box as="section">
-        <PageContainer minHeight="auto" pt={12} pb={12}>
+        <PageContainer minHeight="auto" pt={0} pb={0}>
           <Grid
             templateColumns={{
               base: 'repeat(1, 1fr)',
               md: 'repeat(2, 1fr)',
             }}
             gap={6}
+            my={{ base: 14, md: 12 }}
           >
-            <GridItem>
+            <GridItem order={{ base: 2, md: 1 }}>
               <Box>
                 <Image src={shareCollectionsSingleLink}></Image>
               </Box>
             </GridItem>
-            <GridItem>
-              <Flex align="center" height="100%" px="50px">
+            <GridItem order={{ base: 1, md: 2 }}>
+              <Flex align="center" height="100%" px={{ base: 0, md: '50px' }}>
                 <Stack spacing={6}>
                   <Heading
-                    fontSize={{ base: '48px' }}
+                    fontSize={{ base: '40px', md: '48px' }}
                     lineHeight={1}
                     letterSpacing="tighter"
                     color="marketing.deepBlue"
@@ -201,19 +202,20 @@ const AboutPage = () => {
       </Box>
 
       <Box as="section">
-        <PageContainer minHeight="auto" pt={12} pb={12}>
+        <PageContainer minHeight="auto" pt={0} pb={0}>
           <Grid
             templateColumns={{
               base: 'repeat(1, 1fr)',
               md: 'repeat(2, 1fr)',
             }}
             gap={6}
+            my={{ base: 14, md: 12 }}
           >
             <GridItem>
-              <Flex align="center" height="100%" px="50px">
+              <Flex align="center" height="100%" px={{ base: 0, md: '50px' }}>
                 <Stack spacing={6}>
                   <Heading
-                    fontSize={{ base: '48px' }}
+                    fontSize={{ base: '40px', md: '48px' }}
                     lineHeight={1}
                     letterSpacing="tighter"
                     color="marketing.deepBlue"
@@ -253,10 +255,10 @@ const AboutPage = () => {
       </Box>
 
       <Box as="section" bg="white" textAlign="center">
-        <PageContainer minHeight="auto" pt="160px" pb="160px">
-          <Stack spacing="72px">
+        <PageContainer minHeight="auto" pt="0" pb="0">
+          <Stack spacing="72px" py={{ base: 20, md: '160px' }}>
             <Heading
-              fontSize={{ base: '48px', xl: '56px' }}
+              fontSize={{ base: '40px', xl: '56px' }}
               lineHeight={1}
               letterSpacing="tighter"
               color="marketing.deepBlue"
@@ -276,10 +278,11 @@ const AboutPage = () => {
                 <Center
                   background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
                   borderRadius="full"
-                  fontSize="96px"
+                  fontSize={{ base: '72px', lg: '80px', xl: '96px' }}
                   lineHeight={1}
-                  height="320px"
-                  width="320px"
+                  aspectRatio={1}
+                  maxWidth={{ base: '260px', md: '320px' }}
+                  width="full"
                 >
                   🧐
                 </Center>
@@ -305,10 +308,11 @@ const AboutPage = () => {
                 <Center
                   background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
                   borderRadius="full"
-                  fontSize="96px"
+                  fontSize={{ base: '72px', lg: '80px', xl: '96px' }}
                   lineHeight={1}
-                  height="320px"
-                  width="320px"
+                  aspectRatio={1}
+                  maxWidth={{ base: '260px', md: '320px' }}
+                  width="full"
                 >
                   🥰
                 </Center>
@@ -334,10 +338,11 @@ const AboutPage = () => {
                 <Center
                   background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
                   borderRadius="full"
-                  fontSize="96px"
+                  fontSize={{ base: '72px', lg: '80px', xl: '96px' }}
                   lineHeight={1}
-                  height="320px"
-                  width="320px"
+                  aspectRatio={1}
+                  maxWidth={{ base: '260px', md: '320px' }}
+                  width="full"
                 >
                   🤩
                 </Center>
@@ -373,8 +378,8 @@ const AboutPage = () => {
       <Box as="section">
         <PageContainer
           minHeight="auto"
-          pt={{ base: 10, md: '160px' }}
-          pb={{ base: 10, md: '160px' }}
+          pt={{ base: 20, md: '160px' }}
+          pb={{ base: 20, md: '160px' }}
         >
           <Flex direction="column" px={{ base: 0, md: 4 }} align="center">
             <Heading
