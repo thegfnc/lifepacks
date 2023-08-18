@@ -1,20 +1,13 @@
 import getEnvironmentUrl from './getEnvironmentUrl'
 
 type getLogoCard = {
-  color:
-    | 'blackOnBrown'
-    | 'blackOnWhite'
-    | 'blackOnYellow'
-    | 'whiteOnPurple'
-    | 'random'
+  color: 'blackOnBrown' | 'blueOnPurple' | 'random'
 }
 
 // these are stored in the web/public folder
 const LOGO_CARD_FILES = {
   blackOnBrown: '/logo_card_black_on_brown.png',
-  blackOnWhite: '/logo_card_black_on_white.png',
-  blackOnYellow: '/logo_card_black_on_yellow.png',
-  whiteOnPurple: '/logo_card_white_on_purple.png',
+  blueOnPurple: '/logo_card_blue_on_purple.png',
 }
 
 const getLogoCard = ({ color }: getLogoCard) => {
