@@ -2,6 +2,7 @@ import {
   Accordion,
   Box,
   Button,
+  Center,
   Container,
   Flex,
   Grid,
@@ -251,11 +252,129 @@ const AboutPage = () => {
         </PageContainer>
       </Box>
 
-      <Box as="section" bg="white">
+      <Box as="section" bg="white" textAlign="center">
+        <PageContainer minHeight="auto" pt="160px" pb="160px">
+          <Stack spacing="72px">
+            <Heading
+              fontSize={{ base: '48px', xl: '56px' }}
+              lineHeight={1}
+              letterSpacing="tighter"
+              color="marketing.deepBlue"
+              fontWeight={800}
+            >
+              <Balancer>Lifepacks is for everyone.</Balancer>
+            </Heading>
+            <Grid
+              templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
+              gap="80px"
+            >
+              <GridItem
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Center
+                  background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
+                  borderRadius="full"
+                  fontSize="96px"
+                  lineHeight={1}
+                  height="320px"
+                  width="320px"
+                >
+                  🧐
+                </Center>
+                <Heading
+                  fontSize={{ base: '32px' }}
+                  letterSpacing="tight"
+                  color="marketing.deepBlue"
+                  fontWeight={800}
+                  mt="28px"
+                >
+                  Experts
+                </Heading>
+                <Text mt={3} maxW="270px">
+                  Experts use Lifepacks to easily share the products they swear
+                  by with friends and fans
+                </Text>
+              </GridItem>
+              <GridItem
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Center
+                  background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
+                  borderRadius="full"
+                  fontSize="96px"
+                  lineHeight={1}
+                  height="320px"
+                  width="320px"
+                >
+                  🥰
+                </Center>
+                <Heading
+                  fontSize={{ base: '32px' }}
+                  letterSpacing="tight"
+                  color="marketing.deepBlue"
+                  fontWeight={800}
+                  mt="28px"
+                >
+                  Hobbyists
+                </Heading>
+                <Text mt={3} maxW="270px">
+                  Hobbyists use Lifepacks to find recommendations from reviewers
+                  they can actually trust.
+                </Text>
+              </GridItem>
+              <GridItem
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Center
+                  background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
+                  borderRadius="full"
+                  fontSize="96px"
+                  lineHeight={1}
+                  height="320px"
+                  width="320px"
+                >
+                  🤩
+                </Center>
+                <Heading
+                  fontSize={{ base: '32px' }}
+                  letterSpacing="tight"
+                  color="marketing.deepBlue"
+                  fontWeight={800}
+                  mt="28px"
+                >
+                  Influencers
+                </Heading>
+                <Text mt={3} maxW="270px">
+                  Influencers use Lifepacks for the template to share affiliate
+                  links and earn money on the side.
+                </Text>
+              </GridItem>
+            </Grid>
+            <Box>
+              <Button
+                as={Link}
+                size={{ base: 'lg', md: 'xl' }}
+                to={getStartedLink}
+                variant="primary"
+              >
+                Get Started
+              </Button>
+            </Box>
+          </Stack>
+        </PageContainer>
+      </Box>
+
+      <Box as="section">
         <PageContainer
           minHeight="auto"
-          pt={{ base: 10, md: '120px' }}
-          pb={{ base: 10, md: '120px' }}
+          pt={{ base: 10, md: '160px' }}
+          pb={{ base: 10, md: '160px' }}
         >
           <Flex direction="column" px={{ base: 0, md: 4 }} align="center">
             <Heading
@@ -263,6 +382,7 @@ const AboutPage = () => {
               lineHeight={{ base: 'none', md: '93%' }}
               letterSpacing="tight"
               textAlign="center"
+              color="marketing.deepBlue"
             >
               Ask us anything
             </Heading>
@@ -273,13 +393,8 @@ const AboutPage = () => {
             >
               <Accordion defaultIndex={[0]} allowMultiple>
                 <Stack spacing={4}>
-                  {faq.slice(0, 3).map(({ question, answer }, index) => (
-                    <AccordionItem
-                      key={index}
-                      title={question}
-                      body={answer}
-                      colorMode="dark"
-                    />
+                  {faq.slice(0, 4).map(({ question, answer }, index) => (
+                    <AccordionItem key={index} title={question} body={answer} />
                   ))}
                 </Stack>
               </Accordion>
@@ -288,7 +403,7 @@ const AboutPage = () => {
                   as={Link}
                   to={routes.faq()}
                   size={{ base: 'lg', md: 'xl' }}
-                  variant="outline"
+                  variant="secondary"
                   colorScheme="gray"
                 >
                   View all FAQ
