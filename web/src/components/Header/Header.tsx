@@ -1,6 +1,5 @@
-import { ReactNode, useEffect } from 'react'
+import { ReactNode } from 'react'
 
-import { HamburgerIcon } from '@chakra-ui/icons'
 import {
   Button,
   Flex,
@@ -15,16 +14,7 @@ import {
   Avatar,
   Box,
   Link as ChakraLink,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerBody,
-  useDisclosure,
   Show,
-  Hide,
-  IconButton,
-  Stack,
-  DrawerCloseButton,
 } from '@chakra-ui/react'
 import {
   MdLogout,
@@ -41,6 +31,8 @@ import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
 import Logo from '../Logo/Logo'
 
+import HeaderMobileMenu from './HeaderMobileMenu'
+
 type HeaderProps = {
   ctaComponent?: ReactNode
 }
@@ -55,11 +47,6 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     loading: isCurrentUserProfileLoading,
     refetch,
   } = useCurrentUserProfile()
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
-  useEffect(() => {
-    onClose()
-  }, [pathname, onClose])
 
   const logOutAndRefetchCurrentUserProfile = () => {
     logOut()
@@ -72,34 +59,27 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     currentUserProfile?.username
   )
 
+  const aboutLink = {
+    name: 'About',
+    to: routes.about(),
+  }
+  const faqLink = {
+    name: 'FAQ',
+    to: routes.faq(),
+  }
+  const logInLink = {
+    name: 'Log In',
+    to: routes.logIn(),
+  }
+
   // Build menu items
-  const menu = []
-
-  if ((isAuthenticated && currentUserProfile) || !isAuthenticated) {
-    menu.push({
-      name: 'About',
-      to: routes.about(),
-      isActive: pathname === routes.about(),
-    })
-    menu.push({
-      name: 'FAQ',
-      to: routes.faq(),
-      isActive: pathname === routes.faq(),
-    })
-  }
-
-  if (!isAuthenticated) {
-    menu.push({
-      name: 'Log In',
-      to: routes.logIn(),
-      isActive: pathname === routes.logIn(),
-    })
-  }
-
+  const menuDesktop = []
   // Determine main action button
   let mainActionButton
 
   if (isAuthenticated && currentUserProfile) {
+    menuDesktop.push(aboutLink, faqLink)
+
     mainActionButton = ctaComponent || (
       <Button size="lg" as={Link} to={routes.newPack()} variant="primary">
         Create Pack
@@ -116,6 +96,8 @@ const Header = ({ ctaComponent }: HeaderProps) => {
       </Button>
     )
   } else {
+    menuDesktop.push(aboutLink, faqLink, logInLink)
+
     mainActionButton = (
       <Button size="lg" as={Link} to={routes.signUp()} variant="primary">
         Sign Up
@@ -153,14 +135,13 @@ const Header = ({ ctaComponent }: HeaderProps) => {
               <HStack spacing={2} dir="horizontal">
                 <Show above="md">
                   <HStack spacing={0}>
-                    {menu.map((item) => (
+                    {menuDesktop.map((item) => (
                       <ChakraLink
                         key={item.to}
                         as={Link}
                         to={item.to}
                         px={3}
                         fontWeight={500}
-                        textDecoration={item.isActive ? 'underline' : 'none'}
                       >
                         {item.name}
                       </ChakraLink>
@@ -171,7 +152,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                 {mainActionButton}
 
                 {isAuthenticated && currentUserProfile && (
-                  <>
+                  <Show above="md">
                     <Menu placement="bottom-end">
                       <MenuButton
                         as={Button}
@@ -234,49 +215,15 @@ const Header = ({ ctaComponent }: HeaderProps) => {
                         </MenuItem>
                       </MenuList>
                     </Menu>
-                  </>
+                  </Show>
                 )}
 
-                <Hide above="md">
-                  <IconButton
-                    icon={<HamburgerIcon />}
-                    onClick={onOpen}
-                    aria-label="Open Header Menu"
-                    variant="ghost"
-                    fontSize="2xl"
-                    mr="-6px"
-                    ml="-4px"
-                  />
-                </Hide>
+                <HeaderMobileMenu />
               </HStack>
             )}
           </Flex>
         </Flex>
       </Flex>
-
-      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton size="lg" right={2} borderRadius="full" />
-          <DrawerBody>
-            <Stack py={12} spacing={4}>
-              {menu.map((item) => (
-                <ChakraLink
-                  key={item.to}
-                  as={Link}
-                  to={item.to}
-                  px={3}
-                  fontWeight={500}
-                  textDecoration={item.isActive ? 'underline' : 'none'}
-                  fontSize="lg"
-                >
-                  {item.name}
-                </ChakraLink>
-              ))}
-            </Stack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
     </>
   )
 }
