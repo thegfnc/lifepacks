@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import {
   Accordion,
   Box,
@@ -7,249 +5,381 @@ import {
   Center,
   Container,
   Flex,
+  Grid,
+  GridItem,
   Heading,
-  Hide,
-  HStack,
-  IconButton,
   Image,
-  Show,
   Stack,
   Text,
 } from '@chakra-ui/react'
+import { Balancer } from 'react-wrap-balancer'
 
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
 
+import { useAuth } from 'src/auth'
 import AccordionItem from 'src/components/AccordionItem/AccordionItem'
-import Pack from 'src/components/Pack/Pack'
+import { HEADER_HEIGHT } from 'src/components/Header/Header'
 import PageContainer from 'src/components/PageContainer/PageContainer'
-import UserProfile, {
-  UserProfileLayout,
-} from 'src/components/UserProfile/UserProfile'
 import { faq } from 'src/data/faqData'
-import { examplePacks, stores } from 'src/data/homePageData'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 
+import createGreatLookingGuides from './create-great-looking-guides.png'
+import earnMoneyAffiliateLinks from './earn-money-affiliate-links.png'
+import shareCollectionsSingleLink from './share-collections-single-link.png'
+
 const AboutPage = () => {
-  const [examplePackTabIndex, setExamplePackTabIndex] = useState(0)
+  const { isAuthenticated } = useAuth()
+
+  const getStartedLink = isAuthenticated ? routes.newPack() : routes.signUp()
 
   return (
     <>
       <MetaTags ogUrl={getEnvironmentUrl(routes.about())} />
 
-      <Box as="section" bg="purple.500" overflow="hidden" maxH="115vh">
+      <Box
+        as="section"
+        bg="linear-gradient(180deg, #FFDFE7 0%, #DDDBF0 100%);"
+        borderBottom="1px solid"
+        borderBottomColor="blackAlpha.100"
+        pt={HEADER_HEIGHT}
+        mt={'-' + HEADER_HEIGHT}
+      >
         <PageContainer
-          minHeight="auto"
-          pt={{ base: 8, md: '120px' }}
+          pt={0}
           pb={0}
-          px={{ base: 2, md: 10 }}
+          maxHeight={{ base: 'none', lg: 'calc(100vh - 110px)' }}
+          minHeight={{ base: 'auto', lg: '630px' }}
         >
-          <Flex direction="column" align="center">
-            <Heading
-              fontSize={{ base: '4xl', md: '6xl' }}
-              lineHeight={{ base: 'none', md: '93%' }}
-              letterSpacing="tight"
-              color="white"
+          <Flex align="center" justify="center" py={{ base: 24, md: '163px' }}>
+            <Stack
+              w={'full'}
+              maxW={{ base: '674px' }}
               textAlign="center"
+              spacing={6}
             >
-              Share your expert opinion
-            </Heading>
-            {/* desktop */}
-            <Show above="lg">
-              <HStack mt={8}>
-                {examplePacks.map((examplePack, index) => {
-                  const isCurrentTab = index === examplePackTabIndex
-
-                  return (
-                    <Button
-                      key={examplePack.tabLabel}
-                      bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
-                      _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
-                      _active={{
-                        bg: isCurrentTab ? 'white' : 'whiteAlpha.500',
-                      }}
-                      color={isCurrentTab ? 'black' : 'white'}
-                      onClick={() => setExamplePackTabIndex(index)}
-                      leftIcon={<Text>{examplePack.tabEmoji}</Text>}
-                      rounded="full"
-                    >
-                      <Text>{examplePack.tabLabel}</Text>
-                    </Button>
-                  )
-                })}
-              </HStack>
-            </Show>
-            {/* mobile */}
-            <Hide above="lg">
-              <HStack mt={6}>
-                {examplePacks.map((examplePack, index) => {
-                  const isCurrentTab = index === examplePackTabIndex
-
-                  return (
-                    <IconButton
-                      key={examplePack.tabLabel}
-                      bg={isCurrentTab ? 'white' : 'whiteAlpha.300'}
-                      _hover={{ bg: isCurrentTab ? 'white' : 'whiteAlpha.400' }}
-                      _active={{
-                        bg: isCurrentTab ? 'white' : 'whiteAlpha.500',
-                      }}
-                      onClick={() => setExamplePackTabIndex(index)}
-                      aria-label={examplePack.tabLabel}
-                      px={'14px'}
-                      icon={<Text fontSize="xl">{examplePack.tabEmoji}</Text>}
-                      rounded="full"
-                    />
-                  )
-                })}
-              </HStack>
-            </Hide>
-            <Box
-              bg="beige.500"
-              px={{ base: 6, md: 14, xl: 24 }}
-              pt={{ base: 6, md: '76px' }}
-              pb={{ base: 6, md: 14 }}
-              mt={{ base: 8, md: '65px' }}
-              borderTopLeftRadius={{ base: '3xl', md: '24px' }}
-              borderTopRightRadius={{ base: '3xl', md: '24px' }}
-              position="relative"
-            >
-              <Show above="md">
-                <Box
-                  borderBottomColor="blackAlpha.200"
-                  borderBottomWidth="1px"
-                  position="absolute"
-                  top={0}
-                  left={0}
-                  right={0}
-                  height="36px"
+              <Heading
+                fontSize={{ base: '40px', lg: '56px' }}
+                lineHeight={1}
+                letterSpacing="tighter"
+                color="marketing.deepBlue"
+                fontWeight={800}
+              >
+                <Balancer>
+                  Lifepacks is the most legit way to recommend your favorite
+                  things.
+                </Balancer>
+              </Heading>
+              <Text
+                fontFamily="bitter"
+                fontSize={{ base: '18px', md: '22px' }}
+                lineHeight="1.33"
+                color="marketing.deepBlue"
+              >
+                You’re an expert with exceptional taste. People look to you to
+                guide them through the great Amazon™ wilderness. Now you can
+                finally formalize your best recommendations in one place.
+              </Text>
+              <Box>
+                <Button
+                  as={Link}
+                  size={{ base: 'lg', md: 'xl' }}
+                  to={getStartedLink}
+                  variant="primary"
                 >
-                  <HStack spacing={2} position="absolute" top={3} left={6}>
-                    <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
-                    <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
-                    <Box h="3" w="3" borderRadius="full" bg="blackAlpha.200" />
-                  </HStack>
-                </Box>
-              </Show>
-              <Flex>
-                <Flex direction={{ base: 'column', md: 'row' }}>
-                  <Box
-                    width={{ base: 'full', lg: '70%' }}
-                    paddingRight={{ base: 0, lg: 10, xl: 20 }}
-                    mt={{ base: 6, md: 0 }}
-                    order={{ base: 2, md: 1 }}
-                  >
-                    <Pack pack={examplePacks[examplePackTabIndex].pack} />
-                  </Box>
-                  <Show above="lg">
-                    <Box
-                      width={{ base: 'full', md: '30%' }}
-                      borderLeftWidth={{ base: '0', md: '1px' }}
-                      borderLeftColor={'blackAlpha.200'}
-                      paddingLeft={{ base: 0, md: 10 }}
-                      order={{ base: 1, md: 2 }}
-                    >
-                      <UserProfile
-                        layout={UserProfileLayout.Sidebar}
-                        userProfile={
-                          examplePacks[examplePackTabIndex].userProfile
-                        }
-                      />
-                    </Box>
-                  </Show>
-                </Flex>
-              </Flex>
-            </Box>
+                  Get Started
+                </Button>
+              </Box>
+            </Stack>
           </Flex>
         </PageContainer>
       </Box>
 
-      <Box as="section" bg="yellow.500" py={{ base: 12, md: '120px' }}>
+      <Box as="section">
         <PageContainer minHeight="auto" pt={0} pb={0}>
-          <Box px={4} textAlign="center">
-            <Heading
-              fontSize={{ base: '4xl', md: '6xl' }}
-              lineHeight={{ base: 'none', md: '93%' }}
-              letterSpacing="tight"
-              textAlign="center"
-            >
-              Get paid for your <br />
-              recommendations
-            </Heading>
-            <Text
-              fontFamily="bitter"
-              fontSize={{ base: 'lg', md: '2xl' }}
-              lineHeight="short"
-              mt={{ base: 4, md: 6 }}
-            >
-              Use affiliate links to profit when someone buys from your pack.
-            </Text>
-          </Box>
-        </PageContainer>
-        {/* desktop */}
-        <Show above="md">
-          <Flex
-            mt={{ base: 10, md: '75px' }}
-            justify="center"
-            overflow="hidden"
-            pb={{ base: 10, md: 16 }}
+          <Grid
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+            }}
+            gap={6}
+            my={{ base: 14, md: 12 }}
           >
-            <HStack spacing={{ base: 6, md: 12 }}>
-              {stores.map((store) => (
-                <Center
-                  key={store.storeName}
-                  p={20}
-                  h={'290px'}
-                  w={'290px'}
-                  bg="white"
-                  borderRadius="32px"
-                  boxShadow="xl"
-                >
-                  <Image src={store.storeLogo} h={'120px'} w={'120px'} />
-                </Center>
-              ))}
-            </HStack>
-          </Flex>
-        </Show>
-        {/* mobile */}
-        <Hide above="md">
-          <Flex justify="center" mt={6} mb={2} mx={2}>
-            <Flex justify="center" w="full" maxW="500px" flexWrap="wrap">
-              {stores.slice(0, 4).map((store) => (
-                <Center
-                  key={store.storeName}
-                  p={'45px'}
-                  h={'170px'}
-                  w={'170px'}
-                  bg="white"
-                  borderRadius="32px"
-                  boxShadow="xl"
-                  mb={4}
-                  mx={2}
-                >
-                  <Image src={store.storeLogo} h="80px" w="80px" />
-                </Center>
-              ))}
-            </Flex>
-          </Flex>
-        </Hide>
-        <PageContainer minHeight="auto" pt={0} pb={0}>
-          <Box textAlign="center">
-            <Button
-              as={Link}
-              size={{ base: 'lg', md: 'xl' }}
-              to={routes.affiliateLinks101()}
-            >
-              Learn More
-            </Button>
-          </Box>
+            <GridItem>
+              <Flex align="center" height="100%" px={{ base: 0, md: '50px' }}>
+                <Stack spacing={6}>
+                  <Heading
+                    fontSize={{ base: '40px', md: '48px' }}
+                    lineHeight={1}
+                    letterSpacing="tighter"
+                    color="marketing.deepBlue"
+                    fontWeight={800}
+                  >
+                    <Balancer>Create great looking guides in minutes.</Balancer>
+                  </Heading>
+                  <Text
+                    fontFamily="bitter"
+                    fontSize={{ base: '20px' }}
+                    lineHeight="1.33"
+                    color="marketing.deepBlue"
+                  >
+                    We made it ridiculously easy to curate your favorite
+                    products into professional looking guides
+                  </Text>
+                  <Box>
+                    <Button
+                      as={Link}
+                      size={{ base: 'lg', md: 'xl' }}
+                      to={getStartedLink}
+                      variant="primary"
+                    >
+                      Get Started
+                    </Button>
+                  </Box>
+                </Stack>
+              </Flex>
+            </GridItem>
+            <GridItem>
+              <Box>
+                <Image src={createGreatLookingGuides}></Image>
+              </Box>
+            </GridItem>
+          </Grid>
         </PageContainer>
       </Box>
 
-      <Box as="section" bg="white">
+      <Box as="section">
+        <PageContainer minHeight="auto" pt={0} pb={0}>
+          <Grid
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+            }}
+            gap={6}
+            my={{ base: 14, md: 12 }}
+          >
+            <GridItem order={{ base: 2, md: 1 }}>
+              <Box>
+                <Image src={shareCollectionsSingleLink}></Image>
+              </Box>
+            </GridItem>
+            <GridItem order={{ base: 1, md: 2 }}>
+              <Flex align="center" height="100%" px={{ base: 0, md: '50px' }}>
+                <Stack spacing={6}>
+                  <Heading
+                    fontSize={{ base: '40px', md: '48px' }}
+                    lineHeight={1}
+                    letterSpacing="tighter"
+                    color="marketing.deepBlue"
+                    fontWeight={800}
+                  >
+                    <Balancer>Share collections with a single link.</Balancer>
+                  </Heading>
+                  <Text
+                    fontFamily="bitter"
+                    fontSize={{ base: '20px' }}
+                    lineHeight="1.33"
+                    color="marketing.deepBlue"
+                  >
+                    We made it ridiculously easy to curate your favorite
+                    products into professional looking guides
+                  </Text>
+                  <Box>
+                    <Button
+                      as={Link}
+                      size={{ base: 'lg', md: 'xl' }}
+                      to={getStartedLink}
+                      variant="primary"
+                    >
+                      Get Started
+                    </Button>
+                  </Box>
+                </Stack>
+              </Flex>
+            </GridItem>
+          </Grid>
+        </PageContainer>
+      </Box>
+
+      <Box as="section">
+        <PageContainer minHeight="auto" pt={0} pb={0}>
+          <Grid
+            templateColumns={{
+              base: 'repeat(1, 1fr)',
+              md: 'repeat(2, 1fr)',
+            }}
+            gap={6}
+            my={{ base: 14, md: 12 }}
+          >
+            <GridItem>
+              <Flex align="center" height="100%" px={{ base: 0, md: '50px' }}>
+                <Stack spacing={6}>
+                  <Heading
+                    fontSize={{ base: '40px', md: '48px' }}
+                    lineHeight={1}
+                    letterSpacing="tighter"
+                    color="marketing.deepBlue"
+                    fontWeight={800}
+                  >
+                    <Balancer>Earn money with affiliate links.</Balancer>
+                  </Heading>
+                  <Text
+                    fontFamily="bitter"
+                    fontSize={{ base: '20px' }}
+                    lineHeight="1.33"
+                    color="marketing.deepBlue"
+                  >
+                    We made it ridiculously easy to curate your favorite
+                    products into professional looking guides
+                  </Text>
+                  <Box>
+                    <Button
+                      as={Link}
+                      size={{ base: 'lg', md: 'xl' }}
+                      to={getStartedLink}
+                      variant="primary"
+                    >
+                      Get Started
+                    </Button>
+                  </Box>
+                </Stack>
+              </Flex>
+            </GridItem>
+            <GridItem>
+              <Box>
+                <Image src={earnMoneyAffiliateLinks}></Image>
+              </Box>
+            </GridItem>
+          </Grid>
+        </PageContainer>
+      </Box>
+
+      <Box as="section" bg="white" textAlign="center">
+        <PageContainer minHeight="auto" pt="0" pb="0">
+          <Stack spacing="72px" py={{ base: 20, md: '160px' }}>
+            <Heading
+              fontSize={{ base: '40px', xl: '56px' }}
+              lineHeight={1}
+              letterSpacing="tighter"
+              color="marketing.deepBlue"
+              fontWeight={800}
+            >
+              <Balancer>Lifepacks is for everyone.</Balancer>
+            </Heading>
+            <Grid
+              templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }}
+              gap="80px"
+            >
+              <GridItem
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Center
+                  background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
+                  borderRadius="full"
+                  fontSize={{ base: '72px', lg: '80px', xl: '96px' }}
+                  lineHeight={1}
+                  aspectRatio={1}
+                  maxWidth={{ base: '260px', md: '320px' }}
+                  width="full"
+                >
+                  🧐
+                </Center>
+                <Heading
+                  fontSize={{ base: '32px' }}
+                  letterSpacing="tight"
+                  color="marketing.deepBlue"
+                  fontWeight={800}
+                  mt="28px"
+                >
+                  Experts
+                </Heading>
+                <Text mt={3} maxW="270px">
+                  Experts use Lifepacks to easily share the products they swear
+                  by with friends and fans
+                </Text>
+              </GridItem>
+              <GridItem
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Center
+                  background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
+                  borderRadius="full"
+                  fontSize={{ base: '72px', lg: '80px', xl: '96px' }}
+                  lineHeight={1}
+                  aspectRatio={1}
+                  maxWidth={{ base: '260px', md: '320px' }}
+                  width="full"
+                >
+                  🥰
+                </Center>
+                <Heading
+                  fontSize={{ base: '32px' }}
+                  letterSpacing="tight"
+                  color="marketing.deepBlue"
+                  fontWeight={800}
+                  mt="28px"
+                >
+                  Hobbyists
+                </Heading>
+                <Text mt={3} maxW="270px">
+                  Hobbyists use Lifepacks to find recommendations from reviewers
+                  they can actually trust.
+                </Text>
+              </GridItem>
+              <GridItem
+                display="flex"
+                alignItems="center"
+                flexDirection="column"
+              >
+                <Center
+                  background="linear-gradient(180deg, #E5DFFF 0%, #FFEACD 100%);"
+                  borderRadius="full"
+                  fontSize={{ base: '72px', lg: '80px', xl: '96px' }}
+                  lineHeight={1}
+                  aspectRatio={1}
+                  maxWidth={{ base: '260px', md: '320px' }}
+                  width="full"
+                >
+                  🤩
+                </Center>
+                <Heading
+                  fontSize={{ base: '32px' }}
+                  letterSpacing="tight"
+                  color="marketing.deepBlue"
+                  fontWeight={800}
+                  mt="28px"
+                >
+                  Influencers
+                </Heading>
+                <Text mt={3} maxW="270px">
+                  Influencers use Lifepacks for the template to share affiliate
+                  links and earn money on the side.
+                </Text>
+              </GridItem>
+            </Grid>
+            <Box>
+              <Button
+                as={Link}
+                size={{ base: 'lg', md: 'xl' }}
+                to={getStartedLink}
+                variant="primary"
+              >
+                Get Started
+              </Button>
+            </Box>
+          </Stack>
+        </PageContainer>
+      </Box>
+
+      <Box as="section">
         <PageContainer
           minHeight="auto"
-          pt={{ base: 10, md: '120px' }}
-          pb={{ base: 10, md: '120px' }}
+          pt={{ base: 20, md: '160px' }}
+          pb={{ base: 20, md: '160px' }}
         >
           <Flex direction="column" px={{ base: 0, md: 4 }} align="center">
             <Heading
@@ -257,6 +387,7 @@ const AboutPage = () => {
               lineHeight={{ base: 'none', md: '93%' }}
               letterSpacing="tight"
               textAlign="center"
+              color="marketing.deepBlue"
             >
               Ask us anything
             </Heading>
@@ -267,13 +398,8 @@ const AboutPage = () => {
             >
               <Accordion defaultIndex={[0]} allowMultiple>
                 <Stack spacing={4}>
-                  {faq.slice(0, 3).map(({ question, answer }, index) => (
-                    <AccordionItem
-                      key={index}
-                      title={question}
-                      body={answer}
-                      colorMode="dark"
-                    />
+                  {faq.slice(0, 4).map(({ question, answer }, index) => (
+                    <AccordionItem key={index} title={question} body={answer} />
                   ))}
                 </Stack>
               </Accordion>
@@ -282,7 +408,7 @@ const AboutPage = () => {
                   as={Link}
                   to={routes.faq()}
                   size={{ base: 'lg', md: 'xl' }}
-                  variant="outline"
+                  variant="secondary"
                   colorScheme="gray"
                 >
                   View all FAQ

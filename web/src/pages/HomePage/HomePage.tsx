@@ -59,7 +59,6 @@ const HomePage = () => {
               <Box
                 w={'full'}
                 maxW={{ base: '760px', lg: '400px', xl: '448px' }}
-                textAlign="left"
                 mr={{ base: 0, lg: '40px', xl: '72px' }}
               >
                 <Heading
