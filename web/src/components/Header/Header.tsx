@@ -112,7 +112,11 @@ const Header = ({ ctaComponent }: HeaderProps) => {
         alignItems={'center'}
         justifyContent="center"
         h={HEADER_HEIGHT}
-        color={pathname === routes.home() ? 'marketing.deepBlue' : 'inherit'}
+        color={
+          pathname === routes.home() || pathname === routes.about()
+            ? 'marketing.deepBlue'
+            : 'inherit'
+        }
       >
         <Flex
           width="100%"
@@ -122,7 +126,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
         >
           <Logo
             color={
-              pathname === routes.home()
+              pathname === routes.home() || pathname === routes.about()
                 ? 'marketing.deepBlue'
                 : 'blackAlpha.900'
             }
