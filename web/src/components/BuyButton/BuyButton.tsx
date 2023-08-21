@@ -47,7 +47,7 @@ const BuyButton = ({ packItemId, purchaseUrl }: BuyButtonProps) => {
   return (
     <Button
       variant="yellow"
-      size="lg"
+      size="xl"
       w={{ base: 'full', md: 'auto' }}
       {...(isValidPurchaseUrl ? linkProps : {})}
     >

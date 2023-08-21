@@ -23,7 +23,7 @@ type ShareMenuProps = {
 const ShareMenu = ({ shareUrl, shareTitle }: ShareMenuProps) => {
   return (
     <Menu>
-      <MenuButton as={Button} variant="outline" colorScheme="gray">
+      <MenuButton as={Button} variant="secondary" size="lg">
         Share
       </MenuButton>
       <MenuList borderRadius="xl">

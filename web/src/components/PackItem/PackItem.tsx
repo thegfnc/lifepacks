@@ -29,11 +29,7 @@ const PackItem = ({
   description,
 }: PackItemProps) => {
   return (
-    <Card
-      borderRadius={{ base: '24px', md: '32px' }}
-      p={{ base: 4, md: 10 }}
-      boxShadow={{ base: 'md', md: 'lg' }}
-    >
+    <Card borderRadius={{ base: '24px', md: '32px' }} p={{ base: 4, md: 10 }}>
       <CardHeader p={0}>
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
@@ -54,7 +50,7 @@ const PackItem = ({
           <Center
             borderTopWidth={{ base: '1px', md: '0' }}
             borderLeftWidth={{ base: '0', md: '1px' }}
-            borderColor="blackAlpha.200"
+            borderColor="blackAlpha.100"
           >
             <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 4, md: 0 }}>
               <Heading size="md" lineHeight="1.2" fontWeight="semibold">
@@ -76,7 +72,7 @@ const PackItem = ({
           lineHeight={{ base: '1.5', md: '1.33' }}
           color="blackAlpha.700"
           borderTopWidth="1px"
-          borderTopColor="blackAlpha.200"
+          borderTopColor="blackAlpha.100"
         >
           {description}
         </CardBody>
