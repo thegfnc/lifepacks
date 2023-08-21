@@ -3,9 +3,14 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  IconButton,
   Input,
+  InputGroup,
+  InputRightElement,
   Stack,
+  useBoolean,
 } from '@chakra-ui/react'
+import { MdArrowForward } from 'react-icons/md'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
@@ -24,6 +29,7 @@ const MailingListSignUpForm = ({
   onSubmit,
   isLoading,
 }: MailingListSignUpFormProps) => {
+  const [isFormFieldActive, setIsFormFieldActive] = useBoolean()
   const formMethods = useForm<MailingListSignUpFormValues>()
   const { register, formState } = formMethods
 
@@ -45,39 +51,43 @@ const MailingListSignUpForm = ({
               marginBottom={0}
               marginRight={0}
             >
-              Stay in touch
+              Newsletter
             </FormLabel>
-            <Input
-              placeholder="Enter your email"
-              type="email"
-              autoComplete="email"
-              {...register('email', {
-                required: {
-                  value: true,
-                  message: 'E-mail address is required',
-                },
-              })}
-              borderRadius="xl"
-              borderWidth={0}
-              background="blackAlpha.50"
-              mt={4}
-            />
+            <InputGroup mt={4} size="lg">
+              <Input
+                placeholder="Enter email to sign up"
+                type="email"
+                autoComplete="email"
+                {...register('email', {
+                  required: {
+                    value: true,
+                    message: 'E-mail address is required',
+                  },
+                })}
+                borderRadius="xl"
+                borderWidth={0}
+                background="blackAlpha.50"
+                onFocus={setIsFormFieldActive.on}
+                onBlur={setIsFormFieldActive.off}
+              />
+              <InputRightElement>
+                <IconButton
+                  aria-label="Subscribe"
+                  type="submit"
+                  variant={isFormFieldActive ? 'primary' : 'secondary'}
+                  isLoading={isLoading}
+                  borderRadius="full"
+                  size="sm"
+                  color={isFormFieldActive ? 'white' : 'blackAlpha.400'}
+                  icon={<MdArrowForward size="20px" />}
+                />
+              </InputRightElement>
+            </InputGroup>
             <FormErrorMessage>
               {formState.errors.email?.message}
             </FormErrorMessage>
           </FormControl>
         </Stack>
-        <Button
-          aria-label="Subscribe"
-          type="submit"
-          variant="secondary"
-          isLoading={isLoading}
-          w="full"
-          mt={2}
-          borderRadius="xl"
-        >
-          Sign up for mailing list
-        </Button>
       </Stack>
     </Form>
   )

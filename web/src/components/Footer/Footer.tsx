@@ -42,7 +42,7 @@ const Footer = () => (
           <Heading size="sm" lineHeight="base">
             Resources
           </Heading>
-          <Stack my={4}>
+          <Stack mt={4}>
             <ChakraLink as={Link} to={routes.about()}>
               About
             </ChakraLink>
@@ -52,16 +52,11 @@ const Footer = () => (
             <ChakraLink as={Link} to={routes.faq()}>
               FAQ
             </ChakraLink>
+            <ChakraLink href="mailto:lifepacksco@gmail.com">Contact</ChakraLink>
           </Stack>
         </GridItem>
         <GridItem>
           <MailingListSignUp />
-          <Text mt={{ base: 4, md: 12 }} fontSize="sm" color="blackAlpha.600">
-            For support and press inquiries, contact us directly at{' '}
-            <ChakraLink href="mailto:lifepacksco@gmail.com">
-              lifepacksco@gmail.com
-            </ChakraLink>
-          </Text>
         </GridItem>
       </Grid>
       <HStack
