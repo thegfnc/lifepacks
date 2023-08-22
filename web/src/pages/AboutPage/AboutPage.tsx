@@ -124,7 +124,9 @@ const AboutPage = () => {
                     color="marketing.deepBlue"
                   >
                     We made it ridiculously easy to curate your favorite
-                    products into professional looking guides
+                    products into professional looking guides. Add a title and
+                    some products with optional descriptions and voila ...
+                    you&apos;re done.
                   </Text>
                   <Box>
                     <Button
@@ -181,8 +183,11 @@ const AboutPage = () => {
                     lineHeight="1.33"
                     color="marketing.deepBlue"
                   >
-                    We made it ridiculously easy to curate your favorite
-                    products into professional looking guides
+                    After making a pack, you&apos;ll be able to reuse the same
+                    link to share your recommendations with your friends, fans,
+                    and followers on virtually every platform. This helps you
+                    spread your message faster without having to copy, paste,
+                    and reformat.
                   </Text>
                   <Box>
                     <Button
@@ -229,8 +234,10 @@ const AboutPage = () => {
                     lineHeight="1.33"
                     color="marketing.deepBlue"
                   >
-                    We made it ridiculously easy to curate your favorite
-                    products into professional looking guides
+                    All of your favorite affiliate programs are compatible with
+                    Lifepacks and you keep all of the profit. Sign up for your
+                    favorite affiliate program, generate the link with your
+                    embedded code, and paste it into each item on your pack.
                   </Text>
                   <Box>
                     <Button
@@ -297,7 +304,7 @@ const AboutPage = () => {
                 </Heading>
                 <Text mt={3} maxW="270px">
                   Experts use Lifepacks to easily share the products they swear
-                  by with friends and fans
+                  by with friends and followers.
                 </Text>
               </GridItem>
               <GridItem
@@ -356,8 +363,8 @@ const AboutPage = () => {
                   Influencers
                 </Heading>
                 <Text mt={3} maxW="270px">
-                  Influencers use Lifepacks for the template to share affiliate
-                  links and earn money on the side.
+                  Influencers use Lifepacks to share affiliate links on their
+                  platforms and earn money on the side.
                 </Text>
               </GridItem>
             </Grid>
