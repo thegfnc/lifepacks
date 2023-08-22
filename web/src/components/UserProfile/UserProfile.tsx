@@ -8,7 +8,9 @@ import {
   Center,
   Stack,
   Link as ChakraLink,
+  AvatarBadge,
 } from '@chakra-ui/react'
+import { MdVerified } from 'react-icons/md'
 import { UserProfile as UserProfileType } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -60,7 +62,20 @@ const UserProfileBannerLayout = ({
           })}
           name={userDisplayName}
           {...linkProps}
-        />
+        >
+          {userProfile.verified && (
+            <AvatarBadge
+              color="purple.500"
+              bgColor="beige.500"
+              border="none"
+              boxSize=".75em"
+              bottom={1}
+              right={1}
+            >
+              <MdVerified size=".6em" />
+            </AvatarBadge>
+          )}
+        </Avatar>
       </Center>
       <Stack mt={4} spacing={1}>
         <Text
@@ -147,7 +162,20 @@ const UserProfileSidebarLayout = ({
             userProfile.username
           )}
           {...linkProps}
-        />
+        >
+          {userProfile.verified && (
+            <AvatarBadge
+              color="purple.500"
+              bgColor="beige.500"
+              border="none"
+              boxSize=".75em"
+              bottom={1}
+              right={1}
+            >
+              <MdVerified size=".6em" />
+            </AvatarBadge>
+          )}
+        </Avatar>
         {actionButton}
       </Flex>
       <Flex direction="column" mt={4}>
