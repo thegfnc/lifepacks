@@ -27,7 +27,7 @@ import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 
-export const HEADER_HEIGHT = '80px'
+import { HEADER_HEIGHT } from './Header'
 
 const HeaderMobileMenu = () => {
   const { isAuthenticated, logOut } = useAuth()
@@ -109,7 +109,13 @@ const HeaderMobileMenu = () => {
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent display="block">
-          <DrawerHeader display="flex" justifyContent="space-between" py={5}>
+          <DrawerHeader
+            display="flex"
+            justifyContent="space-between"
+            height={HEADER_HEIGHT}
+            alignItems="center"
+            py={0}
+          >
             <Flex>
               {currentUserProfile?.username && (
                 <>
@@ -132,7 +138,11 @@ const HeaderMobileMenu = () => {
                       {userDisplayName}
                     </Text>
                     {!userDisplayName.endsWith(currentUserProfile.username) && (
-                      <Text fontSize="xs" color="blackAlpha.600">
+                      <Text
+                        fontSize="xs"
+                        color="blackAlpha.600"
+                        fontWeight="400"
+                      >
                         {'@' + currentUserProfile.username}
                       </Text>
                     )}

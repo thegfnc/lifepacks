@@ -48,6 +48,10 @@ const Header = ({ ctaComponent }: HeaderProps) => {
     refetch,
   } = useCurrentUserProfile()
 
+  const isMarketingPage =
+    (pathname === routes.home() && !isAuthenticated) ||
+    pathname === routes.about()
+
   const logOutAndRefetchCurrentUserProfile = () => {
     logOut()
     refetch()
@@ -112,11 +116,9 @@ const Header = ({ ctaComponent }: HeaderProps) => {
         alignItems={'center'}
         justifyContent="center"
         h={HEADER_HEIGHT}
-        color={
-          pathname === routes.home() || pathname === routes.about()
-            ? 'marketing.deepBlue'
-            : 'inherit'
-        }
+        color={isMarketingPage ? 'marketing.deepBlue' : 'inherit'}
+        borderBottom="1px solid"
+        borderColor="blackAlpha.100"
       >
         <Flex
           width="100%"
@@ -125,11 +127,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
           alignItems={'center'}
         >
           <Logo
-            color={
-              pathname === routes.home() || pathname === routes.about()
-                ? 'marketing.deepBlue'
-                : 'blackAlpha.900'
-            }
+            color={isMarketingPage ? 'marketing.deepBlue' : 'blackAlpha.900'}
           />
 
           <Flex alignItems={'center'} justifyContent="flex-end" flexGrow={1}>
