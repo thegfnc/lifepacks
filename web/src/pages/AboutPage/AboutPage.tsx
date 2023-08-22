@@ -186,8 +186,8 @@ const AboutPage = () => {
                     After making a pack, you&apos;ll be able to reuse the same
                     link to share your recommendations with your friends, fans,
                     and followers on virtually every platform. This helps you
-                    spread your message faster without having to copy, paste,
-                    and reformat.
+                    spread your message further faster without having to
+                    constantly copy, paste, and reformat.
                   </Text>
                   <Box>
                     <Button
