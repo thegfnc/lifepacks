@@ -111,11 +111,7 @@ export const Success = ({
         userProfile={userProfile}
         actionButton={
           isCurrentUser && (
-            <Button
-              variant="outline"
-              colorScheme="gray"
-              onClick={onEditModalOpen}
-            >
+            <Button variant="secondary" size="lg" onClick={onEditModalOpen}>
               Edit Profile
             </Button>
           )

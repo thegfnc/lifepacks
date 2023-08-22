@@ -1,6 +1,14 @@
 import { ReactNode } from 'react'
 
-import { Text, Avatar, HStack, Flex, Center, Stack } from '@chakra-ui/react'
+import {
+  Text,
+  Avatar,
+  HStack,
+  Flex,
+  Center,
+  Stack,
+  Link as ChakraLink,
+} from '@chakra-ui/react'
 import { UserProfile as UserProfileType } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -191,6 +199,20 @@ const UserProfileSidebarLayout = ({
             />
           )}
         </HStack>
+        <Text
+          mt={6}
+          pt={6}
+          borderTop="1px solid"
+          borderColor="blackAlpha.100"
+          color="blackAlpha.700"
+          fontSize="xs"
+        >
+          Support our contributors! When you buy through their links they may
+          earn a commission.{' '}
+          <ChakraLink as={Link} to={routes.affiliateLinks101()}>
+            Learn more
+          </ChakraLink>
+        </Text>
       </Flex>
     </>
   )

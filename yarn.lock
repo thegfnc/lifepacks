@@ -7131,9 +7131,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/bundler-plugin-core@npm:2.6.2":
-  version: 2.6.2
-  resolution: "@sentry/bundler-plugin-core@npm:2.6.2"
+"@sentry/bundler-plugin-core@npm:2.7.0":
+  version: 2.7.0
+  resolution: "@sentry/bundler-plugin-core@npm:2.7.0"
   dependencies:
     "@sentry/cli": ^2.20.1
     "@sentry/node": ^7.60.0
@@ -7143,7 +7143,7 @@ __metadata:
     glob: 9.3.2
     magic-string: 0.27.0
     unplugin: 1.0.1
-  checksum: f65809ab7c657e0f1b03899f8f698266de21618898def8173b10131a1c00f6016479f55f01128492e8f9a8f262648cc2627b0d3ed3d79e2a1eb4b7156cc77336
+  checksum: d628295f70cd5851c87b380f07ba3faaa005c0841fa4b0ed715cf54a816bd2a2171e946d1441cd2954f06645abe313546ee011764459ecbafb0c55eb7adf2bb3
   languageName: node
   linkType: hard
 
@@ -7290,13 +7290,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/vite-plugin@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "@sentry/vite-plugin@npm:2.6.2"
+"@sentry/vite-plugin@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@sentry/vite-plugin@npm:2.7.0"
   dependencies:
-    "@sentry/bundler-plugin-core": 2.6.2
+    "@sentry/bundler-plugin-core": 2.7.0
     unplugin: 1.0.1
-  checksum: 5ce20718a12c67fa623cdb7530c1f945a6d74e74e0263b71a7bd30ef697db06d18e189820674651b7d34c186a1c666ef8e9c6bd11dd67ee72c35c2dda45dc0b7
+  checksum: 9b0f93cfee3884bfc98bfd5ce68578bde77a8ca5ee3b1ec959960fd694bbd7b151a5e4908db832057ae5975df51b1b6f9e13c6675404164293467b46f9e6d532
   languageName: node
   linkType: hard
 
@@ -15760,9 +15760,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:10.15.2":
-  version: 10.15.2
-  resolution: "framer-motion@npm:10.15.2"
+"framer-motion@npm:10.16.1":
+  version: 10.16.1
+  resolution: "framer-motion@npm:10.16.1"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     tslib: ^2.4.0
@@ -15777,7 +15777,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: f1a406a2a06cbea8e9e04c1268090c815d65f3bc337721bfd7f86b0135edf9f308ae49a6f33aaa35e59c5d1a3d06ed6b1c833b0eb85196152e24e71f30d52d78
+  checksum: c54a3ba886752e72d1d6935464b612a2a7c732d0e670c2f54f7afc801d8ae8e6cd88212ddfd870f6d36b766373975f0ed253bf58caebdd2eafd3835707007d15
   languageName: node
   linkType: hard
 
@@ -22411,12 +22411,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-wrap-balancer@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "react-wrap-balancer@npm:1.0.0"
+"react-wrap-balancer@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "react-wrap-balancer@npm:1.1.0"
   peerDependencies:
     react: ">=16.8.0 || ^17.0.0 || ^18"
-  checksum: 50ff2fdc72ab7a6040a93db47001ce21949dc33beb433dccbf670082db15348334d910dccbd65da050fc34e9fda94077adc1e122a57a5b14122ebfede3bb1ce6
+  checksum: 4cf5f78231b22be80f9580b6fee69ad87a8689dc0efef56dd5d6358b1c5028fb624c4b3070d8375815209d06c1795ed3e9e43adc35558aedd2c618076cf4ccb6
   languageName: node
   linkType: hard
 
@@ -25987,17 +25987,17 @@ __metadata:
     "@redwoodjs/vite": 6.1.0
     "@redwoodjs/web": 6.1.0
     "@sentry/react": 7.64.0
-    "@sentry/vite-plugin": ^2.6.2
+    "@sentry/vite-plugin": ^2.7.0
     "@supabase/supabase-js": 2.32.0
     "@vercel/analytics": ^1.0.2
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
-    framer-motion: 10.15.2
+    framer-motion: 10.16.1
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
     react-icons: ^4.10.1
-    react-wrap-balancer: ^1.0.0
+    react-wrap-balancer: ^1.1.0
     uuid: ^9.0.0
   languageName: unknown
   linkType: soft

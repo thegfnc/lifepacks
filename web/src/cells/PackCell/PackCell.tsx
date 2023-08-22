@@ -188,7 +188,7 @@ export const Success = ({
         </Alert>
       )}
 
-      <Stack spacing={{ base: 4, md: 6 }}>
+      <Stack spacing={6}>
         <Flex alignItems="center" justifyContent={{ base: 'space-between' }}>
           <BylineCell username={username} date={pack.createdAt} />
           <HStack>
