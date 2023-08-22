@@ -36,6 +36,7 @@ export const QUERY = gql`
       givenName
       familyName
       biography
+      verified
       imageUrl
       facebookUrl
       instagramUrl
