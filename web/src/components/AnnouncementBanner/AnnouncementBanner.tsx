@@ -5,7 +5,9 @@ import {
   Grid,
   GridItem,
   Heading,
+  Hide,
   Image,
+  Show,
   Text,
   useBoolean,
 } from '@chakra-ui/react'
@@ -36,23 +38,40 @@ const AnnouncementBanner = () => {
     <PageContainer pt={10} pb={0} minHeight="none">
       <Box
         background="purple.50"
-        height={BANNER_HEIGHT}
+        minHeight={{ base: 'auto', md: BANNER_HEIGHT }}
         borderRadius="3xl"
         position="relative"
       >
         <CloseButton
           position="absolute"
-          top={6}
-          right={6}
+          top={{ base: 4, md: 6 }}
+          right={{ base: 4, md: 6 }}
           onClick={handleDismissBanner}
         />
-        <Grid templateColumns="repeat(2, minmax(0, 1fr))">
-          <GridItem px={10} display="flex" alignItems="center">
+        <Grid
+          templateColumns={{
+            base: 'repeat(1, minmax(0, 1fr))',
+            md: 'repeat(2, minmax(0, 1fr))',
+          }}
+        >
+          <GridItem
+            px={{ base: 6, md: 10 }}
+            py={{ base: 6, md: 0 }}
+            display="flex"
+            alignItems="center"
+          >
             <Box>
-              <Heading color="marketing.deepBlue">
+              <Heading
+                color="marketing.deepBlue"
+                fontSize={{ base: 'xl', md: '2xl', xl: '3xl' }}
+              >
                 It pays to have great taste.
               </Heading>
-              <Text color="marketing.deepBlue" mt={3}>
+              <Text
+                color="marketing.deepBlue"
+                mt={3}
+                fontSize={{ base: 'sm', md: 'md' }}
+              >
                 Create Packs with affiliate links and earn commission when
                 someone buys one of your recommendations.
               </Text>
@@ -67,20 +86,22 @@ const AnnouncementBanner = () => {
               </Button>
             </Box>
           </GridItem>
-          <GridItem
-            maxHeight={BANNER_HEIGHT}
-            display="flex"
-            justifyContent="flex-end"
-            pr="100px"
-          >
-            <Image
-              src={announcementBannerIcons}
-              height="100%"
-              fit="contain"
-              maxH="full"
-              maxW="full"
-            />
-          </GridItem>
+          <Show above="md">
+            <GridItem
+              maxHeight={BANNER_HEIGHT}
+              display="flex"
+              justifyContent="flex-end"
+              pr="100px"
+            >
+              <Image
+                src={announcementBannerIcons}
+                height="100%"
+                fit="contain"
+                maxH="full"
+                maxW="full"
+              />
+            </GridItem>
+          </Show>
         </Grid>
       </Box>
     </PageContainer>
