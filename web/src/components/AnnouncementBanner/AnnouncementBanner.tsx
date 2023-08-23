@@ -18,7 +18,7 @@ import announcementBannerIcons from './announcement-banner-icons.png'
 
 const BANNER_HEIGHT = '245px'
 const BANNER_VERSION = 1 // bump this each time you want to show the banner again
-const BANNER_LOCAL_STORAGE_KEY = 'announcementBannerDismissedVersion'
+const BANNER_LOCAL_STORAGE_KEY = 'announcement-banner-dismissed-version'
 
 const AnnouncementBanner = () => {
   const [hasJustDismissedBanner, setHasJustDismissedBanner] = useBoolean(false)
