@@ -47,12 +47,13 @@ const AnnouncementBanner = () => {
           top={{ base: 3, xl: 6 }}
           right={{ base: 3, xl: 6 }}
           onClick={handleDismissBanner}
+          borderRadius="full"
         />
         <Flex display="flex" alignItems="center" justify="space-between">
           <Box
             px={{ base: 6, lg: 10 }}
             py={{ base: 6, md: 8, lg: 10 }}
-            maxWidth={{ base: '100%', md: '50%' }}
+            maxWidth={{ base: '100%', md: '46%', lg: '50%' }}
           >
             <Heading
               color="marketing.deepBlue"
