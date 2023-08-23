@@ -2,10 +2,8 @@ import {
   Box,
   Button,
   CloseButton,
-  Grid,
-  GridItem,
+  Flex,
   Heading,
-  Hide,
   Image,
   Show,
   Text,
@@ -18,7 +16,7 @@ import PageContainer from '../PageContainer/PageContainer'
 
 import announcementBannerIcons from './announcement-banner-icons.png'
 
-const BANNER_HEIGHT = '245px'
+const BANNER_HEIGHT = '245'
 const BANNER_VERSION = 1 // bump this each time you want to show the banner again
 const BANNER_LOCAL_STORAGE_KEY = 'announcement-banner-dismissed-version'
 
@@ -36,74 +34,62 @@ const AnnouncementBanner = () => {
 
   return hasDismissedBanner ? null : (
     <PageContainer pt={10} pb={0} minHeight="none">
-      <Box
+      <Flex
         background="purple.50"
-        minHeight={{ base: 'auto', md: BANNER_HEIGHT }}
+        maxHeight={BANNER_HEIGHT}
         borderRadius="3xl"
         position="relative"
+        border="1px solid"
+        borderColor="blackAlpha.100"
       >
         <CloseButton
           position="absolute"
-          top={{ base: 4, md: 6 }}
-          right={{ base: 4, md: 6 }}
+          top={{ base: 3, xl: 6 }}
+          right={{ base: 3, xl: 6 }}
           onClick={handleDismissBanner}
         />
-        <Grid
-          templateColumns={{
-            base: 'repeat(1, minmax(0, 1fr))',
-            md: 'repeat(2, minmax(0, 1fr))',
-          }}
-        >
-          <GridItem
-            px={{ base: 6, md: 10 }}
-            py={{ base: 6, md: 0 }}
-            display="flex"
-            alignItems="center"
+        <Flex display="flex" alignItems="center" justify="space-between">
+          <Box
+            px={{ base: 6, lg: 10 }}
+            py={{ base: 6, md: 8, lg: 10 }}
+            maxWidth={{ base: '100%', md: '50%' }}
           >
-            <Box>
-              <Heading
-                color="marketing.deepBlue"
-                fontSize={{ base: 'xl', md: '2xl', xl: '3xl' }}
-              >
-                It pays to have great taste.
-              </Heading>
-              <Text
-                color="marketing.deepBlue"
-                mt={3}
-                fontSize={{ base: 'sm', md: 'md' }}
-              >
-                Create Packs with affiliate links and earn commission when
-                someone buys one of your recommendations.
-              </Text>
-              <Button
-                as={Link}
-                variant="primary"
-                size="lg"
-                mt={4}
-                to={routes.about()}
-              >
-                Learn more
-              </Button>
-            </Box>
-          </GridItem>
-          <Show above="md">
-            <GridItem
-              maxHeight={BANNER_HEIGHT}
-              display="flex"
-              justifyContent="flex-end"
-              pr="100px"
+            <Heading
+              color="marketing.deepBlue"
+              fontSize={{ base: 'xl', lg: '2xl', xl: '3xl' }}
             >
+              It pays to have great taste.
+            </Heading>
+            <Text
+              color="marketing.deepBlue"
+              mt={3}
+              fontSize={{ base: 'sm', lg: 'md' }}
+            >
+              Create Packs with affiliate links and earn commission when someone
+              buys one of your recommendations.
+            </Text>
+            <Button
+              as={Link}
+              variant="primary"
+              size="lg"
+              mt={4}
+              to={routes.about()}
+            >
+              Learn more
+            </Button>
+          </Box>
+          <Show above="md">
+            <Box height="100%" pr={{ base: '30px', lg: '50px', xl: '100px' }}>
               <Image
                 src={announcementBannerIcons}
-                height="100%"
                 fit="contain"
-                maxH="full"
-                maxW="full"
+                height="100%"
+                justifySelf="flex-end"
               />
-            </GridItem>
+            </Box>
           </Show>
-        </Grid>
-      </Box>
+        </Flex>
+      </Flex>
     </PageContainer>
   )
 }
