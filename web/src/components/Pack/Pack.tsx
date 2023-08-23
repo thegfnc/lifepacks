@@ -1,5 +1,4 @@
 import { Heading, Stack, Text, Button } from '@chakra-ui/react'
-import { Balancer } from 'react-wrap-balancer'
 import { Pack as PackType, PackItem as PackItemType } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -28,7 +27,7 @@ const Pack = ({ pack }: PackProps) => {
             lineHeight="1.14"
             fontWeight="bold"
           >
-            <Balancer>{pack.title}</Balancer>
+            {pack.title}
           </Heading>
           {pack.description && (
             <Text
