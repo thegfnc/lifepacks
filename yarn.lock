@@ -7129,17 +7129,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/browser@npm:7.64.0":
-  version: 7.64.0
-  resolution: "@sentry/browser@npm:7.64.0"
+"@sentry/browser@npm:7.65.0":
+  version: 7.65.0
+  resolution: "@sentry/browser@npm:7.65.0"
   dependencies:
-    "@sentry-internal/tracing": 7.64.0
-    "@sentry/core": 7.64.0
-    "@sentry/replay": 7.64.0
-    "@sentry/types": 7.64.0
-    "@sentry/utils": 7.64.0
+    "@sentry-internal/tracing": 7.65.0
+    "@sentry/core": 7.65.0
+    "@sentry/replay": 7.65.0
+    "@sentry/types": 7.65.0
+    "@sentry/utils": 7.65.0
     tslib: ^2.4.1 || ^1.9.3
-  checksum: 63a62add37ec5e07f238f6556553a53718116c430d6cd14ee69560fbf3b58877ce92619cc0a7d9914fa0a675f05d5efce58f2095f56ed9fa0175b51cc1264e31
+  checksum: ce3417ecce018109e375805d729cfe6dff7d8f8905fc6e66b9a6212cb62247c4ac39e356a528597caa0f352c42b92447654d234691a03e603ae05c0a6b1c7117
   languageName: node
   linkType: hard
 
@@ -7258,29 +7258,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/react@npm:7.64.0":
-  version: 7.64.0
-  resolution: "@sentry/react@npm:7.64.0"
+"@sentry/react@npm:7.65.0":
+  version: 7.65.0
+  resolution: "@sentry/react@npm:7.65.0"
   dependencies:
-    "@sentry/browser": 7.64.0
-    "@sentry/types": 7.64.0
-    "@sentry/utils": 7.64.0
+    "@sentry/browser": 7.65.0
+    "@sentry/types": 7.65.0
+    "@sentry/utils": 7.65.0
     hoist-non-react-statics: ^3.3.2
     tslib: ^2.4.1 || ^1.9.3
   peerDependencies:
     react: 15.x || 16.x || 17.x || 18.x
-  checksum: 553c6ca7f135f45c909b4c729cd2847a5ee60c4aec8a08a1fa84c0113a5b62ddcf4e2a7c1215d6ed04e19cf3b4d45d909ec00ba7f64c758ea828456a54fdbbfc
+  checksum: 5198b6d16be3ba22f27f3fd1c46d298cd518a9354a4c5762b7756faa01a28db5f771277e67adf2920d01e6cd8b5c0bf476974be218d584e75a24c3b35649b22e
   languageName: node
   linkType: hard
 
-"@sentry/replay@npm:7.64.0":
-  version: 7.64.0
-  resolution: "@sentry/replay@npm:7.64.0"
+"@sentry/replay@npm:7.65.0":
+  version: 7.65.0
+  resolution: "@sentry/replay@npm:7.65.0"
   dependencies:
-    "@sentry/core": 7.64.0
-    "@sentry/types": 7.64.0
-    "@sentry/utils": 7.64.0
-  checksum: 24a0b647b5390f4c88f5e6b09a574849102015b5e9d5738fada46d29245fbca96c5bfd34a01a15aba673828637fa54bd0665f1d46fd00b5a6cbf71b673d40d8e
+    "@sentry/core": 7.65.0
+    "@sentry/types": 7.65.0
+    "@sentry/utils": 7.65.0
+  checksum: 02f3445333d58c0803a957d66fe28f346b3f9b8df943b4ae00ef7cb22cddc802d13722fea04357b301c6913ce3be6b6f414a62b2962114cfaab312c22899e00e
   languageName: node
   linkType: hard
 
@@ -26014,7 +26014,7 @@ __metadata:
     "@redwoodjs/router": 6.1.0
     "@redwoodjs/vite": 6.1.0
     "@redwoodjs/web": 6.1.0
-    "@sentry/react": 7.64.0
+    "@sentry/react": 7.65.0
     "@sentry/vite-plugin": ^2.7.0
     "@supabase/supabase-js": 2.33.1
     "@vercel/analytics": ^1.0.2
