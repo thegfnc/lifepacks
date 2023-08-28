@@ -8334,14 +8334,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/realtime-js@npm:^2.7.3":
-  version: 2.7.3
-  resolution: "@supabase/realtime-js@npm:2.7.3"
+"@supabase/realtime-js@npm:^2.7.4":
+  version: 2.7.4
+  resolution: "@supabase/realtime-js@npm:2.7.4"
   dependencies:
     "@types/phoenix": ^1.5.4
     "@types/websocket": ^1.0.3
     websocket: ^1.0.34
-  checksum: 9c1aecc7fa31538ec0589cbd601b9835c02d65cfd29efe47a1401d4934923b4044b96f472794d5d446aecd6bb3052cee6fd8bb0fbde06da1fb580a17750be017
+  checksum: c589736dd537f4c27fd8f0b6ecd71b28cc1d254eeac22c8c4444cf7229be54c9c0e81e4e9850f6075737810176d603772a243b2593215d965de83a2bde81441b
   languageName: node
   linkType: hard
 
@@ -8354,17 +8354,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:2.32.0":
-  version: 2.32.0
-  resolution: "@supabase/supabase-js@npm:2.32.0"
+"@supabase/supabase-js@npm:2.33.1":
+  version: 2.33.1
+  resolution: "@supabase/supabase-js@npm:2.33.1"
   dependencies:
     "@supabase/functions-js": ^2.1.0
     "@supabase/gotrue-js": ^2.46.1
     "@supabase/postgrest-js": ^1.8.0
-    "@supabase/realtime-js": ^2.7.3
+    "@supabase/realtime-js": ^2.7.4
     "@supabase/storage-js": ^2.5.1
     cross-fetch: ^3.1.5
-  checksum: b280cf3a385d76f5204e736de3126a4f70cb2c611b636aa6c7cb22b67c1cd27b8dce4001daefb640708e2b987058652517986b19d8aa8b8eae9cbc9d6b9d10ba
+  checksum: eeed58b50ceb61886c1fb4cbe31fe2a806889c75166fa0ac4473547acec545d55f796dcae70db155e7173ff6df4951e0a40ac164dff03546e09c63f0c5fc2494
   languageName: node
   linkType: hard
 
@@ -25988,7 +25988,7 @@ __metadata:
     "@redwoodjs/web": 6.1.0
     "@sentry/react": 7.64.0
     "@sentry/vite-plugin": ^2.7.0
-    "@supabase/supabase-js": 2.32.0
+    "@supabase/supabase-js": 2.33.1
     "@vercel/analytics": ^1.0.2
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
