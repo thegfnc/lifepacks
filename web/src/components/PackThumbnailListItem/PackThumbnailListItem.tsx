@@ -52,7 +52,6 @@ import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 import { trackSelectPack, trackSelectUserProfile } from 'src/lib/analytics'
 
 import ImageFallback from '../ImageFallback/ImageFallback'
-import PackList from '../PackList/PackList'
 
 type PackPartial = Pick<
   Pack,
