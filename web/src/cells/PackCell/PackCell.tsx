@@ -179,6 +179,9 @@ export const Success = ({
               )}
             />
             {/* Additional images for preview – https://ogp.me/#array */}
+            {pack.packItems[0] && (
+              <meta property="og:image" content={pack.packItems[0].imageUrl} />
+            )}
             {pack.packItems[1] && (
               <meta property="og:image" content={pack.packItems[1].imageUrl} />
             )}
