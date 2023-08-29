@@ -49,11 +49,11 @@ const UserProfileThumbnailListItem = ({
             color="purple.500"
             bgColor="beige.500"
             border="none"
-            boxSize="1.05em"
+            boxSize="22px"
             bottom={0}
             right={0}
           >
-            <MdVerified size=".9em" />
+            <MdVerified size="20px" />
           </AvatarBadge>
         )}
       </Avatar>
@@ -72,7 +72,12 @@ const UserProfileThumbnailListItem = ({
             {getUserDisplayName(givenName, familyName, username)}
           </LinkOverlay>
         </HStack>
-        <Text fontSize="sm" color="blackAlpha.600" fontWeight="normal">
+        <Text
+          fontSize="sm"
+          color="blackAlpha.600"
+          fontWeight="normal"
+          lineHeight="20px"
+        >
           {biography}
         </Text>
       </Stack>

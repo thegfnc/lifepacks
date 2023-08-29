@@ -26,7 +26,7 @@ const PackPage = ({ username, slug }: PackPageProps) => {
       />
 
       <PageContainer>
-        <Flex direction={{ base: 'column', lg: 'row' }} mb={12}>
+        <Flex direction={{ base: 'column', lg: 'row' }}>
           <Box
             paddingRight={{ base: 0, lg: 10, xl: 20 }}
             borderRightWidth={{ base: 0, lg: '1px' }}
@@ -46,7 +46,8 @@ const PackPage = ({ username, slug }: PackPageProps) => {
             borderRadius={{ base: '32px', lg: 0 }}
             ml={{ base: 0, lg: 10 }}
             mt={{ base: 12, lg: 0 }}
-            p={{ base: 10, lg: 0 }}
+            px={{ base: 4, lg: 0 }}
+            py={{ base: 6, lg: 0 }}
           >
             <UserProfileCell
               username={username}

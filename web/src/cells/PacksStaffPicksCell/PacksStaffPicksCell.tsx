@@ -12,6 +12,7 @@ export const QUERY = gql`
       slug
       title
       createdAt
+      description
       packItems {
         id
         title

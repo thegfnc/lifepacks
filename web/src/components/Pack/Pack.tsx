@@ -19,37 +19,39 @@ type PackProps = {
 const Pack = ({ pack }: PackProps) => {
   return (
     <>
-      <Stack spacing={6}>
-        <Stack spacing={4}>
+      <Stack spacing={{ base: 6, md: 10 }}>
+        <Stack spacing={{ base: 4, md: 6 }}>
           <Heading
             as="h1"
-            fontSize={{ base: '28px', md: '42px' }}
-            lineHeight="1.14"
-            fontWeight="bold"
+            fontSize={{ base: '36px', md: '48px' }}
+            lineHeight={{ base: '40px', md: '52px' }}
+            fontWeight="extrabold"
           >
             {pack.title}
           </Heading>
           {pack.description && (
             <Text
-              fontSize={{ base: '18px', md: '20px' }}
-              lineHeight={{ base: '1.33', md: '1.4' }}
+              fontSize={{ base: '18px', md: '21px' }}
+              lineHeight={{ base: '1.33', md: '28px' }}
               fontFamily="bitter"
-              color="blackAlpha.800"
+              color="blackAlpha.900"
             >
               {pack.description}
             </Text>
           )}
         </Stack>
-        {pack.packItems.map((packItem) => (
-          <PackItem
-            key={packItem.id}
-            id={packItem.id}
-            imageUrl={packItem.imageUrl}
-            purchaseUrl={packItem.purchaseUrl}
-            title={packItem.title}
-            description={packItem.description}
-          />
-        ))}
+        <Stack spacing={{ base: 4, md: 6 }}>
+          {pack.packItems.map((packItem) => (
+            <PackItem
+              key={packItem.id}
+              id={packItem.id}
+              imageUrl={packItem.imageUrl}
+              purchaseUrl={packItem.purchaseUrl}
+              title={packItem.title}
+              description={packItem.description}
+            />
+          ))}
+        </Stack>
         <Button
           as={Link}
           size={{ base: 'lg', md: 'xl' }}

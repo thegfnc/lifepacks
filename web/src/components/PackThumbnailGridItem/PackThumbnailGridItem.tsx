@@ -136,7 +136,7 @@ const PackThumbnailGridItem = ({
             borderRightWidth={numberOfImages >= 2 ? '1px' : 0}
             borderColor="blackAlpha.200"
           >
-            <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+            <Center h="full" w="full">
               <Image
                 src={getImageUrlWithTransform({
                   src: pack.packItems[0]?.imageUrl,
@@ -147,6 +147,7 @@ const PackThumbnailGridItem = ({
                 fallback={<ImageFallback />}
                 maxH="full"
                 maxW="full"
+                borderRadius="lg"
               />
             </Center>
           </GridItem>
@@ -156,7 +157,7 @@ const PackThumbnailGridItem = ({
               colSpan={numberOfImages === 2 ? 3 : 2}
               rowSpan={numberOfImages === 2 ? 2 : 1}
             >
-              <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+              <Center h="full" w="full">
                 <Image
                   src={getImageUrlWithTransform({
                     src: pack.packItems[1]?.imageUrl,
@@ -167,6 +168,7 @@ const PackThumbnailGridItem = ({
                   fallback={<ImageFallback />}
                   maxH="full"
                   maxW="full"
+                  borderRadius="lg"
                 />
               </Center>
             </GridItem>
@@ -178,7 +180,7 @@ const PackThumbnailGridItem = ({
               borderColor="blackAlpha.200"
               colSpan={2}
             >
-              <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+              <Center h="full" w="full">
                 <Image
                   src={getImageUrlWithTransform({
                     src: pack.packItems[2]?.imageUrl,
@@ -189,6 +191,7 @@ const PackThumbnailGridItem = ({
                   fallback={<ImageFallback />}
                   maxH="full"
                   maxW="full"
+                  borderRadius="lg"
                 />
               </Center>
             </GridItem>
@@ -203,8 +206,8 @@ const PackThumbnailGridItem = ({
             p={4}
           >
             <Heading
-              fontSize={{ base: '22px', md: '26px' }}
-              lineHeight={{ base: 6, md: 7 }}
+              fontSize={{ base: '22px', md: '21px' }}
+              lineHeight={{ base: 6, md: '28px' }}
               fontWeight="bold"
               noOfLines={2}
             >
@@ -282,10 +285,12 @@ const PackThumbnailGridItem = ({
                   <MenuButton
                     as={IconButton}
                     aria-label="Options"
-                    icon={<MdMoreHoriz size="24px" />}
+                    icon={<MdMoreHoriz size="20px" />}
                     variant="ghost"
                     colorScheme="gray"
                     size="xs"
+                    padding="2px"
+                    color="blackAlpha.700"
                   />
                   <MenuList borderRadius="xl">
                     <MenuItem
