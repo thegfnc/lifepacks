@@ -5,6 +5,7 @@ import {
   LinkBox,
   LinkOverlay,
   Stack,
+  AvatarBadge,
 } from '@chakra-ui/react'
 import { MdVerified } from 'react-icons/md'
 import { UserProfile } from 'types/graphql'
@@ -42,7 +43,20 @@ const UserProfileThumbnailListItem = ({
           transform: { width: 96, height: 96, resize: 'cover' },
         })}
         name={getUserDisplayName(givenName, familyName, username)}
-      />
+      >
+        {verified && (
+          <AvatarBadge
+            color="purple.500"
+            bgColor="beige.500"
+            border="none"
+            boxSize="1.05em"
+            bottom={0}
+            right={0}
+          >
+            <MdVerified size=".9em" />
+          </AvatarBadge>
+        )}
+      </Avatar>
       <Stack spacing={0}>
         <HStack
           spacing={1}
@@ -57,9 +71,6 @@ const UserProfileThumbnailListItem = ({
           >
             {getUserDisplayName(givenName, familyName, username)}
           </LinkOverlay>
-          <Text color="purple.500">
-            {verified ? <MdVerified size="20px" /> : null}
-          </Text>
         </HStack>
         <Text fontSize="sm" color="blackAlpha.600" fontWeight="normal">
           {biography}
