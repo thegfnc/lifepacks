@@ -150,6 +150,7 @@ const PackThumbnailListItem = ({
                       display="flex"
                     >
                       <Avatar
+                        size={'xs'}
                         h={5}
                         w={5}
                         src={getImageUrlWithTransform({
