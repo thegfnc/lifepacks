@@ -57,7 +57,10 @@ const AnnouncementBanner = () => {
           >
             <Heading
               color="marketing.deepBlue"
-              fontSize={{ base: 'xl', lg: '2xl', xl: '3xl' }}
+              fontSize={{ base: 'xl', md: '22px', lg: '28px', xl: '36px' }}
+              lineHeight={{ base: '1', xl: '40px' }}
+              fontWeight="extrabold"
+              letterSpacing="-0.72px"
             >
               It pays to have great taste.
             </Heading>

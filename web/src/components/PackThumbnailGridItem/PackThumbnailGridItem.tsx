@@ -206,8 +206,8 @@ const PackThumbnailGridItem = ({
             p={4}
           >
             <Heading
-              fontSize={{ base: '22px', md: '26px' }}
-              lineHeight={{ base: 6, md: 7 }}
+              fontSize={{ base: '22px', md: '21px' }}
+              lineHeight={{ base: 6, md: '28px' }}
               fontWeight="bold"
               noOfLines={2}
             >
@@ -285,10 +285,12 @@ const PackThumbnailGridItem = ({
                   <MenuButton
                     as={IconButton}
                     aria-label="Options"
-                    icon={<MdMoreHoriz size="24px" />}
+                    icon={<MdMoreHoriz size="20px" />}
                     variant="ghost"
                     colorScheme="gray"
                     size="xs"
+                    padding="2px"
+                    color="blackAlpha.700"
                   />
                   <MenuList borderRadius="xl">
                     <MenuItem

@@ -18,7 +18,7 @@ type LogoTextProps = {
 const LOGO_PROPS = {
   md: {
     iconBoxSize: 22,
-    textFontSize: 'xl',
+    textFontSize: '21px',
     stackSpacing: 2,
   },
   lg: {
