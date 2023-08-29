@@ -159,11 +159,6 @@ export const Success = ({
             description={pack.description}
             ogType="article"
             ogUrl={getEnvironmentUrl(routes.pack({ username, slug }))}
-            ogContentUrl={
-              pack.packItems[0]?.imageUrl ||
-              userProfile.imageUrl ||
-              getLogoCard({ color: 'random' })
-            }
           />
           <Head>
             <meta
@@ -179,9 +174,14 @@ export const Success = ({
               )}
             />
             {/* Additional images for preview – https://ogp.me/#array */}
-            {pack.packItems[0] && (
-              <meta property="og:image" content={pack.packItems[0].imageUrl} />
-            )}
+            <meta
+              property="og:image"
+              content={
+                pack.packItems[0]?.imageUrl ||
+                userProfile.imageUrl ||
+                getLogoCard({ color: 'random' })
+              }
+            />
             {pack.packItems[1] && (
               <meta property="og:image" content={pack.packItems[1].imageUrl} />
             )}
