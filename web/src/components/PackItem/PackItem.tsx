@@ -39,12 +39,13 @@ const PackItem = ({
           <Center mr={{ base: 0, md: 10 }} mb={{ base: 4, md: 0 }}>
             <Image
               maxW="full"
-              maxH={{ base: '350px' }}
+              maxH={{ base: '320px' }}
               alt={title}
               src={getImageUrlWithTransform({
                 src: imageUrl,
                 transform: { width: 700, height: 700 },
               })}
+              borderRadius="lg"
             />
           </Center>
           <Center
@@ -53,7 +54,7 @@ const PackItem = ({
             borderColor="blackAlpha.100"
           >
             <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 4, md: 0 }}>
-              <Heading size="md" lineHeight="1.2" fontWeight="semibold">
+              <Heading fontSize="21px" lineHeight="28px" fontWeight="medium">
                 {title}
               </Heading>
               <Box mt={4}>
@@ -67,9 +68,9 @@ const PackItem = ({
         <CardBody
           mt={{ base: 4, md: 10 }}
           p={0}
-          pt={{ base: 4, md: 10 }}
-          fontSize={{ base: 'md', md: 'lg' }}
-          lineHeight={{ base: '1.5', md: '1.33' }}
+          pt={{ base: 4, md: 8 }}
+          fontSize={{ base: 'md', md: '16px' }}
+          lineHeight={{ base: '1.5', md: '24px' }}
           color="blackAlpha.700"
           borderTopWidth="1px"
           borderTopColor="blackAlpha.100"

@@ -5,7 +5,7 @@ import PackThumbnailGridItem from 'src/components/PackThumbnailGridItem'
 import PackThumbnailListItem from 'src/components/PackThumbnailListItem'
 
 type PackPartial = Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> & {
-  packItems: Pick<PackItem, 'imageUrl' | 'title'>[]
+  packItems: Pick<PackItem, 'imageUrl' | 'title' | 'description'>[]
   userProfile: Pick<
     UserProfile,
     'username' | 'givenName' | 'familyName' | 'imageUrl'

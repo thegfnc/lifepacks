@@ -181,8 +181,9 @@ const UserProfileSidebarLayout = ({
       <Flex direction="column" mt={4}>
         {(userProfile.givenName || userProfile.familyName) && (
           <Text
-            fontSize="xl"
-            fontWeight="bold"
+            fontSize="21px"
+            lineHeight="28px"
+            fontWeight="medium"
             color="blackAlpha.800"
             {...linkProps}
           >
@@ -193,11 +194,16 @@ const UserProfileSidebarLayout = ({
             )}
           </Text>
         )}
-        <Text fontSize="md" color="blackAlpha.700" {...linkProps}>
+        <Text
+          fontSize="14px"
+          lineHeight="20px"
+          color="blackAlpha.600"
+          {...linkProps}
+        >
           @{userProfile.username}
         </Text>
         {userProfile.biography && (
-          <Text fontSize="md" lineHeight={6} mt={2} color="blackAlpha.800">
+          <Text fontSize="14px" lineHeight="20px" mt={2} color="blackAlpha.800">
             {userProfile.biography}
           </Text>
         )}

@@ -28,6 +28,7 @@ import {
   Text,
   useDisclosure,
   Box,
+  Stack,
 } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { MdDeleteOutline, MdMoreHoriz, MdOutlineModeEdit } from 'react-icons/md'
@@ -51,8 +52,12 @@ import useCurrentUserProfile from 'src/hooks/useCurrentUserProfile'
 import { trackSelectPack, trackSelectUserProfile } from 'src/lib/analytics'
 
 import ImageFallback from '../ImageFallback/ImageFallback'
+import PackList from '../PackList/PackList'
 
-type PackPartial = Pick<Pack, 'id' | 'createdAt' | 'slug' | 'title'> & {
+type PackPartial = Pick<
+  Pack,
+  'id' | 'createdAt' | 'slug' | 'title' | 'description'
+> & {
   packItems: Pick<PackItem, 'imageUrl' | 'title'>[]
   userProfile: Pick<
     UserProfile,
@@ -123,7 +128,7 @@ const PackThumbnailListItem = ({
         _hover={{ boxShadow: 'md' }}
         _active={{ boxShadow: 'sm' }}
       >
-        <Flex height={{ base: '192px', xl: '224px' }}>
+        <Flex height={{ base: '192px', xl: '240px' }}>
           <Box
             as={Flex}
             direction="column"
@@ -131,79 +136,90 @@ const PackThumbnailListItem = ({
             p={6}
             flexGrow={1}
           >
-            <Heading
-              fontSize="20px"
-              lineHeight="short"
-              fontWeight="medium"
-              letterSpacing=".2px"
-              noOfLines={3}
-            >
-              <LinkOverlay
-                as={Link}
-                to={routes.pack({
-                  username: pack.userProfile.username,
-                  slug: pack.slug,
-                })}
-                onClick={() => {
-                  trackSelectPack(pack.id, pack.slug)
-                }}
+            <Stack>
+              {showByline && (
+                <>
+                  <Flex alignItems="center">
+                    <ChakraLink
+                      as={Link}
+                      to={routes.userProfile({
+                        username: pack.userProfile.username,
+                      })}
+                      onClick={() =>
+                        trackSelectUserProfile(pack.userProfile.username)
+                      }
+                      display="flex"
+                    >
+                      <Avatar
+                        h={5}
+                        w={5}
+                        src={getImageUrlWithTransform({
+                          src: pack.userProfile.imageUrl,
+                          transform: {
+                            width: 48,
+                            height: 48,
+                            resize: 'cover',
+                          },
+                        })}
+                        name={getUserDisplayName(
+                          pack.userProfile.givenName,
+                          pack.userProfile.familyName,
+                          pack.userProfile.username
+                        )}
+                      />
+                    </ChakraLink>
+                    <ChakraLink
+                      as={Link}
+                      to={routes.userProfile({
+                        username: pack.userProfile.username,
+                      })}
+                      onClick={() =>
+                        trackSelectUserProfile(pack.userProfile.username)
+                      }
+                    >
+                      <Text ml={2} fontSize="sm" lineHeight={1}>
+                        {getUserDisplayName(
+                          pack.userProfile.givenName,
+                          pack.userProfile.familyName,
+                          pack.userProfile.username
+                        )}
+                      </Text>
+                    </ChakraLink>
+                  </Flex>
+                </>
+              )}
+              <Heading
+                fontSize="21px"
+                lineHeight="28px"
+                fontWeight="bold"
+                letterSpacing=".2px"
+                noOfLines={3}
               >
-                {pack.title}
-              </LinkOverlay>
-            </Heading>
+                <LinkOverlay
+                  as={Link}
+                  to={routes.pack({
+                    username: pack.userProfile.username,
+                    slug: pack.slug,
+                  })}
+                  onClick={() => {
+                    trackSelectPack(pack.id, pack.slug)
+                  }}
+                >
+                  {pack.title}
+                </LinkOverlay>
+              </Heading>
+              <Text
+                fontSize="14px"
+                lineHeight="20px"
+                color="blackAlpha.600"
+                noOfLines={2}
+              >
+                {pack.description}
+              </Text>
+            </Stack>
             <Flex align="center" w="full" justify="space-between">
               <HStack spacing="6px">
-                {showByline && (
-                  <>
-                    <Flex alignItems="center">
-                      <ChakraLink
-                        as={Link}
-                        to={routes.userProfile({
-                          username: pack.userProfile.username,
-                        })}
-                        onClick={() =>
-                          trackSelectUserProfile(pack.userProfile.username)
-                        }
-                      >
-                        <Avatar
-                          size={'xs'}
-                          src={getImageUrlWithTransform({
-                            src: pack.userProfile.imageUrl,
-                            transform: {
-                              width: 48,
-                              height: 48,
-                              resize: 'cover',
-                            },
-                          })}
-                          name={getUserDisplayName(
-                            pack.userProfile.givenName,
-                            pack.userProfile.familyName,
-                            pack.userProfile.username
-                          )}
-                        />
-                      </ChakraLink>
-                      <ChakraLink
-                        as={Link}
-                        to={routes.userProfile({
-                          username: pack.userProfile.username,
-                        })}
-                        onClick={() =>
-                          trackSelectUserProfile(pack.userProfile.username)
-                        }
-                      >
-                        <Text ml={2} fontSize="sm">
-                          {getUserDisplayName(
-                            pack.userProfile.givenName,
-                            pack.userProfile.familyName,
-                            pack.userProfile.username
-                          )}
-                        </Text>
-                      </ChakraLink>
-                    </Flex>
-                    <Text color="blackAlpha.600">{' · '}</Text>
-                  </>
-                )}
-                <Text color="blackAlpha.600" fontSize="sm">
+                <Text color="blackAlpha.600" fontSize="14px" lineHeight="20px">
                   {format(new Date(pack.createdAt), 'MMM d, yyyy')}
                 </Text>
               </HStack>
@@ -252,7 +268,7 @@ const PackThumbnailListItem = ({
               borderRightWidth={numberOfImages === 3 ? '1px' : 0}
               borderColor="blackAlpha.200"
             >
-              <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+              <Center h="full" w="full">
                 <Image
                   src={getImageUrlWithTransform({
                     src: pack.packItems[0]?.imageUrl,
@@ -263,13 +279,14 @@ const PackThumbnailListItem = ({
                   fallback={<ImageFallback />}
                   maxH="full"
                   maxW="full"
+                  borderRadius="lg"
                 />
               </Center>
             </GridItem>
             {numberOfImages === 3 && (
               <>
                 <GridItem p={{ base: 4, xl: 6 }} colSpan={2} rowSpan={1}>
-                  <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+                  <Center h="full" w="full">
                     <Image
                       src={getImageUrlWithTransform({
                         src: pack.packItems[1]?.imageUrl,
@@ -280,6 +297,7 @@ const PackThumbnailListItem = ({
                       fallback={<ImageFallback />}
                       maxH="full"
                       maxW="full"
+                      borderRadius="lg"
                     />
                   </Center>
                 </GridItem>
@@ -289,7 +307,7 @@ const PackThumbnailListItem = ({
                   borderColor="blackAlpha.200"
                   colSpan={2}
                 >
-                  <Center borderRadius="xl" overflow="hidden" h="full" w="full">
+                  <Center h="full" w="full">
                     <Image
                       src={getImageUrlWithTransform({
                         src: pack.packItems[2]?.imageUrl,
@@ -300,6 +318,7 @@ const PackThumbnailListItem = ({
                       fallback={<ImageFallback />}
                       maxH="full"
                       maxW="full"
+                      borderRadius="lg"
                     />
                   </Center>
                 </GridItem>

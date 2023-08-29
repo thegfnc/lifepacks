@@ -55,6 +55,11 @@ const MailingListSignUpForm = ({
             <InputGroup mt={4} size="lg">
               <Input
                 placeholder="Enter email to sign up"
+                _placeholder={{
+                  color: 'blackAlpha.600',
+                  fontSize: '16px',
+                  lineHeight: '24px',
+                }}
                 type="email"
                 autoComplete="email"
                 {...register('email', {

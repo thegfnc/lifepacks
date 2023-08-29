@@ -21,6 +21,7 @@ export const QUERY = gql`
       slug
       title
       createdAt
+      description
       packItems {
         title
         imageUrl
