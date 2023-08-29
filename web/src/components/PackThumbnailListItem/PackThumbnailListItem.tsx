@@ -192,7 +192,7 @@ const PackThumbnailListItem = ({
                 lineHeight="28px"
                 fontWeight="bold"
                 letterSpacing=".2px"
-                noOfLines={3}
+                noOfLines={{ base: 2, xl: 3 }}
               >
                 <LinkOverlay
                   as={Link}
@@ -211,7 +211,7 @@ const PackThumbnailListItem = ({
                 fontSize="14px"
                 lineHeight="20px"
                 color="blackAlpha.600"
-                noOfLines={2}
+                noOfLines={{ base: 1, xl: 2 }}
               >
                 {pack.description}
               </Text>
@@ -227,10 +227,12 @@ const PackThumbnailListItem = ({
                   <MenuButton
                     as={IconButton}
                     aria-label="Options"
-                    icon={<MdMoreHoriz size="24px" />}
+                    icon={<MdMoreHoriz size="20px" />}
                     variant="ghost"
                     colorScheme="gray"
                     size="xs"
+                    padding="2px"
+                    color="blackAlpha.700"
                   />
                   <MenuList borderRadius="xl">
                     <MenuItem

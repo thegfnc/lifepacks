@@ -148,16 +148,24 @@ const HomePage = () => {
         >
           <Box flexGrow={1}>
             <Box>
-              <Heading fontSize="xl" fontWeight={700} lineHeight={1.33}>
+              <Heading
+                fontSize="14px"
+                lineHeight="20px"
+                fontWeight={700}
+                textTransform="uppercase"
+                letterSpacing=".84px"
+              >
                 Trending Packs
               </Heading>
               <Box mt={6}>
                 <PacksStaffPicksCell />
               </Box>
               <Heading
-                fontSize="xl"
+                fontSize="14px"
+                lineHeight="20px"
                 fontWeight={700}
-                lineHeight={1.33}
+                textTransform="uppercase"
+                letterSpacing=".84px"
                 mt={{ base: 14, lg: 16 }}
               >
                 Recent Packs
@@ -173,7 +181,13 @@ const HomePage = () => {
             ml={{ base: 0, lg: '36px', xl: '80px' }}
             mt={{ base: 14, lg: 0 }}
           >
-            <Heading fontSize="xl" fontWeight={700} lineHeight={1.33}>
+            <Heading
+              fontSize="14px"
+              lineHeight="20px"
+              fontWeight={700}
+              textTransform="uppercase"
+              letterSpacing=".84px"
+            >
               Featured Members
             </Heading>
             <Box mt={2}>
