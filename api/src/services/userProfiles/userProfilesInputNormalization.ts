@@ -20,7 +20,9 @@ export function normalizeCommonUserProfileInputFields(input) {
     allowedAttributes: {},
   })
 
-  input.imageUrl = input.imageUrl?.trim()
+  // for some reason was not allowing users to clear their profile picture
+  // input.imageUrl = input.imageUrl?.trim()
+
   input.facebookUrl = input.facebookUrl?.trim()
   input.instagramUrl = input.instagramUrl?.trim()
   input.youtubeUrl = input.youtubeUrl?.trim()
