@@ -178,6 +178,13 @@ export const Success = ({
                 userProfile.username
               )}
             />
+            {/* Additional images for preview – https://ogp.me/#array */}
+            {pack.packItems[1] && (
+              <meta property="og:image" content={pack.packItems[1].imageUrl} />
+            )}
+            {pack.packItems[2] && (
+              <meta property="og:image" content={pack.packItems[2].imageUrl} />
+            )}
           </Head>
         </>
       )}
