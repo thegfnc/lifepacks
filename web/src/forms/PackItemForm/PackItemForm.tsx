@@ -121,7 +121,7 @@ const PackItemForm = ({
             {formState.errors.imageUrl?.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl isInvalid={Boolean(formState.errors.description)}>
+        {/* <FormControl isInvalid={Boolean(formState.errors.description)}>
           <FormLabel>Description</FormLabel>
           <Textarea
             {...register('description', {
@@ -132,15 +132,16 @@ const PackItemForm = ({
             })}
             rows={5}
           />
-          <RichTextEditor
-            name="description"
-            control={control}
-            defaultValue={formState.defaultValues?.description}
-          />
           <FormErrorMessage>
             {formState.errors.description?.message}
           </FormErrorMessage>
-        </FormControl>
+        </FormControl> */}
+        <RichTextEditor
+          name="description"
+          control={control}
+          defaultValue={formState.defaultValues?.description}
+          label="Description"
+        />
       </Stack>
       <SimpleGrid
         py={4}

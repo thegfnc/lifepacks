@@ -20,6 +20,7 @@ import {
   Stack,
   useDisclosure,
   Tooltip,
+  FormLabel,
 } from '@chakra-ui/react'
 import { Pack, PackItem } from 'types/graphql'
 
@@ -217,8 +218,9 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
       <Form formMethods={formMethods}>
         <Stack spacing={6}>
           <FormControl isInvalid={Boolean(formState.errors.title)}>
+            <FormLabel>Pack Title</FormLabel>
             <ExpandingTextarea
-              placeholder="Title"
+              placeholder="Enter a title for your pack ..."
               fontSize="5xl"
               fontWeight="extrabold"
               color="blackAlpha.800"
@@ -241,7 +243,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               {formState.errors.title?.message}
             </FormErrorMessage>
           </FormControl>
-          <FormControl isInvalid={Boolean(formState.errors.description)}>
+          {/* <FormControl isInvalid={Boolean(formState.errors.description)}>
             <ExpandingTextarea
               placeholder="Introduce your Pack to your readers..."
               fontSize="xl"
@@ -257,15 +259,17 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                 },
               })}
             />
-            <RichTextEditor
-              name="description"
-              control={control}
-              defaultValue={formState.defaultValues?.description}
-            />
             <FormErrorMessage>
               {formState.errors.description?.message}
             </FormErrorMessage>
-          </FormControl>
+          </FormControl> */}
+          <RichTextEditor
+            name="description"
+            control={control}
+            defaultValue={formState.defaultValues?.description}
+            label="Pack Description"
+            placeholder="Introduce your Pack to your readers in 2-3 sentences ..."
+          />
           <Tooltip
             hasArrow
             label="You can only have up to 8 items in a Pack"
