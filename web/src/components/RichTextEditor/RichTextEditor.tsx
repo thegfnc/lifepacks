@@ -49,7 +49,11 @@ const MenuBar = ({ editor, isFocused }) => {
   }
 
   return (
-    <Box borderBottom="1px solid" borderColor="gray.200">
+    <Box
+      borderBottom="1px solid"
+      borderColor="blackAlpha.100"
+      background="blackAlpha.50"
+    >
       <IconButton
         borderRadius="none"
         variant="ghost"
@@ -59,7 +63,7 @@ const MenuBar = ({ editor, isFocused }) => {
         }}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         isActive={isFocused && editor.isActive('bold')}
-        aria-label="Format Bo ld"
+        aria-label="Format Bold"
         icon={<MdFormatBold size="20px" />}
       />
       <IconButton
@@ -71,7 +75,7 @@ const MenuBar = ({ editor, isFocused }) => {
         }}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
         isActive={isFocused && editor.isActive('italic')}
-        aria-label="Italic"
+        aria-label="Format Italic"
         icon={<MdFormatItalic size="20px" />}
       />
       <IconButton
@@ -83,7 +87,7 @@ const MenuBar = ({ editor, isFocused }) => {
         }}
         disabled={!editor.can().chain().focus().toggleUnderline().run()}
         isActive={isFocused && editor.isActive('underline')}
-        aria-label="Underline"
+        aria-label="Format Underline"
         icon={<MdFormatUnderlined size="20px" />}
       />
       <IconButton
@@ -95,7 +99,7 @@ const MenuBar = ({ editor, isFocused }) => {
         }}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
         isActive={isFocused && editor.isActive('strike')}
-        aria-label="Strikethrough"
+        aria-label="Format Strikethrough"
         icon={<MdFormatStrikethrough size="20px" />}
       />
       {/* <IconButton
