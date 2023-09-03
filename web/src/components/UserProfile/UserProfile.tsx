@@ -100,9 +100,8 @@ const UserProfileBannerLayout = ({
           mt={2}
           color="blackAlpha.800"
           maxW="xl"
-        >
-          {userProfile.biography}
-        </Text>
+          dangerouslySetInnerHTML={{ __html: userProfile.biography }}
+        />
       )}
       <Center mt={4}>
         <HStack>
@@ -203,9 +202,13 @@ const UserProfileSidebarLayout = ({
           @{userProfile.username}
         </Text>
         {userProfile.biography && (
-          <Text fontSize="14px" lineHeight="20px" mt={2} color="blackAlpha.800">
-            {userProfile.biography}
-          </Text>
+          <Text
+            fontSize="14px"
+            lineHeight="20px"
+            mt={2}
+            color="blackAlpha.800"
+            dangerouslySetInnerHTML={{ __html: userProfile.biography }}
+          />
         )}
         <HStack mt={4}>
           {userProfile.facebookUrl && (

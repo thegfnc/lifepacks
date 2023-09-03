@@ -27,6 +27,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 
 import EditPackItemModal from 'src/components/EditPackItemModal/EditPackItemModal'
 import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
+import RichTextEditor from 'src/components/RichTextEditor/RichTextEditor'
 import HeaderCtaContext from 'src/contexts/HeaderCtaContext'
 import ExpandingTextarea from 'src/fields/ExpandingTextarea/ExpandingTextarea'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
@@ -97,7 +98,7 @@ function packItemsReducer(packItems, action) {
 
 const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   const formMethods = useForm<PackFormValues>({ defaultValues })
-  const { register, formState, handleSubmit } = formMethods
+  const { register, formState, control, handleSubmit } = formMethods
   const setHeaderCtaComponent = useContext(HeaderCtaContext)
 
   const [packItems, dispatch] = useReducer(
@@ -256,6 +257,11 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                 },
               })}
             />
+            <RichTextEditor
+              name="description"
+              control={control}
+              defaultValue={formState.defaultValues?.description}
+            />
             <FormErrorMessage>
               {formState.errors.description?.message}
             </FormErrorMessage>
@@ -268,8 +274,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
           >
             <Button
               size="lg"
-              variant="outline"
-              colorScheme="gray"
+              variant="secondary"
               onClick={createOpenAddPackItemModal(0)}
               isDisabled={packItems.length >= 8}
             >
@@ -300,8 +305,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                 >
                   <Button
                     size="lg"
-                    variant="outline"
-                    colorScheme="gray"
+                    variant="secondary"
                     onClick={createOpenAddPackItemModal(index + 1)}
                     isDisabled={packItems.length >= 8}
                   >
@@ -325,9 +329,10 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
         isOpen={isDeleteAlertOpen}
         leastDestructiveRef={cancelDeleteRef}
         onClose={onDeleteAlertClose}
+        isCentered={true}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent>
+          <AlertDialogContent borderRadius="3xl">
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               Delete Pack Item
             </AlertDialogHeader>
@@ -338,8 +343,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
 
             <AlertDialogFooter>
               <Button
-                variant="outline"
-                colorScheme="gray"
+                variant="secondary"
                 ref={cancelDeleteRef}
                 onClick={onDeleteAlertClose}
               >

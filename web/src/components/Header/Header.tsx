@@ -94,7 +94,7 @@ const Header = ({ ctaComponent }: HeaderProps) => {
       <Button
         size="lg"
         onClick={logOutAndRefetchCurrentUserProfile}
-        variant="outline"
+        variant="secondary"
       >
         Log Out
       </Button>

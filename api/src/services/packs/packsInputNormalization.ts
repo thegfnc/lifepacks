@@ -7,7 +7,7 @@ export function normalizeCommonPackInputFields(input) {
   })
 
   input.description = sanitizeHtml(input.description?.trim(), {
-    allowedTags: [],
+    allowedTags: ['p', 'br', 'strong', 'em', 'u', 's'],
     allowedAttributes: {},
   })
 }

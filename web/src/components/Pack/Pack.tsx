@@ -26,18 +26,16 @@ const Pack = ({ pack }: PackProps) => {
             fontSize={{ base: '36px', md: '48px' }}
             lineHeight={{ base: '40px', md: '52px' }}
             fontWeight="extrabold"
-          >
-            {pack.title}
-          </Heading>
+            dangerouslySetInnerHTML={{ __html: pack.title }}
+          />
           {pack.description && (
             <Text
               fontSize={{ base: '18px', md: '21px' }}
               lineHeight={{ base: '1.33', md: '28px' }}
               fontFamily="bitter"
               color="blackAlpha.900"
-            >
-              {pack.description}
-            </Text>
+              dangerouslySetInnerHTML={{ __html: pack.description }}
+            />
           )}
         </Stack>
         <Stack spacing={{ base: 4, md: 6 }}>

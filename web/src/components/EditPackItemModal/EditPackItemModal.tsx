@@ -98,9 +98,10 @@ const EditPackItemModal = ({
         isOpen={isDiscardChangesModalOpen}
         leastDestructiveRef={cancelDiscardChangesRef}
         onClose={onDiscardChangesModalClose}
+        isCentered={true}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent>
+          <AlertDialogContent borderRadius="3xl">
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               Unsaved Changes
             </AlertDialogHeader>
@@ -111,8 +112,7 @@ const EditPackItemModal = ({
 
             <AlertDialogFooter>
               <Button
-                variant="outline"
-                colorScheme="gray"
+                variant="secondary"
                 ref={cancelDiscardChangesRef}
                 onClick={onDiscardChangesModalClose}
               >

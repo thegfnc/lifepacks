@@ -74,9 +74,8 @@ const PackItem = ({
           color="blackAlpha.700"
           borderTopWidth="1px"
           borderTopColor="blackAlpha.100"
-        >
-          {description}
-        </CardBody>
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       )}
     </Card>
   )

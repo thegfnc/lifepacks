@@ -16,7 +16,7 @@ export function normalizeCommonUserProfileInputFields(input) {
   })
 
   input.biography = sanitizeHtml(input.biography?.trim(), {
-    allowedTags: [],
+    allowedTags: ['p', 'br', 'strong', 'em', 'u', 's'],
     allowedAttributes: {},
   })
 

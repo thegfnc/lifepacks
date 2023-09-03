@@ -204,18 +204,16 @@ const PackThumbnailListItem = ({
                   onClick={() => {
                     trackSelectPack(pack.id, pack.slug)
                   }}
-                >
-                  {pack.title}
-                </LinkOverlay>
+                  dangerouslySetInnerHTML={{ __html: pack.title }}
+                />
               </Heading>
               <Text
                 fontSize="14px"
                 lineHeight="20px"
                 color="blackAlpha.600"
                 noOfLines={{ base: 1, xl: 2 }}
-              >
-                {pack.description}
-              </Text>
+                dangerouslySetInnerHTML={{ __html: pack.description }}
+              />
             </Stack>
             <Flex align="center" w="full" justify="space-between">
               <HStack spacing="6px">
@@ -335,9 +333,10 @@ const PackThumbnailListItem = ({
           isOpen={isDeleteAlertOpen}
           leastDestructiveRef={cancelDeleteRef}
           onClose={onDeleteAlertClose}
+          isCentered={true}
         >
           <AlertDialogOverlay>
-            <AlertDialogContent>
+            <AlertDialogContent borderRadius="3xl">
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 Delete Pack
               </AlertDialogHeader>
@@ -348,8 +347,7 @@ const PackThumbnailListItem = ({
 
               <AlertDialogFooter>
                 <Button
-                  variant="outline"
-                  colorScheme="gray"
+                  variant="secondary"
                   ref={cancelDeleteRef}
                   onClick={onDeleteAlertClose}
                 >

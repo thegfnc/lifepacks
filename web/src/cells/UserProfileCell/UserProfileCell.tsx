@@ -1,4 +1,5 @@
 import { Button, useDisclosure } from '@chakra-ui/react'
+import sanitizeHtml from 'sanitize-html'
 import type {
   FindUserProfileQuery,
   FindUserProfileQueryVariables,
@@ -80,7 +81,10 @@ export const Success = ({
               userProfile.familyName,
               userProfile.username
             )}'s Profile`}
-            description={userProfile.biography}
+            description={sanitizeHtml(userProfile.biography, {
+              allowedTags: [],
+              allowedAttributes: {},
+            })}
             ogType="profile"
             ogUrl={getEnvironmentUrl(
               routes.userProfile({

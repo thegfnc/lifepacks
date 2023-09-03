@@ -59,6 +59,13 @@ const theme = {
         bg: 'beige.500',
         color: 'blackAlpha.900',
       },
+      '.tiptap p.is-editor-empty:first-child::before': {
+        color: '#adb5bd',
+        content: 'attr(data-placeholder)',
+        float: 'left',
+        height: 0,
+        pointerEvents: 'none',
+      },
     },
   },
   components: {

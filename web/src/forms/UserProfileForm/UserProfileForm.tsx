@@ -19,6 +19,7 @@ import { CurrentUserProfile } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
+import RichTextEditor from 'src/components/RichTextEditor/RichTextEditor'
 import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
 import isValidUrl from 'src/helpers/isValidUrl'
@@ -178,6 +179,11 @@ const UserProfileForm = ({
                 },
               })}
             />
+            <RichTextEditor
+              control={control}
+              name="biography"
+              defaultValue={formState.defaultValues?.biography}
+            />
             <FormErrorMessage>
               {formState.errors.biography?.message}
             </FormErrorMessage>
@@ -321,7 +327,7 @@ const UserProfileForm = ({
             borderTopColor={isUpdateForm ? 'blackAlpha.300' : 'none'}
           >
             {onCancel && (
-              <Button variant="outline" colorScheme="gray" onClick={onCancel}>
+              <Button variant="secondary" onClick={onCancel}>
                 Cancel
               </Button>
             )}

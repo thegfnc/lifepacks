@@ -19,6 +19,7 @@ import { PackItem } from 'types/graphql'
 import { Form, useForm } from '@redwoodjs/forms'
 import { routes } from '@redwoodjs/router'
 
+import RichTextEditor from 'src/components/RichTextEditor/RichTextEditor'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
 import isValidUrl from 'src/helpers/isValidUrl'
 
@@ -131,6 +132,11 @@ const PackItemForm = ({
             })}
             rows={5}
           />
+          <RichTextEditor
+            name="description"
+            control={control}
+            defaultValue={formState.defaultValues?.description}
+          />
           <FormErrorMessage>
             {formState.errors.description?.message}
           </FormErrorMessage>
@@ -151,7 +157,7 @@ const PackItemForm = ({
         borderTopColor="blackAlpha.300"
       >
         {onCancel && (
-          <Button variant="outline" colorScheme="gray" onClick={onCancel}>
+          <Button variant="secondary" onClick={onCancel}>
             Cancel
           </Button>
         )}
