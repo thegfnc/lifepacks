@@ -32,6 +32,7 @@ import {
 } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { MdDeleteOutline, MdMoreHoriz, MdOutlineModeEdit } from 'react-icons/md'
+import sanitizeHtml from 'sanitize-html'
 import {
   DeletePackMutation,
   DeletePackMutationVariables,
@@ -212,8 +213,12 @@ const PackThumbnailListItem = ({
                 lineHeight="20px"
                 color="blackAlpha.600"
                 noOfLines={{ base: 1, xl: 2 }}
-                dangerouslySetInnerHTML={{ __html: pack.description }}
-              />
+              >
+                {sanitizeHtml(pack.description, {
+                  allowedTags: [],
+                  allowedAttributes: {},
+                })}
+              </Text>
             </Stack>
             <Flex align="center" w="full" justify="space-between">
               <HStack spacing="6px">

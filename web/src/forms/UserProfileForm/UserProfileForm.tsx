@@ -169,7 +169,7 @@ const UserProfileForm = ({
             </FormErrorMessage>
           </FormControl>
 
-          <FormControl isInvalid={Boolean(formState.errors.biography)}>
+          {/* <FormControl isInvalid={Boolean(formState.errors.biography)}>
             <FormLabel>Biography</FormLabel>
             <Textarea
               {...register('biography', {
@@ -179,15 +179,17 @@ const UserProfileForm = ({
                 },
               })}
             />
-            <RichTextEditor
-              control={control}
-              name="biography"
-              defaultValue={formState.defaultValues?.biography}
-            />
             <FormErrorMessage>
               {formState.errors.biography?.message}
             </FormErrorMessage>
-          </FormControl>
+          </FormControl> */}
+
+          <RichTextEditor
+            control={control}
+            name="biography"
+            defaultValue={formState.defaultValues?.biography}
+            label="Biography"
+          />
 
           <Box>
             <FormLabel>Social Links</FormLabel>
