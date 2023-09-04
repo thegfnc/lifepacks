@@ -13,7 +13,6 @@ import {
   SimpleGrid,
   Stack,
   Text,
-  Textarea,
 } from '@chakra-ui/react'
 import { CurrentUserProfile } from 'types/graphql'
 

@@ -9,7 +9,6 @@ import {
   Input,
   SimpleGrid,
   Stack,
-  Textarea,
   Link as ChakraLink,
   HStack,
 } from '@chakra-ui/react'
