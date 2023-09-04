@@ -6894,9 +6894,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/bundler-plugin-core@npm:2.7.0":
-  version: 2.7.0
-  resolution: "@sentry/bundler-plugin-core@npm:2.7.0"
+"@sentry/bundler-plugin-core@npm:2.7.1":
+  version: 2.7.1
+  resolution: "@sentry/bundler-plugin-core@npm:2.7.1"
   dependencies:
     "@sentry/cli": ^2.20.1
     "@sentry/node": ^7.60.0
@@ -6906,7 +6906,7 @@ __metadata:
     glob: 9.3.2
     magic-string: 0.27.0
     unplugin: 1.0.1
-  checksum: d628295f70cd5851c87b380f07ba3faaa005c0841fa4b0ed715cf54a816bd2a2171e946d1441cd2954f06645abe313546ee011764459ecbafb0c55eb7adf2bb3
+  checksum: e670bf4e763e17eb6f763c2f34833e649ec9a559614326cda8a16fadc7e7812d3ce7a3ab715796ea7d533b5bde9e4095ab70ce5dfa286274b5d1de78ebd88d0b
   languageName: node
   linkType: hard
 
@@ -7025,13 +7025,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/vite-plugin@npm:^2.7.0":
-  version: 2.7.0
-  resolution: "@sentry/vite-plugin@npm:2.7.0"
+"@sentry/vite-plugin@npm:^2.7.1":
+  version: 2.7.1
+  resolution: "@sentry/vite-plugin@npm:2.7.1"
   dependencies:
-    "@sentry/bundler-plugin-core": 2.7.0
+    "@sentry/bundler-plugin-core": 2.7.1
     unplugin: 1.0.1
-  checksum: 9b0f93cfee3884bfc98bfd5ce68578bde77a8ca5ee3b1ec959960fd694bbd7b151a5e4908db832057ae5975df51b1b6f9e13c6675404164293467b46f9e6d532
+  checksum: 77d554f08edaac8c20244578576e067907f1c65e01bb4efae39beb8a51a3598e9080c947ed639dcfabfec953cdfbfe083b0b0f26ddea2189560a96fd822f6086
   languageName: node
   linkType: hard
 
@@ -26298,7 +26298,7 @@ __metadata:
     "@redwoodjs/vite": 6.1.1
     "@redwoodjs/web": 6.1.1
     "@sentry/react": 7.65.0
-    "@sentry/vite-plugin": ^2.7.0
+    "@sentry/vite-plugin": ^2.7.1
     "@supabase/supabase-js": 2.33.1
     "@tiptap/extension-character-count": ^2.1.8
     "@tiptap/extension-link": ^2.1.7
