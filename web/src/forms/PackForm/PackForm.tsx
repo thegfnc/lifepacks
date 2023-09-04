@@ -265,7 +265,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             name="description"
             control={control}
             defaultValue={formState.defaultValues?.description}
-            placeholder="Introduce your Pack to your readers in 2-3 sentences ..."
+            placeholder="Tell everyone what your pack is about in 2-3 sentences ..."
             variant="unstyled"
             textStyle={{
               fontSize: { base: '18px', md: '21px' },

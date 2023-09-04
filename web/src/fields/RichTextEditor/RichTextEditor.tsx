@@ -7,7 +7,7 @@ import {
   FormLabel,
   TextProps,
 } from '@chakra-ui/react'
-import Link from '@tiptap/extension-link'
+// import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import Underline from '@tiptap/extension-underline'
 import { useEditor, EditorContent } from '@tiptap/react'
@@ -62,9 +62,9 @@ const RichTextEditor = <T extends FieldValues>({
         orderedList: false,
       }),
       Underline,
-      Link.configure({
-        openOnClick: false,
-      }),
+      // Link.configure({
+      //   openOnClick: false,
+      // }),
       Placeholder.configure({
         placeholder,
       }),
