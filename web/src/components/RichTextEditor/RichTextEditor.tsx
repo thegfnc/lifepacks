@@ -7,6 +7,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  HStack,
   IconButton,
 } from '@chakra-ui/react'
 import Link from '@tiptap/extension-link'
@@ -50,70 +51,106 @@ const MenuBar = ({ editor }) => {
 
   return (
     <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
-      <Box
-        border="1px solid"
-        borderColor="blackAlpha.800"
-        background="white"
-        borderRadius="md"
-        overflow="hidden"
+      <HStack
+        spacing={1}
+        p={2}
+        bg="white"
+        borderRadius="xl"
+        boxShadow="base"
+        borderWidth="1px"
+        borderColor="blackAlpha.300"
       >
-        <Box background="blackAlpha.400">
-          <IconButton
-            borderRadius="none"
-            colorScheme="blackAlpha"
-            onClick={(e) => {
-              e.preventDefault()
-              editor.chain().focus().toggleBold().run()
-            }}
-            disabled={!editor.can().chain().focus().toggleBold().run()}
-            isActive={editor.isActive('bold')}
-            aria-label="Format Bold"
-            icon={<MdFormatBold size="20px" />}
-          />
-          <IconButton
-            borderRadius="none"
-            colorScheme="blackAlpha"
-            onClick={(e) => {
-              e.preventDefault()
-              editor.chain().focus().toggleItalic().run()
-            }}
-            disabled={!editor.can().chain().focus().toggleItalic().run()}
-            isActive={editor.isActive('italic')}
-            aria-label="Format Italic"
-            icon={<MdFormatItalic size="20px" />}
-          />
-          <IconButton
-            borderRadius="none"
-            colorScheme="blackAlpha"
-            onClick={(e) => {
-              e.preventDefault()
-              editor.chain().focus().toggleUnderline().run()
-            }}
-            disabled={!editor.can().chain().focus().toggleUnderline().run()}
-            isActive={editor.isActive('underline')}
-            aria-label="Format Underline"
-            icon={<MdFormatUnderlined size="20px" />}
-          />
-          <IconButton
-            borderRadius="none"
-            colorScheme="blackAlpha"
-            onClick={(e) => {
-              e.preventDefault()
-              editor.chain().focus().toggleStrike().run()
-            }}
-            disabled={!editor.can().chain().focus().toggleStrike().run()}
-            isActive={editor.isActive('strike')}
-            aria-label="Format Strikethrough"
-            icon={<MdFormatStrikethrough size="20px" />}
-          />
-          {/* <IconButton
+        <IconButton
+          colorScheme="whiteAlpha"
+          color="black"
+          bg="white"
+          _hover={{
+            bg: 'blackAlpha.200',
+          }}
+          _active={{
+            bg: 'blackAlpha.300',
+          }}
+          size="md"
+          borderRadius="xl"
+          onClick={(e) => {
+            e.preventDefault()
+            editor.chain().focus().toggleBold().run()
+          }}
+          disabled={!editor.can().chain().focus().toggleBold().run()}
+          isActive={editor.isActive('bold')}
+          aria-label="Format Bold"
+          icon={<MdFormatBold size="24px" />}
+        />
+        <IconButton
+          colorScheme="whiteAlpha"
+          color="black"
+          bg="white"
+          _hover={{
+            bg: 'blackAlpha.200',
+          }}
+          _active={{
+            bg: 'blackAlpha.300',
+          }}
+          size="md"
+          borderRadius="xl"
+          onClick={(e) => {
+            e.preventDefault()
+            editor.chain().focus().toggleItalic().run()
+          }}
+          disabled={!editor.can().chain().focus().toggleItalic().run()}
+          isActive={editor.isActive('italic')}
+          aria-label="Format Italic"
+          icon={<MdFormatItalic size="24px" />}
+        />
+        <IconButton
+          colorScheme="whiteAlpha"
+          color="black"
+          bg="white"
+          _hover={{
+            bg: 'blackAlpha.200',
+          }}
+          _active={{
+            bg: 'blackAlpha.300',
+          }}
+          size="md"
+          borderRadius="xl"
+          onClick={(e) => {
+            e.preventDefault()
+            editor.chain().focus().toggleUnderline().run()
+          }}
+          disabled={!editor.can().chain().focus().toggleUnderline().run()}
+          isActive={editor.isActive('underline')}
+          aria-label="Format Underline"
+          icon={<MdFormatUnderlined size="24px" />}
+        />
+        <IconButton
+          colorScheme="whiteAlpha"
+          color="black"
+          bg="white"
+          _hover={{
+            bg: 'blackAlpha.200',
+          }}
+          _active={{
+            bg: 'blackAlpha.300',
+          }}
+          size="md"
+          borderRadius="xl"
+          onClick={(e) => {
+            e.preventDefault()
+            editor.chain().focus().toggleStrike().run()
+          }}
+          disabled={!editor.can().chain().focus().toggleStrike().run()}
+          isActive={editor.isActive('strike')}
+          aria-label="Format Strikethrough"
+          icon={<MdFormatStrikethrough size="24px" />}
+        />
+        {/* <IconButton
         onClick={setLink}
         isActive={editor.isActive('link')}
         aria-label="Link"
         icon={<MdLink />}
       /> */}
-        </Box>
-      </Box>
+      </HStack>
     </BubbleMenu>
   )
 }
