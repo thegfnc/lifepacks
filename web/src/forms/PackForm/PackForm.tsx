@@ -27,9 +27,9 @@ import { Form, useForm } from '@redwoodjs/forms'
 
 import EditPackItemModal from 'src/components/EditPackItemModal/EditPackItemModal'
 import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
-import RichTextEditor from 'src/components/RichTextEditor/RichTextEditor'
 import HeaderCtaContext from 'src/contexts/HeaderCtaContext'
 import ExpandingTextarea from 'src/fields/ExpandingTextarea/ExpandingTextarea'
+import RichTextEditor from 'src/fields/RichTextEditor/RichTextEditor'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
 
 type PackFormProps = {
@@ -267,6 +267,12 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             defaultValue={formState.defaultValues?.description}
             placeholder="Introduce your Pack to your readers in 2-3 sentences ..."
             variant="unstyled"
+            textStyle={{
+              fontSize: { base: '18px', md: '21px' },
+              lineHeight: { base: '1.33', md: '28px' },
+              fontFamily: 'bitter',
+              color: 'blackAlpha.900',
+            }}
           />
           <Tooltip
             hasArrow

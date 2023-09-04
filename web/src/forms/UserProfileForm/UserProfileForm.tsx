@@ -18,9 +18,9 @@ import { CurrentUserProfile } from 'types/graphql'
 
 import { Form, useForm } from '@redwoodjs/forms'
 
-import RichTextEditor from 'src/components/RichTextEditor/RichTextEditor'
 import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import RichTextEditor from 'src/fields/RichTextEditor/RichTextEditor'
 import isValidUrl from 'src/helpers/isValidUrl'
 import SocialAccount from 'src/types/SocialAccount'
 

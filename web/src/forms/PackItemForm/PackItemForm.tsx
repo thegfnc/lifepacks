@@ -18,8 +18,8 @@ import { PackItem } from 'types/graphql'
 import { Form, useForm } from '@redwoodjs/forms'
 import { routes } from '@redwoodjs/router'
 
-import RichTextEditor from 'src/components/RichTextEditor/RichTextEditor'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import RichTextEditor from 'src/fields/RichTextEditor/RichTextEditor'
 import isValidUrl from 'src/helpers/isValidUrl'
 
 type PackItemFormProps = {

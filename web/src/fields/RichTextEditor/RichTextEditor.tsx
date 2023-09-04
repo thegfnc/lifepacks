@@ -9,6 +9,7 @@ import {
   FormLabel,
   HStack,
   IconButton,
+  TextProps,
 } from '@chakra-ui/react'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
@@ -29,10 +30,13 @@ import {
   useController,
 } from '@redwoodjs/forms'
 
+import RichTextStyleWrapper from 'src/components/RichTextStyleWrapper/RichTextStyleWrapper'
+
 type RichTextEditorProps<T> = UseControllerProps<T> & {
   label?: string
   placeholder?: string
   variant?: 'outline' | 'unstyled'
+  textStyle?: TextProps
 }
 
 const MenuBar = ({ editor }) => {
@@ -172,6 +176,7 @@ const RichTextEditor = <T extends FieldValues>({
   label = '',
   placeholder = '',
   variant = 'outline',
+  textStyle = {},
 }: RichTextEditorProps<T>) => {
   const fieldId = useId()
   const [isFocused, setIsFocused] = useState(false)
@@ -242,7 +247,9 @@ const RichTextEditor = <T extends FieldValues>({
           transitionDuration="normal"
         >
           <Box py={isOutlineVariant ? 2 : 0} px={isOutlineVariant ? 4 : 0}>
-            <EditorContent editor={editor} />
+            <RichTextStyleWrapper {...textStyle}>
+              <EditorContent editor={editor} />
+            </RichTextStyleWrapper>
           </Box>
         </Box>
         <FormErrorMessage>{fieldState.error?.message}</FormErrorMessage>
