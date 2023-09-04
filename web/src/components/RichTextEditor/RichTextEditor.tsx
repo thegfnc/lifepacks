@@ -56,7 +56,7 @@ const MenuBar = ({ editor }) => {
         p={2}
         bg="white"
         borderRadius="xl"
-        boxShadow="base"
+        boxShadow="md"
         borderWidth="1px"
         borderColor="blackAlpha.300"
       >
