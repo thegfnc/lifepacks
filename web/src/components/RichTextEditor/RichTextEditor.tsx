@@ -12,7 +12,7 @@ import {
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import Underline from '@tiptap/extension-underline'
-import { useEditor, EditorContent } from '@tiptap/react'
+import { useEditor, EditorContent, BubbleMenu } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import {
   MdFormatBold,
@@ -24,7 +24,7 @@ import {
 
 import { useController } from '@redwoodjs/forms'
 
-const MenuBar = ({ editor, isFocused }) => {
+const MenuBar = ({ editor }) => {
   // const setLink = useCallback(() => {
   //   const previousUrl = editor.getAttributes('link').href
   //   const url = window.prompt('URL', previousUrl)
@@ -49,66 +49,72 @@ const MenuBar = ({ editor, isFocused }) => {
   }
 
   return (
-    <Box
-      borderBottom="1px solid"
-      borderColor="blackAlpha.100"
-      background="blackAlpha.50"
-    >
-      <IconButton
-        borderRadius="none"
-        variant="ghost"
-        onClick={(e) => {
-          e.preventDefault()
-          editor.chain().focus().toggleBold().run()
-        }}
-        disabled={!editor.can().chain().focus().toggleBold().run()}
-        isActive={isFocused && editor.isActive('bold')}
-        aria-label="Format Bold"
-        icon={<MdFormatBold size="20px" />}
-      />
-      <IconButton
-        borderRadius="none"
-        variant="ghost"
-        onClick={(e) => {
-          e.preventDefault()
-          editor.chain().focus().toggleItalic().run()
-        }}
-        disabled={!editor.can().chain().focus().toggleItalic().run()}
-        isActive={isFocused && editor.isActive('italic')}
-        aria-label="Format Italic"
-        icon={<MdFormatItalic size="20px" />}
-      />
-      <IconButton
-        borderRadius="none"
-        variant="ghost"
-        onClick={(e) => {
-          e.preventDefault()
-          editor.chain().focus().toggleUnderline().run()
-        }}
-        disabled={!editor.can().chain().focus().toggleUnderline().run()}
-        isActive={isFocused && editor.isActive('underline')}
-        aria-label="Format Underline"
-        icon={<MdFormatUnderlined size="20px" />}
-      />
-      <IconButton
-        borderRadius="none"
-        variant="ghost"
-        onClick={(e) => {
-          e.preventDefault()
-          editor.chain().focus().toggleStrike().run()
-        }}
-        disabled={!editor.can().chain().focus().toggleStrike().run()}
-        isActive={isFocused && editor.isActive('strike')}
-        aria-label="Format Strikethrough"
-        icon={<MdFormatStrikethrough size="20px" />}
-      />
-      {/* <IconButton
+    <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
+      <Box
+        border="1px solid"
+        borderColor="blackAlpha.800"
+        background="white"
+        borderRadius="md"
+        overflow="hidden"
+      >
+        <Box background="blackAlpha.400">
+          <IconButton
+            borderRadius="none"
+            colorScheme="blackAlpha"
+            onClick={(e) => {
+              e.preventDefault()
+              editor.chain().focus().toggleBold().run()
+            }}
+            disabled={!editor.can().chain().focus().toggleBold().run()}
+            isActive={editor.isActive('bold')}
+            aria-label="Format Bold"
+            icon={<MdFormatBold size="20px" />}
+          />
+          <IconButton
+            borderRadius="none"
+            colorScheme="blackAlpha"
+            onClick={(e) => {
+              e.preventDefault()
+              editor.chain().focus().toggleItalic().run()
+            }}
+            disabled={!editor.can().chain().focus().toggleItalic().run()}
+            isActive={editor.isActive('italic')}
+            aria-label="Format Italic"
+            icon={<MdFormatItalic size="20px" />}
+          />
+          <IconButton
+            borderRadius="none"
+            colorScheme="blackAlpha"
+            onClick={(e) => {
+              e.preventDefault()
+              editor.chain().focus().toggleUnderline().run()
+            }}
+            disabled={!editor.can().chain().focus().toggleUnderline().run()}
+            isActive={editor.isActive('underline')}
+            aria-label="Format Underline"
+            icon={<MdFormatUnderlined size="20px" />}
+          />
+          <IconButton
+            borderRadius="none"
+            colorScheme="blackAlpha"
+            onClick={(e) => {
+              e.preventDefault()
+              editor.chain().focus().toggleStrike().run()
+            }}
+            disabled={!editor.can().chain().focus().toggleStrike().run()}
+            isActive={editor.isActive('strike')}
+            aria-label="Format Strikethrough"
+            icon={<MdFormatStrikethrough size="20px" />}
+          />
+          {/* <IconButton
         onClick={setLink}
         isActive={editor.isActive('link')}
         aria-label="Link"
         icon={<MdLink />}
       /> */}
-    </Box>
+        </Box>
+      </Box>
+    </BubbleMenu>
   )
 }
 
@@ -175,6 +181,7 @@ const RichTextEditor = ({
     <>
       <FormControl isInvalid={Boolean(fieldState.error)} id={fieldId}>
         <FormLabel onClick={() => editor.commands.focus()}>{label}</FormLabel>
+        <MenuBar editor={editor} />
         <Box
           border="1px solid"
           borderColor={isFocused ? '#3182ce' : 'gray.300'}
@@ -183,7 +190,6 @@ const RichTextEditor = ({
           transitionProperty="common"
           transitionDuration="normal"
         >
-          <MenuBar editor={editor} isFocused={isFocused} />
           <Box py={2} px={4}>
             <EditorContent editor={editor} />
           </Box>
