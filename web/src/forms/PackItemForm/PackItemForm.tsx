@@ -53,7 +53,8 @@ const PackItemForm = ({
 
   useEffect(() => {
     setFocus('title')
-  }, [setFocus])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // to ensure it only runs once on mount
 
   return (
     <Form formMethods={formMethods} onSubmit={onSubmit}>

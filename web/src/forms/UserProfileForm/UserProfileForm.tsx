@@ -79,7 +79,8 @@ const UserProfileForm = ({
 
   useEffect(() => {
     setFocus('givenName')
-  }, [setFocus])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // to ensure it only runs once on mount
 
   return (
     <>

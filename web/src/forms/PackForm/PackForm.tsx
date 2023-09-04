@@ -98,7 +98,7 @@ function packItemsReducer(packItems, action) {
 
 const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   const formMethods = useForm<PackFormValues>({ defaultValues })
-  const { register, formState, control, handleSubmit } = formMethods
+  const { register, formState, control, handleSubmit, setFocus } = formMethods
   const setHeaderCtaComponent = useContext(HeaderCtaContext)
 
   const [packItems, dispatch] = useReducer(
@@ -211,6 +211,11 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
 
     return () => setHeaderCtaComponent(null)
   }, [handleSubmit, isLoading, onFormSubmit, setHeaderCtaComponent])
+
+  useEffect(() => {
+    setTimeout(() => setFocus('title'), 0)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // to ensure it only runs once on mount
 
   return (
     <>
