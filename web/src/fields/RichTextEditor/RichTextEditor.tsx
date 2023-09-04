@@ -27,6 +27,7 @@ type RichTextEditorProps<T> = UseControllerProps<T> & {
   label?: string
   placeholder?: string
   variant?: 'outline' | 'unstyled'
+  minHeight?: string
   textStyle?: TextProps
 }
 
@@ -37,6 +38,7 @@ const RichTextEditor = <T extends FieldValues>({
   label = '',
   placeholder = '',
   variant = 'outline',
+  minHeight = '5em',
   textStyle = {},
 }: RichTextEditorProps<T>) => {
   const fieldId = useId()
@@ -71,7 +73,7 @@ const RichTextEditor = <T extends FieldValues>({
     ],
     editorProps: {
       attributes: {
-        style: 'outline: 2px solid transparent;',
+        style: `outline: 2px solid transparent; min-height:${minHeight};`,
         id: fieldId,
       },
     },
