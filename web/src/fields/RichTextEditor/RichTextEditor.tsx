@@ -8,6 +8,7 @@ import {
   TextProps,
 } from '@chakra-ui/react'
 // import Link from '@tiptap/extension-link'
+import CharacterCount from '@tiptap/extension-character-count'
 import Placeholder from '@tiptap/extension-placeholder'
 import Underline from '@tiptap/extension-underline'
 import { useEditor, EditorContent } from '@tiptap/react'
@@ -21,6 +22,7 @@ import {
 
 import RichTextStyleWrapper from 'src/components/RichTextStyleWrapper/RichTextStyleWrapper'
 
+import CharacterCountDisplay from './CharacterCountDisplay'
 import MenuBar from './MenuBar'
 
 type RichTextEditorProps<T> = UseControllerProps<T> & {
@@ -29,6 +31,7 @@ type RichTextEditorProps<T> = UseControllerProps<T> & {
   variant?: 'outline' | 'unstyled'
   minHeight?: string
   textStyle?: TextProps
+  maxLength?: number
 }
 
 const RichTextEditor = <T extends FieldValues>({
@@ -40,6 +43,7 @@ const RichTextEditor = <T extends FieldValues>({
   variant = 'outline',
   minHeight = '5em',
   textStyle = {},
+  maxLength = null,
 }: RichTextEditorProps<T>) => {
   const fieldId = useId()
   const [isFocused, setIsFocused] = useState(false)
@@ -70,6 +74,9 @@ const RichTextEditor = <T extends FieldValues>({
       Placeholder.configure({
         placeholder,
       }),
+      CharacterCount.configure({
+        limit: maxLength,
+      }),
     ],
     editorProps: {
       attributes: {
@@ -97,7 +104,18 @@ const RichTextEditor = <T extends FieldValues>({
   return (
     <>
       <FormControl isInvalid={Boolean(fieldState.error)} id={fieldId}>
-        <FormLabel onClick={() => editor.commands.focus()}>{label}</FormLabel>
+        {label && (
+          <FormLabel
+            onClick={() => editor.commands.focus()}
+            display="flex"
+            alignItems="flex-end"
+            justifyContent="space-between"
+            marginInlineEnd={1}
+          >
+            <Box>{label}</Box>
+            <CharacterCountDisplay editor={editor} maxLength={maxLength} />
+          </FormLabel>
+        )}
         <MenuBar editor={editor} />
         <Box
           border={isOutlineVariant ? '1px solid' : 'none'}
@@ -115,6 +133,9 @@ const RichTextEditor = <T extends FieldValues>({
             </RichTextStyleWrapper>
           </Box>
         </Box>
+        {!label && (
+          <CharacterCountDisplay editor={editor} maxLength={maxLength} />
+        )}
         <FormErrorMessage>{fieldState.error?.message}</FormErrorMessage>
       </FormControl>
     </>

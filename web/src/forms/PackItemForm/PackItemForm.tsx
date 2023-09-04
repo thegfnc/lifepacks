@@ -141,6 +141,7 @@ const PackItemForm = ({
           control={control}
           defaultValue={formState.defaultValues?.description}
           label="Description"
+          maxLength={1000}
         />
       </Stack>
       <SimpleGrid

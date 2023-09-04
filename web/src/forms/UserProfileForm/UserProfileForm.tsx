@@ -189,6 +189,7 @@ const UserProfileForm = ({
             name="biography"
             defaultValue={formState.defaultValues?.biography}
             label="Biography"
+            maxLength={500}
           />
 
           <Box>
