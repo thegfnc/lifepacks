@@ -134,7 +134,9 @@ const RichTextEditor = <T extends FieldValues>({
           </Box>
         </Box>
         {!label && (
-          <CharacterCountDisplay editor={editor} maxLength={maxLength} />
+          <Box marginTop={1}>
+            <CharacterCountDisplay editor={editor} maxLength={maxLength} />
+          </Box>
         )}
         <FormErrorMessage>{fieldState.error?.message}</FormErrorMessage>
       </FormControl>
