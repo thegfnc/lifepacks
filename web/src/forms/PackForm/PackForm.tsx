@@ -20,7 +20,6 @@ import {
   Stack,
   useDisclosure,
   Tooltip,
-  FormLabel,
 } from '@chakra-ui/react'
 import { Pack, PackItem } from 'types/graphql'
 
@@ -218,9 +217,8 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
       <Form formMethods={formMethods}>
         <Stack spacing={6}>
           <FormControl isInvalid={Boolean(formState.errors.title)}>
-            <FormLabel>Pack Title</FormLabel>
             <ExpandingTextarea
-              placeholder="Enter a title for your pack ..."
+              placeholder="Enter a spiffy pack title"
               fontSize="5xl"
               fontWeight="extrabold"
               color="blackAlpha.800"
@@ -267,8 +265,8 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
             name="description"
             control={control}
             defaultValue={formState.defaultValues?.description}
-            label="Pack Description"
             placeholder="Introduce your Pack to your readers in 2-3 sentences ..."
+            variant="unstyled"
           />
           <Tooltip
             hasArrow

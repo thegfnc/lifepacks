@@ -23,7 +23,17 @@ import {
   // MdLink,
 } from 'react-icons/md'
 
-import { useController } from '@redwoodjs/forms'
+import {
+  FieldValues,
+  UseControllerProps,
+  useController,
+} from '@redwoodjs/forms'
+
+type RichTextEditorProps<T> = UseControllerProps<T> & {
+  label?: string
+  placeholder?: string
+  variant?: 'outline' | 'unstyled'
+}
 
 const MenuBar = ({ editor }) => {
   // const setLink = useCallback(() => {
@@ -155,15 +165,17 @@ const MenuBar = ({ editor }) => {
   )
 }
 
-const RichTextEditor = ({
+const RichTextEditor = <T extends FieldValues>({
   control,
   name,
   defaultValue,
   label = '',
   placeholder = '',
-}) => {
+  variant = 'outline',
+}: RichTextEditorProps<T>) => {
   const fieldId = useId()
   const [isFocused, setIsFocused] = useState(false)
+  const isOutlineVariant = variant === 'outline'
 
   const { field, fieldState } = useController({
     name,
@@ -220,14 +232,16 @@ const RichTextEditor = ({
         <FormLabel onClick={() => editor.commands.focus()}>{label}</FormLabel>
         <MenuBar editor={editor} />
         <Box
-          border="1px solid"
-          borderColor={isFocused ? '#3182ce' : 'gray.300'}
-          boxShadow={isFocused ? '0 0 0 1px #3182ce' : 'none'}
+          border={isOutlineVariant ? '1px solid' : 'none'}
+          borderColor={isOutlineVariant && isFocused ? '#3182ce' : 'gray.300'}
+          boxShadow={
+            isOutlineVariant && isFocused ? '0 0 0 1px #3182ce' : 'none'
+          }
           borderRadius="md"
           transitionProperty="common"
           transitionDuration="normal"
         >
-          <Box py={2} px={4}>
+          <Box py={isOutlineVariant ? 2 : 0} px={isOutlineVariant ? 4 : 0}>
             <EditorContent editor={editor} />
           </Box>
         </Box>
