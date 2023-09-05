@@ -262,7 +262,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
           />
           <Tooltip
             hasArrow
-            label="You can only have up to 8 items in a Pack"
+            label="You can only add up to 8 items in a Pack"
             bg="red.600"
             isDisabled={packItems.length < 8}
           >
@@ -293,7 +293,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                 />
                 <Tooltip
                   hasArrow
-                  label="You can only have up to 8 items in a Pack"
+                  label="You can only add up to 8 items in a Pack"
                   bg="red.600"
                   isDisabled={packItems.length < 8}
                 >
