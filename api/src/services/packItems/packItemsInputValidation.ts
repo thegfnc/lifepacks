@@ -29,7 +29,7 @@ export function validiateCommonPackItemInputFields(input) {
     {
       length: {
         max: 480,
-        message: `Description for pack item "${input.title}" must have no more than 800 characters.`,
+        message: `Description for pack item "${input.title}" must have no more than 480 characters.`,
       },
     }
   )
