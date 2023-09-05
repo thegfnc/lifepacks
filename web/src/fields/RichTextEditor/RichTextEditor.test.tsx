@@ -1,4 +1,5 @@
-import { render } from '@redwoodjs/testing/web'
+import { useForm } from '@redwoodjs/forms'
+import { render, renderHook } from '@redwoodjs/testing/web'
 
 import RichTextEditor from './RichTextEditor'
 
@@ -8,7 +9,9 @@ import RichTextEditor from './RichTextEditor'
 describe('RichTextEditor', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<RichTextEditor />)
+      const { result } = renderHook(() => useForm())
+
+      render(<RichTextEditor name="rte" control={result.current.control} />)
     }).not.toThrow()
   })
 })

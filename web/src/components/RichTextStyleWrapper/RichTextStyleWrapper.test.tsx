@@ -8,7 +8,7 @@ import RichTextStyleWrapper from './RichTextStyleWrapper'
 describe('RichTextStyleWrapper', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<RichTextStyleWrapper />)
+      render(<RichTextStyleWrapper>Text</RichTextStyleWrapper>)
     }).not.toThrow()
   })
 })
