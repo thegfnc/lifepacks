@@ -238,6 +238,8 @@ const AboutPage = () => {
                     Lifepacks and you keep all of the profit. Sign up for your
                     favorite affiliate program, generate the link with your
                     embedded code, and paste it into each item on your pack.
+                    Everyone that signs up during our alpha period will keep
+                    100% of their affiliate revenue.
                   </Text>
                   <Box>
                     <Button
