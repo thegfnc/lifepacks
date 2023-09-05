@@ -9,7 +9,6 @@ import {
   Input,
   SimpleGrid,
   Stack,
-  Textarea,
   Link as ChakraLink,
   HStack,
 } from '@chakra-ui/react'
@@ -20,6 +19,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 import { routes } from '@redwoodjs/router'
 
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import RichTextEditor from 'src/fields/RichTextEditor/RichTextEditor'
 import isValidUrl from 'src/helpers/isValidUrl'
 
 type PackItemFormProps = {
@@ -53,7 +53,8 @@ const PackItemForm = ({
 
   useEffect(() => {
     setFocus('title')
-  }, [setFocus])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // to ensure it only runs once on mount
 
   return (
     <Form formMethods={formMethods} onSubmit={onSubmit}>
@@ -120,21 +121,13 @@ const PackItemForm = ({
             {formState.errors.imageUrl?.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl isInvalid={Boolean(formState.errors.description)}>
-          <FormLabel>Description</FormLabel>
-          <Textarea
-            {...register('description', {
-              maxLength: {
-                value: 1000,
-                message: 'Description cannot exceed 1000 characters',
-              },
-            })}
-            rows={5}
-          />
-          <FormErrorMessage>
-            {formState.errors.description?.message}
-          </FormErrorMessage>
-        </FormControl>
+        <RichTextEditor
+          name="description"
+          control={control}
+          defaultValue={formState.defaultValues?.description}
+          label="Description"
+          maxLength={480}
+        />
       </Stack>
       <SimpleGrid
         py={4}
@@ -151,7 +144,7 @@ const PackItemForm = ({
         borderTopColor="blackAlpha.300"
       >
         {onCancel && (
-          <Button variant="outline" colorScheme="gray" onClick={onCancel}>
+          <Button variant="secondary" onClick={onCancel}>
             Cancel
           </Button>
         )}

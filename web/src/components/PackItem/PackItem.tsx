@@ -12,6 +12,7 @@ import {
 import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 
 import BuyButton from '../BuyButton/BuyButton'
+import RichTextStyleWrapper from '../RichTextStyleWrapper/RichTextStyleWrapper'
 
 type PackItemProps = {
   id: number
@@ -54,9 +55,12 @@ const PackItem = ({
             borderColor="blackAlpha.100"
           >
             <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 4, md: 0 }}>
-              <Heading fontSize="21px" lineHeight="28px" fontWeight="medium">
-                {title}
-              </Heading>
+              <Heading
+                fontSize="21px"
+                lineHeight="28px"
+                fontWeight="medium"
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
               <Box mt={4}>
                 <BuyButton packItemId={id} purchaseUrl={purchaseUrl} />
               </Box>
@@ -69,13 +73,16 @@ const PackItem = ({
           mt={{ base: 4, md: 10 }}
           p={0}
           pt={{ base: 4, md: 8 }}
-          fontSize={{ base: 'md', md: '16px' }}
-          lineHeight={{ base: '1.5', md: '24px' }}
-          color="blackAlpha.700"
           borderTopWidth="1px"
           borderTopColor="blackAlpha.100"
         >
-          {description}
+          <RichTextStyleWrapper
+            fontSize={{ base: 'md', md: '16px' }}
+            lineHeight={{ base: '1.5', md: '24px' }}
+            color="blackAlpha.700"
+          >
+            <Box dangerouslySetInnerHTML={{ __html: description }} />
+          </RichTextStyleWrapper>
         </CardBody>
       )}
     </Card>

@@ -9,6 +9,7 @@ import {
   Stack,
   Link as ChakraLink,
   AvatarBadge,
+  Box,
 } from '@chakra-ui/react'
 import { MdVerified } from 'react-icons/md'
 import { UserProfile as UserProfileType } from 'types/graphql'
@@ -20,6 +21,8 @@ import getImageUrlWithTransform from 'src/helpers/getImageUrlWithTransform'
 import getUserDisplayName from 'src/helpers/getUserDisplayName'
 import { trackSelectUserProfile } from 'src/lib/analytics'
 import SocialAccount from 'src/types/SocialAccount'
+
+import RichTextStyleWrapper from '../RichTextStyleWrapper/RichTextStyleWrapper'
 
 export enum UserProfileLayout {
   Banner = 'Banner',
@@ -94,15 +97,15 @@ const UserProfileBannerLayout = ({
         )}
       </Stack>
       {userProfile.biography && (
-        <Text
+        <RichTextStyleWrapper
           fontSize="md"
           lineHeight={6}
           mt={2}
           color="blackAlpha.800"
           maxW="xl"
         >
-          {userProfile.biography}
-        </Text>
+          <Box dangerouslySetInnerHTML={{ __html: userProfile.biography }} />
+        </RichTextStyleWrapper>
       )}
       <Center mt={4}>
         <HStack>
@@ -203,9 +206,14 @@ const UserProfileSidebarLayout = ({
           @{userProfile.username}
         </Text>
         {userProfile.biography && (
-          <Text fontSize="14px" lineHeight="20px" mt={2} color="blackAlpha.800">
-            {userProfile.biography}
-          </Text>
+          <RichTextStyleWrapper
+            fontSize="14px"
+            lineHeight="20px"
+            mt={2}
+            color="blackAlpha.800"
+          >
+            <Box dangerouslySetInnerHTML={{ __html: userProfile.biography }} />
+          </RichTextStyleWrapper>
         )}
         <HStack mt={4}>
           {userProfile.facebookUrl && (

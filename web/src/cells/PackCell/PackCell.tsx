@@ -18,9 +18,11 @@ import {
   MenuItem,
   MenuList,
   Stack,
+  Text,
   useDisclosure,
 } from '@chakra-ui/react'
 import { MdDeleteOutline, MdMoreHoriz, MdOutlineModeEdit } from 'react-icons/md'
+import sanitizeHtml from 'sanitize-html'
 import type {
   FindPackQuery,
   FindPackQueryVariables,
@@ -156,7 +158,10 @@ export const Success = ({
                 userProfile.username
               )
             }
-            description={pack.description}
+            description={sanitizeHtml(pack.description, {
+              allowedTags: [],
+              allowedAttributes: {},
+            })}
             ogType="article"
             ogUrl={getEnvironmentUrl(routes.pack({ username, slug }))}
           />
@@ -194,7 +199,7 @@ export const Success = ({
       {error && (
         <Alert status="error">
           <AlertIcon />
-          {error.message}
+          <Text dangerouslySetInnerHTML={{ __html: error.message }} />
         </Alert>
       )}
 
@@ -251,9 +256,10 @@ export const Success = ({
         isOpen={isDeleteAlertOpen}
         leastDestructiveRef={cancelDeleteRef}
         onClose={onDeleteAlertClose}
+        isCentered={true}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent>
+          <AlertDialogContent borderRadius="3xl">
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               Delete Pack
             </AlertDialogHeader>
@@ -264,8 +270,7 @@ export const Success = ({
 
             <AlertDialogFooter>
               <Button
-                variant="outline"
-                colorScheme="gray"
+                variant="secondary"
                 ref={cancelDeleteRef}
                 onClick={onDeleteAlertClose}
               >

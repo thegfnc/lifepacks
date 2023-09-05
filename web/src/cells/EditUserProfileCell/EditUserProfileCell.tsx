@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { Alert, AlertIcon } from '@chakra-ui/react'
+import { Alert, AlertIcon, Text } from '@chakra-ui/react'
 import type {
   FindEditUserProfileQuery,
   FindEditUserProfileQueryVariables,
@@ -96,7 +96,7 @@ export const Success = ({
       {error && (
         <Alert status="error" mb={4}>
           <AlertIcon />
-          {error.message}
+          <Text dangerouslySetInnerHTML={{ __html: error.message }} />
         </Alert>
       )}
       <UserProfileForm

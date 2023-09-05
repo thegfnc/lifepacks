@@ -1,4 +1,4 @@
-import { Alert, AlertIcon } from '@chakra-ui/react'
+import { Alert, AlertIcon, Text } from '@chakra-ui/react'
 import type {
   CreatePackMutation,
   CreatePackMutationVariables,
@@ -45,7 +45,7 @@ const NewPack = ({ username }: NewPackProps) => {
       {error && (
         <Alert status="error">
           <AlertIcon />
-          {error.message}
+          <Text dangerouslySetInnerHTML={{ __html: error.message }} />
         </Alert>
       )}
       <PackForm onSubmit={onSubmit} isLoading={loading} />

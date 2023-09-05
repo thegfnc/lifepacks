@@ -8,6 +8,7 @@ import {
   AvatarBadge,
 } from '@chakra-ui/react'
 import { MdVerified } from 'react-icons/md'
+import sanitizeHtml from 'sanitize-html'
 import { UserProfile } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
@@ -77,8 +78,12 @@ const UserProfileThumbnailListItem = ({
           color="blackAlpha.600"
           fontWeight="normal"
           lineHeight="20px"
+          noOfLines={3}
         >
-          {biography}
+          {sanitizeHtml(biography, {
+            allowedTags: [],
+            allowedAttributes: {},
+          })}
         </Text>
       </Stack>
     </LinkBox>

@@ -29,6 +29,7 @@ import EditPackItemModal from 'src/components/EditPackItemModal/EditPackItemModa
 import PackItemEditable from 'src/components/PackItemEditable/PackItemEditable'
 import HeaderCtaContext from 'src/contexts/HeaderCtaContext'
 import ExpandingTextarea from 'src/fields/ExpandingTextarea/ExpandingTextarea'
+import RichTextEditor from 'src/fields/RichTextEditor/RichTextEditor'
 import { arrayMoveImmutable } from 'src/helpers/arrayMove'
 
 type PackFormProps = {
@@ -97,7 +98,7 @@ function packItemsReducer(packItems, action) {
 
 const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
   const formMethods = useForm<PackFormValues>({ defaultValues })
-  const { register, formState, handleSubmit } = formMethods
+  const { register, formState, control, handleSubmit, setFocus } = formMethods
   const setHeaderCtaComponent = useContext(HeaderCtaContext)
 
   const [packItems, dispatch] = useReducer(
@@ -211,13 +212,18 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
     return () => setHeaderCtaComponent(null)
   }, [handleSubmit, isLoading, onFormSubmit, setHeaderCtaComponent])
 
+  useEffect(() => {
+    setTimeout(() => setFocus('title'), 0)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // to ensure it only runs once on mount
+
   return (
     <>
       <Form formMethods={formMethods}>
         <Stack spacing={6}>
           <FormControl isInvalid={Boolean(formState.errors.title)}>
             <ExpandingTextarea
-              placeholder="Title"
+              placeholder="Enter a spiffy pack title"
               fontSize="5xl"
               fontWeight="extrabold"
               color="blackAlpha.800"
@@ -240,26 +246,20 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               {formState.errors.title?.message}
             </FormErrorMessage>
           </FormControl>
-          <FormControl isInvalid={Boolean(formState.errors.description)}>
-            <ExpandingTextarea
-              placeholder="Introduce your Pack to your readers..."
-              fontSize="xl"
-              lineHeight={7}
-              color="blackAlpha.800"
-              variant="unstyled"
-              fontFamily="bitter"
-              resize="none"
-              {...register('description', {
-                maxLength: {
-                  value: 1000,
-                  message: 'Pack description cannot exceed 1000 characters',
-                },
-              })}
-            />
-            <FormErrorMessage>
-              {formState.errors.description?.message}
-            </FormErrorMessage>
-          </FormControl>
+          <RichTextEditor
+            name="description"
+            control={control}
+            defaultValue={formState.defaultValues?.description}
+            placeholder="Tell everyone what your pack is about in 2-3 sentences ..."
+            variant="unstyled"
+            textStyle={{
+              fontSize: { base: '18px', md: '21px' },
+              lineHeight: { base: '1.33', md: '28px' },
+              fontFamily: 'bitter',
+              color: 'blackAlpha.900',
+            }}
+            maxLength={360}
+          />
           <Tooltip
             hasArrow
             label="You can only have up to 8 items in a Pack"
@@ -268,8 +268,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
           >
             <Button
               size="lg"
-              variant="outline"
-              colorScheme="gray"
+              variant="secondary"
               onClick={createOpenAddPackItemModal(0)}
               isDisabled={packItems.length >= 8}
             >
@@ -300,8 +299,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
                 >
                   <Button
                     size="lg"
-                    variant="outline"
-                    colorScheme="gray"
+                    variant="secondary"
                     onClick={createOpenAddPackItemModal(index + 1)}
                     isDisabled={packItems.length >= 8}
                   >
@@ -325,9 +323,10 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
         isOpen={isDeleteAlertOpen}
         leastDestructiveRef={cancelDeleteRef}
         onClose={onDeleteAlertClose}
+        isCentered={true}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent>
+          <AlertDialogContent borderRadius="3xl">
             <AlertDialogHeader fontSize="lg" fontWeight="bold">
               Delete Pack Item
             </AlertDialogHeader>
@@ -338,8 +337,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
 
             <AlertDialogFooter>
               <Button
-                variant="outline"
-                colorScheme="gray"
+                variant="secondary"
                 ref={cancelDeleteRef}
                 onClick={onDeleteAlertClose}
               >

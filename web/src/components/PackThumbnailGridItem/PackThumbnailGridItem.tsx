@@ -220,9 +220,8 @@ const PackThumbnailGridItem = ({
                 onClick={() => {
                   trackSelectPack(pack.id, pack.slug)
                 }}
-              >
-                {pack.title}
-              </LinkOverlay>
+                dangerouslySetInnerHTML={{ __html: pack.title }}
+              />
             </Heading>
             <Flex align="center" w="full" justify="space-between">
               <HStack spacing="6px">
@@ -320,9 +319,10 @@ const PackThumbnailGridItem = ({
           isOpen={isDeleteAlertOpen}
           leastDestructiveRef={cancelDeleteRef}
           onClose={onDeleteAlertClose}
+          isCentered={true}
         >
           <AlertDialogOverlay>
-            <AlertDialogContent>
+            <AlertDialogContent borderRadius="3xl">
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
                 Delete Pack
               </AlertDialogHeader>
@@ -333,8 +333,7 @@ const PackThumbnailGridItem = ({
 
               <AlertDialogFooter>
                 <Button
-                  variant="outline"
-                  colorScheme="gray"
+                  variant="secondary"
                   ref={cancelDeleteRef}
                   onClick={onDeleteAlertClose}
                 >

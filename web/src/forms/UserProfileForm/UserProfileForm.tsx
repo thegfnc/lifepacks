@@ -13,7 +13,6 @@ import {
   SimpleGrid,
   Stack,
   Text,
-  Textarea,
 } from '@chakra-ui/react'
 import { CurrentUserProfile } from 'types/graphql'
 
@@ -21,6 +20,7 @@ import { Form, useForm } from '@redwoodjs/forms'
 
 import SocialAccountIcon from 'src/components/SocialAccountIcon/SocialAccountIcon'
 import ImageUploadField from 'src/fields/ImageUploadField/ImageUploadField'
+import RichTextEditor from 'src/fields/RichTextEditor/RichTextEditor'
 import isValidUrl from 'src/helpers/isValidUrl'
 import SocialAccount from 'src/types/SocialAccount'
 
@@ -79,7 +79,8 @@ const UserProfileForm = ({
 
   useEffect(() => {
     setFocus('givenName')
-  }, [setFocus])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // to ensure it only runs once on mount
 
   return (
     <>
@@ -168,20 +169,13 @@ const UserProfileForm = ({
             </FormErrorMessage>
           </FormControl>
 
-          <FormControl isInvalid={Boolean(formState.errors.biography)}>
-            <FormLabel>Biography</FormLabel>
-            <Textarea
-              {...register('biography', {
-                maxLength: {
-                  value: 500,
-                  message: 'Biography cannot be more than 500 characters',
-                },
-              })}
-            />
-            <FormErrorMessage>
-              {formState.errors.biography?.message}
-            </FormErrorMessage>
-          </FormControl>
+          <RichTextEditor
+            control={control}
+            name="biography"
+            defaultValue={formState.defaultValues?.biography}
+            label="Biography"
+            maxLength={140}
+          />
 
           <Box>
             <FormLabel>Social Links</FormLabel>
@@ -321,7 +315,7 @@ const UserProfileForm = ({
             borderTopColor={isUpdateForm ? 'blackAlpha.300' : 'none'}
           >
             {onCancel && (
-              <Button variant="outline" colorScheme="gray" onClick={onCancel}>
+              <Button variant="secondary" onClick={onCancel}>
                 Cancel
               </Button>
             )}

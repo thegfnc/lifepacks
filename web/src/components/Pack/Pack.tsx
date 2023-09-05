@@ -1,9 +1,11 @@
-import { Heading, Stack, Text, Button } from '@chakra-ui/react'
+import { Heading, Stack, Button, Box } from '@chakra-ui/react'
 import { Pack as PackType, PackItem as PackItemType } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 
 import PackItem from 'src/components/PackItem/PackItem'
+
+import RichTextStyleWrapper from '../RichTextStyleWrapper/RichTextStyleWrapper'
 
 type PackPartial = Pick<PackType, 'title' | 'description'> & {
   packItems: Pick<
@@ -26,18 +28,17 @@ const Pack = ({ pack }: PackProps) => {
             fontSize={{ base: '36px', md: '48px' }}
             lineHeight={{ base: '40px', md: '52px' }}
             fontWeight="extrabold"
-          >
-            {pack.title}
-          </Heading>
+            dangerouslySetInnerHTML={{ __html: pack.title }}
+          />
           {pack.description && (
-            <Text
+            <RichTextStyleWrapper
               fontSize={{ base: '18px', md: '21px' }}
               lineHeight={{ base: '1.33', md: '28px' }}
               fontFamily="bitter"
               color="blackAlpha.900"
             >
-              {pack.description}
-            </Text>
+              <Box dangerouslySetInnerHTML={{ __html: pack.description }} />
+            </RichTextStyleWrapper>
           )}
         </Stack>
         <Stack spacing={{ base: 4, md: 6 }}>
