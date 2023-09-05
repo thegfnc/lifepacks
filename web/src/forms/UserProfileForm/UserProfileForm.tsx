@@ -169,21 +169,6 @@ const UserProfileForm = ({
             </FormErrorMessage>
           </FormControl>
 
-          {/* <FormControl isInvalid={Boolean(formState.errors.biography)}>
-            <FormLabel>Biography</FormLabel>
-            <Textarea
-              {...register('biography', {
-                maxLength: {
-                  value: 500,
-                  message: 'Biography cannot be more than 500 characters',
-                },
-              })}
-            />
-            <FormErrorMessage>
-              {formState.errors.biography?.message}
-            </FormErrorMessage>
-          </FormControl> */}
-
           <RichTextEditor
             control={control}
             name="biography"

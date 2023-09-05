@@ -246,26 +246,6 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               {formState.errors.title?.message}
             </FormErrorMessage>
           </FormControl>
-          {/* <FormControl isInvalid={Boolean(formState.errors.description)}>
-            <ExpandingTextarea
-              placeholder="Introduce your Pack to your readers..."
-              fontSize="xl"
-              lineHeight={7}
-              color="blackAlpha.800"
-              variant="unstyled"
-              fontFamily="bitter"
-              resize="none"
-              {...register('description', {
-                maxLength: {
-                  value: 1000,
-                  message: 'Pack description cannot exceed 1000 characters',
-                },
-              })}
-            />
-            <FormErrorMessage>
-              {formState.errors.description?.message}
-            </FormErrorMessage>
-          </FormControl> */}
           <RichTextEditor
             name="description"
             control={control}
@@ -278,7 +258,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               fontFamily: 'bitter',
               color: 'blackAlpha.900',
             }}
-            maxLength={400}
+            maxLength={360}
           />
           <Tooltip
             hasArrow

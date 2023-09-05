@@ -55,9 +55,12 @@ const PackItem = ({
             borderColor="blackAlpha.100"
           >
             <Box w="full" ml={{ base: 0, md: 10 }} mt={{ base: 4, md: 0 }}>
-              <Heading fontSize="21px" lineHeight="28px" fontWeight="medium">
-                {title}
-              </Heading>
+              <Heading
+                fontSize="21px"
+                lineHeight="28px"
+                fontWeight="medium"
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
               <Box mt={4}>
                 <BuyButton packItemId={id} purchaseUrl={purchaseUrl} />
               </Box>

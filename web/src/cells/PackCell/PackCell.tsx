@@ -18,6 +18,7 @@ import {
   MenuItem,
   MenuList,
   Stack,
+  Text,
   useDisclosure,
 } from '@chakra-ui/react'
 import { MdDeleteOutline, MdMoreHoriz, MdOutlineModeEdit } from 'react-icons/md'
@@ -198,7 +199,7 @@ export const Success = ({
       {error && (
         <Alert status="error">
           <AlertIcon />
-          {error.message}
+          <Text dangerouslySetInnerHTML={{ __html: error.message }} />
         </Alert>
       )}
 

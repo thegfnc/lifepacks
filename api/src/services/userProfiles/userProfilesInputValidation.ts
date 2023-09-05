@@ -1,3 +1,5 @@
+import sanitizeHtml from 'sanitize-html'
+
 import { validate } from '@redwoodjs/api'
 
 import isValidUrl from 'src/helpers/isValidUrl'
@@ -15,8 +17,18 @@ export function validateUsernameInput(input) {
 
 export function validateCommonUserProfileInputFields(input) {
   validate(input.givenName, 'First Name', { length: { max: 100 } })
+
   validate(input.familyName, 'Last Name', { length: { max: 100 } })
-  validate(input.biography, 'Biography', { length: { max: 140 } })
+
+  validate(
+    sanitizeHtml(input.biography?.trim(), {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    'Biography',
+    { length: { max: 140 } }
+  )
+
   validate(input.imageUrl, 'Image', {
     length: { max: 2000 },
     custom: {
@@ -27,6 +39,7 @@ export function validateCommonUserProfileInputFields(input) {
       },
     },
   })
+
   validate(input.facebookUrl, 'Facebook URL', {
     length: { max: 2000 },
     custom: {
@@ -37,6 +50,7 @@ export function validateCommonUserProfileInputFields(input) {
       },
     },
   })
+
   validate(input.instagramUrl, 'Instagram URL', {
     length: { max: 2000 },
     custom: {
@@ -47,6 +61,7 @@ export function validateCommonUserProfileInputFields(input) {
       },
     },
   })
+
   validate(input.youtubeUrl, 'YouTube URL', {
     length: { max: 2000 },
     custom: {
@@ -57,6 +72,7 @@ export function validateCommonUserProfileInputFields(input) {
       },
     },
   })
+
   validate(input.twitterUrl, 'Twitter URL', {
     length: { max: 2000 },
     custom: {

@@ -121,27 +121,12 @@ const PackItemForm = ({
             {formState.errors.imageUrl?.message}
           </FormErrorMessage>
         </FormControl>
-        {/* <FormControl isInvalid={Boolean(formState.errors.description)}>
-          <FormLabel>Description</FormLabel>
-          <Textarea
-            {...register('description', {
-              maxLength: {
-                value: 1000,
-                message: 'Description cannot exceed 1000 characters',
-              },
-            })}
-            rows={5}
-          />
-          <FormErrorMessage>
-            {formState.errors.description?.message}
-          </FormErrorMessage>
-        </FormControl> */}
         <RichTextEditor
           name="description"
           control={control}
           defaultValue={formState.defaultValues?.description}
           label="Description"
-          maxLength={900}
+          maxLength={480}
         />
       </Stack>
       <SimpleGrid

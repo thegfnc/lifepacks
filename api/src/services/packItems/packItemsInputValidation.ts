@@ -1,3 +1,5 @@
+import sanitizeHtml from 'sanitize-html'
+
 import { validate } from '@redwoodjs/api'
 
 import isValidUrl from 'src/helpers/isValidUrl'
@@ -10,30 +12,56 @@ export function validatePackIdInput(input) {
 }
 
 export function validiateCommonPackItemInputFields(input) {
-  validate(input.title, 'Title', { presence: true, length: { max: 100 } })
-  validate(input.description, 'Description', { length: { max: 900 } })
+  validate(input.title, 'Title', {
+    presence: true,
+    length: {
+      max: 100,
+      message: `Title for pack item "${input.title}" must have no more than 100 characters.`,
+    },
+  })
+
+  validate(
+    sanitizeHtml(input.description?.trim(), {
+      allowedTags: [],
+      allowedAttributes: {},
+    }),
+    'Description',
+    {
+      length: {
+        max: 480,
+        message: `Description for pack item "${input.title}" must have no more than 800 characters.`,
+      },
+    }
+  )
+
   validate(input.imageUrl, 'Image', {
     length: { max: 2000 },
     presence: true,
     custom: {
       with: () => {
         if (!isValidUrl(input.imageUrl)) {
-          throw new Error('Image URL is not valid.')
+          throw new Error(
+            `Image URL for pack item "${input.title}" is not valid.`
+          )
         }
       },
     },
   })
+
   validate(input.purchaseUrl, 'Purchase URL', {
     length: { max: 2000 },
     presence: true,
     custom: {
       with: () => {
         if (!isValidUrl(input.purchaseUrl)) {
-          throw new Error('Purchase URL is not valid.')
+          throw new Error(
+            `Purchase URL for pack item "${input.title}" is not valid.`
+          )
         }
       },
     },
   })
+
   validate(input.displaySequence, 'Displace Sequence', {
     presence: true,
     numericality: { integer: true },

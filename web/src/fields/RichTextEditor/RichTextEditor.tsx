@@ -103,7 +103,7 @@ const RichTextEditor = <T extends FieldValues>({
 
   return (
     <>
-      <FormControl isInvalid={Boolean(fieldState.error)} id={fieldId}>
+      <FormControl id={fieldId}>
         {label && (
           <FormLabel
             onClick={() => editor.commands.focus()}
