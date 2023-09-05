@@ -226,7 +226,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               placeholder="Enter a spiffy pack title"
               fontSize="5xl"
               fontWeight="extrabold"
-              color="blackAlpha.800"
+              color="blackAlpha.900"
               variant="unstyled"
               size="lg"
               lineHeight={1}
