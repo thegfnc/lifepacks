@@ -8325,15 +8325,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-bubble-menu@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@tiptap/extension-bubble-menu@npm:2.1.7"
+"@tiptap/extension-bubble-menu@npm:^2.1.8":
+  version: 2.1.8
+  resolution: "@tiptap/extension-bubble-menu@npm:2.1.8"
   dependencies:
     tippy.js: ^6.3.7
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
-  checksum: 8eac697deb400bc495d2ab5bc5c93f4835f4ff68455bcfc772891dd79a3ba937b80ddc3aa2a58a716e4998724d58edf3feacf461693858c5239604f47fa8178d
+  checksum: 4a31587e78f7fd54736e27b0d02fc7cfadcd6d40d6f1566575342664905bc02b37c7347b9b019255439f78918bdd0d24d1fe58927be8082f8dc56e45d94684fc
   languageName: node
   linkType: hard
 
@@ -8394,15 +8394,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-floating-menu@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@tiptap/extension-floating-menu@npm:2.1.7"
+"@tiptap/extension-floating-menu@npm:^2.1.8":
+  version: 2.1.8
+  resolution: "@tiptap/extension-floating-menu@npm:2.1.8"
   dependencies:
     tippy.js: ^6.3.7
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
-  checksum: dc23176312ecbdcc3b377fb93c4e7bafc504981fbb0e37a2ea0b1b3c49741f87cce3ba59bb206a999847826e2417a3d3dc810dee8cb2362e1833c4e23eeb4e37
+  checksum: fbba966110d65c92c3b2847886830ceb97854960de1734e704f83ee0a54a5c162a9941c627d324e877746000bceb97e8b75fc325e25e4cdd913ea0e00c571a9d
   languageName: node
   linkType: hard
 
@@ -8463,15 +8463,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-link@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@tiptap/extension-link@npm:2.1.7"
+"@tiptap/extension-link@npm:2.1.8":
+  version: 2.1.8
+  resolution: "@tiptap/extension-link@npm:2.1.8"
   dependencies:
     linkifyjs: ^4.1.0
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
-  checksum: 6fe596a39b4e10086ac02ff2e160e176b6dcbd3835968e4c7cbfb0c7135b38fc0d0e60ca9fe054b7c4de0922e20f3cee42fe6c36fbeec413879f2ad9816efada
+  checksum: 75d73f843536727d1da3c75825e978a253dac8111f7cc330ee4fed9d328e9a2f35830ff9f7adf8a764adb116ba8b47bd5f38d0e9e61ebd4f181a870da0300329
   languageName: node
   linkType: hard
 
@@ -8502,13 +8502,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-placeholder@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@tiptap/extension-placeholder@npm:2.1.7"
+"@tiptap/extension-placeholder@npm:2.1.8":
+  version: 2.1.8
+  resolution: "@tiptap/extension-placeholder@npm:2.1.8"
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
-  checksum: 521f7a59d1330ba9a32e4c282cc2ef83b8da19ba027cc27c2d4743eac061ca8cb1b606c2d97d24fc4e500df41cfaa61ac6b7e9d20d540003483c2c7989445c1f
+  checksum: b84a0439951069a230bf19902217ed1d827e70c1876f9aa93803100e9db7717ee0aae73a9896d3c8a948fbcd15be4f68bd970f5b961c54630d2173818d8e01d6
   languageName: node
   linkType: hard
 
@@ -8530,18 +8530,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-underline@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@tiptap/extension-underline@npm:2.1.7"
+"@tiptap/extension-underline@npm:2.1.8":
+  version: 2.1.8
+  resolution: "@tiptap/extension-underline@npm:2.1.8"
   peerDependencies:
     "@tiptap/core": ^2.0.0
-  checksum: bb2d33dc2b1810282caf2472118efe51ec729420a64e67b0d878daa55b8c04c7f20dc374f631d49df8cb202e4a5b78883c634a0a5f858e84eb4a17281c2037ae
+  checksum: f5af0402c0b2f20e0adecd857d2f92881166406808fe909c43a6eecf9f81ed42c4eef0b631961a17d80af8265c4fa5a617cb4a26a870eaabaaa7e55375eb4b12
   languageName: node
   linkType: hard
 
-"@tiptap/pm@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@tiptap/pm@npm:2.1.7"
+"@tiptap/pm@npm:2.1.8":
+  version: 2.1.8
+  resolution: "@tiptap/pm@npm:2.1.8"
   dependencies:
     prosemirror-changeset: ^2.2.0
     prosemirror-collab: ^1.3.0
@@ -8561,22 +8561,22 @@ __metadata:
     prosemirror-trailing-node: ^2.0.2
     prosemirror-transform: ^1.7.0
     prosemirror-view: ^1.28.2
-  checksum: 5c3b61919c50110ebd20e12ed8fc5942861219c68d14b0862ab93d912ee4105b9e0990143b1062593589638afe4e71cb795564912a4a5ce18804924e06d7b071
+  checksum: 1d4e18cf1b8474db8599dc110ce4aabb8fc465d4cb1503376ad454d2d11137437aed295f555a79e55a8280bdf118f727ce17094a927739702edd4bc7d21fbdd6
   languageName: node
   linkType: hard
 
-"@tiptap/react@npm:^2.1.7":
-  version: 2.1.7
-  resolution: "@tiptap/react@npm:2.1.7"
+"@tiptap/react@npm:2.1.8":
+  version: 2.1.8
+  resolution: "@tiptap/react@npm:2.1.8"
   dependencies:
-    "@tiptap/extension-bubble-menu": ^2.1.7
-    "@tiptap/extension-floating-menu": ^2.1.7
+    "@tiptap/extension-bubble-menu": ^2.1.8
+    "@tiptap/extension-floating-menu": ^2.1.8
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
-  checksum: a8470a88e1fcc2902039d013f7448d5b9a7dc3e452136ffe2e96365f760fcb84b76d871d320c8aa64023a3e53ef07abb383a33c210aadeaf1792b9f87ff171ca
+  checksum: 5a7a3140e8106ab5395960ce1375b76b11e21cc23af9cb8b7700206b0a56622c1a9ae81eedc80c2317f9db12cc5b605bcf30d58f99891cb18a5d9c2e2d95d38a
   languageName: node
   linkType: hard
 
@@ -15806,9 +15806,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:10.16.3":
-  version: 10.16.3
-  resolution: "framer-motion@npm:10.16.3"
+"framer-motion@npm:10.16.4":
+  version: 10.16.4
+  resolution: "framer-motion@npm:10.16.4"
   dependencies:
     "@emotion/is-prop-valid": ^0.8.2
     tslib: ^2.4.0
@@ -15823,7 +15823,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 9ebc4243a60d7b21bf0dd8b4e8cc2a6cc490bc0eea234dad5e9aeaf9b49564b812cd9a1da6ca6617778cb8e4dd9c89ee458272f5fcedf3e372ba190d7a7e49da
+  checksum: a50f2124fbb585ec0a73d8ba7538cef3fb5deec463ae813d7e15c0893aa55d2f0919d432a33770cab38a1df81fa2c7e29a4834f2ba6e3713bc9c29dd6a98f3af
   languageName: node
   linkType: hard
 
@@ -26361,16 +26361,16 @@ __metadata:
     "@sentry/vite-plugin": ^2.7.1
     "@supabase/supabase-js": 2.33.1
     "@tiptap/extension-character-count": ^2.1.8
-    "@tiptap/extension-link": ^2.1.7
-    "@tiptap/extension-placeholder": ^2.1.7
-    "@tiptap/extension-underline": ^2.1.7
-    "@tiptap/pm": ^2.1.7
-    "@tiptap/react": ^2.1.7
+    "@tiptap/extension-link": 2.1.8
+    "@tiptap/extension-placeholder": 2.1.8
+    "@tiptap/extension-underline": 2.1.8
+    "@tiptap/pm": 2.1.8
+    "@tiptap/react": 2.1.8
     "@tiptap/starter-kit": ^2.1.8
     "@vercel/analytics": ^1.0.2
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
-    framer-motion: 10.16.3
+    framer-motion: 10.16.4
     prop-types: 15.8.1
     react: 18.2.0
     react-dom: 18.2.0
