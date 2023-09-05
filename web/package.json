@@ -44,6 +44,6 @@
   },
   "devDependencies": {
     "@redwoodjs/vite": "6.1.1",
-    "@sentry/vite-plugin": "^2.7.0"
+    "@sentry/vite-plugin": "^2.7.1"
   }
 }
