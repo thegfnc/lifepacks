@@ -13,7 +13,7 @@ type PageContainerProps = {
 }
 
 const maxWidths = {
-  sm: '810px',
+  sm: '840px',
   lg: '7xl',
 }
 
