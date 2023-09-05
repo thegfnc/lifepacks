@@ -11,7 +11,7 @@ export function validatePackIdInput(input) {
 
 export function validiateCommonPackItemInputFields(input) {
   validate(input.title, 'Title', { presence: true, length: { max: 100 } })
-  validate(input.description, 'Description', { length: { max: 1000 } })
+  validate(input.description, 'Description', { length: { max: 900 } })
   validate(input.imageUrl, 'Image', {
     length: { max: 2000 },
     presence: true,

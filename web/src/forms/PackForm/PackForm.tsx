@@ -278,7 +278,7 @@ const PackForm = ({ onSubmit, isLoading, defaultValues }: PackFormProps) => {
               fontFamily: 'bitter',
               color: 'blackAlpha.900',
             }}
-            maxLength={1000}
+            maxLength={400}
           />
           <Tooltip
             hasArrow

@@ -16,7 +16,7 @@ export function validateUsernameInput(input) {
 export function validateCommonUserProfileInputFields(input) {
   validate(input.givenName, 'First Name', { length: { max: 100 } })
   validate(input.familyName, 'Last Name', { length: { max: 100 } })
-  validate(input.biography, 'Biography', { length: { max: 500 } })
+  validate(input.biography, 'Biography', { length: { max: 140 } })
   validate(input.imageUrl, 'Image', {
     length: { max: 2000 },
     custom: {
