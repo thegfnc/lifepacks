@@ -8126,30 +8126,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/functions-js@npm:^2.1.0":
-  version: 2.1.1
-  resolution: "@supabase/functions-js@npm:2.1.1"
+"@supabase/functions-js@npm:^2.1.5":
+  version: 2.1.5
+  resolution: "@supabase/functions-js@npm:2.1.5"
   dependencies:
-    cross-fetch: ^3.1.5
-  checksum: 1cb1b2fdfc845f472527eef285cb6fba7e06045dfd13b869815b5956a38a423926d1c9484839c30eab611bbf0999bb7d74f0d4d126ea129dd385d35578129af0
+    "@supabase/node-fetch": ^2.6.14
+  checksum: f2af9f12c9ffa4460998c166d71184bb2fc7753f2063548d482a51db3178da24217cd9dea1be8803356c3fd743848fdfb1e1903d882aa90fa7a7ae0c5dc7d070
   languageName: node
   linkType: hard
 
-"@supabase/gotrue-js@npm:^2.46.1":
-  version: 2.46.1
-  resolution: "@supabase/gotrue-js@npm:2.46.1"
+"@supabase/gotrue-js@npm:^2.51.0":
+  version: 2.52.0
+  resolution: "@supabase/gotrue-js@npm:2.52.0"
   dependencies:
-    cross-fetch: ^3.1.5
-  checksum: 6aef3265b5859c5dc89a5bdb1b24d3c66467bfefb0e4d1157c7347a9a7c7f4c3506b35f3dcb909a72cd85f4ba0baa8bbdb7d6a313adece000a24accb937ddc12
+    "@supabase/node-fetch": ^2.6.14
+  checksum: 1ef3e2180ab74a4111c0802bd861d2859b8dff5a18baf475f3440cf881ef6e1b4a7e5bb068c114d91478238ca38041fbfce494ec984c131db121171e7cec37e0
   languageName: node
   linkType: hard
 
-"@supabase/postgrest-js@npm:^1.8.0":
-  version: 1.8.0
-  resolution: "@supabase/postgrest-js@npm:1.8.0"
+"@supabase/node-fetch@npm:^2.6.14":
+  version: 2.6.14
+  resolution: "@supabase/node-fetch@npm:2.6.14"
   dependencies:
-    cross-fetch: ^3.1.5
-  checksum: e73e7430aea59e381681799187dada751fe47542e29bc30fcfe4264d6703a9b5b8a87049e477e0a64eaacc6c955f92dc368b81e319e76d46d4e9b24a9068e41d
+    whatwg-url: ^5.0.0
+  checksum: 645db87873ba9bb661cf41c46b05b52a8a769ca66abf1ac7b9f3b900e6dd5e7a97dfa421897db0ace21dd3acb409ba35f22225818bf5860e4af92a38e102be86
+  languageName: node
+  linkType: hard
+
+"@supabase/postgrest-js@npm:^1.8.4":
+  version: 1.8.4
+  resolution: "@supabase/postgrest-js@npm:1.8.4"
+  dependencies:
+    "@supabase/node-fetch": ^2.6.14
+  checksum: 622d7a796b13d76f6cb4ec18b7f20a87ba4f2502a45f50a8e509405051f298ff7fed8414b4ee801804fed21e14365367980498362212f005012947a3231e9a8d
   languageName: node
   linkType: hard
 
@@ -8164,26 +8173,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/storage-js@npm:^2.5.1":
-  version: 2.5.1
-  resolution: "@supabase/storage-js@npm:2.5.1"
+"@supabase/storage-js@npm:^2.5.4":
+  version: 2.5.4
+  resolution: "@supabase/storage-js@npm:2.5.4"
   dependencies:
-    cross-fetch: ^3.1.5
-  checksum: 522875344341477a80c13b9aa845563fd2b0098cfe2e99d9b297d53640f16f234c1938b0fa161ae429947a1489be6816d7bb6394fb3b06bb44c537714c4a41a8
+    "@supabase/node-fetch": ^2.6.14
+  checksum: a541a282a6c247de785457db12d8e53d90d1b4fff0aabc76233c39c20ab8a10d9b41097ebf0b90985a0b8459db9e3bdc8a08ac5b1885b0fb417ff910af2b527a
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:2.33.1":
-  version: 2.33.1
-  resolution: "@supabase/supabase-js@npm:2.33.1"
+"@supabase/supabase-js@npm:2.33.2":
+  version: 2.33.2
+  resolution: "@supabase/supabase-js@npm:2.33.2"
   dependencies:
-    "@supabase/functions-js": ^2.1.0
-    "@supabase/gotrue-js": ^2.46.1
-    "@supabase/postgrest-js": ^1.8.0
+    "@supabase/functions-js": ^2.1.5
+    "@supabase/gotrue-js": ^2.51.0
+    "@supabase/node-fetch": ^2.6.14
+    "@supabase/postgrest-js": ^1.8.4
     "@supabase/realtime-js": ^2.7.4
-    "@supabase/storage-js": ^2.5.1
-    cross-fetch: ^3.1.5
-  checksum: eeed58b50ceb61886c1fb4cbe31fe2a806889c75166fa0ac4473547acec545d55f796dcae70db155e7173ff6df4951e0a40ac164dff03546e09c63f0c5fc2494
+    "@supabase/storage-js": ^2.5.4
+  checksum: 0c3774539567b4922324bff7a0b4a64681c733f29ef77265a4a2d76de491ccd2b6e2feedf822758efe00f239f186ace210e39130521f1ed7fd05025a12b8bb12
   languageName: node
   linkType: hard
 
@@ -26315,7 +26324,7 @@ __metadata:
     "@redwoodjs/web": 6.2.1
     "@sentry/react": 7.65.0
     "@sentry/vite-plugin": ^2.7.1
-    "@supabase/supabase-js": 2.33.1
+    "@supabase/supabase-js": 2.33.2
     "@tiptap/extension-character-count": ^2.1.8
     "@tiptap/extension-link": 2.1.8
     "@tiptap/extension-placeholder": 2.1.8
