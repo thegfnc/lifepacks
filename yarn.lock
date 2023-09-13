@@ -7044,9 +7044,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/profiling-node@npm:1.1.3":
-  version: 1.1.3
-  resolution: "@sentry/profiling-node@npm:1.1.3"
+"@sentry/profiling-node@npm:1.2.1":
+  version: 1.2.1
+  resolution: "@sentry/profiling-node@npm:1.2.1"
   dependencies:
     "@sentry/core": ^7.64.0
     "@sentry/hub": ^7.64.0
@@ -7058,7 +7058,7 @@ __metadata:
     node-gyp: ^9.3.0
   bin:
     sentry-prune-profiler-binaries: scripts/prune-profiler-binaries.mjs
-  checksum: ab792d17b74e75aef3893a8b80d7f0cb7213930040decd8bb7250e96a17609fdb91e472101c5e1eb4df2e63c66260388de1ab4d654273dd89a3d46ebc22d7530
+  checksum: aaf50c4e2265edcd56a95670ae79c8242b5c35ef32f6dcf203fd2e742a38b75d0f4ead07001bf63a8ace4e8d06b6a5b976f3a49d8b8c3a0e2039bf92dff96a0a
   languageName: node
   linkType: hard
 
@@ -10614,7 +10614,7 @@ __metadata:
     "@redwoodjs/graphql-server": 6.2.1
     "@sendinblue/client": ^3.3.1
     "@sentry/node": 7.65.0
-    "@sentry/profiling-node": 1.1.3
+    "@sentry/profiling-node": 1.2.1
     jsonwebtoken: 9.0.2
   languageName: unknown
   linkType: soft
