@@ -6,7 +6,7 @@
     "@envelop/sentry": "6.0.1",
     "@redwoodjs/api": "6.2.2",
     "@redwoodjs/auth-supabase-api": "6.2.2",
-    "@redwoodjs/graphql-server": "6.2.2",
+    "@redwoodjs/graphql-server": "6.2.3",
     "@sendinblue/client": "^3.3.1",
     "@sentry/node": "7.65.0",
     "@sentry/profiling-node": "1.2.1",

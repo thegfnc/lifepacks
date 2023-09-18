@@ -6305,6 +6305,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@redwoodjs/api@npm:6.2.3":
+  version: 6.2.3
+  resolution: "@redwoodjs/api@npm:6.2.3"
+  dependencies:
+    "@babel/runtime-corejs3": 7.22.15
+    "@prisma/client": 5.2.0
+    "@whatwg-node/fetch": 0.9.9
+    core-js: 3.32.2
+    humanize-string: 2.1.0
+    jsonwebtoken: 9.0.0
+    pascalcase: 1.0.0
+    pino: 8.15.0
+    title-case: 3.0.3
+  peerDependencies:
+    memjs: 1.3.1
+    redis: 4.6.7
+  peerDependenciesMeta:
+    memjs:
+      optional: true
+    redis:
+      optional: true
+  bin:
+    redwood: dist/bins/redwood.js
+    rw: dist/bins/redwood.js
+    rwfw: dist/bins/rwfw.js
+    tsc: dist/bins/tsc.js
+  checksum: 04c246a4b1aa007a887b73088e8a1ff2b01ed0c2674f843059b9c2fd6808775b458c171c9ab55a4c4b7aacc9081784e0c77f1895e87f6f0c1aef8362b6d11737
+  languageName: node
+  linkType: hard
+
 "@redwoodjs/auth-supabase-api@npm:6.2.2":
   version: 6.2.2
   resolution: "@redwoodjs/auth-supabase-api@npm:6.2.2"
@@ -6638,6 +6668,33 @@ __metadata:
     lodash: 4.17.21
     uuid: 9.0.0
   checksum: ad4ade74713799121fa6d2205b8dac24f0740152131c4e44f19ae7be7c38960aa536f8f13e52cb70a8cbcbc12ce5f75ab7fdff4c34bfea4bdd64ad68bbe04553
+  languageName: node
+  linkType: hard
+
+"@redwoodjs/graphql-server@npm:6.2.3":
+  version: 6.2.3
+  resolution: "@redwoodjs/graphql-server@npm:6.2.3"
+  dependencies:
+    "@babel/runtime-corejs3": 7.22.15
+    "@envelop/core": 4.0.0
+    "@envelop/depth-limit": 3.0.0
+    "@envelop/disable-introspection": 5.0.0
+    "@envelop/filter-operation-type": 5.0.0
+    "@envelop/on-resolve": 3.0.0
+    "@escape.tech/graphql-armor": 2.3.1
+    "@graphql-tools/merge": 9.0.0
+    "@graphql-tools/schema": 10.0.0
+    "@graphql-tools/utils": 10.0.1
+    "@opentelemetry/api": 1.4.1
+    "@redwoodjs/api": 6.2.3
+    core-js: 3.32.2
+    graphql: 16.8.0
+    graphql-scalars: 1.22.2
+    graphql-tag: 2.12.6
+    graphql-yoga: 4.0.2
+    lodash: 4.17.21
+    uuid: 9.0.0
+  checksum: aaaa2a2fa52d7a8bd203cc0b2d6d15a75da9005bd77d075e7a6317829b25964b1cf437715996e6bc0a55950356e5d4d08d3c1750b25ab8cb9b51967c89805518
   languageName: node
   linkType: hard
 
@@ -10663,7 +10720,7 @@ __metadata:
     "@envelop/sentry": 6.0.1
     "@redwoodjs/api": 6.2.2
     "@redwoodjs/auth-supabase-api": 6.2.2
-    "@redwoodjs/graphql-server": 6.2.2
+    "@redwoodjs/graphql-server": 6.2.3
     "@sendinblue/client": ^3.3.1
     "@sentry/node": 7.65.0
     "@sentry/profiling-node": 1.2.1
