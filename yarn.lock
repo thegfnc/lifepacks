@@ -6305,14 +6305,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@redwoodjs/auth-supabase-api@npm:6.2.2":
-  version: 6.2.2
-  resolution: "@redwoodjs/auth-supabase-api@npm:6.2.2"
+"@redwoodjs/auth-supabase-api@npm:6.2.3":
+  version: 6.2.3
+  resolution: "@redwoodjs/auth-supabase-api@npm:6.2.3"
   dependencies:
     "@babel/runtime-corejs3": 7.22.15
     core-js: 3.32.2
     jsonwebtoken: 9.0.0
-  checksum: 5a1ced4d21e847c79a2994842c1ee04d2850a2ca950eee45d19da8702c610c3d6ea3d3253675518fb3728fe18366a047abad894d6a38c6e4a1321bd2dd534ab0
+  checksum: 9536a4f4fd78d954aa0c1e0b9bcb82a36e8d8a96db8886eb7071fc053cf2e1fe59fc1e9ab6f739b4a63305ac0f87b68e3eded23e6cb32808e6eb076e9481c7d8
   languageName: node
   linkType: hard
 
@@ -10662,7 +10662,7 @@ __metadata:
   dependencies:
     "@envelop/sentry": 6.0.1
     "@redwoodjs/api": 6.2.2
-    "@redwoodjs/auth-supabase-api": 6.2.2
+    "@redwoodjs/auth-supabase-api": 6.2.3
     "@redwoodjs/graphql-server": 6.2.2
     "@sendinblue/client": ^3.3.1
     "@sentry/node": 7.65.0
