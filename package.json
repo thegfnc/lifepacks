@@ -12,9 +12,9 @@
     "slug": "^8.2.3"
   },
   "devDependencies": {
-    "@redwoodjs/auth-supabase-setup": "6.1.1",
-    "@redwoodjs/cli-storybook": "6.1.1",
-    "@redwoodjs/core": "6.1.1"
+    "@redwoodjs/auth-supabase-setup": "6.3.1",
+    "@redwoodjs/cli-storybook": "6.3.1",
+    "@redwoodjs/core": "6.3.1"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
