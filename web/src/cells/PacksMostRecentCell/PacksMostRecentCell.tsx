@@ -84,18 +84,16 @@ export const Success = ({
     <>
       <PackList packs={packsMostRecent} showByline={true} layout={layout} />
       {!isEndOfList && (
-        <Show above="lg">
-          <Center mt={6}>
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={onFetchMore}
-              isLoading={isUpdating}
-            >
-              Load more
-            </Button>
-          </Center>
-        </Show>
+        <Center mt={6}>
+          <Button
+            variant="secondary"
+            size="lg"
+            onClick={onFetchMore}
+            isLoading={isUpdating}
+          >
+            Load more
+          </Button>
+        </Center>
       )}
     </>
   )
