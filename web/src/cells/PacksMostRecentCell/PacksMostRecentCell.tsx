@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button, Center, Show, useBreakpointValue } from '@chakra-ui/react'
+import { Button, Center, useBreakpointValue } from '@chakra-ui/react'
 import type { PacksMostRecentQuery } from 'types/graphql'
 
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
