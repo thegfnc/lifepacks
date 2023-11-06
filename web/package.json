@@ -22,7 +22,7 @@
     "@redwoodjs/forms": "6.3.1",
     "@redwoodjs/router": "6.3.1",
     "@redwoodjs/web": "6.3.1",
-    "@sentry/react": "7.70.0",
+    "@sentry/react": "7.77.0",
     "@supabase/supabase-js": "2.33.2",
     "@tiptap/extension-character-count": "^2.1.8",
     "@tiptap/extension-link": "2.1.8",
