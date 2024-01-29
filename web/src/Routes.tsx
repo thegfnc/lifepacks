@@ -23,25 +23,25 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <Set wrap={AppLayout}>
         {/* Marketing Pages */}
-        <Route path="/" page={HomePage} name="home" />
-        <Route path="/about" page={AboutPage} name="about" />
+        <Route path="/" page={HomePage} name="home" prerender />
+        <Route path="/about" page={AboutPage} name="about" prerender />
 
         {/* Public Profile and Pack Pages */}
-        <Route path="/u/{username}" page={UserProfilePage} name="userProfile" />
-        <Route path="/u/{username}/pack/{slug}" page={PackPage} name="pack" />
+        <Route path="/u/{username}" page={UserProfilePage} name="userProfile" prerender />
+        <Route path="/u/{username}/pack/{slug}" page={PackPage} name="pack" prerender />
 
         {/* Public Auth Pages */}
-        <Route path="/log-in" page={LogInPage} name="logIn" />
-        <Route path="/sign-up" page={SignUpPage} name="signUp" />
-        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+        <Route path="/log-in" page={LogInPage} name="logIn" prerender />
+        <Route path="/sign-up" page={SignUpPage} name="signUp" prerender />
+        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" prerender />
 
         {/* Help Pages */}
-        <Route path="/help/affiliate-links-101" page={HelpAffiliateLinks101Page} name="affiliateLinks101" />
-        <Route path="/help/faq" page={HelpFaqPage} name="faq" />
+        <Route path="/help/affiliate-links-101" page={HelpAffiliateLinks101Page} name="affiliateLinks101" prerender />
+        <Route path="/help/faq" page={HelpFaqPage} name="faq" prerender />
 
         {/* Legal Pages */}
-        <Route path="/privacy-policy" page={LegalPrivacyPolicyPage} name="privacyPolicy" />
-        <Route path="/terms-of-service" page={LegalTermsOfServicePage} name="termsOfService" />
+        <Route path="/privacy-policy" page={LegalPrivacyPolicyPage} name="privacyPolicy" prerender />
+        <Route path="/terms-of-service" page={LegalTermsOfServicePage} name="termsOfService" prerender />
 
         {/* Private Dashboard Pages*/}
         <Set private unauthenticated="home">
