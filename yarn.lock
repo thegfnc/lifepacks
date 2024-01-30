@@ -8322,15 +8322,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-link@npm:2.1.8":
-  version: 2.1.8
-  resolution: "@tiptap/extension-link@npm:2.1.8"
+"@tiptap/extension-link@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@tiptap/extension-link@npm:2.2.0"
   dependencies:
     linkifyjs: ^4.1.0
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
-  checksum: 75d73f843536727d1da3c75825e978a253dac8111f7cc330ee4fed9d328e9a2f35830ff9f7adf8a764adb116ba8b47bd5f38d0e9e61ebd4f181a870da0300329
+  checksum: 8fd742d435443a5f6516ca6254150c057a059f49c23957d60c4000d935c06a8818411c47f469236efbfb4d49631e6823b8631a2e71ba31e762c8b2b08edad9dd
   languageName: node
   linkType: hard
 
@@ -26110,7 +26110,7 @@ __metadata:
     "@sentry/vite-plugin": ^2.7.1
     "@supabase/supabase-js": 2.33.2
     "@tiptap/extension-character-count": ^2.1.8
-    "@tiptap/extension-link": 2.1.8
+    "@tiptap/extension-link": 2.2.0
     "@tiptap/extension-placeholder": 2.1.8
     "@tiptap/extension-underline": 2.1.8
     "@tiptap/pm": 2.1.8
