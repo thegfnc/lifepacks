@@ -8205,13 +8205,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-character-count@npm:^2.1.8":
-  version: 2.1.8
-  resolution: "@tiptap/extension-character-count@npm:2.1.8"
+"@tiptap/extension-character-count@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "@tiptap/extension-character-count@npm:2.2.2"
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
-  checksum: a70036d1c182855ebaa5201a69242b669d3e13e5663da551391af0ba920e279c40d5427e93a8757e1c6a6c9ef5405b0cd82547bc94403589d44f1db63a2c416e
+  checksum: 11d6c564ca6f2872f98511f8b6a95283c229228ee3caecb2a5ac7ceff9edcde6838bbb62a9e71524f1acf8dd6c11f0657a2017ae33f3e2099b5fa63db89d3ab3
   languageName: node
   linkType: hard
 
@@ -26109,7 +26109,7 @@ __metadata:
     "@sentry/react": 7.70.0
     "@sentry/vite-plugin": ^2.7.1
     "@supabase/supabase-js": 2.33.2
-    "@tiptap/extension-character-count": ^2.1.8
+    "@tiptap/extension-character-count": ^2.2.2
     "@tiptap/extension-link": 2.1.8
     "@tiptap/extension-placeholder": 2.1.8
     "@tiptap/extension-underline": 2.1.8
