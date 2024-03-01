@@ -23165,7 +23165,7 @@ __metadata:
     "@redwoodjs/auth-supabase-setup": 6.6.4
     "@redwoodjs/cli-storybook": 6.6.4
     "@redwoodjs/core": 6.6.4
-    sanitize-html: ^2.11.0
+    sanitize-html: ^2.12.1
     slug: ^8.2.3
   languageName: unknown
   linkType: soft
@@ -23280,9 +23280,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sanitize-html@npm:^2.11.0":
-  version: 2.11.0
-  resolution: "sanitize-html@npm:2.11.0"
+"sanitize-html@npm:^2.12.1":
+  version: 2.12.1
+  resolution: "sanitize-html@npm:2.12.1"
   dependencies:
     deepmerge: ^4.2.2
     escape-string-regexp: ^4.0.0
@@ -23290,7 +23290,7 @@ __metadata:
     is-plain-object: ^5.0.0
     parse-srcset: ^1.0.2
     postcss: ^8.3.11
-  checksum: 863dcce83c4631fcb5519fd0739ed9e93adcce8dd89e5a738823c309c68686048b0f4e30e07bae0de67ea72b567ee9c908af756ba22fcfcb8fd1fa2c69ca3e0d
+  checksum: 0169e77845a237d0a0b74d316a861aa13dccfcc55dd5d33d49a37abc77cb60a55d02644094daae3c88f1d1a348ee5ded5ddf20073002535cdaa24291e653d34d
   languageName: node
   linkType: hard
 
