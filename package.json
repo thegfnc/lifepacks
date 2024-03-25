@@ -8,7 +8,7 @@
     ]
   },
   "dependencies": {
-    "sanitize-html": "^2.11.0",
+    "sanitize-html": "^2.13.0",
     "slug": "^8.2.3"
   },
   "devDependencies": {
