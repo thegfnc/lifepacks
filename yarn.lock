@@ -8361,13 +8361,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tiptap/extension-placeholder@npm:2.1.8":
-  version: 2.1.8
-  resolution: "@tiptap/extension-placeholder@npm:2.1.8"
+"@tiptap/extension-placeholder@npm:2.2.6":
+  version: 2.2.6
+  resolution: "@tiptap/extension-placeholder@npm:2.2.6"
   peerDependencies:
     "@tiptap/core": ^2.0.0
     "@tiptap/pm": ^2.0.0
-  checksum: b84a0439951069a230bf19902217ed1d827e70c1876f9aa93803100e9db7717ee0aae73a9896d3c8a948fbcd15be4f68bd970f5b961c54630d2173818d8e01d6
+  checksum: d28f18abf6885cfbb7653625d971def0e5f00dd9a1852f968e2c60d319d1e66b3f9f2d1f4a777c562ef4fce116852c2ee58147a733e35194b19e0e1cf3874f81
   languageName: node
   linkType: hard
 
@@ -26111,7 +26111,7 @@ __metadata:
     "@supabase/supabase-js": 2.33.2
     "@tiptap/extension-character-count": ^2.1.8
     "@tiptap/extension-link": 2.1.8
-    "@tiptap/extension-placeholder": 2.1.8
+    "@tiptap/extension-placeholder": 2.2.6
     "@tiptap/extension-underline": 2.1.8
     "@tiptap/pm": 2.1.8
     "@tiptap/react": 2.1.8
