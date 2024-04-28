@@ -8167,7 +8167,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:latest":
+"@supabase/supabase-js@npm:2.42.7":
   version: 2.42.7
   resolution: "@supabase/supabase-js@npm:2.42.7"
   dependencies:
@@ -26417,7 +26417,7 @@ __metadata:
     "@redwoodjs/web": 7.4.3
     "@sentry/react": 7.70.0
     "@sentry/vite-plugin": ^2.7.1
-    "@supabase/supabase-js": latest
+    "@supabase/supabase-js": 2.42.7
     "@tiptap/extension-character-count": ^2.1.8
     "@tiptap/extension-link": 2.1.8
     "@tiptap/extension-placeholder": 2.1.8
