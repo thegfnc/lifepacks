@@ -1,7 +1,7 @@
 import { Heading, Link, Stack, Text } from '@chakra-ui/react'
 
 import { routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -19,10 +19,10 @@ const Paragraph = ({ children }) => (
 const PrivacyPolicyPage = () => {
   return (
     <PageContainer size="sm">
-      <MetaTags
+      <Metadata
         title="Privacy Policy"
         description='This Privacy Policy (PP) governs how Lifepacks collects, uses, and shares your personal information when you use our app (the "App").'
-        ogUrl={getEnvironmentUrl(routes.privacyPolicy())}
+        og={{ url: getEnvironmentUrl(routes.privacyPolicy()) }}
       />
 
       <Heading

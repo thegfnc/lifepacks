@@ -1,6 +1,6 @@
 import { Spinner, Stack } from '@chakra-ui/react'
 
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import EditPackCell from 'src/cells/EditPackCell'
 import PageContainer from 'src/components/PageContainer/PageContainer'
@@ -19,7 +19,7 @@ const EditPackPage = ({ id }: EditPackPageProps) => {
 
   return (
     <PageContainer size="sm">
-      <MetaTags
+      <Metadata
         title="Edit Pack"
         description="Update your recommendations in this pack."
       />

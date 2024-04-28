@@ -1,7 +1,7 @@
 import { Box, Divider, HStack, Text } from '@chakra-ui/react'
 
 import { routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import PackListCell from 'src/cells/PackListCell'
 import UserProfileCell from 'src/cells/UserProfileCell'
@@ -16,18 +16,20 @@ type UserProfilePageProps = {
 const UserProfilePage = ({ username }: UserProfilePageProps) => {
   return (
     <>
-      {/* Default MetaTags, some props will get overwritten by UserProfileCell below */}
-      <MetaTags
+      {/* Default Metadata, some props will get overwritten by UserProfileCell below */}
+      <Metadata
         title={`@${username}'s Profile`}
         description={`Check out the packs created by @${username}`}
-        ogType="profile"
-        ogUrl={getEnvironmentUrl(routes.userProfile({ username }))}
+        og={{
+          type: 'profile',
+          url: getEnvironmentUrl(routes.userProfile({ username })),
+        }}
       />
 
       <PageContainer>
         <UserProfileCell
           username={username}
-          setMetaTags={true}
+          setMetadata={true}
           layout={UserProfileLayout.Banner}
         />
         <HStack spacing={5} mt={6}>

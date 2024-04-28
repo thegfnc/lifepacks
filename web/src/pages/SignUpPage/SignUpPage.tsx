@@ -21,7 +21,7 @@ import {
 
 import { Form, useForm } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import ThirdPartyLogo from 'src/components/ThirdPartyLogo/ThirdPartyLogo'
@@ -105,7 +105,7 @@ const SignUpPage = () => {
 
   return (
     <>
-      <MetaTags
+      <Metadata
         title="Sign Up"
         description="Sign up for a free account at Lifepacks."
       />

@@ -1,6 +1,6 @@
 import { StrictMode, useState } from 'react'
 
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import Footer from 'src/components/Footer/Footer'
 import Header from 'src/components/Header/Header'
@@ -16,11 +16,10 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <StrictMode>
-      <MetaTags
+      <Metadata
         title="Recommend the products you swear by"
         description="Publish product recommendations just like the professionals."
-        ogType="website"
-        ogContentUrl={getLogoCard({ color: 'random' })}
+        og={{ type: 'website', image: getLogoCard({ color: 'random' }) }}
       />
 
       <HeaderCtaContext.Provider value={setHeaderCtaComponent}>
