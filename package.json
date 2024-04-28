@@ -14,7 +14,9 @@
   "devDependencies": {
     "@redwoodjs/auth-supabase-setup": "7.4.3",
     "@redwoodjs/cli-storybook": "7.4.3",
-    "@redwoodjs/core": "7.4.3"
+    "@redwoodjs/core": "7.4.3",
+    "@redwoodjs/realtime": "7.4.3",
+    "@redwoodjs/studio": "11"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
