@@ -12,17 +12,16 @@
     "slug": "^8.2.3"
   },
   "devDependencies": {
-    "@redwoodjs/auth-supabase-setup": "6.6.4",
-    "@redwoodjs/cli-storybook": "6.6.4",
-    "@redwoodjs/core": "6.6.4"
+    "@redwoodjs/auth-supabase-setup": "7.0.7",
+    "@redwoodjs/cli-storybook": "7.0.7",
+    "@redwoodjs/core": "7.0.7"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",
     "root": true
   },
   "engines": {
-    "node": ">=18.16",
-    "yarn": ">=1.15"
+    "node": "=20.x"
   },
   "prisma": {
     "seed": "yarn rw exec seed"

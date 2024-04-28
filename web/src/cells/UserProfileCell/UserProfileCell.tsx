@@ -9,7 +9,7 @@ import { routes } from '@redwoodjs/router'
 import {
   CellSuccessProps,
   CellFailureProps,
-  MetaTags,
+  Metadata,
   Head,
 } from '@redwoodjs/web'
 
@@ -26,7 +26,7 @@ type UserProfileCellProps = CellSuccessProps<
   FindUserProfileQuery,
   FindUserProfileQueryVariables
 > & {
-  setMetaTags?: boolean
+  setMetadata?: boolean
   layout?: UserProfileLayout
 }
 
@@ -59,7 +59,7 @@ export const Failure = ({
 
 export const Success = ({
   userProfile,
-  setMetaTags = false,
+  setMetadata = false,
   layout,
 }: UserProfileCellProps) => {
   const { currentUserProfile } = useCurrentUserProfile()
@@ -73,9 +73,9 @@ export const Success = ({
 
   return (
     <>
-      {setMetaTags && (
+      {setMetadata && (
         <>
-          <MetaTags
+          <Metadata
             title={`${getUserDisplayName(
               userProfile.givenName,
               userProfile.familyName,
@@ -85,15 +85,15 @@ export const Success = ({
               allowedTags: [],
               allowedAttributes: {},
             })}
-            ogType="profile"
-            ogUrl={getEnvironmentUrl(
-              routes.userProfile({
-                username: userProfile.username,
-              })
-            )}
-            ogContentUrl={
-              userProfile.imageUrl || getLogoCard({ color: 'random' })
-            }
+            og={{
+              type: 'profile',
+              url: getEnvironmentUrl(
+                routes.userProfile({
+                  username: userProfile.username,
+                })
+              ),
+              image: userProfile.imageUrl || getLogoCard({ color: 'random' }),
+            }}
           />
           <Head>
             <meta

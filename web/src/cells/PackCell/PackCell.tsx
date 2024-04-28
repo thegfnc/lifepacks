@@ -35,7 +35,7 @@ import {
   CellSuccessProps,
   CellFailureProps,
   useMutation,
-  MetaTags,
+  Metadata,
   Head,
 } from '@redwoodjs/web'
 
@@ -56,7 +56,7 @@ type PackCellSuccessProps = CellSuccessProps<
 > & {
   username: string
   slug: string
-  setMetaTags?: boolean
+  setMetadata?: boolean
 }
 
 export const QUERY = gql`
@@ -106,7 +106,7 @@ export const Success = ({
   slug,
   pack,
   userProfile,
-  setMetaTags = false,
+  setMetadata = false,
 }: PackCellSuccessProps) => {
   const { currentUserProfile } = useCurrentUserProfile()
   const {
@@ -146,9 +146,9 @@ export const Success = ({
 
   return (
     <>
-      {setMetaTags && (
+      {setMetadata && (
         <>
-          <MetaTags
+          <Metadata
             title={
               pack.title +
               ' by ' +
@@ -162,8 +162,10 @@ export const Success = ({
               allowedTags: [],
               allowedAttributes: {},
             })}
-            ogType="article"
-            ogUrl={getEnvironmentUrl(routes.pack({ username, slug }))}
+            og={{
+              type: 'article',
+              url: getEnvironmentUrl(routes.pack({ username, slug })),
+            }}
           />
           <Head>
             <meta

@@ -16,7 +16,7 @@ import {
 import { MdArrowOutward } from 'react-icons/md'
 
 import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import Feedback from 'src/components/Feedback/Feedback'
 import PageContainer from 'src/components/PageContainer/PageContainer'
@@ -66,10 +66,10 @@ const AffiliateLinkCard = ({ store }) => {
 const AffiliateLinks101Page = () => {
   return (
     <PageContainer size="sm">
-      <MetaTags
+      <Metadata
         title="Affiliate Links 101"
         description="Sign up for an affiliate program to earn commissions while promoting products you love."
-        ogUrl={getEnvironmentUrl(routes.affiliateLinks101())}
+        og={{ url: getEnvironmentUrl(routes.affiliateLinks101()) }}
       />
 
       <Heading

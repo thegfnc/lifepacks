@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 
 import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import AccordionItem from 'src/components/AccordionItem/AccordionItem'
 import Feedback from 'src/components/Feedback/Feedback'
@@ -19,10 +19,10 @@ import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
 const FaqPage = () => {
   return (
     <PageContainer size="sm">
-      <MetaTags
+      <Metadata
         title="Frequently Asked Questions"
         description="Here are the most common questions we get about Lifepacks."
-        ogUrl={getEnvironmentUrl(routes.faq())}
+        og={{ url: getEnvironmentUrl(routes.faq()) }}
       />
 
       <Heading

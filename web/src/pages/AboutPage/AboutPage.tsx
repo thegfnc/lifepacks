@@ -15,7 +15,7 @@ import {
 import { Balancer } from 'react-wrap-balancer'
 
 import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import AccordionItem from 'src/components/AccordionItem/AccordionItem'
@@ -35,7 +35,7 @@ const AboutPage = () => {
 
   return (
     <>
-      <MetaTags ogUrl={getEnvironmentUrl(routes.about())} />
+      <Metadata og={{ url: getEnvironmentUrl(routes.about()) }} />
 
       <Box
         as="section"

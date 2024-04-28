@@ -11,7 +11,7 @@ import {
 import { Balancer } from 'react-wrap-balancer'
 
 import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import PacksMostRecentCell from 'src/cells/PacksMostRecentCell'
@@ -28,7 +28,7 @@ const HomePage = () => {
 
   return (
     <>
-      <MetaTags ogUrl={getEnvironmentUrl(routes.home())} />
+      <Metadata og={{ url: getEnvironmentUrl(routes.home()) }} />
 
       {isAuthenticated ? (
         <AnnouncementBanner />

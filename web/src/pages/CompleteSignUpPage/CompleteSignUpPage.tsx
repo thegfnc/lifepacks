@@ -15,7 +15,7 @@ import {
 } from 'types/graphql'
 
 import { navigate, routes } from '@redwoodjs/router'
-import { MetaTags, useMutation } from '@redwoodjs/web'
+import { Metadata, useMutation } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import UserProfileForm, {
@@ -93,7 +93,7 @@ const CompleteSignUpPage = () => {
 
   return (
     <>
-      <MetaTags
+      <Metadata
         title="Create Profile"
         description="Choose a username and create your profile to complete the sign up process."
       />

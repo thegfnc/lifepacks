@@ -5,11 +5,7 @@ type GetIpAddressInput = {
 }
 
 const getIpAddress = ({ event }: GetIpAddressInput) => {
-  return (
-    event?.headers?.['client-ip'] ||
-    event?.requestContext?.identity?.sourceIp ||
-    'null'
-  )
+  return event?.headers?.['client-ip'] || 'null'
 }
 
 export default getIpAddress

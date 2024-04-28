@@ -1,7 +1,7 @@
 import { Heading, Link, Stack, Text } from '@chakra-ui/react'
 
 import { routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import PageContainer from 'src/components/PageContainer/PageContainer'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -19,10 +19,10 @@ const Paragraph = ({ children }) => (
 const TermsOfServicePage = () => {
   return (
     <PageContainer size="sm">
-      <MetaTags
+      <Metadata
         title="Terms of Service"
         description='This Terms of Service (TOS) agreement governs your use of the Lifepacks app (the "App"). By using the App, you agree to be bound by this TOS'
-        ogUrl={getEnvironmentUrl(routes.termsOfService())}
+        og={{ url: getEnvironmentUrl(routes.termsOfService()) }}
       />
 
       <Heading

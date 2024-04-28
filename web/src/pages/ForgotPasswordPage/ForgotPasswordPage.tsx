@@ -19,7 +19,7 @@ import {
 
 import { Form, useForm } from '@redwoodjs/forms'
 import { Link, routes, navigate } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
 import getEnvironmentUrl from 'src/helpers/getEnvironmentUrl'
@@ -71,7 +71,7 @@ const ForgotPasswordPage = () => {
 
   return (
     <>
-      <MetaTags
+      <Metadata
         title="Forgot Password"
         description="Enter your e-mail to recieve a reset password link."
       />

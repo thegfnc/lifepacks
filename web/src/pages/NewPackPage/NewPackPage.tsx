@@ -1,6 +1,6 @@
 import { Spinner, Stack } from '@chakra-ui/react'
 
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 
 import NewPack from 'src/components/NewPack/NewPack'
 import PageContainer from 'src/components/PageContainer/PageContainer'
@@ -15,7 +15,7 @@ const NewPackPage = () => {
 
   return (
     <PageContainer size="sm">
-      <MetaTags
+      <Metadata
         title="Create Pack"
         description="Create a new pack to share your recommendations with the world."
       />

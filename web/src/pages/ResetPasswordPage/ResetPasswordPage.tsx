@@ -16,7 +16,7 @@ import {
 
 import { Form, useForm } from '@redwoodjs/forms'
 import { routes, navigate } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { Metadata } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
@@ -63,7 +63,7 @@ const ForgotPasswordPage = () => {
 
   return (
     <>
-      <MetaTags
+      <Metadata
         title="Reset Password"
         description="Enter your new password to update your account."
       />
