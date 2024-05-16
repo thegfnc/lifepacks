@@ -3169,12 +3169,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/is-prop-valid@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@emotion/is-prop-valid@npm:1.2.1"
+"@emotion/is-prop-valid@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@emotion/is-prop-valid@npm:1.2.2"
   dependencies:
     "@emotion/memoize": ^0.8.1
-  checksum: 7c2aabdf0ca9986ca25abc9dae711348308cf18d418d64ffa4c8ffd2114806c47f2e06ba8ee769f38ec67d65bd59ec73f34d94023e81baa1c43510ac86ccd5e6
+  checksum: bb1530dcb4e0e5a4fabb219279f2d0bc35796baf66f6241f98b0d03db1985c890a8cafbea268e0edefd5eeda143dbd5c09a54b5fba74cee8c69b98b13194af50
   languageName: node
   linkType: hard
 
@@ -3192,14 +3192,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:11.11.1":
-  version: 11.11.1
-  resolution: "@emotion/react@npm:11.11.1"
+"@emotion/react@npm:^11.11.4":
+  version: 11.11.4
+  resolution: "@emotion/react@npm:11.11.4"
   dependencies:
     "@babel/runtime": ^7.18.3
     "@emotion/babel-plugin": ^11.11.0
     "@emotion/cache": ^11.11.0
-    "@emotion/serialize": ^1.1.2
+    "@emotion/serialize": ^1.1.3
     "@emotion/use-insertion-effect-with-fallbacks": ^1.0.1
     "@emotion/utils": ^1.2.1
     "@emotion/weak-memoize": ^0.3.1
@@ -3209,7 +3209,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 1aea4d735b537fbfbeda828bbf929488a7e1b5b7d131f14aeede8737e92bb3b611e15fec353e97f85aed7a65a1c86a695a04ba6e9be905231beef6bd624cb705
+  checksum: 6df892fd9e04b5c8c37aacfd7f461631e04e00e845edc3c5b2955ab8ad681abf5cd49584101f579427e08b82f2f88369c78d37ae2fe9360a8f68fd4e51b8e448
   languageName: node
   linkType: hard
 
@@ -3226,6 +3226,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/serialize@npm:^1.1.3, @emotion/serialize@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "@emotion/serialize@npm:1.1.4"
+  dependencies:
+    "@emotion/hash": ^0.9.1
+    "@emotion/memoize": ^0.8.1
+    "@emotion/unitless": ^0.8.1
+    "@emotion/utils": ^1.2.1
+    csstype: ^3.0.2
+  checksum: 164d936f72382594c47b9c24e67a51c7fc16b83d9a36b84eec5e4cb9bf7be029218a490ef4b44233a1b53423bdb3905d65b597cde3ebba759d40dab7a4c99121
+  languageName: node
+  linkType: hard
+
 "@emotion/sheet@npm:^1.2.2":
   version: 1.2.2
   resolution: "@emotion/sheet@npm:1.2.2"
@@ -3233,14 +3246,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:11.11.0":
-  version: 11.11.0
-  resolution: "@emotion/styled@npm:11.11.0"
+"@emotion/styled@npm:^11.11.5":
+  version: 11.11.5
+  resolution: "@emotion/styled@npm:11.11.5"
   dependencies:
     "@babel/runtime": ^7.18.3
     "@emotion/babel-plugin": ^11.11.0
-    "@emotion/is-prop-valid": ^1.2.1
-    "@emotion/serialize": ^1.1.2
+    "@emotion/is-prop-valid": ^1.2.2
+    "@emotion/serialize": ^1.1.4
     "@emotion/use-insertion-effect-with-fallbacks": ^1.0.1
     "@emotion/utils": ^1.2.1
   peerDependencies:
@@ -3249,7 +3262,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: a168bd7a8a6f254e54a321be4c7b7dd4bf65815e6570ba7c5a435b7d5aeebd76434e04886db7799a955817c8d5bf0103a3dcc3c785fba2bb53922320dda59a10
+  checksum: 27da6ad7f5b374d61cfe6647cc2f93ee3ceb1139a51907050576ee30da0a50a27b0bbed45f76889d560d2a8ccf8bc4a4f7126cad3f00127e107c11093dc0a801
   languageName: node
   linkType: hard
 
@@ -8623,12 +8636,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/auth-js@npm:2.64.1":
-  version: 2.64.1
-  resolution: "@supabase/auth-js@npm:2.64.1"
+"@supabase/auth-js@npm:2.64.2":
+  version: 2.64.2
+  resolution: "@supabase/auth-js@npm:2.64.2"
   dependencies:
     "@supabase/node-fetch": ^2.6.14
-  checksum: cf2ebc1b34896561477a946296a50612ec40bee6f348193d2b93a2a2338c2a5161d86298abeba487b92fd1bfcb51b7e2e2755c4dc0202e957e3713a30a2737c2
+  checksum: a5d9f9ccbcac38b86f5c860264cd5bf130774c14cf9dc5b3934653d4a1bb7bae6e66d6c3501b0c38782b6d75dfed6763a4b25096692894364fbfd9241f7527a1
   languageName: node
   linkType: hard
 
@@ -8659,15 +8672,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/realtime-js@npm:2.9.4":
-  version: 2.9.4
-  resolution: "@supabase/realtime-js@npm:2.9.4"
+"@supabase/realtime-js@npm:2.9.5":
+  version: 2.9.5
+  resolution: "@supabase/realtime-js@npm:2.9.5"
   dependencies:
     "@supabase/node-fetch": ^2.6.14
     "@types/phoenix": ^1.5.4
     "@types/ws": ^8.5.10
     ws: ^8.14.2
-  checksum: 2c8499ef332d1214c8dda2cabac362034d3e0a38c5941b8a8ffc9bc4666b40d4525c0b5064c17a05468cc4472aa5507c14cb69581a1077f902ece0493ef92cd3
+  checksum: e27aa7c7f7a4444357f1df03d62c7a3171ecc6ead7a77c3746db045185d154cbd6883f8295ce3258a42d6815a2aa56f5116e78ac4031e491131d56f288859e96
   languageName: node
   linkType: hard
 
@@ -8680,17 +8693,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:2.42.7":
-  version: 2.42.7
-  resolution: "@supabase/supabase-js@npm:2.42.7"
+"@supabase/supabase-js@npm:^2.43.2":
+  version: 2.43.2
+  resolution: "@supabase/supabase-js@npm:2.43.2"
   dependencies:
-    "@supabase/auth-js": 2.64.1
+    "@supabase/auth-js": 2.64.2
     "@supabase/functions-js": 2.3.1
     "@supabase/node-fetch": 2.6.15
     "@supabase/postgrest-js": 1.15.2
-    "@supabase/realtime-js": 2.9.4
+    "@supabase/realtime-js": 2.9.5
     "@supabase/storage-js": 2.5.5
-  checksum: 0df48b4f879ee34f1c2fdb917e2cba2fa58de2a3e8c1227a18403321620c4df3d9e2ed0ce3a0e91efb8bb1e0057c7bdaaf0cbfa983cf5fc4b520e0c6b1fb2520
+  checksum: 5bb5eddcc7e6ce47cb4137f415bd9882026186a30010758e82004924204a7fe96a46f106bac9008839604bf39b805dc5c5df4bc4f26792e88f8847f49537e2e4
   languageName: node
   linkType: hard
 
@@ -9873,13 +9886,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.3.1":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.3.1
   resolution: "@types/react@npm:18.3.1"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
   checksum: 18d856c12a4ec93f3cda2d58ef3d77a9480818afd3af895f812896fb82cfca1f35a692ab1add4ce826a4eb58a071624c7d1c8c6c4ccfb81c100d2916dc607614
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.3.2":
+  version: 18.3.2
+  resolution: "@types/react@npm:18.3.2"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: 9fb2f1fcf7e889ee4ea7c3c5978df595c66e770e5fd3a245dbdd2589b9b911524c11dab25a6275d8af4e336e4cb5fa850d447884b84c335a187a338c89df99ba
   languageName: node
   linkType: hard
 
@@ -10168,10 +10191,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/analytics@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@vercel/analytics@npm:1.0.2"
-  checksum: e73b07cec987067d70449eddd312c28cd2ec83807ed8ac6ddf3540f8ccd63f0de8ec57aac5a6d2616f7c3910573def4d05860796c88e9f83e452e660be933c77
+"@vercel/analytics@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@vercel/analytics@npm:1.2.2"
+  dependencies:
+    server-only: ^0.0.1
+  peerDependencies:
+    next: ">= 13"
+    react: ^18 || ^19
+  peerDependenciesMeta:
+    next:
+      optional: true
+    react:
+      optional: true
+  checksum: 82c89846356b370574414aa511d5a341535dcc7ba3b0a5eabfc7644df6d52a7b30253247627382faf4a0cc4192715cea718fe91027f7ba35efba80256064a005
   languageName: node
   linkType: hard
 
@@ -23869,12 +23902,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-icons@npm:^4.11.0":
-  version: 4.11.0
-  resolution: "react-icons@npm:4.11.0"
+"react-icons@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "react-icons@npm:5.2.1"
   peerDependencies:
     react: "*"
-  checksum: 95e837e11ece80cc39ef1beac026d10f96cd7e567afc718e717517beb35b82dd59307a758c10b3a449dc15d6682d6551ecc630b2821d9365819af921fa279a73
+  checksum: 9d52b975afaf27dab07dcaefd50497ba43cc57076fc26ccac5142965e01c7fd0c503a62ea31c3bb710e0b2959a4620c2fed12c3c86960ad8ceb63de7f0085f3a
   languageName: node
   linkType: hard
 
@@ -25106,6 +25139,13 @@ __metadata:
     parseurl: ~1.3.3
     send: 0.18.0
   checksum: fa9f0e21a540a28f301258dfe1e57bb4f81cd460d28f0e973860477dd4acef946a1f41748b5bd41c73b621bea2029569c935faa38578fd34cd42a9b4947088ba
+  languageName: node
+  linkType: hard
+
+"server-only@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "server-only@npm:0.0.1"
+  checksum: 4704f0ef85da0be981af6d4ed8e739d39bcfd265b9c246a684060acda5642d0fdc6daffc2308e71e2682c5f508090978802eae0a77623c9b90a49f9ae68048d6
   languageName: node
   linkType: hard
 
@@ -27798,8 +27838,8 @@ __metadata:
   dependencies:
     "@chakra-ui/icons": 2.1.1
     "@chakra-ui/react": ^2.8.2
-    "@emotion/react": 11.11.1
-    "@emotion/styled": 11.11.0
+    "@emotion/react": ^11.11.4
+    "@emotion/styled": ^11.11.5
     "@redwoodjs/auth": 7.5.1
     "@redwoodjs/auth-supabase-web": 7.5.1
     "@redwoodjs/forms": 7.5.1
@@ -27808,7 +27848,7 @@ __metadata:
     "@redwoodjs/web": 7.5.1
     "@sentry/react": 7.70.0
     "@sentry/vite-plugin": ^2.7.1
-    "@supabase/supabase-js": 2.42.7
+    "@supabase/supabase-js": ^2.43.2
     "@tiptap/extension-character-count": ^2.1.8
     "@tiptap/extension-link": 2.1.8
     "@tiptap/extension-placeholder": 2.1.8
@@ -27816,15 +27856,15 @@ __metadata:
     "@tiptap/pm": 2.1.8
     "@tiptap/react": 2.1.8
     "@tiptap/starter-kit": ^2.1.8
-    "@types/react": ^18.3.1
+    "@types/react": ^18.3.2
     "@types/react-dom": ^18.3.0
-    "@vercel/analytics": ^1.0.2
+    "@vercel/analytics": ^1.2.2
     compressorjs: ^1.2.1
     date-fns: ^2.30.0
     framer-motion: 10.16.4
     react: latest
     react-dom: latest
-    react-icons: ^4.11.0
+    react-icons: ^5.2.1
     react-wrap-balancer: ^1.1.0
     uuid: ^9.0.0
   languageName: unknown
