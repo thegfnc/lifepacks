@@ -15,16 +15,17 @@ function getImageUrlWithTransform({
 }: GetIMageUrlWithTransformInput) {
   if (!src) return ''
 
-  let renderSrc = src
+  const renderSrc = src
   let params = null
 
   // Since we're only paying for supabase on production, we can't use image transforms for the preview envs
   if (process.env.VERCEL_ENV === 'production') {
     // Need to figure out a more long term solution than this
-    renderSrc = src.replace(
-      'storage/v1/object/public',
-      'storage/v1/render/image/public'
-    )
+    // !!! removed this when downgrading to the free plan !!!
+    // renderSrc = src.replace(
+    //   'storage/v1/object/public',
+    //   'storage/v1/render/image/public'
+    // )
 
     const { height, width, resize } = transform
 
